@@ -1,41 +1,59 @@
 
 
-### Example 1
+### Scheduling
 
-The following is an example checklist for setting up a participant in the MRI to avoid motion-related or foreign object-related artifacts:
+#### One week BEFORE THE FIRST SESSION
 
-**BEFORE SCAN DATE**
-
-- [x] Confirm that participant does not have any MRI contraindications
+- [x] Send a copy of the MRI Safety and screening form to the participant over email and confirm reception
+- [x] Confirm that participant has read and understood the document, and in particular, double-check that they do not have any MRI contraindications
 - [x] Remind participant that any jewelry should be removed prior to the scan 
-- [x] If allowed to wear street clothes, remind participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan
+- [x] Confirm clothing:
+  - [ ] if allowed to wear street clothes, remind participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
+  - [x] remark the participant they will be given a gown and they will need to change before every session.
 - [x] If participant has indicated nervousness or history of claustrophobia, utilize mock scanner 
 
-**DAY OF SCAN, PRIOR TO PARTICIPANT ARRIVAL**
+#### DAY OF SCAN, prior to participant arrival
 
-- [x] Prepare consent documents and MRI safety screener 
+- [x] Prepare consent documents (first session only)
+- [x] Prepare an MRI safety screener 
 - [x] Prepare scrubs and MR-compatible glasses if applicable
-- [x] Setup scanner bed with proper headcoil, under-knee padding, neck padding, and any other padding necessary for safety and comfort 
-- [x] Check stimulus display and response device 
+- [x] Setup scanner room and peripherals:
+  - [x] prepare the 64-channel headcoil,
+  - [x] prepare paddings: under-knee padding, neck padding, inflatable head-paddings
+  - [x] prepare a blanket
+  - [x] prepare a new pair of earplugs
+  - [x] prepare the respiration belt, as well as the placeholder for the ECG and other physio sensors
+  - [x] connect the cable from the RJ-45 output of the syncbox to the first filter (VNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office 071. Make sure you will have access to the cable with sufficient time ahead.
+    - [x] On the scanner console, checke the external signal input registers triggers from the syncbox
+    - [x] prepare a thermometer
+    - [x] prepare a blood preasure meter
+  - [x] connect the USB cable from the syncbox to the PC HOS54938 (next to the DVD printer/burner)
+  - [x] Set up the eye-tracking:
+    - [x] 
+  - [x] Open psychopy 3 and this protocol's files, make sure you have internet access to a Git repository and check files are up-to-date.
+  - [x] Prepare the gas-analyzer:
+    - [x] Prepare the canule tube, which is introduced through the tube in the access panel
+    - [x] Prepare a new canule
+- [x] Check stimulus display and response device:
+  - [x] Check the movie to be displayed is ready
+  - [x] Check the execution of the Breath holding task
+  - [x] Check the execution of the finger tapping task
 
-**SCAN TIME**
+#### DAY OF SCAN, right when the participant arrives
 
 - [x] Have participant fill out consent documents and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia
 - [x] Have participant empty their pockets or change into scrubs, and remove all jewelry/hair accessories and check for any missed metallic objects with the scan center’s preferred method
-- [x] Instruct participant on staying still and encourage them to request breaks if necessary 
-- [x] Solicit feedback on participant’s comfort while positioning them on the scanner bed and suggest ergonomic positioning of arms to avoid discomfort
-- [x] Follow the ***Scan console*** checklist.
+- [x] Instruct participant on staying still and encourage them to request breaks if necessary
+- [x] Describe the participant how the session will develop, with special attention to tasks. Answer all the questions that may arise.
+- [x] Show the alarm button to the participant, instruct them to hold it on their hand throughout the session, with the exception of the finger tapping task for which they should leave it on their belly
+- [x] Place participant on the scanner's bed:
+  - [x] Accommodate the head inside the head coil
+  - [x] Check again that it is the 64-channel head coil
+  - [x] Check the scanner's screen that the three coils [SAY MORE SPECIFIC] are connected and active
+  - [x] Solicit feedback on participant’s comfort while positioning them on the scanner bed and suggest ergonomic positioning of arms to avoid discomfort
+  - [x] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
 
-**DURING SCAN**
-
-- [x] Check in with participant frequently
-- [x] Watch for motion if you can see the participant, or use motion monitoring equipment
-
-**AFTER SCAN**
-
-- [x] Solicit more feedback on participant’s comfort for future sessions
-- [x] Run MRIQC to evaluate data
-
+#### SCAN TIME
 
 **Scan console checklist**
 
@@ -123,10 +141,13 @@ Console instructions
 
       - [x] SCAN 
 
+**DURING SCAN**
 
-### Example 2
+- [x] Check in with participant frequently
+- [x] Watch for motion if you can see the participant, or use motion monitoring equipment
 
-**BEFORE THE SCAN DATE (1-2 days)**
+**AFTER SCAN**
 
-- [x] Call or email the participant before the appointment to remind them of the details and times, and confirm that they can still make it
-- [x] Register their confirmation in STRATA or reschedule the appointment (see scheduling SOPs).
+- [x] Solicit more feedback on participant’s comfort for future sessions
+- [x] Run MRIQC to evaluate data
+
