@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         path: 'src/'
     - name: Set up Python 3.8
@@ -23,10 +23,10 @@ jobs:
         git config --global user.name "nipreps-bot"
         python -m pip install --upgrade pip
         pip install -r src/requirements.txt
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         ref: gh-pages
-        path: www
+        path: 'www/'
     - name: Clean up master
       run: |
         cd www/
