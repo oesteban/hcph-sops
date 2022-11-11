@@ -1,0 +1,2 @@
+- [ ] Load the data from the PAC
+- [ ] Convert data to BIDS
