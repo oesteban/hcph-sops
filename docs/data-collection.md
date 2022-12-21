@@ -12,7 +12,92 @@
   - [x] remark the participant they will be given a gown and they will need to change before every session.
 - [x] If participant has indicated nervousness or history of claustrophobia, utilize mock scanner 
 
-#### DAY OF SCAN, prior to participant arrival
+#### DAY OF SCAN, prior to participant arrival, set-up of the Eye tracker (ET) EyeLink 1000 Plus at 3 Tesla
+
+**Section 1, Eye-tracker Transport, Preparation of the Cable Inside the Scanner room:**
+- [ ] Verify that the monitor and the cable, as well as the ET over the PC tower are fixed to the chariot with the scotch. 
+- [ ]	Bring the ET to the 3T, being very carefully during the displacement [Go through the tunnel Nestle-Maternité-BH; Lift the front wheels when passing steps and elevators; use the hydraulic lift at Nestle] 
+- [ ]	From the CIBM EEG lab, take the box with the «fMRI usage» label, containing the lenses, as well as the plastic base for placing the Eye-Tracker inside the MRI hole, and the special mirror. 
+- [ ]	Open the door of the cable section between the recording room and the scanner room.
+- [ ]	First pass through the hole the Optic fiber (Orange Cable) and the Charger (Back cable). This operation needs two persons, one outside the scanner, the other inside. Both persons need to lift the cable to avoid its abrasion with the borders of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
+- [ ]	Place the plastic base into the hole of the MR, top side. DON’T PUSH IT inside, it needs to be adjusted once the subject is placed inside the scanner, to insure a standardize position of the ET.
+
+**Section 2, Preparation of the Eye-tracker, OUTSIDE THE SCANNER ROOM:**
+
+- [ ]	Take out of the lenses box the MR-Compatible lense. It is easy to recognize it, from its two golden screws.
+
+![cover-mri-compatible-lens](./assets/ETimages/cover-mri-compatible-lens.png "Cover MRI compatible lens")
+![mri-compatible-lens](./assets/ETimages/mri-compatible-lens.png "MRI compatible lens")
+
+- [ ]	Un-screw any present lenses, being very careful: one hand must be hold under the lens, to avoid crashes, as it is a bit tricky to screw and un-screw it. In case a lens it’s already present, un-screw it and put it back to its plastic bag, inside the lenses box. 
+
+![screw-mri-compatible-lens](./assets/ETimages/screw-lens.png "Screw the MRI compatible lens")
+
+- [ ]	Be Careful: the lens needs to be substituted before entering inside the Scanner Room
+- [ ]	Take the ET inside the scanner room, and put it on top of the plastic base. The two back "feet" of Base of the ET have to be within two corners made of transparent scotch and already attached to the plexiglass. **BE CAREFUL, HOLD IT STRONGLY, CAUSE THE MAGNETIC FIELD GENERATES RESISTANCES.** Connect the cables (two plugs for the black, one plug for the orange).
+
+**Section 3, TMS-Laptop and PC-tower preparation and Projector, OUTSIDE THE SCANNER ROOM:**
+
+- [ ]	Connect the Power cable to the metallic extremity belonging to the PC-tower
+
+![connect-power-cable](./assets/ETimages/connect-power-cable.png "Connect power cable")
+
+- [ ]	Plug in the Power strip containing the ET Power Cable, the PC-tower power, etc
+
+![powerstrip](./assets/ETimages/powerstrip.png)
+![plug-powerstrip](./assets/ETimages/plug-powerstrip.png)
+
+- [ ]	Switch on the PC-tower, as well as the laptop:
+
+![pctower](./assets/ETimages/pctower.png)
+
+- [ ]	This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
+
+![syncbox](./assets/ETimages/syncbox.png)
+
+- [ ]	Connect to the laptop the ET- ethernet blue cable and the USB sync box. If it’s plugged into the sync box, it needs to be re-plugged in after usage.
+
+![connect-ethernet-to-laptop](./assets/ETimages/connect-ethernet-to-laptop.png)
+![ubs-syncbox](./assets/ETimages/ubs-syncbox.png)
+
+- [ ]	Unplug from the box under the desk on the left the VGA cable (projector), and plug it into the laptop. Remember, it has to be put back in place after the usage.
+
+![unplug-vga](./assets/ETimages/unplug-vga.png)
+![vga](./assets/ETimages/vga.png)
+
+- [ ]	Now it’s time to check that the sync box correctly send the triggers (Corresponding to push the key-button “S, s “ from keyboard. Open a .txt file generator on the laptop, take the Sync box and go on “Simulation”. You should see that the sync box is writing “S” onto your notepad.
+
+![choose-simulation-syncbox](./assets/ETimages/choose-simulation-syncbox.png)
+![simulation-syncbox](./assets/ETimages/simulation-syncbox.png)
+![sss-texteditor](./assets/ETimages/sss-texteditor.png)
+
+- [ ]	Once the previous has been checked, it’s time to put the sync box in “Synchronization” mode. Start the session: the box it’s ready to receive the trigger from the sequence and they will be available for Experiment builder / Python / whatever is used to register the trigger and the ET signal.
+
+![choose-synchronisation-syncbox](./assets/ETimages/choose-synchronisation-syncbox.png)
+![start-session-syncbox](./assets/ETimages/start-session-syncbox.png)
+![run-session-syncbox](./assets/ETimages/run-session-syncbox.png)
+
+- [ ]	On the TMS lab laptop, there is a .png image on the desktop used for setting up the projector. Once it’s open, it is going to be projected inside the scanner room.
+
+![projected-image-et](./assets/ETimages/projected-image-et.png)
+
+- [ ]	Move to the CIBM meeting room where the projector is placed and switch it on. What you should see across the screen is that the whole black part is correctly projected. The upper green should be thicker than the bottom green. The latter (bottom green) should be all projected. Be careful with the corners of the black screen, they must be all present in the projection. If they’re not, the projector needs to be adjusted my means of the paper that support it (see images, FENS papers).
+
+![projector](./assets/ETimages/projector.png)
+*The hole is the part through which we should check the quality of the projection*
+
+![paper-projector](./assets/ETimages/paper-projector.png)
+![adjust-projector](./assets/ETimages/adjust-projector.png)
+
+- [x] Go back to the TMS laptop, open psychopy 3 and this protocol's files, make sure you have internet access to a Git repository and check files are up-to-date.
+
+- [x] Check stimulus display and response device:
+  - [x] Check the movie to be displayed is ready
+  - [x] Check the execution of the Breath holding task
+  - [x] Check the execution of the finger tapping task
+
+
+#### DAY OF SCAN, prior to participant arrival, set-up of documents and equipment
 
 - [x] Prepare consent documents (first session only)
 - [x] Prepare an MRI safety screener 
@@ -24,20 +109,12 @@
   - [x] prepare a new pair of earplugs
   - [x] prepare the respiration belt, as well as the placeholder for the ECG and other physio sensors
   - [x] connect the cable from the RJ-45 output of the syncbox to the first filter (VNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office 071. Make sure you will have access to the cable with sufficient time ahead.
-    - [x] On the scanner console, checke the external signal input registers triggers from the syncbox
+    - [x] On the scanner console, check the external signal input registers triggers from the syncbox
     - [x] prepare a thermometer
     - [x] prepare a blood preasure meter
-  - [x] connect the USB cable from the syncbox to the PC HOS54938 (next to the DVD printer/burner)
-  - [x] Set up the eye-tracking:
-    - [x] 
-  - [x] Open psychopy 3 and this protocol's files, make sure you have internet access to a Git repository and check files are up-to-date.
   - [x] Prepare the gas-analyzer:
     - [x] Prepare the canule tube, which is introduced through the tube in the access panel
     - [x] Prepare a new canule
-- [x] Check stimulus display and response device:
-  - [x] Check the movie to be displayed is ready
-  - [x] Check the execution of the Breath holding task
-  - [x] Check the execution of the finger tapping task
 
 #### DAY OF SCAN, right when the participant arrives
 
@@ -52,6 +129,41 @@
   - [x] Check the scanner's screen that the three coils [SAY MORE SPECIFIC] are connected and active
   - [x] Solicit feedback on participant’s comfort while positioning them on the scanner bed and suggest ergonomic positioning of arms to avoid discomfort
   - [x] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
+
+#### DAY OF SCAN, participant setup
+
+- [ ]	Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglas yet)
+- [ ]	Take the 20 channels coil, remove the parts in the TOP of the bed to allow the coil to fit inside. 
+- [ ]	Remove the upper part of the coil, where the mirror is placed. 
+- [ ]	Memorize where the other tools for the recordings are, to put those back in place at the end (coil, emergency button, ears cover.)
+- [ ]	From the outside Box taken from CIBM, remove the box containing the RELIQUIA DI SAN GENNARO (InfraRed Mirror). **THIS IS THE MOST DELICATE PART, THE MIRROR CANNOT BE REPLACED <span style="color:red"> NOR CLEANED text</span>, IT IS EXTREMELY EXPENSIVE. DO NOT REMOVE IT OUT FROM ITS CUSTODY YET**.
+ 
+![infrared-mirror](./assets/ETimages/infrared-mirror.png)
+
+- [ ]	Take two gloves (plastic blue at the entrance of the scanner room), go towards the scanner bed. **DON’T TOUCH ANYTHING.** You must have in front of you the upper part of the head-coil, the one containing the mirrors. Now you can extract, **WITH THE GLOVES**, the infra-red mirror, being **EXTREMELY CAREFUL.YOU CAN TOUCH THE MIRROR ONLY WITH GLOVES, AS IT CAN’T BE CLEAN LIKE THE OTHER MRI-COMPATIBLE PART. SO NO FINGER PRINTS, ANYTHING CAN BE LEFT ON TOP OF IT.**
+- [ ]	Cut two long pieces of paper scotch and with your gloves on, put the infrareds mirror in the upper mirror (the top one, pointing towards the upper hole of the scanner). Put it more or less in the center, although <span style="color:red">this position may need to be adjusted text</span> (being careful and with the same precautions explained before) and stick it with the paper scotch. **Do not touch the surface of the infrareds mirror.**
+- [ ]	Put aside the top part of the coil. 
+- [ ]	Bring the participant inside the room, and give him the ear-plugs to protect the hearing during acquisition.
+- [ ]	Give to the participant the emergency button. Make the participant try it, so they can see it works. To switch off the alarm, there’s a button on the scanner (circular, both on the left and on the right of the hole) 
+- [ ]	Adjust the participant inside. With the pillow, its head position needs to be adjusted and elevated until the head can’t move anymore and the nose and the front of the participants are both adherent to the upper coil. This procedure guarantees that the ET "sees" the eyes. If not, the experiment gets stuck.
+- [ ]	This part needs to be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and front of the participant touch the coil. In case of need, ask the participant to "say yes" with the head (chin on neck) and keep this position, place the pillows, place the coil and check that the participants' front touches the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.  
+- [ ]	Take the Ears -protection pillow, stick it on top of the ears of the participant, one by one. Once they are settled, you can pump it, until the participant is comfortable, the head is fixed and the ears are protected.
+- [ ]	Once the previous part is insured, the participant is ready. If he’s cold, put a blanket on top of him. Give to the participant the emergency button. 
+- [ ]	Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. Ask the participant to close it’s eyes, localize the head with the infrareds.
+- [ ]	Switch off the infrareds, now the participant can open the eyes. You can move the participant (always gently as before) inside the scanner, until the mm counter marks “Isometric”.
+- [ ]	Go behind the scanner, push the plastic base until it touches the bed. Hold on the Eye-Tracker.
+- [ ]	Regulate the Eye-tracker position until you see from the projector screen the Eye. In case of need, you can adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw. Once the eye is well seen, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil. The right lens needs to be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. If the position of the Eye-tracker is not satisfying, you can move the base. 
+
+![base-eye-tracker](./assets/ETimages/base-eye-tracker.png)
+
+- [ ]	If the pupil is correctly seen, as well as the eye, you can go out. The calibration needs to start. 
+- [ ]	Tell the participant that he will need to follow some point with its eyes, without moving his head.
+- [ ]	Tell the participant to move the eyes ONLY after the point moves (do not anticipate).
+- [ ]	The ET software needs to show a cross performed during the calibration. If not, the ET inside the scanner needs to be adjusted.
+- [ ]	If not, the head of the participant needs to be adjusted again.
+- [ ]	If not, the mirror needs to be moved up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position.
+- [ ]	<span style="color:red"> If the calibration is ok, you can move forward and record. text</span>
+
 
 #### SCAN TIME
 
@@ -141,13 +253,46 @@ Console instructions
 
       - [x] SCAN 
 
-**DURING SCAN**
+#### DURING SCAN
 
 - [x] Check in with participant frequently
 - [x] Watch for motion if you can see the participant, or use motion monitoring equipment
 
-**AFTER SCAN**
+#### END OF RECORDING
 
-- [x] Solicit more feedback on participant’s comfort for future sessions
-- [x] Run MRIQC to evaluate data
+- [ ]	Everything that is removed for the experiment needs to be put back in place and the end of the experiment, i.e. position of the bed, coil, emergency button, ears cover.
+- [ ]	Before doing anything else, put the plastic base far from the bed, again. Do not remove the projector screen yet, otherwise the participant would be flashed by the lights.
+- [ ]	Take out the participant gently as before. 
+- [ ]	Remove the upper part of the coil
+- [ ]	Remove the ear-pillow.
+- [ ]	Let him go. 
+- [ ]	Switch off the projector.
+
+#### AFTER SCAN, inside scanner room
+
+- [ ]	Take the upper part of the coil. Take the plastic container of the infrared mirror. Take the gloves. Put them on.
+- [ ]	Remove the scotch. Put the mirror back in its custody. Then back in its plastic bag.
+- [ ]	Place it back in the fMRI external box, with extreme care.
+- [ ]	Clean the coil mirror from the scotch. Clean the coil.
+- [ ]	Remove it and put it back in place.
+- [ ]	Put the pillows back in place.
+- [ ]	Put the projector screen back in place.
+- [ ]	Unplug the Eye tracker from the Optic Fiber and the Power. Put those extremities aside far from the scanner. Take the Eye-Tracker back outside. Put it in a stable place.
+- [ ]	Remove the plastic base, put that outside next to the box.
+- [ ]	With someone from the other side, pass being extremely careful the cables (fiber and power of the ET) back thought the hole. Roll them around their support being extremely careful. 
+- [ ]	Put the bed back in place = push the "home" button on the scanner
+- [ ]	Take a glove, on the right there is some cleaning napkins. Use them to clean the bed. 
+- [ ]	exit and Close the External door.
+
+#### AFTER SCAN, outside scanner room
+
+- [ ] Solicit more feedback on participant’s comfort for future sessions
+- [ ]	Switch off laptop and ET PC Tower. Plug back the sync box and the VGA projector where they were. 
+- [ ]	Fix the rolled cable with the scotch on the PC Tower base.
+- [ ]	Take the ET, Remove (always with and hand under the lens) the MRI compatible LENS. Put it back to its contained inside the box. 
+- [ ]	Put back the regular Lens. 
+- [ ]	Bring back the box and the base at CIBM EEG lab. Put the keys back under old Nora’s desk.
+- [ ]	Fix the ET with the scotch at the chariot.
+- [ ]	Bring back the chariot and the TMS laptop at the TMS lab
+
 
