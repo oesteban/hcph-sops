@@ -11,6 +11,8 @@
   - [ ] if allowed to wear street clothes, remind participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
   - [x] remark the participant they will be given a gown and they will need to change before every session.
 - [x] If participant has indicated nervousness or history of claustrophobia, utilize mock scanner 
+- [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy
+- [ ] Go in the dot Cockpit, paste the sequences and save.
 
 #### BEFORE DAY OF SCAN
 
@@ -181,8 +183,28 @@
 - [ ]	If not, the mirror needs to be moved up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position.
 - [ ]	<span style="color:red"> If the calibration is ok, you can move forward and record. text</span>
 
+- [ ] Start a new exam by clicking on examination
+- [ ] Search the patient by clicking on the "Patient Browser" in the top left corner
+- [ ] Search for "Oscar esteban"
+- [ ] Right click and select "New examination"
+- [ ] Enter the weight and height of patient
+- [ ] Select the right protocol under "Oscar" 
+- [ ] Select Brain as the organ
+- [ ] Select the Position as "Head supline"
+- [ ] Start Exam
+- [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
 
 #### SCAN TIME
+
+- [ ] Launch the AAhead_scout by pressing "Continue"
+- [ ] Launch the T1w by pressing "Continue"
+- [ ] Once the T1w is finished, you can drag the T1w into the scan viewing window by draging the three superposed squares next to the sequence name. This will allow to tweek the field-of-view (FOV) for the DWI and BOLD sequences
+- [ ] Make sure that the FOV (yellow square) includes the whole brain. If the full brain, including the cerebellum, do not fit in the FOV, favorise making sure that the cortex is fully enclosed in the yellow square. Careful for reproduciblity do not tilt the FOV; just translate it.
+- [ ] Once the FOV is well placed, launch the sequence by pressing "Go"
+- [ ] If two sequences have the same resolution and the same number of slices, you can copy paste the FOV by clicking right clicking on the sequence for which the FOV was set, select "copy parameters>[WHAT WAS THE NAME]"
+- [ ] You can set the worker icon on the left of the sequence if you want to pause before starting that sequence. If the worker is not present, the sequence will launch automatically.
+
+- [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
 
 **Scan console checklist**
 
