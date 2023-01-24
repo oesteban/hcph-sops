@@ -17,19 +17,21 @@
 **Section 1, Eye-tracker Transport, Preparation of the Cable Inside the Scanner room:**
 - [ ] The eye-tracker chariot is found under the projector in room BH07_075.
 - [ ] Verify that the monitor and the cable, as well as the ET over the PC tower are fixed to the chariot with the scotch. 
-- [ ]	Bring the ET to the 3T, being very carefully during the displacement [Lift the front wheels when passing steps.]
-- [ ]	From the room BH07_071 first cabinet on the left, take the box with the «fMRI usage» label, containing the lenses, as well as the plastic base for placing the Eye-Tracker inside the MRI hole, and the special mirror. 
+- [ ]	Bring the table with the ET computer to the access closet (outside) of the scanner room. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The transparent panel can also be brought to the scanning room simultaneously, if done with care.
+- [ ] Place the transparent standing panel inside the scanner bore, following the indications stuck on the panel (i.e., it has indication of which side goes up and tape markers for the position of the ET).
+- [ ]	From room BH07/071 (first cabinet on the left), take the box with the «fMRI usage» label, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ]	Open the door of the cable section between the recording room and the scanner room.
 - [ ]	First pass through the hole the Optic fiber (Orange Cable) and the Charger (Back cable). This operation needs two persons, one outside the scanner, the other inside. Both persons need to lift the cable to avoid its abrasion with the borders of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
 - [ ]	Place the plastic base into the hole of the MR, top side. DON’T PUSH IT inside, it needs to be adjusted once the subject is placed inside the scanner, to insure a standardize position of the ET.
-- [ ]	Remove the upper part of the coil, where the mirror is placed. 
-- [ ]	From the outside Box taken from CIBM, remove the box containing the RELIQUIA DI SAN GENNARO (InfraRed Mirror). **THIS IS THE MOST DELICATE PART, THE MIRROR CANNOT BE REPLACED <span style="color:red"> NOR CLEANED text</span>, IT IS EXTREMELY EXPENSIVE. DO NOT REMOVE IT OUT FROM ITS CUSTODY YET**.
+- [ ]	Detach the mirror frame from the head coil, if it is placed there. Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
+- [ ] Prepare two long stripes of scotch tape and leave them in a convenient place to then attach the ET mirror with them on to the standard mirror. E.g., attach the corner of each strip to the back part of the mirror frame.
+- [ ]	Take out the box containing the infrared mirror from the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**. 
  
 ![infrared-mirror](./assets/ETimages/infrared-mirror.png)
 
-- [ ]	Take two gloves (plastic blue at the entrance of the scanner room), go towards the scanner bed. **DON’T TOUCH ANYTHING.** You must have in front of you the upper part of the head-coil, the one containing the mirrors. Now you can extract, **WITH THE GLOVES**, the infra-red mirror, being **EXTREMELY CAREFUL.YOU CAN TOUCH THE MIRROR ONLY WITH GLOVES, AS IT CAN’T BE CLEAN LIKE THE OTHER MRI-COMPATIBLE PART. SO NO FINGER PRINTS, ANYTHING CAN BE LEFT ON TOP OF IT.**
-- [ ]	Cut two long pieces of paper scotch and with your gloves on, put the infrareds mirror in the upper mirror (the top one, pointing towards the upper hole of the scanner). Put it more or less in the center, although <span style="color:red">this position may need to be adjusted text</span> (being careful and with the same precautions explained before) and stick it with the paper scotch. **Do not touch the surface of the infrareds mirror.**
-- [ ]	Put the top part of the coil containing the mirror back on the coil being careful to not touch the infrared mirror. 
+- [ ]	Get two gloves (e.g., from the box hanging at the entrance of the scanner room), then approach the scanner bed. Put the gloves on, and **DON’T TOUCH ANYTHING**. You MUST have the standard mirror dismounted and in front of you at this point. **WITH THE GLOVES** proceed to extract the infra-red mirror from its box, being extremely careful. **YOU CAN ONLY TOUCH THE MIRROR WITH GLOVES**, because it cannot be cleaned up. Watch out for **FINGERPRINTS** and once taken out of its box, **IMMEDIATELY PROCEED TO ATTACH IT** to the standard coil mirror. The mirror MUST NOT be placed anywhere else if not in its box.
+- [ ]	**WITH YOUR GLOVES ON**, attach the ET mirror to the standard coil mirror (the larger mirror that points toward projector's screen at the back of the scanning room). Put it more or less in the center, although <span style="color:red">this position may need to be adjusted</span> (being careful and with the same precautions explained before) and stick it with the paper scotch. **Do not touch the surface of the ET mirror.**
+- [ ]	Place the mirror frame back on the head coil. As always, **DO NOT TOUCH THE MIRROR**. 
 
 **Section 2, Preparation of the Eye-tracker, OUTSIDE THE SCANNER ROOM:**
 
@@ -86,7 +88,7 @@
 ![start-session-syncbox](./assets/ETimages/start-session-syncbox.png)
 ![run-session-syncbox](./assets/ETimages/run-session-syncbox.png)
 
-- [ ]	Move to the CIBM meeting room where the projector is placed and switch it on. If the projection is not well located, the projector needs to be adjusted my means of the paper that support it (see images, FENS papers).
+- [ ]	Switch the projector on [ADD MORE DETAILS HERE, just hit power on on its right side?]. The projector is found in room BH07/075. If the projection is not well located, the projector needs to be adjusted. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
 ![projector](./assets/ETimages/projector.png)
 *The hole is the part through which we should check the quality of the projection*
@@ -94,7 +96,7 @@
 ![paper-projector](./assets/ETimages/paper-projector.png)
 ![adjust-projector](./assets/ETimages/adjust-projector.png)
 
-- [x] Go back to the hos68752 laptop, open a terminal and `conda deactivate`.
+- [ ] Go back to the hos68752 laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Make sure you have internet access to a Git repository and check the repository fMRI-Control-Task is up-to-date.
 
