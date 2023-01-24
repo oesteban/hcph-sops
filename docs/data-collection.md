@@ -295,4 +295,7 @@ Console instructions
 - [ ]	Fix the ET with the scotch at the chariot.
 - [ ]	Bring back the chariot and the TMS laptop at the TMS lab
 
+### Acknowledgment
+We greatly thank Benedetta Franceschiello for her help to setup the eye-tracker. All the guidelines regarding the eye-tracker come from her SOP document.
+
 
