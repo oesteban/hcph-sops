@@ -71,10 +71,9 @@
 ![connect-ethernet-to-laptop](./assets/ETimages/connect-ethernet-to-laptop.png)
 ![ubs-syncbox](./assets/ETimages/ubs-syncbox.png)
 
-- [ ]	Plug the HDMI cable to the hos68752 laptop. This should project your screen on the second screen.
+- [ ]	Connect the **hos68752** laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
 
-![unplug-vga](./assets/ETimages/unplug-vga.png)
-![vga](./assets/ETimages/vga.png)
+[ADD IMAGE OF SWITCH BOX HDMI CABLE]
 
 - [ ]	Now it’s time to check that the sync box correctly send the triggers (Corresponding to push the key-button “S, s “ from keyboard. Open a .txt file generator on the laptop, take the Sync box and go on “Simulation”. You should see that the sync box is writing “S” onto your notepad.
 
