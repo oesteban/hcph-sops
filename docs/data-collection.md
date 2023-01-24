@@ -12,10 +12,17 @@
   - [x] remark the participant they will be given a gown and they will need to change before every session.
 - [x] If participant has indicated nervousness or history of claustrophobia, utilize mock scanner 
 
+#### BEFORE DAY OF SCAN
+
+- [ ] On the hos68752 laptop, open a terminal and execute `conda deactivate`.
+- [ ] Open psychopy 3 by typing `psychopy`
+- [ ] Make sure you have internet access to a Git repository and check the repository fMRI-Control-Task is up-to-date.
+
+
 #### DAY OF SCAN, prior to participant arrival, set-up of the Eye tracker (ET) EyeLink 1000 Plus at 3 Tesla
 
 **Section 1, Eye-tracker Transport, Preparation of the Cable Inside the Scanner room:**
-- [ ] The eye-tracker chariot is found under the projector in room BH07_075.
+- [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room BH07/075. Behind the rolling table, there is a transparent panel where the ET camera will be set up inside the scanner bore.
 - [ ] Verify that the monitor and the cable, as well as the ET over the PC tower are fixed to the chariot with the scotch. 
 - [ ]	Bring the table with the ET computer to the access closet (outside) of the scanner room. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The transparent panel can also be brought to the scanning room simultaneously, if done with care.
 - [ ] Place the transparent standing panel inside the scanner bore, following the indications stuck on the panel (i.e., it has indication of which side goes up and tape markers for the position of the ET).
@@ -23,6 +30,9 @@
 - [ ]	Open the door of the cable section between the recording room and the scanner room.
 - [ ]	First pass through the hole the Optic fiber (Orange Cable) and the Charger (Back cable). This operation needs two persons, one outside the scanner, the other inside. Both persons need to lift the cable to avoid its abrasion with the borders of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
 - [ ]	Place the plastic base into the hole of the MR, top side. DON’T PUSH IT inside, it needs to be adjusted once the subject is placed inside the scanner, to insure a standardize position of the ET.
+- [ ] Remove the head coil that is currently installed. If it is the 64-channel, you can just temporarily move it into the scanner's bore. Otherwise, store it on the shelve where the other coils are.
+- [ ] Remove the spine coil by lifting the corresponding lock and replace it with the back paddings.
+- [ ]	Take the 64-channel head and neck coil, remove the parts in the head end of the bed to allow the coil to fit inside.
 - [ ]	Detach the mirror frame from the head coil, if it is placed there. Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
 - [ ] Prepare two long stripes of scotch tape and leave them in a convenient place to then attach the ET mirror with them on to the standard mirror. E.g., attach the corner of each strip to the back part of the mirror frame.
 - [ ]	Take out the box containing the infrared mirror from the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**. 
@@ -87,7 +97,7 @@
 ![start-session-syncbox](./assets/ETimages/start-session-syncbox.png)
 ![run-session-syncbox](./assets/ETimages/run-session-syncbox.png)
 
-- [ ]	Switch the projector on [ADD MORE DETAILS HERE, just hit power on on its right side?]. The projector is found in room BH07/075. If the projection is not well located, the projector needs to be adjusted. E.g., change the height of the paper pile that supports it (see images, FENS papers).
+- [ ]	Switch the projector on by hitting the power button on on its right side. The projector is found in room BH07/075. If the projection is not well located, the projector needs to be adjusted. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
 ![projector](./assets/ETimages/projector.png)
 *The hole is the part through which we should check the quality of the projection*
@@ -97,7 +107,7 @@
 
 - [ ] Go back to the hos68752 laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
-- [ ] Make sure you have internet access to a Git repository and check the repository fMRI-Control-Task is up-to-date.
+- [ ] Open the <ENTER_TASK_NAME>
 
 - [x] Check stimulus display and response device:
   - [x] Check the movie to be displayed is ready
@@ -141,7 +151,6 @@
 #### DAY OF SCAN, participant setup
 
 - [ ]	Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglas yet)
-- [ ]	Take the 20 channels coil, remove the parts in the TOP of the bed to allow the coil to fit inside.
 - [ ]	Memorize where the other tools for the recordings are, to put those back in place at the end (coil, emergency button, ears cover.) 
 - [ ]	Bring the participant inside the room, and give him the ear-plugs to protect the hearing during acquisition.
 - [ ]	Give to the participant the emergency button. Make the participant try it, so they can see it works. To switch off the alarm, there’s a button on the scanner (circular, both on the left and on the right of the hole) 
