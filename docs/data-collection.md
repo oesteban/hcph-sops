@@ -92,11 +92,7 @@
 
 - [ ] Double check that the IP address corresponding to the ethernet interface of the **hos68752** laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the eye-tracker is responding with echoes.
 
-- [ ]	Now it’s time to check that the sync box correctly send the triggers (Corresponding to push the key-button “S, s “ from keyboard. Open a .txt file generator on the laptop, take the Sync box and go on “Simulation”. You should see that the sync box is writing “S” onto your notepad.
-
-![choose-simulation-syncbox](./assets/ETimages/choose-simulation-syncbox.png)
-![simulation-syncbox](./assets/ETimages/simulation-syncbox.png)
-![sss-texteditor](./assets/ETimages/sss-texteditor.png)
+- [ ]	Now it’s time to check that the sync box correctly [WRITE ON HOW TO SEND TEST TRIGGER MANUALLY]
 
 - [ ]	Once the previous has been checked, it’s time to put the sync box in “Synchronization” mode. Start the session: the box it’s ready to receive the trigger from the sequence and they will be available for Experiment builder / Python / whatever is used to register the trigger and the ET signal.
 
