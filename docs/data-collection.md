@@ -88,7 +88,7 @@
 
 - [ ]	Connect the **hos68752** laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
 
-[ADD IMAGE OF SWITCH BOX HDMI CABLE]
+![switchbox_hdmi](./assets/ETimages/switchbox_hdmi.png)
 
 - [ ] Double check that the IP address corresponding to the ethernet interface of the **hos68752** laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the eye-tracker is responding with echoes.
 
@@ -310,8 +310,5 @@ Console instructions
 - [ ]	Bring back the box and the base at CIBM EEG lab. Put the keys back under old Nora’s desk.
 - [ ]	Fix the ET with the scotch at the chariot.
 - [ ]	Bring back the chariot and the TMS laptop at the TMS lab
-
-### Acknowledgment
-We greatly thank Benedetta Franceschiello for her help to setup the eye-tracker. All the guidelines regarding the eye-tracker come from her SOP document.
 
 
