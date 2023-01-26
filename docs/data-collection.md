@@ -14,7 +14,12 @@
 
 #### BEFORE DAY OF SCAN
 
-- [ ] Make sure you have internet access to a Git repository and check the repository fMRI-Control-Task is up-to-date.
+- [ ] Make sure you have internet access, and update the fMRI-Control-Task repository. Assuming the repository is cloned from your <username>/fMRI-Control-Task and you have another remote `upstream` pulling from `git@github.com:theaxonlab/fMRI-Control-Task.git`:
+    ```
+    git fetch upstream
+    git checkout main
+    git rebase upstream/main
+    ```
 - [ ] On the hos68752 laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Load in the different experiments and check for proper functioning if there were changes.
