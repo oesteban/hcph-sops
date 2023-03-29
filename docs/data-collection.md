@@ -199,8 +199,10 @@
 - [ ] Select the right protocol under "Oscar" 
 - [ ] Select Brain as the organ
 - [ ] Select the Position as "Head supline"
-- [ ] Start Exam
 - [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
+- [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved. 
+- [ ] Start Exam
+
 
 #### SCAN TIME
 
