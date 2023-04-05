@@ -47,6 +47,18 @@
 - [ ] Plug in the ethernet (the plug is in the back) to the ethernet port of [WHICH COMPUTER].
 ![biopack-back](./assets/images/biopack-back.jpg "Biopack back side")
 - [ ] Plug the USB key to the computer [WHICH COMPUTER]. The USB key not only contains the program for installation of the Biopack software, it also contains the license necessary to operate this software. It needs to stay plug at all times during the acquisition. [INSERT PHOTO]
+- [ ] Install the gaz analyser on the wood platform behind the MRI consoles.
+- [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
+- [ ] Delicatly pass the nasal canula through the hole while avoiding that the canula touches the floor. Rest the canula on the bed ready for the participant to install and connect the other end to the corresponding plug in front of the gaz analyser. 
+![gaz-analyser](./assets/images/gaz-analyser.jpg "Gas Analyser")
+- [ ] Pass then the tube of the respiration belt through the same hole resting one end on the MR bed and connect the other end to the TSD160A biopack unit on the + plug.
+
+- [ ] Connect the coaxial cable to the C02 output in the back of the gaz analyser and the ethernet end into one of the channel of the AMI100D biopack unit. [I'M NOT SURE ABOUT THAT CONNECTION]
+![gaz-analyser-front](./assets/images/gaz-analyser-back.jpg "Gas Analyser front")
+
+- [ ] Plug in the power cord in the back of the gaz analyser and turn it on using the O/I switch. [ADD PHOTO WITH CONNECTED CABLE]
+![gaz-analyser-back](./assets/images/gaz-analyser-back.jpg "Gas Analyser back")
+
 **Setting up the eye-tracker**
 
 !!! info "Thanks"
@@ -187,12 +199,13 @@
 - [ ]	Give to the participant the emergency button. Make the participant try it, so they can see it works. To switch off the alarm, there’s a button on the scanner (circular, both on the left and on the right of the hole) 
 - [ ]	Adjust the participant inside. With the pillow, its head position needs to be adjusted and elevated until the head can’t move anymore and the nose and the front of the participants are both adherent to the upper coil. This procedure guarantees that the ET "sees" the eyes. If not, the experiment gets stuck.
 - [ ]	This part needs to be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and front of the participant touch the coil. In case of need, ask the participant to "say yes" with the head (chin on neck) and keep this position, place the pillows, place the coil and check that the participants' front touches the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil. For our HCPH participant, we found that the adapted height of pillow is obtained by superposing the two pillows in the picture below .
-![two_pillows](./assets/two_pillows.png)
-![superpose_pillows](./assets/superpose_pillows.png)
-
+    ![two_pillows](./assets/two_pillows.png)
+    ![superpose_pillows](./assets/superpose_pillows.png)
+- [ ] Install the respiration belt on the participant and connect it to the tube [INSERT PHOTO]. The respiration belt measure the displacement of the stomach induced by breathing, it thus needs to surround the stomach comfortably. [GIVE MORE PRECISE INFO WHERE SHOULD IT BE PLACED]
+- [ ] Place the nasal cannula in the nose of the participant making sure the two protrusion are aligned with the nostrils of the participant. Place the tube behind the ears and tighten behind the head for comfort and stability by sliding the ring.
 - [ ]	Take the Ears -protection pillow, stick it on top of the ears of the participant, one by one. Once they are settled, you can pump it, until the participant is comfortable, the head is fixed and the ears are protected.
-- [ ]	Once the previous part is insured, the participant is ready. If he’s cold, put a blanket on top of him. Give to the participant the emergency button. 
-- [ ]	Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. Ask the participant to close it’s eyes, localize the head with the infrareds.
+- [ ]	Once the previous part is insured, the participant is ready. If he's cold, put a blanket on top of him. Give to the participant the emergency button. 
+- [ ]	Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. Ask the participant to close it's eyes, localize the head with the infrareds.
 - [ ]	Switch off the infrareds, now the participant can open the eyes. You can move the participant (always gently as before) inside the scanner, until the mm counter marks “Isometric”.
 - [ ]	Go behind the scanner, push the plastic base until it touches the bed. Hold on the Eye-Tracker.
 - [ ]	Regulate the Eye-tracker position until you see from the projector screen the Eye. The optimal position for the eye tracker is to see the eye in the middle of the square delineated by the coil. If the eye is correctly tracked, two crosses should appear on it. The right lens needs to be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. Alternatively, you can also try to click the button "Autofocus" on the console.
@@ -210,8 +223,11 @@
 - [ ]	The ET software needs to show a cross performed during the calibration. If not, the ET inside the scanner needs to be adjusted.
 - [ ]	If not, the head of the participant needs to be adjusted again.
 - [ ]	If not, the mirror needs to be moved up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position.
-- [ ] When the calibration is successfull, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
-- [ ] 	<span style="color:red"> When both the calibration and the validation are ok, you can move forward and record. text</span>
+- [ ] When the calibration is successful, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
+- [ ]	<span style="color:red"> If the calibration is ok, you can move forward. </span>
+- [ ] <span style="color:red"> Turn the pump of the gaz analyser on </span> and make sure the flow control is set on maximum.
+
+#### SCAN TIME
 
 - [ ] Start a new exam by clicking on examination
 - [ ] Search the patient by clicking on the "Patient Browser" in the top left corner
@@ -225,10 +241,6 @@
 - [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
 - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
 - [ ] Start Exam
-
-
-#### SCAN TIME
-
 - [ ] Launch the AAhead_scout by pressing "Continue"
 - [ ] Launch the T1w by pressing "Continue"
 - [ ] Once the T1w is finished, you can drag the T1w into the scan viewing window by draging the three superposed squares next to the sequence name. This will allow to tweek the field-of-view (FOV) for the DWI and BOLD sequences
