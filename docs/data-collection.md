@@ -44,12 +44,12 @@
 - [ ]	From room BH07/071 (first cabinet on the left), take the box with the «fMRI usage» label, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ]	Take out of the lenses box the MR-Compatible lense. It is easy to recognize it, from its two golden screws.
 
-![cover-mri-compatible-lens](./assets/ETimages/cover-mri-compatible-lens.png "Cover MRI compatible lens")
-![mri-compatible-lens](./assets/ETimages/mri-compatible-lens.png "MRI compatible lens")
+![cover-mri-compatible-lens](./assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
+![mri-compatible-lens](./assets/images/mri-compatible-lens.png "MRI compatible lens")
 
 - [ ]	Un-screw any present lenses, being very careful: one hand must be hold under the lens, to avoid crashes, as it is a bit tricky to screw and un-screw it. In case a lens it’s already present, un-screw it and put it back to its plastic bag, inside the lenses box. 
 
-![screw-mri-compatible-lens](./assets/ETimages/screw-lens.png "Screw the MRI compatible lens")
+![screw-mri-compatible-lens](./assets/images/screw-lens.png "Screw the MRI compatible lens")
 
 - [ ]	Be Careful: the lens needs to be substituted before entering inside the Scanner Room
 
@@ -63,7 +63,7 @@
 - [ ] Prepare two long stripes of scotch tape and leave them in a convenient place to then attach the ET mirror with them on to the standard mirror. E.g., attach the corner of each strip to the back part of the mirror frame.
 - [ ]	Take out the box containing the infrared mirror from the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**. 
  
-![infrared-mirror](./assets/ETimages/infrared-mirror.png)
+![infrared-mirror](./assets/images/infrared-mirror.png)
 
 - [ ]	Get two gloves (e.g., from the box hanging at the entrance of the scanner room), then approach the scanner bed. Put the gloves on, and **DON’T TOUCH ANYTHING**. You MUST have the standard mirror dismounted and in front of you at this point. **WITH THE GLOVES** proceed to extract the infra-red mirror from its box, being extremely careful. **YOU CAN ONLY TOUCH THE MIRROR WITH GLOVES**, because it cannot be cleaned up. Watch out for **FINGERPRINTS** and once taken out of its box, **IMMEDIATELY PROCEED TO ATTACH IT** to the standard coil mirror. The mirror MUST NOT be placed anywhere else if not in its box.
 - [ ]	**WITH YOUR GLOVES ON**, attach the ET mirror to the standard coil mirror (the larger mirror that points toward projector's screen at the back of the scanning room). Put it more or less in the center, although <span style="color:red">this position may need to be adjusted</span> (being careful and with the same precautions explained before) and stick it with the paper scotch. **Do not touch the surface of the ET mirror.**
@@ -73,29 +73,29 @@
 
 - [ ]	Connect the Power cable to the metallic extremity belonging to the ET PC-tower
 
-![connect-power-cable](./assets/ETimages/connect-power-cable.png "Connect power cable")
+![connect-power-cable](./assets/images/connect-power-cable.png "Connect power cable")
 
 - [ ]	Plug in the Power strip containing the ET Power Cable, the PC-tower power, etc
 
-![powerstrip](./assets/ETimages/powerstrip.png)
-![plug-powerstrip](./assets/ETimages/plug-powerstrip.png)
+![powerstrip](./assets/images/powerstrip.png)
+![plug-powerstrip](./assets/images/plug-powerstrip.png)
 
 - [ ]	Switch on the ET PC-tower, as well as the laptop. Select "Eyelink" when given the option of which operating system to launch.
 
-![pctower](./assets/ETimages/pctower.png)
+![pctower](./assets/images/pctower.png)
 
 - [ ]	This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
 
-![syncbox](./assets/ETimages/syncbox.png)
+![syncbox](./assets/images/syncbox.png)
 
 - [ ]	Connect to the **hos68752** laptop the ET- ethernet blue cable and the USB sync box. If it’s plugged into the sync box, it needs to be re-plugged in after usage.
 
-![connect-ethernet-to-laptop](./assets/ETimages/connect-ethernet-to-laptop.png)
-![ubs-syncbox](./assets/ETimages/ubs-syncbox.png)
+![connect-ethernet-to-laptop](./assets/images/connect-ethernet-to-laptop.png)
+![ubs-syncbox](./assets/images/ubs-syncbox.png)
 
 - [ ]	Connect the **hos68752** laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
 
-![switchbox_hdmi](./assets/ETimages/switchbox_hdmi.png)
+![switchbox_hdmi](./assets/images/switchbox_hdmi.png)
 
 - [ ] In the Linux parameters go to Display in order to adjust the resolution of both primary and secondary screens to **800x600**.
 !! It is crucial that the resolution of both screens, as well as the resolution in the Psychopy code is 800x600, for the eye-tracker calibration to work !! 
@@ -106,17 +106,17 @@
 
 - [ ]	Once the previous has been checked, it’s time to put the sync box in “Synchronization” mode. Start the session: the box it’s ready to receive the trigger from the sequence and they will be available for Experiment builder / Python / whatever is used to register the trigger and the ET signal.
 
-![choose-synchronisation-syncbox](./assets/ETimages/choose-synchronisation-syncbox.png)
-![start-session-syncbox](./assets/ETimages/start-session-syncbox.png)
-![run-session-syncbox](./assets/ETimages/run-session-syncbox.png)
+![choose-synchronisation-syncbox](./assets/images/choose-synchronisation-syncbox.png)
+![start-session-syncbox](./assets/images/start-session-syncbox.png)
+![run-session-syncbox](./assets/images/run-session-syncbox.png)
 
 - [ ]	Switch the projector on by hitting the power button on on its right side. The projector is found in room BH07/075. If the projection is not well located, the projector needs to be adjusted. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
-![projector](./assets/ETimages/projector.png)
+![projector](./assets/images/projector.png)
 *The hole is the part through which we should check the quality of the projection*
 
-![paper-projector](./assets/ETimages/paper-projector.png)
-![adjust-projector](./assets/ETimages/adjust-projector.png)
+![paper-projector](./assets/images/paper-projector.png)
+![adjust-projector](./assets/images/adjust-projector.png)
 
 - [ ] Go back to the hos68752 laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
@@ -185,7 +185,7 @@
   - In case of need, you can adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw. Once the eye is well seen, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil. 
   - If the position of the Eye-tracker is not satisfying, you can move the base. 
 
-![base-eye-tracker](./assets/ETimages/base-eye-tracker.png)
+![base-eye-tracker](./assets/images/base-eye-tracker.png)
 
 - [ ]	If the pupil and the eye are correctly seen (indicated by the crosses following them), you can go out. The calibration needs to start. 
 - [ ]	Tell the participant that he will need to follow some point with its eyes, without moving his head.
