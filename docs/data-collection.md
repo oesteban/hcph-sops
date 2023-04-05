@@ -33,6 +33,20 @@
 - [ ]	Take the 64-channel head and neck coil and fixate it onto the head end of the bed. This operation may require the removal of paddings and fittings of other coils, if they were present.
 - [ ] For the eye-tracker, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
 
+**Setting up the Biopack and physiological recording tools**
+- [ ] Set up the line frequency switches on the back of the Biopack amplifier depending on your country frequency to reduce noise. Both switches should be DOWN if your country's line frequency is 50Hz. Both switches should be UP if your country's line frequency line is 60Hz. [@oscar: should those info be in our SOPs or not?]
+![biopack-frequency-switch](./assets/images/biopack-frequency-switch.jpg "Biopack frequency switch")
+- [ ] Plug the different units of the Biopack together if it has not been done yet. We use the Biopack to synchronize and output in a single file all the physiological signals we record: cardiac pulsation, respiration and CO2 concentration.
+  - [ ] The solid state relay driver unit is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
+  - [ ] The AMI100C unit can receive up to 16 analogic signals. 
+  - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
+  - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
+  ![biopack-front](./assets/images/biopack-front.jpg "Biopack front side")
+
+- [ ] Plug in the power cord.
+- [ ] Plug in the ethernet (the plug is in the back) to the ethernet port of [WHICH COMPUTER].
+![biopack-back](./assets/images/biopack-back.jpg "Biopack back side")
+- [ ] Plug the USB key to the computer [WHICH COMPUTER]. The USB key not only contains the program for installation of the Biopack software, it also contains the license necessary to operate this software. It needs to stay plug at all times during the acquisition. [INSERT PHOTO]
 **Setting up the eye-tracker**
 
 !!! info "Thanks"
