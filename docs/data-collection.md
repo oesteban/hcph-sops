@@ -9,7 +9,8 @@
 - [x] Remind participant that any jewelry should be removed prior to the scan 
 - [x] Confirm clothing:
   - [ ] if allowed to wear street clothes, remind participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
-  - [x] remark the participant they will be given a gown and they will need to change before every session.
+  - [ ] if the participant's chest is hairy, remark him that his chest needs to be shaved for the ECG electrode to be directly in contact with skin.
+  - [ ] remark the participant they will be given a gown and they will need to change before every session.
 - [x] If participant has indicated nervousness or history of claustrophobia, utilize mock scanner 
 - [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy
 - [ ] Go in the dot Cockpit, paste the sequences and save.
@@ -168,14 +169,11 @@
   - [x] prepare paddings: under-knee padding, neck padding, inflatable head-paddings
   - [x] prepare a blanket
   - [x] prepare a new pair of earplugs
-  - [x] prepare the respiration belt, as well as the placeholder for the ECG and other physio sensors
+  - [x] prepare the placeholder for the ECG and the cleaning wipes
   - [x] connect the cable from the RJ-45 output of the syncbox to the first filter (VNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office 071. Make sure you will have access to the cable with sufficient time ahead.
     - [x] On the scanner console, check the external signal input registers triggers from the syncbox
     - [x] prepare a thermometer
     - [x] prepare a blood preasure meter
-  - [x] Prepare the gas-analyzer:
-    - [x] Prepare the canule tube, which is introduced through the tube in the access panel
-    - [x] Prepare a new canule
 
 #### DAY OF SCAN, right when the participant arrives
 
@@ -190,6 +188,14 @@
   - [x] Check the scanner's screen that the three coils [SAY MORE SPECIFIC] are connected and active
   - [x] Solicit feedback on participant’s comfort while positioning them on the scanner bed and suggest ergonomic positioning of arms to avoid discomfort
   - [x] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
+
+- [ ] Ask the participant to place the ECG electrodes on the location indicated by the picture below.
+![prep-ecg-electrodes](./assets/images/prep-ecg-electrodes.png)
+  - [ ] Clean the skin with [WHAT?]
+  - [ ] Remove the protective film from the electrode
+  - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes
+- [ ] Plug the ECG cable to three electrodes ensuring the color scheme of the schema are followed [ADD DETAILS]
+
 
 #### DAY OF SCAN, participant setup
 
