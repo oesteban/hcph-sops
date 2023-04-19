@@ -20,6 +20,6 @@
           chmod -R a-w rawdata/sub-2022_11_07_15_37_06_STD_1_3_12_2_1107_5_99_3/ses-*
           ```
 - [ ] Convert data to BIDS with HeudiConv. Careful to change the number of the session ! Note that we use the heuristic -f reproin, because we have name the sequences at the console following ReproIn convention.
-    ```
-    docker run --user=$(id -u):$(id -g) -e "UID=$(id -u)" -e "GID=$(id -g)" --rm -t -v /data/datasets/hcph-pilot/sourcedata/sub-2022_11_07_15_37_06_STD_1_3_12_2_1107_5_99_3/ses-20230124173410/:/input:ro -v /data/datasets/hcph-pilot/:/output  nipy/heudiconv:latest -s "pilot" -ss "06" -f reproin -b -o /output --files /input -l .
-    ```
+```python:../../code/heudiconv_reproin.sh
+
+```
