@@ -31,6 +31,7 @@
 - [ ] Remove the head coil that is currently installed. If it is the 64-channel, you can just temporarily move it into the scanner's bore. Otherwise, store it on the shelve where the other coils are and bring the 64-channel one in the proximity of the bed (e.g., inside the scanner's bore).
 - [ ] With no head-coil installed, remove the spine coil by lifting the corresponding lock and replace it with the back paddings.
 - [ ]	Take the 64-channel head and neck coil and fixate it onto the head end of the bed. This operation may require the removal of paddings and fittings of other coils, if they were present.
+- [ ] For the eye-tracker, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
 
 **Setting up the eye-tracker**
 
@@ -54,11 +55,10 @@
 
 ** Now you can enter the scanner room**
 
-- [ ] Place the transparent standing panel inside the scanner bore, following the indications stuck on the panel (i.e., it has indication of which side goes up and tape markers for the position of the ET).
+- [ ] Place the transparent standing panel inside the scanner bore, following the indications stuck on the panel (i.e., it has indication of which side goes up and tape markers for the position of the ET). The plastic feet on the panel need to face the rails to prevent the plate from sliding. The tap markers need to be close to the exit of the MRI bore. DON’T PUSH IT inside, the plastic base should be aligned with the end of the rail. [TO DO : INSERT PHOTO]
 - [ ]	Take the ET inside the scanner room, and put it on top of the plastic base. The two back "feet" of Base of the ET have to be within two corners made of transparent scotch and already attached to the plexiglass. **BE CAREFUL, HOLD IT STRONGLY, CAUSE THE MAGNETIC FIELD GENERATES RESISTANCES.** Connect the cables (two plugs for the black, one plug for the orange).
 - [ ]	Open the door of the cable section between the recording room and the scanner room.
 - [ ]	First pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point (TODO: ATTACH PICTURE). This operation requires two people, one handling the cables from outside the scanner, and the other gently pulling them from inside. Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
-- [ ]	Place the plastic base into the bore of the MR, top side. DON’T PUSH IT inside, it needs to be adjusted once the subject is placed inside the scanner, to ensure the repeatible positioning of the ET.
 - [ ]	Detach the mirror frame from the head coil, if it is placed there. Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
 - [ ] Prepare two long stripes of scotch tape and leave them in a convenient place to then attach the ET mirror with them on to the standard mirror. E.g., attach the corner of each strip to the back part of the mirror frame.
 - [ ]	Take out the box containing the infrared mirror from the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**. 
@@ -71,7 +71,7 @@
 
 **Back OUTSIDE THE SCANNER ROOM**
 
-- [ ]	Connect the Power cable to the metallic extremity belonging to the PC-tower
+- [ ]	Connect the Power cable to the metallic extremity belonging to the ET PC-tower
 
 ![connect-power-cable](./assets/ETimages/connect-power-cable.png "Connect power cable")
 
@@ -80,7 +80,7 @@
 ![powerstrip](./assets/ETimages/powerstrip.png)
 ![plug-powerstrip](./assets/ETimages/plug-powerstrip.png)
 
-- [ ]	Switch on the PC-tower, as well as the laptop:
+- [ ]	Switch on the ET PC-tower, as well as the laptop. Select "Eyelink" when given the option of which operating system to launch.
 
 ![pctower](./assets/ETimages/pctower.png)
 
@@ -88,7 +88,7 @@
 
 ![syncbox](./assets/ETimages/syncbox.png)
 
-- [ ]	Connect to the laptop the ET- ethernet blue cable and the USB sync box. If it’s plugged into the sync box, it needs to be re-plugged in after usage.
+- [ ]	Connect to the **hos68752** laptop the ET- ethernet blue cable and the USB sync box. If it’s plugged into the sync box, it needs to be re-plugged in after usage.
 
 ![connect-ethernet-to-laptop](./assets/ETimages/connect-ethernet-to-laptop.png)
 ![ubs-syncbox](./assets/ETimages/ubs-syncbox.png)
@@ -121,7 +121,11 @@
 - [ ] Go back to the hos68752 laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Open the <ENTER_TASK_NAME>
-
+- [ ] Run the experiment by pressing the green play button. 
+- [ ] Enter the session and participant number in the pop up window.
+- [ ] The Eyelink system setup page opens
+- [ ] Press enter to begin the camera setup mode. If the projector is correctly setup, you should see one of the view of the eye projected on the screen in the scanner room. On the Eyelink system, you can see two views: one is the field-of-view of the eye-tracker, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible). To ease the setup of the eye-tracker, switch to the full view in the camera setup mode by pressing the left or right arrow.
+- [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one 
 - [x] Check stimulus display and response device:
   - [x] Check the movie to be displayed is ready
   - [x] Check the execution of the Breath holding task
@@ -186,10 +190,14 @@
 - [ ]	If the pupil and the eye are correctly seen (indicated by the crosses following them), you can go out. The calibration needs to start. 
 - [ ]	Tell the participant that he will need to follow some point with its eyes, without moving his head.
 - [ ]	Tell the participant to move the eyes ONLY after the point moves (do not anticipate).
+- [ ] Launch the calibration by pressing C on the laptop keyboard or by clicking on Calibration on the ET interface.
+- [ ] When the gaze is stable and the validate button [VERIFY THE EXACT NAME] appears green, you can manually click on it to validate the first position.
+- [ ] The following positions should be validated automatically when the gase is stable enough. If it is not the case, manually click on the validate button when it turns green
 - [ ]	The ET software needs to show a cross performed during the calibration. If not, the ET inside the scanner needs to be adjusted.
 - [ ]	If not, the head of the participant needs to be adjusted again.
 - [ ]	If not, the mirror needs to be moved up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position.
-- [ ]	<span style="color:red"> If the calibration is ok, you can move forward and record. text</span>
+- [ ] When the calibration is successfull, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
+- [ ] 	<span style="color:red"> When both the calibration and the validation are ok, you can move forward and record. text</span>
 
 - [ ] Start a new exam by clicking on examination
 - [ ] Search the patient by clicking on the "Patient Browser" in the top left corner
@@ -199,8 +207,11 @@
 - [ ] Select the right protocol under "Oscar" 
 - [ ] Select Brain as the organ
 - [ ] Select the Position as "Head supline"
-- [ ] Start Exam
+- [ ] For obtaining good SNR on the AAL sequence, plug the coil after the exam has been open
 - [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
+- [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
+- [ ] Start Exam
+
 
 #### SCAN TIME
 
@@ -341,5 +352,6 @@ Console instructions
 - [ ]	Bring back the box and the base at CIBM EEG lab. Put the keys back under old Nora’s desk.
 - [ ]	Fix the ET with the scotch at the chariot.
 - [ ]	Bring back the chariot and the TMS laptop at the TMS lab
+- [ ] If you are the last person to scan for the day, turn off the MRI machine. First, turn off the left computer, then the right one and finally push the button shut down on the MRI console that lies on the wall and turn the key to close the cover of the console. ! The order is important and the next element needs to be shut down only when the previous is completely off!
 
 
