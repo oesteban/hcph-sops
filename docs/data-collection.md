@@ -11,6 +11,8 @@
   - [ ] if allowed to wear street clothes, remind participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
   - [x] remark the participant they will be given a gown and they will need to change before every session.
 - [x] If participant has indicated nervousness or history of claustrophobia, utilize mock scanner 
+- [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy
+- [ ] Go in the dot Cockpit, paste the sequences and save.
 
 #### BEFORE DAY OF SCAN
 
@@ -95,6 +97,9 @@
 
 ![switchbox_hdmi](./assets/ETimages/switchbox_hdmi.png)
 
+- [ ] In the Linux parameters go to Display in order to adjust the resolution of both primary and secondary screens to **800x600**.
+!! It is crucial that the resolution of both screens, as well as the resolution in the Psychopy code is 800x600, for the eye-tracker calibration to work !! 
+
 - [ ] Double check that the IP address corresponding to the ethernet interface of the **hos68752** laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the eye-tracker is responding with echoes.
 
 - [ ]	Now it’s time to check that the sync box correctly [WRITE ON HOW TO SEND TEST TRIGGER MANUALLY]
@@ -163,17 +168,22 @@
 - [ ]	Bring the participant inside the room, and give him the ear-plugs to protect the hearing during acquisition.
 - [ ]	Give to the participant the emergency button. Make the participant try it, so they can see it works. To switch off the alarm, there’s a button on the scanner (circular, both on the left and on the right of the hole) 
 - [ ]	Adjust the participant inside. With the pillow, its head position needs to be adjusted and elevated until the head can’t move anymore and the nose and the front of the participants are both adherent to the upper coil. This procedure guarantees that the ET "sees" the eyes. If not, the experiment gets stuck.
-- [ ]	This part needs to be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and front of the participant touch the coil. In case of need, ask the participant to "say yes" with the head (chin on neck) and keep this position, place the pillows, place the coil and check that the participants' front touches the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.  
+- [ ]	This part needs to be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and front of the participant touch the coil. In case of need, ask the participant to "say yes" with the head (chin on neck) and keep this position, place the pillows, place the coil and check that the participants' front touches the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil. For our HCPH participant, we found that the adapted height of pillow is obtained by superposing the two pillows in the picture below .
+![two_pillows](./assets/two_pillows.png)
+![superpose_pillows](./assets/superpose_pillows.png)
+
 - [ ]	Take the Ears -protection pillow, stick it on top of the ears of the participant, one by one. Once they are settled, you can pump it, until the participant is comfortable, the head is fixed and the ears are protected.
 - [ ]	Once the previous part is insured, the participant is ready. If he’s cold, put a blanket on top of him. Give to the participant the emergency button. 
 - [ ]	Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. Ask the participant to close it’s eyes, localize the head with the infrareds.
 - [ ]	Switch off the infrareds, now the participant can open the eyes. You can move the participant (always gently as before) inside the scanner, until the mm counter marks “Isometric”.
 - [ ]	Go behind the scanner, push the plastic base until it touches the bed. Hold on the Eye-Tracker.
-- [ ]	Regulate the Eye-tracker position until you see from the projector screen the Eye. In case of need, you can adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw. Once the eye is well seen, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil. The right lens needs to be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. If the position of the Eye-tracker is not satisfying, you can move the base. 
+- [ ]	Regulate the Eye-tracker position until you see from the projector screen the Eye. The optimal position for the eye tracker is to see the eye in the middle of the square delineated by the coil. If the eye is correctly tracked, two crosses should appear on it. The right lens needs to be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. Alternatively, you can also try to click the button "Autofocus" on the console.
+  - In case of need, you can adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw. Once the eye is well seen, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil. 
+  - If the position of the Eye-tracker is not satisfying, you can move the base. 
 
 ![base-eye-tracker](./assets/ETimages/base-eye-tracker.png)
 
-- [ ]	If the pupil is correctly seen, as well as the eye, you can go out. The calibration needs to start. 
+- [ ]	If the pupil and the eye are correctly seen (indicated by the crosses following them), you can go out. The calibration needs to start. 
 - [ ]	Tell the participant that he will need to follow some point with its eyes, without moving his head.
 - [ ]	Tell the participant to move the eyes ONLY after the point moves (do not anticipate).
 - [ ]	The ET software needs to show a cross performed during the calibration. If not, the ET inside the scanner needs to be adjusted.
@@ -181,8 +191,28 @@
 - [ ]	If not, the mirror needs to be moved up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position.
 - [ ]	<span style="color:red"> If the calibration is ok, you can move forward and record. text</span>
 
+- [ ] Start a new exam by clicking on examination
+- [ ] Search the patient by clicking on the "Patient Browser" in the top left corner
+- [ ] Search for "Oscar esteban"
+- [ ] Right click and select "New examination"
+- [ ] Enter the weight and height of patient
+- [ ] Select the right protocol under "Oscar" 
+- [ ] Select Brain as the organ
+- [ ] Select the Position as "Head supline"
+- [ ] Start Exam
+- [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
 
 #### SCAN TIME
+
+- [ ] Launch the AAhead_scout by pressing "Continue"
+- [ ] Launch the T1w by pressing "Continue"
+- [ ] Once the T1w is finished, you can drag the T1w into the scan viewing window by draging the three superposed squares next to the sequence name. This will allow to tweek the field-of-view (FOV) for the DWI and BOLD sequences
+- [ ] Make sure that the FOV (yellow square) includes the whole brain. If the full brain, including the cerebellum, do not fit in the FOV, favorise making sure that the cortex is fully enclosed in the yellow square. Careful for reproduciblity do not tilt the FOV; just translate it.
+- [ ] Once the FOV is well placed, launch the sequence by pressing "Go"
+- [ ] If two sequences have the same resolution and the same number of slices, you can copy paste the FOV by clicking right clicking on the sequence for which the FOV was set, select "copy parameters>[WHAT WAS THE NAME]"
+- [ ] You can set the worker icon on the left of the sequence if you want to pause before starting that sequence. If the worker is not present, the sequence will launch automatically.
+
+- [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
 
 **Scan console checklist**
 
