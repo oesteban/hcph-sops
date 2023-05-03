@@ -9,7 +9,8 @@
 - [x] Remind participant that any jewelry should be removed prior to the scan 
 - [x] Confirm clothing:
   - [ ] if allowed to wear street clothes, remind participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
-  - [x] remark the participant they will be given a gown and they will need to change before every session.
+  - [ ] if the participant's chest is hairy, remark him that his chest needs to be shaved for the ECG electrode to be directly in contact with skin.
+  - [ ] remark the participant they will be given a gown and they will need to change before every session.
 - [x] If participant has indicated nervousness or history of claustrophobia, utilize mock scanner 
 - [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy
 - [ ] Go in the dot Cockpit, paste the sequences and save.
@@ -33,6 +34,32 @@
 - [ ]	Take the 64-channel head and neck coil and fixate it onto the head end of the bed. This operation may require the removal of paddings and fittings of other coils, if they were present.
 - [ ] For the eye-tracker, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
 
+**Setting up the Biopack and physiological recording tools**
+- [ ] Set up the line frequency switches on the back of the Biopack amplifier depending on your country frequency to reduce noise. Both switches should be DOWN if your country's line frequency is 50Hz. Both switches should be UP if your country's line frequency line is 60Hz. [@oscar: should those info be in our SOPs or not?]
+![biopack-frequency-switch](./assets/images/biopack-frequency-switch.jpg "Biopack frequency switch")
+- [ ] Plug the different units of the Biopack together if it has not been done yet. We use the Biopack to synchronize and output in a single file all the physiological signals we record: cardiac pulsation, respiration and CO2 concentration.
+  - [ ] The solid state relay driver unit is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
+  - [ ] The AMI100C unit can receive up to 16 analogic signals. 
+  - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
+  - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
+  ![biopack-front](./assets/images/biopack-front.jpg "Biopack front side")
+
+- [ ] Plug in the power cord.
+- [ ] Plug in the ethernet (the plug is in the back) to the ethernet port of [WHICH COMPUTER].
+![biopack-back](./assets/images/biopack-back.jpg "Biopack back side")
+- [ ] Plug the USB key to the computer [WHICH COMPUTER]. The USB key not only contains the program for installation of the Biopack software, it also contains the license necessary to operate this software. It needs to stay plug at all times during the acquisition. [INSERT PHOTO]
+- [ ] Install the gaz analyser on the wood platform behind the MRI consoles.
+- [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
+- [ ] Delicatly pass the nasal canula through the hole while avoiding that the canula touches the floor. Rest the canula on the bed ready for the participant to install and connect the other end to the corresponding plug in front of the gaz analyser. 
+![gaz-analyser](./assets/images/gaz-analyser.jpg "Gas Analyser")
+- [ ] Pass then the tube of the respiration belt through the same hole resting one end on the MR bed and connect the other end to the TSD160A biopack unit on the + plug.
+
+- [ ] Connect the coaxial cable to the C02 output in the back of the gaz analyser and the ethernet end into one of the channel of the AMI100D biopack unit. [I'M NOT SURE ABOUT THAT CONNECTION]
+![gaz-analyser-front](./assets/images/gaz-analyser-back.jpg "Gas Analyser front")
+
+- [ ] Plug in the power cord in the back of the gaz analyser and turn it on using the O/I switch. [ADD PHOTO WITH CONNECTED CABLE]
+![gaz-analyser-back](./assets/images/gaz-analyser-back.jpg "Gas Analyser back")
+
 **Setting up the eye-tracker**
 
 !!! info "Thanks"
@@ -44,12 +71,12 @@
 - [ ]	From room BH07/071 (first cabinet on the left), take the box with the «fMRI usage» label, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ]	Take out of the lenses box the MR-Compatible lense. It is easy to recognize it, from its two golden screws.
 
-![cover-mri-compatible-lens](./assets/ETimages/cover-mri-compatible-lens.png "Cover MRI compatible lens")
-![mri-compatible-lens](./assets/ETimages/mri-compatible-lens.png "MRI compatible lens")
+![cover-mri-compatible-lens](./assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
+![mri-compatible-lens](./assets/images/mri-compatible-lens.png "MRI compatible lens")
 
 - [ ]	Un-screw any present lenses, being very careful: one hand must be hold under the lens, to avoid crashes, as it is a bit tricky to screw and un-screw it. In case a lens it’s already present, un-screw it and put it back to its plastic bag, inside the lenses box. 
 
-![screw-mri-compatible-lens](./assets/ETimages/screw-lens.png "Screw the MRI compatible lens")
+![screw-mri-compatible-lens](./assets/images/screw-lens.png "Screw the MRI compatible lens")
 
 - [ ]	Be Careful: the lens needs to be substituted before entering inside the Scanner Room
 
@@ -63,7 +90,7 @@
 - [ ] Prepare two long stripes of scotch tape and leave them in a convenient place to then attach the ET mirror with them on to the standard mirror. E.g., attach the corner of each strip to the back part of the mirror frame.
 - [ ]	Take out the box containing the infrared mirror from the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**. 
  
-![infrared-mirror](./assets/ETimages/infrared-mirror.png)
+![infrared-mirror](./assets/images/infrared-mirror.png)
 
 - [ ]	Get two gloves (e.g., from the box hanging at the entrance of the scanner room), then approach the scanner bed. Put the gloves on, and **DON’T TOUCH ANYTHING**. You MUST have the standard mirror dismounted and in front of you at this point. **WITH THE GLOVES** proceed to extract the infra-red mirror from its box, being extremely careful. **YOU CAN ONLY TOUCH THE MIRROR WITH GLOVES**, because it cannot be cleaned up. Watch out for **FINGERPRINTS** and once taken out of its box, **IMMEDIATELY PROCEED TO ATTACH IT** to the standard coil mirror. The mirror MUST NOT be placed anywhere else if not in its box.
 - [ ]	**WITH YOUR GLOVES ON**, attach the ET mirror to the standard coil mirror (the larger mirror that points toward projector's screen at the back of the scanning room). Put it more or less in the center, although <span style="color:red">this position may need to be adjusted</span> (being careful and with the same precautions explained before) and stick it with the paper scotch. **Do not touch the surface of the ET mirror.**
@@ -73,29 +100,29 @@
 
 - [ ]	Connect the Power cable to the metallic extremity belonging to the ET PC-tower
 
-![connect-power-cable](./assets/ETimages/connect-power-cable.png "Connect power cable")
+![connect-power-cable](./assets/images/connect-power-cable.png "Connect power cable")
 
 - [ ]	Plug in the Power strip containing the ET Power Cable, the PC-tower power, etc
 
-![powerstrip](./assets/ETimages/powerstrip.png)
-![plug-powerstrip](./assets/ETimages/plug-powerstrip.png)
+![powerstrip](./assets/images/powerstrip.png)
+![plug-powerstrip](./assets/images/plug-powerstrip.png)
 
 - [ ]	Switch on the ET PC-tower, as well as the laptop. Select "Eyelink" when given the option of which operating system to launch.
 
-![pctower](./assets/ETimages/pctower.png)
+![pctower](./assets/images/pctower.png)
 
 - [ ]	This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
 
-![syncbox](./assets/ETimages/syncbox.png)
+![syncbox](./assets/images/syncbox.png)
 
 - [ ]	Connect to the **hos68752** laptop the ET- ethernet blue cable and the USB sync box. If it’s plugged into the sync box, it needs to be re-plugged in after usage.
 
-![connect-ethernet-to-laptop](./assets/ETimages/connect-ethernet-to-laptop.png)
-![ubs-syncbox](./assets/ETimages/ubs-syncbox.png)
+![connect-ethernet-to-laptop](./assets/images/connect-ethernet-to-laptop.png)
+![ubs-syncbox](./assets/images/ubs-syncbox.png)
 
 - [ ]	Connect the **hos68752** laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
 
-![switchbox_hdmi](./assets/ETimages/switchbox_hdmi.png)
+![switchbox_hdmi](./assets/images/switchbox_hdmi.png)
 
 - [ ] In the Linux parameters go to Display in order to adjust the resolution of both primary and secondary screens to **800x600**.
 !! It is crucial that the resolution of both screens, as well as the resolution in the Psychopy code is 800x600, for the eye-tracker calibration to work !! 
@@ -106,17 +133,17 @@
 
 - [ ]	Once the previous has been checked, it’s time to put the sync box in “Synchronization” mode. Start the session: the box it’s ready to receive the trigger from the sequence and they will be available for Experiment builder / Python / whatever is used to register the trigger and the ET signal.
 
-![choose-synchronisation-syncbox](./assets/ETimages/choose-synchronisation-syncbox.png)
-![start-session-syncbox](./assets/ETimages/start-session-syncbox.png)
-![run-session-syncbox](./assets/ETimages/run-session-syncbox.png)
+![choose-synchronisation-syncbox](./assets/images/choose-synchronisation-syncbox.png)
+![start-session-syncbox](./assets/images/start-session-syncbox.png)
+![run-session-syncbox](./assets/images/run-session-syncbox.png)
 
 - [ ]	Switch the projector on by hitting the power button on on its right side. The projector is found in room BH07/075. If the projection is not well located, the projector needs to be adjusted. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
-![projector](./assets/ETimages/projector.png)
+![projector](./assets/images/projector.png)
 *The hole is the part through which we should check the quality of the projection*
 
-![paper-projector](./assets/ETimages/paper-projector.png)
-![adjust-projector](./assets/ETimages/adjust-projector.png)
+![paper-projector](./assets/images/paper-projector.png)
+![adjust-projector](./assets/images/adjust-projector.png)
 
 - [ ] Go back to the hos68752 laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
@@ -142,14 +169,11 @@
   - [x] prepare paddings: under-knee padding, neck padding, inflatable head-paddings
   - [x] prepare a blanket
   - [x] prepare a new pair of earplugs
-  - [x] prepare the respiration belt, as well as the placeholder for the ECG and other physio sensors
+  - [x] prepare the placeholder for the ECG and the cleaning wipes
   - [x] connect the cable from the RJ-45 output of the syncbox to the first filter (VNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office 071. Make sure you will have access to the cable with sufficient time ahead.
     - [x] On the scanner console, check the external signal input registers triggers from the syncbox
     - [x] prepare a thermometer
     - [x] prepare a blood preasure meter
-  - [x] Prepare the gas-analyzer:
-    - [x] Prepare the canule tube, which is introduced through the tube in the access panel
-    - [x] Prepare a new canule
 
 #### DAY OF SCAN, right when the participant arrives
 
@@ -165,6 +189,14 @@
   - [x] Solicit feedback on participant’s comfort while positioning them on the scanner bed and suggest ergonomic positioning of arms to avoid discomfort
   - [x] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
 
+- [ ] Ask the participant to place the ECG electrodes on the location indicated by the picture below.
+![prep-ecg-electrodes](./assets/images/prep-ecg-electrodes.png)
+  - [ ] Clean the skin with [WHAT?]
+  - [ ] Remove the protective film from the electrode
+  - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes
+- [ ] Plug the ECG cable to three electrodes ensuring the color scheme of the schema are followed [ADD DETAILS]
+
+
 #### DAY OF SCAN, participant setup
 
 - [ ]	Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglas yet)
@@ -173,19 +205,20 @@
 - [ ]	Give to the participant the emergency button. Make the participant try it, so they can see it works. To switch off the alarm, there’s a button on the scanner (circular, both on the left and on the right of the hole) 
 - [ ]	Adjust the participant inside. With the pillow, its head position needs to be adjusted and elevated until the head can’t move anymore and the nose and the front of the participants are both adherent to the upper coil. This procedure guarantees that the ET "sees" the eyes. If not, the experiment gets stuck.
 - [ ]	This part needs to be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and front of the participant touch the coil. In case of need, ask the participant to "say yes" with the head (chin on neck) and keep this position, place the pillows, place the coil and check that the participants' front touches the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil. For our HCPH participant, we found that the adapted height of pillow is obtained by superposing the two pillows in the picture below .
-![two_pillows](./assets/two_pillows.png)
-![superpose_pillows](./assets/superpose_pillows.png)
-
+    ![two_pillows](./assets/two_pillows.png)
+    ![superpose_pillows](./assets/superpose_pillows.png)
+- [ ] Install the respiration belt on the participant and connect it to the tube [INSERT PHOTO]. The respiration belt measure the displacement of the stomach induced by breathing, it thus needs to surround the stomach comfortably. [GIVE MORE PRECISE INFO WHERE SHOULD IT BE PLACED]
+- [ ] Place the nasal cannula in the nose of the participant making sure the two protrusion are aligned with the nostrils of the participant. Place the tube behind the ears and tighten behind the head for comfort and stability by sliding the ring.
 - [ ]	Take the Ears -protection pillow, stick it on top of the ears of the participant, one by one. Once they are settled, you can pump it, until the participant is comfortable, the head is fixed and the ears are protected.
-- [ ]	Once the previous part is insured, the participant is ready. If he’s cold, put a blanket on top of him. Give to the participant the emergency button. 
-- [ ]	Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. Ask the participant to close it’s eyes, localize the head with the infrareds.
+- [ ]	Once the previous part is insured, the participant is ready. If he's cold, put a blanket on top of him. Give to the participant the emergency button. 
+- [ ]	Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. Ask the participant to close it's eyes, localize the head with the infrareds.
 - [ ]	Switch off the infrareds, now the participant can open the eyes. You can move the participant (always gently as before) inside the scanner, until the mm counter marks “Isometric”.
 - [ ]	Go behind the scanner, push the plastic base until it touches the bed. Hold on the Eye-Tracker.
 - [ ]	Regulate the Eye-tracker position until you see from the projector screen the Eye. The optimal position for the eye tracker is to see the eye in the middle of the square delineated by the coil. If the eye is correctly tracked, two crosses should appear on it. The right lens needs to be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. Alternatively, you can also try to click the button "Autofocus" on the console.
   - In case of need, you can adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw. Once the eye is well seen, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil. 
   - If the position of the Eye-tracker is not satisfying, you can move the base. 
 
-![base-eye-tracker](./assets/ETimages/base-eye-tracker.png)
+![base-eye-tracker](./assets/images/base-eye-tracker.png)
 
 - [ ]	If the pupil and the eye are correctly seen (indicated by the crosses following them), you can go out. The calibration needs to start. 
 - [ ]	Tell the participant that he will need to follow some point with its eyes, without moving his head.
@@ -196,8 +229,11 @@
 - [ ]	The ET software needs to show a cross performed during the calibration. If not, the ET inside the scanner needs to be adjusted.
 - [ ]	If not, the head of the participant needs to be adjusted again.
 - [ ]	If not, the mirror needs to be moved up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position.
-- [ ] When the calibration is successfull, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
-- [ ] 	<span style="color:red"> When both the calibration and the validation are ok, you can move forward and record. text</span>
+- [ ] When the calibration is successful, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
+- [ ]	<span style="color:red"> If the calibration is ok, you can move forward. </span>
+- [ ] <span style="color:red"> Turn the pump of the gaz analyser on </span> and make sure the flow control is set on maximum.
+
+#### SCAN TIME
 
 - [ ] Start a new exam by clicking on examination
 - [ ] Search the patient by clicking on the "Patient Browser" in the top left corner
@@ -211,10 +247,6 @@
 - [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
 - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
 - [ ] Start Exam
-
-
-#### SCAN TIME
-
 - [ ] Launch the AAhead_scout by pressing "Continue"
 - [ ] Launch the T1w by pressing "Continue"
 - [ ] Once the T1w is finished, you can drag the T1w into the scan viewing window by draging the three superposed squares next to the sequence name. This will allow to tweek the field-of-view (FOV) for the DWI and BOLD sequences
