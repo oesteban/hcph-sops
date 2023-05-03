@@ -12,21 +12,22 @@
     git remote add upstream git@github.com:theaxonlab/HCPh-fMRI-tasks.git
     ```
 - [ ] Once the protocol is decided upon, and after any updates, make sure of storing the protocol:
-  - [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy.
-  - [ ] Open the Dot-Cockpit, paste the sequences and save.
-  - [ ] Repeat the operation after creating the four variants of the protocol, one per PE direction.
+    - [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy.
+    - [ ] Open the Dot-Cockpit, paste the sequences and save.
+    - [ ] Repeat the operation after creating the four variants of the protocol, one per PE direction.
 
 **Install the BIOPAC**
+
 - [ ] Set up the line frequency switches on the back of the BIOPAC amplifier depending on your country frequency to reduce noise. Both switches should be DOWN if your country's line frequency is 50Hz. Both switches should be UP if your country's line frequency line is 60Hz.
     ![biopack-frequency-switch](./assets/images/biopack-frequency-switch.jpg "BIOPAC frequency switch")
 - [ ] Plug the different units of the BIOPAC together if it has not been done yet. We use the BIOPAC to synchronize and output in a single file all the physiological signals we record: cardiac pulsation, respiration and CO2 concentration.
 - [ ] Install the BIOPAC recording software.
 - [ ] Get familiar with the BIOPAC system:
-  - [ ] The solid state relay driver unit is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
-  - [ ] The AMI100C unit can receive up to 16 analog signals. 
-  - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
-  - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
-      ![biopack-front](./assets/images/biopack-front.jpg "BIOPAC front side")
+    ![biopack-front](./assets/images/biopack-front.jpg "BIOPAC front side")
+    - [ ] The AMI100C unit can receive up to 16 analog signals. 
+    - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
+    - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
+    - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
 - [ ] Install the gas analyzer (GA) on the wooden platform behind the MRI consoles.
 
 #### Every two months - calibrate the GA
@@ -42,8 +43,8 @@
 - [ ] Remind the participant that any jewelry should be removed prior to the scan.
 - [ ] Indicate that they MUST shave the upper area of their chest where the ECG electrodes will be placed, if there is hair. The ECG electrodes MUST directly contact the skin.
 - [ ] Confirm clothing:
-  - [ ] if allowed to wear street clothes, remind the participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
-  - [ ] remark the participant they will be given a gown and they will need to change before every session.
+    - [ ] if allowed to wear street clothes, remind the participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
+    - [ ] remark the participant they will be given a gown and they will need to change before every session.
 - [ ] If participant has indicated nervousness or history of claustrophobia, use the mock scanner.
 
 #### BEFORE DAY OF SCAN
@@ -61,24 +62,23 @@
 #### DAY OF SCAN, prior to participant arrival
 - [ ] If the scanner is shut down, boot it up.
 - [ ] Remove the head coil that is currently installed.
-  - [ ] If it is the 64-channel, you can just temporarily move it into the scanner's bore.
-  - [ ] Otherwise, store it on the shelf where the other coils are and bring the 64-channel one in the proximity of the bed (e.g., inside the scanner's bore). Make sure to remove other coil's fitting element.
+    - [ ] If it is the 64-channel, you can just temporarily move it into the scanner's bore.
+    - [ ] Otherwise, store it on the shelf where the other coils are and bring the 64-channel one in the proximity of the bed (e.g., inside the scanner's bore). Make sure to remove other coil's fitting element.
 - [ ] Remove the spine coil by lifting the corresponding latch, then sliding it toward the head of the bed, lift it from the bed, and place it on the floor ensuring it is not obstructing any passage or unstable.
 - [ ] Place the two back padding elements filling the spine coil socket.
 - [ ] Fix the 64-channel head-and-neck coil onto the head end of the bed and connect the coil's terminal cable. Check that the head-and-neck coils are now detected by the scanner, as indicated in the scanner's monitor screen.
 
 **Setting up the BIOPAC system and physiological recording sensors**
+
 - [ ] Ensure you have the USB key with the BIOPAC software license.
-  - [ ] Plug the USB key to the computer [WHICH COMPUTER]. It needs to stay plug at all times during the acquisition. [INSERT PHOTO]
+    - [ ] Plug the USB key to the computer [WHICH COMPUTER]. It needs to stay plug at all times during the acquisition. [INSERT PHOTO]
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Plug in the Ethernet (the plug is in the back) to the Ethernet port of [WHICH COMPUTER].
     ![biopack-back](./assets/images/biopack-back.jpg "BIOPAC back side")
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Delicately pass a long tube that will be connected to the nasal cannula through the front access tube. Connect the tube and the cannula and leave it ready on the bed ready for the participant.
-- [ ] Connect the end of the control room to the corresponding designated gas intake plug in front of the GA.
-    ![gaz-analyser](./assets/images/gaz-analyser.jpg "Gas Analyzer")
 - [ ] Pass the respiration-belt (RB) tube through the same hole. Again, connect the end inside of the scanning room to the respiration belt and leave it on the bed.
-- [ ] Connect the end of the control room to the TSD160A BIOPAC unit, using the the plug marked positive (**+** symbol).
+- [ ] Connect the end of the control room to the TSD160A BIOPAC unit, using the the plug marked negative (**-** symbol).
 - [ ] Connect the coaxial end of the cable to the CO<sub>2</sub> output in the back of the GA, the other end of the cable should be a jack plug (similar to headphones).
 - [ ] Connect the other end (jack plug) into the input end of the INISO/A filter.
 - [ ] Connect one end (RJ-45/Ethernet to RJ-45/Ethernet) into **channel 3** of the AMI100D BIOPAC module, and the other end to the output of the INISO/A filter.
@@ -88,6 +88,8 @@
     ![gaz-analyser-back](./assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
 - [ ] Remove the cap of the gas input and connect the end of the tubing to the cannula with a no-return filter set.
     ![gaz-analyser-front](./assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
+- [ ] Connect the end of the control room to the corresponding designated gas intake plug in front of the GA.
+    ![gaz-analyser](./assets/images/gaz-analyser.jpg "Gas Analyzer")
 
 **Setting up the eye-tracker**
 
@@ -103,6 +105,7 @@
     ![mri-compatible-lens](./assets/images/mri-compatible-lens.png "MRI compatible lens")
 - [ ] For the ET, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
 - [ ] Install the MR-compatible lens, after removing any other present lens. If other lens is present, put it back to its plastic bag inside the lenses box after unscrewing and removal. To avoid accidentally dropping a lens, one hand MUST be under the lens at all times while screwing/unscrewing it. **The lens MUST BE INSTALLED before bringing the ET inside the Scanner Room**.
+
     ![screw-mri-compatible-lens](./assets/images/screw-lens.png "Screw the MRI compatible lens")
 
 **INSIDE the scanner room**
@@ -156,15 +159,15 @@
 - [ ] Go back to the hos68752 laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Check stimulus display and response device:
-  - [ ] Open the file [filename] and check the movie to be displayed is ready
-  - [ ] Open the file [filename] and check the execution of the Breath holding task
-  - [ ] Open the file [filename] and check the execution of the finger tapping task
+    - [ ] Open the file [filename] and check the movie to be displayed is ready
+    - [ ] Open the file [filename] and check the execution of the Breath holding task
+    - [ ] Open the file [filename] and check the execution of the finger tapping task
 - [ ] Open a task with ET calibration and leave the streaming mode open so that the adjustment of the ET can be quickly done later as the infrared camera is providing feedback inside the scanning room through the projector.
-  - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one 
-  - [ ] Run the experiment by pressing the green play button. 
-  - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
-  - [ ] Press enter to begin the camera setup mode.
-  - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
+    - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one 
+    - [ ] Run the experiment by pressing the green play button. 
+    - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
+    - [ ] Press enter to begin the camera setup mode.
+    - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
     - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow.
 
 **Set-up of documents and equipment**
@@ -173,19 +176,19 @@
 - [ ] Prepare an MRI safety screener 
 - [ ] Prepare scrubs and MR-compatible glasses if applicable
 - [ ] Setup scanner room and peripherals:
-  - [ ] prepare the 64-channel headcoil,
-  - [ ] prepare padding: under-knee padding, neck padding, inflatable head-padding
-  - [ ] prepare a blanket
-  - [ ] prepare a new pair of earplugs
-  - [ ] check the RP is prepared
-  - [ ] connect the three cables corresponding to the ECG leads to the filter in the access cupboard
-  - [ ] connect the cable from the RJ-45 output of the syncbox to the first filter (VNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office 071. Make sure you will have access to the cable with sufficient time ahead.
-    - [ ] On the scanner console, check the external signal input registers triggers from the syncbox
-    - [ ] prepare a thermometer
-    - [ ] prepare a blood pressure meter
-  - [ ] Prepare the GA:
-    - [ ] Prepare the cannula tube, which is introduced through the tube in the access panel
-    - [ ] Prepare a new cannula
+    - [ ] prepare the 64-channel headcoil,
+    - [ ] prepare padding: under-knee padding, neck padding, inflatable head-padding
+    - [ ] prepare a blanket
+    - [ ] prepare a new pair of earplugs
+    - [ ] check the RP is prepared
+    - [ ] connect the three cables corresponding to the ECG leads to the filter in the access cupboard
+    - [ ] connect the cable from the RJ-45 output of the syncbox to the first filter (VNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office 071. Make sure you will have access to the cable with sufficient time ahead.
+        - [ ] On the scanner console, check the external signal input registers triggers from the syncbox
+        - [ ] prepare a thermometer
+        - [ ] prepare a blood pressure meter
+    - [ ] Prepare the GA:
+        - [ ] Prepare the cannula tube, which is introduced through the tube in the access panel
+        - [ ] Prepare a new cannula
 
 #### DAY OF SCAN, right when the participant arrives
 
@@ -194,13 +197,13 @@
 - [ ] Instruct participant on staying still and encourage them to request breaks if necessary
 - [ ] Describe the participant how the session will develop, with special attention to tasks. Answer all the questions that may arise.
 - [ ] Tell the participant they will be holding an alarm button to the participant throughout the session, and that they may use it any time whenever they need to stop the experiment.
-  - [ ] Tell the participant that they MUST leave the alarm button, e.g., on their belly, during the positive control task. Indicate that you will remind them of this before starting the task.
+    - [ ] Tell the participant that they MUST leave the alarm button, e.g., on their belly, during the positive control task. Indicate that you will remind them of this before starting the task.
 - [ ] Indicate the participant where the door to the changing room is, and ask them to change clothes if necessary.
 - [ ] Ask the participant to place the ECG electrodes on the location indicated by the picture below.
-  - [ ] Clean the skin with [WHAT?]
-  - [ ] Remove the protective film from the electrode
-  - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes
-    ![prep-ecg-electrodes](./assets/images/prep-ecg-electrodes.png)
+    - [ ] Clean the skin with [WHAT?]
+    - [ ] Remove the protective film from the electrode
+    - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes
+        ![prep-ecg-electrodes](./assets/images/prep-ecg-electrodes.png)
 
 #### DAY OF SCAN, participant setup
 
@@ -223,20 +226,20 @@
 - [ ] Regulate the ET position until you see from the projector screen the eye. In case of need, you can adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw. Once the eye is well seen, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil. The right lens MUST be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. If the position of the ET is not satisfying, you can move the base.
     ![base-eye-tracker](./assets/images/base-eye-tracker.png)
 - [ ] If the pupil is correctly seen, as well as the eye, you can go out.
-  - [ ] Inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately.
+    - [ ] Inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately.
 - [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
 - [ ] Switch the ET camera back to zoomed mode, and exit the camera mode.
 - [ ] Inform the participant about the calibration process.
-  - [ ] Ask the participant to follow a fixation point with their gaze, without moving their head.
-  - [ ] Tell the participant to move the eyes ONLY after the point moves (do not anticipate).
-  - [ ] When the gaze is stable and the validate button [VERIFY THE EXACT NAME] appears green, you can manually click on it to validate the first position.
-  - [ ] The following positions should be validated automatically when the gase is stable enough. If it is not the case, manually click on the validate button when it turns green
+    - [ ] Ask the participant to follow a fixation point with their gaze, without moving their head.
+    - [ ] Tell the participant to move the eyes ONLY after the point moves (do not anticipate).
+    - [ ] When the gaze is stable and the validate button [VERIFY THE EXACT NAME] appears green, you can manually click on it to validate the first position.
+    - [ ] The following positions should be validated automatically when the gase is stable enough. If it is not the case, manually click on the validate button when it turns green
 - [ ] The ET software MUST show a cross during the calibration. If it does not, try sequentially the following:
-  - [ ] readjust the focus of the ET; and if it still doesn't show the cross,
-  - [ ] readjust the mirror frame position sliding it throught the rails attached to the coil; and if it still doesn't show the cross,
-  - [ ] readjust the participant's head positioning inside the coil; and if it still doesn't show the cross,
-  - [ ] move the mirror up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position; and if it still doesn't show the cross,
-  - [ ] iterate over the previous steps.
+    - [ ] readjust the focus of the ET; and if it still doesn't show the cross,
+    - [ ] readjust the mirror frame position sliding it throught the rails attached to the coil; and if it still doesn't show the cross,
+    - [ ] readjust the participant's head positioning inside the coil; and if it still doesn't show the cross,
+    - [ ] move the mirror up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position; and if it still doesn't show the cross,
+    - [ ] iterate over the previous steps.
 - [ ] When the calibration is successful, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
 - [ ] <span style="color:red"> Turn the pump of the GA on </span> and make sure the flow control is set on maximum.
 
