@@ -57,7 +57,10 @@
     ```
 - [ ] On the *HOS68752* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
-- [ ] Load in the different experiments and check for proper functioning if there were changes.
+- [ ] Load in the different experiments and check for proper functioning:
+    - [ ] Resting-state fMRI (RSfMRI): open the file `resting_state.psyexp` and check that the movie is played.
+    - [ ] Breath-holding task (BHT): open the file `breath_holding_task.psyexp` and check it properly runs, while timing it (total length should be 5 min 24 s).
+    - [ ] Positive-control task (PCT): open the file `control_task.psyexp` and check it properly runs, while timing it (total length should be 2 min XX s)
 
 #### DAY OF SCAN, prior to participant arrival
 - [ ] If the scanner is shut down, boot it up.
@@ -144,29 +147,35 @@
 - [ ] Connect the **hos68752** laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
     ![switchbox_hdmi](./assets/images/switchbox_hdmi.png)
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
-- [ ] Double check that the IP address corresponding to the ethernet interface of the **hos68752** laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
-- [ ] Now it's time to check that the sync box correctly [WRITE ON HOW TO SEND TEST TRIGGER MANUALLY]
-- [ ] Once the previous has been checked, it's time to put the sync box in “Synchronization” mode. Start the session: the box it's ready to receive the trigger from the sequence and they will be available for Experiment builder / Python / whatever is used to register the trigger and the ET signal.
-    ![choose-synchronisation-syncbox](./assets/images/choose-synchronisation-syncbox.png)
-    ![start-session-syncbox](./assets/images/start-session-syncbox.png)
-    ![run-session-syncbox](./assets/images/run-session-syncbox.png)
+- [ ] Double check that the IP address corresponding to the ethernet interface of the *HOS68752* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
+- [ ] Check that you can send trigger events manually:
+    - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
+    - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
+    - [ ] Push the enter button (&#x25CF;) every time you want to send an `s` character.
+    - [ ] Check that the *HOS68752* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
+    - [ ] Check that the BIOPAC is properly registering the trigger too. Every trigger sent should be seen in the *AcqKnowledge* GUI.
+- [ ] Start the syncbox session:
+    - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
+    - [ ] Push the enter button (&#x25CF;) and the syncbox will be now waiting for the scanner's trigger signal to forward it.
+    
+    | ![choose-synchronisation-syncbox](./assets/images/choose-synchronisation-syncbox.png) | 
+    |:--:|
+    | ![start-session-syncbox](./assets/images/start-session-syncbox.png) |
+    | ![run-session-syncbox](./assets/images/run-session-syncbox.png) |
+    
 - [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room BH07/075. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
-    ![projector](./assets/images/projector.png)
-    *The hole is the part through which we should check the quality of the projection*
-    ![paper-projector](./assets/images/paper-projector.png)
-    ![adjust-projector](./assets/images/adjust-projector.png)
 
-- [ ] Go back to the hos68752 laptop, open a terminal and execute `conda deactivate`.
+    | ![projector](./assets/images/projector.png) | ![paper-projector](./assets/images/paper-projector.png) | ![adjust-projector](./assets/images/adjust-projector.png) |
+    |:--:|:--:|:--:|
+    | *The hole is the part through which we should check the quality of the projection* {: colspan=3} | | |
+
+- [ ] Go back to the *HOS68752* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
-- [ ] Check stimulus display and response device:
-    - [ ] Open the file [filename] and check the movie to be displayed is ready
-    - [ ] Open the file [filename] and check the execution of the Breath holding task
-    - [ ] Open the file [filename] and check the execution of the finger tapping task
-- [ ] Open a task with ET calibration and leave the streaming mode open so that the adjustment of the ET can be quickly done later as the infrared camera is providing feedback inside the scanning room through the projector.
+- [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file) and leave the streaming mode on (*camera setup mode*) so that the adjustment of the ET can be quickly done later as the infrared camera is providing feedback inside the scanning room through the projector.
     - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one 
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
-    - [ ] Press enter to begin the camera setup mode.
+    - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
     - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow.
 
@@ -180,7 +189,7 @@
     - [ ] prepare padding: under-knee padding, neck padding, inflatable head-padding
     - [ ] prepare a blanket
     - [ ] prepare a new pair of earplugs
-    - [ ] check the RP is prepared
+    - [ ] check the RB is prepared
     - [ ] connect the three cables corresponding to the ECG leads to the filter in the access cupboard
     - [ ] connect the cable from the RJ-45 output of the syncbox to the first filter (VNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office 071. Make sure you will have access to the cable with sufficient time ahead.
         - [ ] On the scanner console, check the external signal input registers triggers from the syncbox
@@ -190,7 +199,8 @@
         - [ ] Prepare the cannula tube, which is introduced through the tube in the access panel
         - [ ] Prepare a new cannula
 
-#### DAY OF SCAN, right when the participant arrives
+
+#### DAY OF SCAN, right after the participant arrives
 
 - [ ] Have participant fill out consent documents and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia
 - [ ] Have participant empty their pockets or change into scrubs, and remove all jewelry/hair accessories and check for any missed metallic objects with the scan center's preferred method
@@ -204,6 +214,23 @@
     - [ ] Remove the protective film from the electrode
     - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes
         ![prep-ecg-electrodes](./assets/images/prep-ecg-electrodes.png)
+
+**Preparing the scanning protocol**
+
+- [ ] Close open patients discarding changes.
+- [ ] Search the participant by clicking on the "Patient Browser" in the top left corner
+    - [ ] Search for "Oscar esteban"
+- [ ] Check the head coil **is not** plugged before initiating a "New examination" to ensure good SNR of the localizer sequence.
+- [ ] Right click and select "New examination"
+    - [ ] Enter the weight and height of the participant
+    - [ ] Select the right protocol under "Oscar" 
+    - [ ] Select Brain as the organ
+    - [ ] Select the Position as "Head supine"
+    - [ ] Click the "Exam" button (red background, rightmost-bottom)
+- [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
+    - [ ] Double-check that all PE prescriptions are correct.
+- [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
+
 
 #### DAY OF SCAN, participant setup
 
@@ -226,8 +253,11 @@
 - [ ] Regulate the ET position until you see from the projector screen the eye. In case of need, you can adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw. Once the eye is well seen, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil. The right lens MUST be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. If the position of the ET is not satisfying, you can move the base.
     ![base-eye-tracker](./assets/images/base-eye-tracker.png)
 - [ ] If the pupil is correctly seen, as well as the eye, you can go out.
-    - [ ] Inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately.
-- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
+    - [ ] Inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately
+- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback:
+    > Hey [NAME], we are about to start our first scan run.
+    > For this scan, all you have to do is stay still, and look at the screen.
+    > Let us know when you're ready to begin by pressing any button.
 - [ ] Switch the ET camera back to zoomed mode, and exit the camera mode.
 - [ ] Inform the participant about the calibration process.
     - [ ] Ask the participant to follow a fixation point with their gaze, without moving their head.
@@ -245,17 +275,12 @@
 
 #### SCAN TIME
 
-- [ ] Start a new exam by clicking on examination
-- [ ] Search the patient by clicking on the "Patient Browser" in the top left corner
-- [ ] Search for "Oscar esteban"
-- [ ] Right click and select "New examination"
-- [ ] Enter the weight and height of patient
-- [ ] Select the right protocol under "Oscar" 
-- [ ] Select Brain as the organ
-- [ ] Select the Position as "Head supline"
-- [ ] For obtaining good SNR on the AAL sequence, plug the coil after the exam has been open
-- [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
-- [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
+- [ ] Indicate the participant that the scanning will soon start:
+
+    > Hey [NAME], we are about to start our first scan run.
+    > For this scan, all you have to do is stay still, and look at the screen.
+    > Are you ready?
+
 - [ ] Start Exam
 - [ ] Launch the AAhead_scout by pressing "Continue"
 - [ ] Launch the T1w by pressing "Continue"
