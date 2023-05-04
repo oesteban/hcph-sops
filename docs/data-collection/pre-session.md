@@ -16,7 +16,7 @@ Instructions of operations to be performed before the participant arrival.
     - [ ] Plug the USB key to the computer [WHICH COMPUTER]. It needs to stay plug at all times during the acquisition. [INSERT PHOTO]
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Plug in the Ethernet (the plug is in the back) to the Ethernet port of [WHICH COMPUTER].
-    ![biopack-back](./assets/images/biopack-back.jpg "BIOPAC back side")
+    ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Delicately pass a long tube that will be connected to the nasal cannula through the front access tube. Connect the tube and the cannula and leave it ready on the bed ready for the participant.
 - [ ] Pass the respiration-belt (RB) tube through the same hole. Again, connect the end inside of the scanning room to the respiration belt and leave it on the bed.
@@ -28,11 +28,11 @@ Instructions of operations to be performed before the participant arrival.
 - [ ] The **pump switch MUST BE OFF** (front of the GA).
 - [ ] Remove the cap of the gas input, connect an inline filter. The inline filter MUST be discarded after some ten sessions.
 - [ ] Connect the drying tube and/or the desiccant chamber.
-    ![gaz-analyser-front](./assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
+    ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
 - [ ] Turn the GA on using the on/off switch located at the back of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
-    ![gaz-analyser-back](./assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
+    ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
 - [ ] Connect the end of the control room to the corresponding designated gas intake plug in front of the GA.
-    ![gaz-analyser](./assets/images/gaz-analyser.jpg "Gas Analyzer")
+    ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
 
 **Setting up the eye-tracker**
 
@@ -44,12 +44,12 @@ Instructions of operations to be performed before the participant arrival.
 - [ ] Bring the table with the ET computer to the control room, and place it next to the access closet. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The plexiglas panel can also be brought to the scanning room simultaneously, if done with care.
 - [ ] From room BH07/071 (first cabinet on the left), take the box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ] Take the MR-compatible lens out of the lenses box. It is easy to recognize it as it is the only one with two golden screws.
-    ![cover-mri-compatible-lens](./assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
-    ![mri-compatible-lens](./assets/images/mri-compatible-lens.png "MRI compatible lens")
+    ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
+    ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens")
 - [ ] For the ET, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
 - [ ] Install the MR-compatible lens, after removing any other present lens. If other lens is present, put it back to its plastic bag inside the lenses box after unscrewing and removal. To avoid accidentally dropping a lens, one hand MUST be under the lens at all times while screwing/unscrewing it. **The lens MUST BE INSTALLED before bringing the ET inside the Scanner Room**.
 
-    ![screw-mri-compatible-lens](./assets/images/screw-lens.png "Screw the MRI compatible lens")
+    ![screw-mri-compatible-lens](../assets/images/screw-lens.png "Screw the MRI compatible lens")
 
 **INSIDE the scanner room**
 
@@ -63,7 +63,7 @@ Instructions of operations to be performed before the participant arrival.
     - [ ] Detach the mirror frame from the head coil, if it is placed there. Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
     - [ ] Prepare two long strips of scotch tape and leave them in a convenient place to attach the ET mirror later. E.g., attach the corner of each strip to the back part of the mirror frame.
     - [ ] Go back to the control room and take the infrared mirror out of the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**. 
-        ![infrared-mirror](./assets/images/infrared-mirror.png)
+        ![infrared-mirror](../assets/images/infrared-mirror.png)
     - [ ] Get two gloves (e.g., from the box hanging at the entrance of the scanner room), then approach the scanner bed. Put the gloves on, and **DON'T TOUCH ANYTHING**. You MUST have the standard mirror dismounted and in front of you at this point. **WITH THE GLOVES** proceed to extract the infra-red mirror from its box, being extremely careful. **YOU CAN ONLY TOUCH THE MIRROR WITH GLOVES**, because it cannot be cleaned up. Watch out for **FINGERPRINTS** and once taken out of its box, **IMMEDIATELY PROCEED TO ATTACH IT** to the standard coil mirror. The mirror MUST NOT be placed anywhere else if not in its box.
     - [ ] **WITH YOUR GLOVES ON**, attach the ET mirror to the standard coil mirror (the larger mirror that points toward projector's screen at the back of the scanning room) using the scotch tape strips you prepared before. Put it more or less in the center, although <span style="color:red">this position may need to be adjusted</span> (being careful and with the same precautions explained before). **Do not touch the surface of the ET mirror.**
     - [ ] Place the mirror frame back on the head coil. As always, **DO NOT TOUCH THE MIRROR**. 
@@ -71,21 +71,21 @@ Instructions of operations to be performed before the participant arrival.
 **Back OUTSIDE THE SCANNER ROOM (control room)**
 
 - [ ] Connect the Power cable to the metallic extremity belonging to the PC-tower
-    ![connect-power-cable](./assets/images/connect-power-cable.png "Connect power cable")
+    ![connect-power-cable](../assets/images/connect-power-cable.png "Connect power cable")
 - [ ] Plug in the Power strip containing the ET Power Cable, the PC-tower power, etc
-    ![powerstrip](./assets/images/powerstrip.png)
-    ![plug-powerstrip](./assets/images/plug-powerstrip.png)
+    ![powerstrip](../assets/images/powerstrip.png)
+    ![plug-powerstrip](../assets/images/plug-powerstrip.png)
 
 - [ ] Switch on the PC-tower, as well as the laptop. Select "Eyelink" when given the option of which operating system to launch.
-    ![pctower](./assets/images/pctower.png)
+    ![pctower](../assets/images/pctower.png)
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
-    ![syncbox](./assets/images/syncbox.png)
+    ![syncbox](../assets/images/syncbox.png)
 - [ ] Connect to the ET to the laptop with the ethernet cable (blue color).
 - [ ] Connect the USB sync box to the laptop with the USB cable. It is normally plugged into the sync box, it must be re-plugged in after usage.
-    ![connect-ethernet-to-laptop](./assets/images/connect-ethernet-to-laptop.png)
-    ![ubs-syncbox](./assets/images/ubs-syncbox.png)
+    ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
+    ![ubs-syncbox](../assets/images/ubs-syncbox.png)
 - [ ] Connect the **hos68752** laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
-    ![switchbox_hdmi](./assets/images/switchbox_hdmi.png)
+    ![switchbox_hdmi](../assets/images/switchbox_hdmi.png)
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *HOS68752* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that you can send trigger events manually:
@@ -98,14 +98,14 @@ Instructions of operations to be performed before the participant arrival.
     - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
     - [ ] Push the enter button (&#x25CF;) and the syncbox will be now waiting for the scanner's trigger signal to forward it.
     
-    | ![choose-synchronisation-syncbox](./assets/images/choose-synchronisation-syncbox.png) | 
+    | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) | 
     |:--:|
-    | ![start-session-syncbox](./assets/images/start-session-syncbox.png) |
-    | ![run-session-syncbox](./assets/images/run-session-syncbox.png) |
+    | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
+    | ![run-session-syncbox](../assets/images/run-session-syncbox.png) |
     
 - [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room BH07/075. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
-    | ![projector](./assets/images/projector.png) | ![paper-projector](./assets/images/paper-projector.png) | ![adjust-projector](./assets/images/adjust-projector.png) |
+    | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
     |:--:|:--:|:--:|
     | *The hole is the part through which we should check the quality of the projection* {: colspan=3} | | |
 
