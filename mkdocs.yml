@@ -12,7 +12,12 @@ nav:
       - Introduction: recruitment-scheduling-screening/index.md
       - Example 1: recruitment-scheduling-screening/example1.md
       - Example 2: recruitment-scheduling-screening/example2.md
-    - Data collection: data-collection.md
+    - Data collection:
+      - Preliminary work: data-collection/preliminary.md
+      - Before each session: data-collection/pre-session.md
+      - Preparing the participant: data-collection/participant-prep.md
+      - Running the scanning session: data-collection/scanning.md
+      - Tearing-down the session: data-collection/tear-down.md
     - Data storage: data-storage.md
     - After the session: post-session.md
     - Quality Assessment and Control: qa-qc.md
