@@ -18,7 +18,7 @@ nav:
       - Preparing the participant: data-collection/participant-prep.md
       - Running the scanning session: data-collection/scanning.md
       - Session tear-down: data-collection/tear-down.md
-    - Data storage: data-storage.md
+    - Data management: data-storage.md
     - After the session: post-session.md
     - Quality Assessment and Control: qa-qc.md
     - Preprocessing: preprocessing.md
@@ -27,6 +27,11 @@ theme:
   name: material
   features:
     - tabs
+
+plugins:
+  - search
+  - macros:
+      include_dir: code
 
 markdown_extensions:
   - admonition
