@@ -15,6 +15,12 @@
     - [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy.
     - [ ] Open the Dot-Cockpit, paste the sequences and save.
     - [ ] Repeat the operation after creating the four variants of the protocol, one per PE direction.
+- [ ] Watch the gas analyzer (GA) video:
+    <video id="wistia_simple_video_119" crossorigin="anonymous" style="background: transparent; display: block; height: 100%; max-height: none; max-width: none; position: static; visibility: visible; width: 100%; object-fit: fill;" aria-label="Video" src="https://embed-ssl.wistia.com/deliveries/5e08ccab25ab45382329671a82dfe5123f6e840e/file.mp4" playsinline="" preload="metadata" type="video/mp4" x-webkit-airplay="allow" controls>
+      <source src="https://embed-ssl.wistia.com/deliveries/5e08ccab25ab45382329671a82dfe5123f6e840e/file.mp4" type="video/mp4" />
+      Your browser does not support the video. <a href="./assets/files/GA_video.mp4">Click here to download it</a>
+    </video>
+
 
 **Install the BIOPAC**
 
@@ -28,7 +34,7 @@
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
     - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
-- [ ] Install the gas analyzer (GA) on the wooden platform behind the MRI consoles.
+- [ ] Install the GA on the wooden platform behind the MRI consoles.
 
 #### Every two months - calibrate the GA
 
@@ -87,10 +93,11 @@
 - [ ] Connect one end (RJ-45/Ethernet to RJ-45/Ethernet) into **channel 3** of the AMI100D BIOPAC module, and the other end to the output of the INISO/A filter.
 - [ ] Check that the exhaust pipe (back of the GA) is free of obstruction.
 - [ ] The **pump switch MUST BE OFF** (front of the GA).
-- [ ] Turn the GA on using the on/off switch located at the back of the GA.
-    ![gaz-analyser-back](./assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
-- [ ] Remove the cap of the gas input and connect the end of the tubing to the cannula with a no-return filter set.
+- [ ] Remove the cap of the gas input, connect an inline filter. The inline filter MUST be discarded after some ten sessions.
+- [ ] Connect the drying tube and/or the desiccant chamber.
     ![gaz-analyser-front](./assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
+- [ ] Turn the GA on using the on/off switch located at the back of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
+    ![gaz-analyser-back](./assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
 - [ ] Connect the end of the control room to the corresponding designated gas intake plug in front of the GA.
     ![gaz-analyser](./assets/images/gaz-analyser.jpg "Gas Analyzer")
 
