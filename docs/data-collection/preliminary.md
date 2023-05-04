@@ -25,11 +25,11 @@
 **Install the BIOPAC**
 
 - [ ] Set up the line frequency switches on the back of the BIOPAC amplifier depending on your country frequency to reduce noise. Both switches should be DOWN if your country's line frequency is 50Hz. Both switches should be UP if your country's line frequency line is 60Hz.
-    ![biopack-frequency-switch](./assets/images/biopack-frequency-switch.jpg "BIOPAC frequency switch")
+    ![biopack-frequency-switch](../assets/images/biopack-frequency-switch.jpg "BIOPAC frequency switch")
 - [ ] Plug the different units of the BIOPAC together if it has not been done yet. We use the BIOPAC to synchronize and output in a single file all the physiological signals we record: cardiac pulsation, respiration and CO2 concentration.
 - [ ] Install the BIOPAC recording software.
 - [ ] Get familiar with the BIOPAC system:
-    ![biopack-front](./assets/images/biopack-front.jpg "BIOPAC front side")
+    ![biopack-front](../assets/images/biopack-front.jpg "BIOPAC front side")
     - [ ] The AMI100C unit can receive up to 16 analog signals. 
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
@@ -40,11 +40,11 @@
 
 - [ ] Get a gas bottle with a known CO<sub>2</sub> concentration between 5% and 10%.
 - [ ] Connect the GA to the BIOPAC as described below and start recording signal.
-- [ ] Edit the configuration of the inputs, making sure you update the voltage range for input 3 (the GA), estimated as described in [the GA's manual](./assets/files/GA_manual.pdf)
+- [ ] Edit the configuration of the inputs, making sure you update the voltage range for input 3 (the GA), estimated as described in [the GA's manual](../assets/files/GA_manual.pdf)
 
 #### One week BEFORE THE FIRST SESSION
 
-- [ ] Send a copy of the MRI Safety and screening form ([EN](./assets/files/safety_form_EN.pdf)|[FR](./assets/files/safety_form_FR.pdf)) to the participant over email and confirm reception.
+- [ ] Send a copy of the MRI Safety and screening form ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)) to the participant over email and confirm reception.
 - [ ] Confirm that the participant has read and understood the document, and in particular, double-check that they do not have any MRI contraindications.
 - [ ] Remind the participant that any jewelry should be removed prior to the scan.
 - [ ] Indicate that they MUST shave the upper area of their chest where the ECG electrodes will be placed, if there is hair. The ECG electrodes MUST directly contact the skin.
