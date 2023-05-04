@@ -17,7 +17,7 @@ nav:
       - Before each session: data-collection/pre-session.md
       - Preparing the participant: data-collection/participant-prep.md
       - Running the scanning session: data-collection/scanning.md
-      - Tearing-down the session: data-collection/tear-down.md
+      - Session tear-down: data-collection/tear-down.md
     - Data storage: data-storage.md
     - After the session: post-session.md
     - Quality Assessment and Control: qa-qc.md
