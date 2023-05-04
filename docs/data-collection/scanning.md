@@ -1,4 +1,3 @@
-## Scanning a participant
 
 - [ ] Indicate the participant that the scanning will soon start:
 
@@ -16,3 +15,6 @@
 - [ ] You can set the worker icon on the left of the sequence if you want to pause before starting that sequence. If the worker is not present, the sequence will launch automatically.
 - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
 - [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
+
+- [ ] Check in with participant frequently
+- [ ] Watch for motion if you can see the participant, or use motion monitoring equipment

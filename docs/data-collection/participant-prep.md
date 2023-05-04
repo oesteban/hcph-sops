@@ -1,8 +1,7 @@
-## Preparing the participant for a session (DAY OF SCAN)
 
-Procedures when the participant has arrived.
+Procedures for when the participant has arrived.
 
-### Preparation of the participant in the CONTROL ROOM
+## Preparation of the participant in the CONTROL ROOM
 
 - [ ] Have participant fill out consent documents and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia
 - [ ] Have participant empty their pockets or change into scrubs, and remove all jewelry/hair accessories and check for any missed metallic objects with the scan center's preferred method
@@ -17,7 +16,7 @@ Procedures when the participant has arrived.
     - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes
         ![prep-ecg-electrodes](../assets/images/prep-ECG-electrodes.jpg)
 
-### Preparation of the scanning protocol (control console)
+## Preparation of the scanning protocol (control console)
 
 - [ ] Close open patients discarding changes.
     ![](../assets/images/console-00-close-patient.jpg)
@@ -45,7 +44,7 @@ Procedures when the participant has arrived.
 - [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
     - [ ] Double-check that all PE prescriptions are correct.
 
-### Installing the participant in the SCANNING ROOM
+## Installing the participant in the SCANNING ROOM
 
 - [ ] Bring the participant inside the room, and give them the ear-plugs to protect the hearing during acquisition.
 - [ ] Connect the ECG leads on the three electrodes. The electrodes MUST be connected following the color scheme [ADD DETAILS]
