@@ -20,15 +20,28 @@ Procedures when the participant has arrived.
 ### Preparation of the scanning protocol (control console)
 
 - [ ] Close open patients discarding changes.
-- [ ] Search the participant by clicking on the "Patient Browser" in the top left corner
-    - [ ] Search for "Oscar esteban"
+    ![](../assets/images/console-00-close-patient.jpg)
+- [ ] Search for the participant by clicking on the "Patient Browser" in the top left corner
+      If the participant is not shown (because it is archived and hence not locally found):
+      - [ ] Click on the *DICOM Q/R* button on the top-right area.
+          ![](../assets/images/console-02-retrieve.jpg)
+      - [ ] Introduce some unambiguous search criteria:
+          ![](../assets/images/console-03-dicom-search.jpg)
+      - [ ] Select the subject (left column) or the sequence (right column) you want to retrieve and hit *Retrieve*. Be careful, **you probably want to retrieve a subject**, that means make sure you have selected a row on the left column:
+          ![](../assets/images/console-04-dicom-retrieve.jpg)
+      - [ ] Go back to the "Patient Browser" and check that the patient now shows up in the local search.
 - [ ] Check the head coil **is not** plugged before initiating a "New examination" to ensure good SNR of the localizer sequence.
-- [ ] Right click and select "New examination"
+- [ ] Right click and select "New examination".
+    ![](../assets/images/console-01-search-patient.jpg)
+- [ ] In the *Program Selection* tab:
+    ![](../assets/images/console-04-new-exam.jpg)
     - [ ] Enter the weight and height of the participant
-    - [ ] Select the right protocol under "Oscar" 
-    - [ ] Select Brain as the organ
-    - [ ] Select the Position as "Head supine"
+    - [ ] Select the right protocol under "Oscar"
+    - [ ] Select *Brain* as the organ
+    - [ ] Select the *Position* as "Head supine"
     - [ ] Click the "Exam" button (red background, rightmost-bottom)
+    - [ ] Before you hit "Exam", you can edit general patient's data by changing to the *Patient Registration* tab if you need to edit general information about the patient.
+
 - [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
     - [ ] Double-check that all PE prescriptions are correct.
 
@@ -56,9 +69,9 @@ Procedures when the participant has arrived.
     - [ ] Inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately
 - [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback:
 
-    > Hey [NAME], we are about to start our first scan run.
-    > For this scan, all you have to do is stay still, and look at the screen.
-    > Let us know when you're ready to begin by pressing any button.
+    > Hey [NAME], we are about to start the scanning session.
+    > First, we are going to calibrate the eye tracker. Please follow the small circle on the screen.
+    > It's going to move around the screen. Please focus your gaze and follow it when it moves.
 
 - [ ] Switch the ET camera back to zoomed mode, and exit the camera mode.
 - [ ] Inform the participant about the calibration process.
