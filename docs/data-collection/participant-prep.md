@@ -31,7 +31,6 @@ Procedures when the participant has arrived.
     - [ ] Click the "Exam" button (red background, rightmost-bottom)
 - [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
     - [ ] Double-check that all PE prescriptions are correct.
-- [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
 
 ### Installing the participant in the SCANNING ROOM
 

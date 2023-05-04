@@ -14,7 +14,7 @@
 - [ ] Once the FOV is well placed, launch the sequence by pressing "Go"
 - [ ] If two sequences have the same resolution and the same number of slices, you can copy paste the FOV by clicking right clicking on the sequence for which the FOV was set, select "copy parameters>[WHAT WAS THE NAME]"
 - [ ] You can set the worker icon on the left of the sequence if you want to pause before starting that sequence. If the worker is not present, the sequence will launch automatically.
-
+- [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
 - [ ] !!! Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field !!!
 
 **Scan console checklist**
