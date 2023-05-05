@@ -2,7 +2,7 @@
 
 #### Once, at the beginning of the project
 - [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
-- [ ] Prepare a laptop with a running Psychopy 3 installation AND the EyeTracker software. For these SOPs, the designated laptop for the experiments is *HOS68752*.
+- [ ] Prepare a laptop with a running Psychopy 3 installation AND the EyeTracker software. For these SOPs, the designated laptop for the experiments is *{{ secrets.hosts.psychopy }}*.
 - [ ] Clone the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks):
     ```
     git clone git@github.com:<your-gh-username>/HCPh-fMRI-tasks.git
@@ -55,13 +55,13 @@
 
 #### BEFORE DAY OF SCAN
 
-- [ ] Make sure you have internet access, and update the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks) on *HOS68752*:
+- [ ] Make sure you have internet access, and update the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks) on *{{ secrets.hosts.psychopy }}*:
     ```
     git fetch upstream
     git checkout main
     git rebase upstream/main
     ```
-- [ ] On the *HOS68752* laptop, open a terminal and execute `conda deactivate`.
+- [ ] On the *{{ secrets.hosts.psychopy }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Load in the different experiments and check for proper functioning:
     - [ ] Resting-state fMRI (RSfMRI): open the file `resting_state.psyexp` and check that the movie is played.

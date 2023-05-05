@@ -9,9 +9,8 @@ nav:
     - Home: index.md
     - Change History: changes.md
     - Recruitment, Scheduling, and Screening:
-      - Introduction: recruitment-scheduling-screening/index.md
-      - Example 1: recruitment-scheduling-screening/example1.md
-      - Example 2: recruitment-scheduling-screening/example2.md
+      - Recruitment and screening: recruitment-scheduling-screening/recruitment.md
+      - Scheduling: recruitment-scheduling-screening/scheduling.md
     - Data collection:
       - Preliminary work: data-collection/preliminary.md
       - Before each session: data-collection/pre-session.md
@@ -19,8 +18,6 @@ nav:
       - Running the scanning session: data-collection/scanning.md
       - Session tear-down: data-collection/tear-down.md
     - Data management: data-storage.md
-    - After the session: post-session.md
-    - Quality Assessment and Control: qa-qc.md
     - Preprocessing: preprocessing.md
     - Release of data: release.md
 theme:
@@ -34,6 +31,8 @@ plugins:
   - search
   - macros:
       include_dir: code
+      include_yaml:
+        - secrets: 'secrets/settings.yml'
 
 markdown_extensions:
   - admonition

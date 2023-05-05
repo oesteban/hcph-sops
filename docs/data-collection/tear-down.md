@@ -18,6 +18,9 @@
 - [ ] Help the participant step down and accompany them out into the control room.
 - [ ] Help the participant recover their personal belongings and change clothes if necessary.
 - [ ] Solicit more feedback on participant's comfort for future sessions.
+- [ ] Solicit tickets and receipts for transportation.
+- [ ] Give the participant the corresponding compensation for the participation and transportation.
+- [ ] Request a signed receipt of the amount.
 
 ## AFTER SCAN, inside the scanner room
 
@@ -49,6 +52,7 @@
 	- [ ] Remove the back padding elements and put them back in their designated storage.
 	- [ ] Reinstall the spine coil.
 	- [ ] Put the bed back in place = push the "home" button on the scanner
+	- [ ] Put the wooden stopper of the main access tube back on the tube.
 	- [ ] Everything that is removed for the experiment MUST be put back in place and the end of the experiment, i.e. position of the bed, coil, emergency button, ears cover.
 	- [ ] Take a glove, on the right there is some cleaning napkins. Use them to clean the bed. 
 	- [ ] exit and Close the External door.
@@ -56,6 +60,11 @@
 ## AFTER SCAN, outside scanner room
 
 - [ ] Switch off the projector.
+
+- [ ] **Retrieve ET recordings** (from {{ secrets.hosts.psychopy }}):
+	- [ ] Insert a USB key into *{{ secrets.hosts.psychopy }}* and save the experiment from AcqKnowledge.
+	- [ ] Upload to a pre-designated drop-box (e.g., using Dropbox)
+
 - [ ] Switch off laptop and ET PC Tower. Plug back the sync box and the VGA projector where they were. 
 - [ ] Fix the rolled cable with the scotch on the PC Tower base.
 - [ ] Take the ET, Remove (always with and hand under the lens) the MRI compatible LENS. Put it back to its contained inside the box. 
