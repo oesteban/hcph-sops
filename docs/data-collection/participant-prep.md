@@ -10,16 +10,16 @@
 - [ ] Have participant fill out consent documents and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia.
 
 !!!danger "DO NOT subject the participant to any risk"
-    - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact }} immediately at {{ secrets.phones.medical_contact }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
+    - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at {{ secrets.phones.medical_contact | default("███") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
     - [ ] In case of discovering any previously undisclosed contraindication, the volunteer **MUST NOT** participate in the study.
 
 !!!warning "Only female participants, only the first session"
     - [ ] Provide the participant with a pregnancy test and a urine sample cup.
     - [ ] Go over the instructions with them.
-    - [ ] Accompany them to the bathroom (situated at {{ secrets.rooms.bathroom }}), and ask whether there is anything else they anticipate they will need.
+    - [ ] Accompany them to the bathroom (situated at {{ secrets.rooms.bathroom | default("███") }}), and ask whether there is anything else they anticipate they will need.
     - [ ] If the test is positive, the volunteer **MUST NOT** participate in the study. You MUST be understanding of the situation as most likely the person will not be aware of the circumstance.
 
-- [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom }})
+- [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }})
 - [ ] Have participant empty their pockets or change into scrubs, and remove all jewelry/hair accessories and check for any missed metallic objects with the scan center's preferred method
 - [ ] Instruct participant on staying still and encourage them to request breaks if necessary
 - [ ] Describe the participant how the session will develop, with special attention to tasks. Answer all the questions that may arise.

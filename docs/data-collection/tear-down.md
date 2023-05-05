@@ -61,8 +61,8 @@
 
 - [ ] Switch off the projector.
 
-- [ ] **Retrieve ET recordings** (from {{ secrets.hosts.psychopy }}):
-	- [ ] Insert a USB key into *{{ secrets.hosts.psychopy }}* and save the experiment from AcqKnowledge.
+- [ ] **Retrieve ET recordings** (from {{ secrets.hosts.psychopy | default("███") }}):
+	- [ ] Insert a USB key into *{{ secrets.hosts.psychopy | default("███") }}* and save the experiment from AcqKnowledge.
 	- [ ] Upload to a pre-designated drop-box (e.g., using Dropbox)
 
 - [ ] Switch off laptop and ET PC Tower. Plug back the sync box and the VGA projector where they were. 

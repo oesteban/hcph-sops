@@ -5,9 +5,9 @@
 - [ ] Login into the PACSMAN computer  (*{{ secrets.hosts.pacsman }}*)
 - [ ] Mount a remote filesystem through sshfs:
     ``` bash
-    sshfs {{ secrets.hosts.oesteban }}:/data/datasets/hcph-pilot/rawdata \
+    sshfs {{ secrets.hosts.oesteban | default("<hostname>") }}:/data/datasets/hcph-pilot/rawdata \
                    $HOME/data/hcph-pilot \
-          {{ secrets.data.scp_args }}
+          {{ secrets.data.scp_args | default("<args>") }}
     ```
 - [ ] Edit the query file `vim $HOME/queries/mydata-onesession.csv` (most likely, just update with the session's date)
 ``` text title="mydata-onesession.csv"
@@ -23,7 +23,7 @@
     ```
 - [ ] Remove write permissions on the newly downloaded data:
     ``` bash
-    chmod -R a-w $HOME/data/hcph-pilot/sub-{{ secrets.ids.pacs_subject }}/ses-*
+    chmod -R a-w $HOME/data/hcph-pilot/sub-{{ secrets.ids.pacs_subject | default("01") }}/ses-*
     ```
 - [ ] Unmount the remote filesystem:
     ``` bash
@@ -32,9 +32,9 @@
 
 ### CRITICAL: <span style="color: red">WITHIN 48h after the FIRST session</span>
 
-- [ ] Send the T1-weighted and T2-weighted scan to {{ secrets.people.medical_contact }} for screening and incidental findings.
+- [ ] Send the T1-weighted and T2-weighted scan to {{ secrets.people.medical_contact | default("███") }} for screening and incidental findings.
 
-### Retrieve physiological recordings (from {{ secrets.hosts.acqknowledge }})
+### Retrieve physiological recordings (from {{ secrets.hosts.acqknowledge | default("████") }})
 
 ### Copy original DICOMs into the archive of Stockage HOrUs
 
@@ -49,3 +49,9 @@
 ```
 
 ### Incorporate into version control with DataLad
+
+
+### Run quality control with MRIQC
+- [ ] Run MRIQC to evaluate data quality
+- [ ] If either the dMRI or the RSfMRI quality is insufficient, schedule an extra session after the initially-planned scanning
+period to reacquire it.
