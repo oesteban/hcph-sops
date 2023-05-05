@@ -6,7 +6,7 @@
 ## Recruitment shortlist
 
 - [ ] Distribute the [recruitment flyers](../assets/files/flyer_FR.pdf) at CHUV, as well as on EPFL and UNIL campuses, both physically and electronically (e.g., e-mail lists).
-- [ ] Insert any new potential participant who shows interest by calling {{ secrets.phones.study }}, whatsapp, SMS, email, etc. in hour recruits spreadsheet [WRITE]. Make sure you get **an e-MAIL CONTACT**.
+- [ ] Insert any new potential participant who shows interest by calling {{ secrets.phones.study | default("███") }}, whatsapp, SMS, email, etc. in hour recruits spreadsheet [WRITE]. Make sure you get **an e-MAIL CONTACT**.
 
 !!!warning "Recruits shortlist"
 
@@ -25,7 +25,7 @@
 
 !!!info
 
-	The study coordinator ({{ secrets.people.study_coordinator }}, Assistente doctorant) will call the potential participant **after at least three days** of having sent the information in the case of cohort II, and **one day** in the case of cohort III (HRA, art. 16-3; [24]).
+	The study coordinator ({{ secrets.people.study_coordinator | default("███") }}, Assistente doctorant) will call the potential participant **after at least three days** of having sent the information in the case of cohort II, and **one day** in the case of cohort III (HRA, art. 16-3; [24]).
 
 - [ ] Use the phone script [WRITE!] to drive the conversation and record participant responses to questions.
 - [ ] If participant consents to the phone screen, conduct it and mark the results (screener date, if responded "yes" to any medical questions, whether or not passed screener) in the appropriate columns of the recruitment spreadsheet.
@@ -34,7 +34,7 @@
 !!!danger "Carefully screen the subject"
     - [ ] In case of any doubts emerging from the MRI safety screening, indicate the potential participant that you will call them back **within three days**, after contacting the responsible physician.
     - [ ] Collect as much information as possible about their case.
-    - [ ] Contact {{ secrets.people.medical_contact }} with all the information.
+    - [ ] Contact {{ secrets.people.medical_contact | default("███") }} with all the information.
     - [ ] In case of negative assessment by the medical contact, the volunteer **MUST NOT** participate in the study.
     - [ ] Otherwise, call back the participant as soon as possible to confirm participation.
 

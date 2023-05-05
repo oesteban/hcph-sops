@@ -28,9 +28,9 @@ Instructions of operations to be performed before the participant arrival, **bef
 ## Setting up the BIOPAC system and physiological recording sensors
 
 - [ ] Ensure you have the USB key with the BIOPAC software license.
-    - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge }}*. It needs to stay plugged at all times during the acquisition. [INSERT PHOTO]
+    - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge | default("███") }}*. It needs to stay plugged at all times during the acquisition. [INSERT PHOTO]
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
-- [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge }}*, using the Ethernet-to-USB adaptor.
+- [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Delicately pass a long tube that will be connected to the nasal cannula through the front access tube. Connect the tube and the cannula and leave it ready on the bed ready for the participant.
@@ -48,14 +48,14 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
 - [ ] Connect the end of the control room to the corresponding designated gas intake plug in front of the GA.
     ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
-- [ ] connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera }}. Make sure you will have access to the cable with sufficient time ahead.
+- [ ] connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead.
 
 ## Setting up the eye-tracker
 
-- [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room {{ secrets.rooms.projector }}. Behind the rolling table, there is a transparent panel (the *plexiglas* in the following) where the ET camera will stand inside the scanner bore.
+- [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room {{ secrets.rooms.projector | default("███") }}. Behind the rolling table, there is a transparent panel (the *plexiglas* in the following) where the ET camera will stand inside the scanner bore.
 - [ ] Verify that the monitor and the cable, as well as the ET over the PC tower are fixed to the rolling table with scotch tape.
 - [ ] Bring the table with the ET computer to the control room, and place it next to the access closet. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The plexiglas panel can also be brought to the scanning room simultaneously, if done with care.
-- [ ] From room {{ secrets.rooms.et_camera }} (first cabinet on the left), take the box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
+- [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ] Take the MR-compatible lens out of the lenses box. It is easy to recognize it as it is the only one with two golden screws.
     ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
     ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens")
@@ -97,15 +97,15 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the USB sync box to the laptop with the USB cable. It is normally plugged into the sync box, it must be re-plugged in after usage.
     ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
     ![syncbox-usb](../assets/images/syncbox-usb.png)
-- [ ] Connect the *{{ secrets.hosts.psychopy }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
+- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
-- [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
+- [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
     - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
     - [ ] Push the enter button (&#x25CF;) every time you want to send an `s` character.
-    - [ ] Check that the *{{ secrets.hosts.psychopy }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
+    - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
     - [ ] Check that the BIOPAC is properly registering the trigger too. Every trigger sent should be seen in the *AcqKnowledge* GUI.
 - [ ] Start the syncbox session:
     - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
@@ -116,13 +116,13 @@ Instructions of operations to be performed before the participant arrival, **bef
     | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
     | ![run-session-syncbox](../assets/images/run-session-syncbox.png) |
     
-- [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room {{ secrets.rooms.projector }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
+- [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room {{ secrets.rooms.projector | default("███") }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
     | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
     |:--:|:--:|:--:|
     | *The hole is the part through which we should check the quality of the projection* {: colspan=3} | | |
 
-- [ ] Go back to the *{{ secrets.hosts.psychopy }}* laptop, open a terminal and execute `conda deactivate`.
+- [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file) and leave the streaming mode on (*camera setup mode*) so that the adjustment of the ET can be quickly done later as the infrared camera is providing feedback inside the scanning room through the projector.
     - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one 

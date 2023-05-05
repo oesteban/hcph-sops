@@ -33,6 +33,7 @@ plugins:
       include_dir: code
       include_yaml:
         - secrets: 'secrets/settings.yml'
+      on_undefined: lax
 
 markdown_extensions:
   - admonition
