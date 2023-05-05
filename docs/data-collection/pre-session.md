@@ -83,9 +83,9 @@ Instructions of operations to be performed before the participant arrival.
 - [ ] Connect to the ET to the laptop with the ethernet cable (blue color).
 - [ ] Connect the USB sync box to the laptop with the USB cable. It is normally plugged into the sync box, it must be re-plugged in after usage.
     ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
-    ![ubs-syncbox](../assets/images/ubs-syncbox.png)
+    ![syncbox-usb](../assets/images/syncbox-usb.png)
 - [ ] Connect the **hos68752** laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
-    ![switchbox_hdmi](../assets/images/switchbox_hdmi.png)
+    ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *HOS68752* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that you can send trigger events manually:
