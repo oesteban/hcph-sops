@@ -11,16 +11,22 @@
     ```
     git remote add upstream git@github.com:theaxonlab/HCPh-fMRI-tasks.git
     ```
-- [ ] Once the protocol is decided upon, and after any updates, make sure of storing the protocol:
-    - [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy.
-    - [ ] Open the Dot-Cockpit, paste the sequences and save.
-    - [ ] Repeat the operation after creating the four variants of the protocol, one per PE direction.
 - [ ] Watch the gas analyzer (GA) video:
     <video id="wistia_simple_video_119" crossorigin="anonymous" style="background: transparent; display: block; height: 100%; max-height: none; max-width: none; position: static; visibility: visible; width: 100%; object-fit: fill;" aria-label="Video" src="https://embed-ssl.wistia.com/deliveries/5e08ccab25ab45382329671a82dfe5123f6e840e/file.mp4" playsinline="" preload="metadata" type="video/mp4" x-webkit-airplay="allow" controls>
       <source src="https://embed-ssl.wistia.com/deliveries/5e08ccab25ab45382329671a82dfe5123f6e840e/file.mp4" type="video/mp4" />
       Your browser does not support the video. <a href="./assets/files/GA_video.mp4">Click here to download it</a>
     </video>
 
+**Setting up the scanner protocol**
+
+!!!warning "Important: follow Reproin conventions"
+
+    When assigning names to the MR sequences in the protocol, make sure to follow the [Reproin conventions](https://dbic-handbook.readthedocs.io/en/latest/mri/reproin.html) to maximally facilitate the conversion into BIDS.
+
+- [ ] Once the protocol is decided upon, and after any updates, make sure of storing the protocol:
+    - [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy.
+    - [ ] Open the Dot-Cockpit, paste the sequences and save.
+    - [ ] Repeat the operation after creating the four variants of the protocol, one per PE direction.
 
 **Install the BIOPAC**
 
