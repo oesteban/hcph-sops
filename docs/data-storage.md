@@ -14,7 +14,7 @@
 ```
     - [ ] Prepare and run PACSMAN, pointing the output to the mounted directory.
         ``` bash
-        conda activate
+        conda activate pacsman_min_dev_v2
         python /home/localadmin/Bureau/PACSMAN/PACSMAN/pacsman.py --save \
                -q $HOME/queries/mydata-onesession.csv \
                --out_directory $HOME/data/hcph-pilot/ \
@@ -22,8 +22,7 @@
         ```
     - [ ] Remove write permissions on the newly downloaded data:
         ``` bash
-        chmod -R a-w $HOME/data/hcph-pilot/rawdata/\
-                     sub-2022_11_07_15_37_06_STD_1_3_12_2_1107_5_99_3/ses-*
+        chmod -R a-w $HOME/data/hcph-pilot/sub-2022_11_07_15_37_06_STD_1_3_12_2_1107_5_99_3/ses-*
         ```
     - [ ] Unmount the remote filesystem:
         ``` bash
