@@ -13,7 +13,7 @@
 
 	Contact {{ secrets.people.mri_coordinator_cibm | default("███") }}, MRI Operational Manager, for any doubts/problems regarding this system
 
-- [ ] Open the {{ secrets.scheduling.name | default("███") }} scheduling system ([URL]({{ secrets.scheduling.url | default("███") }})) on a browser.
+- [ ] Open the {{ secrets.scheduling.name | default("███") }} scheduling system ([URL]({{ secrets.scheduling.url | default("/redacted.html") }})) on a browser.
 - [ ] With the participant on the phone, find a suitable, empty slot by scrolling the calendar.
 - [ ] Click on the preferred slot, make sure that selected resource is *{{ secrets.scheduling.resource_prisma | default("███") }}*
 - [ ] Select *{{ secrets.people.mri_operator | default("███") }}* in the Operator dropdown menu.
@@ -28,7 +28,7 @@
 
 	Contact {{ secrets.people.mri_coordinator_chuv | default("███") }}, Technical MRI Coordinator, for any doubts/problems regarding this system
 
-- [ ] Open the {{ secrets.scheduling.name | default("███") }} scheduling system ([URL]({{ secrets.scheduling.url | default("███") }})) on a browser.
+- [ ] Open the {{ secrets.scheduling.name | default("███") }} scheduling system ([URL]({{ secrets.scheduling.url | default("/redacted.html") }})) on a browser.
 - [ ] With the participant on the phone, find a suitable, empty slot by scrolling the calendar.
 
 	!!!warning "Clinical scanner hours are very restricted"

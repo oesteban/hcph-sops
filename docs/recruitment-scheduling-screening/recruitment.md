@@ -6,7 +6,7 @@
 ## Recruitment shortlist
 
 - [ ] Distribute the [recruitment flyers](../assets/files/flyer_FR.pdf) at CHUV, as well as on EPFL and UNIL campuses, both physically and electronically (e.g., e-mail lists).
-- [ ] Insert any new potential participant who shows interest by calling {{ secrets.phones.study | default("███") }}, whatsapp, SMS, email, etc. in hour recruits spreadsheet [WRITE]. Make sure you get **an e-MAIL CONTACT**.
+- [ ] Insert any new potential participant who shows interest by calling {{ secrets.phones.study | default("███") }}, whatsapp, SMS, email, etc. in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}). Make sure you get **an e-MAIL CONTACT**.
 
 !!!warning "Recruits shortlist"
 
