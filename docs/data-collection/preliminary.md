@@ -51,7 +51,7 @@
     ```
     cd psychopy
     ```
-- [ ]Psychopy should not be installed with anaconda. If an anaconda environment is activated, run the following command to deactivate it:
+- [ ] Psychopy should not be installed with anaconda. If an anaconda environment is activated, run the following command to deactivate it:
     ```
     conda deactivate
     ```
