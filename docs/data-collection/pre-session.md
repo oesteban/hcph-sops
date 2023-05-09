@@ -32,23 +32,34 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
+    ![biopack-computer](../assets/images/CHUV_computer_setup.jpg "Connect Biopac to the computer")
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
-- [ ] Delicately pass a long tube that will be connected to the nasal cannula through the front access tube. Connect the tube and the cannula and leave it ready on the bed ready for the participant.
-- [ ] Pass the respiration-belt (RB) tube through the same hole. Again, connect the end inside of the scanning room to the respiration belt and leave it on the bed.
-- [ ] Connect the end of the control room to the TSD160A BIOPAC unit, using the the plug marked negative (**-** symbol).
-- [ ] Connect the coaxial end of the cable to the CO<sub>2</sub> output in the back of the GA, the other end of the cable should be a jack plug (similar to headphones).
+- [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
+- [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube. 
+![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
+- [ ] Connect the distal end of the extension tube to the cannula via a MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant. If the color of the drying tube changed, it should be replaced. You should keep enough extension tube inside the MR room so that it can lie on the floor.
+![drying-tube](../assets/images/Drying_Tube.jpg "MLA0343 drying tube")
+- [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
+- [ ] Go back to the control room and connect the proximal end of the cannula extension tube to a MLA0110 inline filter.
+![MLA0110-inline-filter](../assets/images/inline_filter.png "MLA0110 inline filter")
+- [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be discarded after some ten sessions.
+![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
+- [ ] Connect the coaxial end of the BNC-BNC cable to the CO<sub>2</sub> output in the back of the GA, the other end of the cable should be a jack plug (similar to headphones).
+![co2-cable](../assets/images/CO2_cable.jpg "Input GA")
 - [ ] Connect the other end (jack plug) into the input end of the INISO/A filter.
-- [ ] Connect one end (RJ-11 to RJ-11) into **channel 3** of the AMI100D BIOPAC module, and the other end to the output of the INISO/A filter.
+- [ ] Connect one end (RJ-11 to RJ-11) to the output of the INISO/A filter, and the other into **channel 3** of the AMI100D BIOPAC module.
+![biopac-annotated-font](../assets/images/Biopac_setup.jpg "Biopac front, annotated")
+- [ ] Check that the RB (DA100C) and ECG (ECG100C MRI) channels are set to **channel 1** and **channel 2**.
+![Biopac-RB-ECG-channels](../assets/images/Biopac-RB-ECG-channels.jpg "DA100C and ECG100C MRI input channels")
 - [ ] Check that the exhaust pipe (back of the GA) is free of obstruction.
+![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
 - [ ] The **pump switch MUST BE OFF** (front of the GA).
-- [ ] Remove the cap of the gas input, connect an inline filter. The inline filter MUST be discarded after some ten sessions.
-- [ ] Connect the drying tube and/or the desiccant chamber.
-    ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
-- [ ] Turn the GA on using the on/off switch located at the back of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
-    ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
-- [ ] Connect the end of the control room to the corresponding designated gas intake plug in front of the GA.
-    ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
-- [ ] connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead.
+- [ ] Check that the cap on Sample In is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
+![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
+- [ ] Check that the flow control wheel (front of the GA) is set to the maximum.
+- [ ] Connect the proximal end of the RB tube to the TSD160A BIOPAC unit, using the the plug marked negative (**-** symbol).
+- [ ] Connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead.
+- [ ] Connect the syncbox to the Biopac via the white trigger cable. [TOCHECK]
 
 ## Setting up the eye-tracker
 
@@ -97,8 +108,10 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the USB sync box to the laptop with the USB cable. It is normally plugged into the sync box, it must be re-plugged in after usage.
     ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
     ![syncbox-usb](../assets/images/syncbox-usb.png)
-- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the second screen.
+- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. 
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
+- [ ] Push the button shown below to project your screen on the second screen.
+    ![switch_screen](../assets/images/screen_switch.jpg)
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that you can send trigger events manually:
@@ -114,7 +127,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) | 
     |:--:|
     | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
-    | ![run-session-syncbox](../assets/images/run-session-syncbox.png) |
+    | ![run-session-syncbox](../assets/images/trigger_box.jpg) |
     
 - [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room {{ secrets.rooms.projector | default("███") }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
