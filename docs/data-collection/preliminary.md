@@ -47,7 +47,7 @@
     ```
     git clone git@github.com:git@github.com:psychopy/psychopy.git
     ```
-- [ ] navigate to the Psychopy directory:
+- [ ] Navigate to the Psychopy directory:
     ```
     cd psychopy
     ```
