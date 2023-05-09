@@ -17,9 +17,9 @@
 
 !!!warning "Important"
 	
-	- [ ] Write an email to them within **the next 24h**
-	- [ ] Use the email template [WRITE BELOW] and make sure you attach the MRI Safety and Screening Questionnaire and the Informed Consent Form.
-	- [ ] Confirm the reception of the email AND the documents over the phone
+	- [ ] Write an email to them within **the next 24h**.
+	- [ ] Use [the email template](../assets/files/firstcontact_email.md) and make sure you attach the MRI Safety and Screening Questionnaire and the Informed Consent Form.
+	- [ ] Confirm the reception of the email AND the documents over the phone.
 
 ## Phone call
 
