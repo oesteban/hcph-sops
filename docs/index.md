@@ -32,19 +32,6 @@ Overall, this project will equip researchers with a framework for the extraction
 The project will publicly release two highly valuable datasets necessary for the improvement of the workflow for structural and functional network extraction under open access and reuse terms.
 Upon conclusion, this study will mark a turning point for MRI research as a fundamental resource for academic training and a necessary assessment to unlock clinical applications in the long-term with the improvement of the reliability of MRI-network analyses.
 At a local scale, the project will substantially contribute to ensuring the reliability of the MRI clinical workflow that routinely aids medical decisions at CHUV.
-Minimal risk (Category B).
-The project will acquire MRI, and therefore participants are not subjected to ionizing radiation —MRI’s effective radiation dose is 0.0 mSv.
-All participants will be healthy, adult volunteers (that is, the target population is not classified as vulnerable).
-No contrast agent will be injected, and therefore, the overall MRI protocol is non-invasive.
-Although the project involves a large number of repeated scans on a single individual (Cohort I, 60 MRI sessions) and a moderate number of repetitions for six participants (Cohort II, 12 MRI sessions), MR imaging does not present any biological risk for humans, even in cases of repeated exposure [18].
-In addition, the associated research burden (as defined by Ulrich et al.
-[19]) is minimal, as only healthy adults may participate voluntarily and the informed consent form has been made very specific.
-Participants are clearly informed that they can drop out the study at any moment if they wish.
-As participants are healthy adults, research burden does not involve any additional distress built up on top of the patient’s health perception associated with participating in clinical research.
-The project is restricted to using only clinical- and research-grade standard, vendored MR schemes, and therefore, the protocol does not qualify as a clinical trial for medical device development.
-Recruitment will be geographically limited to minimize the commute time-cost for participants.
-Nonetheless, based on the repeated sessions and their accumulated length, and according to HRO [1] Art.
-7e, CER-VD has categorized this project as Risk category B.
 
 ## Pre-registration
 
