@@ -137,8 +137,8 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
     - [ ] Push the enter button (&#x25CF;) and the syncbox will be now waiting for the scanner's trigger signal to forward it.
     
-    | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
-    | ![run-session-syncbox](../assets/images/trigger_box.jpg) |
+    ![start-session-syncbox](../assets/images/start-session-syncbox.png) 
+    ![run-session-syncbox](../assets/images/trigger_box.jpg) 
     
 - [ ] Switch the projector on by hitting the power button on its right side. The projector is found in room {{ secrets.rooms.projector | default("███") }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
