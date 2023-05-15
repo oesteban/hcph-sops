@@ -35,7 +35,7 @@
 - [ ] Plug the different units of the BIOPAC together if it has not been done yet.
 - [ ] Get familiar with the BIOPAC system:
     - [ ] We use the BIOPAC to synchronize and output in a single file all the physiological recordings: cardiac pulsation, respiration and CO<sub>2</sub>  concentration.
-    ![biopack-front](../assets/images/biopack-front.jpg "BIOPAC front side")
+    ![Biopac_setup](../assets/images/Biopac_setup.jpg "BIOPAC front side")
     - [ ] The AMI100C unit can receive up to 16 analog signals. 
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
