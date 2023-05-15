@@ -1,19 +1,21 @@
 
 !!! info "Thanks"
-    All the documentation about the eye-tracker is derived from Benedetta Franceschiello's user guide.
+    All the documentation about the eye-tracker is derived from Benedetta Franceschiello's user guide. We greatly appreciate her help with the eye tracker.
 
 Instructions of operations to be performed before the participant arrival, **before EACH session** (i.e., DAY OF SCAN)
 
 ## Documentation and other non-experimental devices
 
-- [ ] Prepare [the informed consent form](../assets/files/icf_FR.pdf) (first session only)
+- [ ] Prepare [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**)
 - [ ] Prepare an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf))
-- [ ] Prepare a receipt form that the participant will sign when they are given the compensation.
+- [ ] Prepare a pen and a receipt form that the participant will sign when they are given the compensation.
 - [ ] Check you have the AcqKnowledge software USB license key.
 - [ ] Prepare a pregnancy test (**Only female participants on their first session**)
 - [ ] Prepare a thermometer.
 - [ ] Prepare a blood pressure meter.
-- [ ] Prepare scrubs and MR-compatible glasses if applicable
+- [ ] Prepare scrubs and MR-compatible glasses if applicable.
+- [ ] Verify that your phone is on ringing mode, so the participants can reach you.
+- [ ] Check the time regularly to be on time to meet with the participant at the predefined location.
 
 ## Basic preparations in the scanning room
 
@@ -27,10 +29,10 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Setting up the BIOPAC system and physiological recording sensors
 
-- [ ] Ensure you have the USB key with the BIOPAC software license.
+- [ ] Ensure you have the AcqKnowledge software USB license key.
     - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge | default("███") }}*. It needs to stay plugged at all times during the acquisition. [INSERT PHOTO]
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
-- [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor.
+- [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor [INSERT PICTURE].
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
     ![biopack-computer](../assets/images/CHUV_computer_setup.jpg "Connect Biopac to the computer")
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
@@ -59,17 +61,20 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Check that the flow control wheel (front of the GA) is set to the maximum.
 - [ ] Connect the proximal end of the RB tube to the TSD160A BIOPAC unit, using the the plug marked negative (**-** symbol).
 - [ ] Connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead.
-- [ ] Connect the syncbox to the Biopac via the white trigger cable. [TOCHECK]
+- [ ] Connect the syncbox to the Biopac via the white trigger cable.
 
 ## Setting up the eye-tracker
 
 - [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room {{ secrets.rooms.projector | default("███") }}. Behind the rolling table, there is a transparent panel (the *plexiglas* in the following) where the ET camera will stand inside the scanner bore.
 - [ ] Verify that the monitor and the cable, as well as the ET over the PC tower are fixed to the rolling table with scotch tape.
 - [ ] Bring the table with the ET computer to the control room, and place it next to the access closet. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The plexiglas panel can also be brought to the scanning room simultaneously, if done with care.
-- [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
+- [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the blue box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ] Take the MR-compatible lens out of the lenses box. It is easy to recognize it as it is the only one with two golden screws.
-    ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
-    ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens")
+
+| ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens") |
+|:--:|
+| ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens") |
+
 - [ ] For the ET, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
 - [ ] Install the MR-compatible lens, after removing any other present lens. If other lens is present, put it back to its plastic bag inside the lenses box after unscrewing and removal. To avoid accidentally dropping a lens, one hand MUST be under the lens at all times while screwing/unscrewing it. **The lens MUST BE INSTALLED before bringing the ET inside the Scanner Room**.
 
@@ -77,11 +82,11 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## INSIDE the scanner room
 
-- [ ] Place the plexiglas standing panel inside the scanner bore, following the indications stuck on the panel (a sign notes the top side that faces up, and to tape markers designate the position of the ET). **DON'T PUSH IT inside**, it MUST be adjusted once the participant is placed inside the scanner to ensure the repeatible positioning of the ET.
+- [ ] Place the plexiglas standing panel inside the scanner bore, following the indications stuck on the panel (a sign notes the top side that faces up, and to tape markers designate the position of the ET). The plastic feet must face down to avoid the panel to slide. **DON'T PUSH IT inside**, it MUST be adjusted once the participant is placed inside the scanner to ensure the repeatible positioning of the ET.
 - [ ] Bring the ET inside the scanner room, and put it on top of the plexiglas panel. The two posterior feet of the ET stand have to be within the two corner signs made of scotch tape. **HOLD THE ET STAND STRONGLY, BECAUSE THE MAGNETIC FIELD GENERATES RESISTANCES.**
 - [ ] Open the door of the cable section between the recording room and the scanner room.
 - [ ] First, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point (TODO: ATTACH PICTURE). This operation requires two people, one handling the cables from outside the scanner, and the other gently pulling them from inside. Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
-- [ ] Connect the cables (two plugs for the black, one plug for the orange).
+- [ ] Connect the cables (two plugs for the black, one plug for the orange) [INSERT PICTURE].
 - [ ] Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglas yet)
 - [ ] Place the infrared mirror:
     - [ ] Detach the mirror frame from the head coil, if it is placed there. Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
@@ -94,15 +99,20 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Back OUTSIDE THE SCANNER ROOM (control room)
 
-- [ ] Connect the Power cable to the metallic extremity belonging to the PC-tower
-    ![connect-power-cable](../assets/images/connect-power-cable.png "Connect power cable")
 - [ ] Plug in the Power strip containing the ET Power Cable, the PC-tower power, etc
     ![powerstrip](../assets/images/powerstrip.png)
     ![plug-powerstrip](../assets/images/plug-powerstrip.png)
 
 - [ ] Switch on the PC-tower, as well as the laptop. Select "Eyelink" when given the option of which operating system to launch.
+
     ![pctower](../assets/images/pctower.png)
+
+- [ ] Connect the ET to the laptop with the ethernet cable (blue color).
+
+    ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
+
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
+
     ![syncbox](../assets/images/syncbox.png)
 - [ ] Connect to the ET to the laptop with the ethernet cable (blue color).
 - [ ] Connect the USB sync box to the laptop with the USB cable. It is normally plugged into the sync box, it must be re-plugged in after usage.
@@ -110,12 +120,15 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![syncbox-usb](../assets/images/syncbox-usb.png)
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. 
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
-- [ ] Push the button shown below to project your screen on the second screen.
+- [ ] Push the button shown below to project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
     ![switch_screen](../assets/images/screen_switch.jpg)
-- [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
+- [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens. **That step and that exact resolution is crucial for the eye-tracker calibration to work.**
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
+
+    ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) 
+
     - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
     - [ ] Push the enter button (&#x25CF;) every time you want to send an `s` character.
     - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
@@ -124,31 +137,28 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
     - [ ] Push the enter button (&#x25CF;) and the syncbox will be now waiting for the scanner's trigger signal to forward it.
     
-    | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) | 
-    |:--:|
     | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
     | ![run-session-syncbox](../assets/images/trigger_box.jpg) |
     
-- [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room {{ secrets.rooms.projector | default("███") }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
+- [ ] Switch the projector on by hitting the power button on its right side. The projector is found in room {{ secrets.rooms.projector | default("███") }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
     | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
     |:--:|:--:|:--:|
-    | *The hole is the part through which we should check the quality of the projection* {: colspan=3} | | |
+    | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
 
+- [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
 - [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
-- [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file) and leave the streaming mode on (*camera setup mode*) so that the adjustment of the ET can be quickly done later as the infrared camera is providing feedback inside the scanning room through the projector.
-    - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one 
-    - [ ] Run the experiment by pressing the green play button. 
-    - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
-    - [ ] Press enter to begin the *camera setup mode*.
-    - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
-    - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow.
-
+- [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file)
+- [ ] Run the experiment by pressing the green play button.
+- [ ] Enter the session and participant number in the pop up window.
+- [ ] The Eyelink system setup page opens. Press enter to begin the *camera setup mode*. On the Eyelink system, you can see two views: one is the field-of-view of the eye-tracker, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible). Switch to the full view in the *camera setup mode* by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
+- [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one.
 
 ## Final checks inside the scanning room
 
-- [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding
-- [ ] Prepare a blanket
-- [ ] Prepare a new pair of earplugs
-- [ ] Check the RB, ECG, and nasal cannula are prepared
+- [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding.
+    - [ ] Wrap a cover or a net around each padding
+- [ ] Prepare a blanket.
+- [ ] Prepare a new pair of earplugs.
+- [ ] Check the RB, ECG, and nasal cannula are prepared.
