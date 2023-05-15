@@ -28,7 +28,7 @@
 
 !!!info
 
-	The study coordinator ({{ secrets.people.study_coordinator | default("███") }}, Assistante doctorante) will call the potential participant **after at least three days** of having sent the information in the case of cohort II (HRA, art. 16-3; [24]).
+	The study coordinator ({{ secrets.people.study_coordinator | default("███") }}, Assistante doctorante) will call the potential participant **after at least three days** of having sent the information in the case of cohort II (HRA, art. 16-3; [15]).
 
 - [ ] Use the phone script [WRITE!] to drive the conversation and record participant responses to questions.
 - [ ] If participant consents to the phone screen, conduct it and mark the results (screener date, if responded "yes" to any medical questions, whether or not passed screener) in the appropriate columns of the recruitment spreadsheet.
@@ -48,3 +48,6 @@
 	- [ ] Indicate in the shortlist of recruits that the participant is ready to schedule the first session.
 	- [ ] Tell the participant that they will be called back to set up the first session.
 	- [ ] Remind them that they can ask further questions at any time before the MRI scan session.
+
+## References
+[15]: The Swiss Federal Council, Federal Act of 30 September 2011 on Research involving Human Beings (Human Research Act, HRA). 2011. Accessed: Nov. 29, 2021. [Online]. Available: https://www.fedlex.admin.ch/eli/cc/2013/642/en
