@@ -1,6 +1,6 @@
 
 !!! info "Thanks"
-    All the documentation about the eye-tracker is derived from Benedetta Franceschiello's user guide.
+    All the documentation about the eye-tracker is derived from Benedetta Franceschiello's user guide. We greatly appreciate her help with the eye-tracker.
 
 Instructions of operations to be performed before the participant arrival, **before EACH session** (i.e., DAY OF SCAN)
 
