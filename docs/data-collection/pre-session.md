@@ -140,7 +140,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
     |:--:|:--:|:--:|
-    | *The hole is the part through which we should check the quality of the projection* {: colspan=3} | | |
+    | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
 
 - [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
 - [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
