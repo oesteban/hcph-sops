@@ -105,7 +105,9 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![plug-powerstrip](../assets/images/plug-powerstrip.png)
 
 - [ ] Switch on the PC-tower, as well as the laptop. Select "Eyelink" when given the option of which operating system to launch.
+
     ![pctower](../assets/images/pctower.png)
+    
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
     ![syncbox](../assets/images/syncbox.png)
 - [ ] Connect to the ET to the laptop with the ethernet cable (blue color).
