@@ -61,7 +61,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
 - [ ] Check that the flow control wheel (front of the GA) is set to the maximum.
 - [ ] Connect the proximal end of the RB tube to the TSD160A BIOPAC unit, using the plug marked negative (**-** symbol).
-- [ ] Connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead.
+- [ ] Connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead. [INSERT PICTURE]
 - [ ] Connect the syncbox to the Biopac via the white trigger cable. [TOCHECK]
 
 ## Setting up the eye-tracker
