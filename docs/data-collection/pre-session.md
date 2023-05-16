@@ -44,7 +44,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
 - [ ] Go back to the control room and connect the proximal end of the cannula extension tube to a MLA0110 inline filter.
 ![MLA0110-inline-filter](../assets/images/inline_filter.png "MLA0110 inline filter")
-- [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be discarded after some ten sessions.
+- [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be replaced after some ten sessions.
 ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
 - [ ] Connect the coaxial end of the BNC-BNC cable to the CO<sub>2</sub> output in the back of the GA, the other end of the cable should be a jack plug (similar to headphones).
 ![co2-cable](../assets/images/CO2_cable.jpg "Input GA")
