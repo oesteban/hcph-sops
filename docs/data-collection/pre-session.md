@@ -135,6 +135,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     |:--:|:--:|:--:|
     | *The hole is the part through which we should check the quality of the projection* {: colspan=3} | | |
 
+- [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
 - [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file) and leave the streaming mode on (*camera setup mode*) so that the adjustment of the ET can be quickly done later as the infrared camera is providing feedback inside the scanning room through the projector.
