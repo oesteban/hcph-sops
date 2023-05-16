@@ -69,7 +69,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room {{ secrets.rooms.projector | default("███") }}. Behind the rolling table, there is a transparent panel (the *plexiglas* in the following) where the ET camera will stand inside the scanner bore.
 - [ ] Verify that the monitor and the cable, as well as the ET over the PC tower are fixed to the rolling table with scotch tape.
 - [ ] Bring the table with the ET computer to the control room, and place it next to the access closet. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The plexiglas panel can also be brought to the scanning room simultaneously, if done with care.
-- [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
+- [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the blue box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ] Take the MR-compatible lens out of the lenses box. It is easy to recognize it as it is the only one with two golden screws.
     ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
     ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens")
