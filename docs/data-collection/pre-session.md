@@ -52,7 +52,10 @@ Instructions of operations to be performed before the participant arrival, **bef
 ![biopac-annotated-font](../assets/images/Biopac_setup.jpg "Biopac front, annotated")
 - [ ] Check that the RB (DA100C) and ECG (ECG100C MRI) channels are set to **channel 1** and **channel 2**.
 ![Biopac-RB-ECG-channels](../assets/images/Biopac-RB-ECG-channels.jpg "DA100C and ECG100C MRI input channels")
-- [ ] Check that the exhaust pipe (back of the GA) is free of obstruction.
+
+!!!warning "Important"
+    - [ ] Check that the exhaust pipe (back of the GA) is free of obstruction. An obstructed exhaust can damage the device!
+    
 ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
 - [ ] The **pump switch MUST BE OFF** (front of the GA).
 - [ ] Check that the cap on Sample In is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
