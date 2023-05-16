@@ -57,7 +57,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Check that the exhaust pipe (back of the GA) is free of obstruction. An obstructed exhaust can damage the device!
     
 ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
-- [ ] Check that the cap on Sample In is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
+- [ ] Check that the cap on `Sample In` is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on and when switching on the GA**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
 ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
 - [ ] Check that the flow control wheel (front of the GA) is set to the maximum.
 - [ ] Connect the proximal end of the RB tube to the TSD160A BIOPAC unit, using the the plug marked negative (**-** symbol).
