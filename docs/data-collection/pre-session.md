@@ -71,7 +71,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Bring the table with the ET computer to the control room, and place it next to the access closet. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The plexiglas panel can also be brought to the scanning room simultaneously, if done with care.
 - [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the blue box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ] Take the MR-compatible lens out of the lenses box. It is easy to recognize it as it is the only one with two golden screws.
-    ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
+    | ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens") |
+    |:--:|
     ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens")
 - [ ] For the ET, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
 - [ ] Install the MR-compatible lens, after removing any other present lens. If other lens is present, put it back to its plastic bag inside the lenses box after unscrewing and removal. To avoid accidentally dropping a lens, one hand MUST be under the lens at all times while screwing/unscrewing it. **The lens MUST BE INSTALLED before bringing the ET inside the Scanner Room**.
