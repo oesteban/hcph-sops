@@ -144,6 +144,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
     - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow.
+    - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one.
 
 
 ## Final checks inside the scanning room
