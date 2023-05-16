@@ -29,7 +29,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Setting up the BIOPAC system and physiological recording sensors
 
-- [ ] Ensure you have the USB key with the BIOPAC software license.
+- [ ] Ensure you have the AcqKnowledge software USB license key.
     - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge | default("███") }}*. It needs to stay plugged at all times during the acquisition. [INSERT PHOTO]
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor.
