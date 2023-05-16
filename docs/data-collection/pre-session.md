@@ -6,7 +6,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Documentation and other non-experimental devices
 
-- [ ] Prepare [the informed consent form](../assets/files/icf_FR.pdf) (first session only)
+- [ ] Prepare [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**)
 - [ ] Prepare an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf))
 - [ ] Prepare a receipt form that the participant will sign when they are given the compensation.
 - [ ] Check you have the AcqKnowledge software USB license key.
