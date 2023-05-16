@@ -39,7 +39,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
 - [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube. 
 ![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
-- [ ] Connect the distal end of the extension tube to the cannula via a MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant. If the color of the drying tube changed, it should be replaced. You should keep enough extension tube inside the MR room so that it can lie on the floor.
+- [ ] Connect the distal end of the extension tube to the cannula via a MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant. If the color of the drying tube changed, it should be replaced. You should keep enough extension tube inside the MR room so that it can lie on the floor. It is important that both the GA and the RB tubes lay on the floor as much as possible to avoid waves shaking the tubes.
 ![drying-tube](../assets/images/Drying_Tube.jpg "MLA0343 drying tube")
 - [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
 - [ ] Go back to the control room and connect the proximal end of the cannula extension tube to a MLA0110 inline filter.
