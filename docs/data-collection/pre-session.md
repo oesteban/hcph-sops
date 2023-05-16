@@ -8,7 +8,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Prepare [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**)
 - [ ] Prepare an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf))
-- [ ] Prepare a receipt form that the participant will sign when they are given the compensation.
+- [ ] Prepare a pen and a receipt form that the participant will sign when they are given the compensation.
 - [ ] Check you have the AcqKnowledge software USB license key.
 - [ ] Prepare a pregnancy test (**Only female participants on their first session**)
 - [ ] Prepare a thermometer.
