@@ -113,7 +113,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
 
 ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
-- [ ] Connect the USB sync box to the laptop with the USB cable. It is normally plugged into the sync box, it must be re-plugged in after usage.
+- [ ] Connect the sync box to the laptop with the USB cable. It is normally plugged into the {{ secrets.hosts.acqknowledge | default("███") }}, it must be re-plugged in after usage.
     ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
     ![syncbox-usb](../assets/images/syncbox-usb.png)
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. 
