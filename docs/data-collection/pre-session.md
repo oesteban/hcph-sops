@@ -1,6 +1,6 @@
 
 !!! info "Thanks"
-    All the documentation about the eye-tracker is derived from Benedetta Franceschiello's user guide. We greatly appreciate her help with the eye tracker.
+    All the documentation about the eye-tracker is derived from Benedetta Franceschiello's user guide. We greatly appreciate her help with the eye-tracker.
 
 Instructions of operations to be performed before the participant arrival, **before EACH session** (i.e., DAY OF SCAN)
 
@@ -13,8 +13,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Prepare a pregnancy test (**Only female participants on their first session**)
 - [ ] Prepare a thermometer.
 - [ ] Prepare a blood pressure meter.
-- [ ] Prepare scrubs and MR-compatible glasses if applicable.
-- [ ] Verify that your phone is on ringing mode, so the participants can reach you.
+- [ ] Prepare scrubs and MR-compatible glasses if applicable
+- [ ] Verify that your phone is on ringing mode so the participants can reach you.
 - [ ] Check the time regularly to be on time to meet with the participant at the predefined location.
 
 ## Basic preparations in the scanning room
@@ -30,28 +30,39 @@ Instructions of operations to be performed before the participant arrival, **bef
 ## Setting up the BIOPAC system and physiological recording sensors
 
 - [ ] Ensure you have the AcqKnowledge software USB license key.
-    - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge | default("███") }}*. It needs to stay plugged at all times during the acquisition. [INSERT PHOTO]
+    - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge | default("███") }}*. It needs to stay plugged at all times during the acquisition as shown in the picture below.
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor [INSERT PICTURE].
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
+    ![biopack-computer](../assets/images/CHUV_computer_setup.jpg "Connect Biopac to the computer")
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
-- [ ] Delicately pass a long tube that will be connected to the nasal cannula through the front access tube. Connect the tube and the cannula and leave it ready on the bed ready for the participant.
-- [ ] Pass the respiration-belt (RB) tube through the same hole. Again, connect the end inside of the scanning room to the respiration belt and leave it on the bed.
-- [ ] Connect the end of the control room to the TSD160A BIOPAC unit, using the plug marked negative (**-** symbol).
-- [ ] Connect the coaxial end of the cable to the CO<sub>2</sub> output in the back of the GA, the other end of the cable should be a jack plug (similar to headphones).
-- [ ] Connect the other end (jack plug) into the input end of the INISO/A filter.
-- [ ] Connect one end (RJ-11 to RJ-11) into **channel 3** of the AMI100D BIOPAC module, and the other end to the output of the INISO/A filter.
-- [ ] Check that the exhaust pipe (back of the GA) is free of obstruction.
-- [ ] The **pump switch MUST BE OFF** (front of the GA).
-- [ ] Remove the cap of the gas input, connect an inline filter. The inline filter MUST be discarded after some ten sessions.
-- [ ] Connect the drying tube and/or the desiccant chamber.
-    ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
-- [ ] Turn the GA on using the on/off switch located at the back of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
-    ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
-- [ ] Make sure the flow control is at its maximum.
-- [ ] Connect the end of the control room to the corresponding designated gas intake plug in front of the GA.
-    ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
-- [ ] connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead.
+- [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
+- [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube. 
+![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
+- [ ] Connect the distal end of the extension tube to the cannula via a MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant. If the color of the drying tube changed, it should be replaced. You should keep enough extension tube inside the MR room so that it can lie on the floor. It is important that both the GA and the RB tubes lay on the floor as much as possible to avoid waves shaking the tubes.
+![drying-tube](../assets/images/Drying_Tube.jpg "MLA0343 drying tube")
+- [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
+- [ ] Go back to the control room and connect the proximal end of the cannula extension tube to a MLA0110 inline filter.
+![MLA0110-inline-filter](../assets/images/inline_filter.png "MLA0110 inline filter")
+- [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be replaced after some ten sessions.
+![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
+- [ ] Connect the coaxial end of the BNC-BNC cable to the CO<sub>2</sub> output in the back of the GA and connect the other end (jack plug) into the input end of the INISO/A filter.
+![co2-cable](../assets/images/CO2_cable.jpg "Input GA")
+- [ ] Connect one end (RJ-11 to RJ-11) to the output of the INISO/A filter, and the other into **channel 3** of the AMI100D BIOPAC module.
+![biopac-annotated-font](../assets/images/Biopac_setup.jpg "Biopac front, annotated")
+- [ ] Check that the RB (DA100C) and ECG (ECG100C MRI) channels are set to **channel 1** and **channel 2**.
+![Biopac-RB-ECG-channels](../assets/images/Biopac-RB-ECG-channels.jpg "DA100C and ECG100C MRI input channels")
+
+!!!warning "Important"
+    - [ ] Check that the exhaust pipe (back of the GA) is free of obstruction. An obstructed exhaust can damage the device!
+    
+![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
+- [ ] Check that the cap on `Sample In` is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on and when switching on the GA**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
+![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
+- [ ] Check that the flow control wheel (front of the GA) is set to the maximum.
+- [ ] Connect the proximal end of the RB tube to the TSD160A BIOPAC unit, using the plug marked negative (**-** symbol).
+- [ ] Connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead. [INSERT PICTURE]
+- [ ] Connect the syncbox to the Biopac via the white trigger cable. [TOCHECK]
 
 ## Setting up the eye-tracker
 
@@ -60,11 +71,9 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Bring the table with the ET computer to the control room, and place it next to the access closet. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The plexiglas panel can also be brought to the scanning room simultaneously, if done with care.
 - [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the blue box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ] Take the MR-compatible lens out of the lenses box. It is easy to recognize it as it is the only one with two golden screws.
-
-| ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens") |
-|:--:|
-| ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens") |
-
+    | ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens") |
+    |:--:|
+  |  ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens") |
 - [ ] For the ET, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
 - [ ] Install the MR-compatible lens, after removing any other present lens. If other lens is present, put it back to its plastic bag inside the lenses box after unscrewing and removal. To avoid accidentally dropping a lens, one hand MUST be under the lens at all times while screwing/unscrewing it. **The lens MUST BE INSTALLED before bringing the ET inside the Scanner Room**.
 
@@ -76,7 +85,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Bring the ET inside the scanner room, and put it on top of the plexiglas panel. The two posterior feet of the ET stand have to be within the two corner signs made of scotch tape. **HOLD THE ET STAND STRONGLY, BECAUSE THE MAGNETIC FIELD GENERATES RESISTANCES.**
 - [ ] Open the door of the cable section between the recording room and the scanner room.
 - [ ] First, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point (TODO: ATTACH PICTURE). This operation requires two people, one handling the cables from outside the scanner, and the other gently pulling them from inside. Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
-- [ ] Connect the cables (two plugs for the black, one plug for the orange) [INSERT PICTURE].
+- [ ] Connect the cables (two plugs for the black, one plug for the orange).
 - [ ] Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglas yet)
 - [ ] Place the infrared mirror:
     - [ ] Detach the mirror frame from the head coil, if it is placed there. Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
@@ -89,6 +98,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Back OUTSIDE THE SCANNER ROOM (control room)
 
+- [ ] Connect the Power cable to the metallic extremity belonging to the PC-tower
+    ![connect-power-cable](../assets/images/connect-power-cable.png "Connect power cable")
 - [ ] Plug in the Power strip containing the ET Power Cable, the PC-tower power, etc
     ![powerstrip](../assets/images/powerstrip.png)
     ![plug-powerstrip](../assets/images/plug-powerstrip.png)
@@ -96,30 +107,23 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Switch on the PC-tower, as well as the laptop. Select "Eyelink" when given the option of which operating system to launch.
 
     ![pctower](../assets/images/pctower.png)
-
-- [ ] Connect the ET to the laptop with the ethernet cable (blue color).
-
-    ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
-
+    
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
-
     ![syncbox](../assets/images/syncbox.png)
+- [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
 
+![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
 - [ ] Connect the sync box to the laptop with the USB cable. It is normally plugged into the {{ secrets.hosts.acqknowledge | default("███") }}, it must be re-plugged in after usage.
-
-    ![syncbox-usb](../assets/images/syncbox-usb.png) 
-
+    ![syncbox-usb](../assets/images/syncbox-usb.png)
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
-
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
-
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens. **That step and that exact resolution is crucial for the eye-tracker calibration to work.**
+- [ ] Push the button shown below to project your screen on the second screen.
+    ![switch_screen](../assets/images/screen_switch.jpg)
+- [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
-
-    ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) 
-
     - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
     - [ ] Push the enter button (&#x25CF;) every time you want to send an `s` character.
     - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
@@ -128,9 +132,10 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
     - [ ] Push the enter button (&#x25CF;) and the syncbox will be now waiting for the scanner's trigger signal to forward it.
     
-    | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
+    | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) | 
     |:--:|
-    | ![run-session-syncbox](../assets/images/run-session-syncbox.png) |
+    | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
+    | ![run-session-syncbox](../assets/images/trigger_box.jpg) |
     
 - [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room {{ secrets.rooms.projector | default("███") }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
@@ -141,16 +146,19 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
 - [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
-- [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file)
-- [ ] Run the experiment by pressing the green play button.
-- [ ] Enter the session and participant number in the pop up window.
-- [ ] The Eyelink system setup page opens. Press enter to begin the *camera setup mode*. On the Eyelink system, you can see two views: one is the field-of-view of the eye-tracker, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible). Switch to the full view in the *camera setup mode* by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
-- [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one.
+- [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file).
+    - [ ] Run the experiment by pressing the green play button. 
+    - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
+    - [ ] Press enter to begin the *camera setup mode*.
+    - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
+    - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow.
+    - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one.
+
 
 ## Final checks inside the scanning room
 
-- [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding.
+- [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding
     - [ ] Wrap a cover or a net around each padding
-- [ ] Prepare a blanket.
-- [ ] Prepare a new pair of earplugs.
-- [ ] Check the RB, ECG, and nasal cannula are prepared.
+- [ ] Prepare a blanket
+- [ ] Prepare a new pair of earplugs
+- [ ] Check the RB, ECG, and nasal cannula are prepared

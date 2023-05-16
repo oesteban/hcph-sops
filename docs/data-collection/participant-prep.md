@@ -69,8 +69,13 @@
 - [ ] Bring the participant inside the room, and give them the ear-plugs to protect the hearing during acquisition.
 - [ ] Instruct the participant to lay on the MRI bed.
 - [ ] Connect the ECG leads on the three electrodes. The electrodes MUST be connected following the color scheme [ADD DETAILS]
-- [ ] Install the respiration belt below the participant's chest and connect it to the tube [INSERT PHOTO]. The respiration belt measure the displacement of the stomach induced by breathing, it thus needs to surround the stomach comfortably. [GIVE MORE PRECISE INFO WHERE SHOULD IT BE PLACED]
-- [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten behind the head for comfort and stability by sliding the ring.
+- [ ] Install the respiration belt below the participant's chest and connect it to the tube as shown in the picture below. The respiration belt measure the displacement induced by breathing, it thus needs to surround the chest or stomach comfortably, depending on the subject respiration (diaphragmatic or chest breathing). The belt should be tight.
+
+![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
+
+- [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten under the chin for comfort and stability by sliding the ring as shown in the picture above.
+- [ ] Check that the GA is properly working by asking the participant to do the following task: breathe in for 3s, breathe out for 3s. Do it 3x. Give orally the instructions "breathe in"/"breathe out" to make the task easier. After the last "breathe out", ask the participant to hold their breath for 3s and then let them breathe normally again [TO DO: INSERT PICTURE OF WHAT THE SIGNAL SHOULD LOOK LIKE]. 
+- [ ] Once the subject is lying on the MR bed, check that no arms/legs lye on the GA or the RB tubes.
 - [ ] Give to the participant the emergency button. Make the participant try it, so they can see it works. To switch off the alarm, there's a button on the scanner (circular, both on the left and on the right of the hole) 
 
     ![alarm_button](../assets/images/alarm_button.png)
