@@ -23,9 +23,14 @@
 
     When assigning names to the MR sequences in the protocol, make sure to follow the [Reproin conventions](https://dbic-handbook.readthedocs.io/en/latest/mri/reproin.html) to maximally facilitate the conversion into BIDS.
 - [ ] Once the protocol is decided upon, and after any updates, make sure of storing the protocol:
-    - [ ] Save the protocol by selecting all the sequences in the sequence list, click right to copy.
-    - [ ] Open the Dot-Cockpit, paste the sequences and save.
-    - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key. [HOW?]
+    - [ ] Select all the sequences in the sequence list and click right to copy.
+    - [ ] Open the Dot-Cockpit
+    - [ ] In `Browse`, find the right folder to save the protocol in (RESEARCH > Oscar).
+    - [ ] Right click on the folder and select `New program`.
+    - [ ] Paste the copied sequences in the empty program [INSERT PICTURE].
+    - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.
+        - [ ] Click right on the protocol and select `Print`
+        - [ ] Save the PDF in your USB key.
     - [ ] Repeat the operation after creating the four variants of the protocol, one per PE direction.
 
 **Install the BIOPAC**
@@ -41,7 +46,6 @@
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
     - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
 - [ ] Install the BIOPAC recording software AcqKnowledge.
-- [ ] Install the GA on the wooden platform behind the MRI consoles.
 
 #### Every two months - calibrate the GA
 

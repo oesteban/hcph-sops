@@ -84,7 +84,10 @@
 - [ ] This part must be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and forehead of the participant almost touch the coil. In case of need, ask the participant to "say yes" with the head (chin on neck) and keep this position, place the pillows, place the coil and check that the participants' front touches the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.  
     ![two_pillows](../assets/images/two_pillows.jpg)
     ![superpose_pillows](../assets/images/superpose_pillows.jpg)
-- [ ] Take the Ears -protection pillow [INSERT PICTURE], stick it on top of the ears of the participant, one by one. Once they are settled, you can pump it, until the participant is comfortable, the head is fixed and the ears are protected.
+- [ ] Take the Ears-protection pillow, stick it on top of the ears of the participant, one by one. Once they are settled, you can pump it, until the participant is comfortable, the head is fixed and the ears are protected.
+
+    ![ear_protecting_pillow.jpg](../assets/images/ear_protecting_pillow.jpg)
+
 - [ ] Ask the participant if they are feeling cold. Cover them with a blanket if necessary.
 - [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of arms to avoid discomfort. Remind the participant not to create closed loops by crossing their legs or holding their hands together.
 - [ ] Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. **Ask the participant to close their eyes**, press the laser alignment button and align the head-coil markers with the red light.
@@ -108,16 +111,23 @@
 
 - [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback: 
     - [ ] Keep on pressing the speak mode button to give instructions (1). Set the volume control of your microphone by pressing the +/- buttons.
-        - [ ] If this volume increase is not enough for the participant to hear you well, [INSERT HOW]
-    - [ ] To listen to participants, press the listen mode button once (2). Loosen the speak mode button! Set the volume control of the participant’s microphone by pressing the +/- buttons.
+        > Hey [NAME], can you hear me well ?
+
+    - [ ] To listen to participant answer, press the listen mode button once (2). Loosen the speak mode button! Set the volume control of the participant’s microphone by pressing the +/- buttons.
+
+        - [ ] If this volume increase is not enough for the participant to hear you well, proceed as follow:
+            - [ ] In the Siemens program, click on Configuration represented by a gear wheel at the top right of the screen.
+            - [ ] Click on `Configuration panel`
+            - [ ] Under the section `Scan application`, locate the icon of the speaker and tune the volume to the maximum.
+            - [ ] Click `Apply`
 
     !!!warning "Important"
         The red button (3) is the table stop button. Pressing this will immediately stop your sequence from
         running and will stop the participant table movement.
 
-    [INSERT PICTURE]  
+    ![speaker](../assets/images/speaker.png)  
 
-- [ ] Switch the ET camera back to zoomed mode, and exit the camera mode [HOW?].
+- [ ] Switch the ET camera back to zoomed mode, and exit the camera mode by pressing `Enter`.
 - [ ] Inform the participant about the calibration process.
 
     > Hey [NAME], we are about to start the scanning session.
@@ -125,7 +135,7 @@
     > The circle will move around the screen. Please focus your gaze and follow it when it moves (do not anticipate).
 
 - [ ] Launch the ET calibration by pressing C on the laptop keyboard or by clicking on Calibration on the ET interface:
-    - [ ] When the gaze is stable, the validate button [VERIFY THE EXACT NAME] appears green, then you can manually click on it to validate the first position.
+    - [ ] When the gaze is stable, the button `Accept fixation` appears green, then you can manually click on it to validate the first position [INSERT PIC].
     - [ ] The following positions should be validated automatically when the gase is stable enough. If it is not the case, manually click on the validate button when it turns green
 - [ ] The ET software MUST show a cross during the calibration. If it does not, try sequentially the following:
     - [ ] readjust the focus of the ET; and if it still doesn't show the cross,

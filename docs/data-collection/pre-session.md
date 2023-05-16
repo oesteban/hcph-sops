@@ -25,7 +25,12 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Otherwise, store it on the shelf where the other coils are and bring the 64-channel one in the proximity of the bed (e.g., inside the scanner's bore). Make sure to remove other coil's fitting element.
 - [ ] Remove the spine coil by lifting the corresponding latch, then sliding it toward the head of the bed, lift it from the bed, and place it on the floor ensuring it is not obstructing any passage or unstable.
 - [ ] Place the two back padding elements filling the spine coil socket.
-- [ ] Fix the 64-channel head-and-neck coil onto the head end of the bed and connect the coil's terminal cable. Check that the head-and-neck coils are now detected by the scanner, as indicated in the scanner's monitor screen.
+- [ ] Cover the MRI bed with a sheet.
+- [ ] Fix the 64-channel head-and-neck coil onto the head end of the bed and connect the coil's terminal cable. Check that the head-and-neck coils are now detected by the scanner, that is the name of the coils (here "Head Neck 64 Anterior" and "Head Neck 64 Posterior") appear on the scanner's monitor screen.
+- [ ] For the ET, you should remove the light inside the scanner bore (4) and the ventilation (5). Button 2 and 3 are used to set the volume of the speakers in the scanner room and volume in the earphones respectively. By clicking on the central knob (1), you can turn off the alarm if necessary.
+    - [ ] Press the respective button and rotate the central knob.
+
+    ![ventilation_button](../assets/images/ventilation_button.png)
 
 ## Setting up the BIOPAC system and physiological recording sensors
 
@@ -69,12 +74,13 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room {{ secrets.rooms.projector | default("███") }}. Behind the rolling table, there is a transparent panel (the *plexiglas* in the following) where the ET camera will stand inside the scanner bore.
 - [ ] Verify that the monitor and the cable, as well as the ET over the PC tower are fixed to the rolling table with scotch tape.
 - [ ] Bring the table with the ET computer to the control room, and place it next to the access closet. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The plexiglas panel can also be brought to the scanning room simultaneously, if done with care.
-- [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the blue box labeled *fMRI usage*, containing the ET camera, lenses, and the special infrared mirror. 
+- [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the blue box labeled *Eye-Tracker only for fMRI*, containing the ET camera, lenses, and the special infrared mirror. 
 - [ ] Take the MR-compatible lens out of the lenses box. It is easy to recognize it as it is the only one with two golden screws.
-    | ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens") |
-    |:--:|
-  |  ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens") |
-- [ ] For the ET, you should remove the ventilation and the light inside the scanner bore [TO DO : INSERT PICTURE]
+
+| ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens") |
+|:--:|
+| ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens") |
+
 - [ ] Install the MR-compatible lens, after removing any other present lens. If other lens is present, put it back to its plastic bag inside the lenses box after unscrewing and removal. To avoid accidentally dropping a lens, one hand MUST be under the lens at all times while screwing/unscrewing it. **The lens MUST BE INSTALLED before bringing the ET inside the Scanner Room**.
 
     ![screw-mri-compatible-lens](../assets/images/screw-lens.png "Screw the MRI compatible lens")
@@ -84,14 +90,19 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Place the plexiglas standing panel inside the scanner bore, following the indications stuck on the panel (a sign notes the top side that faces up, and to tape markers designate the position of the ET). The plastic feet must face down to avoid the panel to slide. **DON'T PUSH IT inside**, it MUST be adjusted once the participant is placed inside the scanner to ensure the repeatible positioning of the ET.
 - [ ] Bring the ET inside the scanner room, and put it on top of the plexiglas panel. The two posterior feet of the ET stand have to be within the two corner signs made of scotch tape. **HOLD THE ET STAND STRONGLY, BECAUSE THE MAGNETIC FIELD GENERATES RESISTANCES.**
 - [ ] Open the door of the cable section between the recording room and the scanner room.
-- [ ] First, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point (TODO: ATTACH PICTURE). This operation requires two people, one handling the cables from outside the scanner, and the other gently pulling them from inside. Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
+- [ ] First, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point. This operation requires two people, one handling the cables from outside the scanner, and the other gently pulling them from inside. Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
+    ![cable_passage](../assets/images/cable_passage.jpg)
 - [ ] Connect the cables (two plugs for the black, one plug for the orange).
+    ![ET_connections](../assets/images/ET_connections.jpg)
 - [ ] Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglas yet)
+    ![halfcircle_screen](../assets/images/halfcircle_screen.jpg)
 - [ ] Place the infrared mirror:
     - [ ] Detach the mirror frame from the head coil, if it is placed there. Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
     - [ ] Prepare two long strips of scotch tape and leave them in a convenient place to attach the ET mirror later. E.g., attach the corner of each strip to the back part of the mirror frame.
     - [ ] Go back to the control room and take the infrared mirror out of the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**. 
+
         ![infrared-mirror](../assets/images/infrared-mirror.png)
+        
     - [ ] Get two gloves (e.g., from the box hanging at the entrance of the scanner room), then approach the scanner bed. Put the gloves on, and **DON'T TOUCH ANYTHING**. You MUST have the standard mirror dismounted and in front of you at this point. **WITH THE GLOVES** proceed to extract the infra-red mirror from its box, being extremely careful. **YOU CAN ONLY TOUCH THE MIRROR WITH GLOVES**, because it cannot be cleaned up. Watch out for **FINGERPRINTS** and once taken out of its box, **IMMEDIATELY PROCEED TO ATTACH IT** to the standard coil mirror. The mirror MUST NOT be placed anywhere else if not in its box.
     - [ ] **WITH YOUR GLOVES ON**, attach the ET mirror to the standard coil mirror (the larger mirror that points toward projector's screen at the back of the scanning room) using the scotch tape strips you prepared before. Put it more or less in the center, although <span style="color:red">this position may need to be adjusted</span> (being careful and with the same precautions explained before). **Do not touch the surface of the ET mirror.**
     - [ ] Place the mirror frame back on the head coil. As always, **DO NOT TOUCH THE MIRROR**. 
@@ -104,7 +115,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![powerstrip](../assets/images/powerstrip.png)
     ![plug-powerstrip](../assets/images/plug-powerstrip.png)
 
-- [ ] Switch on the PC-tower, as well as the laptop. Select "Eyelink" when given the option of which operating system to launch.
+- [ ] Switch on the ET PC-tower. Select "Eyelink" when given the option of which operating system to launch.
 
     ![pctower](../assets/images/pctower.png)
     
@@ -113,10 +124,16 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
 
 ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
+
 - [ ] Connect the sync box to the laptop with the USB cable. It is normally plugged into the {{ secrets.hosts.acqknowledge | default("███") }}, it must be re-plugged in after usage.
+
     ![syncbox-usb](../assets/images/syncbox-usb.png)
+
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
+
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
+    ![laptop_connections](../assets/images/laptop_connections.png)
+
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens. **That step and that exact resolution is crucial for the eye-tracker calibration to work.**
 - [ ] Push the button shown below to project your screen on the second screen.
     ![switch_screen](../assets/images/screen_switch.jpg)
@@ -151,14 +168,16 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
     - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
-    - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow.
-    - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one.
+    - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
+    - [ ] On the ET computer, verify that the calibration selected is the 6-points one.
+        - [ ] Click on `Set Options` on the right of the screen.
+        - [ ] On top left under `Calibration type`, choose the image containing 6 points [INSERT PICTURE].
 
 
 ## Final checks inside the scanning room
 
-- [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding
-    - [ ] Wrap a cover or a net around each padding
-- [ ] Prepare a blanket
-- [ ] Prepare a new pair of earplugs
-- [ ] Check the RB, ECG, and nasal cannula are prepared
+- [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding.
+    - [ ] Wrap a sanitary cover around each padding.
+- [ ] Prepare a blanket.
+- [ ] Prepare a new pair of earplugs.
+- [ ] Check the RB, ECG, and nasal cannula are prepared.
