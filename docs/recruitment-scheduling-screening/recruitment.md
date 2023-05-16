@@ -30,7 +30,7 @@
 
 	The study coordinator ({{ secrets.people.study_coordinator | default("███") }}, Assistante doctorante) will call the potential participant **after at least three days** of having sent the information in the case of cohort II (HRA, art. 16-3; [15]).
 
-- [ ] Use the phone script [WRITE!] to drive the conversation and record participant responses to questions.
+- [ ] Use the [phone script](../assets/files/phonecall_script.md) to drive the conversation and record participant responses to questions.
 - [ ] If participant consents to the phone screen, conduct it and mark the results (screener date, if responded "yes" to any medical questions, whether or not passed screener) in the appropriate columns of the recruitment spreadsheet.
 - [ ] Confirm whether the potential participant understood the MRI Safety & Screening Questionnaire, and discuss with them any questions or potential reasons that may disqualify them to participate.
 
