@@ -60,7 +60,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Check that the cap on `Sample In` is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on and when switching on the GA**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
 ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
 - [ ] Check that the flow control wheel (front of the GA) is set to the maximum.
-- [ ] Connect the proximal end of the RB tube to the TSD160A BIOPAC unit, using the the plug marked negative (**-** symbol).
+- [ ] Connect the proximal end of the RB tube to the TSD160A BIOPAC unit, using the plug marked negative (**-** symbol).
 - [ ] Connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead.
 - [ ] Connect the syncbox to the Biopac via the white trigger cable. [TOCHECK]
 
