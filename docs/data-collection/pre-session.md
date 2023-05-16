@@ -14,6 +14,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Prepare a thermometer.
 - [ ] Prepare a blood pressure meter.
 - [ ] Prepare scrubs and MR-compatible glasses if applicable
+- [ ] Verify that your phone is on ringing mode so the participants can reach you.
+- [ ] Check the time regularly to be on time to meet with the participant at the predefined location.
 
 ## Basic preparations in the scanning room
 
