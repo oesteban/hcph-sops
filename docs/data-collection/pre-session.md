@@ -48,7 +48,6 @@ Instructions of operations to be performed before the participant arrival, **bef
 ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
 - [ ] Connect the coaxial end of the BNC-BNC cable to the CO<sub>2</sub> output in the back of the GA and connect the other end (jack plug) into the input end of the INISO/A filter.
 ![co2-cable](../assets/images/CO2_cable.jpg "Input GA")
-- [ ] Connect the other end (jack plug) into the input end of the INISO/A filter.
 - [ ] Connect one end (RJ-11 to RJ-11) to the output of the INISO/A filter, and the other into **channel 3** of the AMI100D BIOPAC module.
 ![biopac-annotated-font](../assets/images/Biopac_setup.jpg "Biopac front, annotated")
 - [ ] Check that the RB (DA100C) and ECG (ECG100C MRI) channels are set to **channel 1** and **channel 2**.
