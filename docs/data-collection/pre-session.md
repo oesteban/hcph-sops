@@ -117,6 +117,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![syncbox-usb](../assets/images/syncbox-usb.png)
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. 
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
+- [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens. **That step and that exact resolution is crucial for the eye-tracker calibration to work.**
 - [ ] Push the button shown below to project your screen on the second screen.
     ![switch_screen](../assets/images/screen_switch.jpg)
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
