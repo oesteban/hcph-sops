@@ -139,7 +139,6 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file).
-    - [ ] Verify that the calibration chosen is in the options [VERIFY EXACT BUTTON NAME] the 6-points one 
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
     - [ ] Press enter to begin the *camera setup mode*.
