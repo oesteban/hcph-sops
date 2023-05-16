@@ -115,7 +115,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
 - [ ] Connect the sync box to the laptop with the USB cable. It is normally plugged into the {{ secrets.hosts.acqknowledge | default("███") }}, it must be re-plugged in after usage.
     ![syncbox-usb](../assets/images/syncbox-usb.png)
-- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. 
+- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens. **That step and that exact resolution is crucial for the eye-tracker calibration to work.**
 - [ ] Push the button shown below to project your screen on the second screen.
