@@ -110,7 +110,9 @@ Instructions of operations to be performed before the participant arrival, **bef
     
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
     ![syncbox](../assets/images/syncbox.png)
-- [ ] Connect to the ET to the laptop with the ethernet cable (blue color).
+- [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
+
+![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
 - [ ] Connect the USB sync box to the laptop with the USB cable. It is normally plugged into the sync box, it must be re-plugged in after usage.
     ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
     ![syncbox-usb](../assets/images/syncbox-usb.png)
