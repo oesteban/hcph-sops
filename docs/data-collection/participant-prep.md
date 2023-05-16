@@ -69,7 +69,7 @@
 - [ ] Bring the participant inside the room, and give them the ear-plugs to protect the hearing during acquisition.
 - [ ] Instruct the participant to lay on the MRI bed.
 - [ ] Connect the ECG leads on the three electrodes. The electrodes MUST be connected following the color scheme [ADD DETAILS]
-- [ ] Install the respiration belt below the participant's chest and connect it to the tube as shown in the picture below. The respiration belt measure the displacement induced by breathing, it thus needs to surround the chest or stomach comfortably, depending on the subject respiration (diaphragmatic or chest breathing). Tighten the belt until it becomes uncomfortable for the subject.
+- [ ] Install the respiration belt below the participant's chest and connect it to the tube as shown in the picture below. The respiration belt measure the displacement induced by breathing, it thus needs to surround the chest or stomach comfortably, depending on the subject respiration (diaphragmatic or chest breathing). The belt should be tight.
 
 ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
 
