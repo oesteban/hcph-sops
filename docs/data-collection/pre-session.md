@@ -150,6 +150,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 ## Final checks inside the scanning room
 
 - [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding
+    - [ ] Wrap a cover or a net around each padding
 - [ ] Prepare a blanket
 - [ ] Prepare a new pair of earplugs
 - [ ] Check the RB, ECG, and nasal cannula are prepared
