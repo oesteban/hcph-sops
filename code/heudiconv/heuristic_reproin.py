@@ -22,7 +22,7 @@ IGNORE_PROTOCOLS = (
     "10meas",  # dismiss a trial of fmap acquisition
 )
 
-bids_regex = re.compile(r"_(?=(dir|acq|task)-([A-Za-z0-9]+))")
+bids_regex = re.compile(r"_(?=(dir|acq|task|run)-([A-Za-z0-9]+))")
 
 
 def create_key(template, outtype=("nii.gz",), annotation_classes=None):
@@ -102,10 +102,10 @@ def infotodict(seqinfo):
 
         thisitem = {
             "item": s.series_id,
-            "run_entity": "",
         }
         thiskey = None
         thisitem.update({k: v for k, v in bids_regex.findall(s.protocol_name)})
+        thisitem["run_entity"] = f"{thisitem.pop('run', '')}"
 
         if "T1w" in s.protocol_name:
             thiskey = t1w
@@ -161,6 +161,24 @@ def _assign_run_on_repeat(modality_items):
      {'item': 'discard2', 'acq': 'bold', 'dir': 'AP', 'run_entity': '_run-1'},
      {'item': 'discard3', 'acq': 'bold', 'dir': 'PA', 'run_entity': '_run-2'},
      {'item': 'discard4', 'acq': 'bold', 'dir': 'AP', 'run_entity': '_run-2'}]
+
+    >>> _assign_run_on_repeat([
+    ...     {"item": "discard1", "acq": "bold", "dir": "PA", "run": "1"},
+    ...     {"item": "discard2", "acq": "bold", "dir": "AP"},
+    ...     {"item": "discard3", "acq": "bold", "dir": "PA", "run": "2"},
+    ... ])  # doctest: +NORMALIZE_WHITESPACE
+    [{'item': 'discard1', 'acq': 'bold', 'dir': 'PA', 'run': '1'},
+     {'item': 'discard2', 'acq': 'bold', 'dir': 'AP'},
+     {'item': 'discard3', 'acq': 'bold', 'dir': 'PA', 'run': '2'}]
+
+    >>> _assign_run_on_repeat([
+    ...     {"item": "discard1", "acq": "bold", "dir": "PA", "run_entity": "_run-1"},
+    ...     {"item": "discard2", "acq": "bold", "dir": "AP"},
+    ...     {"item": "discard3", "acq": "bold", "dir": "PA", "run_entity": "_run-2"},
+    ... ])  # doctest: +NORMALIZE_WHITESPACE
+    [{'item': 'discard1', 'acq': 'bold', 'dir': 'PA', 'run_entity': '_run-1'},
+     {'item': 'discard2', 'acq': 'bold', 'dir': 'AP'},
+     {'item': 'discard3', 'acq': 'bold', 'dir': 'PA', 'run_entity': '_run-2'}]
 
     """
     modality_items = modality_items.copy()
