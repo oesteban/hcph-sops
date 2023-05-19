@@ -22,7 +22,29 @@
 - [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }}).
 - [ ] Have participant empty their pockets or change into scrubs, and remove all jewelry/hair accessories and check for any missed metallic objects with the scan center's preferred method.
 - [ ] Instruct participant on staying still and encourage them to request breaks if necessary.
-- [ ] Describe the participant how the session will develop, with special attention to tasks. Answer all the questions that may arise.
+- [ ] Describe the participant how the session will develop, with special attention to tasks. In the first session, show the task while explaining them for clarity. Answer all the questions that may arise.
+
+    > There will be three tasks during the session.
+    > The first one is gonna be resting-state; for this scan, all you have to do is stay still, and look at the movie. 
+    > Please do not close your eyes.
+    >
+    > The second one is gonna be breath-holding task; we will ask you to breath with a certain pattern following the color of the rectangle.
+    > Green means inhale, orange means exhale and red means hold.
+    > We will ask you to breath in and out three times following the frequency dictated by the color of the rectangle and then to hold your breathe for 15s.
+    > The breath-hold will occur after an exhale.
+    > At the end of the breath-hold, please exhale the small amount of air you have remaining so we can measure the CO2 level via the gas analyzer.
+    > We will repeat this block of inhale/exhale 3x followed by hold 6 times. The first time, you must look at the rectangle but ignore the breathing clues and 
+    > just breath normally. Then a clue will appear indicating you should start following the breathing clues.
+    > Did you understand? 
+    >
+    > The third task is a control task. This task is composed of different subtasks.
+    > In the first subtask, a grating will move in fron of a cross, just fix it the central cross.
+    > In the second subtask, please follow the points with your eyes. Move your eyes but not your head.
+    > In the third subtask, the word left and right will flash alternatively. Please  tap your thumb against your four other fingers sequentially. Do it on the 
+    > right hand after the word "RIGHT" has flashed, and on the left hand after the word "LEFT" has flashed. You should stop after the word "STOP" appears.
+    > During the finger tapping you MUST leave the alarm button, e.g., on your belly.
+    > Is it clear? Do you have any questions?  
+
 - [ ] Tell the participant they will be holding an alarm button throughout the session, and that they may use it any time whenever they need to stop the experiment.
     - [ ] Tell the participant that they MUST leave the alarm button, e.g., on their belly, during the positive control task. Indicate that you will remind them of this before starting the task.
 - [ ] Indicate the participant where the door to the changing room is, and ask them to change clothes if necessary.

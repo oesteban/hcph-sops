@@ -35,18 +35,21 @@ Instructions of operations to be performed before the participant arrival, **bef
 ## Setting up the BIOPAC system and physiological recording sensors
 
 - [ ] Ensure you have the AcqKnowledge software USB license key.
-    - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge | default("███") }}*. It needs to stay plugged at all times during the acquisition as shown in the picture below.
-- [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
-- [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor [INSERT PICTURE].
+    - [ ] Plug the USB key to the multiport adapter for Mac and plug that adapter to the computer *{{ secrets.hosts.oesteban | default("███") }}* as shown in the picture below. **It needs to stay plugged at all times during the acquisition.** 
+- [ ] Plug in the Ethernet (the plug is on the back side of the BIOPAC) to the multiport adapter connected to the computer *{{ secrets.hosts.oesteban | default("███") }}*.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
-    ![biopack-computer](../assets/images/CHUV_computer_setup.jpg "Connect Biopac to the computer")
+    ![mac_setup](../assets/images/mac_setup.png) 
+- [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC [INSERT PICTURE] and the other end to the parallel port of the NEUROSPEC parallel to USB converter [INSERT PICTURE].
+- [ ] Connect that NEUROSPEC adapter to one of the USB port of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
+- [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
 - [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube. 
 ![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
-- [ ] Connect the distal end of the extension tube to the cannula via a MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant. If the color of the drying tube changed, it should be replaced. You should keep enough extension tube inside the MR room so that it can lie on the floor. It is important that both the GA and the RB tubes lay on the floor as much as possible to avoid waves shaking the tubes.
+- [ ] Connect the distal end of the extension tube to the cannula via a MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant. To connect the drying tube to the cannula, you need to insert with force the end into the cannula. If the color of the drying tube changed, it should be replaced. You should keep enough extension tube inside the MR room so that it can lie on the floor. It is important that both the GA and the RB tubes lay on the floor as much as possible to avoid waves shaking the tubes.
 ![drying-tube](../assets/images/Drying_Tube.jpg "MLA0343 drying tube")
 - [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
+![RB_connection](../assets/images/RB_connection.jpg "RB_connection")
 - [ ] Go back to the control room and connect the proximal end of the cannula extension tube to a MLA0110 inline filter.
 ![MLA0110-inline-filter](../assets/images/inline_filter.png "MLA0110 inline filter")
 - [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be replaced after some ten sessions.
@@ -62,6 +65,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Check that the exhaust pipe (back of the GA) is free of obstruction. An obstructed exhaust can damage the device!
     
 ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
+
 - [ ] Check that the cap on `Sample In` is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on and when switching on the GA**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
 ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
 - [ ] Check that the flow control wheel (front of the GA) is set to the maximum.
@@ -120,7 +124,9 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![pctower](../assets/images/pctower.png)
     
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
+
     ![syncbox](../assets/images/syncbox.png)
+
 - [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
 
 ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
@@ -129,14 +135,16 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     ![syncbox-usb](../assets/images/syncbox-usb.png)
 
-- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
-
+- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}. If it does not automatically switch the source of the screen, you can use the button shown below to switch it. 
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
-    ![laptop_connections](../assets/images/laptop_connections.png)
+    ![switch_screen](../assets/images/screen_switch.jpg)
+
+- Your laptop connections should now look like this.
+
+    ![laptop_setup](../assets/images/laptop_setup.png)
 
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens. **That step and that exact resolution is crucial for the eye-tracker calibration to work.**
-- [ ] Push the button shown below to project your screen on the second screen.
-    ![switch_screen](../assets/images/screen_switch.jpg)
+    
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that you can send trigger events manually:
@@ -163,15 +171,16 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
 - [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
-- [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file).
+- [ ] Open the PCT experiment in *Psychopy* (`resting_state.psyexp` file).
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
     - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
     - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
-    - [ ] On the ET computer, verify that the calibration selected is the 6-points one.
+    - [ ] On the ET computer, verify that the calibration selected is the 9-points one.
         - [ ] Click on `Set Options` on the right of the screen.
-        - [ ] On top left under `Calibration type`, choose the image containing 6 points [INSERT PICTURE].
+        - [ ] On top left under `Calibration type`, choose the image containing 9 points.
+        ![9-points_calibration](../assets/images/9-points_calibration.jpg)
 
 
 ## Final checks inside the scanning room
