@@ -83,4 +83,9 @@
 - [ ] Bring back the box and the base at CIBM EEG lab. Put the keys back under old Nora's desk.
 - [ ] Fix the ET with the scotch at the chariot.
 - [ ] Bring back the chariot and the TMS laptop at the TMS lab
-- [ ] If you are the last person to scan for the day, turn off the MRI machine. First, turn off the left computer, then the right one and finally push the button shut down on the MRI console that lies on the wall and turn the key to close the cover of the console. ! The order is important and the next element needs to be shut down only when the previous is completely off!
+- [ ] If you are the last person to scan for the day, turn off the MRI machine. **The order is important and the next element needs to be shut down only when the previous step is complete!**
+    - [ ] Turn off the specific-name-we-do-not-remember-just-now ({{ secrets.hosts.console_left | default("███") }}, the computer on the left side of the control desk)
+	- [ ] Turn off the computer on the right side of the control desk
+	- [ ] Push the button shut down on the MRI console that lies on the wall
+	- [ ] Turn the key into the "locked" position
+
