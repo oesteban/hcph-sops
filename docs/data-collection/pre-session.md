@@ -19,8 +19,10 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Basic preparations in the scanning room
 
-- [ ] If the scanner is shut down, boot it up.
-    - [ ] Turn the key
+- [ ] If the scanner is shut down, boot it up:
+    - [ ] Turn the key into the "unlocked" position
+    - [ ] Push the button "System ON" on the MRI console that lies on the wall
+    **Please note: wait for the whole system to be switched on (about 10 minutes), even if only the satellite station is needed.**
 - [ ] Remove the head coil that is currently installed.
     - [ ] If it is the 64-channel, you can just temporarily move it into the scanner's bore.
     - [ ] Otherwise, store it on the shelf where the other coils are and bring the 64-channel one in the proximity of the bed (e.g., inside the scanner's bore). Make sure to remove other coil's fitting element.
