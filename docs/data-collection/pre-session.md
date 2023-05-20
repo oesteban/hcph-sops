@@ -17,15 +17,16 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Verify that your phone is on ringing mode so the participants can reach you.
 - [ ] Check the time regularly to be on time to meet with the participant at the predefined location.
 
-## Basic preparations in the scanning room
+## Boot the scanner up if it is shut down
 
-- [ ] If the scanner is shut down, boot it up:
-    - [ ] Turn the key of the **System ON/OFF Station Box** into the "unlocked" position
-    - [ ] Push the red *mushroom* button of the **System ON/OFF Station Box**, which is found right above the key
-    !!! danger "Hold on"
-    
-        It is critical to wait for all systems to finalize their boot-up (about 10 minutes).
-        This is also necessary even if only the satellite station is to be used.
+!!! danger "It is critical to wait for all systems to finalize their boot-up (about 10 minutes). This is also necessary even if only the satellite station is to be used."
+
+![on-off-button](../assets/images/on-off-box.jpg)
+
+- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (🔓)
+- [ ] Push the blue button with the sun symbol (☉) and the **SYSTEM ON** label underneath, which is found right above the key
+
+## Basic preparations in the scanning room
     
 - [ ] Remove the head coil that is currently installed.
     - [ ] If it is the 64-channel, you can just temporarily move it into the scanner's bore.

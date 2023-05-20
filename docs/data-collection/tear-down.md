@@ -83,11 +83,15 @@
 - [ ] Bring back the box and the base at CIBM EEG lab. Put the keys back under old Nora's desk.
 - [ ] Fix the ET with the scotch at the chariot.
 - [ ] Bring back the chariot and the TMS laptop at the TMS lab
-!!! important "Turn off the MRI system if no more sessions are scheduled after"
 
-    **It is critical to follow the right order. Each step must be completed before proceeding further!**
-    
-    - [ ] Turn off the satellite station ({{ secrets.hosts.console_left | default("███") }}, the computer on the left side of the control desk)
-    - [ ] Turn off the control station ({{ secrets.hosts.console_right | default("███") }}, the computer on the right side of the control desk)
-    - [ ] Push the red *mushroom* button of the **System ON/OFF Station Box**
-    - [ ] Turn the key into the "locked" position
+## Turn off the MRI system if no more sessions are scheduled afterward
+
+!!! warning "It is critical to follow the steps in order, ensuring each step is completed before proceeding further"
+
+![on-off-button](../assets/images/on-off-box.jpg)
+
+- [ ] Turn off the satellite station ({{ secrets.hosts.console_left | default("███") }}, the computer on the left side of the control desk)
+- [ ] Turn off the control station ({{ secrets.hosts.console_right | default("███") }}, the computer on the right side of the control desk)
+- [ ] Push the blue button (circle and a dot outside) with the **SYSTEM OFF** label underneath, which is found right above the key
+- [ ] Turn the key into the *closed lock* position (🔒)
+
