@@ -119,6 +119,11 @@ Instructions of operations to be performed before the participant arrival, **bef
             It is critical that there is no air gap between the infrared mirror and the standard mirror.
             Also, make sure the scotch tape is firmly glued to the standard mirror because the infrared mirror will be hanging when placed on the coil and may loosen up creating a gap with the standard mirror.
 
+        !!! info "Suggestion"
+
+            Since we are going to track the right eye only, it is useful to displace the infrared mirror to the
+            right from the participant's standpoint and cut the scotch tape narrower to occlude less surface of the mirrors on the right side.
+
     - [ ] Place the mirror frame back on the head coil. As always, **DO NOT TOUCH THE MIRROR**. 
 
 ## Back OUTSIDE THE SCANNER ROOM (control room)
