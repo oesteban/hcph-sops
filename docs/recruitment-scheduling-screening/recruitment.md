@@ -56,34 +56,32 @@
 
 	Cher/Chère **[nom]**,
 
-	Nous avons bien reçu votre intérêt pour participer à notre étude de recherche sur les images IRM du cerveau et nous vous en remercions.
+	Nous vous remercions vivement pour l'intérêt que vous portez à notre étude de recherche sur l'imagerie IRM du cerveau.
 
-	Notre équipe de chercheurs de renom dans le domaine de la neuroimagerie mène actuellement un projet passionnant visant à mieux comprendre les différentes sources de variabilité d'un examen IRM.
-	Nous recherchons des participants âgés de 24 à 55 ans en bonne santé, sans antécédents de maladies neurologiques, et qui acceptent que leurs données soient publiées après que des mesures adéquates de protection de la confidentialité des données ont été prises.
-	Celles-ci inclusent notamment la suppression de données qui pourraient vous identifier comme votre date de naissance ou votre nom.
-	De plus, vous devez accepter d'être informé(e) des découvertes fortuites concernant votre santé.
-
-	L'étude implique 12 séances d'acquisition IRM du cerveau, qui dureront environ 1h30 chacune.
+	Notre équipe mène actuellement une étude visant à mieux comprendre les différentes sources de variabilité lors d'un examen IRM.
+	
+	Dans le cadre de cette étude, nous recherchons des participants·tes âgés de 24 à 55 ans, en bonne santé et sans antécédents de maladies neurologiques. Les participants·tes doivent consentir à la publication de leurs données dans le cadre du projet. Des mesures de confidentialité sont rigoureusement mises en place pour garantir l'anonymat des données. Elles impliquent notamment la suppression de toute information permettant l'identification des participants, telles que la date de naissance ou le nom.
+	
+	Participer à cette étude implique une présence à 12 séances d'acquisition IRM du cerveau, d'environ 1h30 chacune. Ceci représente un temps de participation total d'environ 18 heures.
 	Vous recevrez une indemnité financière pour votre participation.
+	Veuillez noter que si des découvertes fortuites concernant votre santé étaient faites au cours de l'expérience, vous consentez à en être informé·e.
 
-	Veuillez lire attentivement les documents en pièce jointe pour avoir un aperçu du projet.
-	Le premier document détaille ce que votre participation implique, comment les séances d'acquisition seront organisées et donne un aperçu des objectifs du projet.
-	Le second document est à remplir soigneusement afin de déterminer si vous possédez des contre-indications qui vous empêcheraient de passer un examen IRM.
-	 
-	Lors d’un entretien téléphonique, nous vous répéterons les éléments essentiels et répondrons à vos questions. 
-	De plus, nous vérifierons également ensemble si vous etes éligibles à participer à l'étude.
+	Nous vous invitons à prendre connaissance des documents joints afin d'obtenir un aperçu détaillé de l'étude.
+	Le premier document détaille les implications d'une participation à l'étude, l'organisation des séances d'acquisition et fournit un résumé des objectifs du projet.
+	Le second document concerne les éventuelles contre-indications à passer un examen IRM. Veuillez le remplir soigneusement et nous le retourner.
+	
+	Si après lecture des informations ci-dessus vous acceptez de participer, nous souhaiterions convenir d'un entretien téléphonique avec vous afin de récapituler les points importants de la participation à l'étude. 
+	Cet entretien nous permettra également de vérifier votre éligibilité à participer à l'étude et de répondre à toutes vos éventuelles questions. 
+	Nous vous prions de nous retourner votre réponse dans un délai de 3 jours ouvrables. Afin que nous puissions planifier l'entretien téléphonique, veuillez également nous indiquer les plages horaires dans lesquelles nous pourrions vous contacter.
 
-	Nous vous accordons une période de trois jours pour examiner attentivement les informations fournies et réfléchir si vous êtes certain(e) que vous voulez et que vous êtes en mesure de consacrer les 18 heures que votre participation à cette étude exige.
-	Pour que nous puissions planifier notre entretien téléphonique dans environ trois jours (jours ouvrables seulement), pourriez-vous s'il vous plaît me communiquer une date et une heure à laquelle je peux vous contacter ?
-
-	Entre temps, si vous avez des questions ou hésitations, n'hésitez pas à me contacter par e-mail ou par téléphone au {{ secrets.phones.study | default("███") }}.
-	Nous serions ravis de répondre à toutes vos questions et de discuter davantage de cette opportunité de recherche passionnante.
+	Entre-temps, si vous avez des questions, n'hésitez pas à nous contacter par e-mail ou par téléphone au {{ secrets.phones.study | default("███") }}.
+	Nous serons ravis de répondre à toutes vos questions.
 
 	Nous vous remercions encore une fois pour votre intérêt.
 
 	Cordialement, <br />
 	Céline PROVINS <br />
-	Assistente doctoral
+	Assistante-doctorante
 
 
 
