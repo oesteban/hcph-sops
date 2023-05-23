@@ -67,7 +67,7 @@
 	Veuillez noter que si des découvertes fortuites concernant votre santé étaient faites au cours de l'expérience, vous consentez à en être informé·e.
 
 	Nous vous invitons à prendre connaissance des documents joints afin d'obtenir un aperçu détaillé de l'étude.
-	Le premier document détaille les implications d'une participation à l'étude, l'organisation des séances d'acquisition et fournit un résumé des objectifs du projet.
+	Le premier document détaille les implications d'une participation à l'étude, l'organisation des séances d'acquisition et fourni un résumé des objectifs du projet.
 	Le second document concerne les éventuelles contre-indications à passer un examen IRM. Veuillez le remplir soigneusement et nous le retourner.
 	
 	Si après lecture des informations ci-dessus vous acceptez de participer, nous souhaiterions convenir d'un entretien téléphonique avec vous afin de récapituler les points importants de la participation à l'étude. 
