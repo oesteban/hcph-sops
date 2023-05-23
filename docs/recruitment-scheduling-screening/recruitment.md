@@ -60,7 +60,7 @@
 
 	Notre équipe mène actuellement une étude visant à mieux comprendre les différentes sources de variabilité lors d'un examen IRM.
 	
-	Dans le cadre de cette étude, nous recherchons des participants·tes âgés de 24 à 55 ans, en bonne santé et sans antécédents de maladies neurologiques.
+	Nous recherchons des participants·tes âgés de 24 à 55 ans, en bonne santé et sans antécédents de maladies neurologiques.
 	Les participants·tes doivent consentir à la publication de leurs données dans le cadre du projet.
 	Des mesures de confidentialité sont rigoureusement mises en place pour garantir l'anonymat des données.
 	Elles impliquent notamment la suppression de toute information permettant l'identification des participants, telles que la date de naissance ou le nom.
@@ -70,12 +70,12 @@
 	Vous recevrez une indemnité financière pour votre participation.
 	Veuillez noter que si des découvertes fortuites concernant votre santé étaient faites au cours de l'expérience, vous consentez à en être informé·e.
 
-	Nous vous invitons à prendre connaissance des documents joints afin d'obtenir un aperçu détaillé de l'étude.
+	Nous vous invitons à prendre connaissance des documents joints afin d'obtenir un aperçu de l'étude.
 	Le premier document détaille les implications d'une participation à l'étude, l'organisation des séances d'acquisition et fourni un résumé des objectifs du projet.
 	Le second document concerne les éventuelles contre-indications à passer un examen IRM.
 	Veuillez le remplir soigneusement et nous le retourner.
 	
-	Si après lecture des informations ci-dessus vous acceptez de participer, nous souhaiterions convenir d'un entretien téléphonique avec vous afin de récapituler les points importants de la participation à l'étude. 
+	Si après lecture des informations ci-dessus vous acceptez de participer, nous souhaiterions convenir d'un entretien téléphonique avec vous afin de récapituler les points importants de votre participation. 
 	Cet entretien nous permettra également de vérifier votre éligibilité à participer à l'étude et de répondre à toutes vos éventuelles questions. 
 	Nous vous prions de nous retourner votre réponse dans un délai de 3 jours ouvrables.
 	Afin que nous puissions planifier l'entretien téléphonique, veuillez également nous indiquer les plages horaires dans lesquelles nous pourrions vous contacter.
