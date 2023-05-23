@@ -4,3 +4,4 @@ mkdocs-macros-plugin
 mkdocs-material
 git+https://github.com/dimrozakis/mkpdfs-mkdocs-plugin.git@master
 pygments
+weasyprint<53
