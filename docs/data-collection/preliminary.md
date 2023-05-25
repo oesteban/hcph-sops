@@ -23,15 +23,22 @@
 
     When assigning names to the MR sequences in the protocol, make sure to follow the [Reproin conventions](https://dbic-handbook.readthedocs.io/en/latest/mri/reproin.html) to maximally facilitate the conversion into BIDS.
 - [ ] Once the protocol is decided upon, and after any updates, make sure of storing the protocol:
-    - [ ] Select all the sequences in the sequence list and click right to copy.
     - [ ] Open the Dot-Cockpit
+        ![](../assets/images/save_protocol1.jpg)
     - [ ] In `Browse`, find the right folder to save the protocol in (RESEARCH > Oscar).
-    - [ ] Right click on the folder and select `New program`.
-    - [ ] Paste the copied sequences in the empty program [INSERT PICTURE].
+    - [ ] Right click on the folder and select `New > Program`. This opens an empty page in the program editor
+        ![](../assets/images/save_protocol2.jpg)
+        ![](../assets/images/save_protocol3.jpg)
+    - [ ] Select all the sequences in the sequence list and click right to copy.
+        ![](../assets/images/save_protocol4.jpg)
+    - [ ] Drag or paste the copied sequences in the program editor.
+        ![](../assets/images/save_protocol5.jpg)
+    - [ ] Save the protocol by pressing on the floppy disk icon in the upper left. Give the protocol a relevant name starting with the date of acquisition in the format YYYYMMDD.
+        ![](../assets/images/save_protocol6.jpg)
     - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.
         - [ ] Click right on the protocol and select `Print`
         - [ ] Save the PDF in your USB key.
-    - [ ] Repeat the operation after creating the four variants of the protocol, one per PE direction.
+    - [ ] Repeat the operation to create the four variants of the protocol, one per PE direction.
 
 **Install the BIOPAC**
 
@@ -46,6 +53,7 @@
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
     - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
 - [ ] Install the BIOPAC recording software AcqKnowledge.
+- [ ] Ensure that the lever of the NEUROSPEC adapter is set on `s`.
 
 #### Every two months - calibrate the GA
 
