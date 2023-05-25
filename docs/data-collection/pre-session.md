@@ -8,18 +8,18 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Prepare [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**)
 - [ ] Prepare an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf))
-- [ ] Prepare a pen and a receipt form that the participant will sign when they are given the compensation.
-- [ ] Check you have the AcqKnowledge software USB license key.
+- [ ] Prepare a pen and a receipt form that the participant will sign when they are given the compensation
+- [ ] Check you have the AcqKnowledge software USB license key
 - [ ] Prepare a pregnancy test (**Only female participants on their first session**)
-- [ ] Prepare a thermometer.
-- [ ] Prepare a blood pressure meter.
+- [ ] Prepare a thermometer
+- [ ] Prepare a blood pressure meter
 - [ ] Prepare scrubs and MR-compatible glasses if applicable
-- [ ] Verify that your phone is on ringing mode so the participants can reach you.
-- [ ] Check the time regularly to be on time to meet with the participant at the predefined location.
+- [ ] Verify that your phone is on ringing mode so the participants can reach you
+- [ ] Check the time regularly to be on time to meet with the participant at the predefined location
 
 ## Boot the scanner up if it is shut down
 
-!!! danger "It is critical to wait for all systems to finalize their boot-up (about 10 minutes). This is also necessary even if only the satellite station is to be used."
+!!! warning "Please wait for all systems to finalize their boot-up (about 10 minutes), even if only the satellite station is to be used."
 
 ![on-off-button](../assets/images/on-off-box.jpg)
 
@@ -28,15 +28,21 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Basic preparations in the scanning room
     
-- [ ] Remove the head coil that is currently installed.
-    - [ ] If it is the 64-channel, you can just temporarily move it into the scanner's bore.
+- [ ] If any head coil from the last exam is still plugged, remove it:
+    - [ ] If it is the 64-channel coil, you can just temporarily move it into the scanner's bore.
     - [ ] Otherwise, store it on the shelf where the other coils are and bring the 64-channel one in the proximity of the bed (e.g., inside the scanner's bore). Make sure to remove other coil's fitting element.
 - [ ] Remove the spine coil by lifting the corresponding latch, then sliding it toward the head of the bed, lift it from the bed, and place it on the floor ensuring it is not obstructing any passage or unstable.
 - [ ] Place the two back padding elements filling the spine coil socket.
 - [ ] Cover the MRI bed with a sheet.
-- [ ] Fix the 64-channel head-and-neck coil onto the head end of the bed and connect the coil's terminal cable. Check that the head-and-neck coils are now detected by the scanner, that is the name of the coils (here "Head Neck 64 Anterior" and "Head Neck 64 Posterior") appear on the scanner's monitor screen.
-- [ ] For the ET, you should remove the light inside the scanner bore (4) and the ventilation (5). Button 2 and 3 are used to set the volume of the speakers in the scanner room and volume in the earphones respectively. By clicking on the central knob (1), you can turn off the alarm if necessary.
-    - [ ] Press the respective button and rotate the central knob.
+- [ ] Connect the 64-channel head-and-neck coil to the head end of the bed.
+- [ ] After positioning the participant, connect the anterior part of the coil using the terminal cable.
+- [ ] Check that both the posterior and anterior parts of the head-and-neck coil are now detected by the scanner.
+    To do so, ensure their names ("Head Neck 64 Posterior", and "Head Neck 64 Anterior", respectively) appear on the scanner's monitor screen.
+- [ ] Remove the light inside the scanner bore (button 4) and the ventilation (button 5) for a better performance of the ET.
+- [ ] Use buttons 2 and 3 to adjust the volume of the speaker in the scanner room, and of the earphones, respectively.
+
+    !!! warning "The central knob (button 1) will turn off the alarm if necessary"
+    - [ ] Press the respective button and rotate the central knob to adjust the corresponding settings to the desired level.
 
     ![ventilation_button](../assets/images/ventilation_button.png)
 
@@ -218,6 +224,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding.
     - [ ] Wrap a sanitary cover around each padding.
+    - [ ] The head padding should be chosen and adjusted to each participant depending on their head size so that their nose is only 1-2mm away from the anterior part of the coil.
+        The anterior part of the head coil will be tight around the participant's nose, so ensure they are nonetheless comfortable.
 - [ ] Prepare a blanket.
 - [ ] Prepare a new pair of earplugs.
 - [ ] Check the RB, ECG, and nasal cannula are prepared.
