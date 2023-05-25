@@ -50,11 +50,13 @@
 
         ![worker_icon.jpg](../assets/images/worker_icon.jpg)
 
-        - [ ] Note that the bloc with `__x__` introduces break. The scanner will warn you `Exam Paused`, just click `Continue`. Always leave the `Patient has Contrast Agent` checkbox empty as this protocol do not involve contrast agent.
+        - [ ] Note that the bloc with `__x__` introduces a break.
+            The scanner will warn you that *Exam Paused*. Click `Continue`.
+            The `Patient has Contrast Agent` checkbox MUST always be unchecked, as this protocol does not involve a contrast agent.
 
         ![exam_paused.jpg](../assets/images/exam_paused.jpg)
 
-    - [ ] Check in with participant frequently.
+    - [ ] Check in with the participant frequently.
     - [ ] Watch for motion if you can see the participant, or use motion monitoring equipment.
 
 - [ ] Launch the fieldmap `fmap-epi_dir-PA` sequence.
@@ -69,7 +71,7 @@
     > Are you ready?
 
 - [ ] Launch the rsfMRI `func-bold_task-rest_dir-AP` sequence.
-- [ ] While it is running, tweek the FOV for the next sequence.
+- [ ] While it is running, tweak the FoV for the following sequence.
 - [ ] Once the sequence is over, close the resting-state task and open the breath-holding one `breath_holding_task.psyexp`.
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
@@ -77,6 +79,7 @@
     - [ ] Verify that the task is ready to receive input trigger to start.
 
 - [ ] Inform the participant that the next sequence is breath-holding task fMRI. Repeat the instructions for the task.
+
     > Hey [NAME], we will proceed with the breath holding task.
     > I remind you that you have to breath following the rectangle color.
     > Green means inhale, orange means exhale and red means hold.
@@ -85,7 +88,7 @@
 
 - [ ] Launch the `func-bold_task-bht_dir-AP` sequence.
 - [ ] While it is running, 
-    - [ ] Tweek the FOV for the next sequence.
+    - [ ] Adjust the FoV for the next sequence.
     - [ ] Verify that in the next sequence parameters under Contrast>resc. the option `Magnitude et phase` is selected!
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by clicking on `t` (as fast as possible to avoid collecting more data than needed).
 - [ ] Launch the fieldmap `fmap_phasediff_gre` sequence.

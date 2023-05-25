@@ -41,12 +41,19 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![mac_setup](../assets/images/mac_setup.png) 
 - [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC [INSERT PICTURE] and the other end to the parallel port of the NEUROSPEC parallel to USB converter [INSERT PICTURE].
 - [ ] Connect that NEUROSPEC adapter to one of the USB port of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
-- [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
+- [ ] Plug the power cords of the BIOPAC and the GA into suitable power sockets.
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
 - [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube. 
 ![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
-- [ ] Connect the distal end of the extension tube to the cannula via a MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant. To connect the drying tube to the cannula, you need to insert with force the end into the cannula. If the color of the drying tube changed, it should be replaced. You should keep enough extension tube inside the MR room so that it can lie on the floor. It is important that both the GA and the RB tubes lay on the floor as much as possible to avoid waves shaking the tubes.
+- [ ] Connect the distal end of the extension tube to the cannula via an MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant.
+    To connect the drying tube to the cannula, you need to insert with force the end into the cannula.
+    If the color of the drying tube changes, it should be replaced.
+    
+    !!! warning "Ensure that the length of the tubing inside the MR room is sufficient so that it can lie on the floor."
+    
+        When the tubing is hanging, pressure waves may alter the recorded gas concentration.
+
 ![drying-tube](../assets/images/Drying_Tube.jpg "MLA0343 drying tube")
 - [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
 ![RB_connection](../assets/images/RB_connection.jpg "RB_connection")
@@ -135,9 +142,12 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     ![syncbox-usb](../assets/images/syncbox-usb.png)
 
-- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}. If it does not automatically switch the source of the screen, you can use the button shown below to switch it. 
+- [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
-    ![switch_screen](../assets/images/screen_switch.jpg)
+
+    !!! warning "If the monitor does not automatically switch the source of the screen, you can use the button below to switch it." 
+    
+        ![switch_screen](../assets/images/screen_switch.jpg)
 
 - Your laptop connections should now look like this.
 
@@ -171,7 +181,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
 - [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
-- [ ] Open the PCT experiment in *Psychopy* (`resting_state.psyexp` file).
+- [ ] Open the PCT experiment in *Psychopy* (`control_task.psyexp` file).
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
     - [ ] Press enter to begin the *camera setup mode*.
@@ -180,7 +190,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] On the ET computer, verify that the calibration selected is the 9-points one.
         - [ ] Click on `Set Options` on the right of the screen.
         - [ ] On top left under `Calibration type`, choose the image containing 9 points.
-        ![9-points_calibration](../assets/images/9-points_calibration.jpg)
+            ![9-points_calibration](../assets/images/9-points_calibration.jpg)
 
 
 ## Final checks inside the scanning room
