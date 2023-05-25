@@ -25,26 +25,26 @@
 - [ ] Describe the participant how the session will develop, with special attention to tasks. In the first session, show the task while explaining them for clarity. Answer all the questions that may arise.
 
     > There will be three tasks during the session.
-    > The first one is gonna be resting-state; for this scan, all you have to do is stay still, and look at the movie. 
+    > The first one will be the resting-state; for this scan, all you have to do is stay still and look at the movie.
     > Please do not close your eyes.
     >
-    > The second one is gonna be breath-holding task; we will ask you to breath with a certain pattern following the color of the rectangle.
-    > Green means inhale, orange means exhale and red means hold.
-    > We will ask you to breath in and out three times following the frequency dictated by the color of the rectangle and then to hold your breathe for 15s.
+    > The second one is going to be breath-holding task; we will ask you to breathe with a specific pattern following the color of the rectangle.
+    > 
+    > We will ask you to breathe in and out five times following the frequency dictated by the color of the rectangle and then to hold your breath for 15s.
     > The breath-hold will occur after an exhale.
     > At the end of the breath-hold, please exhale the small amount of air you have remaining so we can measure the CO2 level via the gas analyzer.
-    > We will repeat this block of inhale/exhale 3x followed by hold 6 times. The first time, you must look at the rectangle but ignore the breathing clues and 
-    > just breath normally. Then a clue will appear indicating you should start following the breathing clues.
+    > We will repeat this block of inhale/exhale 5x followed by hold 6 times. The first time, you must look at the rectangle but ignore the breathing instructions and 
+    > just breath normally. A warning message will indicate when you should start following the breathing clues.
     > Did you understand? 
     >
     > The third task is a control task. This task is composed of different subtasks.
     > In the first subtask, a grating will move in fron of a cross, just fix it the central cross.
     > In the second subtask, please follow the points with your eyes. Move your eyes but not your head.
     > In the third subtask, the word left and right will flash alternatively. Please  tap your thumb against your four other fingers sequentially. Do it on the 
-    > right hand after the word "RIGHT" has flashed, and on the left hand after the word "LEFT" has flashed. You should stop after the word "STOP" appears.
+    > right hand after the word "RIGHT" has flashed, and on the left hand after the word "LEFT" has flashed. Stop when the word disappears.
     > During the finger tapping you MUST leave the alarm button, e.g., on your belly.
-    > Is it clear? Do you have any questions?  
-
+    >In the fourth subtask, a dot appears at the center of the screen. Look a the dot until the subtask is finished.
+Is it clear? Do you have any questions?
 - [ ] Tell the participant they will be holding an alarm button throughout the session, and that they may use it any time whenever they need to stop the experiment.
     - [ ] Tell the participant that they MUST leave the alarm button, e.g., on their belly, during the positive control task. Indicate that you will remind them of this before starting the task.
 - [ ] Indicate the participant where the door to the changing room is, and ask them to change clothes if necessary.
