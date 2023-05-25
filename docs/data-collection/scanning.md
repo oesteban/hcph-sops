@@ -7,7 +7,7 @@
         ![alarm_button](../assets/images/alarm_button.png)
     - [ ] Ask to the participant what's wrong. 
         - [ ] If he needs reassurance or information, provide it and confirm he can continue the scanning session. However, if you cannot communicate efficiently, take the participant out of the scanner.
-        - [ ] If the participant does not feel well, take the participant out of the scanner and provide assistance or call [WHO?] if it is really serious or if you have any doubts.
+        - [ ] If the participant does not feel well, provide assistance or call [WHO?] if it is really serious or if you have any doubts.
 
 - [ ] Indicate the participant that the scanning will soon start:
 
