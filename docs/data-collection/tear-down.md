@@ -57,6 +57,8 @@
 	- [ ] Extract the RB and the GA tubing from the room. Likewise, the person outside will carefully roll and store them.
 
 - [ ] **Clean-up of the scanning room**:
+	- [ ] Put the sheet and the blanket inside the dirty linen bag (in the trash if used plastic sheets).
+	- [ ] Dispose all single-use sanitary protections.
 	- [ ] Put the pillows back in place.
 	- [ ] Clean up the head coil (bottom and upper parts), and lock it back with its bottom part, do not plug the connectors.
 	- [ ] Remove the head coil and put it in the scanner's bore.
