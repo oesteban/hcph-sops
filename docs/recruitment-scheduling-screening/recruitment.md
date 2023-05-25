@@ -3,15 +3,18 @@
 
 	Recruitment, screening and informed consent do not apply to Cohort I because the participant is the Principal Investigator himself.
 
+!!! info "Cohort III"
+
+	Recruitment, screening and informed consent do not apply to Cohort III because the sessions have already been acquired.
+
 ## Recruitment shortlist
 
 - [ ] Distribute the [recruitment flyers](../assets/files/flyer_FR.pdf) at CHUV, as well as on EPFL and UNIL campuses, both physically and electronically (e.g., e-mail lists).
-- [ ] Insert any new potential participant who shows interest by calling {{ secrets.phones.study | default("███") }}, whatsapp, SMS, email, etc. in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}). Make sure you get **an e-MAIL CONTACT**.
+- [ ] Insert any new potential participant who shows interest by calling {{ secrets.phones.study | default("███") }}, whatsapp, SMS, email, etc. in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}). Make sure you get **an e-mail contact** to send documents.
 
 !!!warning "Recruits shortlist"
 
-	- [ ] Remove all flyers and indicate that recruitment is not open anymore once the shortlist quotas have been reached (5 males and 5 females for Cohort II; 10M/10F for Cohort III)
-	- [ ] Participants can be enrolled for both Cohorts II and III.
+	- [ ] Remove all flyers and indicate that recruitment is not open anymore once the shortlist quotas have been reached (5 males and 5 females for Cohort II).
 
 ## First contact
 
@@ -25,7 +28,7 @@
 
 !!!info
 
-	The study coordinator ({{ secrets.people.study_coordinator | default("███") }}, Assistente doctorant) will call the potential participant **after at least three days** of having sent the information in the case of cohort II, and **one day** in the case of cohort III (HRA, art. 16-3; [24]).
+	The study coordinator ({{ secrets.people.study_coordinator | default("███") }}, Assistante doctorante) will call the potential participant **after at least three days** of having sent the information in the case of cohort II (HRA, art. 16-3; [15]).
 
 - [ ] Use the phone script [WRITE!] to drive the conversation and record participant responses to questions.
 - [ ] If participant consents to the phone screen, conduct it and mark the results (screener date, if responded "yes" to any medical questions, whether or not passed screener) in the appropriate columns of the recruitment spreadsheet.
@@ -90,4 +93,5 @@
 	Assistante-doctorante
 
 
-
+## References
+[15]: The Swiss Federal Council, Federal Act of 30 September 2011 on Research involving Human Beings (Human Research Act, HRA). 2011. Accessed: Nov. 29, 2021. [Online]. Available: https://www.fedlex.admin.ch/eli/cc/2013/642/en
