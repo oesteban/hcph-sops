@@ -29,7 +29,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
 !!! warning "Login as an advanced user to save protocol"
     As a good practice, always work as *meduser*. Change for *advanced user mode* if you want to save the protocol.
 
-    - [ ] Simultaneously press the "Tab" + "Delete" + "+ (on a classical keyboard)" keys of the keyboard of the control computer
+    - [ ] Simultaneously press the `Tab` + `Delete` + `+` (on a classical keyboard) keys of the keyboard of the control computer
     - [ ] user: medadmin
     - [ ] pwd: xxx
 
@@ -70,9 +70,11 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
 
 **Psychopy Installation**
 
-- [ ] Clone the [PsychoPy repository](git@github.com:psychopy/psychopy.git):
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
+
+- [ ] Clone the [PsychoPy repository](https://github.com/psychopy/psychopy.git):
     ```
-    git clone git@github.com:git@github.com:psychopy/psychopy.git
+    git clone git@github.com:psychopy/psychopy.git
     ```
 - [ ] Navigate to the Psychopy directory:
     ```
@@ -103,6 +105,8 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     psychopy
     ```
 **EyeLink Software Installation**
+
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
 
 - [ ] Enable Canonical's universe repository with the following command:
     ```

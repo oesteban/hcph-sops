@@ -160,7 +160,7 @@
         The red button (3) is the table stop button. Pressing this will immediately stop your sequence from
         running and will stop the participant table movement.
 
-    ![speaker](../assets/images/speaker.png)  
+    ![speaker](../assets/images/speaker.jpg)  
 
 - [ ] Switch the ET camera back to zoomed mode, and exit the camera mode by pressing `Enter`.
 - [ ] Inform the participant about the calibration process.
