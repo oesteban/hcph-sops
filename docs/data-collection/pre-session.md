@@ -147,8 +147,6 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Back OUTSIDE THE SCANNER ROOM (control room)
 
-- [ ] Connect the Power cable to the metallic extremity belonging to the PC-tower
-    ![connect-power-cable](../assets/images/connect-power-cable.png "Connect power cable")
 - [ ] Plug in the Power strip containing the ET Power Cable, the PC-tower power, etc
     ![powerstrip](../assets/images/powerstrip.png)
     ![plug-powerstrip](../assets/images/plug-powerstrip.png)
