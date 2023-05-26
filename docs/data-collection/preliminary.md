@@ -56,9 +56,10 @@
 - [ ] Ensure that the lever of the NEUROSPEC adapter is set on `s`.
 
 **Psychopy Installation**
-- [ ] Clone the [PsychoPy repository](git@github.com:psychopy/psychopy.git):
+
+- [ ] Clone the [PsychoPy repository](https://github.com/psychopy/psychopy.git):
     ```
-    git clone git@github.com:git@github.com:psychopy/psychopy.git
+    git clone git@github.com:psychopy/psychopy.git
     ```
 - [ ] Navigate to the Psychopy directory:
     ```
