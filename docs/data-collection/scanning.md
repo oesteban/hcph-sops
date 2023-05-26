@@ -1,8 +1,9 @@
 
 !!!danger "BE REACTIVE in case the alarm rings"
-    If at any point the participant rings the alarm, it is crucial to enter the scanning room and check on the participant IMMEDIATELY.
+    If at any point the participant rings the alarm, it is crucial to check on the participant IMMEDIATELY.
 
-    - [ ] Enter the scanning room 
+    - [ ] Ask through the speaker if everything is alright because it might be that the participant pressed the alarm by mistake.
+    - [ ] If you do not get a clear answer that everything is ok, enter the scanning room 
     - [ ] Only then turn off the alarm using the circular button either on the left or on the right of the bore.
         ![alarm_button](../assets/images/alarm_button.png)
     - [ ] Ask to the participant what's wrong. 
@@ -12,11 +13,11 @@
 - [ ] Indicate the participant that the scanning will soon start:
 
     > Hey [NAME], we are about to start our first scan run.
-    > For this scan, all you have to do is stay still, and look at the screen.
+    > For this scan, all you have to do is stay still; you can relax and close your eyes if it helps.
     > Are you ready?
 
 - [ ] Start Exam
-- [ ] Launch the AAhead_scout by pressing `Go`.
+- [ ] Launch the AAhead_scout by pressing `Continue`.
 
 ![launch_sequence.jpg](../assets/images/launch_sequence.jpg)
 
@@ -29,9 +30,8 @@
 
 
     !!!warning "Important"
-        - [ ] Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field.
         - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
-        - [ ] Open the DWI sequence and under the section [WHAT?], uncheck all the derivatives except `Diffusion weighted image`.
+        - [ ] Open the DWI sequence and under the section `Diff`, uncheck all the derivatives except `Diffusion weighted image`.
 
 !!!note "Essentials for running an MRI session"
     Once the T1-weighted sequence is finished, you can drag the corresponding high-resolution images to the MR image viewer. This will allow to position the field-of-view (FOV) for the DWI and BOLD sequences more accurately than the initial scout.

@@ -11,7 +11,7 @@
 - [ ] Unplug the head coil from the bed connector and then lift the lever that releases the upper part of the coil, put it aside (e.g., inside the bore or on a chair next to the scanner).
 - [ ] Release the air from the inflatable padding pushing the release valve of the pump and take them away. Remove the disposable covers and throw them away in the trash container.
 - [ ] Help the participant sit down.
-- [ ] Help the participant remove the earplugs and dispose of them. Ask them about the experience:
+- [ ] Instruct the participant to remove the earplugs and dispose of them. Ask them about the experience:
 
     > [NAME], how was your experience?
     > Have you been able to feel comfortable throughout the session?
@@ -67,7 +67,7 @@
 	- [ ] Plug back the head coil if you know the next exam will require that specific coil, or simply put it away with the other (head) coils on the shelf next to the scanner.
 	- [ ] Put the bed back in place = push the "home" button on the scanner
 	- [ ] Put the wooden stopper of the main access tube back on the tube.
-	- [ ] Everything that is removed for the experiment MUST be put back in place at the end of the experiment, i.e. position of the bed, coil, emergency button, ears cover.
+	- [ ] Everything that is removed for the experiment MUST be put back in place at the end of the experiment, i.e. position of the bed, coil, emergency button, ears padding.
 	- [ ] Take a glove, on the right there is some cleaning napkins. Use them to clean the bed. 
 	- [ ] Exit and close the external door.
 
