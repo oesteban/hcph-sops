@@ -27,11 +27,14 @@
 Once the protocol is decided upon, and after any updates, make sure of storing the protocol.
 
 !!! warning "Login as an advanced user to save protocol"
-    As a good practice, always work as *meduser*. Change for *advanced user mode* if you want to save the protocol.
+    As a good practice, always work as the standard user `{{ secrets.login.username_scanner | default("janedoe") }}`.
+    Change for *advanced user mode* if you want to save the protocol.
 
-    - [ ] Simultaneously press the `Tab` + `Delete` + `+` (on a classical keyboard) keys of the keyboard of the control computer
-    - [ ] user: medadmin
-    - [ ] pwd: xxx
+    - [ ] Simultaneously press the `Tab` + `Delete` + `[→` (on a classical keyboard) keys of the keyboard of the control computer
+    
+        > Username: `{{ secrets.login.superusername_scanner | default("superjanedoe") }}`
+        >
+        > Password: `{{ secrets.login.superuserpass_scanner | default("******") }}`
 
     !!! Danger "After three wrong password entries, access will be denied, and only a Siemens engineer will be able to unlock the MR scanner."
 
