@@ -1,8 +1,9 @@
 
 !!!danger "BE REACTIVE in case the alarm rings"
-    If at any point the participant rings the alarm, it is crucial to enter the scanning room and check on the participant IMMEDIATELY.
+    If at any point the participant rings the alarm, it is crucial to check on the participant IMMEDIATELY.
 
-    - [ ] Enter the scanning room 
+    - [ ] Ask through the speaker if everything is alright because it might be that the participant pressed the alarm by mistake.
+    - [ ] If you do not get a clear answer that everything is ok, enter the scanning room 
     - [ ] Only then turn off the alarm using the circular button either on the left or on the right of the bore.
         ![alarm_button](../assets/images/alarm_button.png)
     - [ ] Ask to the participant what's wrong. 
@@ -12,37 +13,37 @@
 - [ ] Indicate the participant that the scanning will soon start:
 
     > Hey [NAME], we are about to start our first scan run.
-    > For this scan, all you have to do is stay still, and look at the screen.
+    > For this scan, all you have to do is stay still; you can relax and close your eyes if it helps.
     > Are you ready?
 
 - [ ] Start Exam
-- [ ] Launch the AAhead_scout by pressing `Go`.
+- [ ] Launch the AAhead_scout by pressing `Continue`.
 
 ![launch_sequence.jpg](../assets/images/launch_sequence.jpg)
 
-- [ ] Once the scout is finished, you can drag the localizer into the scan viewing window by draging the three superposed squares next to the sequence name to check its quality. A localizer of bad quality will present noise in the background. If the localizer is not ok, unplug and replug the head coil and reacquire the AAhead_scout sequence.
+- [ ] Once the scout is finished, you can drag the corresponding images (four superposed squares next to the sequence name that correspond to the images actually acquired in a sagittal view, and the interpolated images in the strict coronal, sagittal and transverse planes) to the MR image viewer to check their quality. A localizer of bad quality will present noise in the background. If the localizer is not ok, unplug and replug the head coil and reacquire the AAhead_scout sequence.
 
 ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
 
-- [ ] Launch the T1w by pressing `Go`.
-- [ ] While you run the T1w, there are a few important points to address:
+- [ ] Launch the T1-weighted MPRAGE sequence by pressing `Go`.
+- [ ] While you run the MPRAGE sequence, there are a few important points to address:
 
 
     !!!warning "Important"
-        - [ ] Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field.
         - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
-        - [ ] Open the DWI sequence and under the section [WHAT?], uncheck all the derivatives except `Diffusion weighted image`.
+        - [ ] Open the DWI sequence and under the section `Diff`, uncheck all the derivatives except `Diffusion weighted image`.
 
 !!!note "Essentials for running an MRI session"
-    Once the T1w is finished, you can drag the T1w into the scan viewing window. This will allow to tweek the field-of-view (FOV) for the DWI and BOLD sequences.
+    Once the T1-weighted sequence is finished, you can drag the corresponding high-resolution images to the MR image viewer. This will allow to position the field-of-view (FOV) for the DWI and BOLD sequences more accurately than the initial scout.
         
     - [ ] Open the next sequence by double clicking on it.
     - [ ] Make sure that the FOV (yellow square) includes the whole brain by tilting or translating the FOV. If the full brain, including the cerebellum, do not fit in the FOV, favorise making sure that the cortex is fully enclosed in the yellow square. For reproduciblity, it is better if the FOV across sequences have a similar center and a similar tilt. However, if it is not possible, the priority remains to include the whole brain in the FOV. 
     - [ ] If two sequences have the same resolution and the same number of slices, you can copy paste the FOV
-        - [ ] Right click on the sequence for which the FOV was set
+        - [ ] Open the sequence for which you want to adjust the FOV/geometry
+        - [ ] Right click on the sequence for which the FOV has already been carefully positioned
         - [ ] Select `Copy Parameters`
         - [ ] `Center [WHAT WAS THE NAME]`
-    - [ ] Once the FOV is well placed, launch the sequence by pressing `Go`.
+    - [ ] Once the FOV is well positioned, launch the sequence by pressing `Go`.
 
     ![adjustFOV.jpg](../assets/images/adjustFOV.jpg)
 

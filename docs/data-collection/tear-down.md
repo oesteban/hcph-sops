@@ -8,10 +8,10 @@
 |:--:|
 | ![quick_return](../assets/images/quick_return.png) |
 
-- [ ] Unplug the head coil from the bed connector and then lift the lever that releases the upper part of the coil, put it aside (e.g., inside the bore).
+- [ ] Unplug the head coil from the bed connector and then lift the lever that releases the upper part of the coil, put it aside (e.g., inside the bore or on a chair next to the scanner).
 - [ ] Release the air from the inflatable padding pushing the release valve of the pump and take them away. Remove the disposable covers and throw them away in the trash container.
 - [ ] Help the participant sit down.
-- [ ] Help the participant remove the earplugs and dispose of them. Ask them about the experience:
+- [ ] Instruct the participant to remove the earplugs and dispose of them. Ask them about the experience:
 
     > [NAME], how was your experience?
     > Have you been able to feel comfortable throughout the session?
@@ -20,12 +20,12 @@
 - [ ] Lift the nasal cannula and help the participant remove it from their head.
 - [ ] Disconnect the tube from the RB and then lift the velcro attachmet to remove the RB.
 - [ ] Disconnect the ECG leads
-- [ ] Help the participant step down and accompany them out into the control room.
+- [ ] Help the participant step down and accompany them out to the control room.
 - [ ] Help the participant recover their personal belongings and change clothes if necessary.
 - [ ] Solicit more feedback on participant's comfort for future sessions.
 - [ ] Solicit tickets and receipts for transportation.
 - [ ] Give the participant the corresponding compensation for the participation and transportation.
-- [ ] Request a signed receipt of the amount.
+- [ ] Request a signed receipt of the amount of the financial compensation.
 
 ## AFTER SCAN, inside the scanner room
 
@@ -57,16 +57,19 @@
 	- [ ] Extract the RB and the GA tubing from the room. Likewise, the person outside will carefully roll and store them.
 
 - [ ] **Clean-up of the scanning room**:
+	- [ ] Put the sheet and the blanket inside the dirty linen bag (in the trash if used plastic sheets).
+	- [ ] Dispose all single-use sanitary protections.
 	- [ ] Put the pillows back in place.
 	- [ ] Clean up the head coil (bottom and upper parts), and lock it back with its bottom part, do not plug the connectors.
 	- [ ] Remove the head coil and put it in the scanner's bore.
 	- [ ] Remove the back padding elements and put them back in their designated storage.
 	- [ ] Reinstall the spine coil.
+	- [ ] Plug back the head coil if you know the next exam will require that specific coil, or simply put it away with the other (head) coils on the shelf next to the scanner.
 	- [ ] Put the bed back in place = push the "home" button on the scanner
 	- [ ] Put the wooden stopper of the main access tube back on the tube.
-	- [ ] Everything that is removed for the experiment MUST be put back in place and the end of the experiment, i.e. position of the bed, coil, emergency button, ears cover.
+	- [ ] Everything that is removed for the experiment MUST be put back in place at the end of the experiment, i.e. position of the bed, coil, emergency button, ears padding.
 	- [ ] Take a glove, on the right there is some cleaning napkins. Use them to clean the bed. 
-	- [ ] exit and Close the External door.
+	- [ ] Exit and close the external door.
 
 ## AFTER SCAN, outside scanner room
 
