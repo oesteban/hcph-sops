@@ -53,26 +53,34 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Plug in the Ethernet (the plug is on the back side of the BIOPAC) to the multiport adapter connected to the computer *{{ secrets.hosts.oesteban | default("███") }}*.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
     ![mac_setup](../assets/images/mac_setup.png) 
-- [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC [INSERT PICTURE] and the other end to the parallel port of the NEUROSPEC parallel to USB converter [INSERT PICTURE].
+- [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC and the other end to the parallel port of the NEUROSPEC parallel-to USB-converter.
+    ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
+    ![neurospec](../assets/images/neurospec.jpg)
 - [ ] Connect that NEUROSPEC adapter to one of the USB port of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
+
+    ![neurospec_usb](../assets/images/neurospec_usb.jpg)
+
 - [ ] Plug the power cords of the BIOPAC and the GA into suitable power sockets.
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
 - [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube. 
 ![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
-- [ ] Connect the distal end of the extension tube to the cannula via an MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant.
-    To connect the drying tube to the cannula, you need to insert with force the end into the cannula.
-    If the color of the drying tube changes, it should be replaced.
+- [ ] Connect the distal end of the extension tube to the cannula and leave the cannula ready on the bed ready for the participant.
+    To connect the extension tube to the cannula, you need to insert with force the end into the cannula.
     
     !!! warning "Ensure that the length of the tubing inside the MR room is sufficient so that it can lie on the floor."
     
         When the tubing is hanging, pressure waves may alter the recorded gas concentration.
 
-![drying-tube](../assets/images/Drying_Tube.jpg "MLA0343 drying tube")
+
 - [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
 ![RB_connection](../assets/images/RB_connection.jpg "RB_connection")
-- [ ] Go back to the control room and connect the proximal end of the cannula extension tube to a MLA0110 inline filter.
-![MLA0110-inline-filter](../assets/images/inline_filter.png "MLA0110 inline filter")
+- [ ] Go back to the control room and connect the proximal end of the cannula extension tube to one plug of the desiccant chamber (which one is not important). Connect the MLA0110 inline filter to the other plug of the desiccant chamber. Connect the MLA0343 drying tube to the MLA0110 inline filter.
+
+![desiccant_chamber](../assets/images/desiccant_chamber.png)
+
+!!! warning "If the color of the drying tube changes, it should be replaced."
+
 - [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be replaced after some ten sessions.
 ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
 - [ ] Connect the coaxial end of the BNC-BNC cable to the CO<sub>2</sub> output in the back of the GA and connect the other end (jack plug) into the input end of the INISO/A filter.
@@ -112,7 +120,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## INSIDE the scanner room
 
-- [ ] Place the plexiglas standing panel inside the scanner bore, following the indications stuck on the panel (a sign notes the top side that faces up, and to tape markers designate the position of the ET). The plastic feet must face down to avoid the panel to slide. **DON'T PUSH IT inside**, it MUST be adjusted once the participant is placed inside the scanner to ensure the repeatible positioning of the ET.
+- [ ] Place the plexiglas standing panel inside the scanner bore, following the indications stuck on the panel (a sign notes the top side that faces up, and to tape markers designate the position of the ET). The plastic feet must face down to avoid the panel to slide. To ensure the repeatible positioning of the ET, place the end of the plexiglas such that its edge coincide with the edge of the illuminated MRI rails.
 - [ ] Bring the ET inside the scanner room, and put it on top of the plexiglas panel. The two posterior feet of the ET stand have to be within the two corner signs made of scotch tape. **HOLD THE ET STAND STRONGLY, BECAUSE THE MAGNETIC FIELD GENERATES RESISTANCES.**
 - [ ] Open the door of the cable section between the recording room and the scanner room.
 - [ ] First, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point. This operation requires two people, one handling the cables from outside the scanner, and the other gently pulling them from inside. Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.

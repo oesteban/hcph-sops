@@ -31,7 +31,8 @@
     !!!warning "Important"
         - [ ] Adapt the reproin name of the sequence according to its "Phase Encoding Dir." field.
         - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
-        - [ ] Open the DWI sequence and under the section [WHAT?], uncheck all the derivatives except `Diffusion weighted image`.
+        - [ ] Repeat the latter for the sequence name "fmap-epi_dir-XX".
+        - [ ] Open the DWI sequence and under the section `Diff.`, uncheck all the derivatives except `Diff. Weighted Image`.
 
 !!!note "Essentials for running an MRI session"
     Once the T1w is finished, you can drag the T1w into the scan viewing window. This will allow to tweek the field-of-view (FOV) for the DWI and BOLD sequences.
@@ -41,7 +42,7 @@
     - [ ] If two sequences have the same resolution and the same number of slices, you can copy paste the FOV
         - [ ] Right click on the sequence for which the FOV was set
         - [ ] Select `Copy Parameters`
-        - [ ] `Center [WHAT WAS THE NAME]`
+        - [ ] `Center of slice groups and saturation regions`
     - [ ] Once the FOV is well placed, launch the sequence by pressing `Go`.
 
     ![adjustFOV.jpg](../assets/images/adjustFOV.jpg)
