@@ -79,7 +79,7 @@
 - [ ] Switch off laptop and ET PC Tower. Plug back the sync box and the VGA projector where they were. 
 - [ ] Fix the rolled cable with the scotch on the PC Tower base.
 - [ ] Turn off the pump of the GA, then switch the GA off. **DO NOT PUT THE CAP IN WHILE THE PUMP IS ON.**
-- [ ] Remove the cables connected to the Biopack and the GA and store them in the boxes in their original bags.
+- [ ] Remove the cables connected to the BIOPAC and the GA and store them in the boxes in their original bags.
 - [ ] Take the ET, Remove (always with and hand under the lens) the MRI compatible LENS. Put it back to its contained inside the box. 
 - [ ] Put back the regular Lens. 
 - [ ] Bring back the box and the base at CIBM EEG lab. Put the keys back under old Nora's desk.
