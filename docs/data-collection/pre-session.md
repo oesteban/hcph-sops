@@ -36,6 +36,10 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Ensure you have the AcqKnowledge software USB license key.
     - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge | default("███") }}*. It needs to stay plugged at all times during the acquisition as shown in the picture below.
+- [ ] Open the AcqKnowledge software
+- [ ] To avoid the computer to go to sleep, you should activate the program that has been previously installed called `Amphetamin`. Its icon is a pill in the right of the top bar in MAC.
+    - [ ] Click on the pill icon
+    - [ ] Select `New session` > `While is running` > `Acqknowledge`. This will keep sending awake message to the computer as long as the software Acqknowledge is running.
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor [INSERT PICTURE].
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
