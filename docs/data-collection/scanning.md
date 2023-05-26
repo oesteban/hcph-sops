@@ -9,6 +9,9 @@
         - [ ] If he needs reassurance or information, provide it and confirm he can continue the scanning session. However, if you cannot communicate efficiently, take the participant out of the scanner.
         - [ ] If the participant does not feel well, provide assistance or call [WHO?] if it is really serious or if you have any doubts.
 
+!!!warning "Start physiological recordings"
+    - [ ] Do not forget to start the recording of the physiological signal by clicking on the play button in the Acqknowledge software on the computer *{{ secrets.hosts.acqknowledge | default("███") }}*
+
 - [ ] Indicate the participant that the scanning will soon start:
 
     > Hey [NAME], we are about to start our first scan run.

@@ -45,7 +45,32 @@
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
     - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
-- [ ] Install the BIOPAC recording software AcqKnowledge.
+
+**Install the BIOPAC recording software AcqKnowledge.**
+- [ ] You have to add each BIOPAC module individually in the system
+    - [ ] Add the respiration belt (RB) module
+        - [ ] Under the section `Analog`, click on `Add new module`.
+        - [ ] Find the name of the BIOPAC unit corresponding to the RB `DA100C`.
+        - [ ] Verify that channel on top of the unit and choose that channel. The RB has to be on **channel 1**.
+        - [ ] Verify that the configurations in the front of the module matches the configuration on screen. You should correct the value of gain, mode, 35HzLPN and HP so it is matching.
+        - [ ] When prompted to enter [calibration?], for the RB you should map the interval [-5,0] to [0,10]. You inverse the sign of the interval for the interpretation to be more clear.
+    
+    - [ ] Add the gaz analyzer module
+        - [ ] After clicking on `Add new module`, find the BIOPAC module in which you plugged the GA `Ami-Hlt - in3`.
+        - [ ] Verify thechannel in which you plugged the GA ethernet. The GA has to be on **channel 3**.
+        - [ ] Verify that the configurations in the front of the module matches the configuration on screen. You should correct the value of gain, mode, 35HzLPN and HP so it is matching.
+        - [ ] When prompted to enter [calibration?], for the GA you should map the interval [1,0.03] to [10,0]. 
+
+    - [ ] Add the ECG module
+        - [ ] After clicking on `Add new module`, find the BIOPAC module in which you plugged the GA `ECG100C`.
+        - [ ] Verify thechannel in which you plugged the GA ethernet. The GA has to be on **channel 2**.
+        - [ ] Verify that the configurations in the front of the module matches the configuration on screen. You should correct the value of gain, mode, 35HzLPN and HP so it is matching.
+        - [ ] When prompted to enter [calibration?], for the GA you should map the interval ?? to ??.
+    
+    - [ ] Add the BIOPAC module
+        - [ ] Under the section `Digital`, click on `Add new module`.
+        - [ ] The parallel cable feeds into port D8-D15
+
 
 #### Every two months - calibrate the GA
 
