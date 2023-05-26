@@ -3,7 +3,7 @@ site_description: Templates and bootstrapping documentation for MRI standard ope
 site_author: The AxonLab
 
 # Copyright
-copyright: Copyright &copy; 2022
+copyright: Copyright © 2023
 
 nav:
     - Home: index.md
@@ -34,6 +34,12 @@ plugins:
       include_yaml:
         - secrets: 'secrets/settings.yml'
       on_undefined: lax
+  - mkpdfs:
+      company: Lausanne University Hospital (CHUV)
+      author: The Axon Lab
+      toc_title: Table of Contents
+      design: design/report.css
+      output_path: pdf/documentation.pdf
 
 markdown_extensions:
   - admonition

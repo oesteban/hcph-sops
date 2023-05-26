@@ -8,49 +8,74 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Prepare [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**)
 - [ ] Prepare an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf))
-- [ ] Prepare a pen and a receipt form that the participant will sign when they are given the compensation.
-- [ ] Check you have the AcqKnowledge software USB license key.
+- [ ] Prepare a pen and a receipt form that the participant will sign when they are given the compensation
+- [ ] Check you have the AcqKnowledge software USB license key
 - [ ] Prepare a pregnancy test (**Only female participants on their first session**)
-- [ ] Prepare a thermometer.
-- [ ] Prepare a blood pressure meter.
+- [ ] Prepare a thermometer
+- [ ] Prepare a blood pressure meter
 - [ ] Prepare scrubs and MR-compatible glasses if applicable
-- [ ] Verify that your phone is on ringing mode so the participants can reach you.
-- [ ] Check the time regularly to be on time to meet with the participant at the predefined location.
+- [ ] Verify that your phone is on ringing mode so the participants can reach you
+- [ ] Check the time regularly to be on time to meet with the participant at the predefined location
+
+## Boot the scanner up if it is shut down
+
+!!! warning "Please wait for all systems to finalize their boot-up (about 10 minutes), even if only the satellite station is to be used."
+
+![on-off-button](../assets/images/on-off-box.jpg)
+
+- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (🔓)
+- [ ] Push the blue button with the sun symbol (☉) and the **SYSTEM ON** label underneath, which is found right above the key
 
 ## Basic preparations in the scanning room
-
-- [ ] If the scanner is shut down, boot it up.
-- [ ] Remove the head coil that is currently installed.
-    - [ ] If it is the 64-channel, you can just temporarily move it into the scanner's bore.
+    
+- [ ] If any head coil from the last exam is still plugged, remove it:
+    - [ ] If it is the 64-channel coil, you can just temporarily move it into the scanner's bore.
     - [ ] Otherwise, store it on the shelf where the other coils are and bring the 64-channel one in the proximity of the bed (e.g., inside the scanner's bore). Make sure to remove other coil's fitting element.
 - [ ] Remove the spine coil by lifting the corresponding latch, then sliding it toward the head of the bed, lift it from the bed, and place it on the floor ensuring it is not obstructing any passage or unstable.
 - [ ] Place the two back padding elements filling the spine coil socket.
 - [ ] Cover the MRI bed with a sheet.
-- [ ] Fix the 64-channel head-and-neck coil onto the head end of the bed and connect the coil's terminal cable. Check that the head-and-neck coils are now detected by the scanner, that is the name of the coils (here "Head Neck 64 Anterior" and "Head Neck 64 Posterior") appear on the scanner's monitor screen.
-- [ ] For the ET, you should remove the light inside the scanner bore (4) and the ventilation (5). Button 2 and 3 are used to set the volume of the speakers in the scanner room and volume in the earphones respectively. By clicking on the central knob (1), you can turn off the alarm if necessary.
-    - [ ] Press the respective button and rotate the central knob.
+- [ ] Connect the 64-channel head-and-neck coil to the head end of the bed.
+- [ ] After positioning the participant, connect the anterior part of the coil using the terminal cable.
+- [ ] Check that both the posterior and anterior parts of the head-and-neck coil are now detected by the scanner.
+    To do so, ensure their names ("Head Neck 64 Posterior", and "Head Neck 64 Anterior", respectively) appear on the scanner's monitor screen.
+- [ ] Remove the light inside the scanner bore (button 4) and the ventilation (button 5) for a better performance of the ET.
+- [ ] Use buttons 2 and 3 to adjust the volume of the speaker in the scanner room, and of the earphones, respectively.
+
+    !!! warning "The central knob (button 1) will turn off the alarm if necessary"
+    - [ ] Press the respective button and rotate the central knob to adjust the corresponding settings to the desired level.
 
     ![ventilation_button](../assets/images/ventilation_button.png)
 
 ## Setting up the BIOPAC system and physiological recording sensors
 
 - [ ] Ensure you have the AcqKnowledge software USB license key.
-    - [ ] Plug the USB key to the computer *{{ secrets.hosts.acqknowledge | default("███") }}*. It needs to stay plugged at all times during the acquisition as shown in the picture below.
+    - [ ] Plug the USB key to the multiport adapter for Mac and plug that adapter to the computer *{{ secrets.hosts.oesteban | default("███") }}* as shown in the picture below. **It needs to stay plugged at all times during the acquisition.** 
 - [ ] Open the AcqKnowledge software
 - [ ] To avoid the computer to go to sleep, you should activate the program that has been previously installed called `Amphetamin`. Its icon is a pill in the right of the top bar in MAC.
     - [ ] Click on the pill icon
     - [ ] Select `New session` > `While is running` > `Acqknowledge`. This will keep sending awake message to the computer as long as the software Acqknowledge is running.
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
-- [ ] Plug in the Ethernet (the plug is on the back side) to one USB input of *{{ secrets.hosts.acqknowledge | default("███") }}*, using the Ethernet-to-USB adaptor [INSERT PICTURE].
+- [ ] Plug in the Ethernet (the plug is on the back side of the BIOPAC) to the multiport adapter connected to the computer *{{ secrets.hosts.oesteban | default("███") }}*.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
-    ![biopack-computer](../assets/images/CHUV_computer_setup.jpg "Connect Biopac to the computer")
+    ![mac_setup](../assets/images/mac_setup.png) 
+- [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC [INSERT PICTURE] and the other end to the parallel port of the NEUROSPEC parallel to USB converter [INSERT PICTURE].
+- [ ] Connect that NEUROSPEC adapter to one of the USB port of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
+- [ ] Plug the power cords of the BIOPAC and the GA into suitable power sockets.
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
 - [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube. 
 ![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
-- [ ] Connect the distal end of the extension tube to the cannula via a MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant. If the color of the drying tube changed, it should be replaced. You should keep enough extension tube inside the MR room so that it can lie on the floor. It is important that both the GA and the RB tubes lay on the floor as much as possible to avoid waves shaking the tubes.
+- [ ] Connect the distal end of the extension tube to the cannula via an MLA0343 drying tube and/or the desiccant chamber (?) and leave the cannula ready on the bed ready for the participant.
+    To connect the drying tube to the cannula, you need to insert with force the end into the cannula.
+    If the color of the drying tube changes, it should be replaced.
+    
+    !!! warning "Ensure that the length of the tubing inside the MR room is sufficient so that it can lie on the floor."
+    
+        When the tubing is hanging, pressure waves may alter the recorded gas concentration.
+
 ![drying-tube](../assets/images/Drying_Tube.jpg "MLA0343 drying tube")
 - [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
+![RB_connection](../assets/images/RB_connection.jpg "RB_connection")
 - [ ] Go back to the control room and connect the proximal end of the cannula extension tube to a MLA0110 inline filter.
 ![MLA0110-inline-filter](../assets/images/inline_filter.png "MLA0110 inline filter")
 - [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be replaced after some ten sessions.
@@ -66,6 +91,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Check that the exhaust pipe (back of the GA) is free of obstruction. An obstructed exhaust can damage the device!
     
 ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
+
 - [ ] Check that the cap on `Sample In` is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on and when switching on the GA**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
 ![gaz-analyser](../assets/images/gaz-analyser.jpg "Gas Analyzer")
 - [ ] Check that the flow control wheel (front of the GA) is set to the maximum.
@@ -109,6 +135,19 @@ Instructions of operations to be performed before the participant arrival, **bef
         
     - [ ] Get two gloves (e.g., from the box hanging at the entrance of the scanner room), then approach the scanner bed. Put the gloves on, and **DON'T TOUCH ANYTHING**. You MUST have the standard mirror dismounted and in front of you at this point. **WITH THE GLOVES** proceed to extract the infra-red mirror from its box, being extremely careful. **YOU CAN ONLY TOUCH THE MIRROR WITH GLOVES**, because it cannot be cleaned up. Watch out for **FINGERPRINTS** and once taken out of its box, **IMMEDIATELY PROCEED TO ATTACH IT** to the standard coil mirror. The mirror MUST NOT be placed anywhere else if not in its box.
     - [ ] **WITH YOUR GLOVES ON**, attach the ET mirror to the standard coil mirror (the larger mirror that points toward projector's screen at the back of the scanning room) using the scotch tape strips you prepared before. Put it more or less in the center, although <span style="color:red">this position may need to be adjusted</span> (being careful and with the same precautions explained before). **Do not touch the surface of the ET mirror.**
+
+        ![et-mirror-attached](../assets/images/et-mirror.jpg)
+
+        !!! danger "The infrared mirror MUST be airtight attached"
+
+            It is critical that there is no air gap between the infrared mirror and the standard mirror.
+            Also, make sure the scotch tape is firmly glued to the standard mirror because the infrared mirror will be hanging when placed on the coil and may loosen up creating a gap with the standard mirror.
+
+        !!! warning "Suggestion"
+
+            Since we are going to track the right eye only, it is useful to displace the infrared mirror to the
+            right from the participant's standpoint and cut the scotch tape narrower to occlude less surface of the mirrors on the right side.
+
     - [ ] Place the mirror frame back on the head coil. As always, **DO NOT TOUCH THE MIRROR**. 
 
 ## Back OUTSIDE THE SCANNER ROOM (control room)
@@ -124,7 +163,9 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![pctower](../assets/images/pctower.png)
     
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
+
     ![syncbox](../assets/images/syncbox.png)
+
 - [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
 
 ![connect-ethernet-to-laptop](../assets/images/connect-ethernet-to-laptop.png)
@@ -134,13 +175,18 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![syncbox-usb](../assets/images/syncbox-usb.png)
 
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
-
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
-    ![laptop_connections](../assets/images/laptop_connections.png)
+
+    !!! warning "If the monitor does not automatically switch the source of the screen, you can use the button below to switch it." 
+    
+        ![switch_screen](../assets/images/screen_switch.jpg)
+
+- Your laptop connections should now look like this.
+
+    ![laptop_setup](../assets/images/laptop_setup.png)
 
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens. **That step and that exact resolution is crucial for the eye-tracker calibration to work.**
-- [ ] Push the button shown below to project your screen on the second screen.
-    ![switch_screen](../assets/images/screen_switch.jpg)
+    
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that you can send trigger events manually:
@@ -173,15 +219,18 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
     - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
-    - [ ] On the ET computer, verify that the calibration selected is the 6-points one.
+    - [ ] On the ET computer, verify that the calibration selected is the 9-points one.
         - [ ] Click on `Set Options` on the right of the screen.
-        - [ ] On top left under `Calibration type`, choose the image containing 6 points [INSERT PICTURE].
+        - [ ] On top left under `Calibration type`, choose the image containing 9 points.
+            ![9-points_calibration](../assets/images/9-points_calibration.jpg)
 
 
 ## Final checks inside the scanning room
 
 - [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding.
     - [ ] Wrap a sanitary cover around each padding.
+    - [ ] The head padding should be chosen and adjusted to each participant depending on their head size so that their nose is only 1-2mm away from the anterior part of the coil.
+        The anterior part of the head coil will be tight around the participant's nose, so ensure they are nonetheless comfortable.
 - [ ] Prepare a blanket.
 - [ ] Prepare a new pair of earplugs.
 - [ ] Check the RB, ECG, and nasal cannula are prepared.

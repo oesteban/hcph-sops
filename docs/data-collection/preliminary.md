@@ -23,15 +23,22 @@
 
     When assigning names to the MR sequences in the protocol, make sure to follow the [Reproin conventions](https://dbic-handbook.readthedocs.io/en/latest/mri/reproin.html) to maximally facilitate the conversion into BIDS.
 - [ ] Once the protocol is decided upon, and after any updates, make sure of storing the protocol:
-    - [ ] Select all the sequences in the sequence list and click right to copy.
     - [ ] Open the Dot-Cockpit
+        ![](../assets/images/save_protocol1.jpg)
     - [ ] In `Browse`, find the right folder to save the protocol in (RESEARCH > Oscar).
-    - [ ] Right click on the folder and select `New program`.
-    - [ ] Paste the copied sequences in the empty program [INSERT PICTURE].
+    - [ ] Right click on the folder and select `New > Program`. This opens an empty page in the program editor
+        ![](../assets/images/save_protocol2.jpg)
+        ![](../assets/images/save_protocol3.jpg)
+    - [ ] Select all the sequences in the sequence list and click right to copy.
+        ![](../assets/images/save_protocol4.jpg)
+    - [ ] Drag or paste the copied sequences in the program editor.
+        ![](../assets/images/save_protocol5.jpg)
+    - [ ] Save the protocol by pressing on the floppy disk icon in the upper left. Give the protocol a relevant name starting with the date of acquisition in the format YYYYMMDD.
+        ![](../assets/images/save_protocol6.jpg)
     - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.
         - [ ] Click right on the protocol and select `Print`
         - [ ] Save the PDF in your USB key.
-    - [ ] Repeat the operation after creating the four variants of the protocol, one per PE direction.
+    - [ ] Repeat the operation to create the four variants of the protocol, one per PE direction.
 
 **Install the BIOPAC**
 
@@ -45,6 +52,7 @@
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
     - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
+- [ ] Ensure that the lever of the NEUROSPEC adapter is set on `s`.
 
 **Install the BIOPAC recording software AcqKnowledge.**
 - [ ] You have to add each BIOPAC module individually in the system
@@ -71,7 +79,63 @@
         - [ ] Under the section `Digital`, click on `Add new module`.
         - [ ] The parallel cable feeds into port D8-D15
 
+**Psychopy Installation**
+- [ ] Clone the [PsychoPy repository](git@github.com:psychopy/psychopy.git):
+    ```
+    git clone git@github.com:git@github.com:psychopy/psychopy.git
+    ```
+- [ ] Navigate to the Psychopy directory:
+    ```
+    cd psychopy
+    ```
+- [ ] Psychopy should not be installed with anaconda. If an anaconda environment is activated, run the following command to deactivate it:
+    ```
+    conda deactivate
+    ```
+- [ ] Update pip to the lastest version:
+    ```
+    pip3 install --upgrade pip
+    ```
+- [ ] Install bdist_mpkg, py2app and attrdict:
+    ```
+    pip3 attrdict py2app bdist_mpkg
+    ```
+- [ ] Install Psychopy using the following command:
+    ```
+    pip3 install -e .
+    ```
+- [ ] Create an alias by adding the following line to the end of your .bashrc file (Replace /path/to/psychopy/ with the actual path to the Psychopy directory on your machine)
+    ```
+    alias psychopy='python /path/to/psychopy/app/psychopyApp.py'
+    ```
+- [ ] Open Psycopy with the following command and check that it is correctly installed:
+    ```
+    psychopy
+    ```
+**EyeLink Software Installation**
 
+- [ ] Enable Canonical's universe repository with the following command:
+    ```
+    sudo add-apt-repository universe
+    sudo apt update
+    ```
+- [ ] Install and update the ca-certificates package:
+    ```
+    sudo apt update
+    sudo apt install ca-certificates
+    ```
+- [ ] Add the SR Research Software Repository signing key:
+    ```
+    sudo apt-key adv --fetch-keys https://apt.sr-research.com/SRResearch_key
+    ```
+- [ ] Install the EyeLink Developers Kit:
+    ```
+    sudo apt install eyelink-display-software
+    ```
+- [ ] Install the EyeLink Data Viewer:
+    ```
+    sudo apt install eyelink-dataviewer
+    ```
 #### Every two months - calibrate the GA
 
 - [ ] Get a gas bottle with a known CO<sub>2</sub> concentration between 5% and 10%.
