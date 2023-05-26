@@ -57,6 +57,8 @@
 
 **Psychopy Installation**
 
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
+
 - [ ] Clone the [PsychoPy repository](https://github.com/psychopy/psychopy.git):
     ```
     git clone git@github.com:psychopy/psychopy.git
@@ -90,6 +92,8 @@
     psychopy
     ```
 **EyeLink Software Installation**
+
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
 
 - [ ] Enable Canonical's universe repository with the following command:
     ```

@@ -158,6 +158,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
 
     ![syncbox](../assets/images/syncbox.png)
+    
+- [ ] Switch on *{{ secrets.hosts.psychopy | default("███") }}* and login with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
 
 - [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
 
