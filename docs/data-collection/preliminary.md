@@ -22,14 +22,27 @@
 !!!warning "Important: follow Reproin conventions"
 
     When assigning names to the MR sequences in the protocol, make sure to follow the [Reproin conventions](https://dbic-handbook.readthedocs.io/en/latest/mri/reproin.html) to maximally facilitate the conversion into BIDS.
-- [ ] Once the protocol is decided upon, and after any updates, make sure of storing the protocol:
-    - [ ] Open the Dot-Cockpit
+
+
+Once the protocol is decided upon, and after any updates, make sure of storing the protocol.
+
+!!! warning "Login as an advanced user to save protocol"
+    As a good practice, always work as *meduser*. Change for *advanced user mode* if you want to save the protocol.
+
+    - [ ] Simultaneously press the `Tab` + `Delete` + `+` (on a classical keyboard) keys of the keyboard of the control computer
+    - [ ] user: medadmin
+    - [ ] pwd: xxx
+
+    !!! Danger "After three wrong password entries, access will be denied, and only a Siemens engineer will be able to unlock the MR scanner."
+
+- [ ] Now that you are logged in as an advanced user, save your protocol:
+    - [ ] Open the Dot-Cockpit window
         ![](../assets/images/save_protocol1.jpg)
     - [ ] In `Browse`, find the right folder to save the protocol in (RESEARCH > Oscar).
     - [ ] Right click on the folder and select `New > Program`. This opens an empty page in the program editor
         ![](../assets/images/save_protocol2.jpg)
         ![](../assets/images/save_protocol3.jpg)
-    - [ ] Select all the sequences in the sequence list and click right to copy.
+    - [ ] Select all the sequences you want to run from the sequence list and click right to copy.
         ![](../assets/images/save_protocol4.jpg)
     - [ ] Drag or paste the copied sequences in the program editor.
         ![](../assets/images/save_protocol5.jpg)
@@ -38,7 +51,7 @@
     - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.
         - [ ] Click right on the protocol and select `Print`
         - [ ] Save the PDF in your USB key.
-    - [ ] Repeat the operation to create the four variants of the protocol, one per PE direction.
+- [ ] Make sure you save a different protocol for each of the four PE directions (i.e., AP, PA, LR, RL).
 
 **Install the BIOPAC**
 
