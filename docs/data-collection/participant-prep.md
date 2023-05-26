@@ -58,6 +58,7 @@
     > Look a the dot until the subtask is finished.
     >
     > Is everything clear to you? Do you have any questions?
+
 - [ ] Tell the participant they will be holding an alarm button throughout the session, and that they may use it any time whenever they need to stop the experiment.
     - [ ] Tell the participant that they MUST leave the alarm button, e.g., on their belly, during the positive control task. Indicate that you will remind them of this before starting the task.
 - [ ] Indicate the participant where the door to the changing room is, and ask them to change clothes if necessary.
@@ -135,7 +136,6 @@
 
     ![send_isocenter](../assets/images/send_isocenter.png)
 
-- [ ] Go behind the scanner, push the plexiglas panel until it touches the bed.
 - [ ] You should see the projection of the calibration mode as you left it open before.
 - [ ] Regulate the ET position until you see from the projector screen the eye. Once the eye is well seen and tracked, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil and two crosses appear on the eye. In case of need, the right lens can be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. If the position of the ET is not satisfying, you can move the base. As a last resort, you can also adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.
 
@@ -170,7 +170,10 @@
     > The circle will move around the screen. Please focus your gaze and follow it when it moves (do not anticipate).
 
 - [ ] Launch the ET calibration by pressing C on the laptop keyboard or by clicking on Calibration on the ET interface:
-    - [ ] When the gaze is stable, the button `Accept fixation` appears green, then you can manually click on it to validate the first position [INSERT PIC].
+    - [ ] When the gaze is stable, the button `Accept fixation` appears green, then you can manually click on it to validate the first position.
+
+    ![accept_fixation](../assets/images/accept_fixation.jpg) 
+
     - [ ] The following positions should be validated automatically when the gase is stable enough. If it is not the case, manually click on the validate button when it turns green
 - [ ] The ET software MUST show a cross during the calibration. If it does not, try sequentially the following:
     - [ ] readjust the focus of the ET; and if it still doesn't show the cross,

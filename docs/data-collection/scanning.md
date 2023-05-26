@@ -31,7 +31,8 @@
 
     !!!warning "Important"
         - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
-        - [ ] Open the DWI sequence and under the section `Diff`, uncheck all the derivatives except `Diffusion weighted image`.
+        - [ ] Repeat the latter for the sequence name "fmap-epi_dir-XX".
+        - [ ] Open the DWI sequence and under the section `Diff.`, uncheck all the derivatives except `Diff. Weighted Image`.
 
 !!!note "Essentials for running an MRI session"
     Once the T1-weighted sequence is finished, you can drag the corresponding high-resolution images to the MR image viewer. This will allow to position the field-of-view (FOV) for the DWI and BOLD sequences more accurately than the initial scout.
@@ -42,8 +43,8 @@
         - [ ] Open the sequence for which you want to adjust the FOV/geometry
         - [ ] Right click on the sequence for which the FOV has already been carefully positioned
         - [ ] Select `Copy Parameters`
-        - [ ] `Center [WHAT WAS THE NAME]`
-    - [ ] Once the FOV is well positioned, launch the sequence by pressing `Go`.
+        - [ ] `Center of slice groups and saturation regions`
+    - [ ] Once the FOV is well placed, launch the sequence by pressing `Go`.
 
     ![adjustFOV.jpg](../assets/images/adjustFOV.jpg)
 
