@@ -30,7 +30,7 @@
 
 
     !!!warning "Important"
-        - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>resc. the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
+        - [ ] Open the parameters of the sequence named "fmap-phasediff__gre" and ensure that under Contrast>Reconstruction the option "Magnitude et phase" is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
         - [ ] Repeat the latter for the sequence name "fmap-epi_dir-XX".
         - [ ] Open the DWI sequence and under the section `Diff.`, uncheck all the derivatives except `Diff. Weighted Image`.
 
@@ -91,7 +91,7 @@
 - [ ] Launch the `func-bold_task-bht_dir-AP` sequence.
 - [ ] While it is running, 
     - [ ] Adjust the FoV for the next sequence.
-    - [ ] Verify that in the next sequence parameters under Contrast>resc. the option `Magnitude et phase` is selected!
+    - [ ] Verify that in the next sequence parameters under Contrast>Reconstruction the option `Magnitude et phase` is selected!
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by clicking on `t` (as fast as possible to avoid collecting more data than needed).
 - [ ] Launch the fieldmap `fmap_phasediff_gre` sequence.
 - [ ] While it is running, 
