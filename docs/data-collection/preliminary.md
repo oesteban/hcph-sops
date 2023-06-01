@@ -1,6 +1,7 @@
 ### Preliminary work
 
 #### Once, at the beginning of the project
+- [ ] Get familiar with the [emergency procedures to run an MRI scan at CHUV](./scanning.md#emergency-procedures).
 - [ ] Prepare a laptop with a running Psychopy 3 installation AND the EyeTracker software. For these SOPs, the designated laptop for the experiments is *{{ secrets.hosts.psychopy | default("███") }}*.
 - [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
 - [ ] Clone the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks):
@@ -133,6 +134,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     ```
     sudo apt install eyelink-dataviewer
     ```
+
 #### Every two months - calibrate the GA
 
 - [ ] Get a gas bottle with a known CO<sub>2</sub> concentration between 5% and 10%.
