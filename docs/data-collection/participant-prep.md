@@ -169,7 +169,7 @@
     > First, we are going to calibrate the eye tracker. Please follow the small circle on the screen with your eyes, without moving your head.
     > The circle will move around the screen. Please focus your gaze and follow it when it moves (do not anticipate).
 
-- [ ] Launch the ET calibration by pressing C on the laptop keyboard or by clicking on Calibration on the ET interface:
+- [ ] Launch the ET calibration by pressing `C` on the laptop keyboard or by clicking on Calibration on the ET interface:
     - [ ] When the gaze is stable, the button `Accept fixation` appears green, then you can manually click on it to validate the first position.
 
     ![accept_fixation](../assets/images/accept_fixation.jpg) 
@@ -182,4 +182,4 @@
     - [ ] move the mirror up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position; and if it still doesn't show the cross,
     - [ ] iterate over the previous steps.
 - [ ] When the calibration is successful, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
-- [ ] If the validation is not ok, iterate over previous steps restarting calibration. Otherwise, you can move forward.
+- [ ] If the validation is not ok, iterate over previous steps restarting calibration. Otherwise, you can leave the calibration mode on and move forward.
