@@ -122,7 +122,7 @@
 
 # Emergency procedures
 !!!danger "Emergency procedures for MRI acquisition at CHUV"
-    **If at any point the participant rings the alarm**, it is crucial to check on the participant IMMEDIATELY.
+    **If at any point the participant rings the alarm**, it is critical to check on the participant IMMEDIATELY with the scanner's speaker system.
 
     - [ ] Turn off the alarm using the speaker button (1) or the crossed bell button (4).
 
