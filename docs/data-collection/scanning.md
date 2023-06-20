@@ -76,7 +76,7 @@
 - [ ] While it is running, tweek the FOV for the next sequence.
 - [ ] Launch the fieldmap GRE B0 fieldmapping sequence `fmap_phasediff_gre`.
 - [ ] While it is running, 
-    - [ ] Tweek the FOV for the next sequence.
+    - [ ] Adjust the FOV for the following sequence.
     - [ ] Verify that in the next sequence parameters under Contrast>Reconstruction the option `Magnitude et phase` is selected!
 - [ ] Launch the EPI BOLD B0 fieldmapping sequence `fmap-epi_dir-PA`. 
 - [ ] While the fieldmap sequence is running,
