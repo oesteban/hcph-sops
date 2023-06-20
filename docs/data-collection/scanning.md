@@ -63,8 +63,11 @@
 
 - [ ] Inform the participant that the diffusion scan will follow.
 
-    > Hey [NAME], the next sequence is diffusion. You can close your eyes if you want and just relax.
-    > It will last XX minutes.
+    > Hey [NAME], the next block is a bit long, around 30 minutes.
+    > You can close your eyes and even sleep if you wish.
+    > I'm going to give you a short time (ten seconds or so) to swallow, and perhaps accommodate your back or your arms. However, please try not to move your head.
+    > It is critical that you don't move, especially at all at the very beginning and the next 20 seconds after you hear the first blipping sounds.
+    > Try to minimize swallowing, and eye movements (for example, blinking) and try to maintain comfortable and shallow breathing.
 
 - [ ] Verify in the next sequence parameters under section `Diff.` that all the derivatives are unchecked except `Diff. Weighted Image`.
 - [ ] Launch the diffusion `dwi-dwi_dir-XX` sequence.
