@@ -93,7 +93,7 @@
     > In the third subtask, tap the finger of your left or right hand depending on the word that flashes.
     > I remind you that during the finger tapping you MUST leave the alarm button, e.g., on your belly.
 
-- [ ] Launch the qcfMRI sequence `func-bold_task-qc_dir-AP`.
+- [ ] Launch the QCT (`func-bold_task-qct_dir-XX`).
 - [ ] While it is running, tweak the FoV for the following sequence.
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by clicking on `t` (as fast as possible to avoid collecting more data than needed).
 - [ ] Prepare the resting-state task.
