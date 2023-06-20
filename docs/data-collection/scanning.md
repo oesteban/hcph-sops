@@ -1,14 +1,6 @@
 
-!!!danger "BE REACTIVE in case the alarm rings"
-    If at any point the participant rings the alarm, it is crucial to check on the participant IMMEDIATELY.
-
-    - [ ] Ask through the speaker if everything is alright because it might be that the participant pressed the alarm by mistake.
-    - [ ] If you do not get a clear answer that everything is ok, enter the scanning room 
-    - [ ] Only then turn off the alarm using the circular button either on the left or on the right of the bore.
-        ![alarm_button](../assets/images/alarm_button.png)
-    - [ ] Ask to the participant what's wrong. 
-        - [ ] If he needs reassurance or information, provide it and confirm he can continue the scanning session. However, if you cannot communicate efficiently, take the participant out of the scanner.
-        - [ ] If the participant does not feel well, provide assistance or call [WHO?] if it is really serious or if you have any doubts.
+!!!danger "Be familiar with emergency procedures"
+    Be sure to remember the security procedures in case of problem. They can be found [here](#emergency-procedures).
 
 - [ ] Indicate the participant that the scanning will soon start:
 
@@ -127,3 +119,66 @@
 - [ ] [SINGLE_ECHO BOLD ?]
 - [ ] Launch the T2w sequence.
 - [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
+
+# Emergency procedures
+!!!danger "Emergency procedures for MRI acquisition at CHUV"
+    **If at any point the participant rings the alarm**, it is critical to check on the participant IMMEDIATELY with the scanner's speaker system.
+
+        - [ ] Press the speaker button (1 in the picture below) and ask if everything is alright. It is possible that the participant triggered the alarm by mistake.
+            ![speaker](../assets/images/speaker.jpg)
+        
+            !!! warning "Pressing the speaker button (1) will turn the alarm off. It is possible to turn it off with the crossed-bell button (4), although discouraged since you should talk to the participant.
+
+    - [ ] Enter the scanning room if you do not get a response or the answer is unclear.
+        !!! danger "If there is an impending risk to the participant's health, immediately initiate the manual extraction protocol"
+            - [ ] If the bed is inside the bore:
+                - [ ] Unlock the manual retrieval of the scanner's bed
+                - [ ] Pull the bed all the way out of the bore
+                - [ ] Lock the manual retrieval back
+            - [ ] Lift the table's breaks locking the wheels
+            - [ ] Lift the manual lock of the table's attachment to the bore.
+            - [ ] Pull the bed out of the scanning room
+            - [ ] Reassess the participant's health in the control room and determine a course of action.
+    - [ ] If the alarm is still blaring, press the large, circular button at either side of the scanner's bore.
+        ![alarm_button](../assets/images/alarm_button.png)
+    - [ ] Assess the participant by asking them what is wrong.
+    - [ ] Determine whether they can continue the session after some comforting or information or if it must be stopped at that point.
+        - [ ] If the session must be stopped (e.g., the participant is feeling claustrophobic and cannot continue), hit the "Home" button to bring the participant outside the scanner's bore quickly.
+            ![home_button](../assets/images/home_button.png)
+        - [ ] If the participant is unresponsive, proceed with the manual extraction protocol.
+        - [ ] Under the [ROOMIN? (To be checked)] menu (lower left corner of the screen), click on the home button.
+
+    - [ ] If the participant does not feel well, provide assistance or call the resuscitation unit if it is really serious or if you have any doubts. The resuscitation unit (**{{ secrets.phones.intensive_care | default("███") }}**) is the person to call in any case, even if the participant is not in life-treatning condition. The phone number of the emergency services can be found on all the phones at CHUV.
+        - [ ] Once you called the intensive care unit, you have to press on the heart button [INSERT PICTURE]. First lift the lid and then press the button. This will guide the intensive care team to the place where they need to intervene. In case, you pressed the heart button by mistake, you can turn it off by pressing the adjacent green button.
+        - [ ] Then go back into the scanning room and take the participant out on the table
+            - [ ] To unlock the table you have to press the left pedal at the bottom end of the MRI bed with your foot.
+            - [ ] Bring the table out of the scanning room
+            - [ ] To put the table back, insert the arrow shape into the locking mechanism and when the MRI screen let you know it is ready for docking, press the right pedal with your foot for docking.
+        - [ ] If the resuscitation team needs to shock the participant for cardiac resuscitation, it must never be done on the MRI table as it risks to damage all the electronics in it. The participant needs to be transferred on another table first.
+    - [ ] **ONLY IF SOMEONE IS IN MORTAL DANGER**, you are allowed to press the quench button [INSERT PICTURE] to stop the magnetic field.
+
+    !!! Danger "Fire inside the scanner's room"
+
+        - [ ] Immediately call the internal firefighter service at **{{ secrets.phones.firefighter | default("███") }}**. Again, the phone number of the emergency services can be found on all the phones at CHUV.
+        - [ ] Cut the electricity in the MRI room by pressing the red button below. [INSERT PICTURE] This will NOT turn off the magnetic field!
+        - [ ] Remove the subject from the scanner's room, applying the manual extraction procedure described above.
+        - [ ] Remind the firefighters not to enter with conventional extinguishers in the room as the magnetic field will heavily attract them. In the corner of the console room, there is an MRI-compatible extinguisher. [INSERT PICTURE]
+
+    !!! Warning "In case you feel unsafe"
+    
+        If you feel unsafe for any reason (for example, because a patient behaves aggressively or threatens you), **CALL SECURITY at {{ secrets.phones.security | default("███") }}**.
+
+    !!! warning "Technical difficulties"
+    
+        If you are facing technical difficulties:
+            - [ ] Seek help from anyone on the BH7 floor.
+            - [ ] If you still have problems or didn't find anyone (e.g., scanning on a weekend), call the ER's MRI staff at {{ secrets.phones.emergency_IRM | default("███") }}.
+    
+    !!! danger "Immediately report any issues"
+    
+         Once the situation is resolved but before anything else, send an email to {{ secrets.email.mri_coordinator_chuv1 | default("███") }} and {{ secrets.email.mri_coordinator_chuv2 | default("███") }}. Make sure to report **any potential risk you can anticipate to clinical activity the following day**.
+
+!!! warning "Resetting the scanner's table after it's been manually detached
+
+    - [ ] Dock the table onto the scanner's bore and push down the manual attachment lock with your foot.
+    - [ ] Simultaneously press the up and down buttons to activate the automatic recalibration of the table.
