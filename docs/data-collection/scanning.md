@@ -53,23 +53,62 @@
     - [ ] Check in with the participant frequently.
     - [ ] Watch for motion if you can see the participant, or use motion monitoring equipment.
 
-- [ ] Launch the fieldmap `fmap-epi_dir-PA` sequence.
+- [ ] Inform the participant that the diffusion scan will follow.
+
+    > Hey [NAME], the next block is a bit long, around 30 minutes.
+    > You can close your eyes and even sleep if you wish.
+    > I'm going to give you a short time (ten seconds or so) to swallow, and perhaps accommodate your back or your arms. However, please try not to move your head.
+    > It is critical that you don't move, especially at all at the very beginning and the next 20 seconds after you hear the first blipping sounds.
+    > Try to minimize swallowing, and eye movements (for example, blinking) and try to maintain comfortable and shallow breathing.
+
+- [ ] Verify in the next sequence parameters under section `Diff.` that all the derivatives are unchecked except `Diff. Weighted Image`.
+- [ ] Launch the diffusion `dwi-dwi_dir-XX` sequence.
+- [ ] While it is running, adjust the FOV for the following sequence.
+- [ ] Launch the DWI B0 fieldmapping sequence `fmap-epi_acq-highres_dir-XX`.
+- [ ] While it is running, adjust the FOV for the following sequence.
+- [ ] Launch the fieldmap GRE B0 fieldmapping sequence `fmap_phasediff_gre`.
+- [ ] While it is running, 
+    - [ ] Adjust the FOV for the following sequence.
+    - [ ] Verify that in the next sequence parameters under Contrast>Reconstruction the option `Magnitude et phase` is selected!
+- [ ] Launch the EPI BOLD B0 fieldmapping sequence `fmap-epi_dir-PA`. 
 - [ ] While the fieldmap sequence is running,
-    - [ ] check the FOV for the resting-state functional MRI (rsfMRI) sequence following the steps explained above.
-    - [ ] Verify that the resting-state task `resting_state.psyexp` is open in psychopy, that you calibrated the ET and that the task is ready to receive the scanner trigger to start. 
-- [ ] Inform the participant that the next sequence is rsfMRI.
+    - [ ] check the FOV for the quality-control-task (`task-qct`) fMRI sequence following the abovementioned steps.
+    - [ ] Verify that the quality-control task `control_task.psyexp` is open in psychopy, that you calibrated the ET.
+- [ ] Once the calibration of the ET is concluded, hit the `Esc` key on the laptop *{{ secrets.hosts.psychopy | default("███") }}* to exit the calibration mode continue the task's program.
+- [ ] Verify that the task's program is awaiting the scanner's trigger to start.
+- [ ] Inform the participant that we will proceed with the quality control task. Repeat task instructions.
+
+    > Hey [NAME], the following block will collect some behavioral data and requires your collaboration.
+    > You will be exposed to several activities.
+    > Whenever you see a red circle, please fix your gaze on it, wherever it is shown on the screen.
+    > If the red circle moves, we ask you to follow it with your eyes.
+    > Some other times, you'll see either "RIGHT" or "LEFT" written on the screen. During those times, please tap your thumb and the other fingers of your right or left hand as indicated on the screen.
+    > Before we start, please leave the alarm button on your tummy to free your hand for finger tapping. Please do not hesitate to grab it in case you need to squeeze it.
+
+- [ ] Launch the QCT (`func-bold_task-qct_dir-XX`).
+- [ ] While it is running, adjust the FoV for the following sequence.
+- [ ] Once the sequence is over, you need to stop manually the psychopy task by clicking on `t` (as fast as possible to avoid collecting more data than needed).
+- [ ] Prepare the resting-state task.
+        - [ ] Open `resting_state.psyexp` in psychopy.
+        - [ ] Run the experiment by pressing the green play button. 
+        - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
+        - [ ] Press `C` to open the calibration mode and proceed as described in [the participant setup page](./participant-prep.md) to perform the calibration and validation.
+        - [ ] Exit the calibration mode by clicking on [WHAT?].
+        - [ ] Verify that the task is ready to receive input trigger to start.
+- [ ] Inform the participant that the next sequence is resting-state fMRI (rsfMRI).
 
     > Hey [NAME], we are about to start resting-state fMRI.
     > For this scan, all you have to do is stay still, and look at the movie.
     > Please do not close your eyes.
     > Are you ready?
 
-- [ ] Launch the rsfMRI `func-bold_task-rest_dir-AP` sequence.
+- [ ] Launch the rsfMRI sequence `func-bold_task-rest_dir-XX`.
 - [ ] While it is running, tweak the FoV for the following sequence.
 - [ ] Once the sequence is over, close the resting-state task and open the breath-holding one `breath_holding_task.psyexp`.
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
-    - [ ] [DO WE HAVE TO DO THE CALIBRATION EVERYTIME OR NOT?]
+    - [ ] Press `C` to open the calibration mode and proceed as described in [the participant setup page](./participant-prep.md) to perform the calibration and validation.
+    - [ ] Exit the calibration mode by clicking on `Esc`
     - [ ] Verify that the task is ready to receive input trigger to start.
 
 - [ ] Inform the participant that the next sequence is breath-holding task fMRI. Repeat the instructions for the task.
@@ -80,43 +119,9 @@
     > Remember to not follow the breathing instructions during the first block and to exhale the small amount of air you have remaining at the end of the hold.
     > Are you ready?
 
-- [ ] Launch the `func-bold_task-bht_dir-AP` sequence.
-- [ ] While it is running, 
-    - [ ] Adjust the FoV for the next sequence.
-    - [ ] Verify that in the next sequence parameters under Contrast>Reconstruction the option `Magnitude et phase` is selected!
+- [ ] Launch the `func-bold_task-bht_dir-XX` sequence.
+- [ ] While it is running, adjust the FoV for the following sequence. 
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by clicking on `t` (as fast as possible to avoid collecting more data than needed).
-- [ ] Launch the fieldmap `fmap_phasediff_gre` sequence.
-- [ ] While it is running, 
-    - [ ] Tweek the FOV for the next sequence.
-    - [ ] Verify that in the next sequence parameters under [WHERE?] that all the derivatives are unchecked except `Diffusion weighted image`.
-- [ ] Inform the participant that the diffusion scan will follow.
-
-    > Hey [NAME], the next sequence is diffusion. You can close your eyes if you want and just relax.
-    > It will last XX minutes.
-
-- [ ] Launch the diffusion `dwi-dwi_dir-PA` sequence.
-- [ ] While it is running, tweek the FOV for the next sequence.
-- [ ] Launch the fieldmap `fmap-epi_acq-highres_dir-AP` sequence.
-- [ ] While it is running, 
-    - [ ] Tweek the FOV for the next sequence.
-    - [ ] Prepare the the quality control task 
-        - [ ] Open `control_task.psyexp` in psychopy
-        - [ ] Run the experiment by pressing the green play button. 
-        - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
-        - [ ] [DO WE HAVE TO DO THE CALIBRATION EVERYTIME OR NOT?]
-        - [ ] Verify that the task is ready to receive input trigger to start.
-- [ ] Inform the participant that we will proceed with the quality control task. Repeat task instructions.
-
-    > Hey [NAME], the next scan is the quality control task.
-    > I remind you that this task is composed of different subtasks.
-    > In the first subtask, you must fix the cross.
-    > In the second subtask, you must follow the points with your eyes. 
-    > In the third subtask, tap the finger of your left or right hand depending on the word that flashes.
-    > I remind you that during the finger tapping you MUST leave the alarm button, e.g., on your belly.
-
-- [ ] Launch the control task fMRI `func-bold_task-qc_dir-AP` sequence.
-- [ ] While it is running, tweek the FOV for the next sequence.
-- [ ] [SINGLE_ECHO BOLD ?]
 - [ ] Launch the T2w sequence.
 - [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
 
