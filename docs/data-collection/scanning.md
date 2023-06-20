@@ -155,7 +155,11 @@
     
         If you feel unsafe for any reason (for example, because a patient behaves aggressively or threatens you), **CALL SECURITY at {{ secrets.phones.security | default("███") }}**.
 
-    **If you are facing technical difficulties**, try to find someone on the floor that can help you. If you do not find anyone, you can call the people at the MRI in the emergency service at {{ secrets.phones.emergency_IRM | default("███") }}.
+    !!! warning "Technical difficulties"
+    
+        If you are facing technical difficulties:
+            - [ ] Seek help from anyone on the BH7 floor.
+            - [ ] If you still have problems or didn't find anyone (e.g., scanning on a weekend), call the ER's MRI staff at {{ secrets.phones.emergency_IRM | default("███") }}.
     
     - [ ] Immediately report issues by email to {{ secrets.email.mri_coordinator_chuv1 | default("███") }} and {{ secrets.email.mri_coordinator_chuv2 | default("███") }} if there is a risk to clinical activity the following day.
 
