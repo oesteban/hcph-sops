@@ -113,7 +113,7 @@
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
     - [ ] Press `C` to open the calibration mode and proceed as described in [the participant setup page](./participant-prep.md) to perform the calibration and validation.
-    - [ ] Exit the calibration mode by clicking on [WHAT?]
+    - [ ] Exit the calibration mode by clicking on `Esc`
     - [ ] Verify that the task is ready to receive input trigger to start.
 
 - [ ] Inform the participant that the next sequence is breath-holding task fMRI. Repeat the instructions for the task.
