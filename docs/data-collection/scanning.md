@@ -124,11 +124,11 @@
 !!!danger "Emergency procedures for MRI acquisition at CHUV"
     **If at any point the participant rings the alarm**, it is critical to check on the participant IMMEDIATELY with the scanner's speaker system.
 
-    - [ ] Turn off the alarm using the speaker button (1) or the crossed bell button (4).
+        - [ ] Press the speaker button (1 in the picture below) and ask if everything is alright. It is possible that the participant triggered the alarm by mistake.
+            ![speaker](../assets/images/speaker.jpg)
+        
+            !!! warning "Pressing the speaker button (1) will turn the alarm off. It is possible to turn it off with the crossed-bell button (4), although discouraged since you should talk to the participant.
 
-        ![speaker](../assets/images/speaker.jpg)
-
-    - [ ] Ask through the speaker if everything is alright because it might be that the participant pressed the alarm by mistake.
     - [ ] If you do not get a clear answer that everything is ok, enter the scanning room or if it seems urgent, take the table out from the scanner console
         - [ ] Under the [ROOMIN? (To be checked)] menu (lower left corner of the screen), click on the home button.
     - [ ] If you did not turn off the alarm yet, you can do so using the circular button either on the left or on the right of the bore.
