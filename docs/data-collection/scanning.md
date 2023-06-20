@@ -161,7 +161,9 @@
             - [ ] Seek help from anyone on the BH7 floor.
             - [ ] If you still have problems or didn't find anyone (e.g., scanning on a weekend), call the ER's MRI staff at {{ secrets.phones.emergency_IRM | default("███") }}.
     
-    - [ ] Immediately report issues by email to {{ secrets.email.mri_coordinator_chuv1 | default("███") }} and {{ secrets.email.mri_coordinator_chuv2 | default("███") }} if there is a risk to clinical activity the following day.
+    !!! danger "Immediately report any issues"
+    
+         Once the situation is resolved but before anything else, send an email to {{ secrets.email.mri_coordinator_chuv1 | default("███") }} and {{ secrets.email.mri_coordinator_chuv2 | default("███") }}. Make sure to report **any potential risk you can anticipate to clinical activity the following day**.
 
 !!! warning "Resetting the scanner's table after it's been manually detached
 
