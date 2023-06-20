@@ -66,7 +66,7 @@
     - [ ] Clean the skin with [WHAT?].
     - [ ] Remove the protective film from the electrode.
     - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes.
-        ![prep-ecg-electrodes](../assets/images/prep-ECG-electrodes.jpg)
+        ![prep-ecg-electrodes](../assets/images/prep-ECG-electrodes.png)
 
 ## Preparation of the scanning protocol (control console)
 
