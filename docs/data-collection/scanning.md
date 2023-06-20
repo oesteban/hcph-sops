@@ -80,7 +80,7 @@
     - [ ] Verify that in the next sequence parameters under Contrast>Reconstruction the option `Magnitude et phase` is selected!
 - [ ] Launch the EPI BOLD B0 fieldmapping sequence `fmap-epi_dir-PA`. 
 - [ ] While the fieldmap sequence is running,
-    - [ ] check the FOV for the quality-control-task functional MRI (qcfMRI) sequence following the steps explained above.
+    - [ ] check the FOV for the quality-control-task (`task-qct`) fMRI sequence following the abovementioned steps.
     - [ ] Verify that the quality-control task `control_task.psyexp` is open in psychopy, that you calibrated the ET.
 - [ ] Once the calibration of the ET is concluded, hit the `Esc` key on the laptop *{{ secrets.hosts.psychopy | default("███") }}* to exit the calibration mode continue the task's program.
 - [ ] Verify that the task is ready to receive the scanner trigger to start.
