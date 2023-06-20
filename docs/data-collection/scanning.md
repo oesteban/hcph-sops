@@ -87,7 +87,7 @@
 - [ ] Inform the participant that we will proceed with the quality control task. Repeat task instructions.
 
     > Hey [NAME], the following block will collect some behavioral data and requires your collaboration.
-    > I remind you that this task is composed of different subtasks.
+    > You will be exposed to several activities.
     > In the first subtask, you must fix the cross.
     > In the second subtask, you must follow the points with your eyes. 
     > In the third subtask, tap the finger of your left or right hand depending on the word that flashes.
