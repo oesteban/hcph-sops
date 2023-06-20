@@ -89,7 +89,7 @@
     > Hey [NAME], the following block will collect some behavioral data and requires your collaboration.
     > You will be exposed to several activities.
     > Whenever you see a red circle, please fix your gaze on it, wherever it is shown on the screen.
-    > In the second subtask, you must follow the points with your eyes. 
+    > If the red circle moves, we ask you to follow it with your eyes.
     > In the third subtask, tap the finger of your left or right hand depending on the word that flashes.
     > I remind you that during the finger tapping you MUST leave the alarm button, e.g., on your belly.
 
