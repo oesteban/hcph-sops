@@ -155,7 +155,9 @@
         - [ ] Press the up and down button simultaneously to activate the automatic recalibration of the table.
     - [ ] Remind the firefighters to not enter with conventional extinguisher in the room as it will be heavily attracted by the magnetic field. In the corner of the console room, there is an MRI compatible extinguisher. [INSERT PICTURE]
 
-    **In case you feel unsafe**, e.g because a patient behaves aggressively towards you, you can call the CHUV security at **{{ secrets.phones.security | default("███") }}**.
+    !!! Warning "In case you feel unsafe"
+    
+        If you feel unsafe for any reason (for example, because a patient behaves aggressively or threatens you), **CALL SECURITY at {{ secrets.phones.security | default("███") }}**.
 
     **If you are facing technical difficulties**, try to find someone on the floor that can help you. If you do not find anyone, you can call the people at the MRI in the emergency service at {{ secrets.phones.emergency_IRM | default("███") }}.
     
