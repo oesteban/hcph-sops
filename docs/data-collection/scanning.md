@@ -86,7 +86,7 @@
 - [ ] Verify that the task is ready to receive the scanner trigger to start.
 - [ ] Inform the participant that we will proceed with the quality control task. Repeat task instructions.
 
-    > Hey [NAME], the next scan is the quality control task.
+    > Hey [NAME], the following block will collect some behavioral data and requires your collaboration.
     > I remind you that this task is composed of different subtasks.
     > In the first subtask, you must fix the cross.
     > In the second subtask, you must follow the points with your eyes. 
