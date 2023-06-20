@@ -129,7 +129,23 @@
         
             !!! warning "Pressing the speaker button (1) will turn the alarm off. It is possible to turn it off with the crossed-bell button (4), although discouraged since you should talk to the participant.
 
-    - [ ] If you do not get a clear answer that everything is ok, enter the scanning room or if it seems urgent, take the table out from the scanner console
+    - [ ] Enter the scanning room if you do not get a response or the answer is unclear.
+        !!! danger "If there is an impending risk to the participant's health, immediately initiate the manual extraction protocol"
+            - [ ] If the bed is inside the bore:
+                - [ ] Unlock the manual retrieval of the scanner's bed
+                - [ ] Pull the bed all the way out of the bore
+                - [ ] Lock the manual retrieval back
+            - [ ] Lift the table's breaks locking the wheels
+            - [ ] Lift the manual lock of the table's attachment to the bore.
+            - [ ] Pull the bed out of the scanning room
+            - [ ] Reassess the participant's health in the control room and determine a course of action.
+    - [ ] If the alarm is still blaring, press the large, circular button at either side of the scanner's bore.
+        ![alarm_button](../assets/images/alarm_button.png)
+    - [ ] Assess the participant by asking them what is wrong.
+    - [ ] Determine whether they can continue the session after some comforting or information or if it must be stopped at that point.
+        - [ ] If the session must be stopped (e.g., the participant is feeling claustrophobic and cannot continue), hit the "Home" button to bring the participant outside the scanner's bore quickly.
+            ![home_button](../assets/images/home_button.png)
+        - [ ] If the participant is unresponsive, proceed with the manual extraction protocol.
         - [ ] Under the [ROOMIN? (To be checked)] menu (lower left corner of the screen), click on the home button.
 
     - [ ] If the participant does not feel well, provide assistance or call the resuscitation unit if it is really serious or if you have any doubts. The resuscitation unit (**{{ secrets.phones.intensive_care | default("███") }}**) is the person to call in any case, even if the participant is not in life-treatning condition. The phone number of the emergency services can be found on all the phones at CHUV.
@@ -141,15 +157,12 @@
         - [ ] If the resuscitation team needs to shock the participant for cardiac resuscitation, it must never be done on the MRI table as it risks to damage all the electronics in it. The participant needs to be transferred on another table first.
     - [ ] **ONLY IF SOMEONE IS IN MORTAL DANGER**, you are allowed to press the quench button [INSERT PICTURE] to stop the magnetic field.
 
-    ** If a fire starts in the MRI room **
+    !!! Danger "Fire inside the scanner's room"
 
-    - [ ] Immediately call the internal firefighter service at **{{ secrets.phones.firefighter | default("███") }}**. Again, the phone number of the emergency services can be found on all the phones at CHUV.
-    - [ ] Cut the electricity in the MRI room by pressing the red button below. [INSERT PICTURE] This will NOT turn off the magnetic field!
-    - [ ] Since the electricity is cut, you have to take the participant out of the scanner manually.
-        - [ ] Behind the table on the right side at the height of the participants' feet, you have a black lever. Pull it out and then move the bed manually.
-        - [ ] To put the bed back in place, you have to pull it until the very end and then you can push the black lever back in. 
-        - [ ] Press the up and down button simultaneously to activate the automatic recalibration of the table.
-    - [ ] Remind the firefighters to not enter with conventional extinguisher in the room as it will be heavily attracted by the magnetic field. In the corner of the console room, there is an MRI compatible extinguisher. [INSERT PICTURE]
+        - [ ] Immediately call the internal firefighter service at **{{ secrets.phones.firefighter | default("███") }}**. Again, the phone number of the emergency services can be found on all the phones at CHUV.
+        - [ ] Cut the electricity in the MRI room by pressing the red button below. [INSERT PICTURE] This will NOT turn off the magnetic field!
+        - [ ] Remove the subject from the scanner's room, applying the manual extraction procedure described above.
+        - [ ] Remind the firefighters not to enter with conventional extinguishers in the room as the magnetic field will heavily attract them. In the corner of the console room, there is an MRI-compatible extinguisher. [INSERT PICTURE]
 
     !!! Warning "In case you feel unsafe"
     
