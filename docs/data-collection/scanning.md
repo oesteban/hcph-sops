@@ -161,3 +161,7 @@
     
     - [ ] Immediately report issues by email to {{ secrets.email.mri_coordinator_chuv1 | default("███") }} and {{ secrets.email.mri_coordinator_chuv2 | default("███") }} if there is a risk to clinical activity the following day.
 
+!!! warning "Resetting the scanner's table after it's been manually detached
+
+    - [ ] Dock the table onto the scanner's bore and push down the manual attachment lock with your foot.
+    - [ ] Simultaneously press the up and down buttons to activate the automatic recalibration of the table.
