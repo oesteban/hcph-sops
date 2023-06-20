@@ -83,7 +83,7 @@
     - [ ] check the FOV for the quality-control-task (`task-qct`) fMRI sequence following the abovementioned steps.
     - [ ] Verify that the quality-control task `control_task.psyexp` is open in psychopy, that you calibrated the ET.
 - [ ] Once the calibration of the ET is concluded, hit the `Esc` key on the laptop *{{ secrets.hosts.psychopy | default("███") }}* to exit the calibration mode continue the task's program.
-- [ ] Verify that the task is ready to receive the scanner trigger to start.
+- [ ] Verify that the task's program is awaiting the scanner's trigger to start.
 - [ ] Inform the participant that we will proceed with the quality control task. Repeat task instructions.
 
     > Hey [NAME], the following block will collect some behavioral data and requires your collaboration.
