@@ -91,10 +91,10 @@
     > Whenever you see a red circle, please fix your gaze on it, wherever it is shown on the screen.
     > If the red circle moves, we ask you to follow it with your eyes.
     > Some other times, you'll see either "RIGHT" or "LEFT" written on the screen. During those times, please tap your thumb and the other fingers of your right or left hand as indicated on the screen.
-    > I remind you that during the finger tapping you MUST leave the alarm button, e.g., on your belly.
+    > Before we start, please leave the alarm button on your tummy to free your hand for finger tapping. Please do not hesitate to grab it in case you need to squeeze it.
 
 - [ ] Launch the QCT (`func-bold_task-qct_dir-XX`).
-- [ ] While it is running, tweak the FoV for the following sequence.
+- [ ] While it is running, adjust the FoV for the following sequence.
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by clicking on `t` (as fast as possible to avoid collecting more data than needed).
 - [ ] Prepare the resting-state task.
         - [ ] Open `resting_state.psyexp` in psychopy.
@@ -128,7 +128,7 @@
     > Are you ready?
 
 - [ ] Launch the `func-bold_task-bht_dir-XX` sequence.
-- [ ] While it is running, adjust the FoV for the next sequence. 
+- [ ] While it is running, adjust the FoV for the following sequence. 
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by clicking on `t` (as fast as possible to avoid collecting more data than needed).
 - [ ] Launch the T2w sequence.
 - [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
