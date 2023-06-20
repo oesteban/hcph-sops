@@ -131,10 +131,6 @@
 
     - [ ] If you do not get a clear answer that everything is ok, enter the scanning room or if it seems urgent, take the table out from the scanner console
         - [ ] Under the [ROOMIN? (To be checked)] menu (lower left corner of the screen), click on the home button.
-    - [ ] If you did not turn off the alarm yet, you can do so using the circular button either on the left or on the right of the bore.
-
-        ![alarm_button](../assets/images/alarm_button.png)
-
 
     - [ ] If the participant does not feel well, provide assistance or call the resuscitation unit if it is really serious or if you have any doubts. The resuscitation unit (**{{ secrets.phones.intensive_care | default("███") }}**) is the person to call in any case, even if the participant is not in life-treatning condition. The phone number of the emergency services can be found on all the phones at CHUV.
         - [ ] Once you called the intensive care unit, you have to press on the heart button [INSERT PICTURE]. First lift the lid and then press the button. This will guide the intensive care team to the place where they need to intervene. In case, you pressed the heart button by mistake, you can turn it off by pressing the adjacent green button.
