@@ -71,7 +71,7 @@
 
 - [ ] Verify in the next sequence parameters under section `Diff.` that all the derivatives are unchecked except `Diff. Weighted Image`.
 - [ ] Launch the diffusion `dwi-dwi_dir-XX` sequence.
-- [ ] While it is running, tweek the FOV for the next sequence.
+- [ ] While it is running, adjust the FOV for the following sequence.
 - [ ] Launch the DWI B0 fieldmapping sequence `fmap-epi_acq-highres_dir-XX`.
 - [ ] While it is running, tweek the FOV for the next sequence.
 - [ ] Launch the fieldmap GRE B0 fieldmapping sequence `fmap_phasediff_gre`.
