@@ -79,7 +79,7 @@
 - [ ] While the fieldmap sequence is running,
     - [ ] check the FOV for the quality-control-task functional MRI (qcfMRI) sequence following the steps explained above.
     - [ ] Verify that the quality-control task `control_task.psyexp` is open in psychopy, that you calibrated the ET.
-- [ ] Once the sequence is over, click on [WHAT?] to go out of the calibration mode and launch the task. 
+- [ ] Once the calibration of the ET is concluded, hit the `Esc` key on the laptop *{{ secrets.hosts.psychopy | default("███") }}* to exit the calibration mode continue the task's program.
 - [ ] Verify that the task is ready to receive the scanner trigger to start.
 - [ ] Inform the participant that we will proceed with the quality control task. Repeat task instructions.
 
