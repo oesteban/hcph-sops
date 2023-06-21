@@ -129,11 +129,6 @@
 !!!danger "Emergency procedures for MRI acquisition at CHUV"
     **If at any point the participant rings the alarm**, it is critical to check on the participant IMMEDIATELY with the scanner's speaker system.
 
-        - [ ] Press the speaker button (1 in the picture below) and ask if everything is alright. It is possible that the participant triggered the alarm by mistake.
-            ![speaker](../assets/images/speaker.jpg)
-        
-            !!! warning "Pressing the speaker button (1) will turn the alarm off. It is possible to turn it off with the crossed-bell button (4), although discouraged since you should talk to the participant.
-
     - [ ] Enter the scanning room if you do not get a response or the answer is unclear.
         !!! danger "If there is an impending risk to the participant's health, immediately initiate the manual extraction protocol"
             - [ ] If the bed is inside the bore:
@@ -167,7 +162,8 @@
         - [ ] Immediately call the internal firefighter service at **{{ secrets.phones.firefighter | default("███") }}**. Again, the phone number of the emergency services can be found on all the phones at CHUV.
         - [ ] Cut the electricity in the MRI room by pressing the red button below. [INSERT PICTURE] This will NOT turn off the magnetic field!
         - [ ] Remove the subject from the scanner's room, applying the manual extraction procedure described above.
-        - [ ] Remind the firefighters not to enter with conventional extinguishers in the room as the magnetic field will heavily attract them. In the corner of the console room, there is an MRI-compatible extinguisher. [INSERT PICTURE]
+        - [ ] Remind the firefighters not to enter with conventional extinguishers in the room as the magnetic field will heavily attract them. In the corner of the console room, there is an MRI-compatible extinguisher.       
+![fire_extinguisher.jpg](../assets/images/fire_extinguisher.jpg)
 
     !!! Warning "In case you feel unsafe"
     
