@@ -167,7 +167,7 @@
         - [ ] Immediately call the internal firefighter service at **{{ secrets.phones.firefighter | default("███") }}**. Again, the phone number of the emergency services can be found on all the phones at CHUV.
         - [ ] Cut the electricity in the MRI room by pressing the red button below. [INSERT PICTURE] This will NOT turn off the magnetic field!
         - [ ] Remove the subject from the scanner's room, applying the manual extraction procedure described above.
-        - [ ] Remind the firefighters not to enter with conventional extinguishers in the room as the magnetic field will heavily attract them. In the corner of the console room, there is an MRI-compatible extinguisher. [INSERT PICTURE]
+        - [ ] Remind the firefighters not to enter with conventional extinguishers in the room as the magnetic field will heavily attract them. In the corner of the console room, there is an MRI-compatible extinguisher ![fire_extinguisher.jpg](../assets/images/fire_extinguisher.jpg)
 
     !!! Warning "In case you feel unsafe"
     
