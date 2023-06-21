@@ -56,6 +56,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
         - [ ] Click right on the protocol and select `Print`
         - [ ] Save the PDF in your USB key.
 - [ ] Make sure you save a different protocol for each of the four PE directions (i.e., AP, PA, LR, RL).
+- [ ] **Time the functional MRI runs (rest, qct, bht)** and update the *Number of measurements* accordingly. [WRITE FORMULA]
 
 **Install the BIOPAC**
 

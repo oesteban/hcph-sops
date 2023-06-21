@@ -17,6 +17,7 @@ nav:
       - Preparing the participant: data-collection/participant-prep.md
       - Running the scanning session: data-collection/scanning.md
       - Session tear-down: data-collection/tear-down.md
+      - Emergency procedures: data-collection/emergency-procedures.md
     - Data management: data-storage.md
     - Preprocessing: preprocessing.md
     - Release of data: release.md
