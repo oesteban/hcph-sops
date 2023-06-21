@@ -3,6 +3,7 @@
 ## Fire in the scanning room
 - [ ] Immediately call the internal firefighter service at **{{ secrets.phones.firefighter | default("███") }}**.
 - [ ] Cut the electricity in the MRI room by pressing the red button below. [INSERT PICTURE]
+
     !!! danger "Cutting electricity will NOT turn off the magnetic field!"
 
 - [ ] Remove the subject from the scanner's room, applying the [manual extraction procedure described below](#manual-extraction-procedure).
