@@ -52,7 +52,7 @@
 
 - [ ] Make the participant aware that you entered the room and ask them what is wrong.
 
-    !!! danger "If the participant is unresponsive, extract them from the scanner's bore using the standard procedure (the *Home* button). In case you previously cut the electricity or failure of the standard procedure, follow the manual procedure described in the [manual extraction protocol](#manual-extraction-procedure)."
+    !!! danger "If the participant is unresponsive, extract them from the scanner's bore using the standard procedure (the *Home* button). In case you previously cut the electricity or failure of the standard procedure, follow the manual procedure described in the first steps of [manual extraction protocol](#manual-extraction-procedure)."
 
 - [ ] Determine whether the participant can continue the session after some comforting or information or if it must be stopped at that point (e.g., the participant is feeling claustrophobic and cannot continue).
 - [ ] If the session must be stopped, or you determine it is necessary to extract the participant before making that decision, hit the "Home" button to bring the participant outside the scanner's bore quickly.
