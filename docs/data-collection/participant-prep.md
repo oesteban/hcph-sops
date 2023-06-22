@@ -1,69 +1,122 @@
 
-
-
 !!!warning "Procedures for when the participant has arrived"
     It is critical to stay alert and anticipate any potential risk to the participant to avert them.
     This is particularly important for the first session.
 
 ## Preparation of the participant in the CONTROL ROOM
 
-- [ ] Have participant fill out consent documents and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia.
+### Participant reception
+
+- [ ] Show the participant the scanning room and explain to them how the device is controlled from outside.
+- [ ] Ask the participant to fill out the consent form and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia.
 
 !!!danger "DO NOT subject the participant to any risk"
     - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at {{ secrets.phones.medical_contact | default("███") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
     - [ ] In case of discovering any previously undisclosed contraindication, the volunteer **MUST NOT** participate in the study.
 
 !!!warning "Only female participants, only the first session"
+    - [ ] Remind the participant that for their safety, pregnant women cannot participate:
+        > Hey [NAME], I have to remind you that pregnant women cannot participate for their safety.
+        > To be absolutely sure that you are not scanned while being pregnant, the ethical review board requests us that you take a pregnancy test before the first session.
+        > Here you have a test, and this is the urine sample cup.
+        > I'm going to show you the bathroom now so that you can do the test with the necessary privacy.
+
     - [ ] Provide the participant with a pregnancy test and a urine sample cup.
     - [ ] Go over the instructions with them.
     - [ ] Accompany them to the bathroom (situated at {{ secrets.rooms.bathroom | default("███") }}), and ask whether there is anything else they anticipate they will need.
     - [ ] If the test is positive, the volunteer **MUST NOT** participate in the study. You MUST be understanding of the situation as most likely the person will not be aware of the circumstance.
 
 - [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }}).
-- [ ] Have participant empty their pockets or change into scrubs, and remove all jewelry/hair accessories and check for any missed metallic objects with the scan center's preferred method.
-- [ ] Instruct participant on staying still and encourage them to request breaks if necessary.
-- [ ] Describe the participant how the session will develop, with special attention to tasks. In the first session, show the task while explaining them for clarity. Answer all the questions that may arise.
-
-    > There will be three tasks during the session.
-    > The first one will be the resting-state; for this scan, all you have to do is stay still and look at the movie.
-    > Please do not close your eyes.
-    >
-    > The second one is going to be breath-holding task; we will ask you to breathe with a specific pattern following the color of the rectangle.
-    > 
-    > You will watch five repeats of the same block.
-    > The first time the experimental block is shown, please keep your habitual breathing pace disregarding the task instructions.
-    > At the end of this mock block, a message will remind you that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
-    > Please inhale while the green rectangle is on, and exhale while you see the yellow rectangle.
-    > To tell you that the breath-hold is approaching, the green color will be lighter and the yellow will become orange for the last breathe-in and breathe-out.
-    > Then a red rectangle will follow the last breathe-out (orange color), and you will need to hold your breath throughout.
-    > The red rectangle will become pink to signal that you will soon be able to breathe again.
-    > When the colored rectangle disappears, please exhale any remaining air in your lungs (without  unnatural efforts to push the air out) and breathe normally until the next block starts.
-    > At the end of the breath-hold, please exhale the small amount of air you have remaining so we can measure the CO2 level via the gas analyzer.
-    > We will repeat this block of inhale/exhale 5x followed by hold 6 times. The first time, you must look at the rectangle but ignore the breathing instructions and 
-    > just breath normally. A warning message will indicate when you should start following the breathing clues.
-    >
-    > Any questions about the breath-holding task?
-    >
-    > The third task is a control task. This task is composed of different subtasks.
-    > In the first subtask, a grating pattern will display. Just look at the fixation point represented by a red dot.
-    >
-    > In the second subtask, please follow the points with your eyes.
-    > It is critical that you move your eyes without moving your head.
-    >
-    > In the third subtask, the word left and right will flash alternatively.
-    > Please tap your thumb against your four other fingers sequentially.
-    > Do it with your right hand while the word "RIGHT" is displayed, and correspondingly with your left hand after with the word "LEFT". Stop when the words disappear.
-    > During the finger tapping, you MUST leave the alarm button, e.g., on your belly.
-    > In the fourth subtask, a dot appears at the center of the screen.
-    > Look a the dot until the subtask is finished.
-    >
-    > Is everything clear to you? Do you have any questions?
-
 - [ ] Tell the participant they will be holding an alarm button throughout the session, and that they may use it any time whenever they need to stop the experiment.
-    - [ ] Tell the participant that they MUST leave the alarm button, e.g., on their belly, during the positive control task. Indicate that you will remind them of this before starting the task.
+    > During the duration of the exam, you'll have an alarm button on your hand.
+    > You can use it at any moment.
+    > We will first talk with you to check everything is fine, and we will stop the session whenever you need to stop the experiment.
+    > There is no need for you to endure uncomfortable experiences or anxiety (for instance, if you feel claustrophobic)
+
+### Describing the development of the session
+- [ ] Describe the participant how the session will develop, with special attention to tasks. In the first session, show the task while explaining them for clarity. Let them interrupt you to ask for clarifications and answer all the questions that may arise.
+
+    !!! note "Script for the first session"
+        
+        We are going to acquire three types of images.
+        The first type is anatomical imaging that we use to study the morphology of the brain.
+        The second type is diffusion MRI, which we use to infer the pathways of major fiber bundles showing how the different regions of the brain may be interconnected.
+        Finally, we collect functional MRI, which we use to understand how the brain activates as a response to stimuli we will present to you.
+        During the whole duration of the exam, please do not create closed loops by crossing your legs or holding your hands together.
+        It is possible that your peripheral nerves get stimulated at some points, so you will feel twitching of muscles, for instance, of your pectorals.
+        Do not panic, it is okay, but if it feels too uncomfortable, please squeeze the alarm button.
+
+        For the anatomical and the diffusion MRI we just ask you to relax and try to stay as still and comfortable as possible.
+        Like a photographic camera, the largest problem making analyses difficult is motion.
+        As opposed to a photo camera, the imaging of the brain happens very slow so there is a lot of opportunity for involuntary movements (e.g., when you blink or you take a deeper breath) or semi-voluntary (e.g., you need to swallow).
+
+        The functional MRI is a bit more entertaining, as we will ask you to engage in different behavioral activities.
+        The first functional block is what we call a positive-control task, that will tell us little about your brain but will help us determine if there are confounding signals intermixed with your data.
+        In this positive-control task, you will be shown a fixation point with the shape of a circle.
+        Whenever you see that fixation point, please focus your gaze at the center of it.
+        At points the fixation point will browse around the screen.
+        When that happens, please follow it with your eyes taking care of not moving your head with the eye movement.
+        Other times it will be fixed on the center, and have a blank gray background or a flickering or grating circular area behind it.
+        The last element of this block will show the words LEFT or RIGHT.
+        When either appears, please tap your thumb on each of the your other four fingers of the hand designated by the word, sequentially with all fingers and reversing the direction at the extremes (your pointer and your pinkie).
+        This positive-control task has an approximate lentgh of 2 minutes.
+        During this task, please leave the alarm button on your tummy, where you can recover it when it finishes.
+
+        Then there is a long block of about 20 minutes that we call *resting* state.
+        During this block, all you have to do is stay still and look at the movie.
+        Please do not close your eyes.
+   
+        Finally, a breath-holding task will help us understand the signals elicited by your breathing that are detected by the scanner.
+        This block has a length of about 6 minutes.
+        You will watch five repeats of the same block.
+        Each block will show you a colored rectangle in the middle.
+        The green rectangle means *breathe in*, the yellow rectangle means *breathe out*, and the red rectangle means *hold your breath*.
+        The last two green and yellow rectangle will be shown on a lighter green and orange color respectively to signal you that a hold will follow immediately after the breathe-out.
+        The red rectangle will turn pink to indicate that you will soon be able to breathe-out any remaining air in your lungs and breathe in again.
+        Please remember to breathe out after the breath-hold.
+        When no rectangle is presented, you can breathe as it feels more comfortable to you.
+        The first of the blocks is a mock.
+        That will be reminded to you at the beginning of the task on the screen.
+        During the mock block, please look at the stimuli on the screen but keep your habitual breathing pace disregarding the task instructions.
+        At the end of this mock block, a message will remind you must follow the task instructions from that moment on.
+        that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
+    
+        Is everything clear to you? Do you have any questions?
+
+    !!! note "Script for the following sessions"
+        
+        As you probably remember, we acquire three types of images.
+        For two of them you just stay still in the scanner, but we will also require your collaboration for the third, which is functional MRI.
+        During the whole duration of the exam, please do not create closed loops by crossing your legs or holding your hands together.
+        It is possible that your peripheral nerves get stimulated at some points, so you will feel twitching of muscles, for instance, of your pectorals.
+        Do not panic, it is okay, but if it feels too uncomfortable, please squeeze the alarm button.
+
+        Let's quickly recap the functional MRI tasks.
+        The first is the positive-control task, you will be shown a fixation point with the shape of a circle that you must follow with your gaze wherever it goes and then the words LEFT or RIGHT while which you tap your fingers like this (remind to them).
+        During this task, please leave the alarm button on your tummy, where you can recover it when it finishes.
+
+        Then there is a long block of about 20 minutes that we call *resting* state, where you will be watching a movie.
+        During this block, all you have to do is stay still and please do not close your eyes.
+   
+        Finally, the breath-holding task where you will watch five repeats of the same block with colored rectangles in the middle.
+        The green rectangle means *breathe in*, the yellow rectangle means *breathe out*, and the red rectangle means *hold your breath*.
+        The last two green and yellow rectangle will be shown on a lighter green and orange color respectively to signal you that a hold will follow immediately after the breathe-out.
+        The red rectangle will turn pink to indicate that you will soon be able to breathe-out any remaining air in your lungs and breathe in again.
+        Please remember to breathe out after the breath-hold.
+        When no rectangle is presented, you can breathe as it feels more comfortable to you.
+        The first of the blocks is a mock.
+        That will be reminded to you at the beginning of the task on the screen.
+        During the mock block, please look at the stimuli on the screen but keep your habitual breathing pace disregarding the task instructions.
+        At the end of this mock block, a message will remind you must follow the task instructions from that moment on.
+        that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
+    
+        Is everything clear to you? Do you have any questions?
+
+### Finalizing the preparation
+- [ ] Have participant empty their pockets or change into scrubs, and remove all jewelry/hair accessories and check for any missed metallic objects with the scan center's preferred method.
 - [ ] Indicate the participant where the door to the changing room is, and ask them to change clothes if necessary.
-- [ ] Ask the participant to place the ECG electrodes on the location indicated by the picture below.
-    - [ ] Clean the skin with [WHAT?].
+- [ ] Help the participant to place the ECG electrodes on the location indicated by the picture below.
+    - [ ] Clean the skin with .
     - [ ] Remove the protective film from the electrode.
     - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes.
         ![prep-ecg-electrodes](../assets/images/prep-ECG-electrodes.png)
@@ -101,41 +154,49 @@
 !!! info "Thanks"
     Some of the pictures in this section have been extracted from the [Ghent Institute for functional and Metabolic Imaging MRI User 2019](http://gifmi.ugent.be/drupal/system/files/documents/GIfMI_MRI%20user%20manual_BASIC_SiemensPrisma_EN.pdf) written by Stephanie Bogaert, MSc, Pieter Vandemaele, MSc and Pim Pullens, PhD. We express our gratitude that they put together such a comprehensive guide.
 
-- [ ] Have the participant remove in shoes at the entrance of the scanning room.
-- [ ] Bring the participant inside the room, and give them the ear-plugs to protect the hearing during acquisition.
+- [ ] Have the participant remove their shoes at the entrance of the scanning room.
+- [ ] Show the alarm button to the participant and explain how they may use it.
+- [ ] Give to the participant the emergency button. Make the participant try it, so they can see it works. To switch off the alarm, there's a button on the scanner (circular, both on the left and on the right of the hole)
+- [ ] Give them the ear-plugs to protect their hearing during acquisition, allow time for them to place them.
 - [ ] Instruct the participant to lay on the MRI bed.
-- [ ] Connect the ECG leads on the three electrodes. The electrodes MUST be connected following the color scheme [ADD DETAILS]
-- [ ] Install the respiration belt below the participant's chest and connect it to the tube as shown in the picture below. The respiration belt measure the displacement induced by breathing, it thus needs to surround the chest or stomach comfortably, depending on the subject respiration (diaphragmatic or chest breathing). The belt should be tight.
 
-![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
-
+### Connecting physiological recording sensors and probes
+- [ ] Connect the ECG leads to the three electrodes. The electrodes MUST be connected following the color scheme [ADD DETAILS]
+- [ ] Install the RB below the participant's chest and connect it to the tube as shown in the picture below. The RB measures the displacement induced by breathing, it thus needs to surround the chest or stomach comfortably, depending on the subject respiration (diaphragmatic or chest breathing). The belt should be tightly fastened.
 - [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten under the chin for comfort and stability by sliding the ring as shown in the picture above.
+
+    ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
+
 - [ ] Check that the GA is properly working by asking the participant to do the following task: breathe in for 3s, breathe out for 3s. Do it 3x. Give orally the instructions "breathe in"/"breathe out" to make the task easier. After the last "breathe out", ask the participant to hold their breath for 3s and then let them breathe normally again [TO DO: INSERT PICTURE OF WHAT THE SIGNAL SHOULD LOOK LIKE]. 
-- [ ] Once the subject is lying on the MR bed, check that no arms/legs lye on the GA or the RB tubes.
-- [ ] Give to the participant the emergency button. Make the participant try it, so they can see it works. To switch off the alarm, there's a button on the scanner (circular, both on the left and on the right of the hole) 
+- [ ] Once the subject is lying on the MR bed, check that no arms/legs lie on the GA or the RB tubes.
 
     ![alarm_button](../assets/images/alarm_button.png)
+
+### Acommodating the participant's head in the coil
 
 - [ ] Adjust the participant inside. With the paddings, their head position MUST be adjusted and elevated so that the nose and the forehead of the participant are both close to the upper coil. This procedure ensures the ET has the clearest possible view of eye.
 - [ ] This part must be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and forehead of the participant almost touch the coil. In case of need, ask the participant to "say yes" with the head (chin on neck) and keep this position, place the pillows, place the coil and check that the participants' front touches the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.  
     ![two_pillows](../assets/images/two_pillows.jpg)
     ![superpose_pillows](../assets/images/superpose_pillows.jpg)
-- [ ] Take the Ears-protection pillow, stick it on top of the ears of the participant, one by one. Once they are settled, you can pump it, until the participant is comfortable, the head is fixed and the ears are protected.
+- [ ] Take the side paddings and fit them between each ear and the coil. If using the inflatable padding, pump air into them without making the participant uncomfortable (check with them).
 
     ![ear_protecting_pillow.jpg](../assets/images/ear_protecting_pillow.jpg)
 
 - [ ] Ask the participant if they are feeling cold. Cover them with a blanket if necessary.
-- [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of arms to avoid discomfort. Remind the participant not to create closed loops by crossing their legs or holding their hands together.
+- [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort. 
+- [ ] Place rectangular paddings at each side of the chest and help the participant acommodate their elbows on them.
+- [ ] Remind the participant not to create closed loops by crossing their legs or holding their hands together.
 - [ ] Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. **Ask the participant to close their eyes**, press the laser alignment button and align the head-coil markers with the red light.
 
-| ![take_table_up](../assets/images/take_table_up.png) |
-|:--:|
-| ![laser_button](../assets/images/laser_button.png) |
+    | ![take_table_up](../assets/images/take_table_up.png) |
+    |:--:|
+    | ![laser_button](../assets/images/laser_button.png) |
 
 - [ ] Switch off the alignment light, now the participant can open their eyes. You can move the participant (always gently as before) inside the scanner manually, until the mm counter marks "Isometric" or you can press the rotary knob for two seconds. This will send the participant to the isocenter automatically.
 
     ![send_isocenter](../assets/images/send_isocenter.png)
 
+### Final preparatory steps of the ET
 - [ ] You should see the projection of the calibration mode as you left it open before.
 - [ ] Regulate the ET position until you see from the projector screen the eye. Once the eye is well seen and tracked, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil and two crosses appear on the eye. In case of need, the right lens can be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. If the position of the ET is not satisfying, you can move the base. As a last resort, you can also adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.
 
