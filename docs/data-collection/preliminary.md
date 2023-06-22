@@ -1,6 +1,4 @@
-### Preliminary work
-
-#### Once, at the beginning of the project
+## Once, at the beginning of the project
 - [ ] Get familiar with the [emergency procedures to run an MRI scan at CHUV](./scanning.md#emergency-procedures).
 - [ ] Prepare a laptop with a running Psychopy 3 installation AND the EyeTracker software. For these SOPs, the designated laptop for the experiments is *{{ secrets.hosts.psychopy | default("███") }}*.
 - [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
@@ -18,7 +16,7 @@
       Your browser does not support the video. <a href="./assets/files/GA_video.mp4">Click here to download it</a>
     </video>
 
-**Set up the scanner protocol at the MR console**
+### Setting up the scanner protocol at the MR console
 
 !!!warning "Important: follow Reproin conventions"
 
@@ -31,7 +29,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     As a good practice, always work as the standard user `{{ secrets.login.username_scanner | default("janedoe") }}`.
     Change for *advanced user mode* if you want to save the protocol.
 
-    - [ ] Simultaneously press the `Tab` + `Delete` + `[→` (on a classical keyboard) keys of the keyboard of the control computer
+    - [ ] Simultaneously press the <span class="keypress">Tab</span> + <span class="keypress">Delete</span> + <span class="keypress">[→</span> on the control-computer's keyboard:
     
         > Username: `{{ secrets.login.superusername_scanner | default("superjanedoe") }}`
         >
@@ -58,7 +56,11 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
 - [ ] Make sure you save a different protocol for each of the four PE directions (i.e., AP, PA, LR, RL).
 - [ ] **Time the functional MRI runs (rest, qct, bht)** and update the *Number of measurements* accordingly. [WRITE FORMULA]
 
-**Install the BIOPAC**
+### Install the BIOPAC
+
+!!! important "BIOPAC documentation"
+
+    Get familiar with the BIOPAC setup and read through the [hardware documentation](https://www.biopac.com/wp-content/uploads/MP_Hardware_Guide.pdf)
 
 - [ ] Set up the line frequency switches on the back of the BIOPAC amplifier depending on your country frequency to reduce noise. Both switches should be DOWN if your country's line frequency is 50Hz. Both switches should be UP if your country's line frequency line is 60Hz.
     ![biopack-frequency-switch](../assets/images/biopack-frequency-switch.jpg "BIOPAC frequency switch")
@@ -71,9 +73,9 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
     - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
 - [ ] Install the BIOPAC recording software AcqKnowledge.
-- [ ] Ensure that the lever of the NEUROSPEC adapter is set on `s`.
+- [ ] Ensure that the *Mode* switch of the MMBT-S Trigger Interface Box adapter (pink color box) is set on the **S** position.
 
-**Psychopy Installation**
+### Stimuli presentation: *psychopy*
 
 - [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
 
@@ -109,7 +111,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     ```
     psychopy
     ```
-**EyeLink Software Installation**
+### Eye-tracker: *EyeLink Software* installation
 
 - [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
 
@@ -136,13 +138,13 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     sudo apt install eyelink-dataviewer
     ```
 
-#### Every two months - calibrate the GA
+## Every two months - calibrate the GA
 
 - [ ] Get a gas bottle with a known CO<sub>2</sub> concentration between 5% and 10%.
 - [ ] Connect the GA to the BIOPAC as described below and start recording signal.
 - [ ] Edit the configuration of the inputs, making sure you update the voltage range for input 3 (the GA), estimated as described in [the GA's manual](../assets/files/GA_manual.pdf)
 
-#### Three days BEFORE THE FIRST SESSION
+## Three days BEFORE THE FIRST SESSION
 
 - [ ] Verify that as part of the [recruitement and screening procedure](../recruitment-scheduling-screening/recruitment.md), you have sent a copy of the MRI Safety and screening form ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)) to the participant over email and confirm reception by checking the 'First contact email sent' column in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
 - [ ] Verify also that you confirmed that the participant has read and understood the document, and in particular, you double-checked that they do not have any MRI contraindications, by checking the 'Phone interview done' and 'Participant volunteer and eligible' column in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
@@ -156,7 +158,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     - [ ] Verify that the participant has your phone number {{ secrets.phones.study | default("███") }} to call you in case he gets lost.
 - [ ] If participant has indicated nervousness or history of claustrophobia, organize a session to use the mock scanner.
 
-#### BEFORE DAY OF SCAN
+## BEFORE DAY OF SCAN
 
 - [ ] Print [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**), an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)) and a receipt form for each participant that will get scanned.
 - [ ] Make sure you have internet access, and update the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks) on *{{ secrets.hosts.psychopy | default("███") }}*:

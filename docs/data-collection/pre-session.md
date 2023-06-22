@@ -195,7 +195,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
     - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
-    - [ ] Push the enter button (&#x25CF;) every time you want to send an `s` character.
+    - [ ] Push the enter button (&#x25CF;) every time you want to send an <span class="keypress">s</span> character.
     - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
     - [ ] Check that the BIOPAC is properly registering the trigger too. Every trigger sent should be seen in the *AcqKnowledge* GUI.
 - [ ] Start the syncbox session:
