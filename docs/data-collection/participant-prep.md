@@ -90,8 +90,8 @@
     - [ ] Select the right protocol under "RESEARCH/Oscar".
     - [ ] Select *Brain* as the organ.
     - [ ] Select the *Position* as "Head First Supine".
-    - [ ] Before you hit "Exam", you can edit general patient's data by changing to the *Patient Registration* tab if you need to edit general information about the patient.
-    - [ ] Click the "Exam" button (red background, rightmost-bottom).
+    - [ ] Before you hit <span class="consolebutton red">Exam</span>, you can edit general patient's data by changing to the *Patient Registration* tab if you need to edit general information about the patient.
+    - [ ] Click the <span class="consolebutton red">Exam</span> button (red background, rightmost-bottom).
     
 - [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
     - [ ] Double-check that all PE prescriptions are correct.
