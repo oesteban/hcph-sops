@@ -90,8 +90,8 @@
     - [ ] Select the right protocol under "RESEARCH/Oscar".
     - [ ] Select *Brain* as the organ.
     - [ ] Select the *Position* as "Head First Supine".
-    - [ ] Before you hit "Exam", you can edit general patient's data by changing to the *Patient Registration* tab if you need to edit general information about the patient.
-    - [ ] Click the "Exam" button (red background, rightmost-bottom).
+    - [ ] Before you hit <span class="consolebutton red">Exam</span>, you can edit general patient's data by changing to the *Patient Registration* tab if you need to edit general information about the patient.
+    - [ ] Click the <span class="consolebutton red">Exam</span> button (red background, rightmost-bottom).
     
 - [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
     - [ ] Double-check that all PE prescriptions are correct.
@@ -162,24 +162,4 @@
 
     ![speaker](../assets/images/speaker.jpg)  
 
-- [ ] Switch the ET camera back to zoomed mode, and exit the camera mode by pressing `Enter`.
-- [ ] Inform the participant about the calibration process.
-
-    > Hey [NAME], we are about to start the scanning session.
-    > First, we are going to calibrate the eye tracker. Please follow the small circle on the screen with your eyes, without moving your head.
-    > The circle will move around the screen. Please focus your gaze and follow it when it moves (do not anticipate).
-
-- [ ] Launch the ET calibration by pressing `C` on the laptop keyboard or by clicking on Calibration on the ET interface:
-    - [ ] When the gaze is stable, the button `Accept fixation` appears green, then you can manually click on it to validate the first position.
-
-    ![accept_fixation](../assets/images/accept_fixation.jpg) 
-
-    - [ ] The following positions should be validated automatically when the gase is stable enough. If it is not the case, manually click on the validate button when it turns green
-- [ ] The ET software MUST show a cross during the calibration. If it does not, try sequentially the following:
-    - [ ] readjust the focus of the ET; and if it still doesn't show the cross,
-    - [ ] readjust the mirror frame position sliding it throught the rails attached to the coil; and if it still doesn't show the cross,
-    - [ ] readjust the participant's head positioning inside the coil; and if it still doesn't show the cross,
-    - [ ] move the mirror up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position; and if it still doesn't show the cross,
-    - [ ] iterate over the previous steps.
-- [ ] When the calibration is successful, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
-- [ ] If the validation is not ok, iterate over previous steps restarting calibration. Otherwise, you can leave the calibration mode on and move forward.
+- [ ] Switch the ET camera back to zoomed mode, and exit the camera mode by pressing <span class="keypress">Enter</span>.

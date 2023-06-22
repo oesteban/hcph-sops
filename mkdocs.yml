@@ -15,8 +15,10 @@ nav:
       - Preliminary work: data-collection/preliminary.md
       - Before each session: data-collection/pre-session.md
       - Preparing the participant: data-collection/participant-prep.md
+      - Notes on the scanner's console and recording devices: data-collection/scanning-notes.md
       - Running the scanning session: data-collection/scanning.md
       - Session tear-down: data-collection/tear-down.md
+      - Emergency procedures: data-collection/emergency-procedures.md
     - Data management: data-storage.md
     - Preprocessing: preprocessing.md
     - Release of data: release.md
@@ -47,6 +49,8 @@ markdown_extensions:
   - footnotes
   - toc:
       permalink: true
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -69,3 +73,8 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
