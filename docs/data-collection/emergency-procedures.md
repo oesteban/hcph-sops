@@ -34,7 +34,7 @@
 
 - [ ] Assess the participant and the situation by asking them what is wrong and checking the camera inside the room and the scanner's console.
 
-!!! important "If you can anticipate that the participant will need to be retreived"
+!!! important "If you can anticipate that the participant will need to be retrieved"
 
     Initiate the extraction of the bed from the scanner console using the *Room in* menu (lower left corner of the screen), and then click on the *home* (🏠) button.
 
@@ -91,7 +91,7 @@ At any moment, you may determine that the participant will require medical atten
 
 - [ ] If the participant remains in the scanning room, re-enter the room and proceed with the [manual extraction protocol](#manual-extraction-procedure).
 
-!!! warning
+!!! danger
 
     If the resuscitation team needs to shock the participant for cardiac resuscitation, it must never be done on the MR table.
 
