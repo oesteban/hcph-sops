@@ -41,7 +41,10 @@
 ## Alarm event requires further safety procedures
 - [ ] Enter the scanning room if you do not get a response or the answer is unclear.
 
-    !!! danger "If there is an impending risk to the participant's health, immediately initiate the [manual extraction protocol](#manual-extraction-procedure)"
+    !!! danger "If there is an impending risk to the participant's health and it is safe for you and other operators to intervene, take actions to avert the dangerous situation."
+        For example, if the participant is choking because of the accidental occlusion of their respiratory ways after the displacement of some experimental instrument or sensor, immediately extract them from the scanner's bore with the fastest procedure available to you and remove the occluding instruments.
+        
+        Similarly, suppose the participant suffers an acute panic attack and starts violently and uncontrollably shaking on the table. In that case, you will first lift the security side rails of the bed and securely restrain the participant further within the scanning table if necessary. This is critical to preempt their body from falling off the table while the head coil is still attached. Only when you can safely do so, extract them from the bore and remove the head coil.
 
 ## Participant possibly needs to be retrieved but there isn't impending risk to their health
 - [ ] If the alarm is still blaring, press the large, circular button at either side of the scanner's bore.
@@ -49,7 +52,7 @@
 
 - [ ] Make the participant aware that you entered the room and ask them what is wrong.
 
-    !!! danger "If the participant is unresponsive, proceed with the [manual extraction protocol](#manual-extraction-procedure)."
+    !!! danger "If the participant is unresponsive, extract them from the scanner's bore using the standard procedure (the *Home* button). In case you previously cut the electricity or failure of the standard procedure, follow the manual procedure described in the [manual extraction protocol](#manual-extraction-procedure)."
 
 - [ ] Determine whether the participant can continue the session after some comforting or information or if it must be stopped at that point (e.g., the participant is feeling claustrophobic and cannot continue).
 - [ ] If the session must be stopped, or you determine it is necessary to extract the participant before making that decision, hit the "Home" button to bring the participant outside the scanner's bore quickly.
