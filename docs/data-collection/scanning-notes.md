@@ -41,7 +41,7 @@
 - [ ] Run the experiment by pressing the green play button. 
 - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
 - [ ] Press <span class="keypress">C</span> to open the calibration mode to perform the calibration and validation.
-- [ ] Exit the calibration mode by clicking on [WHAT?].
+- [ ] Exit the calibration mode by clicking on  <span class="keypress">ESC</span> .
 - [ ] Once the calibration of the ET is concluded, hit the <span class="keypress">Esc</span> key on the laptop *{{ secrets.hosts.psychopy | default("███") }}* to exit the calibration mode continue the task's program.
 
 
