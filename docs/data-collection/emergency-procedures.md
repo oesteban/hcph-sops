@@ -114,4 +114,4 @@ At any moment, you may determine that the participant will require medical atten
 ## Immediately report incidents
 !!! warning "MRI coordinators must be informed"
 
-     Once the situation is resolved but before anything else, send an email to {{ secrets.email.mri_coordinator_chuv1 | default("███") }} and {{ secrets.email.mri_coordinator_chuv2 | default("███") }}. Make sure to report **any potential risk you can anticipate to clinical activity the following day**.
+     Once the situation is resolved, and before anything else, send an email to {{ secrets.email.mri_coordinator_chuv1 | default("███") }} and {{ secrets.email.mri_coordinator_chuv2 | default("███") }}. Make sure to report **any potential risk you can anticipate to clinical activity the following day**.
