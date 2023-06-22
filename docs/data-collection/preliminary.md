@@ -27,36 +27,38 @@
     - [ ] The AMI100C unit can receive up to 16 analog signals. 
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
-    - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE]. Plug the trigger to the TRIG entrance.
+    - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE].
 - [ ] Ensure that the *Mode* switch of the MMBT-S Trigger Interface Box adapter (pink color box) is set on the **S** position.
 - [ ] Install the BIOPAC recording software (*AcqKnowledge*).
 - [ ] Create a template *graph file* ([`EXP_BASE.gtl`](../assets/files/EXP_BASE.gtl))
 
-### Recording physiological signals: *AcqKnowledge*
+    !!! important "Creating the *AcqKnowledge*'s template graph file"
 
-- [ ] You have to add each BIOPAC module individually in the system
-    - [ ] Add the respiration belt (RB) module
-        - [ ] Under the section `Analog`, click on `Add new module`.
-        - [ ] Find the name of the BIOPAC unit corresponding to the RB `DA100C`.
-        - [ ] Verify that channel on top of the unit and choose that channel. The RB has to be on **channel 1**.
-        - [ ] Verify that the configurations in the front of the module matches the configuration on screen. You should correct the value of gain, mode, 35HzLPN and HP so it is matching.
-        - [ ] When prompted to enter [calibration?], for the RB you should map the interval [-5,0] to [0,10]. You inverse the sign of the interval for the interpretation to be more clear.
-    
-    - [ ] Add the gaz analyzer module
-        - [ ] After clicking on `Add new module`, find the BIOPAC module in which you plugged the GA `Ami-Hlt - in3`.
-        - [ ] Verify thechannel in which you plugged the GA ethernet. The GA has to be on **channel 3**.
-        - [ ] Verify that the configurations in the front of the module matches the configuration on screen. You should correct the value of gain, mode, 35HzLPN and HP so it is matching.
-        - [ ] When prompted to enter [calibration?], for the GA you should map the interval [1,0.03] to [10,0]. 
-
-    - [ ] Add the ECG module
-        - [ ] After clicking on `Add new module`, find the BIOPAC module in which you plugged the GA `ECG100C`.
-        - [ ] Verify thechannel in which you plugged the GA ethernet. The GA has to be on **channel 2**.
-        - [ ] Verify that the configurations in the front of the module matches the configuration on screen. You should correct the value of gain, mode, 35HzLPN and HP so it is matching.
-        - [ ] When prompted to enter [calibration?], for the GA you should map the interval ?? to ??.
-    
-    - [ ] Add the BIOPAC module
-        - [ ] Under the section `Digital`, click on `Add new module`.
-        - [ ] The parallel cable feeds into port D8-D15
+        - [ ] Creating a graph file requires the BIOPAC system powered up and connected to the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
+        - [ ] Add the RB module
+            - [ ] Check the channel on top switch of the unit: the <mark>DA100C</mark> MUST be set on **channel 1**.
+            - [ ] Under the tab *Analog*, click on *Add new module*.
+            - [ ] Find the name of the BIOPAC unit corresponding to the <mark>DA100C</mark>.
+            - [ ] Set the module settings (gain, filters, etc.) corresponding to those of the configuration switches in the front of the module.
+            - [ ] When prompted to enter the calibration points, map the interval [-5, 0] to [0, 10]. You invert the sign of the interval for the interpretation to be more clear.
+        - [ ] Add the ECG module
+            - [ ] Check the channel on top switch of the unit: the <mark>ECG100C MRI</mark> MUST be set on **channel 2**.
+            - [ ] Under the tab *Analog*, click on *Add new module*.
+            - [ ] Find the name of the BIOPAC unit corresponding to the <mark>ECG100C</mark>.
+            - [ ] Set the module settings (gain, filters, etc.) corresponding to those of the configuration switches in the front of the module.
+            - [ ] When prompted to enter [calibration?], for the ECG you should map the interval ?? to ??.
+        - [ ] Add the GA module
+            - [ ] Confirm that the CO<sub>2</sub> output of the GA is connected through the ANISO filter to the **channel 3** of the AMI100C module.
+            - [ ] Under the tab *Analog*, click on *Add new module*.
+            - [ ] Select *Custom* and then indicate it is connected to **channel 3** by selecting *AMI/HLT - in3*.
+            - [ ] When prompted to enter the calibration points, map the interval [0.03, 1.0] to [0, 10.0].
+        - [ ] Add the Digital inputs
+            - [ ] Under the tab *Digital*, click on *Add new module*.
+            - [ ] The parallel cable feeds into ports <mark>D8-D15</mark>.
+        - [ ] Configure the sampling frequency
+        - [ ] Configure the experiment length (at least 2.5 hours)
+        - [ ] Configure whether you want to collect directly to hard disk and autosave settings
+        - [ ] Save the experiment, making sure you choose a "graph template file" (with extension `.gtl`)
 
 ### Stimuli presentation: *psychopy*
 
@@ -176,7 +178,8 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
         ![](../assets/images/save_protocol4.jpg)
     - [ ] Drag or paste the copied sequences in the program editor.
         ![](../assets/images/save_protocol5.jpg)
-    - [ ] Save the protocol by pressing on the floppy disk icon (<span class="flip">🖫</span>) in the upper left. Give the protocol a relevant name starting with the date of acquisition in the format YYYYMMDD.
+    - [ ] Once finished, click on the floppy disk icon (<span class="flip">🖫</span>) in the upper left to save.
+    - [ ] Give the protocol a relevant name starting with the date of acquisition in the format YYYYMMDD and click <span class="consolebutton">Save</span>.
         ![](../assets/images/save_protocol6.jpg)
     - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.
         - [ ] Click right on the protocol and select `Print`
