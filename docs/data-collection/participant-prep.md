@@ -6,28 +6,31 @@
 ## Preparation of the participant in the CONTROL ROOM
 
 ### Participant reception
-
+- [ ] Meet the participant at an easily locatable place (e.g., the reception desk of the Radiology Unit) and show them the way into the control room. <mark>Allow sufficient time before the experiment for the preparation (min. 30 minutes)</mark>.
 - [ ] Show the participant the scanning room and explain to them how the device is controlled from outside.
 - [ ] Ask the participant to fill out the consent form and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia.
 
-!!!danger "DO NOT subject the participant to any risk"
-    - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at {{ secrets.phones.medical_contact | default("███") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
-    - [ ] In case of discovering any previously undisclosed contraindication, the volunteer **MUST NOT** participate in the study.
-
-!!!warning "Only female participants, only the first session"
-    - [ ] Remind the participant that for their safety, pregnant women cannot participate:
-        > Hey [NAME], I have to remind you that pregnant women cannot participate for their safety.
-        > To be absolutely sure that you are not scanned while being pregnant, the ethical review board requests us that you take a pregnancy test before the first session.
-        > Here you have a test, and this is the urine sample cup.
-        > I'm going to show you the bathroom now so that you can do the test with the necessary privacy.
-
-    - [ ] Provide the participant with a pregnancy test and a urine sample cup.
-    - [ ] Go over the instructions with them.
-    - [ ] Accompany them to the bathroom (situated at {{ secrets.rooms.bathroom | default("███") }}), and ask whether there is anything else they anticipate they will need.
-    - [ ] If the test is positive, the volunteer **MUST NOT** participate in the study. You MUST be understanding of the situation as most likely the person will not be aware of the circumstance.
+    !!!danger "DO NOT subject the participant to any risk"
+        - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at {{ secrets.phones.medical_contact | default("███") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
+        - [ ] In case of discovering any previously undisclosed contraindication, the volunteer **MUST NOT** participate in the study.
 
 - [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }}).
+
+    !!!warning "Only female participants, only the first session"
+        - [ ] Remind the participant that for their safety, pregnant women cannot participate:
+
+            > Hey [NAME], I have to remind you that pregnant women cannot participate for their safety.
+            > To be absolutely sure that you are not scanned while being pregnant, the ethical review board requests us that you take a pregnancy test before the first session.
+            > Here you have a test, and this is the urine sample cup.
+            > I'm going to show you the bathroom now so that you can do the test with the necessary privacy.
+
+        - [ ] Provide the participant with a pregnancy test and a urine sample cup.
+        - [ ] Go over the instructions with them.
+        - [ ] Accompany them to the bathroom (situated at {{ secrets.rooms.bathroom | default("███") }}), and ask whether there is anything else they anticipate they will need.
+        - [ ] If the test is positive, the person **CANNOT PARTICIPATE** in the study. <mark>You MUST be understanding of the situation as most likely the person will not be aware of the circumstance</mark>.
+
 - [ ] Tell the participant they will be holding an alarm button throughout the session, and that they may use it any time whenever they need to stop the experiment.
+
     > During the duration of the exam, you'll have an alarm button on your hand.
     > You can use it at any moment.
     > We will first talk with you to check everything is fine, and we will stop the session whenever you need to stop the experiment.
@@ -113,12 +116,26 @@
         Is everything clear to you? Do you have any questions?
 
 ### Finalizing the preparation
-- [ ] Have participant empty their pockets or change into scrubs, and remove all jewelry/hair accessories and check for any missed metallic objects with the scan center's preferred method.
-- [ ] Indicate the participant where the door to the changing room is, and ask them to change clothes if necessary.
-- [ ] Help the participant to place the ECG electrodes on the location indicated by the picture below.
-    - [ ] Clean the skin with .
+- [ ] Indicate the participant where the door to the changing room is if changing into scrubs is necessary. Otherwise, offer them a box to deposit everything they have in their pockets and all jewelry/hair accessories.
+
+    > Before we continute, we need to make sure we do not introduce any dangerous object in the magnet room.
+    >
+    > [IF THEY NEED TO CHANGE INTO SCRUBS] Here you will find a changing room, I have prepared some scrubs for you. Please remove all your clothes and leave them in the changing room. Please keep your underwear on (if a woman, double check that **their undergarment DOES NOT contain any large metalic part** such as shaping guides, and request their removal if they do).
+    >
+    > [IF THEY CAN WEAR THEIR CLOTHES] Please deposit here all your belongings, your belt, your glasses, your jewelry and any accessories, piercings, etc. that you have on you.
+
+- [ ] Help the participant to prepare their skin and place the ECG electrodes:
+
+    !!! warning "Ask the participant if they have atopic skin or other skin problems"
+
+        If the participant reports having skin issues, be careful with the following process and do not unnecessarily irritate their skin (e.g., skip the alcohol cleaning and perhaps the abrasion with the preparation gel)
+
+    - [ ] Open the sterile cotton gauze pads package, take one and moisten it with alcohol.
+    - [ ] Clean the skin around the three areas with the alcohol-soaked pad with circular movements.
+    - [ ] Get a second cotton gauze pad and put some *Nuprep* preparation gel and gently abrade the skin by rubbing it onto the sckin with four or five circular movements.
+    - [ ] Remove gel excess with a clean cotton gauze.
     - [ ] Remove the protective film from the electrode.
-    - [ ] Stick the electrode on your skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes.
+    - [ ] Stick the electrode on the participant's skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes.
         ![prep-ecg-electrodes](../assets/images/prep-ECG-electrodes.png)
 
 ## Preparation of the scanning protocol (control console)
@@ -140,7 +157,7 @@
 - [ ] In the *Program Selection* tab:
     ![](../assets/images/console-04-new-exam.jpg)
     - [ ] Enter the weight and height of the participant.
-    - [ ] Select the right protocol under "RESEARCH/Oscar".
+    - [ ] Select the right protocol under *RESEARCH* ⤷ *Oscar*.
     - [ ] Select *Brain* as the organ.
     - [ ] Select the *Position* as "Head First Supine".
     - [ ] Before you hit <span class="consolebutton red">Exam</span>, you can edit general patient's data by changing to the *Patient Registration* tab if you need to edit general information about the patient.
@@ -161,13 +178,13 @@
 - [ ] Instruct the participant to lay on the MRI bed.
 
 ### Connecting physiological recording sensors and probes
-- [ ] Connect the ECG leads to the three electrodes. The electrodes MUST be connected following the color scheme [ADD DETAILS]
-- [ ] Install the RB below the participant's chest and connect it to the tube as shown in the picture below. The RB measures the displacement induced by breathing, it thus needs to surround the chest or stomach comfortably, depending on the subject respiration (diaphragmatic or chest breathing). The belt should be tightly fastened.
+- [ ] Connect the ECG leads to the three electrodes. The electrodes MUST be connected following the color scheme shown in the picture above.
+- [ ] Install the RB below the participant's chest and connect it to the tube as shown in the picture below. The RB measures the stretching induced by breathing, so it MUST surround the chest or stomach comfortably. Positioning the RB higher (chest) or lower (stomach) depends on the individual's preferential respiration mode (chest breathing or diaphragmatic, respectively).
 - [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten under the chin for comfort and stability by sliding the ring as shown in the picture above.
 
     ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
 
-- [ ] Check that the GA is properly working by asking the participant to do the following task: breathe in for 3s, breathe out for 3s. Do it 3x. Give orally the instructions "breathe in"/"breathe out" to make the task easier. After the last "breathe out", ask the participant to hold their breath for 3s and then let them breathe normally again [TO DO: INSERT PICTURE OF WHAT THE SIGNAL SHOULD LOOK LIKE]. 
+- [ ] When completely laying down on the bed, tightly fasten the RB and check with the participant whether they are too uncomfortable.
 - [ ] Once the subject is lying on the MR bed, check that no arms/legs lie on the GA or the RB tubes.
 
     ![alarm_button](../assets/images/alarm_button.png)
@@ -198,29 +215,32 @@
 
 ### Final preparatory steps of the ET
 - [ ] You should see the projection of the calibration mode as you left it open before.
-- [ ] Regulate the ET position until you see from the projector screen the eye. Once the eye is well seen and tracked, the image is zoomed (externally by the operator in front of the PC-tower) to the pupil and two crosses appear on the eye. In case of need, the right lens can be manipulated rotating the roller, like what you would do with your reflex to obtain the focus. If the position of the ET is not satisfying, you can move the base. As a last resort, you can also adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.
+- [ ] Adjust the ET position to point the camera to the right eye. Adjustment may be easier if you swith to *Head camera* mode, which has a wider angle.
+    - [ ] The lens can be focused by rotating it, like a photo camera.
+    - [ ] If the position of the ET is still inadequate, you can move the base.
+    - [ ] As a last resort, you can also adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.
+- [ ] Switch the ET to *Eye camera* mode (zoomed in) and check the eye is still well covered by the view and the pupil is segmented.
+- [ ] Check that two crosses appear on the eye.
 
     ![base-eye-tracker](../assets/images/base-eye-tracker.png)
 
-- [ ] If the pupil is correctly seen, as well as the eye (indicated by the crosses following their movement), you can go out.
-    - [ ] Inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately.
+- [ ] If the pupil is correctly seen, as well as the eye (indicated by the crosses following their movement), inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately.
+- [ ] Exit the camera mode by pressing <span class="keypress">Enter</span>.
 
-- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback: 
-    - [ ] Keep on pressing the speak mode button to give instructions (1). Set the volume control of your microphone by pressing the +/- buttons.
-        > Hey [NAME], can you hear me well ?
+### Check the communication with the participant
+![speaker](../assets/images/speaker.jpg)
 
-    - [ ] To listen to participant answer, press the listen mode button once (2). Loosen the speak mode button! Set the volume control of the participant’s microphone by pressing the +/- buttons.
+!!!warning "Important"
+    The red button (3) immediately stops the currently running sequence.
 
-        - [ ] If this volume increase is not enough for the participant to hear you well, proceed as follow:
-            - [ ] In the Siemens program, click on Configuration represented by a gear wheel at the top right of the screen.
-            - [ ] Click on `Configuration panel`
-            - [ ] Under the section `Scan application`, locate the icon of the speaker and tune the volume to the maximum.
-            - [ ] Click `Apply`
+- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
+- [ ] Keep on pressing the speak mode button to give instructions (1). Set the volume control of your microphone by pressing the +/- buttons.
 
-    !!!warning "Important"
-        The red button (3) is the table stop button. Pressing this will immediately stop your sequence from
-        running and will stop the participant table movement.
+    > Hey [NAME], can you hear me well?
 
-    ![speaker](../assets/images/speaker.jpg)  
-
-- [ ] Switch the ET camera back to zoomed mode, and exit the camera mode by pressing <span class="keypress">Enter</span>.
+- [ ] To listen to participant responses, make sure you release the speak mode button before you press the listen mode button once (2). Set the volume control of the participant’s microphone by pressing the +/- buttons.
+- [ ] If this volume increase is not enough for the participant to hear you well, proceed as follow:
+    - [ ] In the Siemens program, click on Configuration represented by a gear wheel at the top right of the screen.
+    - [ ] Click on *Configuration panel*
+    - [ ] Under the section *Scan application*, locate the icon of the speaker and tune the volume to the maximum.
+    - [ ] Click *Apply*

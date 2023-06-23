@@ -14,6 +14,10 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Prepare a thermometer
 - [ ] Prepare a blood pressure meter
 - [ ] Prepare scrubs and MR-compatible glasses if applicable
+- [ ] Prepare a pack of sterile cotton gauze, a bottle of medical alcohol, the *Nuprep* skin preparation gel (white/blue tubes), and three new electrodes.
+
+    ![nuprep-tube](https://shop.neurospec.com/media/catalog/product/cache/8af976a03d45f9b6d7f91e69feeeffb9/w/e/weaver_nuprep-skin-prep-gel-single-tube-front.jpg)
+
 - [ ] Verify that your phone is on ringing mode so the participants can reach you
 - [ ] Check the time regularly to be on time to meet with the participant at the predefined location
 
