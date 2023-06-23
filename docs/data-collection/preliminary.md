@@ -182,7 +182,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     - [ ] Give the protocol a relevant name starting with the date of acquisition in the format YYYYMMDD and click <span class="consolebutton">Save</span>.
         ![](../assets/images/save_protocol6.jpg)
     - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.
-        - [ ] Click right on the protocol and select `Print`
+        - [ ] Right-click on the protocol and select *Print*
         - [ ] Save the PDF in your USB key.
 - [ ] Make sure you save a different protocol for each of the four PE directions (i.e., AP, PA, LR, RL).
 
@@ -207,6 +207,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
         - [ ] remark the participant they will be given a gown and they will need to change before every session.
     - [ ] Repeat at what time and where will you meet the participant.
     - [ ] Verify that the participant has your phone number {{ secrets.phones.study | default("███") }} to call you in case he gets lost.
+    - [ ] **FEMALE PARTICIPANTS ONLY**: Remind the participant that pregnant women cannot undergo our MRI protocols. Therefore, they will take a pregnancy test (which we will have prepared) before the first session.
 - [ ] If participant has indicated nervousness or history of claustrophobia, organize a session to use the mock scanner.
 
 ## BEFORE DAY OF SCAN

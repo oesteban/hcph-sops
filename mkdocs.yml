@@ -1,4 +1,4 @@
-site_name: "HCPh :: SOPs"
+site_name: "Standard Operating Procedures of the HCPh project"
 site_description: Templates and bootstrapping documentation for MRI standard operating procedures (SOPs)
 site_author: The AxonLab
 
@@ -24,6 +24,9 @@ nav:
     - Release of data: release.md
 theme:
   name: material
+  palette:
+    primary: black
+  logo: assets/images/chuv_logo.svg
   features:
     - tabs
     - content.code.copy
