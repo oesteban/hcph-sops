@@ -65,6 +65,10 @@ To do so, you'll need to first [download the data from PACS](#download-the-data-
 
 ### Convert physiological recordings and eye-tracking data to BIDS
 
+```
+phys2bids -in /data/datasets/hcph-pilot/sourcedata/physio/session-recording.acq -info
+```
+
 ### Incorporate into version control with DataLad
 
 !!!info "Initiating the version-controled dataset"
