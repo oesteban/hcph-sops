@@ -59,7 +59,7 @@
     > Are you ready?
 
 - [ ] Wait for the participant confirmation and set the speaker off afterward.
-- [ ] Launch the `AAhead_scout_{32,64}ch-head-coil` protocol by pressing *Continue*.
+- [ ] Launch the `AAhead_scout_{32,64}ch-head-coil` protocol by pressing *Continue* (**⯈**).
 - [ ] Once the localizer is concluded, you can drag and drop the image stack icon (something like 🗇, with an object on the top stack) onto the image viewer. That will open the localizer on the viewer.
 
     ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
@@ -119,16 +119,17 @@
     - [ ] Ask the participant to take three deep breathes, to then go back to a comfortable, normal respiration pace. Check on the *AcqKnoledge* window that the three breathes are distinctly registered (taking into account that ther may be 10-25 seconds of delay because of the tubing).
 
 ### Once the main diffusion MRI run is done, proceed with fieldmaps
-- [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping.
+- [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
 - [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
-- [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping.
+- [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
 - [ ] While it is running, 
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
     - [ ] Verify that in the next sequence parameters under *Contrast>Reconstruction* the option *Magnitude et phase* is selected!
-- [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping.
+- [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
 - [ ] While the fieldmap sequence is running,
-    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence following the abovementioned steps.
-    - [ ] Verify that the positive-control task `control_task.psyexp` is open in psychopy, that you calibrated the ET.
+    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence following the abovementioned steps, and
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing).
+    - [ ] Verify that the positive-control task `task-pct_bold.psyexp` is open in psychopy, that you calibrated the ET.
 
 ## Acquire the functional MRI block
 - [ ] Inform the participant about the fMRI block
@@ -167,7 +168,8 @@
 - [ ] Launch the `func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` protocol by pressing *Continue* (**⯈**).
 - [ ] Wait for the calibration scans to be finished (the process is reported on the bottom left corner of the console) and verify that the first volume's trigger signal was received by *{{ secrets.hosts.psychopy | default("███") }}* (meaning **CHECK that the task program was initiated**).
 - [ ] While it is running:
-    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence, and
+    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by pressing the key <span class="keypress">t</span> on the keyboard (as fast as possible to avoid collecting more data than needed).
 - [ ] Once the sequence is over, close the current experiment on psychopy and open `resting_state.psyexp`.
@@ -194,7 +196,8 @@
 
 - [ ] Launch the rsfMRI sequence `func-bold_task-rest_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` by pressing *Continue* (**⯈**).
 - [ ] While it is running:
-    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence, and
+    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, close the current experiment on psychopy and open `breath_holding_task.psyexp`.
 
