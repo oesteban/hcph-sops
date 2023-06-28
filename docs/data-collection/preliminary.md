@@ -100,13 +100,13 @@
     pip3 install -e .
     ```
 - [ ] Open Psychopy, open the experiment-files corresponding to each task:
-    - [ ] `task-rest_bold.psyexp` (resting-state fMRI):
+    - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
         - [ ] time it to confirm the length, and
         - [ ] check that the movie is played.
-    - [ ] `task-bht_bold.psyexp` (breath-holding task, BHT):
+    - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
         - [ ] time it to confirm the length, and
         - [ ] check that the movie is played.
-    - [ ] `task-pct_bold.psyexp` (positive-control task, PCT) :
+    - [ ] {{ settings.psychopy.tasks.func_pct }} (positive-control task, PCT) :
         - [ ] time it to confirm the length, and
         - [ ] check that the movie is played.
 
@@ -115,10 +115,9 @@
         <a name="task-timing"></a>
         The lengths of the three runs should be:
 
-            * `task-rest_bold.psyexp`  20min 00s
-            * `task-bht_bold.psyexp` 5min 41s
-            * `task-pct_bold.psyexp` 2min 38s
-
+        * {{ settings.psychopy.tasks.func_rest }} ➜ <mark>**{{ settings.mri.timings.func_rest }}**</mark>,
+        * {{ settings.psychopy.tasks.func_bht }} ➜ <mark>**{{ settings.mri.timings.func_bht }}**</mark>, and
+        * {{ settings.psychopy.tasks.func_pct }} ➜ <mark>**{{ settings.mri.timings.func_pct }}**</mark>.
 
 ### Eye-tracker: *EyeLink Software* installation
 
@@ -168,7 +167,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
 
     !!! Danger "After three wrong password entries, access will be denied, and only a Siemens engineer will be able to unlock the MR scanner."
 
-- [ ] Update the *Number of measurements* in all `func-bold_task-*` sequences, according to the previously recorded timings:
+- [ ] Update the *Number of measurements* in all `func-bold_task-*` sequences, according to the [previously recorded timings](#task-timing):
 
     $$N_\text{measurements} = L_t / \text{TR}, \quad t \in \{\text{bht}, \text{pct}, \text{rest}\},$$
 
@@ -230,12 +229,13 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
 - [ ] On the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Load in the different experiments and check for proper functioning:
-    - [ ] `task-rest_bold.psyexp` (resting-state fMRI):
+    - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
         - [ ] time it to [confirm the length](#task-timing), and
         - [ ] check that the movie is played.
-    - [ ] `task-bht_bold.psyexp` (breath-holding task, BHT):
+    - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
         - [ ] time it to [confirm the length](#task-timing), and
         - [ ] check that the movie is played.
-    - [ ] `task-pct_bold.psyexp` (positive-control task, PCT) :
+    - [ ] {{ settings.psychopy.tasks.func_pct }} (positive-control task, PCT):
         - [ ] time it to [confirm the length](#task-timing), and
         - [ ] check that the movie is played.
+
