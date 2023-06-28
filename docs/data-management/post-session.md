@@ -76,18 +76,3 @@ phys2bids -in /data/datasets/hcph-pilot/sourcedata/physio/session-recording.acq 
     Once at the beginning of the project, the datalad dataset will be created:
 
     - [ ] Add stockage horus as an SSH remote.
-
-
-### Run quality control with MRIQC
-- [ ] Register the MRIQC container with DataLad containers-run
-- [ ] Run MRIQC:
-    ```shell
-    datalad containers-run \
-        --container-name containers/mriqc \
-        --input sourcedata \
-        --output . \
-        '{inputs}' '{outputs}' participant --session lastsession -w workdir
-    ```
-- [ ] Screen the T1w, DWI and BOLD visual reports, assign a quality assessment using *Q'Kay*
-- [ ] If either the dMRI or the RSfMRI quality is insufficient, schedule an extra session after the initially-planned scanning
-period to reacquire it.
