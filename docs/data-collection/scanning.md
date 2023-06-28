@@ -91,24 +91,26 @@
 - [ ] Verify again the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` parameters under section *Diff.* All the derivatives MUST be unchecked except for *Diff. Weighted Image*.
 - [ ] Inform the participant that the diffusion scan will follow.
 
-    > Hey [NAME], the next block is a bit long, around 30 minutes.
-    >
-    > You can close your eyes and even sleep if you wish.
-    >
-    > I'm going to give you a short time (ten seconds or so) to swallow, and perhaps accommodate your back or your arms. However, please try not to move your head.
-    >
-    > It is critical that you don't move, especially at all at the very beginning and the next 20 seconds after you hear the first blipping sounds.
-    >
-    > Try to minimize swallowing, and eye movements (for example, blinking) and try to maintain comfortable and shallow breathing.
-    >
-    > Are you ready?
-
-    !!! note "Only for the participant of Cohort I"
+    ??? quote "Only for the participant of Cohort I"
 
         Hey Oscar, we are ready to proceed with the diffusion scan.
         The BIOPAC is functional and *AcqKnowledge* is properly registering the respiration belt and ECG.
         The gas analyzer is ON, but it is still warming up.
         The psychopy computer is ready.
+        Are you ready?
+
+    ???+ quote "Participant of Cohort II"
+
+        Hey [NAME], the next block is a bit long, around 30 minutes.
+        
+        You can close your eyes and even sleep if you wish.
+        
+        I'm going to give you a short time (ten seconds or so) to swallow, and perhaps accommodate your back or your arms. However, please try not to move your head.
+        
+        It is critical that you don't move, especially at all at the very beginning and the next 20 seconds after you hear the first blipping sounds.
+        
+        Try to minimize swallowing, and eye movements (for example, blinking) and try to maintain comfortable and shallow breathing.
+        
         Are you ready?
 
 - [ ] Launch the diffusion `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence by pressing *Continue* (**⯈**).
@@ -128,8 +130,8 @@
 - [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
 - [ ] While the fieldmap sequence is running,
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence following the abovementioned steps, and
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing).
-    - [ ] Verify that the positive-control task `task-pct_bold.psyexp` is open in psychopy, that you calibrated the ET.
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing) ({{ settings.mri.timings.func_pct }}).
+    - [ ] Verify that the positive-control task {{ settings.psychopy.tasks.func_pct }} is open in psychopy, that you calibrated the ET.
 
 ## Acquire the functional MRI block
 - [ ] Inform the participant about the fMRI block
@@ -169,10 +171,10 @@
 - [ ] Wait for the calibration scans to be finished (the process is reported on the bottom left corner of the console) and verify that the first volume's trigger signal was received by *{{ secrets.hosts.psychopy | default("███") }}* (meaning **CHECK that the task program was initiated**).
 - [ ] While it is running:
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing), and
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by pressing the key <span class="keypress">t</span> on the keyboard (as fast as possible to avoid collecting more data than needed).
-- [ ] Once the sequence is over, close the current experiment on psychopy and open `resting_state.psyexp`.
+- [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_rest }}.
 
 ### Resting state fMRI
 - [ ] Inform the participant:
@@ -197,9 +199,9 @@
 - [ ] Launch the rsfMRI sequence `func-bold_task-rest_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` by pressing *Continue* (**⯈**).
 - [ ] While it is running:
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing), and
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
-- [ ] Once the sequence is over, close the current experiment on psychopy and open `breath_holding_task.psyexp`.
+- [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_bht }}.
 
 ### Breath-holding task (BHT)
 - [ ] Inform the participant:

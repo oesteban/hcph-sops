@@ -86,7 +86,7 @@
     
         Is everything clear to you? Do you have any questions?
 
-    ??? note "Script for the following sessions"
+    ???+ quote "Script for the following sessions"
         
         As you probably remember, we acquire three types of images.
         For two of them you just stay still in the scanner, but we will also require your collaboration for the third, which is functional MRI.
@@ -168,7 +168,7 @@
 
 ## Installing the participant in the SCANNING ROOM
 
-!!! info "Thanks"
+??? info "Thanks to Stephanie Bogaert, MSc, Pieter Vandemaele, MSc and Pim Pullens, PhD"
     Some of the pictures in this section have been extracted from the [Ghent Institute for functional and Metabolic Imaging MRI User 2019](http://gifmi.ugent.be/drupal/system/files/documents/GIfMI_MRI%20user%20manual_BASIC_SiemensPrisma_EN.pdf) written by Stephanie Bogaert, MSc, Pieter Vandemaele, MSc and Pim Pullens, PhD. We express our gratitude that they put together such a comprehensive guide.
 
 - [ ] Have the participant remove their shoes at the entrance of the scanning room.

@@ -40,6 +40,7 @@ plugins:
       include_dir: code
       include_yaml:
         - secrets: 'secrets/settings.yml'
+        - settings: 'hcph-settings.yml'
       on_undefined: lax
   - mkpdfs:
       company: Lausanne University Hospital (CHUV)
@@ -56,6 +57,7 @@ markdown_extensions:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
