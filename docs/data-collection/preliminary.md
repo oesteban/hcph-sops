@@ -112,6 +112,14 @@
 
     !!! important "Remember to time the three functional MRI runs (rest, qct, bht)"
 
+        <a name="task-timing"></a>
+        The lengths of the three runs should be:
+
+            * `task-rest_bold.psyexp`  20min 00s
+            * `task-bht_bold.psyexp` 5min 41s
+            * `task-pct_bold.psyexp` 2min 38s
+
+
 ### Eye-tracker: *EyeLink Software* installation
 
 - [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752 | default("███") }}* and password *{{ secrets.login.password_hos68752 | default("███") }}*.
@@ -223,11 +231,11 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Load in the different experiments and check for proper functioning:
     - [ ] `task-rest_bold.psyexp` (resting-state fMRI):
-        - [ ] time it to confirm the length, and
+        - [ ] time it to [confirm the length](#task-timing), and
         - [ ] check that the movie is played.
     - [ ] `task-bht_bold.psyexp` (breath-holding task, BHT):
-        - [ ] time it to confirm the length, and
+        - [ ] time it to [confirm the length](#task-timing), and
         - [ ] check that the movie is played.
     - [ ] `task-pct_bold.psyexp` (positive-control task, PCT) :
-        - [ ] time it to confirm the length, and
+        - [ ] time it to [confirm the length](#task-timing), and
         - [ ] check that the movie is played.

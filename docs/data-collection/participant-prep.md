@@ -39,7 +39,7 @@
 ### Describing the development of the session
 - [ ] Describe the participant how the session will develop, with special attention to tasks. In the first session, show the task while explaining them for clarity. Let them interrupt you to ask for clarifications and answer all the questions that may arise.
 
-    !!! note "Script for the first session"
+    ???+ quote "Script for the first session"
         
         We are going to acquire three types of images.
         The first type is anatomical imaging that we use to study the morphology of the brain.
@@ -86,7 +86,7 @@
     
         Is everything clear to you? Do you have any questions?
 
-    !!! note "Script for the following sessions"
+    ??? note "Script for the following sessions"
         
         As you probably remember, we acquire three types of images.
         For two of them you just stay still in the scanner, but we will also require your collaboration for the third, which is functional MRI.
