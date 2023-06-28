@@ -19,7 +19,9 @@ nav:
       - Running the scanning session: data-collection/scanning.md
       - Session tear-down: data-collection/tear-down.md
       - Emergency procedures: data-collection/emergency-procedures.md
-    - Data management: data-storage.md
+    - Data management:
+      - Post-session retrieval and BIDS: data-management/post-session.md
+      - QC of unprocessed data: data-management/mriqc.md
     - Preprocessing: preprocessing.md
     - Release of data: release.md
 theme:
