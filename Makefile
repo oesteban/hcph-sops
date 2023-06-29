@@ -17,4 +17,4 @@ OUTPUT_FILE = docs/changes.md
 
 # Target: Update the changelog
 update_changelog:
-	$(GIT_CHANGELOG) -bTr --sections $(SECTION_LIST) -c $(COMMIT_CONVENTION) -t $(CHANGELIST_TEMPLATE) -o $(OUTPUT_FILE)
+	$(GIT_CHANGELOG) -bTr --sections $(SECTION_LIST) -c $(COMMIT_CONVENTION) -t $(CHANGELIST_TEMPLATE) -o $(OUTPUT_FILE) --in-place
