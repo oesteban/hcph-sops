@@ -40,7 +40,7 @@ plugins:
       include_dir: code
       include_yaml:
         - secrets: 'secrets/settings.yml'
-        - settings: 'hcph-settings.yml'
+        - settings: 'study-settings.yml'
       on_undefined: lax
   - mkpdfs:
       company: Lausanne University Hospital (CHUV)
