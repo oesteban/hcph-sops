@@ -2,6 +2,7 @@ markdown-include
 mkdocs
 mkdocs-macros-plugin
 mkdocs-material
+git-changelog
 git+https://github.com/dimrozakis/mkpdfs-mkdocs-plugin.git@master
 pygments
 weasyprint<53
