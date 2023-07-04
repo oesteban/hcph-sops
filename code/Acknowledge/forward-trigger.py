@@ -1,21 +1,35 @@
+import sys
 import serial
 import keyboard
-from time import sleep
+import asyncio
 
-#Important : The code will run until Ctrl+C is pressed!
+port = "/dev/ttyACM0"
 
-port = "/dev/ttyACM0" 
+def send_trigger():
+    with serial.Serial(port) as ser:
+        trigger = b'\x01'
+        ser.write(trigger)
 
-# Send trial trigger code
-def send_trigger(port):
-	Ser = serial.Serial(port)
-	Ser.close()
-	Ser.open()
-	Trigger = b'\x01' 
-	Ser.write(Trigger)
-	Ser.close() 
+async def handle_key_press():
+    keyboard.add_hotkey("s", send_trigger)
+    await asyncio.Event().wait()
 
-keyboard.on_press_key("s",lambda _: send_trigger(port))
+async def main():
+    await asyncio.gather(
+        handle_key_press(),
+        asyncio.sleep(0.008)
+    )
 
-while True:
-    sleep(6000)
+if __name__ == '__main__':
+    print("Main loop")
+    loop = asyncio.get_event_loop()
+    try:
+        loop.run_until_complete(main())
+    except KeyboardInterrupt:
+        loop.stop()
+    finally:
+        loop.close()
+
+
+
+
