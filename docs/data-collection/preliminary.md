@@ -27,8 +27,8 @@
     - [ ] The AMI100C unit can receive up to 16 analog signals. 
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
-    - [ ] The SPT100 (solid state relay driver unit) is used to record triggers. A trigger appears as a vertical red line on your physiological recordings [INCLUDE IMAGE].
-- [ ] Ensure that the *Mode* switch of the MMBT-S Trigger Interface Box adapter (pink color box) is set on the **S** position.
+    - [ ] The [SPT100D (solid state relay driver unit)](../assets/files/STP100D.pdf) is used to input digital signals that must be recorded (e.g., the trigger signals from the scanner)
+- [ ] Ensure that the *Mode* switch of the [MMBT-S Trigger Interface Box adapter (pink color box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf) is set on the **S** position.
 - [ ] Install the BIOPAC recording software (*AcqKnowledge*).
 - [ ] Create a template *graph file* ([`EXP_BASE.gtl`](../assets/files/EXP_BASE.gtl))
 
