@@ -60,6 +60,55 @@
         - [ ] Configure whether you want to collect directly to hard disk and autosave settings
         - [ ] Save the experiment, making sure you choose a "graph template file" (with extension `.gtl`)
 
+### Setting up the connexion between the Biopack and the psychopy laptop
+- [ ] Copy the [latest version of the code to sent triggers](https://github.com/TheAxonLab/HCPh-fMRI-tasks/Acknowledge/forward-trigger.py)
+- [ ] To automatically start the program when the BIOPAC is connected, areate a udev rule in as follows:
+    ```
+      sudo nano /etc/udev/rules.d/99-forward-trigger.rules
+    ```
+- [ ] Add the following rule to the file:
+      ```
+      ACTION=="add", KERNEL=="ttyACM0", SUBSYSTEM=="tty", TAG+="systemd", ENV{SYSTEMD_WANTS}="forward-trigger.service"
+      ```
+- [ ] Save the file and exit the editor.
+- [ ] Run the following command to reload the udev rules:
+    ```
+    sudo udevadm control --reload-rules
+    ```
+- [ ] Create a systemd service unit file:
+    ```
+    sudo nano /etc/systemd/system/forward-trigger.service
+    ```
+- [ ] Add the following content to the file (Adapt the path to forward-trigger.py to the location on your computer):
+    ```
+    [Unit]
+    Description=Forward Trigger Service
+    After=network.target
+    
+    [Service]
+    ExecStart=/usr/bin/python3 /path/to/forward-trigger.py
+    WorkingDirectory=/path/to/forward-trigger/directory
+    StandardOutput=null
+    
+    [Install]
+    WantedBy=multi-user.target
+    ```
+- [ ] Save the file and exit the text editor.
+- [ ] Run the following command to enable the service to start at boot:
+    ```
+    sudo systemctl enable forward-trigger
+    ```
+- [ ] Run the following command to reload the systemd daemon:
+    ```
+    sudo systemctl daemon-reload
+    ```
+
+
+
+
+
+
+
 ### Stimuli presentation: *psychopy*
 
 - [ ] Prepare a laptop with a running Psychopy 3 installation AND the EyeTracker software.
