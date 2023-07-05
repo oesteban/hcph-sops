@@ -1,11 +1,11 @@
 # HCPh Project: Standard Operation Procedures (SOPs)
 
-Generated from https://github.com/nipreps/mriqc-sops
+Generated from https://github.com/nipreps/SOPs-Cookiecutter
 
 How to *see* these documents:
 
 ```
-git clone https://github.com/TheAxonLab/hcph-protocol.git
+git clone https://github.com/TheAxonLab/hcph-sops.git
 cd hcph-protocol
 python -m pip install -r requirements.txt
 mkdocs serve
