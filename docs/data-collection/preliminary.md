@@ -60,16 +60,16 @@
         - [ ] Configure whether you want to collect directly to hard disk and autosave settings
         - [ ] Save the experiment, making sure you choose a "graph template file" (with extension `.gtl`)
 
-### Setting up the connexion between the Biopack and the psychopy laptop
-- [ ] Copy the [latest version of the code to sent triggers](https://github.com/TheAxonLab/HCPh-fMRI-tasks/Acknowledge/forward-trigger.py)
-- [ ] To automatically start the program when the BIOPAC is connected, areate a udev rule in as follows:
+### Setting up the Connection between the Biopac and the Psychopy Laptop:
+- [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/HCPh-fMRI-tasks/Acknowledge/forward-trigger.py)
+- [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
     ```
-      sudo nano /etc/udev/rules.d/99-forward-trigger.rules
+    sudo nano /etc/udev/rules.d/99-forward-trigger.rules
     ```
 - [ ] Add the following rule to the file:
-      ```
-      ACTION=="add", KERNEL=="ttyACM0", SUBSYSTEM=="tty", TAG+="systemd", ENV{SYSTEMD_WANTS}="forward-trigger.service"
-      ```
+    ```
+    ACTION=="add", KERNEL=="ttyACM0", SUBSYSTEM=="tty", TAG+="systemd", ENV{SYSTEMD_WANTS}="forward-trigger.service"
+    ```
 - [ ] Save the file and exit the editor.
 - [ ] Run the following command to reload the udev rules:
     ```
@@ -84,12 +84,12 @@
     [Unit]
     Description=Forward Trigger Service
     After=network.target
-    
+
     [Service]
     ExecStart=/usr/bin/python3 /path/to/forward-trigger.py
     WorkingDirectory=/path/to/forward-trigger/directory
     StandardOutput=null
-    
+
     [Install]
     WantedBy=multi-user.target
     ```
@@ -102,6 +102,34 @@
     ```
     sudo systemctl daemon-reload
     ```
+
+### Verifying Trigger Transfer Without Biopac Connection:
+- [ ] Ensure socat is installed (if not already):
+    ```
+    sudo apt-get update
+    sudo apt-get install socat
+    ```
+- [ ] Create a virtual serial port and establish a symbolic link to `/dev/ttyACM0` using the following command:
+    ```
+    sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0
+    ```
+- [ ] Adjust the permissions for the virtual serial port:
+    ```
+    sudo chmod 666 /dev/ttyACM0
+    ```
+- [ ] Install minicom (if not already installed):
+    ```
+    sudo apt-get update
+    sudo apt-get install minicom
+    ```
+- [ ] Launch minicom, specifying the virtual serial port as the device:
+    ```
+    minicom -D /dev/ttyACM0
+    ```
+- [ ] Press "s" and verify that "^A" appears in the minicom terminal.
+
+
+
 
 
 
