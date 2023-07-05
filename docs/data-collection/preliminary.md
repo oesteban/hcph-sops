@@ -117,16 +117,16 @@
     ```
     sudo chmod 666 /dev/ttyACM0
     ```
-- [ ] Install minicom (if not already installed):
+- [ ] Install screen (if not already installed):
     ```
     sudo apt-get update
-    sudo apt-get install minicom
+    sudo apt-get install screen
     ```
 - [ ] Launch minicom, specifying the virtual serial port as the device:
     ```
-    minicom -D /dev/ttyACM0
+    screen /dev/ttyACM0
     ```
-- [ ] Press "s" and verify that "^A" appears in the minicom terminal.
+- [ ] Press "s" and verify that "^A" appears in the screen terminal.
 
 
 
