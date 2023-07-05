@@ -28,7 +28,7 @@
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
     - [ ] The [SPT100D (solid state relay driver unit)](../assets/files/STP100D.pdf) is used to input digital signals that must be recorded (e.g., the trigger signals from the scanner)
-- [ ] Ensure that the *Mode* switch of the [MMBT-S Trigger Interface Box adapter (pink color box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf) is set on the **S** position.
+- [ ] Ensure that the *Mode* switch of the [MMBT-S Trigger Interface Box adapter (pink color box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf) is set on the **P** position.
 - [ ] Install the BIOPAC recording software (*AcqKnowledge*).
 - [ ] Create a template *graph file* ([`EXP_BASE.gtl`](../assets/files/EXP_BASE.gtl))
 
@@ -103,7 +103,7 @@
     sudo systemctl daemon-reload
     ```
 
-### Verifying Trigger Transfer Without Biopac Connection:
+### Verifying Trigger Transfer Without BIOPAC Connection:
 - [ ] Ensure socat is installed (if not already):
     ```
     sudo apt-get update
