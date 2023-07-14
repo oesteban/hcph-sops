@@ -64,7 +64,7 @@
 
 !!! important "It's fundamental to have a reliable means of communication with the BIOPAC digital inputs"
 
-    The following guidelines set up a little service on a linux box that keeps listening for key presses (mainly, the <span class="key-press">s</span> trigger from the trigger box), and RPC (remote procedure calls) from typically *Psychopy* or similar software.
+    The following guidelines set up a little service on a linux box that keeps listening for key presses (mainly, the <span class="keypress">s</span> trigger from the trigger box), and RPC (remote procedure calls) from typically *Psychopy* or similar software.
     
     The service is spun up automatically when you connect the MMBT-S modem interface that communicates with the BIOPAC (that is, the *N-shaped pink box*)
 
@@ -124,7 +124,7 @@
     ```
     screen /dev/ttyACM0
     ```
-- [ ] Press "s" and verify that "^A" appears in the screen terminal.
+- [ ] Press <span class="keypress">s</span> and verify that `^A` appears in the screen terminal.
 
 ### Stimuli presentation: *psychopy*
 
