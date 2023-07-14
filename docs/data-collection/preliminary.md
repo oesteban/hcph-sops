@@ -129,7 +129,7 @@
     sudo apt-get update
     sudo apt-get install screen
     ```
-- [ ] Launch minicom, specifying the virtual serial port as the device:
+- [ ] With `screen`, listen to the new virtual serial port:
     ```
     screen /dev/ttyACM0
     ```
