@@ -28,7 +28,7 @@
     - [ ] The DA100C unit records the signal coming from the respiration belt. Plug the TSD160A unit on the DA100C.
     - [ ] The ECG100C MRI unit records the electrical signal coming from the heart via the ECG. Plug the MECMRI-2 unit on the ECG100C unit.
     - [ ] The [SPT100D (solid state relay driver unit)](../assets/files/STP100D.pdf) is used to input digital signals that must be recorded (e.g., the trigger signals from the scanner)
-- [ ] Ensure that the *Mode* switch of the [MMBT-S Trigger Interface Box adapter (pink color box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf) is set on the **S** position.
+- [ ] Ensure that the *Mode* switch of the [MMBT-S Trigger Interface Box adapter (pink color box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf) is set on the **P** position.
 - [ ] Install the BIOPAC recording software (*AcqKnowledge*).
 - [ ] Create a template *graph file* ([`EXP_BASE.gtl`](../assets/files/EXP_BASE.gtl))
 
@@ -59,6 +59,72 @@
         - [ ] Configure the experiment length (at least 2.5 hours)
         - [ ] Configure whether you want to collect directly to hard disk and autosave settings
         - [ ] Save the experiment, making sure you choose a "graph template file" (with extension `.gtl`)
+
+### Setting up the Connection between the Biopac and the Psychopy Laptop:
+
+!!! important "It's fundamental to have a reliable means of communication with the BIOPAC digital inputs"
+
+    The following guidelines set up a little service on a linux box that keeps listening for key presses (mainly, the <span class="keypress">s</span> trigger from the trigger box), and RPC (remote procedure calls) from typically *Psychopy* or similar software.
+    
+    The service is spun up automatically when you connect the MMBT-S modem interface that communicates with the BIOPAC (that is, the *N-shaped pink box*)
+
+- [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/hcph-sops/blob/mkdocs/code/synchronization/forward-trigger-service.py)
+- [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
+    ```
+    sudo nano /etc/udev/rules.d/99-forward-trigger.rules
+    ```
+- [ ] Add the following rule to the file:
+    ```
+    ACTION=="add", KERNEL=="ttyACM0", SUBSYSTEM=="tty", TAG+="systemd", ENV{SYSTEMD_WANTS}="forward-trigger.service"
+    ```
+- [ ] Save the file and exit the editor.
+- [ ] Run the following command to reload the udev rules:
+    ```
+    sudo udevadm control --reload-rules
+    ```
+- [ ] Create a systemd service unit file:
+    ```
+    sudo nano /etc/systemd/system/forward-trigger.service
+    ```
+- [ ] Add the following content to the file (Adapt the path to forward-trigger.py to the location on your computer):
+    ```
+    [Unit]
+    Description=Forward Trigger Service
+    After=network.target
+
+    [Service]
+    ExecStart=/usr/bin/python3 /path/to/forward-trigger.py
+    WorkingDirectory=/path/to/forward-trigger/directory
+    StandardOutput=null
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+- [ ] Save the file and exit the text editor.
+- [ ] Run the following command to enable the service to start at boot:
+    ```
+    sudo systemctl enable forward-trigger
+    ```
+- [ ] Run the following command to reload the systemd daemon:
+    ```
+    sudo systemctl daemon-reload
+    ```
+
+### Verifying Trigger Transfer Without BIOPAC Connection:
+- [ ] Ensure `socat` and `screen` are installed (if not already):
+    ```
+    sudo apt-get update
+    sudo apt-get install socat screen
+    ```
+- [ ] Create a virtual serial port and establish a symbolic link to `/dev/ttyACM0` using the following command:
+    ```
+    sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=666,b9600
+    ```
+- [ ] With `screen`, listen to the new virtual serial port:
+    ```
+    screen /dev/ttyACM0
+    ```
+- [ ] Press <span class="keypress">s</span> and verify that `^A` appears in the screen terminal.
 
 ### Stimuli presentation: *psychopy*
 
