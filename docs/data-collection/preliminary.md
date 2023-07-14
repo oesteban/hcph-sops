@@ -135,15 +135,6 @@
     ```
 - [ ] Press "s" and verify that "^A" appears in the screen terminal.
 
-
-
-
-
-
-
-
-
-
 ### Stimuli presentation: *psychopy*
 
 - [ ] Prepare a laptop with a running Psychopy 3 installation AND the EyeTracker software.
