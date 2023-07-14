@@ -120,10 +120,6 @@
     ```
     sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=660,b9600
     ```
-- [ ] Adjust the permissions for the virtual serial port:
-    ```
-    sudo chmod 666 /dev/ttyACM0
-    ```
 - [ ] Install screen (if not already installed):
     ```
     sudo apt-get update
