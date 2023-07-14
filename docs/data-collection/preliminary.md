@@ -111,10 +111,10 @@
     ```
 
 ### Verifying Trigger Transfer Without BIOPAC Connection:
-- [ ] Ensure socat is installed (if not already):
+- [ ] Ensure `socat` and `screen` are installed (if not already):
     ```
     sudo apt-get update
-    sudo apt-get install socat
+    sudo apt-get install socat screen
     ```
 - [ ] Create a virtual serial port and establish a symbolic link to `/dev/ttyACM0` using the following command:
     ```
