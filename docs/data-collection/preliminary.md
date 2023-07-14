@@ -61,7 +61,7 @@
         - [ ] Save the experiment, making sure you choose a "graph template file" (with extension `.gtl`)
 
 ### Setting up the Connection between the Biopac and the Psychopy Laptop:
-- [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/HCPh-fMRI-tasks/Acknowledge/forward-trigger.py)
+- [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/hcph-sops/...)
 - [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
     ```
     sudo nano /etc/udev/rules.d/99-forward-trigger.rules
