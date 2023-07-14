@@ -68,7 +68,7 @@
     
     The service is spun up automatically when you connect the MMBT-S modem interface that communicates with the BIOPAC (that is, the *N-shaped pink box*)
 
-- [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/hcph-sops/...)
+- [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/hcph-sops/blob/mkdocs/code/synchronization/forward-trigger-service.py)
 - [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
     ```
     sudo nano /etc/udev/rules.d/99-forward-trigger.rules
