@@ -61,6 +61,13 @@
         - [ ] Save the experiment, making sure you choose a "graph template file" (with extension `.gtl`)
 
 ### Setting up the Connection between the Biopac and the Psychopy Laptop:
+
+!!! important "It's fundamental to have a reliable means of communication with the BIOPAC digital inputs"
+
+    The following guidelines set up a little service on a linux box that keeps listening for key presses (mainly, the <span class="key-press">s</span> trigger from the trigger box), and RPC (remote procedure calls) from typically *Psychopy* or similar software.
+    
+    The service is spun up automatically when you connect the MMBT-S modem interface that communicates with the BIOPAC (that is, the *N-shaped pink box*)
+
 - [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/hcph-sops/...)
 - [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
     ```
