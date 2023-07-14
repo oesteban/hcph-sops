@@ -118,7 +118,7 @@
     ```
 - [ ] Create a virtual serial port and establish a symbolic link to `/dev/ttyACM0` using the following command:
     ```
-    sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=660,b9600
+    sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=666,b9600
     ```
 - [ ] With `screen`, listen to the new virtual serial port:
     ```
