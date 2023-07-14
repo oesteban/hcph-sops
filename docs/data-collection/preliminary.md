@@ -120,11 +120,6 @@
     ```
     sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=660,b9600
     ```
-- [ ] Install screen (if not already installed):
-    ```
-    sudo apt-get update
-    sudo apt-get install screen
-    ```
 - [ ] With `screen`, listen to the new virtual serial port:
     ```
     screen /dev/ttyACM0
