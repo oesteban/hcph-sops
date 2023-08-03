@@ -200,7 +200,7 @@
 
     ![ear_protecting_pillow.jpg](../assets/images/ear_protecting_pillow.jpg)
 
-- [ ] Cut a long stripe of medical auto-adhesive band and stick it at each side of the lower block of the head coil, across the participant's forehead and stick it to the participant's forehead. Indicate the participant that this band will tell them when they moved and help them recover the original position.
+- [ ] Cut a long strip of medical auto-adhesive band and stick it at each side of the lower block of the head coil, across the participant's forehead and stick it to the participant's forehead. Indicate the participant that this band will tell them when they moved and help them recover the original position.
 - [ ] Place the top block of the coil and check that the participants' front touches or is really close to the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.
 - [ ] Connect the coil's cable to the corresponding socket on the table.
 - [ ] Ask the participant if they are feeling cold. Cover them with a blanket if necessary.
