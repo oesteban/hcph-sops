@@ -185,6 +185,7 @@
     ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
 
 - [ ] When completely laying down on the bed, tightly fasten the RB and check with the participant whether they are too uncomfortable.
+- [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort. 
 - [ ] Once the subject is lying on the MR bed, check that no arms/legs lie on the GA or the RB tubes.
 
     ![alarm_button](../assets/images/alarm_button.png)
@@ -192,15 +193,17 @@
 ### Acommodating the participant's head in the coil
 
 - [ ] Adjust the participant inside. With the paddings, their head position MUST be adjusted and elevated so that the nose and the forehead of the participant are both close to the upper coil. This procedure ensures the ET has the clearest possible view of eye.
-- [ ] This part must be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and forehead of the participant almost touch the coil. In case of need, ask the participant to "say yes" with the head (chin on neck) and keep this position, place the pillows, place the coil and check that the participants' front touches the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.  
+- [ ] This part must be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and forehead of the participant almost touch the coil. In case of need, ask the participant to rotate their head like when *saying yes* until reaching an adequate position, place any remaining paddings.
     ![two_pillows](../assets/images/two_pillows.jpg)
     ![superpose_pillows](../assets/images/superpose_pillows.jpg)
 - [ ] Take the side paddings and fit them between each ear and the coil. If using the inflatable padding, pump air into them without making the participant uncomfortable (check with them).
 
     ![ear_protecting_pillow.jpg](../assets/images/ear_protecting_pillow.jpg)
 
+- [ ] Cut a long stripe of medical auto-adhesive band and stick it at each side of the lower block of the head coil, across the participant's forehead and stick it to the participant's forehead. Indicate the participant that this band will tell them when they moved and help them recover the original position.
+- [ ] Place the top block of the coil and check that the participants' front touches or is really close to the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.
+- [ ] Connect the coil's cable to the corresponding socket on the table.
 - [ ] Ask the participant if they are feeling cold. Cover them with a blanket if necessary.
-- [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort. 
 - [ ] Place rectangular paddings at each side of the chest and help the participant acommodate their elbows on them.
 - [ ] Remind the participant not to create closed loops by crossing their legs or holding their hands together.
 - [ ] Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. **Ask the participant to close their eyes**, press the laser alignment button and align the head-coil markers with the red light.
