@@ -25,7 +25,6 @@ from pathlib import Path
 import serial
 import asyncio
 import logging
-
 import janus
 import keyboard
 import usb.core
@@ -138,9 +137,13 @@ def check_usb_device_connected(usb_vendor_id, usb_product_id):
     Returns:
         bool: True if the device is connected, False otherwise.
     """
-    device = usb.core.find(idVendor=int(usb_vendor_id, 16), idProduct=int(usb_product_id, 16))
+    device = usb.core.find(
+        idVendor=int(usb_vendor_id, 16), idProduct=int(usb_product_id, 16)
+    )
     if device is None:
-        raise RuntimeError(f"USB device (Vendor ID: {usb_vendor_id}, Product ID: {usb_product_id}) is not connected.")
+        raise RuntimeError(
+            f"USB device (Vendor ID: {usb_vendor_id}, Product ID: {usb_product_id}) is not connected."
+        )
     return True
 
 
@@ -150,7 +153,9 @@ async def main() -> None:
     Run the signal server and forward the signals to the serial port.
     """
     # Check if the USB device is connected
-    initial_usb_connection = check_usb_device_connected("07c0", "0101") #for testing "0bc2", "2322"
+    initial_usb_connection = check_usb_device_connected(
+        "07c0", "0101"
+    )  # for testing "0bc2", "2322"
 
     # Initiate a Queue that has synchronous and asynchronous endpoints.
     signal_queue: janus.Queue[int] = janus.Queue()
