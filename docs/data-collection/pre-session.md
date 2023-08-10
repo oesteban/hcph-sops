@@ -63,8 +63,6 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![mac_setup](../assets/images/mac_setup.png) 
 - [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC and the other end to the parallel port of the NEUROSPEC parallel-to USB-converter.
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
-    ![neurospec](../assets/images/neurospec.jpg) ** Do not connect the NEUROSPEC parallel-to USB-converter to *{{ secrets.hosts.psychopy | default("███") }}* now. It must always be connected after the USB cable of the sync box.**
-
 
     ![neurospec_usb](../assets/images/neurospec_usb.jpg)
 
