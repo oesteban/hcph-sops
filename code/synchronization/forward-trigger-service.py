@@ -31,7 +31,7 @@ import usb.core
 import usb.util
 
 
-LISTEN = 8888
+LISTEN = 2023
 SERIAL_PORT = "/dev/ttyACM0"
 LOG_FILE = Path.home() / "var" / "log" / "forward-trigger-service.log"
 
