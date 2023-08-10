@@ -63,8 +63,8 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![mac_setup](../assets/images/mac_setup.png) 
 - [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC and the other end to the parallel port of the NEUROSPEC parallel-to USB-converter.
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
-    ![neurospec](../assets/images/neurospec.jpg)
-- [ ] Connect that NEUROSPEC adapter to one of the USB port of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
+    ![neurospec](../assets/images/neurospec.jpg) ** Do not connect the NEUROSPEC parallel-to USB-converter to *{{ secrets.hosts.psychopy | default("███") }}* now. It must always be connected after the USB cable of the sync box.**
+
 
     ![neurospec_usb](../assets/images/neurospec_usb.jpg)
 
@@ -191,6 +191,8 @@ Instructions of operations to be performed before the participant arrival, **bef
     !!! warning "If the monitor does not automatically switch the source of the screen, you can use the button below to switch it." 
     
         ![switch_screen](../assets/images/screen_switch.jpg)
+      
+- [ ] Connect the NEUROSPEC adapter (pink USB cable) to one of the USB port of the laptop *{{ secrets.hosts.psychopy | default("███") }}*. **This cable must always be connected last.**
 
 - Your laptop connections should now look like this.
 
@@ -200,6 +202,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
+- [ ] Check that the service to synchronize the triggers is on with `sudo systemctl status forward-trigger`. If not, run `sudo systemctl status forward-trigger` and recheck the status.
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
     - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
