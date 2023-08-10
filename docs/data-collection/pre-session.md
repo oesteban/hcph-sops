@@ -192,7 +192,10 @@ Instructions of operations to be performed before the participant arrival, **bef
     
         ![switch_screen](../assets/images/screen_switch.jpg)
       
-- [ ] Connect the NEUROSPEC adapter (pink USB cable) to one of the USB port of the laptop *{{ secrets.hosts.psychopy | default("███") }}*. **This cable must always be connected last.**
+- [ ] Connect the MMBT-S Trigger Interface Box adapter (pink USB cable) to one of the USB ports of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
+    ![neurospec](../assets/images/neurospec.jpg)
+    
+    !!! danger "The MMBT-S Trigger Interface MUST be connected to the laptop AFTER the trigger USB cable coming from the SyncBox. "
 
 - Your laptop connections should now look like this.
 
