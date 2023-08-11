@@ -63,6 +63,266 @@ To do so, you'll need to first [download the data from PACS](#download-the-data-
 {% include 'heudiconv/reproin.sh' %}
 ```
 
+The output of *HeuDiConv* with our current heuristics and reproin conventions should be like:
+
+```
+├── ses-14
+│   ├── anat
+│   │   ├── sub-pilot_ses-14_acq-original_T1w.json
+│   │   ├── sub-pilot_ses-14_acq-original_T1w.nii.gz
+│   │   ├── sub-pilot_ses-14_acq-undistorted_T1w.json
+│   │   ├── sub-pilot_ses-14_acq-undistorted_T1w.nii.gz
+│   │   ├── sub-pilot_ses-14_T2w.json
+│   │   └── sub-pilot_ses-14_T2w.nii.gz
+│   ├── dwi
+│   │   ├── sub-pilot_ses-14_acq-highres_dir-PA_dwi.bval
+│   │   ├── sub-pilot_ses-14_acq-highres_dir-PA_dwi.bvec
+│   │   ├── sub-pilot_ses-14_acq-highres_dir-PA_dwi.json
+│   │   └── sub-pilot_ses-14_acq-highres_dir-PA_dwi.nii.gz
+│   ├── fmap
+│   │   ├── sub-pilot_ses-14_acq-b0_dir-AP_epi.json
+│   │   ├── sub-pilot_ses-14_acq-b0_dir-AP_epi.nii.gz
+│   │   ├── sub-pilot_ses-14_acq-bold_dir-PA_run-1_epi.json
+│   │   ├── sub-pilot_ses-14_acq-bold_dir-PA_run-1_epi.nii.gz
+│   │   ├── sub-pilot_ses-14_acq-bold_dir-PA_run-2_epi.json
+│   │   ├── sub-pilot_ses-14_acq-bold_dir-PA_run-2_epi.nii.gz
+│   │   ├── sub-pilot_ses-14_magnitude1.json
+│   │   ├── sub-pilot_ses-14_magnitude1.nii.gz
+│   │   ├── sub-pilot_ses-14_magnitude2.json
+│   │   ├── sub-pilot_ses-14_magnitude2.nii.gz
+│   │   ├── sub-pilot_ses-14_phasediff.json
+│   │   └── sub-pilot_ses-14_phasediff.nii.gz
+│   ├── func
+│   │   ├── sub-pilot_ses-14_task-bht_echo-1_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_echo-1_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_echo-2_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_echo-2_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_echo-3_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_echo-3_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_echo-4_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_echo-4_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_events.tsv
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_echo-1_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_echo-1_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_echo-2_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_echo-2_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_echo-3_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_echo-3_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_echo-4_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_echo-4_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_run-1_events.tsv
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_echo-1_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_echo-1_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_echo-2_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_echo-2_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_echo-3_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_echo-3_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_echo-4_bold.json
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_echo-4_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-bht_run-2_events.tsv
+│   │   ├── sub-pilot_ses-14_task-qc_echo-1_bold.json
+│   │   ├── sub-pilot_ses-14_task-qc_echo-1_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-qc_echo-2_bold.json
+│   │   ├── sub-pilot_ses-14_task-qc_echo-2_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-qc_echo-3_bold.json
+│   │   ├── sub-pilot_ses-14_task-qc_echo-3_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-qc_echo-4_bold.json
+│   │   ├── sub-pilot_ses-14_task-qc_echo-4_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-qc_events.tsv
+│   │   ├── sub-pilot_ses-14_task-rest_echo-1_bold.json
+│   │   ├── sub-pilot_ses-14_task-rest_echo-1_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-rest_echo-2_bold.json
+│   │   ├── sub-pilot_ses-14_task-rest_echo-2_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-rest_echo-3_bold.json
+│   │   ├── sub-pilot_ses-14_task-rest_echo-3_bold.nii.gz
+│   │   ├── sub-pilot_ses-14_task-rest_echo-4_bold.json
+│   │   ├── sub-pilot_ses-14_task-rest_echo-4_bold.nii.gz
+│   │   └── sub-pilot_ses-14_task-rest_events.tsv
+│   └── sub-pilot_ses-14_scans.tsv
+├── ses-15
+│   ├── anat
+│   │   ├── sub-pilot_ses-15_acq-original_T1w.json
+│   │   ├── sub-pilot_ses-15_acq-original_T1w.nii.gz
+│   │   ├── sub-pilot_ses-15_acq-undistorted_T1w.json
+│   │   ├── sub-pilot_ses-15_acq-undistorted_T1w.nii.gz
+│   │   ├── sub-pilot_ses-15_T2w.json
+│   │   └── sub-pilot_ses-15_T2w.nii.gz
+│   ├── dwi
+│   │   ├── sub-pilot_ses-15_acq-highres_dir-LR_dwi.bval
+│   │   ├── sub-pilot_ses-15_acq-highres_dir-LR_dwi.bvec
+│   │   ├── sub-pilot_ses-15_acq-highres_dir-LR_dwi.json
+│   │   └── sub-pilot_ses-15_acq-highres_dir-LR_dwi.nii.gz
+│   ├── fmap
+│   │   ├── sub-pilot_ses-15_acq-b0_dir-RL_epi.json
+│   │   ├── sub-pilot_ses-15_acq-b0_dir-RL_epi.nii.gz
+│   │   ├── sub-pilot_ses-15_acq-bold_dir-RL_part-mag_epi.json
+│   │   ├── sub-pilot_ses-15_acq-bold_dir-RL_part-mag_epi.nii.gz
+│   │   ├── sub-pilot_ses-15_acq-bold_dir-RL_part-phase_epi.json
+│   │   ├── sub-pilot_ses-15_acq-bold_dir-RL_part-phase_epi.nii.gz
+│   │   ├── sub-pilot_ses-15_magnitude1.json
+│   │   ├── sub-pilot_ses-15_magnitude1.nii.gz
+│   │   ├── sub-pilot_ses-15_magnitude2.json
+│   │   ├── sub-pilot_ses-15_magnitude2.nii.gz
+│   │   ├── sub-pilot_ses-15_phasediff.json
+│   │   └── sub-pilot_ses-15_phasediff.nii.gz
+│   ├── func
+│   │   ├── sub-pilot_ses-15_task-bht_echo-1_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-bht_echo-1_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-bht_echo-1_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-bht_echo-1_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-bht_echo-2_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-bht_echo-2_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-bht_echo-2_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-bht_echo-2_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-bht_echo-3_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-bht_echo-3_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-bht_echo-3_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-bht_echo-3_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-bht_echo-4_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-bht_echo-4_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-bht_echo-4_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-bht_echo-4_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-bht_part-mag_events.tsv
+│   │   ├── sub-pilot_ses-15_task-bht_part-phase_events.tsv
+│   │   ├── sub-pilot_ses-15_task-qct_echo-1_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-qct_echo-1_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-qct_echo-1_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-qct_echo-1_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-qct_echo-2_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-qct_echo-2_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-qct_echo-2_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-qct_echo-2_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-qct_echo-3_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-qct_echo-3_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-qct_echo-3_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-qct_echo-3_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-qct_echo-4_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-qct_echo-4_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-qct_echo-4_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-qct_echo-4_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-qct_part-mag_events.tsv
+│   │   ├── sub-pilot_ses-15_task-qct_part-phase_events.tsv
+│   │   ├── sub-pilot_ses-15_task-rest_echo-1_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-rest_echo-1_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-rest_echo-1_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-rest_echo-1_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-rest_echo-2_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-rest_echo-2_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-rest_echo-2_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-rest_echo-2_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-rest_echo-3_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-rest_echo-3_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-rest_echo-3_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-rest_echo-3_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-rest_echo-4_part-mag_bold.json
+│   │   ├── sub-pilot_ses-15_task-rest_echo-4_part-mag_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-rest_echo-4_part-phase_bold.json
+│   │   ├── sub-pilot_ses-15_task-rest_echo-4_part-phase_bold.nii.gz
+│   │   ├── sub-pilot_ses-15_task-rest_part-mag_events.tsv
+│   │   └── sub-pilot_ses-15_task-rest_part-phase_events.tsv
+│   └── sub-pilot_ses-15_scans.tsv
+└── ses-16
+    ├── anat
+    │   ├── sub-pilot_ses-16_acq-original_T1w.json
+    │   ├── sub-pilot_ses-16_acq-original_T1w.nii.gz
+    │   ├── sub-pilot_ses-16_acq-undistorted_T1w.json
+    │   ├── sub-pilot_ses-16_acq-undistorted_T1w.nii.gz
+    │   ├── sub-pilot_ses-16_T2w.json
+    │   └── sub-pilot_ses-16_T2w.nii.gz
+    ├── dwi
+    │   ├── sub-pilot_ses-16_acq-highres_dir-RL_dwi.bval
+    │   ├── sub-pilot_ses-16_acq-highres_dir-RL_dwi.bvec
+    │   ├── sub-pilot_ses-16_acq-highres_dir-RL_dwi.json
+    │   └── sub-pilot_ses-16_acq-highres_dir-RL_dwi.nii.gz
+    ├── fmap
+    │   ├── sub-pilot_ses-16_acq-b0_dir-AP_epi.json
+    │   ├── sub-pilot_ses-16_acq-b0_dir-AP_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-b0_dir-LR_epi.json
+    │   ├── sub-pilot_ses-16_acq-b0_dir-LR_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-b0_dir-PA_epi.json
+    │   ├── sub-pilot_ses-16_acq-b0_dir-PA_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-b0_dir-RL_epi.json
+    │   ├── sub-pilot_ses-16_acq-b0_dir-RL_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-bold_dir-AP_part-mag_epi.json
+    │   ├── sub-pilot_ses-16_acq-bold_dir-AP_part-mag_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-bold_dir-AP_part-phase_epi.json
+    │   ├── sub-pilot_ses-16_acq-bold_dir-AP_part-phase_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-bold_dir-LR_part-mag_epi.json
+    │   ├── sub-pilot_ses-16_acq-bold_dir-LR_part-mag_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-bold_dir-LR_part-phase_epi.json
+    │   ├── sub-pilot_ses-16_acq-bold_dir-LR_part-phase_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-bold_dir-PA_part-mag_epi.json
+    │   ├── sub-pilot_ses-16_acq-bold_dir-PA_part-mag_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-bold_dir-PA_part-phase_epi.json
+    │   ├── sub-pilot_ses-16_acq-bold_dir-PA_part-phase_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-bold_dir-RL_part-mag_epi.json
+    │   ├── sub-pilot_ses-16_acq-bold_dir-RL_part-mag_epi.nii.gz
+    │   ├── sub-pilot_ses-16_acq-bold_dir-RL_part-phase_epi.json
+    │   ├── sub-pilot_ses-16_acq-bold_dir-RL_part-phase_epi.nii.gz
+    │   ├── sub-pilot_ses-16_magnitude1.json
+    │   ├── sub-pilot_ses-16_magnitude1.nii.gz
+    │   ├── sub-pilot_ses-16_magnitude2.json
+    │   ├── sub-pilot_ses-16_magnitude2.nii.gz
+    │   ├── sub-pilot_ses-16_phasediff.json
+    │   └── sub-pilot_ses-16_phasediff.nii.gz
+    ├── func
+    │   ├── sub-pilot_ses-16_task-bht_echo-1_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-bht_echo-1_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-bht_echo-1_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-bht_echo-1_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-bht_echo-2_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-bht_echo-2_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-bht_echo-2_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-bht_echo-2_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-bht_echo-3_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-bht_echo-3_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-bht_echo-3_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-bht_echo-3_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-bht_echo-4_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-bht_echo-4_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-bht_echo-4_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-bht_echo-4_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-bht_part-mag_events.tsv
+    │   ├── sub-pilot_ses-16_task-bht_part-phase_events.tsv
+    │   ├── sub-pilot_ses-16_task-qct_echo-1_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-qct_echo-1_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-qct_echo-1_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-qct_echo-1_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-qct_echo-2_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-qct_echo-2_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-qct_echo-2_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-qct_echo-2_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-qct_echo-3_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-qct_echo-3_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-qct_echo-3_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-qct_echo-3_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-qct_echo-4_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-qct_echo-4_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-qct_echo-4_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-qct_echo-4_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-qct_part-mag_events.tsv
+    │   ├── sub-pilot_ses-16_task-qct_part-phase_events.tsv
+    │   ├── sub-pilot_ses-16_task-rest_echo-1_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-rest_echo-1_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-rest_echo-1_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-rest_echo-1_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-rest_echo-2_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-rest_echo-2_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-rest_echo-2_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-rest_echo-2_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-rest_echo-3_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-rest_echo-3_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-rest_echo-3_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-rest_echo-3_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-rest_echo-4_part-mag_bold.json
+    │   ├── sub-pilot_ses-16_task-rest_echo-4_part-mag_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-rest_echo-4_part-phase_bold.json
+    │   ├── sub-pilot_ses-16_task-rest_echo-4_part-phase_bold.nii.gz
+    │   ├── sub-pilot_ses-16_task-rest_part-mag_events.tsv
+    │   └── sub-pilot_ses-16_task-rest_part-phase_events.tsv
+    └── sub-pilot_ses-16_scans.tsv
+```
+
 ### Convert physiological recordings and eye-tracking data to BIDS
 
 ```
