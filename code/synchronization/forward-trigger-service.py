@@ -162,7 +162,7 @@ async def main() -> None:
     Run the signal server and forward the signals to the serial port.
     """
     # Check if the USB device is connected
-    initial_usb_connection = check_usb_device_connected(
+    ensure_usb_device_connected(
         "07c0", "0101"
     )  # for testing "0bc2", "2322"
 
