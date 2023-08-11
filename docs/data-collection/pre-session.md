@@ -61,10 +61,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Plug in the Ethernet (the plug is on the back side of the BIOPAC) to the multiport adapter connected to the computer *{{ secrets.hosts.oesteban | default("███") }}*.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
     ![mac_setup](../assets/images/mac_setup.png) 
-- [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC and the other end to the parallel port of the NEUROSPEC parallel-to USB-converter.
+- [ ] Connect the parallel cable to the 25-pin socket at the back of the SPT100D of the BIOPAC and to the parallel port of the MMBT-S Trigger Interface Box adapter (N-shaped pink box).
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
-    ![neurospec](../assets/images/neurospec.jpg)
-- [ ] Connect that NEUROSPEC adapter to one of the USB port of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
 
     ![neurospec_usb](../assets/images/neurospec_usb.jpg)
 
@@ -191,6 +189,11 @@ Instructions of operations to be performed before the participant arrival, **bef
     !!! warning "If the monitor does not automatically switch the source of the screen, you can use the button below to switch it." 
     
         ![switch_screen](../assets/images/screen_switch.jpg)
+      
+- [ ] Connect the MMBT-S Trigger Interface Box adapter (pink USB cable) to one of the USB ports of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
+    ![neurospec](../assets/images/neurospec.jpg)
+    
+    !!! danger "The MMBT-S Trigger Interface MUST be connected to the laptop AFTER the trigger USB cable coming from the SyncBox. "
 
 - Your laptop connections should now look like this.
 
@@ -200,6 +203,17 @@ Instructions of operations to be performed before the participant arrival, **bef
     
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
+- [ ] Check that the service to synchronize the triggers is up with `sudo systemctl status forward-trigger`.
+
+    !!! warning "If the service is down, manually force its start"
+    
+        - [ ] Run `sudo systemctl start forward-trigger`
+        - [ ] Recheck the status with `sudo systemctl status forward-trigger`.
+    
+    !!! important "These commands are executed with `sudo`"
+    
+        The console will prompt you for the common user password: `{{ secrets.login.password_hos68752 | default("****") }}`
+
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
     - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
