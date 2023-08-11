@@ -203,7 +203,17 @@ Instructions of operations to be performed before the participant arrival, **bef
     
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
-- [ ] Check that the service to synchronize the triggers is on with `sudo systemctl status forward-trigger`. If not, run `sudo systemctl status forward-trigger` and recheck the status.
+- [ ] Check that the service to synchronize the triggers is up with `sudo systemctl status forward-trigger`.
+
+    !!! warning "If the service is down, manually force its start"
+    
+        - [ ] Run `sudo systemctl status forward-trigger`
+        - [ ] Recheck the status with `sudo systemctl status forward-trigger`.
+    
+    !!! important "These commands are executed with `sudo`"
+    
+        The console will prompt you for the common user password: `{{ secrets.login.password_hos68752 | default("****") }}`
+
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
     - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
