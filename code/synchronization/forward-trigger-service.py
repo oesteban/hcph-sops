@@ -131,11 +131,20 @@ def _trigger(sync_q: janus.SyncQueue[int]) -> None:
 def check_usb_device_connected(usb_vendor_id, usb_product_id):
     """
     Check if a USB device with the specified vendor and product IDs is connected.
-    Parameters:
-        usb_vendor_id (str): The USB vendor ID.
-        usb_product_id (str): The USB product ID.
-    Returns:
-        bool: True if the device is connected, False otherwise.
+    
+    Parameters
+    ----------
+    usb_vendor_id : :obj:`str`
+        Vendor ID of a USB device.
+    usb_product_id : :obj:`str`
+        Product ID of a USB device.
+
+    Returns
+    -------
+    connected : :obj:`bool`
+        ``True`` when the device is connected. If the device is not connected, this
+        function raises a :obj:`RuntimeError`.
+
     """
     device = usb.core.find(
         idVendor=int(usb_vendor_id, 16), idProduct=int(usb_product_id, 16)
