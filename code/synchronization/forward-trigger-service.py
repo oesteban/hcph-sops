@@ -128,7 +128,7 @@ def _trigger(sync_q: janus.SyncQueue[int]) -> None:
     logging.info("Scanner trigger received")
 
 
-def check_usb_device_connected(usb_vendor_id, usb_product_id):
+def ensure_usb_device_connected(usb_vendor_id, usb_product_id):
     """
     Check if a USB device with the specified vendor and product IDs is connected.
     
