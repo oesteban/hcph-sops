@@ -181,9 +181,7 @@ async def main() -> None:
     
     """
     # Check if the USB device is connected
-    ensure_usb_device_connected(
-        "07c0", "0101"
-    )  # for testing "0bc2", "2322"
+    ensure_usb_device_connected(*USB_MMBTS_DEVICE_ID)
 
     # Initiate a Queue that has synchronous and asynchronous endpoints.
     signal_queue: janus.Queue[int] = janus.Queue()
