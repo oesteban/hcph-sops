@@ -61,7 +61,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Plug in the Ethernet (the plug is on the back side of the BIOPAC) to the multiport adapter connected to the computer *{{ secrets.hosts.oesteban | default("███") }}*.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
     ![mac_setup](../assets/images/mac_setup.png) 
-- [ ] Connect one end of the parallel cable on the parallel plug on the back side of the STP100D unit of the BIOPAC and the other end to the parallel port of the NEUROSPEC parallel-to USB-converter.
+- [ ] Connect the parallel cable to the 25-pin socket at the back of the SPT100D of the BIOPAC and to the parallel port of the MMBT-S Trigger Interface Box adapter (N-shaped pink box).
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
 
     ![neurospec_usb](../assets/images/neurospec_usb.jpg)
@@ -207,7 +207,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     !!! warning "If the service is down, manually force its start"
     
-        - [ ] Run `sudo systemctl status forward-trigger`
+        - [ ] Run `sudo systemctl start forward-trigger`
         - [ ] Recheck the status with `sudo systemctl status forward-trigger`.
     
     !!! important "These commands are executed with `sudo`"
