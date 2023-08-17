@@ -1,3 +1,4 @@
+codespell
 markdown-include
 mkdocs
 mkdocs-macros-plugin
