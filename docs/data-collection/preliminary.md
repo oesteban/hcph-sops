@@ -153,7 +153,7 @@
     ```
     conda deactivate
     ```
-- [ ] Update pip to the lastest version:
+- [ ] Update pip to the latest version:
     ```
     pip3 install --upgrade pip
     ```
@@ -272,7 +272,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
 
 - [ ] Verify that as part of the [recruitement and screening procedure](../recruitment-scheduling-screening/recruitment.md), you have sent a copy of the MRI Safety and screening form ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)) to the participant over email and confirm reception by checking the 'First contact email sent' column in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
 - [ ] Verify also that you confirmed that the participant has read and understood the document, and in particular, you double-checked that they do not have any MRI contraindications, by checking the 'Phone interview done' and 'Participant volunteer and eligible' column in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
-- [ ] If the phone call interview was more than three days before the first session, call the participant again to reconfirm the following informations: 
+- [ ] If the phone call interview was more than three days before the first session, call the participant again to reconfirm the following information:
     - [ ] Remind the participant that any jewelry should be removed prior to the scan.
     - [ ] Indicate that they MUST shave the upper area of their chest where the ECG electrodes will be placed, if there is hair. The ECG electrodes MUST directly contact the skin.
     - [ ] Confirm clothing:

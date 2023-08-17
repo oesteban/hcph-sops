@@ -62,15 +62,15 @@
         Other times it will be fixed on the center, and have a blank gray background or a flickering or grating circular area behind it.
         The last element of this block will show the words LEFT or RIGHT.
         When either appears, please tap your thumb on each of the your other four fingers of the hand designated by the word, sequentially with all fingers and reversing the direction at the extremes (your pointer and your pinkie).
-        This positive-control task has an approximate lentgh of 2 minutes.
+        This positive-control task has a length of {{ settings.mri.timings.func_pct }}.
         During this task, please leave the alarm button on your tummy, where you can recover it when it finishes.
 
-        Then there is a long block of about 20 minutes that we call *resting* state.
+        Then there is a long block of {{ settings.mri.timings.func_rest }} that we call *resting* state.
         During this block, all you have to do is stay still and look at the movie.
         Please do not close your eyes.
    
         Finally, a breath-holding task will help us understand the signals elicited by your breathing that are detected by the scanner.
-        This block has a length of about 6 minutes.
+        This block has a length of {{ settings.mri.timings.func_bht }}.
         You will watch five repeats of the same block.
         Each block will show you a colored rectangle in the middle.
         The green rectangle means *breathe in*, the yellow rectangle means *breathe out*, and the red rectangle means *hold your breath*.
@@ -120,7 +120,7 @@
 
     > Before we continute, we need to make sure we do not introduce any dangerous object in the magnet room.
     >
-    > [IF THEY NEED TO CHANGE INTO SCRUBS] Here you will find a changing room, I have prepared some scrubs for you. Please remove all your clothes and leave them in the changing room. Please keep your underwear on (if a woman, double check that **their undergarment DOES NOT contain any large metalic part** such as shaping guides, and request their removal if they do).
+    > [IF THEY NEED TO CHANGE INTO SCRUBS] Here you will find a changing room, I have prepared some scrubs for you. Please remove all your clothes and leave them in the changing room. Please keep your underwear on (if a woman, double check that **their undergarment DOES NOT contain any large metallic part** such as shaping guides, and request their removal if they do).
     >
     > [IF THEY CAN WEAR THEIR CLOTHES] Please deposit here all your belongings, your belt, your glasses, your jewelry and any accessories, piercings, etc. that you have on you.
 
@@ -190,7 +190,7 @@
 
     ![alarm_button](../assets/images/alarm_button.png)
 
-### Acommodating the participant's head in the coil
+### Accommodating the participant's head in the coil
 
 - [ ] Adjust the participant inside. With the paddings, their head position MUST be adjusted and elevated so that the nose and the forehead of the participant are both close to the upper coil. This procedure ensures the ET has the clearest possible view of eye.
 - [ ] This part must be repeated taking out and putting back the upper part of the head-coil, adjusting the pillow at every step, until the head is fixed and the nose and forehead of the participant almost touch the coil. In case of need, ask the participant to rotate their head like when *saying yes* until reaching an adequate position, place any remaining paddings.
@@ -204,7 +204,7 @@
 - [ ] Place the top block of the coil and check that the participants' front touches or is really close to the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.
 - [ ] Connect the coil's cable to the corresponding socket on the table.
 - [ ] Ask the participant if they are feeling cold. Cover them with a blanket if necessary.
-- [ ] Place rectangular paddings at each side of the chest and help the participant acommodate their elbows on them.
+- [ ] Place rectangular paddings at each side of the chest and help the participant accommodate their elbows on them.
 - [ ] Remind the participant not to create closed loops by crossing their legs or holding their hands together.
 - [ ] Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. **Ask the participant to close their eyes**, press the laser alignment button and align the head-coil markers with the red light.
 
@@ -218,7 +218,7 @@
 
 ### Final preparatory steps of the ET
 - [ ] You should see the projection of the calibration mode as you left it open before.
-- [ ] Adjust the ET position to point the camera to the right eye. Adjustment may be easier if you swith to *Head camera* mode, which has a wider angle.
+- [ ] Adjust the ET position to point the camera to the right eye. Adjustment may be easier if you switch to *Head camera* mode, which has a wider angle.
     - [ ] The lens can be focused by rotating it, like a photo camera.
     - [ ] If the position of the ET is still inadequate, you can move the base.
     - [ ] As a last resort, you can also adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.

@@ -73,7 +73,7 @@
 
 At any moment, you may determine that the participant will require medical attention:
 
-  - The participant's health has been threatened or is actively at risk (e.g., elevated heart frequency, lack of pulse, respiratory issues, unconciousness, dizzyness, unsteadyness, etc.)
+  - The participant's health has been threatened or is actively at risk (e.g., elevated heart frequency, lack of pulse, respiratory issues, unconsciousness, dizzyness, unsteadyness, etc.)
   - The participant is unresponsive
   - The participant reports feeling unwell and needs attention
   - You think they may need medical attention but you are unsure.
@@ -108,7 +108,7 @@ At any moment, you may determine that the participant will require medical atten
 !!! warning "Resetting the scanner's table after it's been manually detached"
 
     - [ ] Dock the table onto the scanner's bore by insert the arrow-shaped prong into the docking bay.
-    - [ ] Wait for the MRI screen to indicate it is ready for docking, push down the right attatchment pedal with your foot for locking.
+    - [ ] Wait for the MRI screen to indicate it is ready for docking, push down the right attachment pedal with your foot for locking.
     - [ ] Simultaneously press the up and down buttons to activate the automatic recalibration of the table.
 
 ## Immediately report incidents

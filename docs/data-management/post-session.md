@@ -25,7 +25,7 @@ To do so, you'll need to first [download the data from PACS](#download-the-data-
     ```
 - [ ] Edit the query file `vim $HOME/queries/last-session.csv` (most likely, just update with the session's date)
 ``` text title="mydata-onesession.csv"
-{% include 'pacsman/mydata-onesession.csv' %}
+{% include 'code/pacsman/mydata-onesession.csv' %}
 ```
 - [ ] Prepare and run PACSMAN, pointing the output to the mounted directory.
     ``` bash
@@ -60,7 +60,7 @@ To do so, you'll need to first [download the data from PACS](#download-the-data-
 
 - [ ] Careful to change the number of the session ! Note that we use the heuristic -f reproin, because we have name the sequences at the console following ReproIn convention.
 ``` bash title="Executing HeudiConv"
-{% include 'heudiconv/reproin.sh' %}
+{% include 'code/heudiconv/reproin.sh' %}
 ```
 
 The output of *HeuDiConv* with our current heuristics and reproin conventions should be like:
