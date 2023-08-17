@@ -26,7 +26,7 @@
     - [ ] Drag and drop the protocol's stack icon (🗇) corresponding to the `anat-T1w__mprage` sequence into the image viewer.
         The icon will appear AFTER the image has been acquired.
 
-- [ ] Make sure that the FOV (yellow square) includes the whole brain by tilting or translating the FOV. If the full brain, including the cerebellum, do not fit in the FOV, favorise making sure that the cortex is fully enclosed in the yellow square. For reproduciblity, it is better if the FOV across sequences have a similar center and a similar tilt. However, if it is not possible, the priority remains to include the whole brain in the FOV. 
+- [ ] Make sure that the FOV (yellow square) includes the whole brain by tilting or translating the FOV. If the full brain, including the cerebellum, do not fit in the FOV, favorise making sure that the cortex is fully enclosed in the yellow square. For reproducibility, it is better if the FOV across sequences have a similar center and a similar tilt. However, if it is not possible, the priority remains to include the whole brain in the FOV.
 - [ ] If two sequences have the same resolution and the same number of slices, you can copy paste the FOV
     - [ ] Open the sequence for which you want to adjust the FOV/geometry
     - [ ] Right click on the sequence for which the FOV has already been carefully positioned
@@ -53,7 +53,7 @@
     - [ ] The following positions should be validated automatically when the gase is stable enough. If it is not the case, manually click on the validate button when it turns green
 - [ ] The ET software MUST show a cross during the calibration. If it does not, try sequentially the following:
     - [ ] readjust the focus of the ET; and if it still doesn't show the cross,
-    - [ ] readjust the mirror frame position sliding it throught the rails attached to the coil; and if it still doesn't show the cross,
+    - [ ] readjust the mirror frame position sliding it along the rails attached to the coil; and if it still doesn't show the cross,
     - [ ] readjust the participant's head positioning inside the coil; and if it still doesn't show the cross,
     - [ ] move the mirror up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position; and if it still doesn't show the cross,
     - [ ] iterate over the previous steps.

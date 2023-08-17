@@ -35,7 +35,7 @@ At a local scale, the project will substantially contribute to ensuring the reli
 
 ## Pre-registration
 
-The experiments and hypotheses associated to the collection of Cohorts I and II will be pre-registered to further guarantee research rigour and seek early scrutiny and feedback from experts in the field, thereby generating consensus on data collection and analysis.
+The experiments and hypotheses associated to the collection of Cohorts I and II will be pre-registered to further guarantee research rigor and seek early scrutiny and feedback from experts in the field, thereby generating consensus on data collection and analysis.
 Researchers increasingly perceive pre-registration as a tool to maximize research transparency, improve study planning, and eliminate incentives conducive to dubious practices in the search for positive outcomes.
 By pre-registering the study, we will maximize the impact and usefulness of this work.
 A report on the Cohort I collection is undergoing pre-registration.
@@ -49,7 +49,7 @@ Additional reports and public communications of results of this project will be 
 
 [3]: A. M. Hermundstad et al., “Structural foundations of resting-state and task-based functional connectivity in the human brain,” Proc. Natl. Acad. Sci., vol. 110, no. 15, pp. 6169–6174, Apr. 2013, doi: 10.1073/pnas.1219562110.
 
-[4]: G. Rosenthal et al., “Mapping higher-order relations between brain structure and function with embedded vector representations of connectomes,” Nat. Commun., vol. 9, no. 1, p. 2178, Jun. 2018, doi: 10.1038/s41467-018-04614-w.
+[4]: G. Rosenthal et al., “Mapping higher-order relations between brain structure and function with embedded vector representations of connectomes,” Nat. Comm., vol. 9, no. 1, p. 2178, Jun. 2018, doi: 10.1038/s41467-018-04614-w.
 
 [5]: P. Hagmann et al., “Mapping the structural core of human cerebral cortex.,” PLoS Biol., vol. 6, no. 7, p. e159, Jul. 2008, doi: 10.1371/journal.pbio.0060159.
 
@@ -67,6 +67,6 @@ Additional reports and public communications of results of this project will be 
 
 [12]: A. Zalesky, A. Fornito, L. Cocchi, L. L. Gollo, M. P. van den Heuvel, and M. Breakspear, “Connectome sensitivity or specificity: which is more important?,” NeuroImage, vol. 142, pp. 407–420, Nov. 2016, doi: 10.1016/j.neuroimage.2016.06.035.
 
-[13]: K. H. Maier-Hein et al., “The challenge of mapping the human connectome based on diffusion tractography,” Nat. Commun., vol. 8, no. 1, p. 1349, Nov. 2017, doi: 10.1038/s41467-017-01285-x.
+[13]: K. H. Maier-Hein et al., “The challenge of mapping the human connectome based on diffusion tractography,” Nat. Comm., vol. 8, no. 1, p. 1349, Nov. 2017, doi: 10.1038/s41467-017-01285-x.
 
 [14]: E. M. Gordon et al., “Precision Functional Mapping of Individual Human Brains,” Neuron, vol. 95, no. 4, pp. 791-807.e7, Aug. 2017, doi: 10.1016/j.neuron.2017.07.011.

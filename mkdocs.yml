@@ -37,7 +37,7 @@ theme:
 plugins:
   - search
   - macros:
-      include_dir: code
+      include_dir: include
       include_yaml:
         - secrets: 'secrets/settings.yml'
         - settings: 'study-settings.yml'
