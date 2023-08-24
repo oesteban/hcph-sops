@@ -41,8 +41,8 @@
 - [ ] Brief the participant about the calibration process. Refer to the [scanning protocol](scanning.md) for provided scripts.
 - [ ] Start the experiment by pressing the green play button.
 - [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected:
-        - [ ] Click on `Set Options` located on the right side of the screen.
-        - [ ] Under `Calibration type` in the top left corner, choose the image containing either 9 or 5 points.
+    - [ ] Click on `Set Options` located on the right side of the screen.
+    - [ ] Under `Calibration type` in the top left corner, choose the image containing either 9 or 5 points.
       
 ![9-points_calibration](../assets/images/9-points_calibration.jpg)
       
