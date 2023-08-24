@@ -228,7 +228,13 @@ Instructions of operations to be performed before the participant arrival, **bef
     |:--:|
     | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
     | ![run-session-syncbox](../assets/images/trigger_box.jpg) |
-    
+
+## Eye Tracker and projector setup
+
+Please note that some of the images used in these instructions are sourced from the [Eye Tracker Instruction Manual](https://www.sr-research.com/support/attachment.php?aid=1376)
+
+!!! warning "To ensure accurate performance and prevent minor drifts in the pupil and CR thresholds, perform the ET Setup 10-15 minutes after powering the ET on."
+
 - [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room {{ secrets.rooms.projector | default("███") }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
     | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
@@ -236,19 +242,19 @@ Instructions of operations to be performed before the participant arrival, **bef
     | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
 
 - [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
-- [ ] Go back to the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
-- [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Open the PCT experiment in *Psychopy* (`task-pct_bold.psyexp` file).
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
     - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
-    - [ ] To ease the setup of the ET, switch to the full view in the camera setup mode by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
-    - [ ] On the ET computer, verify that the calibration selected is the 9-points one.
-        - [ ] Click on `Set Options` on the right of the screen.
-        - [ ] On top left under `Calibration type`, choose the image containing 9 points.
-            ![9-points_calibration](../assets/images/9-points_calibration.jpg)
-
+    - [ ] To ease the setup of the ET, switch to the global view in the camera setup mode by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
+- [ ]  Enter the scanning room and adjust the camera's position until the eye is clearly visible.
+- [ ]  If the image appears blurry, fine-tune the focus using the lens barrel. Refer to the example image below to determine proper focus.
+  ![focus_example](../assets/images/focus.png)
+- [ ] Press the A key to automatically set the pupil and CR thresholds.
+- [ ] Fine-tune the pupil threshold using the up and down arrow keys if necessary.
+While checking the pupil/CR image and thresholding, have the participant look at the screen corners to verify correct detection even in extreme positions.
+  ![pupil_threshold](../assets/images/pupil_threshold.png)
 
 ## Final checks inside the scanning room
 
