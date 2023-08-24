@@ -36,27 +36,28 @@
 
     ![adjustFOV.jpg](../assets/images/adjustFOV.jpg)
 
-## Eye-tracker calibration
-- [ ] Inform the participant about the calibration process (the [scanning protocol](scanning.md) provides you with scripts)
-- [ ] Run the experiment by pressing the green play button. 
-- [ ] Enter the session and participant number in the pop up window. The Eyelink system setup page opens.
-- [ ] Press <span class="keypress">C</span> to open the calibration mode to perform the calibration and validation.
-- [ ] Exit the calibration mode by clicking on  <span class="keypress">ESC</span> .
-- [ ] Once the calibration of the ET is concluded, hit the <span class="keypress">Esc</span> key on the laptop *{{ secrets.hosts.psychopy | default("███") }}* to exit the calibration mode continue the task's program.
+## Eye-Tracker Calibration Process
 
-
-- [ ] Launch the ET calibration by pressing <span class="keypress">C</span> on the laptop keyboard or by clicking on Calibration on the ET interface:
-    - [ ] When the gaze is stable, the button `Accept fixation` appears green, then you can manually click on it to validate the first position.
+- [ ] Brief the participant about the calibration process. Refer to the [scanning protocol](scanning.md) for provided scripts.
+- [ ] Start the experiment by pressing the green play button.
+- [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected:
+        - [ ] Click on `Set Options` located on the right side of the screen.
+        - [ ] Under `Calibration type` in the top left corner, choose the image containing either 9 or 5 points.
+      
+![9-points_calibration](../assets/images/9-points_calibration.jpg)
+      
+- [ ] Two crosses should appear on the ET computer screen: one at the center of the pupil and the other at the center of the corneal reflection. If they're not visible, proceed sequentially with the following steps:
+    - [ ] Adjust the focus of the ET camera and the pupil detection threshold. If the cross remains invisible,
+    - [ ] Realign the mirror frame position by sliding it along the rails attached to the coil. If the cross still isn't visible,
+    - [ ] Re-adjust the participant's head positioning inside the coil. If the cross is still not visible,
+    - [ ] Make slight adjustments to the mirror's vertical position (be cautious as mentioned earlier). Even a small adjustment can impact calibration and eye positioning. If the cross remains invisible,
+    - [ ] Repeat the previous steps as needed.
+- [ ] Initiate the ET calibration by pressing <span class="keypress">C</span> on the laptop keyboard or by clicking on "Calibration" on the ET interface.
+- [ ] Once the participant's gaze stabilizes on the first fixation point, the `Accept fixation` button turns green. Click it to confirm the initial position.
 
     ![accept_fixation](../assets/images/accept_fixation.jpg) 
 
-    - [ ] The following positions should be validated automatically when the gase is stable enough. If it is not the case, manually click on the validate button when it turns green
-- [ ] The ET software MUST show a cross during the calibration. If it does not, try sequentially the following:
-    - [ ] readjust the focus of the ET; and if it still doesn't show the cross,
-    - [ ] readjust the mirror frame position sliding it along the rails attached to the coil; and if it still doesn't show the cross,
-    - [ ] readjust the participant's head positioning inside the coil; and if it still doesn't show the cross,
-    - [ ] move the mirror up or down (being careful as mentioned before). Just a few mm can ruin the calibration and the eye-position; and if it still doesn't show the cross,
-    - [ ] iterate over the previous steps.
-- [ ] When the calibration is successful, launch the validation by clicking on validation on the ET interface or clicking V on the keyboard of the laptop. Follow the same instructions as in the calibration to validate the positions.
-- [ ] If the validation is not ok, iterate over previous steps restarting calibration. Otherwise, you can leave the calibration mode on and move forward.
-
+- [ ] Subsequent positions should be automatically validated when the gaze remains stable. If not, manually click the validation button when it turns green.
+- [ ] After the calibration, ensure that the fixation points' positions match the expected pattern for either the 9 or 5 points calibration. If the pattern appears too distorted, restart the calibration.
+- [ ] Upon successful calibration, initiate validation by clicking "Validation" on the ET interface or pressing the 'V' key on the laptop keyboard. Follow the same instructions as in the calibration to validate positions.
+- [ ] If validation fails, repeat previous steps and restart calibration. Otherwise, you can leave the calibration mode and proceed with the task program by pressing the <span class="keypress">Esc</span> key on the laptop (*{{ secrets.hosts.psychopy | default("███") }}*).
