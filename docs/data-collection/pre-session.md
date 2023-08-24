@@ -250,8 +250,8 @@ Please note that some of the images used in this section are sourced from the [E
 - [ ]  Enter the scanning room and adjust the camera's position until the eye is clearly visible.
 - [ ]  If the image appears blurry, fine-tune the focus using the lens barrel. Refer to the example image below.
   ![focus_example](../assets/images/focus.png)
-- [ ] Press the A key to automatically set the pupil and CR thresholds.
-- [ ] Fine-tune the pupil threshold using the up and down arrow keys if necessary.
+- [ ] Press the A key to automatically set the pupil and CR detection thresholds.
+- [ ] Fine-tune the pupil detection threshold using the up and down arrow keys if necessary.
 While checking the pupil/CR image and thresholding, ask the participant to look at the screen corners to verify correct detection even in extreme positions.
   ![pupil_threshold](../assets/images/pupil_threshold.png)
 
