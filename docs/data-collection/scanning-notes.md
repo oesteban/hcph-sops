@@ -40,7 +40,7 @@
 
 - [ ] Brief the participant about the calibration process. Refer to the [scanning protocol](scanning.md) for provided scripts.
 - [ ] Start the experiment by pressing the green play button.
-- [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected:
+- [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected (9 points for PCT and 5 points for resting state and breath holding tasks):
     - [ ] Click on `Set Options` located on the right side of the screen.
     - [ ] Under `Calibration type` in the top left corner, choose the image containing either 9 or 5 points.
       
