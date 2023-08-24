@@ -246,7 +246,7 @@ Please note that some of the images used in this section are sourced from the [E
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
-    - [ ] To ease the setup of the ET, switch to the global view in the camera setup mode by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
+    - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
 - [ ]  Enter the scanning room and adjust the camera's position until the eye is clearly visible.
 - [ ]  If the image appears blurry, fine-tune the focus using the lens barrel. Refer to the example image below.
   ![focus_example](../assets/images/focus.png)
