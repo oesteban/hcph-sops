@@ -38,7 +38,7 @@
 
 ## Eye-Tracker Calibration Process
 
-- [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected (9 points for PCT and 5 points for resting state and breath-holding tasks):
+- [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected (9-point for PCT and 5-point for resting state and breath-holding tasks):
     - [ ] Click on <span class="keypress">Set Options</span> located on the right side of ET computer screen.
     - [ ] Under **Calibration type** in the top left corner, choose the image containing either 9 or 5 points.
       
@@ -54,7 +54,7 @@
     - [ ] **If the cross remains invisible**, revise the vertical position of the infrared mirror with respect to the standard mirror (this will require new gloves and replacing the tape to stick the infrared mirror).
         Even a tiny adjustment can impact calibration and eye positioning. 
     - [ ] **If the cross remains invisible**, repeat the previous steps as needed.
-- [ ] Initiate the ET calibration by pressing <span class="keypress">C</span> on the laptop keyboard or by clicking on "Calibration" on the ET interface.
+- [ ] Initiate the ET calibration by pressing <span class="keypress">C</span> on the laptop keyboard or by clicking on <span class="keypress">Calibration</span> on the ET interface.
 - [ ] Once the participant's gaze stabilizes on the first fixation point, the <span class="keypress">Accept fixation</span> button turns green.
     Click on it to confirm the initial position.
 
@@ -64,5 +64,5 @@
     If not, manually click the <span class="keypress">Accept fixation</span> button when it turns green.
 - [ ] After the calibration, ensure that the fixation points' positions match the expected pattern corresponding to the 9- or 5-point calibration.
     If the pattern appears too distorted, restart the calibration.
-- [ ] Upon successful calibration, initiate validation by clicking "Validation" on the ET interface or pressing the <span class="keypress">V</span> key on the laptop keyboard. Follow the same instructions as in the calibration to validate positions.
+- [ ] Upon successful calibration, initiate validation by clicking <span class="keypress">Validation</span> on the ET interface or pressing the <span class="keypress">V</span> key on the laptop keyboard. Follow the same instructions as in the calibration to validate positions.
 - [ ] If validation fails, repeat previous steps and restart calibration. Otherwise, you can leave the calibration mode and proceed with the task program by pressing the <span class="keypress">Esc</span> key on the laptop (*{{ secrets.hosts.psychopy | default("███") }}*).
