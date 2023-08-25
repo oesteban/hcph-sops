@@ -231,7 +231,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Eye Tracker and projector setup
 
-Please note that some of the images used in this section are sourced from the [Eye Tracker Instruction Manual](https://www.sr-research.com/support/attachment.php?aid=1376)
+Please note that some of the images used in this section are sourced from the [Eye Tracker Instruction Manual](https://www.sr-research.com/support/attachment.php?aid=1376).
 
 !!! warning "To ensure accurate performance and prevent minor drifts in the pupil and CR thresholds, perform the ET Setup 10-15 minutes after powering the ET on."
 
@@ -246,14 +246,18 @@ Please note that some of the images used in this section are sourced from the [E
     - [ ] Run the experiment by pressing the green play button. 
     - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
-    - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the left or right arrow. This will allow you to adjust the ET position as the infrared camera is providing feedback inside the scanning room through the projector.
-- [ ]  Enter the scanning room and adjust the camera's position until the eye is clearly visible.
-- [ ]  If the image appears blurry, fine-tune the focus using the lens barrel. Refer to the example image below.
+    - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the <span class="keypress">◀</span> or <span class="keypress">▶</span> arrow.
+        This will allow you to adjust the ET position as the infrared camera provides feedback inside the scanning room on the projection screen.
+- [ ]  Enter the scanning room and adjust the camera's position until the eye is fully visible.
+    To adjust the camera position, slightly unscrew the fixation locks of the camera arm, move the arm in search of the correct position, and tighten the locks again on the desired position.
+    The **right** eye should be visible at the center of the coil's square window for the eye.
+- [ ]  If the image appears blurry, fine-tune the focus using the lens barrel.
+    Refer to the example image below.
   ![focus_example](../assets/images/focus.png)
-- [ ] Press the A key to automatically set the pupil and CR detection thresholds.
-- [ ] Fine-tune the pupil detection threshold using the up and down arrow keys if necessary.
-While checking the pupil/CR image and thresholding, ask the participant to look at the screen corners to verify correct detection even in extreme positions.
-  ![pupil_threshold](../assets/images/pupil_threshold.png)
+- [ ] Press the <span class="keypress">A</span> key to set the pupil and CR detection thresholds automatically.
+- [ ] Fine-tune the pupil detection threshold using the <span class="keypress">▲</span> and <span class="keypress">▼</span> arrow keys if necessary.
+    While checking the pupil/CR image and thresholding, ask the participant to look at the screen corners to verify correct detection even in extreme positions.
+      ![pupil_threshold](../assets/images/pupil_threshold.png)
 
 ## Final checks inside the scanning room
 
