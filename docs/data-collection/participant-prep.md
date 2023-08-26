@@ -216,7 +216,7 @@
 
     ![send_isocenter](../assets/images/send_isocenter.png)
 
-### Final preparatory steps of the ET: setting field of view and focus
+### Final preparatory steps of the ET
 
 Please note that some of the images used in this section are sourced from the [Eye Tracker Instruction Manual](../assets/files/EL1000Plus_UserManual_1.0.20_GOP.pdf).
 
@@ -228,27 +228,36 @@ Please note that some of the images used in this section are sourced from the [E
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
     - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the <span class="keypress">◀</span> or <span class="keypress">▶</span> arrow.
         This will allow you to adjust the ET position as the infrared camera provides feedback inside the scanning room on the projection screen.
-- [ ]  Enter the scanning room and adjust the camera's position until the eye is fully visible.
-    To adjust the camera position, slightly unscrew the fixation locks of the camera arm, move the arm in search of the correct position, and tighten the locks again on the desired position.
+- [ ]  Enter the scanning room and adjust the ET arm position and focus of the lens until the eye is fully visible.
     The **right** eye should be visible at the center of the coil's square window for the eye.
-- [ ]  If the image appears blurry, fine-tune the focus using the lens barrel.
-    Refer to the example image below.
-  ![focus_example](../assets/images/focus.png)
+
+    !!! important "Adjusting the camera's field-of-view and focus"
+
+        - [ ] To adjust the camera position, slightly unscrew the fixation locks of the camera arm, move the arm in search of the correct position, and tighten the locks again on the desired position.
+            ![base-eye-tracker](../assets/images/base-eye-tracker.png)
+
+        - [ ] **If the eye coverage is still inappropriate**, realign the mirror frame position by sliding it along the rails attached to the coil.
+            You may ask the participant to do it while inside the bore.
+        - [ ] **If the eye coverage is still inappropriate**, re-adjust the participant's head positioning inside the coil.
+            You'll need to extract the bed outside of the bore for this by pressing the **Home** (🏠) button.
+        - [ ] **If the eye coverage is still inappropriate**, revise the vertical position of the infrared mirror with respect to the standard mirror (this will require new gloves and replacing the tape to stick the infrared mirror).
+            Even a tiny adjustment can impact calibration and eye positioning.
+        - [ ] Repeat the previous steps until the eye is properly aimed and focused.
+        - [ ]  If the image appears blurry, fine-tune the focus using the lens barrel.
+            Refer to the example image below.
+            ![focus_example](../assets/images/focus.png)
+
 - [ ] Press the <span class="keypress">A</span> key to set the pupil and CR detection thresholds automatically.
 - [ ] Fine-tune the pupil detection threshold using the <span class="keypress">▲</span> and <span class="keypress">▼</span> arrow keys if necessary.
     While checking the pupil/CR image and thresholding, ask the participant to look at the screen corners to verify correct detection even in extreme positions.
-      ![pupil_threshold](../assets/images/pupil_threshold.png)
+    ![pupil_threshold](../assets/images/pupil_threshold.png)
 
-- [ ] You should see the projection of the calibration mode as you left it open before.
-- [ ] Adjust the ET position to point the camera to the right eye. Adjustment may be easier if you switch to *Head camera* mode, which has a wider angle.
-    - [ ] The lens can be focused by rotating it, like a photo camera.
-    - [ ] If the position of the ET is still inadequate, you can move the base.
-    - [ ] As a last resort, you can also adjust the strength of the infrared light (emitter). This is the black box on the other side with respect to the lens. Under the emitter there are two little screws. Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.
+- [ ] As a last resort, you can also adjust the strength of the infrared light (emitter).
+    This is the black box on the opposite side of the lens on the ET arm.
+    Under the emitter there are two little screws.
+    Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.
 - [ ] Switch the ET to *Eye camera* mode (zoomed in) and check the eye is still well covered by the view and the pupil is segmented.
 - [ ] Check that two crosses appear on the eye.
-
-    ![base-eye-tracker](../assets/images/base-eye-tracker.png)
-
 - [ ] If the pupil is correctly seen, as well as the eye (indicated by the crosses following their movement), inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately.
 - [ ] Exit the camera mode by pressing <span class="keypress">Enter</span>.
 
