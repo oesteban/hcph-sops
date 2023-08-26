@@ -78,7 +78,7 @@
 - [ ] **Retrieve ET recordings** (from {{ secrets.hosts.psychopy | default("███") }}):
     - [ ] Insert a USB key into *{{ secrets.hosts.psychopy | default("███") }}* and save the experiment from AcqKnowledge.
     - [ ] Upload to a pre-designated drop-box (e.g., using Dropbox)
-
+- [ ] Press <span class="keypress">Ctrl</span>+<span class="keypress">Alt</span>+<span class="keypress">Q</span> on the ET's computer to exit the EyeLink 1000 Plus Host PC application and click on the <span class="keypress">Shutdown</span> button from the **File Manager** toolbar.
 - [ ] Switch off laptop and ET PC Tower. Plug back the sync box and the VGA projector where they were. 
 - [ ] Fix the rolled cable with the scotch on the PC Tower base.
 - [ ] Turn off the pump of the GA, then switch the GA off. **DO NOT PUT THE CAP IN WHILE THE PUMP IS ON.**
