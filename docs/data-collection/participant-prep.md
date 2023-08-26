@@ -40,7 +40,7 @@
 - [ ] Describe the participant how the session will develop, with special attention to tasks. In the first session, show the task while explaining them for clarity. Let them interrupt you to ask for clarifications and answer all the questions that may arise.
 
     ???+ quote "Script for the first session"
-        
+
         We are going to acquire three types of images.
         The first type is anatomical imaging that we use to study the morphology of the brain.
         The second type is diffusion MRI, which we use to infer the pathways of major fiber bundles showing how the different regions of the brain may be interconnected.
@@ -68,7 +68,7 @@
         Then there is a long block of {{ settings.mri.timings.func_rest }} that we call *resting* state.
         During this block, all you have to do is stay still and look at the movie.
         Please do not close your eyes.
-   
+
         Finally, a breath-holding task will help us understand the signals elicited by your breathing that are detected by the scanner.
         This block has a length of {{ settings.mri.timings.func_bht }}.
         You will watch five repeats of the same block.
@@ -83,11 +83,11 @@
         During the mock block, please look at the stimuli on the screen but keep your habitual breathing pace disregarding the task instructions.
         At the end of this mock block, a message will remind you must follow the task instructions from that moment on.
         that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
-    
+
         Is everything clear to you? Do you have any questions?
 
     ???+ quote "Script for the following sessions"
-        
+
         As you probably remember, we acquire three types of images.
         For two of them you just stay still in the scanner, but we will also require your collaboration for the third, which is functional MRI.
         During the whole duration of the exam, please do not create closed loops by crossing your legs or holding your hands together.
@@ -100,7 +100,7 @@
 
         Then there is a long block of about 20 minutes that we call *resting* state, where you will be watching a movie.
         During this block, all you have to do is stay still and please do not close your eyes.
-   
+
         Finally, the breath-holding task where you will watch five repeats of the same block with colored rectangles in the middle.
         The green rectangle means *breathe in*, the yellow rectangle means *breathe out*, and the red rectangle means *hold your breath*.
         The last two green and yellow rectangle will be shown on a lighter green and orange color respectively to signal you that a hold will follow immediately after the breathe-out.
@@ -112,7 +112,7 @@
         During the mock block, please look at the stimuli on the screen but keep your habitual breathing pace disregarding the task instructions.
         At the end of this mock block, a message will remind you must follow the task instructions from that moment on.
         that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
-    
+
         Is everything clear to you? Do you have any questions?
 
 ### Finalizing the preparation
@@ -162,7 +162,7 @@
     - [ ] Select the *Position* as "Head First Supine".
     - [ ] Before you hit <span class="consolebutton red">Exam</span>, you can edit general patient's data by changing to the *Patient Registration* tab if you need to edit general information about the patient.
     - [ ] Click the <span class="consolebutton red">Exam</span> button (red background, rightmost-bottom).
-    
+
 - [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
     - [ ] Double-check that all PE prescriptions are correct.
 
@@ -185,7 +185,7 @@
     ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
 
 - [ ] When completely laying down on the bed, tightly fasten the RB and check with the participant whether they are too uncomfortable.
-- [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort. 
+- [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort.
 - [ ] Once the subject is lying on the MR bed, check that no arms/legs lie on the GA or the RB tubes.
 
     ![alarm_button](../assets/images/alarm_button.png)
@@ -216,7 +216,29 @@
 
     ![send_isocenter](../assets/images/send_isocenter.png)
 
-### Final preparatory steps of the ET
+### Final preparatory steps of the ET: setting field of view and focus
+
+Please note that some of the images used in this section are sourced from the [Eye Tracker Instruction Manual](../assets/files/EL1000Plus_UserManual_1.0.20_GOP.pdf).
+
+!!! warning "To ensure accurate performance and prevent minor drifts in the pupil and CR thresholds, perform the ET Setup 10-15 minutes after powering the ET on."
+
+- [ ] Open the PCT experiment in *Psychopy* (`task-pct_bold.psyexp` file).
+    - [ ] Run the experiment by pressing the green play button.
+    - [ ] Press enter to begin the *camera setup mode*.
+    - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
+    - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the <span class="keypress">◀</span> or <span class="keypress">▶</span> arrow.
+        This will allow you to adjust the ET position as the infrared camera provides feedback inside the scanning room on the projection screen.
+- [ ]  Enter the scanning room and adjust the camera's position until the eye is fully visible.
+    To adjust the camera position, slightly unscrew the fixation locks of the camera arm, move the arm in search of the correct position, and tighten the locks again on the desired position.
+    The **right** eye should be visible at the center of the coil's square window for the eye.
+- [ ]  If the image appears blurry, fine-tune the focus using the lens barrel.
+    Refer to the example image below.
+  ![focus_example](../assets/images/focus.png)
+- [ ] Press the <span class="keypress">A</span> key to set the pupil and CR detection thresholds automatically.
+- [ ] Fine-tune the pupil detection threshold using the <span class="keypress">▲</span> and <span class="keypress">▼</span> arrow keys if necessary.
+    While checking the pupil/CR image and thresholding, ask the participant to look at the screen corners to verify correct detection even in extreme positions.
+      ![pupil_threshold](../assets/images/pupil_threshold.png)
+
 - [ ] You should see the projection of the calibration mode as you left it open before.
 - [ ] Adjust the ET position to point the camera to the right eye. Adjustment may be easier if you switch to *Head camera* mode, which has a wider angle.
     - [ ] The lens can be focused by rotating it, like a photo camera.

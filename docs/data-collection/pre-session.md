@@ -31,7 +31,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Push the blue button with the sun symbol (☉) and the **SYSTEM ON** label underneath, which is found right above the key
 
 ## Basic preparations in the scanning room
-    
+
 - [ ] If any head coil from the last exam is still plugged, remove it:
     - [ ] If it is the 64-channel coil, you can just temporarily move it into the scanner's bore.
     - [ ] Otherwise, store it on the shelf where the other coils are and bring the 64-channel one in the proximity of the bed (e.g., inside the scanner's bore). Make sure to remove other coil's fitting element.
@@ -52,7 +52,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ## Setting up the BIOPAC system and physiological recording sensors
 
-- [ ] Ensure you have the *AcqKnowledge* software USB license key. Plug the USB key to the multiport adapter for Mac and plug that adapter to the computer *{{ secrets.hosts.oesteban | default("███") }}* as shown in the picture below. **It needs to stay plugged at all times during the acquisition.** 
+- [ ] Ensure you have the *AcqKnowledge* software USB license key. Plug the USB key to the multiport adapter for Mac and plug that adapter to the computer *{{ secrets.hosts.oesteban | default("███") }}* as shown in the picture below. **It needs to stay plugged at all times during the acquisition.**
 - [ ] Open the *AcqKnowledge* software
 - [ ] Initiate an *Amphetamin* session to avoid the computer to go to sleep/lock the screen:
     - [ ] Click on the pill icon on the Mac's status bar
@@ -60,7 +60,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Plug in the Ethernet (the plug is on the back side of the BIOPAC) to the multiport adapter connected to the computer *{{ secrets.hosts.oesteban | default("███") }}*.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
-    ![mac_setup](../assets/images/mac_setup.png) 
+    ![mac_setup](../assets/images/mac_setup.png)
 - [ ] Connect the parallel cable to the 25-pin socket at the back of the SPT100D of the BIOPAC and to the parallel port of the MMBT-S Trigger Interface Box adapter (N-shaped pink box).
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
 
@@ -69,13 +69,13 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Plug the power cords of the BIOPAC and the GA into suitable power sockets.
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
-- [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube. 
+- [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube.
 ![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
 - [ ] Connect the distal end of the extension tube to the cannula and leave the cannula ready on the bed ready for the participant.
     To connect the extension tube to the cannula, you need to insert with force the end into the cannula.
-    
+
     !!! warning "Ensure that the length of the tubing inside the MR room is sufficient so that it can lie on the floor."
-    
+
         When the tubing is hanging, pressure waves may alter the recorded gas concentration.
 
 
@@ -98,7 +98,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 !!!warning "Important"
     - [ ] Check that the exhaust pipe (back of the GA) is free of obstruction. An obstructed exhaust can damage the device!
-    
+
 ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
 
 - [ ] Check that the cap on `Sample In` is removed and that the MLA0110 inline filter is connected to it. The **pump switch MUST BE OFF when the cap is on and when switching on the GA**. Turn the GA on using the on/off switch located at the front of the GA. The GA **MUST be ON for 20-30 min** to warm-up before measuring.
@@ -108,56 +108,110 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead. [INSERT PICTURE]
 - [ ] Connect the syncbox to the Biopac via the white trigger cable. [TOCHECK]
 
-## Setting up the eye-tracker
+## Setting up the projector
 
-- [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room {{ secrets.rooms.projector | default("███") }}. Behind the rolling table, there is a transparent panel (the *plexiglas* in the following) where the ET camera will stand inside the scanner bore.
-- [ ] Verify that the monitor and the cable, as well as the ET over the PC tower are fixed to the rolling table with scotch tape.
-- [ ] Bring the table with the ET computer to the control room, and place it next to the access closet. Be very attentive during the displacement and lift the front wheels when passing steps or cables. The plexiglas panel can also be brought to the scanning room simultaneously, if done with care.
-- [ ] From room {{ secrets.rooms.et_camera | default("███") }} (first cabinet on the left), take the blue box labeled *Eye-Tracker only for fMRI*, containing the ET camera, lenses, and the special infrared mirror. 
-- [ ] Take the MR-compatible lens out of the lenses box. It is easy to recognize it as it is the only one with two golden screws.
+- [ ] Go to room {{ secrets.rooms.projector | default("███") }}, where the projector is installed.
+- [ ] Switch the projector **ON** by hitting the power button, located on its right side.
+    Adjust the projector tilt to center the projection if it does not properly aim the panel inside the scanner's bore.
+    E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
-| ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens") |
-|:--:|
-| ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens") |
+    | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
+    |:--:|:--:|:--:|
+    | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
 
-- [ ] Install the MR-compatible lens, after removing any other present lens. If other lens is present, put it back to its plastic bag inside the lenses box after unscrewing and removal. To avoid accidentally dropping a lens, one hand MUST be under the lens at all times while screwing/unscrewing it. **The lens MUST BE INSTALLED before bringing the ET inside the Scanner Room**.
+- [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
+- [ ] Before you exit room {{ secrets.rooms.projector | default("███") }}, go to the next step.
 
-    ![screw-mri-compatible-lens](../assets/images/screw-lens.png "Screw the MRI compatible lens")
+## Setting up the eye-tracker (ET) computer
+
+- [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room {{ secrets.rooms.projector | default("███") }}.
+    Behind the rolling table, there is a transparent panel (the *plexiglas* in the following) where the ET arm will stand inside the scanner bore.
+- [ ] Verify that the screen, the cables, as well as the ET computer are fixated onto the rolling table with scotch tape.
+- [ ] Bring the rolling table out of the projector room ({{ secrets.rooms.projector | default("███") }}) into the control room.
+    Be very attentive during the displacement and lift the front wheels when passing steps or cables.
+    The plexiglas panel can also be brought to the scanning room at this time, if done with care.
+- [ ] Place the rolling table it next to the access closet.
+- [ ] Connect the Ethernet cable from the ET computer into the Ethernet plug of the *Psychopy laptop* ({{ secrets.hosts.psychopy | default("███") }}).
+- [ ] Connect the power strip attached to the rolling table on to the closest power plug (likely, a power strip coming across the corridor).
+
+## Setting up the ET arm
+
+- [ ] Go to room {{ secrets.rooms.et_camera | default("███") }} and bring the blue box labeled *Eye-Tracker only for fMRI* into the scanning room.
+    This box contains the ET arm with the camera and infrared lamp mounted on it, lenses, and the special infrared mirror.
+    The box should be found in the first cabinet on the left section of the cupboard.
+- [ ] Take the MR-compatible lens out of the lenses box.
+
+    | ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens") | ![mri-compatible-lens](../assets/images/mri-compatible-lens.png "MRI compatible lens") |
+    |:--:|:--:|
+    | *The appropriate lens is found in a correspondingly labeled bag (left) and it is the only one with two gold screws (right).* {: colspan=2} |
+
+- [ ] Install the MR-compatible lens, after removing any other present lens.
+    If other lens is present, put it back into its plastic bag inside the lenses box after unscrewing and removal.
+
+    !!! danger "The lens MUST be handled with care"
+
+        1. The lens MUST be installed in the Control Room, BEFORE taking the ET arm inside the Scanner Room.
+        1. One of your hands MUST be under the lens at all times while screwing/unscrewing it, to avoid accidentally dropping a lens.
+
+            ![screw-mri-compatible-lens](../assets/images/screw-lens.png "Screw the MRI compatible lens")
+
+        1. Screws holding the lens MUST be properly tightened at this point because the vibration of the scanner may loosen them and the screw(s) drop during the session.
+
+- [ ] Open the door of the access cupboard.
+- [ ] With the help of someone else, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point.
+
+    !!! warning "This operation requires two people"
+
+        One person will feed the cables from the control room interface of the access cupboard.
+        The other person will gently pull the two cables from inside.
+        Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room.
+        Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner because they are magnetic.
+
+        ![cable_passage](../assets/images/cable_passage.jpg)
+
+    !!! important "Since someone will enter the Scanning Room to receive the cables, this is a perfect moment for the helper from inside to take the plexiglass panel with them when entering the Scanning Room."
 
 ## INSIDE the scanner room
 
-- [ ] Place the plexiglas standing panel inside the scanner bore, following the indications stuck on the panel (a sign notes the top side that faces up, and to tape markers designate the position of the ET). The plastic feet must face down to avoid the panel to slide. To ensure the repeatible positioning of the ET, place the end of the plexiglas such that its edge coincide with the edge of the illuminated MRI rails.
-- [ ] Bring the ET inside the scanner room, and put it on top of the plexiglas panel. The two posterior feet of the ET stand have to be within the two corner signs made of scotch tape. **HOLD THE ET STAND STRONGLY, BECAUSE THE MAGNETIC FIELD GENERATES RESISTANCES.**
-- [ ] Open the door of the cable section between the recording room and the scanner room.
-- [ ] First, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point. This operation requires two people, one handling the cables from outside the scanner, and the other gently pulling them from inside. Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room. Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner. These parts are magnetic.
-    ![cable_passage](../assets/images/cable_passage.jpg)
+- [ ] Take the ET arm inside the Scanning Room (check that the plexiglass panel is already inside the Scanning Room, and bring it inside with you if not).
+- [ ] Place the plexiglass standing panel inside the scanner bore: a sign notes the top side that faces up.
+    The plastic feet must face down to avoid the panel to slide.
+    To ensure the repeatible positioning of the ET, place the end of the plexiglass such that its edge aligns with the edge of the illuminated MRI rails.
+- [ ] Place the ET arm on top of the plexiglass panel with the two posterior feet of the ET arm aligned within the two corner signs made of scotch tape.
+
+    !!! danger "Hold the ET arm FIRMLY, because the magnetic field imposes some resistance."
+
 - [ ] Connect the cables (two plugs for the black, one plug for the orange).
     ![ET_connections](../assets/images/ET_connections.jpg)
-- [ ] Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglas yet)
+- [ ] Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglass yet)
     ![halfcircle_screen](../assets/images/halfcircle_screen.jpg)
-- [ ] Place the infrared mirror:
-    - [ ] Detach the mirror frame from the head coil, if it is placed there. Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
-    - [ ] Prepare two long strips of scotch tape and leave them in a convenient place to attach the ET mirror later. E.g., attach the corner of each strip to the back part of the mirror frame.
-    - [ ] Go back to the control room and take the infrared mirror out of the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**. 
 
-        ![infrared-mirror](../assets/images/infrared-mirror.png)
-        
-    - [ ] Get two gloves (e.g., from the box hanging at the entrance of the scanner room), then approach the scanner bed. Put the gloves on, and **DON'T TOUCH ANYTHING**. You MUST have the standard mirror dismounted and in front of you at this point. **WITH THE GLOVES** proceed to extract the infra-red mirror from its box, being extremely careful. **YOU CAN ONLY TOUCH THE MIRROR WITH GLOVES**, because it cannot be cleaned up. Watch out for **FINGERPRINTS** and once taken out of its box, **IMMEDIATELY PROCEED TO ATTACH IT** to the standard coil mirror. The mirror MUST NOT be placed anywhere else if not in its box.
-    - [ ] **WITH YOUR GLOVES ON**, attach the ET mirror to the standard coil mirror (the larger mirror that points toward projector's screen at the back of the scanning room) using the scotch tape strips you prepared before. Put it more or less in the center, although <span style="color:red">this position may need to be adjusted</span> (being careful and with the same precautions explained before). **Do not touch the surface of the ET mirror.**
+### Placing the infrared mirror
 
-        ![et-mirror-attached](../assets/images/et-mirror.jpg)
+- [ ] Detach the standard mirror's frame from the head coil, if it is placed there.
+    Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
+- [ ] Prepare two long strips of scotch tape and leave them in a convenient place to attach the ET mirror later.
+    E.g., attach the corner of each strip to the back part of the mirror frame.
+- [ ] Go back to the control room and take the infrared mirror out of the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**.
 
-        !!! danger "The infrared mirror MUST be airtight attached"
+    ![infrared-mirror](../assets/images/infrared-mirror.png)
 
-            It is critical that there is no air gap between the infrared mirror and the standard mirror.
-            Also, make sure the scotch tape is firmly glued to the standard mirror because the infrared mirror will be hanging when placed on the coil and may loosen up creating a gap with the standard mirror.
+- [ ] Get two gloves (e.g., from the box hanging at the entrance of the scanner room), then approach the scanner bed. Put the gloves on, and **DON'T TOUCH ANYTHING**. You MUST have the standard mirror dismounted and in front of you at this point. **WITH THE GLOVES** proceed to extract the infra-red mirror from its box, being extremely careful. **YOU CAN ONLY TOUCH THE MIRROR WITH GLOVES**, because it cannot be cleaned up. Watch out for **FINGERPRINTS** and once taken out of its box, **IMMEDIATELY PROCEED TO ATTACH IT** to the standard coil mirror. The mirror MUST NOT be placed anywhere else if not in its box.
+- [ ] **WITH YOUR GLOVES ON**, attach the ET mirror to the standard coil mirror (the larger mirror that points toward projector's screen at the back of the scanning room) using the scotch tape strips you prepared before. Put it more or less in the center, although <span style="color:red">this position may need to be adjusted</span> (being careful and with the same precautions explained before). **Do not touch the surface of the ET mirror.**
 
-        !!! warning "Suggestion"
+    ![et-mirror-attached](../assets/images/et-mirror.jpg)
 
-            Since we are going to track the right eye only, it is useful to displace the infrared mirror to the
-            right from the participant's standpoint and cut the scotch tape narrower to occlude less surface of the mirrors on the right side.
+    !!! danger "The infrared mirror MUST be airtight attached"
 
-    - [ ] Place the mirror frame back on the head coil. As always, **DO NOT TOUCH THE MIRROR**. 
+        It is critical that there is no air gap between the infrared mirror and the standard mirror.
+        Also, make sure the scotch tape is firmly glued to the standard mirror because the infrared mirror will be hanging when placed on the coil and may loosen up creating a gap with the standard mirror.
+
+    !!! warning "Suggestion"
+
+        Since we are going to track the right eye only, it is useful to displace the infrared mirror to the
+        right from the participant's standpoint and cut the scotch tape narrower to occlude less surface of the mirrors on the right side.
+
+- [ ] Place the mirror frame back on the head coil. As always, **DO NOT TOUCH THE MIRROR**.
 
 ## Back OUTSIDE THE SCANNER ROOM (control room)
 
@@ -168,11 +222,11 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Switch on the ET PC-tower. Select "Eyelink" when given the option of which operating system to launch.
 
     ![pctower](../assets/images/pctower.png)
-    
+
 - [ ] This is the sync box of the scanner, allowing a synchronization of the triggers between the scanner sequence and the ET recordings.
 
     ![syncbox](../assets/images/syncbox.png)
-    
+
 - [ ] Switch on *{{ secrets.hosts.psychopy | default("███") }}* and login with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
 
 - [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
@@ -186,13 +240,13 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
 
-    !!! warning "If the monitor does not automatically switch the source of the screen, you can use the button below to switch it." 
-    
+    !!! warning "If the monitor does not automatically switch the source of the screen, you can use the button below to switch it."
+
         ![switch_screen](../assets/images/screen_switch.jpg)
-      
+
 - [ ] Connect the MMBT-S Trigger Interface Box adapter (pink USB cable) to one of the USB ports of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
     ![neurospec](../assets/images/neurospec.jpg)
-    
+
     !!! danger "The MMBT-S Trigger Interface MUST be connected to the laptop AFTER the trigger USB cable coming from the SyncBox. "
 
 - Your laptop connections should now look like this.
@@ -200,18 +254,18 @@ Instructions of operations to be performed before the participant arrival, **bef
     ![laptop_setup](../assets/images/laptop_setup.png)
 
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens. **That step and that exact resolution is crucial for the eye-tracker calibration to work.**
-    
+
 - [ ] Configure the display settings of the laptop to mirror outputs and set a resolution of 800x600 for both screens.
 - [ ] Double check that the IP address corresponding to the ethernet interface of the *{{ secrets.hosts.psychopy | default("███") }}* laptop is correct. You can either run `ifconfig -a` or use the GUI. Make sure the IP/mask is **100.1.1.2/24**, and the protocol is IP version 4. Execute `ping 100.1.1.1` to see if the ET is responding to echoes.
 - [ ] Check that the service to synchronize the triggers is up with `sudo systemctl status forward-trigger`.
 
     !!! warning "If the service is down, manually force its start"
-    
+
         - [ ] Run `sudo systemctl start forward-trigger`
         - [ ] Recheck the status with `sudo systemctl status forward-trigger`.
-    
+
     !!! important "These commands are executed with `sudo`"
-    
+
         The console will prompt you for the common user password: `{{ secrets.login.password_hos68752 | default("****") }}`
 
 - [ ] Check that you can send trigger events manually:
@@ -223,41 +277,12 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Start the syncbox session:
     - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
     - [ ] Push the enter button (&#x25CF;) and the syncbox will be now waiting for the scanner's trigger signal to forward it.
-    
-    | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) | 
+
+    | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) |
     |:--:|
     | ![start-session-syncbox](../assets/images/start-session-syncbox.png) |
     | ![run-session-syncbox](../assets/images/trigger_box.jpg) |
 
-## Eye Tracker and projector setup
-
-Please note that some of the images used in this section are sourced from the [Eye Tracker Instruction Manual](https://www.sr-research.com/support/attachment.php?aid=1376).
-
-!!! warning "To ensure accurate performance and prevent minor drifts in the pupil and CR thresholds, perform the ET Setup 10-15 minutes after powering the ET on."
-
-- [ ] Switch the projector on by hitting the power button on on its right side. The projector is found in room {{ secrets.rooms.projector | default("███") }}. Adjust the projector tilt and centering if the projection does not properly aim the panel inside the scanner's bore. E.g., change the height of the paper pile that supports it (see images, FENS papers).
-
-    | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
-    |:--:|:--:|:--:|
-    | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
-
-- [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
-- [ ] Open the PCT experiment in *Psychopy* (`task-pct_bold.psyexp` file).
-    - [ ] Run the experiment by pressing the green play button. 
-    - [ ] Press enter to begin the *camera setup mode*.
-    - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
-    - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the <span class="keypress">◀</span> or <span class="keypress">▶</span> arrow.
-        This will allow you to adjust the ET position as the infrared camera provides feedback inside the scanning room on the projection screen.
-- [ ]  Enter the scanning room and adjust the camera's position until the eye is fully visible.
-    To adjust the camera position, slightly unscrew the fixation locks of the camera arm, move the arm in search of the correct position, and tighten the locks again on the desired position.
-    The **right** eye should be visible at the center of the coil's square window for the eye.
-- [ ]  If the image appears blurry, fine-tune the focus using the lens barrel.
-    Refer to the example image below.
-  ![focus_example](../assets/images/focus.png)
-- [ ] Press the <span class="keypress">A</span> key to set the pupil and CR detection thresholds automatically.
-- [ ] Fine-tune the pupil detection threshold using the <span class="keypress">▲</span> and <span class="keypress">▼</span> arrow keys if necessary.
-    While checking the pupil/CR image and thresholding, ask the participant to look at the screen corners to verify correct detection even in extreme positions.
-      ![pupil_threshold](../assets/images/pupil_threshold.png)
 
 ## Final checks inside the scanning room
 
