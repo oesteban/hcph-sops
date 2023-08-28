@@ -90,7 +90,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
     As a good practice, always work as the standard user `{{ secrets.login.username_scanner | default("janedoe") }}`.
     Change for *advanced user mode* if you want to save the protocol.
 
-    - [ ] Simultaneously press the <span class="keypress">Tab</span> + <span class="keypress">Delete</span> + <span class="keypress">[→</span> on the control-computer's keyboard:
+    - [ ] Simultaneously press the <span class="keypress">Tab</span> + <span class="keypress">Delete</span> + <span class="keypress">:octicons-sign-out-16:</span> on the control-computer's keyboard:
 
         > Username: `{{ secrets.login.superusername_scanner | default("superjanedoe") }}`
         >
@@ -116,7 +116,7 @@ Once the protocol is decided upon, and after any updates, make sure of storing t
         ![](../assets/images/save_protocol4.jpg)
     - [ ] Drag or paste the copied sequences in the program editor.
         ![](../assets/images/save_protocol5.jpg)
-    - [ ] Once finished, click on the floppy disk icon (<span class="flip">🖫</span>) in the upper left to save.
+    - [ ] Once finished, click on the floppy disk icon (:fontawesome-solid-floppy-disk:) in the upper left to save.
     - [ ] Give the protocol a relevant name starting with the date of acquisition in the format YYYYMMDD and click <span class="consolebutton">Save</span>.
         ![](../assets/images/save_protocol6.jpg)
     - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.

@@ -69,7 +69,7 @@
 
 !!! warning "The localizer may present very low quality if the head-coil has not been properly initiated by the scanner"
 
-- [ ] Enter the scanning room, extract the participant from the scanner by pressing the home (🏠) button.
+- [ ] Enter the scanning room, extract the participant from the scanner by pressing the home (:fontawesome-solid-house:) button.
 - [ ] Tell the participant that you need to reset the head coil
 - [ ] Unplug and replug the head coil
 - [ ] Check that the coil has been properly detected in the scanner's monitor

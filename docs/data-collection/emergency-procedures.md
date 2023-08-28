@@ -36,7 +36,7 @@
 
 !!! important "If you can anticipate that the participant will need to be retrieved"
 
-    Initiate the extraction of the bed from the scanner console using the *Room in* menu (lower left corner of the screen), and then click on the *home* (🏠) button.
+    Initiate the extraction of the bed from the scanner console using the *Room in* menu (lower left corner of the screen), and then click on the *home* (:fontawesome-solid-house:) button.
 
 ## Alarm event requires further safety procedures
 - [ ] Enter the scanning room if you do not get a response or the answer is unclear.

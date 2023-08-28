@@ -248,7 +248,7 @@ Please note that some of the images used in this section are sourced from the [E
         - [ ] **If the eye coverage is still inappropriate**, realign the mirror frame position by sliding it along the rails attached to the coil.
             You may ask the participant to do it while inside the bore.
         - [ ] **If the eye coverage is still inappropriate**, re-adjust the participant's head positioning inside the coil.
-            You'll need to extract the bed outside of the bore for this by pressing the **Home** (🏠) button.
+            You'll need to extract the bed outside of the bore for this by pressing the **Home** (:fontawesome-solid-house:) button.
         - [ ] **If the eye coverage is still inappropriate**, revise the vertical position of the infrared mirror with respect to the standard mirror (this will require new gloves and replacing the tape to stick the infrared mirror).
             Even a tiny adjustment can impact calibration and eye positioning.
         - [ ] Repeat the previous steps until the eye is properly aimed and focused.
