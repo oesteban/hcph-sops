@@ -30,9 +30,16 @@ theme:
     primary: black
   logo: assets/images/chuv_logo.svg
   features:
-    - tabs
+    # - tabs
+    - navigation.instant
+    # - navigation.tabs
+    - navigation.expand
+    - navigation.top
     - content.code.copy
     - content.code.annotate
+  icon:
+    admonition:
+      thanks: fontawesome/solid/thumbs-up
 
 plugins:
   - search

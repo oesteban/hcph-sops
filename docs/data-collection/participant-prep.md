@@ -29,12 +29,13 @@
         - [ ] Accompany them to the bathroom (situated at {{ secrets.rooms.bathroom | default("███") }}), and ask whether there is anything else they anticipate they will need.
         - [ ] If the test is positive, the person **CANNOT PARTICIPATE** in the study. <mark>You MUST be understanding of the situation as most likely the person will not be aware of the circumstance</mark>.
 
-- [ ] Tell the participant they will be holding an alarm button throughout the session, and that they may use it any time whenever they need to stop the experiment.
+- [ ] Instruct the participant on how to use the alarm button:
 
-    > During the duration of the exam, you'll have an alarm button on your hand.
-    > You can use it at any moment.
-    > We will first talk with you to check everything is fine, and we will stop the session whenever you need to stop the experiment.
-    > There is no need for you to endure uncomfortable experiences or anxiety (for instance, if you feel claustrophobic)
+    ???+ quote "Alarm button should be used when needed"
+        During the duration of the exam, you'll have an alarm button on your hand.
+        You can use it at any moment.
+        We will first talk with you to check everything is fine, and we will stop the session whenever you need to stop the experiment.
+        There is no need for you to endure uncomfortable experiences or anxiety (for instance, if you feel claustrophobic)
 
 ### Describing the development of the session
 - [ ] Describe the participant how the session will develop, with special attention to tasks. In the first session, show the task while explaining them for clarity. Let them interrupt you to ask for clarifications and answer all the questions that may arise.
@@ -116,13 +117,21 @@
         Is everything clear to you? Do you have any questions?
 
 ### Finalizing the preparation
-- [ ] Indicate the participant where the door to the changing room is if changing into scrubs is necessary. Otherwise, offer them a box to deposit everything they have in their pockets and all jewelry/hair accessories.
+- [ ] Offer the participant a box to deposit everything they have in their pockets and all jewelry/hair accessories, and indicate the clothing to enter the scanning room:
 
-    > Before we continute, we need to make sure we do not introduce any dangerous object in the magnet room.
-    >
-    > [IF THEY NEED TO CHANGE INTO SCRUBS] Here you will find a changing room, I have prepared some scrubs for you. Please remove all your clothes and leave them in the changing room. Please keep your underwear on (if a woman, double check that **their undergarment DOES NOT contain any large metallic part** such as shaping guides, and request their removal if they do).
-    >
-    > [IF THEY CAN WEAR THEIR CLOTHES] Please deposit here all your belongings, your belt, your glasses, your jewelry and any accessories, piercings, etc. that you have on you.
+    ??? quote "*Dress code* inside the scanner **if they need to CHANGE INTO SCRUBS**"
+        Before we continue, we need to make sure we do not introduce any dangerous object in the magnet room.
+
+        Here you will find a changing room [SHOW THEM THE CHANGING ROOM].
+        I have prepared some scrubs for you.
+        Please remove all your clothes and leave them in the changing room.
+        Please keep your underwear on [if a woman, ask whether **their undergarment DOES NOT contain any large metallic part** such as shaping guides, and request their removal if they do].
+
+    ???+ quote "*Dress code* inside the scanner **if they CAN WEAR THEIR CLOTHES**"
+        Before we continute, we need to make sure we do not introduce any dangerous object in the magnet room.
+
+        Please deposit here all your belongings, your belt, your glasses, your jewelry and any accessories, piercings, etc. that you have on you.
+        If a woman, ask whether **their undergarment DOES NOT contain any large metallic part** such as shaping guides, and request their removal in the changing room.
 
 - [ ] Help the participant to prepare their skin and place the ECG electrodes:
 
@@ -168,7 +177,7 @@
 
 ## Installing the participant in the SCANNING ROOM
 
-??? info "Thanks to Stephanie Bogaert, MSc, Pieter Vandemaele, MSc and Pim Pullens, PhD"
+??? thanks "Thanks to Stephanie Bogaert, MSc, Pieter Vandemaele, MSc and Pim Pullens, PhD"
     Some of the pictures in this section have been extracted from the [Ghent Institute for functional and Metabolic Imaging MRI User 2019](http://gifmi.ugent.be/drupal/system/files/documents/GIfMI_MRI%20user%20manual_BASIC_SiemensPrisma_EN.pdf) written by Stephanie Bogaert, MSc, Pieter Vandemaele, MSc and Pim Pullens, PhD. We express our gratitude that they put together such a comprehensive guide.
 
 - [ ] Have the participant remove their shoes at the entrance of the scanning room.

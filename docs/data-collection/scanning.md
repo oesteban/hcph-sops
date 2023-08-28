@@ -42,21 +42,22 @@
 ## Acquire a localizer (*AAhead_scout*)
 - [ ] Indicate the participant that the scanning will soon start:
 
-    > Hey [NAME], we are about to start our first scan run.
-    >
-    > This is going to be a long session, so please make sure you are feeling as comfortable as you possibly can in there.
-    > Remember not to cross your legs or hold your hands together and check your back is also comfortable.
-    > I'm going to ask you to take a deep breath now, so I can check the respiration belt is properly set up.
-    > If it is too tight, please let me know.
-    > 
-    > [Allow a few moments for the participant to breathe while you check the recordings]
-    >
-    > Okay, we seem to be able to track your respiration. Is the respiration belt too restraining?
-    > This is also a good moment to swallow, and to check your neck and head are in a comfortable position.
-    >
-    > For this first part, all you have to do is stay still; you can relax and close your eyes if it helps.
-    >
-    > Are you ready?
+    ???+ quote "Tell the participant that we are starting"
+        Hey [NAME], we are about to start our first scan run.
+
+        This is going to be a long session, so please make sure you are feeling as comfortable as you possibly can in there.
+        Remember not to cross your legs or hold your hands together and check your back is also comfortable.
+        I'm going to ask you to take a deep breath now, so I can check the respiration belt is properly set up.
+        If it is too tight, please let me know.
+
+        [Allow a few moments for the participant to breathe while you check the recordings]
+
+        Okay, we seem to be able to track your respiration. Is the respiration belt too restraining?
+        This is also a good moment to swallow, and to check your neck and head are in a comfortable position.
+
+        For this first part, all you have to do is stay still; you can relax and close your eyes if it helps.
+
+        Are you ready?
 
 - [ ] Wait for the participant confirmation and set the speaker off afterward.
 - [ ] Launch the `AAhead_scout_{32,64}ch-head-coil` protocol by pressing *Continue* (**⯈**).
@@ -86,7 +87,7 @@
         - [ ] Open the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence and under the section *Diff.*, uncheck all the derivatives except for *Diff. Weighted Image*.
 
 ## Acquire the diffusion MRI run
-    
+
 - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence as indicated below.
 - [ ] Verify again the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` parameters under section *Diff.* All the derivatives MUST be unchecked except for *Diff. Weighted Image*.
 - [ ] Inform the participant that the diffusion scan will follow.
@@ -102,15 +103,15 @@
     ???+ quote "Participant of Cohort II"
 
         Hey [NAME], the next block is a bit long, around 30 minutes.
-        
+
         You can close your eyes and even sleep if you wish.
-        
+
         I'm going to give you a short time (ten seconds or so) to swallow, and perhaps accommodate your back or your arms. However, please try not to move your head.
-        
+
         It is critical that you don't move, especially at all at the very beginning and the next 20 seconds after you hear the first blipping sounds.
-        
+
         Try to minimize swallowing, and eye movements (for example, blinking) and try to maintain comfortable and shallow breathing.
-        
+
         Are you ready?
 
 - [ ] Launch the diffusion `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence by pressing *Continue* (**⯈**).
@@ -124,7 +125,7 @@
 - [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
 - [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
 - [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
-- [ ] While it is running, 
+- [ ] While it is running,
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
     - [ ] Verify that in the next sequence parameters under *Contrast>Reconstruction* the option *Magnitude et phase* is selected!
 - [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
@@ -136,18 +137,19 @@
 ## Acquire the functional MRI block
 - [ ] Inform the participant about the fMRI block
 
-    > Hey [NAME], we are now to move into measuring the activity of your brain.
-    >
-    > Is everything alright thus far?
-    >
-    > [Allow some time for response]
-    >
-    > Before we start, we need to calibrate the eye-tracker device, which follows your right eye during experiments.
-    >
-    > Your are going to see a round fixation point, and the point is going to move randomly over the screen space.
-    > Please follow it with your gaze, trying to look at it as stable as possible and without moving your head.
-    > 
-    > Are you ready?
+    ???+ quote "Starting the fMRI block - calibrating the eye tracker"
+        Hey [NAME], we are now to move into measuring the activity of your brain.
+
+        Is everything alright thus far?
+
+        [Allow some time for response]
+
+        Before we start, we need to calibrate the eye-tracker device, which follows your right eye during experiments.
+
+        Your are going to see a round fixation point, and the point is going to move randomly over the screen space.
+        Please follow it with your gaze, trying to look at it as stable as possible and without moving your head.
+
+        Are you ready?
 
 - [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration (instructions below)](scanning-notes.md#eye-tracker-calibration)
 
@@ -155,17 +157,18 @@
 - [ ] Verify that the task's program is awaiting the scanner's trigger to start.
 - [ ] Inform the participant that we will proceed with the positive control task (PCT). Repeat task instructions.
 
-    > Hey [NAME], thanks for your collaboration with the eye tracking calibration.
-    >
-    > The following block will collect some behavioral data and requires your collaboration.
-    > You will be exposed to several activities.
-    >
-    > Whenever you see a red circle, please fix your gaze on it, wherever it is shown on the screen.
-    > If the red circle moves, we ask you to follow it with your eyes.
-    >
-    > Some other times, you'll see either "RIGHT" or "LEFT" written on the screen. During those times, please tap your thumb and the other fingers of your right or left hand as indicated on the screen.
-    >
-    > Before we start, please leave the alarm button on your tummy to free your hand for finger tapping. Please do not hesitate to grab it in case you need to squeeze it.
+    ???+ quote "Starting the positive control task"
+        Hey [NAME], thanks for your collaboration with the eye tracking calibration.
+
+        The following block will collect some behavioral data and requires your collaboration.
+        You will be exposed to several activities.
+
+        Whenever you see a red circle, please fix your gaze on it, wherever it is shown on the screen.
+        If the red circle moves, we ask you to follow it with your eyes.
+
+        Some other times, you'll see either "RIGHT" or "LEFT" written on the screen. During those times, please tap your thumb and the other fingers of your right or left hand as indicated on the screen.
+
+        Before we start, please leave the alarm button on your tummy to free your hand for finger tapping. Please do not hesitate to grab it in case you need to squeeze it.
 
 - [ ] Launch the `func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` protocol by pressing *Continue* (**⯈**).
 - [ ] Wait for the calibration scans to be finished (the process is reported on the bottom left corner of the console) and verify that the first volume's trigger signal was received by *{{ secrets.hosts.psychopy | default("███") }}* (meaning **CHECK that the task program was initiated**).
@@ -179,22 +182,24 @@
 ### Resting state fMRI
 - [ ] Inform the participant:
 
-    > Thanks [NAME], that was a short behavioral task.
-    >
-    > Before moving on, we will run another calibration of the eye tracker, please follow the moving fixation point.
-    >
-    > Is everything alright?
+    ???+ quote "Quick re-calibration the ET before continuing"
+        Thanks [NAME], that was a short behavioral task.
+
+        Before moving on, we will run another calibration of the eye tracker, please follow the moving fixation point.
+
+        Is everything alright?
 
 - [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration (instructions below)](scanning-notes.md#eye-tracker-calibration)
 - [ ] Once the ET is calibrated, verify that the task is left and awaiting for the sequence's trigger to start.
 - [ ] Inform the participant that the next sequence is resting-state fMRI (rsfMRI).
 
-    > Hey [NAME], we are about to start resting-state fMRI.
-    >
-    > For this scan, all you have to do is stay still, and look at the movie.
-    > Please do not close your eyes, and it is particularly critical that you don't move at all in the initial moments of the acquisition block.
-    >
-    > Are you ready?
+    ???+ quote "Starting the resting-state block"
+        Hey [NAME], we are about to start resting-state fMRI.
+
+        For this scan, all you have to do is stay still, and look at the movie.
+        Please do not close your eyes, and it is particularly critical that you don't move at all in the initial moments of the acquisition block.
+
+        Are you ready?
 
 - [ ] Launch the rsfMRI sequence `func-bold_task-rest_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` by pressing *Continue* (**⯈**).
 - [ ] While it is running:
@@ -206,37 +211,40 @@
 ### Breath-holding task (BHT)
 - [ ] Inform the participant:
 
-    > Thanks [NAME], that was a long behavioral block.
-    >
-    > Before moving on, we will run another calibration of the eye tracker, please follow the moving fixation point.
-    >
-    > Is everything alright?
+    ??? quote "Quick re-calibration the ET before continuing"
+        Thanks [NAME], that was a long behavioral block.
+
+        Before moving on, we will run another calibration of the eye tracker, please follow the moving fixation point.
+
+        Is everything alright?
 
 - [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration (instructions below)](scanning-notes.md#eye-tracker-calibration)
 - [ ] Once the ET is calibrated, verify that the task is left and awaiting for the sequence's trigger to start.
 - [ ] Inform the participant that the next sequence is breath-holding task fMRI. Repeat the instructions for the task.
 
-    > Hey [NAME], we will proceed now with a breath-holding task.
-    >
-    > I remind you that you have to breathe following the cues of the colored rectangle.
-    >
-    > Green means "BREATHE IN", orange means "BREATHE OUT" and red means "HOLD YOUR BREATH".
-    >
-    > Remember to not follow the breathing instructions during the first block and to exhale the small amount of air you have remaining at the end of the hold.
-    >
-    > Are you ready?
+    ???+ quote "Starting the breath-holding task"
+        Hey [NAME], we will proceed now with a breath-holding task.
+
+        I remind you that you have to breathe following the cues of the colored rectangle.
+
+        Green means "BREATHE IN", orange means "BREATHE OUT" and red means "HOLD YOUR BREATH".
+
+        Remember to not follow the breathing instructions during the first block and to exhale the small amount of air you have remaining at the end of the hold.
+
+        Are you ready?
 
 - [ ] Launch the `func-bold_task-bht_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` sequence by pressing *Continue* (**⯈**).
-- [ ] While it is running, determine whether there is enough time to run the anatomical T2-weighted run. If so, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence. 
+- [ ] While it is running, determine whether there is enough time to run the anatomical T2-weighted run. If so, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by pressing the key <span class="keypress">t</span> on the keyboard (as fast as possible to avoid collecting more data than needed).
 
 ## Concluding the session
 !!! warning "ONLY if time permits"
-    
+
     - [ ] Launch the `anat-T2w__flair` protocol by pressing *Continue* (**⯈**)
 
 - [ ] Inform the participant:
 
-    > Thanks [NAME], the session has concluded and we will shortly let you out of the scanner.
+    ???+ quote "Session is finished"
+        Thanks [NAME], the session has concluded and we will shortly let you out of the scanner.
 
 - [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
