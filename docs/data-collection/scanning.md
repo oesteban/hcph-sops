@@ -102,7 +102,7 @@
 
     ???+ quote "Participant of Cohort II"
 
-        Hey [NAME], the next block is a bit long, around 30 minutes.
+        Hey [NAME], the next block is a bit long, around 20 minutes.
 
         You can close your eyes and even sleep if you wish.
 
