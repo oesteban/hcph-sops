@@ -98,7 +98,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the parallel cable to the 25-pin socket at the back of the SPT100D of the BIOPAC and to the parallel port of the MMBT-S Trigger Interface Box adapter (N-shaped pink box).
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
 
-   ![syncbox-usb](../assets/images/syncbox-usb.png)
+   ![neurospec](../assets/images/neurospec.jpg)
 
 - [ ] Plug the power cords of the BIOPAC and the GA into suitable power sockets.
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
@@ -274,7 +274,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Connect the sync box to the laptop with the USB cable. It is normally plugged into the {{ secrets.hosts.acqknowledge | default("███") }}, it must be re-plugged in after usage.
 
-     ![neurospec_usb](../assets/images/neurospec_usb.jpg)    
+![syncbox-usb](../assets/images/syncbox-usb.png)  
 
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
@@ -284,7 +284,7 @@ Instructions of operations to be performed before the participant arrival, **bef
         ![switch_screen](../assets/images/screen_switch.jpg)
 
 - [ ] Connect the MMBT-S Trigger Interface Box adapter (pink USB cable) to one of the USB ports of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
-    ![neurospec](../assets/images/neurospec.jpg)
+    ![neurospec_usb](../assets/images/neurospec_usb.jpg)
 
     !!! danger "The MMBT-S Trigger Interface MUST be connected to the laptop AFTER the trigger USB cable coming from the SyncBox. "
 
