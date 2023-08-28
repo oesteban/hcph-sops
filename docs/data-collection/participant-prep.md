@@ -212,7 +212,7 @@
 - [ ] Check that both the posterior and anterior parts of the head-and-neck coil are now detected by the scanner.
     To do so, ensure their names ("Head Neck 64 Posterior", and "Head Neck 64 Anterior", respectively) appear on the scanner's monitor screen.
 - [ ] Place rectangular paddings at each side of the chest and help the participant accommodate their elbows on them.
-- [ ] Cover them with a blanket if necessary, and remind them of not cloosing loops with their body:
+- [ ] Cover them with a blanket if necessary, and remind them of not closing loops with their body:
 
     !!! quote "Ask the participant if they are feeling cold"
 
