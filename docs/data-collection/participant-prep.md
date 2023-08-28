@@ -120,7 +120,7 @@
 - [ ] Offer the participant a box to deposit everything they have in their pockets and all jewelry/hair accessories, and indicate the clothing to enter the scanning room:
 
     ??? quote "*Dress code* inside the scanner **if they need to CHANGE INTO SCRUBS**"
-        Before we continute, we need to make sure we do not introduce any dangerous object in the magnet room.
+        Before we continue, we need to make sure we do not introduce any dangerous object in the magnet room.
 
         Here you will find a changing room [SHOW THEM THE CHANGING ROOM].
         I have prepared some scrubs for you.

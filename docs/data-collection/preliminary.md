@@ -36,7 +36,7 @@ flowchart TB
     sb --->|USB| pc1["Stimuli presentation Laptop ({{ secrets.hosts.psychopy | default("███") }})"]
     pc1 <--->|Ethernet| et
     pc1 --->|USB| modem[MMBT-S Interface]
-    pc1 --->|HDMI| display[Proyector]
+    pc1 --->|HDMI| display[Projector]
     modem --->|25-pin parallel| biopac4
 
     BIOPAC --->|Ethernet| pc2["Physio-recording Laptop ({{ secrets.hosts.acqknowledge | default("███") }})"]
