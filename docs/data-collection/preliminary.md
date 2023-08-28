@@ -227,10 +227,10 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
         - [ ] check that the movie is played.
     - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
         - [ ] time it to confirm the length, and
-        - [ ] check that the movie is played.
+        - [ ] check that the task is played.
     - [ ] {{ settings.psychopy.tasks.func_pct }} (positive-control task, PCT) :
         - [ ] time it to confirm the length, and
-        - [ ] check that the movie is played.
+        - [ ] check that the task is played.
 
     !!! important "Remember to time the three functional MRI runs (rest, qct, bht)"
 
