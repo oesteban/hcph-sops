@@ -194,6 +194,10 @@
     ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
 
 - [ ] When completely laying down on the bed, tightly fasten the RB and check with the participant whether they are too uncomfortable.
+- [ ] Ask the participant to breathe normally while observing the AcqKnowledge software for signs of saturation or an overly loose Respiration Belt (RB).
+    These signs could manifest as plateaus in the AcqKnowledge software visualization or an excessively flat curve.
+    Make adjustments to the positioning until you can clearly discern the desired curve.
+    It's important to ensure that the participant is lying down whenever RB adjustments are being made.
 - [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort.
 - [ ] Once the subject is lying on the MR bed, check that no arms/legs lie on the GA or the RB tubes.
 
