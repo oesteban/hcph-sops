@@ -62,3 +62,21 @@
     If the pattern appears too distorted, restart the calibration.
 - [ ] Upon successful calibration, initiate validation by clicking <span class="keypress">Validation</span> on the ET interface or pressing the <span class="keypress">V</span> key on the laptop keyboard. Follow the same instructions as in the calibration to validate positions.
 - [ ] If validation fails, repeat previous steps and restart calibration. Otherwise, you can leave the calibration mode and proceed with the task program by pressing the <span class="keypress">Esc</span> key on the laptop (*{{ secrets.hosts.psychopy | default("███") }}*).
+
+## Scanner interface
+The picture below shows you the scanner interface as you will see it when you operate the MR machine. The arrow points to the screen and the red circles indicate the control buttons.
+![alarm_button](../assets/images/alarm_button.png)
+
+
+### Scanner's settings buttons
+
+Adjust settings by pressing the respective button and then turning the central knob (1) to adjust the setting to the desired level:
+
+![ventilation_button](../assets/images/ventilation_button.png)
+
+- [ ] Use the headphones :fontawesome-solid-headphones: button (2) to adjust the volume of the earphones.
+- [ ] Use the speaker :fontawesome-solid-volume-off: button (3) to adjust the volume of the air speaker in the scanning room.
+- [ ] Use the light :fontawesome-solid-lightbulb: button (4) to adjust the intensity of the illumination inside the scanning room.
+- [ ] Use the fan :fontawesome-solid-fan: button (5) to adjust the ventilation in the scanning room.
+
+!!! warning "The central knob (button 1) will turn off the alarm if pushed when the alarm is on"

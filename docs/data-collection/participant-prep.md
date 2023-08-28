@@ -195,9 +195,6 @@
 
 - [ ] When completely laying down on the bed, tightly fasten the RB and check with the participant whether they are too uncomfortable.
 - [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort.
-- [ ] Once the subject is lying on the MR bed, check that no arms/legs lie on the GA or the RB tubes.
-
-    ![alarm_button](../assets/images/alarm_button.png)
 
 ### Accommodating the participant's head in the coil
 
@@ -212,9 +209,19 @@
 - [ ] Cut a long strip of medical auto-adhesive band and stick it at each side of the lower block of the head coil, across the participant's forehead and stick it to the participant's forehead. Indicate the participant that this band will tell them when they moved and help them recover the original position.
 - [ ] Place the top block of the coil and check that the participants' front touches or is really close to the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.
 - [ ] Connect the coil's cable to the corresponding socket on the table.
-- [ ] Ask the participant if they are feeling cold. Cover them with a blanket if necessary.
+- [ ] Check that both the posterior and anterior parts of the head-and-neck coil are now detected by the scanner.
+    To do so, ensure their names ("Head Neck 64 Posterior", and "Head Neck 64 Anterior", respectively) appear on the scanner's monitor screen.
 - [ ] Place rectangular paddings at each side of the chest and help the participant accommodate their elbows on them.
-- [ ] Remind the participant not to create closed loops by crossing their legs or holding their hands together.
+- [ ] Cover them with a blanket if necessary, and remind them of not closing loops with their body:
+
+    !!! quote "Ask the participant if they are feeling cold"
+
+        Hey [NAME], are you feeling cold? Do you want a blanket?
+
+        I have placed some paddings for your elbows, is there anything else you would need to feel comfortable?
+
+        Throughout the examination, remember not to create closed loops by crossing your legs or holding hands together.
+
 - [ ] Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. **Ask the participant to close their eyes**, press the laser alignment button and align the head-coil markers with the red light.
 
     | ![take_table_up](../assets/images/take_table_up.png) |
@@ -224,6 +231,10 @@
 - [ ] Switch off the alignment light, now the participant can open their eyes. You can move the participant (always gently as before) inside the scanner manually, until the mm counter marks "Isometric" or you can press the rotary knob for two seconds. This will send the participant to the isocenter automatically.
 
     ![send_isocenter](../assets/images/send_isocenter.png)
+
+- [ ] Once the participant is lying on the scanner bed, check that no arms/legs rest on the GA or the RB tubes and may block them.
+- [ ] Before continuing with the setup, make sure all cables and tubes leave the scanner's bed *perpendicularly* and lie on the floor.
+    Tape them to the floor so that they don't move accidentally.
 
 ### Final preparatory steps of the ET
 
@@ -273,17 +284,20 @@ Please note that some of the images used in this section are sourced from the [E
 ### Check the communication with the participant
 ![speaker](../assets/images/speaker.jpg)
 
-!!!warning "Important"
-    The red button (3) immediately stops the currently running sequence.
+!!!warning "Emergency buttons"
+    The <span style="background-color: red; color: white; font-size: 0.85em; border-radius: 50%; text-align: center; height: 30px; width: 30px; display:inline-block; background-position: center; padding-top: 7px; font-weight: bold;">STOP</span> button (3) immediately stops the currently running sequence.
+    The crossed-out bell <span class="fliplr">:fontawesome-solid-bell-slash:</span> button (4) stops the alarm if the participant actioned it.
 
-- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
-- [ ] Keep on pressing the speak mode button to give instructions (1). Set the volume control of your microphone by pressing the +/- buttons.
+- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback.
+    First, keep the speak mode button (1) pressed while you talk to the participant:
 
-    > Hey [NAME], can you hear me well?
+    !!! quote "Hey [NAME], can you hear me well? Is the audio too loud or too low?"
 
-- [ ] To listen to participant responses, make sure you release the speak mode button before you press the listen mode button once (2). Set the volume control of the participant’s microphone by pressing the +/- buttons.
+- [ ] Enable the feedback channel from the Scanning Room by pressing the listen mode button (2) once.
+    Release the speak mode button (1) before you are ready to listen to participant responses.
+- [ ] Set the volume control of your microphone and the participant's speaker by pressing the corresponding :fontawesome-solid-plus-minus: buttons.
 - [ ] If this volume increase is not enough for the participant to hear you well, proceed as follow:
-    - [ ] In the Siemens program, click on Configuration represented by a gear wheel at the top right of the screen.
+    - [ ] In the Siemens program, click on Configuration represented by a gear wheel (:fontawesome-solid-gear:) at the top right of the screen.
     - [ ] Click on *Configuration panel*
     - [ ] Under the section *Scan application*, locate the icon of the speaker and tune the volume to the maximum.
     - [ ] Click *Apply*

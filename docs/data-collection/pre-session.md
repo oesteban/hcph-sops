@@ -72,17 +72,10 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Remove the spine coil by lifting the corresponding latch, then sliding it toward the head of the bed, lift it from the bed, and place it on the floor ensuring it is not obstructing any passage or unstable.
 - [ ] Place the two back padding elements filling the spine coil socket.
 - [ ] Cover the MRI bed with a sheet.
-- [ ] Connect the 64-channel head-and-neck coil to the head end of the bed.
-- [ ] After positioning the participant, connect the anterior part of the coil using the terminal cable.
-- [ ] Check that both the posterior and anterior parts of the head-and-neck coil are now detected by the scanner.
-    To do so, ensure their names ("Head Neck 64 Posterior", and "Head Neck 64 Anterior", respectively) appear on the scanner's monitor screen.
-- [ ] Remove the light inside the scanner bore (button 4) and the ventilation (button 5) for a better performance of the ET.
-- [ ] Use buttons 2 and 3 to adjust the volume of the speaker in the scanner room, and of the earphones, respectively.
+- [ ] Place the 64-channel head-and-neck coil into its socket at the head end of the bed.
+- [ ] Completely remove the light inside of the scanner and the ventilation of the scanning room using [the scanner's interface](scanning-notes.md#scanners-settings-buttons).
 
-    !!! warning "The central knob (button 1) will turn off the alarm if necessary"
-    - [ ] Press the respective button and rotate the central knob to adjust the corresponding settings to the desired level.
-
-    ![ventilation_button](../assets/images/ventilation_button.png)
+    !!! danger "Remove the light and ventilation to facilitate the best performance of the ET"
 
 ## Setting up the BIOPAC system and physiological recording sensors
 
