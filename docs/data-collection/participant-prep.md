@@ -232,8 +232,8 @@
 
     ![send_isocenter](../assets/images/send_isocenter.png)
 
-- [ ] Once the subject is lying on the MR bed, check that no arms/legs lie on the GA or the RB tubes.
-- [ ] Before continuing with the set up, make sure all cables and tubes leave the scanner's bed *perpendicularly*.
+- [ ] Once the participant is lying on the scanner bed, check that no arms/legs rest on the GA or the RB tubes and may block them.
+- [ ] Before continuing with the setup, make sure all cables and tubes leave the scanner's bed *perpendicularly* and lie on the floor.
 
 ### Final preparatory steps of the ET
 
