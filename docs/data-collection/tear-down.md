@@ -13,9 +13,10 @@
 - [ ] Help the participant sit down.
 - [ ] Instruct the participant to remove the earplugs and dispose of them. Ask them about the experience:
 
-    > [NAME], how was your experience?
-    > Have you been able to feel comfortable throughout the session?
-    > What advice, indication do you feel we could've provided you for a better experience?
+    ???+ quote "Get feedback about the session from the participant"
+        [NAME], how was your experience?
+        Have you been able to feel comfortable throughout the session?
+        What advice, indication do you feel we could've provided you for a better experience?
 
 - [ ] Lift the nasal cannula and help the participant remove it from their head.
 - [ ] Disconnect the tube from the RB and then lift the velcro attachmet to remove the RB.
@@ -41,7 +42,7 @@
     - [ ] Take the projector's screen off and store it in its designated shelf.
     - [ ] Unplug the two cables connected to the ET (signal and power). Put those extremities aside far from the scanner.
     - [ ] Take the ET back outside and put it in a stable place.
-    - [ ] Unscrew the ET lens, while **ALWAYS** keeping one hand under the lens while screwing/unscrewing it and put it back into its cover. 
+    - [ ] Unscrew the ET lens, while **ALWAYS** keeping one hand under the lens while screwing/unscrewing it and put it back into its cover.
 
     ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
 
@@ -68,7 +69,7 @@
     - [ ] Put the bed back in place = push the "home" button on the scanner
     - [ ] Put the wooden stopper of the main access tube back on the tube.
     - [ ] Everything that is removed for the experiment MUST be put back in place at the end of the experiment, i.e. position of the bed, coil, emergency button, ears padding.
-    - [ ] Take a glove, on the right there is some cleaning napkins. Use them to clean the bed. 
+    - [ ] Take a glove, on the right there is some cleaning napkins. Use them to clean the bed.
     - [ ] Exit and close the external door.
 
 ## AFTER SCAN, outside scanner room
@@ -79,12 +80,12 @@
     - [ ] Insert a USB key into *{{ secrets.hosts.psychopy | default("███") }}* and save the experiment from AcqKnowledge.
     - [ ] Upload to a pre-designated drop-box (e.g., using Dropbox)
 - [ ] Press <span class="keypress">Ctrl</span>+<span class="keypress">Alt</span>+<span class="keypress">Q</span> on the ET's computer to exit the EyeLink 1000 Plus Host PC application and click on the <span class="keypress">Shutdown</span> button from the **File Manager** toolbar.
-- [ ] Switch off laptop and ET PC Tower. Plug back the sync box and the VGA projector where they were. 
+- [ ] Switch off laptop and ET PC Tower. Plug back the sync box and the VGA projector where they were.
 - [ ] Fix the rolled cable with the scotch on the PC Tower base.
 - [ ] Turn off the pump of the GA, then switch the GA off. **DO NOT PUT THE CAP IN WHILE THE PUMP IS ON.**
 - [ ] Remove the cables connected to the BIOPAC and the GA and store them in the boxes in their original bags.
-- [ ] Take the ET, Remove (always with and hand under the lens) the MRI compatible LENS. Put it back to its contained inside the box. 
-- [ ] Put back the regular Lens. 
+- [ ] Take the ET, Remove (always with and hand under the lens) the MRI compatible LENS. Put it back to its contained inside the box.
+- [ ] Put back the regular Lens.
 - [ ] Bring back the box and the base at CIBM EEG lab. Put the keys back under old Nora's desk.
 - [ ] Fix the ET with the scotch at the chariot.
 - [ ] Bring back the chariot and the TMS laptop at the TMS lab

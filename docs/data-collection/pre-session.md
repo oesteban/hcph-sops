@@ -1,8 +1,42 @@
-
-!!! info "Thanks"
-    All the documentation about the eye-tracker is derived from Benedetta Franceschiello's user guide. We greatly appreciate her help with the eye-tracker.
-
 Instructions of operations to be performed before the participant arrival, **before EACH session** (i.e., DAY OF SCAN)
+
+
+## Three days BEFORE THE FIRST SESSION
+
+- [ ] Verify that as part of the [recruitement and screening procedure](../recruitment-scheduling-screening/recruitment.md), you have sent a copy of the MRI Safety and screening form ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)) to the participant over email and confirm reception by checking the 'First contact email sent' column in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
+- [ ] Verify also that you confirmed that the participant has read and understood the document, and in particular, you double-checked that they do not have any MRI contraindications, by checking the 'Phone interview done' and 'Participant volunteer and eligible' column in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
+- [ ] If the phone call interview was more than three days before the first session, call the participant again to reconfirm the following information:
+    - [ ] Remind the participant that any jewelry should be removed prior to the scan.
+    - [ ] Indicate that they MUST shave the upper area of their chest where the ECG electrodes will be placed, if there is hair. The ECG electrodes MUST directly contact the skin.
+    - [ ] Confirm clothing:
+        - [ ] if allowed to wear street clothes, remind the participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
+        - [ ] remark the participant they will be given a gown and they will need to change before every session.
+    - [ ] Repeat at what time and where will you meet the participant.
+    - [ ] Verify that the participant has your phone number {{ secrets.phones.study | default("███") }} to call you in case he gets lost.
+    - [ ] **FEMALE PARTICIPANTS ONLY**: Remind the participant that pregnant women cannot undergo our MRI protocols. Therefore, they will take a pregnancy test (which we will have prepared) before the first session.
+- [ ] If participant has indicated nervousness or history of claustrophobia, organize a session to use the mock scanner.
+
+## BEFORE DAY OF SCAN
+
+- [ ] Print [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**), an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)) and a receipt form for each participant that will get scanned.
+- [ ] Make sure you have internet access, and update the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks) on *{{ secrets.hosts.psychopy | default("███") }}*:
+    ```
+    git fetch upstream
+    git checkout main
+    git rebase upstream/main
+    ```
+- [ ] On the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
+- [ ] Open psychopy 3 by typing `psychopy`
+- [ ] Load in the different experiments and check for proper functioning:
+    - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
+        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] check that the movie is played.
+    - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
+        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] check that the movie is played.
+    - [ ] {{ settings.psychopy.tasks.func_pct }} (positive-control task, PCT):
+        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] check that the movie is played.
 
 ## Documentation and other non-experimental devices
 
@@ -135,6 +169,11 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the power strip attached to the rolling table on to the closest power plug (likely, a power strip coming across the corridor).
 
 ## Setting up the ET arm
+
+??? thanks "Thanks to Benedetta Franceschiello!"
+
+      All the documentation about the ET is derived from Benedetta Franceschiello's user guide.
+      We greatly appreciate her help with the device.
 
 - [ ] Go to room {{ secrets.rooms.et_camera | default("███") }} and bring the blue box labeled *Eye-Tracker only for fMRI* into the scanning room.
     This box contains the ET arm with the camera and infrared lamp mounted on it, lenses, and the special infrared mirror.
