@@ -61,8 +61,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ![on-off-button](../assets/images/on-off-box.jpg)
 
-- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (🔓)
-- [ ] Push the blue button with the sun symbol (☉) and the **SYSTEM ON** label underneath, which is found right above the key
+- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (:fontawesome-solid-unlock:)
+- [ ] Push the blue button with the sun symbol :octicons-issue-opened-16: and the **SYSTEM ON** label above, which is found right above the key
 
 ## Basic preparations in the scanning room
 
