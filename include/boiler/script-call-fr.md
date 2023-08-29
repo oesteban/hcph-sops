@@ -70,7 +70,7 @@ Vous devez aussi accepter de nous informer si vous prenez des médicaments, si v
 
 Une autre contrainte c'est que vous devez éviter de boire du café 4h avant les séances car le café aussi est connu pour avoir des effets notables sur le cerveau.
 
-Maintenant qu’on a confirmé que vous êtes d'accord avec toutes ces exigences, je vous rappelle que votre participation est entièrement libre et que vous pouvez vous retirer à tout moment sans explication.
+Maintenant que nous avons confirmé que vous êtes d'accord avec toutes ces exigences, je vous rappelle que votre participation est entièrement libre et que vous pouvez vous retirer à tout moment sans explication.
 Cependant, il est primordial pour nous que les participants parviennent à accomplir les 12 sessions afin d'assurer l'intégralité de nos données. Dans cette optique, nous préférons que vous vous engagiez résolument à mener à terme les 12 sessions, en envisageant une interruption de votre participation uniquement en cas de circonstances urgentes ou imprévues.
 
 Chaque séance sera rémunéré 45 francs plus les frais de transport.
