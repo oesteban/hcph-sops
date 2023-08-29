@@ -62,7 +62,7 @@ Par la suite, un élément d'une grande importance est que vous devez donner vot
 Cependant, soyez assuré(e) que nous prendrons toutes les mesures nécessaires pour garantir la confidentialité de vos données avant toute publication.
 
 Par exemple, nous allons enlever toute informations qui permettraient de vous reconnaitre comme votre nom, votre date de naissance ou la date de l’examen afin de protéger votre confidentialité.
-Etes-vous d'accord avec ce point?
+Êtes-vous d'accord avec ce point?
 Un autre élément important est que la participation à cette étude implique de nombreuses sessions IRM.
 Comme je vous ai dit 12 sessions d'environ 1h30.
 Ainsi, je vous prie de prendre un moment pour réfléchir si votre engagement envers le projet n'est pas excessif ni susceptible de devenir pesant à mesure que le temps avance, et si vous disposez du temps nécessaire pour mener le projet à bien.
