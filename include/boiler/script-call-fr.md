@@ -12,7 +12,7 @@
     Je vais maintenant vous présenter les éléments essentiels de votre participation à notre étude.
     La participation à ce projet comprend 12 séances d'environ 1h30 qui se dérouleront au CHUV.
     Chaque séance durera environ 1h30.
-    On commencera par remplir un bref questionnaire pour assurer la sécurité de la procédure, ça prendra environ 15 minutes ensuite, nous vous préparerons, nous vous expliquerons l’examen et nous nous assurerons que vous ne portez rien qui puisse causer des perturbations magnétiques.
+    Nous commencerons par remplir un bref questionnaire pour assurer la sécurité de la procédure, cela prendra environ 15 minutes ensuite, nous vous préparerons, nous vous expliquerons l’examen et nous nous assurerons que vous ne portez rien qui puisse causer des perturbations magnétiques.
     Nous vérifierons également avec une liste de contrôle que toutes les mesures de sécurité sont prises et que vous n'avez pas d'éléments métalliques sur vous.
     Ensuite vous passerez environ 1h15 dans le scanner.
 
