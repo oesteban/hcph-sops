@@ -1,3 +1,5 @@
+!!! quote "First contact call script in French"
+
     Bonjour ici Céline Provins,
 
     Je vous appelle concernant l'étude d'acquisition IRM du cerveau.
