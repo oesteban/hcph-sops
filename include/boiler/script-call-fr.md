@@ -57,7 +57,7 @@ Est-ce que vous avez des questions jusque-là ?
 Ok donc maintenant je veux juste vérifier avec vous que vous êtes d'accord avec toutes les exigences concernant la participation à ce projet.
 Est-ce que vous êtes âgé entre 24 et 55 ans ?
 Avez-vous été diagnostiqué(e) avec un trouble ou une maladie neurologique ?
-Consentez-vous à être informé(e) des découvertes fortuites relatives à votre santé ? En effet, par souci éthique, les images de la première session seront transmises à un radiologue qui les examinera attentivement. Si d'aventure une anomalie venait à être détectée dans votre cerveau, vous seriez alors averti(e).
+Consentez-vous à être informé(e) des découvertes fortuites relatives à votre santé ? En effet, par souci éthique, les images de la première session seront transmises à un radiologue qui les examinera attentivement. Si une anomalie venait à être détectée dans votre cerveau, vous seriez alors averti(e).
 Par la suite, un élément d'une grande importance est que vous devez donner votre accord pour la publication de vos données.
 Cependant, soyez assuré(e) que nous prendrons toutes les mesures nécessaires pour garantir la confidentialité de vos données avant toute publication.
 
