@@ -274,7 +274,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Connect the sync box to the laptop with the USB cable. It is normally plugged into the {{ secrets.hosts.acqknowledge | default("███") }}, it must be re-plugged in after usage.
 
-![syncbox-usb](../assets/images/syncbox-usb.png)  
+    ![syncbox-usb](../assets/images/syncbox-usb.png)
 
 - [ ] Connect the *{{ secrets.hosts.psychopy | default("███") }}* laptop to the screen switch box (see picture below) with the corresponding HDMI cable. This should project your screen on the screen of CHUV's tower {{ secrets.hosts.acqknowledge | default("███") }}.
     ![switchbox_hdmi](../assets/images/switchbox_hdmi.jpg)
