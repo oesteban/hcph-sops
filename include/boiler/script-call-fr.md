@@ -5,7 +5,7 @@
     Je vous appelle concernant l'étude d'acquisition IRM du cerveau.
     Le but de cet appel est de vous répéter les éléments importants concernant le projet.
     Ensuite nous allons vérifier ensemble que vous êtes d’accord avec toutes les exigences pour participer à ce projet et nous allons vérifier que vous n’avez pas de contre-indications qui vous empêchent de passer un examen IRM.
-    De plus, je suis aussi là pour répondre à toutes vos questions, donc n'hésitez pas à m'interrompre si vous comprenez pas quelque chose ou si vous avez des doutes.
+    De plus, je suis aussi là pour répondre à toutes vos questions, donc n'hésitez pas à m'interrompre si vous ne comprenez pas quelque chose ou si vous avez des doutes.
 
     Est-ce que vous avez des questions jusque là ?
 
