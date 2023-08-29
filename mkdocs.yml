@@ -39,7 +39,7 @@ theme:
     - content.code.annotate
   icon:
     admonition:
-      thanks: fontawesome/solid/thumbs-up
+      thanks: octicons/code-of-conduct-16
       quote: fontawesome/solid/comment-dots
 
 plugins:
