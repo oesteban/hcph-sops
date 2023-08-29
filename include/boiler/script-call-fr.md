@@ -26,7 +26,7 @@
     Ces électrodes seront fixées à l'aide d'un gel conducteur sur votre peau, permettant ainsi de mesurer vos pulsations cardiaques.
 
     Le troisième appareil est une canule respiratoire pour mesurer la concentration de dioxyde de carbone expiré.
-    Une canule respiratoire c'est le tube que certaines personnes âgées utilisent pour inhaler de l'oxygène.
+    Une canule respiratoire est un tube que certaines personnes âgées utilisent pour inhaler de l'oxygène.
     La différence c’est que nous n’allons pas vous donner du gaz, mais simplement mesurer la quantité de dioxide de cabone que vous expirez.
 
     Le 4ème appareil est un appareil pour mesurer le mouvement de vos pupilles.
