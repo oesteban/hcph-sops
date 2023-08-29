@@ -112,8 +112,6 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ![desiccant_chamber](../assets/images/desiccant_chamber.png)
 
-!!! warning "If the color of the drying tube changes, it should be replaced."
-
 - [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be replaced after some ten sessions.
 ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
 - [ ] Connect the coaxial end of the BNC-BNC cable to the CO<sub>2</sub> output in the back of the GA and connect the other end (jack plug) into the input end of the INISO/A filter.
