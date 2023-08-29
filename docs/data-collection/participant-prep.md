@@ -195,23 +195,24 @@
 
 - [ ] When completely laying down on the bed, tightly fasten the RB and check with the participant whether they are too uncomfortable.
 - [ ] Check the *AcqKnowledge* signal visualization of the adjustment of the RB, and make sure that the signal is not saturating (when the RB is too tight) or too weak (when the RB is too loose).
+
     !!! warning "Two-people protocol to check the RB settings."
 
         This check requires two experimenters, one INSIDE (**IN**) the scanning room and one more outside (**OUT**)
         
-        - [ ] **OUT** indicates they are ready to start the check by signaling a THUMBS-UP WITH BOTH HANDS through the Scanning Room window (<span class="fliplr">:fontawesome-solid-thumbs-up:</span> :fontawesome-solid-thumbs-up:).
+        - [ ] **OUT** indicates they are ready to start the check by signaling a THUMBS-UP WITH BOTH HANDS through the Scanning Room window :fontawesome-solid-thumbs-up: <span class="fliplr">:fontawesome-solid-thumbs-up:</span>.
         - [ ] **IN** MUST confirm they understand returning the THUMBS-UP WITH ONE HAND :fontawesome-solid-thumbs-up:.
         - [ ] **IN** finalizes the setting of the RB if necessary and asks the participant to breathe normally.
-        - [ ] Once the participant is lying down on the bed and breathing normally, and the check can be carried out, **IN** MUST signal they are ready by sending a THUMBS-UP WITH BOTH HANDS  (<span class="fliplr">:fontawesome-solid-thumbs-up:</span> :fontawesome-solid-thumbs-up:) through the window.
-        - [ ] **OUT** MUST acknowledge the understanding, return a THUMBS-UP WITH BOTH HANDS  (<span class="fliplr">:fontawesome-solid-thumbs-up:</span> :fontawesome-solid-thumbs-up:), and check the *AcqKnowledge* screen.
+        - [ ] Once the participant is lying down on the bed and breathing normally, and the check can be carried out, **IN** MUST signal they are ready by sending a THUMBS-UP WITH BOTH HANDS :fontawesome-solid-thumbs-up: <span class="fliplr">:fontawesome-solid-thumbs-up:</span> through the window.
+        - [ ] **OUT** MUST acknowledge the understanding, return a THUMBS-UP WITH BOTH HANDS :fontawesome-solid-thumbs-up: <span class="fliplr">:fontawesome-solid-thumbs-up:</span>, and check the *AcqKnowledge* screen.
         - [ ] **OUT** checks for signs of saturation and insufficient dynamic range.
             These issues manifest as plateaus and excessively flat lines (respectively) in the *AcqKnowledge* visualization of the RB signal.
         - [ ] **OUT** provides feedback to the inside room as follows:
-            * If the RB must be **tightened* up, pointer finger going up (:fontawesome-solid-hand-point-up:);
-            * if the RB must be **loosened* up, pointer finger going down (:fontawesome-solid-hand-point-down:);
-            * if **OUT** needs to check again, they show two hands ((<span class="fliplr">:fontawesome-solid-hand:</span> :fontawesome-solid-hand:), checks the *AcqKnowledge* again and signs another instruction; and
-            * if the check is finished, **OUT** signs a THUMBS-UP WITH BOTH HANDS  (<span class="fliplr">:fontawesome-solid-thumbs-up:</span> :fontawesome-solid-thumbs-up:).
-            * **IN** MUST acknowledge all the commands with THUMBS-UP WITH ONE HAND :fontawesome-solid-thumbs-up: if understood. If not understood, they can request with a PRAYING gesture (:fontawesome-solid-hands-praying:)
+            * If the RB must be **tightened up**, pointer finger going up :fontawesome-solid-hand-point-up:;
+            * if the RB must be **loosened up**, pointer finger going down :fontawesome-solid-hand-point-down:;
+            * if **OUT** needs to check again, they show two hands <span class="fliplr">:fontawesome-solid-hand:</span> :fontawesome-solid-hand:, checks the *AcqKnowledge* again and signs another instruction; and
+            * if the check is finished, **OUT** signs a THUMBS-UP WITH BOTH HANDS :fontawesome-solid-thumbs-up: <span class="fliplr">:fontawesome-solid-thumbs-up:</span>.
+            * **IN** MUST acknowledge all the commands with THUMBS-UP WITH ONE HAND :fontawesome-solid-thumbs-up: if understood. If not understood, they can request with a PRAYING gesture :fontawesome-solid-hands-praying:.
             
 - [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort.
 
