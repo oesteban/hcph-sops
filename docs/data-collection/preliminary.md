@@ -195,7 +195,7 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
     git remote add upstream git@github.com:theaxonlab/HCPh-fMRI-tasks.git
     ```
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
 
 - [ ] Clone the [PsychoPy repository](https://github.com/psychopy/psychopy.git):
     ```
@@ -243,7 +243,7 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
 
 #### Installing *EyeLink* (eye tracker software)
 
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_hos68752 | default("███") }}* and password *{{ secrets.login.password_hos68752 | default("███") }}*.
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
 
 - [ ] Enable Canonical's universe repository with the following command:
     ```

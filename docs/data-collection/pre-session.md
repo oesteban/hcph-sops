@@ -259,7 +259,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     ![syncbox](../assets/images/syncbox.png)
 
-- [ ] Switch on *{{ secrets.hosts.psychopy | default("███") }}* and login with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
+- [ ] Switch on *{{ secrets.hosts.psychopy | default("███") }}* and log-in with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
 
 - [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
 
@@ -298,7 +298,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     !!! important "These commands are executed with `sudo`"
 
-        The console will prompt you for the common user password: `{{ secrets.login.password_hos68752 | default("****") }}`
+        The console will prompt you for the common user password: `{{ secrets.login.password_psychopy | default("*****") }}`
 
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
