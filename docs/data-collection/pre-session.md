@@ -91,7 +91,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the parallel cable to the 25-pin socket at the back of the SPT100D of the BIOPAC and to the parallel port of the MMBT-S Trigger Interface Box adapter (N-shaped pink box).
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
 
-    ![neurospec_usb](../assets/images/neurospec_usb.jpg)
+    ![neurospec](../assets/images/neurospec.jpg)
 
 - [ ] Plug the power cords of the BIOPAC and the GA into suitable power sockets.
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
@@ -277,7 +277,7 @@ Instructions of operations to be performed before the participant arrival, **bef
         ![switch_screen](../assets/images/screen_switch.jpg)
 
 - [ ] Connect the MMBT-S Trigger Interface Box adapter (pink USB cable) to one of the USB ports of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
-    ![neurospec](../assets/images/neurospec.jpg)
+    ![neurospec_usb](../assets/images/neurospec_usb.jpg)
 
     !!! danger "The MMBT-S Trigger Interface MUST be connected to the laptop AFTER the trigger USB cable coming from the SyncBox. "
 

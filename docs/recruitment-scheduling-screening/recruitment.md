@@ -59,8 +59,6 @@
 
 ### First contact call (FR)
 
-!!! note "First contact call script in French"
-
 {% include 'boiler/script-call-fr.md' %}
 
 [1]: https://www.fedlex.admin.ch/eli/cc/2013/642/en "The Swiss Federal Council, Federal Act of 30 September 2011 on Research involving Human Beings (Human Research Act, HRA). 2011. Accessed: Nov. 29, 2021."
