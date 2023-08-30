@@ -94,7 +94,6 @@ At any moment, you may determine that the participant will require medical atten
 
     !!! important "In case you pressed the heart button by mistake, turn it off by pressing the adjacent green button (2)."
 
-
 - [ ] If the participant remains in the scanning room, re-enter the room and proceed with the [manual extraction protocol](#manual-extraction-procedure).
 
 !!! danger
