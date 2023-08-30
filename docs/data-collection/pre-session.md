@@ -137,12 +137,15 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Go to room {{ secrets.rooms.projector | default("███") }}, where the projector is installed.
 - [ ] Switch the projector **ON** by hitting the power button, located on its right side.
-    Adjust the projector tilt to center the projection if it does not properly aim the panel inside the scanner's bore.
-    E.g., change the height of the paper pile that supports it (see images, FENS papers).
 
-    | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
-    |:--:|:--:|:--:|
-    | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
+!!! important "The projector's position is already finalized. Only make changes if it is seriously off. If that is the case, adjust it as follows."
+
+    - [ ] Adjust the projector tilt to center the projection if it does not properly aim the panel inside the scanner's bore.
+      E.g., change the height of the paper pile that supports it (see images, FENS papers).
+
+      | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
+      |:--:|:--:|:--:|
+      | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
 
 - [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
 - [ ] Before you exit room {{ secrets.rooms.projector | default("███") }}, go to the next step.
