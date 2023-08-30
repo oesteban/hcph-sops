@@ -2,7 +2,7 @@
 ## Showing the participant out
 
 - [ ] Extract the bed from the scanner's bore using the scanner's control wheel.
-    The home button can be used to bring the bed out.
+    The home (:fontawesome-solid-house:) button can be used to bring the bed out.
 
 | ![take_table_down](../assets/images/take_table_down.png) |
 |:--:|
@@ -28,7 +28,16 @@
 - [ ] Give the participant the corresponding compensation for the participation and transportation.
 - [ ] Ask the participant to sign the receipt of the amount of the financial compensation.
 
+!!! important "To boost efficiency, two people can work simultaneously on the following steps — one inside the scanning room and the other outside. They can follow the designated sections [inside the scanning room](#after-scan-inside-the-scanner-room) and [outside the scanning room](#after-scan-outside-the-scanner-room) in parallel."
+
 ## AFTER SCAN, inside the scanner room
+
+- [ ] Unplug the two cables connected to the ET (signal and power). Put those extremities aside far from the scanner.
+- [ ] Disconnect the GA and RB tubes.
+
+- [ ] **With someone outside in the control room**:
+    - [ ] Carefully extract the cables (fiber and power of the ET) back through the access tube.
+    - [ ] Extract the RB and the GA tubes from the room.
 
 - [ ] **Carefully remove the infrared mirror**:
     - [ ] Enter again the scanner room with the plastic container of the mirror and leave it prepared on the bed.
@@ -40,22 +49,9 @@
 
 - [ ] Cleaning up instrumentation:
     - [ ] Take the projector's screen off and store it in its designated shelf.
-    - [ ] Unplug the two cables connected to the ET (signal and power). Put those extremities aside far from the scanner.
-    - [ ] Take the ET back outside and put it in a stable place.
-    - [ ] Unscrew the ET lens, while **ALWAYS** keeping one hand under the lens while screwing/unscrewing it and put it back into its cover.
-
-    ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
-
-    - [ ] Put the cover, the ET base back in the fMRI box, **being extremely careful to not crush the mirror**.
-
-- [ ] Re-enter the scanning room.
+    - [ ] Take the ET outside and put it in a stable place.
     - [ ] Disconnect the ECG leads from the filter of the access panel, fold the cable and leave it prepared with the RB to take out of the room with other equipment.
     - [ ] Disconnect the last section of the cannula and dispose of it in the trash can.
-    - [ ] Take the ECG electrodes, the RB, and the plexiglas base outside to the control room.
-
-- [ ] **With someone outside in the control room**:
-    - [ ] Careful extract the cables (fiber and power of the ET) back through the access tube. The person outside will carefully roll them around being extremely careful, and place them in the rolling table of the ET computer.
-    - [ ] Extract the RB and the GA tubing from the room. Likewise, the person outside will carefully roll and store them.
 
 - [ ] **Clean-up of the scanning room**:
     - [ ] Put the sheet and the blanket inside the dirty linen bag (in the trash if used plastic sheets).
@@ -67,28 +63,32 @@
     - [ ] Plug back the head coil if you know the next exam will require that specific coil, or simply put it away with the other (head) coils on the shelf next to the scanner.
     - [ ] Take some cleaning napkins on the shelves in the MR room. Use them to clean the bed and the head coil (bottom and upper parts).
     - [ ] Lock the head coil back with its bottom part, do not plug the connectors.
-    - [ ] Put the bed back in place = push the "home" button on the scanner
-    - [ ] Put the wooden stopper of the main access tube back on the tube.
+    - [ ] Put the bed back in place = push the home (:fontawesome-solid-house:) button on the scanner
     - [ ] Everything that is removed for the experiment MUST be put back in place at the end of the experiment, i.e. position of the bed, coil, emergency button, ears padding.
+    - [ ] Take the ECG electrodes, the RB, and the plexiglass outside to the control room.
     - [ ] Exit and close the external door.
 
-## AFTER SCAN, outside scanner room
+## AFTER SCAN, outside the scanner room
 
-- [ ] Switch off the projector.
+- [ ] Help the person inside the scanning room to extract the cables and tubes.
+- [ ] Carefully roll the fiber and power cable of the ET, and place them in the rolling table of the ET PC Tower.
+- [ ] Carefully roll RB and the GA tubes and put them back in the GA and BIOPAC boxes.
+- [ ] Unscrew the ET lens, while **ALWAYS** keeping one hand under the lens while screwing/unscrewing it and put it back into its cover.
 
+  ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
+
+- [ ] Put the cover, the ET base back in the fMRI box, **being extremely careful to not crush the mirror**.
 - [ ] **Retrieve ET recordings** (from {{ secrets.hosts.psychopy | default("███") }}):
     - [ ] Insert a USB key into *{{ secrets.hosts.psychopy | default("███") }}* and save the experiment from AcqKnowledge.
     - [ ] Upload to a pre-designated drop-box (e.g., using Dropbox)
-- [ ] Press <span class="keypress">Ctrl</span>+<span class="keypress">Alt</span>+<span class="keypress">Q</span> on the ET's computer to exit the EyeLink 1000 Plus Host PC application and click on the <span class="keypress">Shutdown</span> button from the **File Manager** toolbar.
+- [ ] Press <span class="keypress">Ctrl</span>+<span class="keypress">Alt</span>+<span class="keypress">Q</span> on the ET PC Tower to exit the EyeLink 1000 Plus Host PC application and click on the <span class="keypress">Shutdown</span> button from the **File Manager** toolbar.
 - [ ] Switch off laptop and ET PC Tower. Plug back the sync box and the VGA projector where they were.
-- [ ] Fix the rolled cable with the scotch on the PC Tower base.
+- [ ] Fix the rolled cable with the scotch on the ET PC Tower.
 - [ ] Turn off the pump of the GA, then switch the GA off. **DO NOT PUT THE CAP IN WHILE THE PUMP IS ON.**
 - [ ] Remove the cables connected to the BIOPAC and the GA and store them in the boxes in their original bags.
-- [ ] Take the ET, Remove (always with and hand under the lens) the MRI compatible LENS. Put it back to its contained inside the box.
-- [ ] Put back the regular Lens.
-- [ ] Bring back the box and the base at CIBM EEG lab. Put the keys back under old Nora's desk.
-- [ ] Fix the ET with the scotch at the chariot.
-- [ ] Bring back the chariot and the TMS laptop at the TMS lab
+- [ ] Bring back the fMRI, BIOPAC and GA boxes in {{ secrets.rooms.et_camera| default("███") }}.
+- [ ] Bring back the ET PC Tower and the plexiglas in {{ secrets.rooms.projector | default("███") }}
+- [ ] Switch off the projector.
 
 ## Turn off the MRI system if no more sessions are scheduled afterward
 
