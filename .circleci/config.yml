@@ -20,7 +20,7 @@ jobs:
           command: python -m pip install -r requirements.txt
       - run:
           name: Build preview
-          command: mkdocs build --site-dir _SOPs_preview
+          command: python -m mkdocs build --site-dir _SOPs_preview
       - store_artifacts:
           path: _SOPs_preview
 workflows:
