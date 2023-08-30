@@ -87,6 +87,7 @@ At any moment, you may determine that the participant will require medical atten
 **After you called the resuscitation unit**:
 
 - [ ] Press on the heart button [INSERT PICTURE] on the wall, after lifting the security lid. This will guide the intensive care team to the place where they need to intervene.
+
     !!! important "In case you pressed the heart button by mistake,  turn it off by pressing the adjacent green button."
 
 - [ ] If the participant remains in the scanning room, re-enter the room and proceed with the [manual extraction protocol](#manual-extraction-procedure).
