@@ -82,8 +82,8 @@
         The first of the blocks is a mock.
         That will be reminded to you at the beginning of the task on the screen.
         During the mock block, please look at the stimuli on the screen but keep your habitual breathing pace disregarding the task instructions.
-        At the end of this mock block, a message will remind you must follow the task instructions from that moment on.
-        that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
+        At the end of this mock block, a message will remind you to follow the task instructions from that moment on.
+        You must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
 
         Is everything clear to you? Do you have any questions?
 
@@ -111,8 +111,8 @@
         The first of the blocks is a mock.
         That will be reminded to you at the beginning of the task on the screen.
         During the mock block, please look at the stimuli on the screen but keep your habitual breathing pace disregarding the task instructions.
-        At the end of this mock block, a message will remind you must follow the task instructions from that moment on.
-        that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
+        At the end of this mock block, a message will remind you to follow the task instructions from that moment on.
+        You must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
 
         Is everything clear to you? Do you have any questions?
 
@@ -141,7 +141,7 @@
 
     - [ ] Open the sterile cotton gauze pads package, take one and moisten it with alcohol.
     - [ ] Clean the skin around the three areas with the alcohol-soaked pad with circular movements.
-    - [ ] Get a second cotton gauze pad and put some *Nuprep* preparation gel and gently abrade the skin by rubbing it onto the sckin with four or five circular movements.
+    - [ ] Get a second cotton gauze pad and put some *Nuprep* preparation gel and gently abrade the skin by rubbing it onto the skin with four or five circular movements.
     - [ ] Remove gel excess with a clean cotton gauze.
     - [ ] Remove the protective film from the electrode.
     - [ ] Stick the electrode on the participant's skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes.

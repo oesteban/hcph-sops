@@ -98,7 +98,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
 - [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube.
 ![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
-- [ ] Connect the distal end of the extension tube to the cannula and leave the cannula ready on the bed ready for the participant.
+- [ ] Connect the distal end of the extension tube to the cannula and leave the cannula on the bed ready for the participant.
     To connect the extension tube to the cannula, you need to insert with force the end into the cannula.
 
     !!! warning "Ensure that the length of the tubing inside the MR room is sufficient so that it can lie on the floor."
@@ -155,7 +155,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Bring the rolling table out of the projector room ({{ secrets.rooms.projector | default("███") }}) into the control room.
     Be very attentive during the displacement and lift the front wheels when passing steps or cables.
     The plexiglas panel can also be brought to the scanning room at this time, if done with care.
-- [ ] Place the rolling table it next to the access closet.
+- [ ] Place the rolling table next to the access closet.
 - [ ] Connect the Ethernet cable from the ET computer into the Ethernet plug of the *Psychopy laptop* ({{ secrets.hosts.psychopy | default("███") }}).
 - [ ] Connect the power strip attached to the rolling table on to the closest power plug (likely, a power strip coming across the corridor).
 
@@ -185,7 +185,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
             ![screw-mri-compatible-lens](../assets/images/screw-lens.png "Screw the MRI compatible lens")
 
-        1. Screws holding the lens MUST be properly tightened at this point because the vibration of the scanner may loosen them and the screw(s) drop during the session.
+        1. Screws holding the lens MUST be properly tightened at this point because the vibration of the scanner may loosen them and the screw(s) may drop during the session.
 
 - [ ] Open the door of the access cupboard.
 - [ ] With the help of someone else, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point.

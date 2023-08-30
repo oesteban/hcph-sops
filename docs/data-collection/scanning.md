@@ -1,7 +1,7 @@
 
 !!!danger "Familiarize with emergency procedures"
     You MUST know the security procedures in case of problem and keep yourself updated with changes.
-    Some of the emergency procedures are found here [here](emergency-procedures.md).
+    Some of the emergency procedures are found [here](emergency-procedures.md).
 
     In addition to the brief guidelines given in these SOPs, further safety information is found in {{ secrets.tribu.mri_security | default("███") }}.
 
