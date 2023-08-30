@@ -17,7 +17,7 @@ jobs:
           command: source myenv/bin/activate
       - run:
           name: Install requirements
-          command: pip install -r requirements.txt
+          command: python -m pip install -r requirements.txt
       - run:
           name: Build preview
           command: mkdocs build --site-dir _SOPs_preview
