@@ -86,8 +86,14 @@ At any moment, you may determine that the participant will require medical atten
 
 **After you called the resuscitation unit**:
 
-- [ ] Press on the heart button [INSERT PICTURE] on the wall, after lifting the security lid. This will guide the intensive care team to the place where they need to intervene.
-    !!! important "In case you pressed the heart button by mistake,  turn it off by pressing the adjacent green button."
+- [ ] Press on the heart button :octicons-heart-16: —(1) in the picture below— on the wall, after lifting the security lid.
+
+    | ![resuscitation_unit](../assets/images/resuscitation_unit.jpg) |
+    |:--:|
+    | The heart button :octicons-heart-16: (1) initiates a beacon to guide the intensive care team to the place where they need to intervene; (2) cancels the beacon. |
+
+    !!! important "In case you pressed the heart button by mistake, turn it off by pressing the adjacent green button (2)."
+
 
 - [ ] If the participant remains in the scanning room, re-enter the room and proceed with the [manual extraction protocol](#manual-extraction-procedure).
 
