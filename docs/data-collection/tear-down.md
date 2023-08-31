@@ -86,7 +86,7 @@
 - [ ] Turn off the pump of the GA, then switch the GA off. **DO NOT PUT THE CAP IN WHILE THE PUMP IS ON.**
 - [ ] Remove the cables connected to the BIOPAC and the GA and store them in the boxes in their original bags.
 - [ ] Bring back the fMRI, BIOPAC and GA boxes in {{ secrets.rooms.et_camera| default("███") }}.
-- [ ] Bring back the ET PC Tower and the plexiglas in {{ secrets.rooms.projector | default("███") }}
+- [ ] Bring back the ET PC Tower and the plexiglas in {{ secrets.rooms.projector | default("███") }}.
 - [ ] Switch off the projector.
 
 ## Turn off the MRI system if no more sessions are scheduled afterward
