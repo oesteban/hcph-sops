@@ -36,9 +36,8 @@
 - [ ] Disconnect the GA and RB tubes.
 
 - [ ] **With someone outside in the control room**:
-    - [ ] Carefully extract the cables (fiber and power of the ET) back through the access tube.
-    - [ ] Extract the RB and the GA tubes from the room.
-
+    - [ ] Carefully extract the cables (fiber and power of the ET) back through the access tube. 
+  
 - [ ] **Carefully remove the infrared mirror**:
     - [ ] Enter again the scanner room with the plastic container of the mirror and leave it prepared on the bed.
     - [ ] Separate the mirror frame from the upper part of the head coil and lay it on the bed.
@@ -100,4 +99,3 @@
 - [ ] Turn off the control station ({{ secrets.hosts.console_right | default("███") }}, the computer on the right side of the control desk)
 - [ ] Push the blue button displaying an overdotted circle and the **SYSTEM OFF** label above, which is found right above the key
 - [ ] Turn the key into the *closed lock* position (:fontawesome-solid-lock:)
-
