@@ -65,8 +65,8 @@
     - [ ] Remove the back padding elements and put them back in their designated storage.
     - [ ] Reinstall the spine coil.
     - [ ] Plug back the head coil if you know the next exam will require that specific coil, or simply put it away with the other (head) coils on the shelf next to the scanner.
-    - [ ] Take some cleaning napkins on the shelves in the MR room [ARE THEY THERE?]. Use them to clean the bed and the head coil (bottom and upper parts).
-    - [ ] Lock it the head coil back with its bottom part, do not plug the connectors.
+    - [ ] Take some cleaning napkins on the shelves in the MR room. Use them to clean the bed and the head coil (bottom and upper parts).
+    - [ ] Lock the head coil back with its bottom part, do not plug the connectors.
     - [ ] Put the bed back in place = push the "home" button on the scanner
     - [ ] Put the wooden stopper of the main access tube back on the tube.
     - [ ] Everything that is removed for the experiment MUST be put back in place at the end of the experiment, i.e. position of the bed, coil, emergency button, ears padding.
