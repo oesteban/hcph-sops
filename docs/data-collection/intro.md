@@ -106,11 +106,11 @@ The above graph can be broken down as follows:
 
     !!! danger "Make sure you understand the switching on and off procedures described in these SOPs"
 
-    The input to the GA must be connected through a DM-060-24 dessicant chamber and a MLA0110 flow valve and a MLA0343 drying tube:
+    The input to the GA must be connected through a DM-060-24 desiccant chamber and a MLA0110 flow valve and a MLA0343 drying tube:
 
     ![desiccant_chamber](../assets/images/desiccant_chamber.png)
 
-    !!! warning "The MLA0343 drying tube and the DM-060-24 dessicant chamber MUST be replaced when their inside color turns into pink."
+    !!! warning "The MLA0343 drying tube and the DM-060-24 desiccant chamber MUST be replaced when their inside color turns into pink."
 
     Finally, make sure to watch the following video:
     <video id="wistia_simple_video_119" crossorigin="anonymous" style="background: transparent; display: block; height: 100%; max-height: none; max-width: none; position: static; visibility: visible; width: 100%; object-fit: fill;" aria-label="Video" src="https://embed-ssl.wistia.com/deliveries/5e08ccab25ab45382329671a82dfe5123f6e840e/file.mp4" playsinline="" preload="metadata" type="video/mp4" x-webkit-airplay="allow" controls>
