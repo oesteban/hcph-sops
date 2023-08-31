@@ -36,7 +36,7 @@
 - [ ] Disconnect the GA and RB tubes.
 
 - [ ] **With someone outside in the control room**:
-    - [ ] Carefully extract the cables (fiber and power of the ET) back through the access tube. 
+    - [ ] Carefully extract the four cables one by one (the fiber and power of the ET, the tube of RB and the tube of the GA) back through the access tube. 
   
 - [ ] **Carefully remove the infrared mirror**:
     - [ ] Enter again the scanner room with the plastic container of the mirror and leave it prepared on the bed.
