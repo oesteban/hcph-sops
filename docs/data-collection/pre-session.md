@@ -138,7 +138,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Go to room {{ secrets.rooms.projector | default("███") }}, where the projector is installed.
 - [ ] Switch the projector **ON** by hitting the power button, located on its right side.
 
-!!! important "The projector's position is already finalized. Only make changes if it is seriously off. If that is the case, adjust it as follows."
+!!! important "The projector's position is already finalized. Only make changes if it is seriously off and as a last resort. If that is the case, adjust it as follows."
 
     - [ ] Adjust the projector tilt to center the projection if it does not properly aim the panel inside the scanner's bore.
       E.g., change the height of the paper pile that supports it (see images, FENS papers).
