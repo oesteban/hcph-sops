@@ -2,7 +2,7 @@
 ## Showing the participant out
 
 - [ ] Extract the bed from the scanner's bore using the scanner's control wheel.
-    The home (:fontawesome-solid-house:) button can be used to bring the bed out.
+    The home (:fontawesome-solid-house:) button can alternatively be used to bring the bed out.
 
 | ![take_table_down](../assets/images/take_table_down.png) |
 |:--:|
