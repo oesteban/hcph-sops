@@ -42,6 +42,8 @@ theme:
     admonition:
       thanks: octicons/code-of-conduct-16
       quote: fontawesome/solid/comment-dots
+      danger: fontawesome/solid/biohazard
+      important: fontawesome/solid/circle-exclamation
 
 plugins:
   - search

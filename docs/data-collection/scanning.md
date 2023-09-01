@@ -237,14 +237,24 @@
 - [ ] While it is running, determine whether there is enough time to run the anatomical T2-weighted run. If so, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
 - [ ] Once the sequence is over, you need to stop manually the psychopy task by pressing the key <span class="keypress">t</span> on the keyboard (as fast as possible to avoid collecting more data than needed).
 
-## Concluding the session
+
 !!! warning "ONLY if time permits"
 
     - [ ] Launch the `anat-T2w__flair` protocol by pressing *Continue* (**⯈**)
+
+## Concluding the session
 
 - [ ] Inform the participant:
 
     ???+ quote "Session is finished"
         Thanks [NAME], the session has concluded and we will shortly let you out of the scanner.
+
+!!! warning "These operations may be done during the T2w acquisition"
+
+    - [ ] Stop the *AcqKnowledge* recording on the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
+    - [ ] Switch the BIOPAC MP160 module off.
+    - [ ] Turn off the pump of the GA.
+    - [ ] Switch the GA off.
+    - [ ] Put the exhaust and inlet caps back.
 
 - [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
