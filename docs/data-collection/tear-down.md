@@ -20,7 +20,9 @@
 
 - [ ] Lift the nasal cannula and help the participant remove it from their head.
 - [ ] Disconnect the tube from the RB and then lift the velcro attachment to remove the RB.
+- [ ] Prepare the belt on the bed to be removed from the room when you show the participant out.
 - [ ] Disconnect the ECG leads
+- [ ] Disconnect the last section of the cannula and dispose of it in the trash can.
 - [ ] Help the participant step down and accompany them out to the control room.
 - [ ] Help the participant recover their personal belongings and change clothes if necessary.
 - [ ] Solicit more feedback on participant's comfort for future sessions.
