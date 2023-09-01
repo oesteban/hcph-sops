@@ -110,9 +110,6 @@
 
 ### Finalizing with the ET's PC
 
-- [ ] **Retrieve ET recordings** (from {{ secrets.hosts.psychopy | default("███") }}):
-    - [ ] Insert a USB key into *{{ secrets.hosts.psychopy | default("███") }}*
-    - [ ] Upload to a pre-designated drop-box (e.g., using Dropbox)
 - [ ] Exit the EyeLink 1000 Plus Host PC application by pressing <span class="keypress">Ctrl</span>+<span class="keypress">Alt</span>+<span class="keypress">Q</span> on the ET PC and next click on the <span class="keypress">Shutdown</span> button from the **File Manager** toolbar.
 - [ ] Secure the rolled cable with the scotch tape on the ET PC Tower.
 - [ ] Take the ET PC Tower and the plexiglass back into room {{ secrets.rooms.projector | default("███") }}.
