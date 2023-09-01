@@ -28,19 +28,23 @@
 - [ ] Give the participant the corresponding compensation for the participation and transportation.
 - [ ] Ask the participant to sign the receipt of the amount of the financial compensation.
 
-!!! important "To boost efficiency, two people can work simultaneously on the following steps — one inside the scanning room and the other outside. They can follow the designated sections [inside the scanning room](#after-scan-inside-the-scanner-room) and [outside the scanning room](#after-scan-outside-the-scanner-room) in parallel."
+!!! important "The following steps are better done with two people"
+    One researcher operates **inside** the Scanning Room and the other one is **outside**, at the Control Room.
+    They will parallelize the designated steps below: [inside the scanning room](#after-scan-inside-the-scanner-room), and [outside the scanning room](#after-scan-outside-the-scanner-room).
 
 ## AFTER SCAN, inside the scanner room
 
-- [ ] Unplug the two cables connected to the ET (signal and power). Put those extremities aside far from the scanner.
-- [ ] Disconnect the GA and RB tubes.
-
-- [ ] **With someone outside in the control room**:
-    - [ ] Carefully extract the four cables one by one (the fiber and power of the ET, the tube of RB and the tube of the GA) back through the access tube. 
-  
-- [ ] **Carefully remove the infrared mirror**:
-    - [ ] Enter again the scanner room with the plastic container of the mirror and leave it prepared on the bed.
-    - [ ] Separate the mirror frame from the upper part of the head coil and lay it on the bed.
+- [ ] Unplug the two cables (signal and power) connected to the ET arm.
+    Put those extremities aside far from the scanner.
+- [ ] Agree with another experimenter, who will exit the room, sit on the other side of the access tubes in the Control Room, and pull cables (fiber and power of the ET) and tubes (RB and GA) out of the room.
+    At the same time, you carefully feed them so they do not suffer abrasion from touching the edges of the tube.
+- [ ] The experimenter currently outside in the Control Room will enter the Scanner Room with the plastic bag of the mirror and a fresh pair of gloves and will leave them prepared on the bed.
+- [ ] Remove the mirror frame from its rails mounted on the head coil and lay it on the bed.
+- [ ] Put the gloves on and detach the infrared mirror from the standard mirror.
+- [ ] Immediately insert the infrared mirror back into its plastic pouch.
+- [ ] Take the pouch containing the infrared mirror outside to the Control Room and place it back in its designated box, with extreme care.
+- [ ] Clean the standard mirror removing all residues of glue from the scotch tape.
+- [ ] Re-attach the mirror to the coil's frame.
     - [ ] **PUT ON A NEW PAIR OF GLOVES**
     - [ ] Remove the scotch tape holding the infrared mirror and **IMMEDIATELY** insert the mirror in its plastic bag.
     - [ ] Take the mirror in its bag **OUT OF THE SCANNING ROOM** and place it back in the fMRI box, with extreme care.
@@ -48,9 +52,11 @@
 
 - [ ] Cleaning up instrumentation:
     - [ ] Take the projector's screen off and store it in its designated shelf.
-    - [ ] Take the ET outside and put it in a stable place.
-    - [ ] Disconnect the ECG leads from the filter of the access panel, fold the cable and leave it prepared with the RB to take out of the room with other equipment.
-    - [ ] Disconnect the last section of the cannula and dispose of it in the trash can.
+- [ ] Disconnect the ECG cable from the filter of the access panel, roll the cable.
+- [ ] Take the ET arm and the ECG cable outside to the Control Room.
+- [ ] Place the ET arm in a stable place.
+- [ ] Store the ECG cable in its designated box / storage.
+- [ ] Store the ET arm in its designated box.
 
 - [ ] **Clean-up of the scanning room**:
     - [ ] Put the sheet and the blanket inside the dirty linen bag (in the trash if used plastic sheets).
