@@ -56,7 +56,7 @@
 - [ ] Take the projector's screen off and store it in its designated shelf.
 - [ ] Disconnect the ECG cable from the filter of the access panel, roll the cable.
 
-### Reading the scanner for the next session
+### Readying the scanner for the next session
 
 !!! warning "Every setting altered for the experiment MUST be put back to its original status at the end of the experiment (e.g., position of the bed, coil, emergency button, padding elements, etc.)"
 
