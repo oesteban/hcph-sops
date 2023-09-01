@@ -110,6 +110,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 ![RB_connection](../assets/images/RB_connection.jpg "RB_connection")
 - [ ] Go back to the control room and connect the proximal end of the cannula extension tube to one plug of the desiccant chamber (which one is not important). Connect the MLA0110 inline filter to the other plug of the desiccant chamber. Connect the MLA0343 drying tube to the MLA0110 inline filter.
 
+    !!! warning "Make sure that the inside color of the drying tube and the desiccant chamber have not turned pink. They must be replaced if it is the case."
+
 ![desiccant_chamber](../assets/images/desiccant_chamber.png)
 
 - [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be replaced after some ten sessions.
