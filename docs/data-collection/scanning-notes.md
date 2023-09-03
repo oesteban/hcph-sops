@@ -80,3 +80,11 @@ Adjust settings by pressing the respective button and then turning the central k
 - [ ] Use the fan :fontawesome-solid-fan: button (5) to adjust the ventilation in the scanning room.
 
 !!! warning "The central knob (button 1) will turn off the alarm if pushed when the alarm is on"
+
+### Standard extraction of the participant
+
+There are two options to extract the participant, when the session has concluded or within the session if the participant needs to be extracted and there is no emergency (e.g., in case of technical error the scanner does not permit continuing the session and it needs to be aborted).
+
+| ![take_table_down](../assets/images/take_table_down.png) | ![quick_return](../assets/images/quick_return.png) |
+|:--:|:--:|
+| *The participant can be extracted by pressing the extraction button (bottom arrow in the leftmost picture) and then genly rolling the central knob. Alternatively, you can just press the* Home :fontawesome-solid-house: *button (rightmost picture).* {: colspan=2} |
