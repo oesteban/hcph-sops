@@ -176,7 +176,6 @@
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
     - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
-- [ ] Once the sequence is over, you need to stop manually the psychopy task by pressing the key <span class="keypress">t</span> on the keyboard (as fast as possible to avoid collecting more data than needed).
 - [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_rest }}.
 
 ### Resting state fMRI
@@ -235,7 +234,6 @@
 
 - [ ] Launch the `func-bold_task-bht_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` sequence by pressing *Continue* (**⯈**).
 - [ ] While it is running, determine whether there is enough time to run the anatomical T2-weighted run. If so, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
-- [ ] Once the sequence is over, you need to stop manually the psychopy task by pressing the key <span class="keypress">t</span> on the keyboard (as fast as possible to avoid collecting more data than needed).
 
 
 !!! warning "ONLY if time permits"
