@@ -3,7 +3,7 @@
 mri:
   timings:
     dwi: '##min ##s'
-    func_rest: '20min 0s'
+    func_rest: '20min 6s'
     func_bht: '5min 41s'
     func_pct: '2min 38s'
 
