@@ -60,7 +60,7 @@
         Are you ready?
 
 - [ ] Wait for the participant confirmation and set the speaker off afterward.
-- [ ] Launch the `AAhead_scout_{32,64}ch-head-coil` protocol by pressing *Continue* (**⯈**).
+- [ ] Launch the `AAhead_scout_{32,64}ch-head-coil` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] Once the localizer is concluded, you can drag and drop the image stack icon (something like 🗇, with an object on the top stack) onto the image viewer. That will open the localizer on the viewer.
 
     ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
@@ -78,7 +78,7 @@
 
 ## Acquire a high-resolution, anatomical image
 
-- [ ] Launch the `anat-T1w__mprage` protocol by pressing *Continue* (**⯈**).
+- [ ] Launch the `anat-T1w__mprage` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 
     !!! warning "While you are still running the MPRAGE sequence"
         - [ ] Open the parameters of the sequence named `fmap-phasediff__gre` and ensure that under *Contrast* ⤷ *Reconstruction* the option *Magnitude et phase* is selected. This is crucial so that both the magnitude and the phase difference field map images are saved.
@@ -114,7 +114,7 @@
 
         Are you ready?
 
-- [ ] Launch the diffusion `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence by pressing *Continue* (**⯈**).
+- [ ] Launch the diffusion `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
 
 !!! important "At this point, the GA should have finished the warm-up so you can verify it is working"
@@ -122,13 +122,13 @@
     - [ ] Ask the participant to take three deep breathes, to then go back to a comfortable, normal respiration pace. Check on the *AcqKnoledge* window that the three breathes are distinctly registered (taking into account that there may be 10-25 seconds of delay because of the tubing).
 
 ### Once the main diffusion MRI run is done, proceed with fieldmaps
-- [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
+- [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
-- [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
+- [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running,
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
     - [ ] Verify that in the next sequence parameters under *Contrast>Reconstruction* the option *Magnitude et phase* is selected!
-- [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
+- [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While the fieldmap sequence is running,
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence following the abovementioned steps, and
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_pct }}).
@@ -170,7 +170,7 @@
 
         Before we start, please leave the alarm button on your tummy to free your hand for finger tapping. Please do not hesitate to grab it in case you need to squeeze it.
 
-- [ ] Launch the `func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` protocol by pressing *Continue* (**⯈**).
+- [ ] Launch the `func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] Wait for the calibration scans to be finished (the process is reported on the bottom left corner of the console) and verify that the first volume's trigger signal was received by *{{ secrets.hosts.psychopy | default("███") }}* (meaning **CHECK that the task program was initiated**).
 - [ ] While it is running:
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
@@ -200,7 +200,7 @@
 
         Are you ready?
 
-- [ ] Launch the rsfMRI sequence `func-bold_task-rest_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` by pressing *Continue* (**⯈**).
+- [ ] Launch the rsfMRI sequence `func-bold_task-rest_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running:
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
@@ -232,13 +232,13 @@
 
         Are you ready?
 
-- [ ] Launch the `func-bold_task-bht_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` sequence by pressing *Continue* (**⯈**).
+- [ ] Launch the `func-bold_task-bht_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running, determine whether there is enough time to run the anatomical T2-weighted run. If so, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
 
 
 !!! warning "ONLY if time permits"
 
-    - [ ] Launch the `anat-T2w__flair` protocol by pressing *Continue* (**⯈**)
+    - [ ] Launch the `anat-T2w__flair` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }
 
 ## Concluding the session
 
