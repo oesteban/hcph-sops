@@ -29,13 +29,13 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Load in the different experiments and check for proper functioning:
     - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
-        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check that the movie is played.
     - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
-        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check that the movie is played.
     - [ ] {{ settings.psychopy.tasks.func_pct }} (positive-control task, PCT):
-        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check that the movie is played.
 
 ## Documentation and other non-experimental devices
@@ -162,11 +162,6 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the power strip attached to the rolling table on to the closest power plug (likely, a power strip coming across the corridor).
 
 ## Setting up the ET arm
-
-??? thanks "Thanks to Benedetta Franceschiello!"
-
-      All the documentation about the ET is derived from Benedetta Franceschiello's user guide.
-      We greatly appreciate her help with the device.
 
 - [ ] Go to room {{ secrets.rooms.et_camera | default("███") }} and bring the blue box labeled *Eye-Tracker only for fMRI* into the scanning room.
     This box contains the ET arm with the camera and infrared lamp mounted on it, lenses, and the special infrared mirror.

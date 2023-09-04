@@ -131,7 +131,7 @@
 - [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* (**⯈**).
 - [ ] While the fieldmap sequence is running,
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-pct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence following the abovementioned steps, and
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing) ({{ settings.mri.timings.func_pct }}).
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_pct }}).
     - [ ] Verify that the positive-control task {{ settings.psychopy.tasks.func_pct }} is open in psychopy, that you calibrated the ET.
 
 ## Acquire the functional MRI block
@@ -174,7 +174,7 @@
 - [ ] Wait for the calibration scans to be finished (the process is reported on the bottom left corner of the console) and verify that the first volume's trigger signal was received by *{{ secrets.hosts.psychopy | default("███") }}* (meaning **CHECK that the task program was initiated**).
 - [ ] While it is running:
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_rest }}.
 
@@ -203,7 +203,7 @@
 - [ ] Launch the rsfMRI sequence `func-bold_task-rest_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` by pressing *Continue* (**⯈**).
 - [ ] While it is running:
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](preliminary.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
+    - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_bht }}.
 

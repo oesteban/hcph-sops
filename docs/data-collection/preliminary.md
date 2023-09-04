@@ -12,7 +12,7 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
 
         When assigning names to the MR sequences in the protocol, make sure to follow the [Reproin conventions](https://dbic-handbook.readthedocs.io/en/latest/mri/reproin.html) to maximally facilitate the conversion into BIDS.
 
-- [ ] Update the *Number of measurements* in all `func-bold_task-*` sequences, according to the [previously recorded timings](#task-timing):
+- [ ] Update the *Number of measurements* in all `func-bold_task-*` sequences, according to the [previously recorded timings](intro.md#task-timing):
 
     $$N_\text{measurements} = L_t / \text{TR}, \quad t \in \{\text{bht}, \text{pct}, \text{rest}\},$$
 
@@ -145,15 +145,6 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
         - [ ] time it to confirm the length, and
         - [ ] check the task runs properly.
-
-    !!! important "Remember to time the three functional MRI runs (rest, qct, bht)"
-
-        <a name="task-timing"></a>
-        The lengths of the three runs should be:
-
-        * {{ settings.psychopy.tasks.func_pct }} ➜ <mark>**{{ settings.mri.timings.func_pct }}**</mark>,
-        * {{ settings.psychopy.tasks.func_rest }} ➜ <mark>**{{ settings.mri.timings.func_rest }}**</mark>, and
-        * {{ settings.psychopy.tasks.func_bht }} ➜ <mark>**{{ settings.mri.timings.func_bht }}**</mark>.
 
 #### Installing *EyeLink* (eye tracker software)
 
