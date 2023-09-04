@@ -12,7 +12,7 @@ Instructions of operations to be performed before the participant arrival, **bef
         - [ ] if allowed to wear street clothes, remind the participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
         - [ ] remark the participant they will be given a gown and they will need to change before every session.
     - [ ] Repeat at what time and where will you meet the participant.
-    - [ ] Verify that the participant has your phone number {{ secrets.phones.study | default("███") }} to call you in case he gets lost.
+    - [ ] Verify that the participant has your phone number :fontawesome-solid-square-phone: {{ secrets.phones.study | default("###-###-####") }} to call you in case he gets lost.
     - [ ] **FEMALE PARTICIPANTS ONLY**: Remind the participant that pregnant women cannot undergo our MRI protocols. Therefore, they will take a pregnancy test (which we will have prepared) before the first session.
 - [ ] If participant has indicated nervousness or history of claustrophobia, organize a session to use the mock scanner.
 
@@ -302,14 +302,14 @@ Instructions of operations to be performed before the participant arrival, **bef
         The console will prompt you for the common user password: `{{ secrets.login.password_psychopy | default("*****") }}`
 
 - [ ] Check that you can send trigger events manually:
-    - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
-    - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
-    - [ ] Push the enter button (&#x25CF;) every time you want to send an <span class="keypress">s</span> character.
+    - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button :fontawesome-solid-circle:{ .bluecolor }.
+    - [ ] Hit the down arrow button :fontawesome-solid-caret-down:{ .bluecolor } until you find "Send trigger"
+    - [ ] Push the enter button :fontawesome-solid-circle:{ .bluecolor } every time you want to send an <span class="keypress">s</span> character.
     - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
     - [ ] Check that the BIOPAC is properly registering the trigger too. Every trigger sent should be seen in the *AcqKnowledge* GUI.
 - [ ] Start the syncbox session:
-    - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
-    - [ ] Push the enter button (&#x25CF;) and the syncbox will be now waiting for the scanner's trigger signal to forward it.
+    - [ ] Push the up arrow button :fontawesome-solid-caret-up:{ .bluecolor } until you find "Start session"
+    - [ ] Push the enter button :fontawesome-solid-circle:{ .bluecolor } and the syncbox will be now waiting for the scanner's trigger signal to forward it.
 
     | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) |
     |:--:|
