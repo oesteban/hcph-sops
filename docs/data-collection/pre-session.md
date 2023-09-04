@@ -137,25 +137,20 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Go to room {{ secrets.rooms.projector | default("███") }}, where the projector is installed.
 - [ ] Switch the projector **ON** by hitting the power button, located on its right side.
+- [ ] Verify the aim of the projector's beam by looking through the tube into the Scanning Room.
 
+    ??? warning "The projector's position SHALL NOT be modified unless it is evidently off"
     
-    !!! important 
-        "The projector's position SHALL NOT be modified unless it is evidently off"
+        Only in the case that the projector beam is not correctly targeting the projection screen inside the Scanning Room, which is possible if someone accidentally altered the configuration, you may adjust its position as follows:
     
-    Only in the case that the projector beam is not correctly targeting the projection screen inside the Scanning Room, which is possible if someone accidentally altered the configuration, you may adjust its position as follows:
-    
-- [ ] Adjust the projector tilt to center the projection if it does not properly aim the panel inside the scanner's bore.
-E.g., change the height of the paper pile that supports it (see images, FENS papers).
+        - [ ] Adjust the projector tilt to center the projection if it does not properly aim the panel inside the scanner's bore.
+            E.g., change the height of the paper pile that supports it (see images, FENS papers).
         
-    | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
-    |:--:|:--:|:--:|
-    | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
+        | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
+        |:--:|:--:|:--:|
+        | *The tube is the part through which you should check the quality of the projection* {: colspan=3} | | |
 
-- [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
-- [ ] Before you exit room {{ secrets.rooms.projector | default("███") }}, go to the next step.
-
-
-- [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
+- [ ] Verify the projection corresponds to the *Psychopy* laptop ({{ secrets.hosts.psychopy | default("███") }}) screen.
 - [ ] Before you exit room {{ secrets.rooms.projector | default("███") }}, go to the next step.
 
 ## Setting up the eye-tracker (ET) computer
