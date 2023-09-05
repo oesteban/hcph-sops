@@ -145,7 +145,7 @@ Get familiar with the setup and read through the [Eye Tracker Instruction Manual
 ## Scanning protocols
 
 The study will collect data with two different scanning protocols.
-Most of what is described in the present SOPs addresses the *Reliability Imaging Protocol* that will be acquired on the BH07060 scanner.
+Most of what is described in the present SOPs addresses the *Reliability Imaging Protocol* that will be acquired on the {{ secrets.rooms.mri1 | default("███") }} scanner.
 
 | **Reliability Imaging Protocol (36 sessions $\times$ one scanner)** | mm:ss | **Standard Imaging Protocol (12 sessions $\times$ three scanners)** | mm:ss |
 |---|---|---|---|
@@ -155,7 +155,7 @@ Most of what is described in the present SOPs addresses the *Reliability Imaging
 | DWI (dMRI, structural connectivity) | 33:52 | EPI BOLD ($B_\text{0}$ field mapping) | 00:30 |
 | DWI ($B_\text{0}$ field mapping) | 00:54 | BOLD (single-echo RSfMRI, eyes open) | 20:09 |
 | GRE ($B_\text{0}$ field mapping) | 02:38 | GRE ($B_\text{0}$ field mapping) | 03:08 |
-| EPI BOLD ($B_\text{0}$ field mapping) | 00:27 | BOLD (multi-echo RSfMRI, eyes open, **only BH07060**) | 10:09 |
+| EPI BOLD ($B_\text{0}$ field mapping) | 00:27 | BOLD (multi-echo RSfMRI, eyes open, **only {{ secrets.rooms.mri1 | default("███") }}**) | 10:09 |
 | BOLD (positive-control task fMRI) | 03:07 | DWI (dMRI, structural connectivity) | 27:31 |
 | BOLD (multi-echo RSfMRI, naturalistic movie) | 20:09 | DWI ($B_\text{0}$ field mapping) | 01:10 |
 | BOLD (breath-holding task fMRI) | 06:00  | T2w (anatomical reference) | 08:24 |
