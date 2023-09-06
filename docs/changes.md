@@ -7,6 +7,31 @@ All notable changes to these SOPs are documented below, starting with the most r
 	If you have identified a problem, a typo, or something missing, and you know it is not in our tracker, please report it by [creating a new issue](https://github.com/TheAxonLab/hcph-protocol/issues/new).
 
 <!-- insertion marker -->
+## [0.3.0](https://github.com/TheAxonLab/hcph-protocol/releases/tag/0.3.0) (September 06, 2023)
+
+<small>[Compare with 0.2.0](https://github.com/TheAxonLab/hcph-protocol/compare/0.2.0...0.3.0)</small>
+
+### Enhancements, new features, and additions
+
+- Replace unicode symbols with octicons/fontawesome icons
+ ([675e1ff](https://github.com/TheAxonLab/hcph-protocol/commit/675e1ffc99ee1983d5d5858052cea465363a8db3) by [Oscar Esteban](https://github.com/oesteban)).
+- Add ET description to intro
+ ([8bf5278](https://github.com/TheAxonLab/hcph-protocol/commit/8bf5278d47150d6c4df454c7d8906aec279952b4) by [Oscar Esteban](https://github.com/oesteban)). Related issues/PRs: [#146](https://github.com/TheAxonLab/hcph-protocol/issues/146), [#153](https://github.com/TheAxonLab/hcph-protocol/issues/153)
+- Deep revision of the PR
+ ([1fefe2d](https://github.com/TheAxonLab/hcph-protocol/commit/1fefe2d98b4b10bb255aa908a544e68bb14fa467) by [Oscar Esteban](https://github.com/oesteban)).
+- Added a safety check for the desiccant chamber color
+ ([7c13efc](https://github.com/TheAxonLab/hcph-protocol/commit/7c13efc30625935bd8c0369174de7a2ea6f53f5f) by [Alexandre Cionca](https://github.com/acionca)).
+
+### Bug Fixes
+
+- Scanner name leak
+ ([71a5e81](https://github.com/TheAxonLab/hcph-protocol/commit/71a5e81d1e8c3dc4c8bbf8f01d88163870551ae7) by [Alexandre Cionca](https://github.com/acionca)).
+- Indentation for rendering / show admonition folded
+ ([0747ffe](https://github.com/TheAxonLab/hcph-protocol/commit/0747ffe8ebb272e3558f090709faae5d3a89d35b) by [Oscar Esteban](https://github.com/oesteban)).
+- Typos ([ae572d9](https://github.com/TheAxonLab/hcph-protocol/commit/ae572d919dbd33e3b21b2efbc47a97c250982c79) by [Céline Provins](https://github.com/celprov)).
+- Add missing picture in emergency procedures section
+ ([e977607](https://github.com/TheAxonLab/hcph-protocol/commit/e977607933c444a306639f61431ef99874b8f431) by [Oscar Esteban](https://github.com/oesteban)). Related issues/PRs: [#89](https://github.com/TheAxonLab/hcph-protocol/issues/89)
+
 ## [0.2.0](https://github.com/TheAxonLab/hcph-protocol/releases/tag/0.2.0) (August 29, 2023)
 
 <small>[Compare with 0.1.0](https://github.com/TheAxonLab/hcph-protocol/compare/0.1.0...0.2.0)</small>
