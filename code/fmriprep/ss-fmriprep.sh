@@ -25,7 +25,7 @@ IMG="/oak/stanford/groups/russpold/users/cprovins/singularity_images/fmriprep-23
 
 WORKDIR="${L_SCRATCH}/fmriprep/${STUDY}/${SES}"
 mkdir -p ${WORKDIR}
-OUTDIR="${DATADIR}/derivatives2"
+OUTDIR="${DATADIR}/derivatives"
 mkdir -p $OUTDIR
 
 PATCHES=""
