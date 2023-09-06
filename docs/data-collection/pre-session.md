@@ -12,7 +12,7 @@ Instructions of operations to be performed before the participant arrival, **bef
         - [ ] if allowed to wear street clothes, remind the participant to avoid clothing with metal or that would uncomfortable to lie in for the duration of the scan; otherwise
         - [ ] remark the participant they will be given a gown and they will need to change before every session.
     - [ ] Repeat at what time and where will you meet the participant.
-    - [ ] Verify that the participant has your phone number {{ secrets.phones.study | default("███") }} to call you in case he gets lost.
+    - [ ] Verify that the participant has your phone number :fontawesome-solid-square-phone: {{ secrets.phones.study | default("###-###-####") }} to call you in case he gets lost.
     - [ ] **FEMALE PARTICIPANTS ONLY**: Remind the participant that pregnant women cannot undergo our MRI protocols. Therefore, they will take a pregnancy test (which we will have prepared) before the first session.
 - [ ] If participant has indicated nervousness or history of claustrophobia, organize a session to use the mock scanner.
 
@@ -29,13 +29,13 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Load in the different experiments and check for proper functioning:
     - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
-        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check that the movie is played.
     - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
-        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check that the movie is played.
     - [ ] {{ settings.psychopy.tasks.func_pct }} (positive-control task, PCT):
-        - [ ] time it to [confirm the length](preliminary.md#task-timing), and
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check that the movie is played.
 
 ## Documentation and other non-experimental devices
@@ -61,8 +61,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 ![on-off-button](../assets/images/on-off-box.jpg)
 
-- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (🔓)
-- [ ] Push the blue button with the sun symbol (☉) and the **SYSTEM ON** label underneath, which is found right above the key
+- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (:fontawesome-solid-unlock:)
+- [ ] Push the blue button with the sun symbol :octicons-issue-opened-16: and the **SYSTEM ON** label above, which is found right above the key
 
 ## Basic preparations in the scanning room
 
@@ -72,17 +72,10 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Remove the spine coil by lifting the corresponding latch, then sliding it toward the head of the bed, lift it from the bed, and place it on the floor ensuring it is not obstructing any passage or unstable.
 - [ ] Place the two back padding elements filling the spine coil socket.
 - [ ] Cover the MRI bed with a sheet.
-- [ ] Connect the 64-channel head-and-neck coil to the head end of the bed.
-- [ ] After positioning the participant, connect the anterior part of the coil using the terminal cable.
-- [ ] Check that both the posterior and anterior parts of the head-and-neck coil are now detected by the scanner.
-    To do so, ensure their names ("Head Neck 64 Posterior", and "Head Neck 64 Anterior", respectively) appear on the scanner's monitor screen.
-- [ ] Remove the light inside the scanner bore (button 4) and the ventilation (button 5) for a better performance of the ET.
-- [ ] Use buttons 2 and 3 to adjust the volume of the speaker in the scanner room, and of the earphones, respectively.
+- [ ] Place the 64-channel head-and-neck coil into its socket at the head end of the bed.
+- [ ] Completely remove the light inside of the scanner and the ventilation of the scanning room using [the scanner's interface](scanning-notes.md#scanners-settings-buttons).
 
-    !!! warning "The central knob (button 1) will turn off the alarm if necessary"
-    - [ ] Press the respective button and rotate the central knob to adjust the corresponding settings to the desired level.
-
-    ![ventilation_button](../assets/images/ventilation_button.png)
+    !!! danger "Remove the light and ventilation to facilitate the best performance of the ET"
 
 ## Setting up the BIOPAC system and physiological recording sensors
 
@@ -98,14 +91,14 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the parallel cable to the 25-pin socket at the back of the SPT100D of the BIOPAC and to the parallel port of the MMBT-S Trigger Interface Box adapter (N-shaped pink box).
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
 
-    ![neurospec_usb](../assets/images/neurospec_usb.jpg)
+    ![neurospec](../assets/images/neurospec.jpg)
 
 - [ ] Plug the power cords of the BIOPAC and the GA into suitable power sockets.
 - [ ] Go inside the scanning room, unscrew the wood cap that covers the hole in front of the MR.
 - [ ] Check that the extension tube for the nasal cannula does not contain any bubbles.
 - [ ] Delicately pass the extension tube that will be connected to the nasal cannula and the extension tube from the respiration-belt (RB) through the front access tube.
 ![Tube_setup](../assets/images/Tube_setup.jpg "Tube setup")
-- [ ] Connect the distal end of the extension tube to the cannula and leave the cannula ready on the bed ready for the participant.
+- [ ] Connect the distal end of the extension tube to the cannula and leave the cannula on the bed ready for the participant.
     To connect the extension tube to the cannula, you need to insert with force the end into the cannula.
 
     !!! warning "Ensure that the length of the tubing inside the MR room is sufficient so that it can lie on the floor."
@@ -117,9 +110,9 @@ Instructions of operations to be performed before the participant arrival, **bef
 ![RB_connection](../assets/images/RB_connection.jpg "RB_connection")
 - [ ] Go back to the control room and connect the proximal end of the cannula extension tube to one plug of the desiccant chamber (which one is not important). Connect the MLA0110 inline filter to the other plug of the desiccant chamber. Connect the MLA0343 drying tube to the MLA0110 inline filter.
 
-![desiccant_chamber](../assets/images/desiccant_chamber.png)
+    !!! warning "Make sure that the inside color of the drying tube and the desiccant chamber have not turned pink. They must be replaced if it is the case."
 
-!!! warning "If the color of the drying tube changes, it should be replaced."
+![desiccant_chamber](../assets/images/desiccant_chamber.png)
 
 - [ ] Remove the cap of the gas input (Sample In, front panel of the GA) and connect the MLA0110 inline filter to it. The inline filter MUST be replaced after some ten sessions.
 ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
@@ -146,14 +139,20 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Go to room {{ secrets.rooms.projector | default("███") }}, where the projector is installed.
 - [ ] Switch the projector **ON** by hitting the power button, located on its right side.
-    Adjust the projector tilt to center the projection if it does not properly aim the panel inside the scanner's bore.
-    E.g., change the height of the paper pile that supports it (see images, FENS papers).
+- [ ] Verify the aim of the projector's beam by looking through the tube into the Scanning Room.
 
-    | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
-    |:--:|:--:|:--:|
-    | *The hole is the part through which you should check the quality of the projection* {: colspan=3} | | |
+    ??? warning "The projector's position SHALL NOT be modified unless it is evidently off"
+    
+        Only in the case that the projector beam is not correctly targeting the projection screen inside the Scanning Room, which is possible if someone accidentally altered the configuration, you may adjust its position as follows:
+    
+        - [ ] Adjust the projector tilt to center the projection if it does not properly aim the panel inside the scanner's bore.
+            E.g., change the height of the paper pile that supports it (see images, FENS papers).
+        
+        | ![projector](../assets/images/projector.png) | ![paper-projector](../assets/images/paper-projector.png) | ![adjust-projector](../assets/images/adjust-projector.png) |
+        |:--:|:--:|:--:|
+        | *The tube is the part through which you should check the quality of the projection* {: colspan=3} | | |
 
-- [ ] Verify that the projector projects your laptop screen by looking through the window of the console room.
+- [ ] Verify the projection corresponds to the *Psychopy* laptop ({{ secrets.hosts.psychopy | default("███") }}) screen.
 - [ ] Before you exit room {{ secrets.rooms.projector | default("███") }}, go to the next step.
 
 ## Setting up the eye-tracker (ET) computer
@@ -164,16 +163,11 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Bring the rolling table out of the projector room ({{ secrets.rooms.projector | default("███") }}) into the control room.
     Be very attentive during the displacement and lift the front wheels when passing steps or cables.
     The plexiglas panel can also be brought to the scanning room at this time, if done with care.
-- [ ] Place the rolling table it next to the access closet.
+- [ ] Place the rolling table next to the access closet.
 - [ ] Connect the Ethernet cable from the ET computer into the Ethernet plug of the *Psychopy laptop* ({{ secrets.hosts.psychopy | default("███") }}).
 - [ ] Connect the power strip attached to the rolling table on to the closest power plug (likely, a power strip coming across the corridor).
 
 ## Setting up the ET arm
-
-??? thanks "Thanks to Benedetta Franceschiello!"
-
-      All the documentation about the ET is derived from Benedetta Franceschiello's user guide.
-      We greatly appreciate her help with the device.
 
 - [ ] Go to room {{ secrets.rooms.et_camera | default("███") }} and bring the blue box labeled *Eye-Tracker only for fMRI* into the scanning room.
     This box contains the ET arm with the camera and infrared lamp mounted on it, lenses, and the special infrared mirror.
@@ -194,7 +188,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
             ![screw-mri-compatible-lens](../assets/images/screw-lens.png "Screw the MRI compatible lens")
 
-        1. Screws holding the lens MUST be properly tightened at this point because the vibration of the scanner may loosen them and the screw(s) drop during the session.
+        1. Screws holding the lens MUST be properly tightened at this point because the vibration of the scanner may loosen them and the screw(s) may drop during the session.
 
 - [ ] Open the door of the access cupboard.
 - [ ] With the help of someone else, pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access point.
@@ -266,7 +260,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     ![syncbox](../assets/images/syncbox.png)
 
-- [ ] Switch on *{{ secrets.hosts.psychopy | default("███") }}* and login with the username *{{ secrets.login.username_hos68752| default("███") }}* and password *{{ secrets.login.password_hos68752| default("███") }}*.
+- [ ] Switch on *{{ secrets.hosts.psychopy | default("███") }}* and log-in with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
 
 - [ ] Connect to the ET to the *{{ secrets.hosts.psychopy | default("███") }}* laptop with the ethernet cable (blue color).
 
@@ -284,7 +278,7 @@ Instructions of operations to be performed before the participant arrival, **bef
         ![switch_screen](../assets/images/screen_switch.jpg)
 
 - [ ] Connect the MMBT-S Trigger Interface Box adapter (pink USB cable) to one of the USB ports of the laptop *{{ secrets.hosts.psychopy | default("███") }}*.
-    ![neurospec](../assets/images/neurospec.jpg)
+    ![neurospec_usb](../assets/images/neurospec_usb.jpg)
 
     !!! danger "The MMBT-S Trigger Interface MUST be connected to the laptop AFTER the trigger USB cable coming from the SyncBox. "
 
@@ -305,17 +299,17 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     !!! important "These commands are executed with `sudo`"
 
-        The console will prompt you for the common user password: `{{ secrets.login.password_hos68752 | default("****") }}`
+        The console will prompt you for the common user password: `{{ secrets.login.password_psychopy | default("*****") }}`
 
 - [ ] Check that you can send trigger events manually:
-    - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button (&#x25CF;).
-    - [ ] Hit the down arrow button (&#x25BC;) until you find "Send trigger"
-    - [ ] Push the enter button (&#x25CF;) every time you want to send an <span class="keypress">s</span> character.
+    - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button :fontawesome-solid-circle:{ .bluecolor }.
+    - [ ] Hit the down arrow button :fontawesome-solid-caret-down:{ .bluecolor } until you find "Send trigger"
+    - [ ] Push the enter button :fontawesome-solid-circle:{ .bluecolor } every time you want to send an <span class="keypress">s</span> character.
     - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
     - [ ] Check that the BIOPAC is properly registering the trigger too. Every trigger sent should be seen in the *AcqKnowledge* GUI.
 - [ ] Start the syncbox session:
-    - [ ] Push the up arrow button (&#x25B2;) until you find "Start session"
-    - [ ] Push the enter button (&#x25CF;) and the syncbox will be now waiting for the scanner's trigger signal to forward it.
+    - [ ] Push the up arrow button :fontawesome-solid-caret-up:{ .bluecolor } until you find "Start session"
+    - [ ] Push the enter button :fontawesome-solid-circle:{ .bluecolor } and the syncbox will be now waiting for the scanner's trigger signal to forward it.
 
     | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) |
     |:--:|

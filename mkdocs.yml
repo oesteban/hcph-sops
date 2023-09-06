@@ -12,6 +12,7 @@ nav:
       - Recruitment and screening: recruitment-scheduling-screening/recruitment.md
       - Scheduling: recruitment-scheduling-screening/scheduling.md
     - Data collection:
+      - Overall experimental settings: data-collection/intro.md
       - Preliminary work: data-collection/preliminary.md
       - Before each session: data-collection/pre-session.md
       - Preparing the participant: data-collection/participant-prep.md
@@ -39,8 +40,10 @@ theme:
     - content.code.annotate
   icon:
     admonition:
-      thanks: fontawesome/solid/thumbs-up
+      thanks: octicons/code-of-conduct-16
       quote: fontawesome/solid/comment-dots
+      danger: fontawesome/solid/biohazard
+      important: fontawesome/solid/circle-exclamation
 
 plugins:
   - search

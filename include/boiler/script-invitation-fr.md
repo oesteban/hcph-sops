@@ -1,4 +1,4 @@
-!!! note "Objet: Invitation à participer à une étude d'acquisition IRM du cerveau : informations et documents joints"
+!!! quote "Objet: Invitation à participer à une étude d'acquisition IRM du cerveau : informations et documents joints"
 
     Cher/Chère **[nom]**,
 
@@ -21,12 +21,12 @@
     Le second document concerne les éventuelles contre-indications à passer un examen IRM.
     Veuillez le remplir soigneusement et nous le retourner.
 
-    Si après lecture des informations ci-dessus vous acceptez de participer, nous souhaiterions convenir d'un entretien téléphonique avec vous afin de récapituler les points importants de votre participation. 
+    Si après lecture des informations ci-dessus vous acceptez de participer, nous souhaiterions convenir d'un entretien téléphonique avec vous afin de récapituler les points importants de votre participation.
     Cet entretien nous permettra également de vérifier votre éligibilité à participer à l'étude et de répondre à toutes vos éventuelles questions.
     Nous vous prions de nous retourner votre réponse dans un délai de 3 jours ouvrables.
     Afin que nous puissions planifier l'entretien téléphonique, veuillez également nous indiquer les plages horaires dans lesquelles nous pourrions vous contacter.
 
-    Entre-temps, si vous avez des questions, n'hésitez pas à nous contacter par e-mail ou par téléphone au {{ secrets.phones.study | default("███") }}.
+    Entre-temps, si vous avez des questions, n'hésitez pas à nous contacter par e-mail ou par téléphone au :fontawesome-solid-square-phone: {{ secrets.phones.study | default("###-###-####") }}.
     Nous serons ravis de répondre à toutes vos questions.
 
     Nous vous remercions encore une fois pour votre intérêt.

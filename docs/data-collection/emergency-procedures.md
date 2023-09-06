@@ -1,7 +1,7 @@
 !!! note "Reminder: Phone number of internal emergency services can be found in the agenda of all the phones of the hospital."
 
 ## Fire in the scanning room
-- [ ] Immediately call the internal firefighter service at **{{ secrets.phones.firefighter | default("███") }}**.
+- [ ] Immediately call the internal firefighter service at :fontawesome-solid-square-phone: **{{ secrets.phones.firefighter | default("##-###") }}**.
 - [ ] Enter in the MRI room and cut the electricity in the MRI room by pressing the red button next to the entrance.
 
     !!! danger "Cutting electricity will NOT turn off the magnetic field!"
@@ -61,13 +61,13 @@
 
 ## In case you feel unsafe
 
-!!! warning "If you feel unsafe for any reason (for example, because a patient behaves aggressively or threatens you), **CALL SECURITY at {{ secrets.phones.security | default("███") }}**."
+!!! warning "If you feel unsafe for any reason (for example, because a patient behaves aggressively or threatens you), **CALL SECURITY at :fontawesome-solid-square-phone: {{ secrets.phones.security | default("##-###") }}**."
 
 ## Technical difficulties
 
 !!! important "If you are facing technical difficulties:"
     - [ ] Seek help from anyone on the BH7 floor.
-    - [ ] If you still have problems or didn't find anyone (e.g., scanning on a weekend), call the ER's MRI staff at {{ secrets.phones.emergency_IRM | default("███") }}.
+    - [ ] If you still have problems or didn't find anyone (e.g., scanning on a weekend), call the ER's MRI staff at :fontawesome-solid-square-phone: {{ secrets.phones.emergency_IRM | default("##-###") }}.
 
 ## A person requires medical attention
 
@@ -78,16 +78,21 @@ At any moment, you may determine that the participant will require medical atten
   - The participant reports feeling unwell and needs attention
   - You think they may need medical attention but you are unsure.
 
-!!! danger "If you determine that someone needs medical attention, call the resuscitation unit (**{{ secrets.phones.intensive_care | default("███") }}**)"
+!!! danger "If you determine that someone needs medical attention, call the resuscitation unit :fontawesome-solid-square-phone: **{{ secrets.phones.intensive_care | default("##-###") }}**"
 
-    The resuscitation unit (**{{ secrets.phones.intensive_care | default("███") }}**) is the person to call in any case, **even if the participant is not in life-threatening condition**.
+    The resuscitation unit :fontawesome-solid-square-phone: **{{ secrets.phones.intensive_care | default("##-###") }}** is the number to call in any case, **even if the participant is not in life-threatening condition**.
 
     The phone number of the emergency services can be found on all the phones at CHUV.
 
 **After you called the resuscitation unit**:
 
-- [ ] Press on the heart button [INSERT PICTURE] on the wall, after lifting the security lid. This will guide the intensive care team to the place where they need to intervene.
-    !!! important "In case you pressed the heart button by mistake,  turn it off by pressing the adjacent green button."
+- [ ] Press on the heart button :octicons-heart-16: —(1) in the picture below— on the wall, after lifting the security lid.
+
+    | ![resuscitation_unit](../assets/images/resuscitation_unit.jpg) |
+    |:--:|
+    | The heart button :octicons-heart-16: (1) initiates a beacon to guide the intensive care team to the place where they need to intervene; (2) cancels the beacon. |
+
+    !!! important "In case you pressed the heart button by mistake, turn it off by pressing the adjacent green button (2)."
 
 - [ ] If the participant remains in the scanning room, re-enter the room and proceed with the [manual extraction protocol](#manual-extraction-procedure).
 

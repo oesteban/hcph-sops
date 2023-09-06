@@ -11,7 +11,7 @@
 - [ ] Ask the participant to fill out the consent form and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia.
 
     !!!danger "DO NOT subject the participant to any risk"
-        - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at {{ secrets.phones.medical_contact | default("███") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
+        - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at :fontawesome-solid-square-phone: {{ secrets.phones.medical_contact | default("###-###-####") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
         - [ ] In case of discovering any previously undisclosed contraindication, the volunteer **MUST NOT** participate in the study.
 
 - [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }}).
@@ -82,8 +82,8 @@
         The first of the blocks is a mock.
         That will be reminded to you at the beginning of the task on the screen.
         During the mock block, please look at the stimuli on the screen but keep your habitual breathing pace disregarding the task instructions.
-        At the end of this mock block, a message will remind you must follow the task instructions from that moment on.
-        that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
+        At the end of this mock block, a message will remind you to follow the task instructions from that moment on.
+        You must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
 
         Is everything clear to you? Do you have any questions?
 
@@ -111,8 +111,8 @@
         The first of the blocks is a mock.
         That will be reminded to you at the beginning of the task on the screen.
         During the mock block, please look at the stimuli on the screen but keep your habitual breathing pace disregarding the task instructions.
-        At the end of this mock block, a message will remind you must follow the task instructions from that moment on.
-        that you must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
+        At the end of this mock block, a message will remind you to follow the task instructions from that moment on.
+        You must adapt your breathing to the pace indicated by the color-changing rectangle in the center of the screen for the remaining four repetitions of the block.
 
         Is everything clear to you? Do you have any questions?
 
@@ -141,7 +141,7 @@
 
     - [ ] Open the sterile cotton gauze pads package, take one and moisten it with alcohol.
     - [ ] Clean the skin around the three areas with the alcohol-soaked pad with circular movements.
-    - [ ] Get a second cotton gauze pad and put some *Nuprep* preparation gel and gently abrade the skin by rubbing it onto the sckin with four or five circular movements.
+    - [ ] Get a second cotton gauze pad and put some *Nuprep* preparation gel and gently abrade the skin by rubbing it onto the skin with four or five circular movements.
     - [ ] Remove gel excess with a clean cotton gauze.
     - [ ] Remove the protective film from the electrode.
     - [ ] Stick the electrode on the participant's skin by starting in one side and ironing the rest of the electrode. This procedure ensures that no air is trapped between the electrode and your skin and that no wrinkles from at the edges. Repeat for the three electrodes.
@@ -194,10 +194,27 @@
     ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
 
 - [ ] When completely laying down on the bed, tightly fasten the RB and check with the participant whether they are too uncomfortable.
-- [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort.
-- [ ] Once the subject is lying on the MR bed, check that no arms/legs lie on the GA or the RB tubes.
+- [ ] Check the *AcqKnowledge* signal visualization of the adjustment of the RB, and make sure that the signal is not saturating (when the RB is too tight) or too weak (when the RB is too loose).
 
-    ![alarm_button](../assets/images/alarm_button.png)
+    !!! warning "Two-people protocol to check the RB settings."
+
+        This check requires two experimenters, one INSIDE (**IN**) the scanning room and one more outside (**OUT**)
+        
+        - [ ] **OUT** indicates they are ready to start the check by signaling a THUMBS-UP WITH BOTH HANDS through the Scanning Room window :fontawesome-solid-thumbs-up: <span class="fliplr">:fontawesome-solid-thumbs-up:</span>.
+        - [ ] **IN** MUST confirm they understand returning the THUMBS-UP WITH ONE HAND :fontawesome-solid-thumbs-up:.
+        - [ ] **IN** finalizes the setting of the RB if necessary and asks the participant to breathe normally.
+        - [ ] Once the participant is lying down on the bed and breathing normally, and the check can be carried out, **IN** MUST signal they are ready by sending a THUMBS-UP WITH BOTH HANDS :fontawesome-solid-thumbs-up: <span class="fliplr">:fontawesome-solid-thumbs-up:</span> through the window.
+        - [ ] **OUT** MUST acknowledge the understanding, return a THUMBS-UP WITH BOTH HANDS :fontawesome-solid-thumbs-up: <span class="fliplr">:fontawesome-solid-thumbs-up:</span>, and check the *AcqKnowledge* screen.
+        - [ ] **OUT** checks for signs of saturation and insufficient dynamic range.
+            These issues manifest as plateaus and excessively flat lines (respectively) in the *AcqKnowledge* visualization of the RB signal.
+        - [ ] **OUT** provides feedback to the inside room as follows:
+            * If the RB must be **tightened up**, pointer finger going up :fontawesome-solid-hand-point-up:;
+            * if the RB must be **loosened up**, pointer finger going down :fontawesome-solid-hand-point-down:;
+            * if **OUT** needs to check again, they show two hands <span class="fliplr">:fontawesome-solid-hand:</span> :fontawesome-solid-hand:, checks the *AcqKnowledge* again and signs another instruction; and
+            * if the check is finished, **OUT** signs a THUMBS-UP WITH BOTH HANDS :fontawesome-solid-thumbs-up: <span class="fliplr">:fontawesome-solid-thumbs-up:</span>.
+            * **IN** MUST acknowledge all the commands with THUMBS-UP WITH ONE HAND :fontawesome-solid-thumbs-up: if understood. If not understood, they can request with a PRAYING gesture :fontawesome-solid-hands-praying:.
+            
+- [ ] Solicit feedback on participant's comfort while positioning them on the scanner bed and suggest ergonomic positioning of their arms to avoid discomfort.
 
 ### Accommodating the participant's head in the coil
 
@@ -212,9 +229,19 @@
 - [ ] Cut a long strip of medical auto-adhesive band and stick it at each side of the lower block of the head coil, across the participant's forehead and stick it to the participant's forehead. Indicate the participant that this band will tell them when they moved and help them recover the original position.
 - [ ] Place the top block of the coil and check that the participants' front touches or is really close to the coil. Now the nose can also be a bit far from the coil. Tell the participant to relax the neck, so the nose should go a bit up and touch the coil.
 - [ ] Connect the coil's cable to the corresponding socket on the table.
-- [ ] Ask the participant if they are feeling cold. Cover them with a blanket if necessary.
+- [ ] Check that both the posterior and anterior parts of the head-and-neck coil are now detected by the scanner.
+    To do so, ensure their names ("Head Neck 64 Posterior", and "Head Neck 64 Anterior", respectively) appear on the scanner's monitor screen.
 - [ ] Place rectangular paddings at each side of the chest and help the participant accommodate their elbows on them.
-- [ ] Remind the participant not to create closed loops by crossing their legs or holding their hands together.
+- [ ] Cover them with a blanket if necessary, and remind them of not closing loops with their body:
+
+    !!! quote "Ask the participant if they are feeling cold"
+
+        Hey [NAME], are you feeling cold? Do you want a blanket?
+
+        I have placed some paddings for your elbows, is there anything else you would need to feel comfortable?
+
+        Throughout the examination, remember not to create closed loops by crossing your legs or holding hands together.
+
 - [ ] Gently move the participant with the manual regulation. Stop when the head is under the head-localizer. **Ask the participant to close their eyes**, press the laser alignment button and align the head-coil markers with the red light.
 
     | ![take_table_up](../assets/images/take_table_up.png) |
@@ -224,6 +251,10 @@
 - [ ] Switch off the alignment light, now the participant can open their eyes. You can move the participant (always gently as before) inside the scanner manually, until the mm counter marks "Isometric" or you can press the rotary knob for two seconds. This will send the participant to the isocenter automatically.
 
     ![send_isocenter](../assets/images/send_isocenter.png)
+
+- [ ] Once the participant is lying on the scanner bed, check that no arms/legs rest on the GA or the RB tubes and may block them.
+- [ ] Before continuing with the setup, make sure all cables and tubes leave the scanner's bed *perpendicularly* and lie on the floor.
+    Tape them to the floor so that they don't move accidentally.
 
 ### Final preparatory steps of the ET
 
@@ -235,7 +266,7 @@ Please note that some of the images used in this section are sourced from the [E
     - [ ] Run the experiment by pressing the green play button.
     - [ ] Press enter to begin the *camera setup mode*.
     - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
-    - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the <span class="keypress">◀</span> or <span class="keypress">▶</span> arrow.
+    - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the <span class="keypress">:fontawesome-solid-caret-left:</span> or <span class="keypress">:fontawesome-solid-caret-right:</span> arrow.
         This will allow you to adjust the ET position as the infrared camera provides feedback inside the scanning room on the projection screen.
 - [ ]  Enter the scanning room and adjust the ET arm position and focus of the lens until the eye is fully visible.
     The **right** eye should be visible at the center of the coil's square window for the eye.
@@ -257,7 +288,7 @@ Please note that some of the images used in this section are sourced from the [E
             ![focus_example](../assets/images/focus.png)
 
 - [ ] Press the <span class="keypress">A</span> key to set the pupil and CR detection thresholds automatically.
-- [ ] Fine-tune the pupil detection threshold using the <span class="keypress">▲</span> and <span class="keypress">▼</span> arrow keys if necessary.
+- [ ] Fine-tune the pupil detection threshold using the <span class="keypress">:fontawesome-solid-caret-up:</span> and <span class="keypress">:fontawesome-solid-caret-down:</span> arrow keys if necessary.
     While checking the pupil/CR image and thresholding, ask the participant to look at the screen corners to verify correct detection even in extreme positions.
     ![pupil_threshold](../assets/images/pupil_threshold.png)
 
@@ -273,17 +304,20 @@ Please note that some of the images used in this section are sourced from the [E
 ### Check the communication with the participant
 ![speaker](../assets/images/speaker.jpg)
 
-!!!warning "Important"
-    The red button (3) immediately stops the currently running sequence.
+!!!warning "Emergency buttons"
+    The <span style="background-color: red; color: white; font-size: 0.85em; border-radius: 50%; text-align: center; height: 30px; width: 30px; display:inline-block; background-position: center; padding-top: 7px; font-weight: bold;">STOP</span> button (3) immediately stops the currently running sequence.
+    The crossed-out bell <span class="fliplr">:fontawesome-solid-bell-slash:</span> button (4) stops the alarm if the participant actioned it.
 
-- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback
-- [ ] Keep on pressing the speak mode button to give instructions (1). Set the volume control of your microphone by pressing the +/- buttons.
+- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback.
+    First, keep the speak mode button (1) pressed while you talk to the participant:
 
-    > Hey [NAME], can you hear me well?
+    !!! quote "Hey [NAME], can you hear me well? Is the audio too loud or too low?"
 
-- [ ] To listen to participant responses, make sure you release the speak mode button before you press the listen mode button once (2). Set the volume control of the participant’s microphone by pressing the +/- buttons.
+- [ ] Enable the feedback channel from the Scanning Room by pressing the listen mode button (2) once.
+    Release the speak mode button (1) before you are ready to listen to participant responses.
+- [ ] Set the volume control of your microphone and the participant's speaker by pressing the corresponding :fontawesome-solid-plus-minus: buttons.
 - [ ] If this volume increase is not enough for the participant to hear you well, proceed as follow:
-    - [ ] In the Siemens program, click on Configuration represented by a gear wheel at the top right of the screen.
+    - [ ] In the Siemens program, click on Configuration represented by a gear wheel (:fontawesome-solid-gear:) at the top right of the screen.
     - [ ] Click on *Configuration panel*
     - [ ] Under the section *Scan application*, locate the icon of the speaker and tune the volume to the maximum.
     - [ ] Click *Apply*
