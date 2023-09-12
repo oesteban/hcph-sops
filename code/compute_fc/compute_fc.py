@@ -25,8 +25,7 @@ FC_PATTERN = [
     "[_ses-{session}][_task-{task}][_meas-{meas}]"
     "_{suffix}{extension}"
 ]
-FC_FILLS = {"suffix": "relmat", "meas": "sparseinversecovariance",
-            "extension": ".tsv"}
+FC_FILLS = {"suffix": "relmat", "meas": "sparseinversecovariance", "extension": ".tsv"}
 TIMESERIES_PATTERN = [
     "sub-{subject}[/ses-{session}]/func/sub-{subject}"
     "[_ses-{session}][_task-{task}][_desc-{desc}]"
@@ -45,7 +44,8 @@ FIGURE_PATTERN = [
 FIGURE_FILLS = {"extension": "png"}
 
 TS_FIGURE_SIZE = (50, 25)
-FC_FIGURE_SIZE = (50, 40)
+FC_FIGURE_SIZE = (50, 45)
+LABELSIZE = 22
 
 
 def get_arguments():
@@ -137,9 +137,7 @@ def get_atlas_data(atlas_name="DiFuMo", **kwargs):
     logging.info("Fetching the DiFuMo atlas ...")
 
     if kwargs["dimension"] not in [64, 128, 512]:
-        logging.warning(
-            "Dimension for DiFuMo atlas is different from 64, 128 or 512 !"
-        )
+        logging.warning("Dimension for DiFuMo atlas is different from 64, 128 or 512 !")
 
     return fetch_atlas_difumo(legacy_format=False, **kwargs)
 
@@ -247,15 +245,7 @@ def extract_timeseries(
     return time_series, confounds
 
 
-def compute_connectivity(
-    time_series, strategy="sparse inverse covariance", verbose=False
-):
-    n_ts = len(time_series)
-    n_area = time_series[0].shape[-1]
-    logging.info(
-        f"Computing functional connectivity matrices for {n_ts} timeseries ..."
-    )
-
+def get_fc_strategy(strategy="sparse inverse covariance"):
     connectivity_kind = "correlation"
     FC_FILLS["meas"] = "correlation"
     FIGURE_FILLS["meas"] = "correlation"
@@ -271,6 +261,22 @@ def compute_connectivity(
             connectivity_kind = "covariance"
             FC_FILLS["meas"] = "covariance"
             FIGURE_FILLS["meas"] = "covariance"
+
+    return estimator, connectivity_kind
+
+
+def compute_connectivity(
+    time_series,
+    estimator=LedoitWolf(store_precision=False),
+    connectivity_kind="correlation",
+):
+    if not len(time_series):
+        return []
+    n_ts = len(time_series)
+    n_area = time_series[0].shape[-1]
+    logging.info(
+        f"Computing functional connectivity matrices for {n_ts} timeseries ..."
+    )
 
     logging.info(f'\tUsing the "{FIGURE_FILLS["meas"]}" measurement.')
 
@@ -358,9 +364,17 @@ def visual_report_fc(matrix, filename, output, labels=None):
     fc_saveloc = get_bids_savename(
         filename, patterns=FIGURE_PATTERN, desc="heatmap", **FIGURE_FILLS
     )
-    fig, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
+    _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
 
     plot_matrix(matrix, labels=list(labels), axes=ax, vmin=-1, vmax=1)
+    ax.tick_params(labelsize=LABELSIZE)
+
+    # Update the size of the colorbar labels
+    cbar = ax.images[-1].colorbar
+    cbar.ax.tick_params(labelsize=LABELSIZE)
+
+    # Ensure the labels are within the figure
+    plt.tight_layout()
 
     logging.debug("Saving functional connectivity matrices visual report at:")
     logging.debug(f"\t{op.join(output, fc_saveloc)}")
@@ -443,6 +457,8 @@ def main():
             **TIMESERIES_FILLS,
         )
 
+        covar_estimator, connectivity_kind = get_fc_strategy(fc_estimator)
+
         logging.info(f"{len(missing_ts)} files are missing timeseries.")
         logging.debug("Looking for existing fc matrices ...")
         missing_only_fc = check_existing_output(
@@ -463,6 +479,7 @@ def main():
         scrub=scrub,
     )
 
+    # Saving aggregated/denoised timeseries and visual reports
     if save and len(time_series):
         logging.info("Saving timeseries ...")
         os.makedirs(output, exist_ok=True)
@@ -496,10 +513,13 @@ def main():
             )
 
     fc_matrices = compute_connectivity(
-        time_series + existing_timeseries, strategy=fc_estimator
+        time_series + existing_timeseries,
+        estimator=covar_estimator,
+        connectivity_kind=connectivity_kind
     )
 
-    if save:
+    # Saving FC matrices and visual reports
+    if save and len(fc_matrices):
         logging.info("Saving connectivity matrices ...")
         save_output(
             fc_matrices, missing_output, output, patterns=FC_PATTERN, **FC_FILLS
