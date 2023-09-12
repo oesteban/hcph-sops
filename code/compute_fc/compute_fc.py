@@ -1,31 +1,36 @@
+""" Python script to denoise and aggregate timeseries before computing functional
+connectivity matrices from BIDS derivatives (e.g. fmriprep).
+
+Run as (see 'python compute_fc.py -h' for options):
+
+    python compute_fc.py BIDS_derivatives
+"""
+
 import argparse
 import logging
-
 import os
 import os.path as op
 
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+from matplotlib.cm import get_cmap
 import numpy as np
-
 from bids import BIDSLayout
 from bids.layout import parse_file_entities
 from bids.layout.writing import build_path
-
-from nilearn.datasets import fetch_atlas_difumo
-from nilearn.maskers import MultiNiftiMapsMasker
-from nilearn.interfaces.fmriprep import load_confounds
-
 from nilearn.connectome import ConnectivityMeasure, vec_to_sym_matrix
-from sklearn.covariance import GraphicalLassoCV, LedoitWolf
-
+from nilearn.datasets import fetch_atlas_difumo
+from nilearn.interfaces.fmriprep import load_confounds
+from nilearn.maskers import MultiNiftiMapsMasker
 from nilearn.plotting import plot_design_matrix, plot_matrix
+from sklearn.covariance import GraphicalLassoCV, LedoitWolf
 
 FC_PATTERN = [
     "sub-{subject}[/ses-{session}]/func/sub-{subject}"
     "[_ses-{session}][_task-{task}][_meas-{meas}]"
     "_{suffix}{extension}"
 ]
-FC_FILLS = {"suffix": "relmat", "meas": "sparseinversecovariance", "extension": ".tsv"}
+FC_FILLS = {"suffix": "relmat", "extension": ".tsv"}
 TIMESERIES_PATTERN = [
     "sub-{subject}[/ses-{session}]/func/sub-{subject}"
     "[_ses-{session}][_task-{task}][_desc-{desc}]"
@@ -39,40 +44,87 @@ FIGURE_PATTERN = [
     "sub-{subject}/figures/sub-{subject}[_ses-{session}]"
     "[_task-{task}][_desc-{desc}]_{suffix}{extension}",
 ]
-# TS_FIGURE_PATTERN = ['sub-{subject}/figures/sub-{subject}[_ses-{session}]'
-#                  '[_task-{task}][_desc-{desc}]_{suffix}{extension}']
 FIGURE_FILLS = {"extension": "png"}
 
 TS_FIGURE_SIZE = (50, 25)
 FC_FIGURE_SIZE = (50, 45)
 LABELSIZE = 22
+NETWORK_MAPPING = "yeo_networks7"  # Also yeo_networks17
+NETWORK_CMAP = "turbo"
 
 
 def get_arguments():
     parser = argparse.ArgumentParser(
         description="""Compute functional connectivity matrices from fmriprep
                     output directory.""",
-        # formatter_class=argparse.RawTextHelpFormatter
     )
 
     # Input/Output arguments and options
-    parser.add_argument("data_dir")
-    parser.add_argument("-s", "--save", action="store_true", default=False)
-    parser.add_argument("-o", "--output", default=None)
+    parser.add_argument("data_dir", help="BIDS dataset or derivatives with data")
+    parser.add_argument(
+        "-s", "--save", action="store_true", default=False, help="save the outputs"
+    )
+    parser.add_argument(
+        "-o", "--output", default=None, help="specify an alternative output directory"
+    )
 
     # Script specific options
-    parser.add_argument("--overwrite", default=False, action="store_true")
-    parser.add_argument("--task", default=[], action="store", nargs="+")
+    parser.add_argument(
+        "--overwrite", default=False, action="store_true", help="force computation"
+    )
+    parser.add_argument(
+        "--task",
+        default=[],
+        action="store",
+        nargs="+",
+        help="a space delimited list of task(s)",
+    )
 
     # fMRI and denoising specific options
-    parser.add_argument("--denoise-only", default=False, action="store_true")
-    parser.add_argument("--atlas-dimension", default=64, type=int)
-    parser.add_argument("--low-pass", default=0.15, action="store", type=float)
-    parser.add_argument("--FD-thresh", default=0.4, action="store", type=float)
-    parser.add_argument("--SDVARS-thresh", default=3, action="store", type=float)
-    parser.add_argument("--n-scrub-frames", default=5, action="store", type=int)
+    # parser.add_argument(
+    #     "--denoise-only", default=False, action="store_true", help="NOT IMPLEMENTED"
+    # )
     parser.add_argument(
-        "--fc-estimator", default="sparse inverse covariance", action="store", type=str
+        "--atlas-dimension",
+        default=64,
+        type=int,
+        help="dimension of the atlas (usually 64, 128 or 512)",
+    )
+    parser.add_argument(
+        "--low-pass",
+        default=0.15,
+        action="store",
+        type=float,
+        help="cutoff frequency of low pass filtering",
+    )
+    parser.add_argument(
+        "--FD-thresh",
+        default=0.4,
+        action="store",
+        type=float,
+        help="framewise displacement threshold (in mm)",
+    )
+    parser.add_argument(
+        "--SDVARS-thresh",
+        default=3,
+        action="store",
+        type=float,
+        help="standardised DVAR threshold",
+    )
+    parser.add_argument(
+        "--n-scrub-frames",
+        default=5,
+        action="store",
+        type=int,
+        help="minimum segment length after volume censoring",
+    )
+    parser.add_argument(
+        "--fc-estimator",
+        default="sparse inverse covariance",
+        action="store",
+        type=str,
+        help="""type of connectivity to compute (can be 'correlation', 'covariance' or
+        'sparse')""",
     )
 
     parser.add_argument(
@@ -80,9 +132,8 @@ def get_arguments():
         "--verbosity",
         action="count",
         default=1,
-        help="""increase output verbosity (-v: standard logging
-                        infos; -vv: logging infos and NiLearn verbose; -vvv:
-                        debug)""",
+        help="""increase output verbosity (-v: standard logging infos; -vv: logging
+        infos and NiLearn verbose; -vvv: debug)""",
     )
 
     args = parser.parse_args()
@@ -247,22 +298,19 @@ def extract_timeseries(
 
 def get_fc_strategy(strategy="sparse inverse covariance"):
     connectivity_kind = "correlation"
-    FC_FILLS["meas"] = "correlation"
-    FIGURE_FILLS["meas"] = "correlation"
+    connectivity_label = "correlation"
     estimator = LedoitWolf(store_precision=False)
 
     if strategy not in ["cor", "corr", "correlation"]:
         connectivity_kind = "precision"
-        FC_FILLS["meas"] = "sparseinversecovariance"
-        FIGURE_FILLS["meas"] = "sparseinversecovariance"
-        estimator = GraphicalLassoCV(alphas=6, max_iter=1000)  # , verbose=verbose)
+        connectivity_label = "sparseinversecovariance"
+        estimator = GraphicalLassoCV(alphas=6, max_iter=1000)
 
         if strategy not in ["sparse", "sparse inverse covariance"]:
             connectivity_kind = "covariance"
-            FC_FILLS["meas"] = "covariance"
-            FIGURE_FILLS["meas"] = "covariance"
+            connectivity_label = "covariance"
 
-    return estimator, connectivity_kind
+    return estimator, connectivity_kind, connectivity_label
 
 
 def compute_connectivity(
@@ -278,8 +326,6 @@ def compute_connectivity(
         f"Computing functional connectivity matrices for {n_ts} timeseries ..."
     )
 
-    logging.info(f'\tUsing the "{FIGURE_FILLS["meas"]}" measurement.')
-
     connectivity_estimator = ConnectivityMeasure(
         cov_estimator=estimator,
         kind=connectivity_kind,
@@ -290,56 +336,133 @@ def compute_connectivity(
     return vec_to_sym_matrix(connectivity_measures, diagonal=np.zeros((n_ts, n_area)))
 
 
-def plot_timeseries(
-    timeseries,
-    labels=None,
-    normalize=False,
-    plot_type="signal",
-    vert_scale=5,
-    margin_value=0.01,
-):
-    _, ax = plt.subplots(figsize=TS_FIGURE_SIZE)
-
+def plot_timeseries_carpet(timeseries, labels=None, networks=None):
     n_timepoints, n_area = timeseries.shape
 
-    timeseries_to_show = timeseries.copy()
-    if normalize:
-        timeseries_to_show = (timeseries - timeseries.mean(axis=0)) / (
-            timeseries.std(axis=0)
+    networks_provided = networks is not None
+
+    sorting_index = np.arange(n_area)
+
+    fig = plt.figure(figsize=TS_FIGURE_SIZE)
+    gs = fig.add_gridspec(
+        1,
+        2,
+        wspace=0,
+        width_ratios=[0 + 0.005 * networks_provided, 1 - 0.005 * networks_provided],
+    )
+    ax_net, ax_carpet = gs.subplots()
+
+    if networks_provided:
+        networks_sorted = networks.sort_values()
+        sorting_index = networks_sorted.index
+        net_dict = {net: i + 1 for i, net in enumerate(networks_sorted.unique())}
+        net_plot = np.array([[net_dict[net] for net in networks_sorted]])
+
+        net_cmap = get_cmap(NETWORK_CMAP, len(net_dict))
+        ax_net.imshow(net_plot.T, cmap=NETWORK_CMAP, aspect="auto")
+
+        legend_elements = [
+            Line2D(
+                [0],
+                [0],
+                marker="s",
+                color="w",
+                label=net,
+                markerfacecolor=net_cmap(val - 1),
+                markersize=15,
+            )
+            for net, val in net_dict.items()
+        ]
+
+        ax_carpet.legend(
+            handles=legend_elements,
+            ncol=len(net_dict),
+            loc="upper left",
+            bbox_to_anchor=(0, 1.04),
+            fontsize=LABELSIZE,
         )
 
-    ax.set_xlabel("time")
+    image = ax_carpet.imshow(
+        timeseries.T[sorting_index],
+        cmap="binary_r",
+        aspect="auto",
+        interpolation="antialiased",
+    )
+    cbar = plt.colorbar(image, pad=0, aspect=40)
+    cbar.ax.tick_params(labelsize=LABELSIZE)
 
-    if "carpet" in plot_type.lower():
-        ax.set_yticks(np.arange(n_area))
-        ax.set_yticklabels(labels)
-        image = ax.imshow(
-            timeseries_to_show.T,
-            cmap="binary_r",
-            aspect="auto",
-            interpolation="antialiased",
+    ax_net.set_yticks(np.arange(n_area))
+    ax_net.set_yticklabels(labels)
+    ax_net.tick_params(bottom=False, labelbottom=False, labelsize=LABELSIZE)
+    ax_carpet.set_xlabel("time", fontsize=LABELSIZE)
+    ax_carpet.tick_params(left=False, labelleft=False, labelsize=LABELSIZE)
+
+    plt.subplots_adjust(right=1.11, left=0.151)
+
+
+def plot_timeseries_signal(
+    timeseries, labels=None, networks=None, vert_scale=5, margin_value=0.01
+):
+    n_timepoints, n_area = timeseries.shape
+
+    networks_provided = networks is not None
+    sorting_index = np.arange(n_area)
+    colors = ["tab:blue"] * n_area
+
+    _, ax = plt.subplots(figsize=TS_FIGURE_SIZE)
+
+    if networks_provided:
+        networks_sorted = networks.sort_values()
+        sorting_index = networks_sorted.index
+        net_dict = {net: i + 1 for i, net in enumerate(networks_sorted.unique())}
+        net_plot = np.array([[net_dict[net] for net in networks_sorted]])
+
+        net_cmap = get_cmap(NETWORK_CMAP, len(net_dict))
+
+        colors = [net_cmap(i - 1) for i in net_plot][0]
+
+        legend_elements = [
+            Line2D(
+                [0],
+                [0],
+                marker="s",
+                color="w",
+                label=net,
+                markerfacecolor=net_cmap(val - 1),
+                markersize=15,
+            )
+            for net, val in net_dict.items()
+        ]
+
+        ax.legend(
+            handles=legend_elements,
+            ncol=len(net_dict),
+            loc="upper left",
+            bbox_to_anchor=(0, 1.04),
+            fontsize=LABELSIZE,
         )
-        plt.colorbar(image, pad=0, aspect=40)
 
-    if "signal" in plot_type.lower():
-        x_plot = np.arange(n_timepoints)
-        for i, roi_signal in enumerate(timeseries_to_show.T):
-            ax.plot(x_plot, i * vert_scale + roi_signal, color="tab:blue", linewidth=2)
+    x_plot = np.arange(n_timepoints)
+    for i, (roi_signal, col) in enumerate(zip(timeseries.T[sorting_index], colors)):
+        ax.plot(x_plot, i * vert_scale + roi_signal, color=col, linewidth=4)
 
-        # ax.set_xlabel('time')
-        ax.set_yticks(np.arange(n_area) * vert_scale)
-        ax.set_yticklabels(labels)
-        ax.grid(visible=True, axis="y")
-        ax.margins(x=margin_value, y=margin_value)
+    ax.set_yticks(np.arange(n_area) * vert_scale)
+    ax.set_yticklabels(labels, fontsize=LABELSIZE)
+    ax.set_xlabel("time", fontsize=LABELSIZE)
+
+    ax.grid(visible=True, axis="y")
+    ax.margins(x=margin_value, y=margin_value)
 
 
 def visual_report_timeserie(timeseries, filename, output, confounds=None, **kwargs):
     # Plotting denoised and aggregated timeseries
-    for plot_type, plot_desc in zip(["carpet", "signal"], ["carpetplot", "timeseries"]):
+    for plot_func, plot_desc in zip(
+        [plot_timeseries_carpet, plot_timeseries_signal], ["carpetplot", "timeseries"]
+    ):
         ts_saveloc = get_bids_savename(
             filename, patterns=FIGURE_PATTERN, desc=plot_desc, **FIGURE_FILLS
         )
-        plot_timeseries(timeseries, plot_type=plot_type, **kwargs)
+        plot_func(timeseries, **kwargs)
 
         logging.debug("Saving timeseries visual report at:")
         logging.debug(f"\t{op.join(output, ts_saveloc)}")
@@ -360,9 +483,9 @@ def visual_report_timeserie(timeseries, filename, output, confounds=None, **kwar
         plt.savefig(op.join(output, conf_saveloc))
 
 
-def visual_report_fc(matrix, filename, output, labels=None):
+def visual_report_fc(matrix, filename, output, labels=None, **kwargs):
     fc_saveloc = get_bids_savename(
-        filename, patterns=FIGURE_PATTERN, desc="heatmap", **FIGURE_FILLS
+        filename, patterns=FIGURE_PATTERN, desc="heatmap", **kwargs
     )
     _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
 
@@ -437,12 +560,14 @@ def main():
     atlas_data = get_atlas_data(dimension=atlas_dimension)
     atlas_filename = getattr(atlas_data, "maps")
     atlas_labels = getattr(atlas_data, "labels").loc[:, "difumo_names"]
-    # atlas_net7 = getattr(atlas_data, "labels").loc[:, "yeo_networks7"]
-    # atlas_net17 = getattr(atlas_data, "labels").loc[:, "yeo_networks17"]
+    atlas_network = getattr(atlas_data, "labels").loc[:, NETWORK_MAPPING]
 
     if output is None:
         output = op.join(find_derivative(input_path), "functional_connectivity")
     logging.info(f"Output will be save as derivatives in:\n\t{output}")
+
+    covar_estimator, fc_kind, fc_label = get_fc_strategy(fc_estimator)
+    logging.info(f"'{fc_label}' has been selected as connectivity metric")
 
     # By default, the timeseries and FC of all filenames in input will be computed
     missing_ts = missing_output = func_filenames.copy()
@@ -457,12 +582,10 @@ def main():
             **TIMESERIES_FILLS,
         )
 
-        covar_estimator, connectivity_kind = get_fc_strategy(fc_estimator)
-
         logging.info(f"{len(missing_ts)} files are missing timeseries.")
         logging.debug("Looking for existing fc matrices ...")
         missing_only_fc = check_existing_output(
-            output, existing_ts, patterns=FC_PATTERN, **FC_FILLS
+            output, existing_ts, patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
         )
         missing_output = missing_ts + missing_only_fc
         logging.info(f"{len(missing_output)} files are missing FC matrices.")
@@ -481,7 +604,7 @@ def main():
 
     # Saving aggregated/denoised timeseries and visual reports
     if save and len(time_series):
-        logging.info("Saving timeseries ...")
+        logging.info("Saving denoised timeseries ...")
         os.makedirs(output, exist_ok=True)
         save_output(
             time_series,
@@ -500,40 +623,48 @@ def main():
                 output=output,
                 confounds=confounds,
                 labels=atlas_labels,
+                networks=NETWORK_MAPPING,
             )
     else:
         # TESTING VISUAL REPORTS
-        for individual_time_serie, filename in zip(existing_timeseries, func_filenames):
+        for individual_time_serie, filename in zip(
+            time_series + existing_timeseries, missing_output
+        ):
             visual_report_timeserie(
                 individual_time_serie,
                 filename=filename,
                 output=output,
-                confounds=None,
                 labels=atlas_labels,
+                networks=NETWORK_MAPPING,
             )
 
+    logging.info("Saving connectivity matrices ...")
     fc_matrices = compute_connectivity(
         time_series + existing_timeseries,
         estimator=covar_estimator,
-        connectivity_kind=connectivity_kind
+        connectivity_kind=fc_kind,
     )
 
     # Saving FC matrices and visual reports
     if save and len(fc_matrices):
         logging.info("Saving connectivity matrices ...")
         save_output(
-            fc_matrices, missing_output, output, patterns=FC_PATTERN, **FC_FILLS
+            fc_matrices,
+            missing_output,
+            output,
+            patterns=FC_PATTERN,
+            meas=fc_label,
+            **FC_FILLS,
         )
 
         for individual_matrix, filename in zip(fc_matrices, missing_output):
             visual_report_fc(
-                individual_matrix, filename=filename, output=output, labels=atlas_labels
-            )
-    else:
-        # TESTING VISUAL REPORTS
-        for individual_matrix, filename in zip(fc_matrices, missing_output):
-            visual_report_fc(
-                individual_matrix, filename=filename, output=output, labels=atlas_labels
+                individual_matrix,
+                filename=filename,
+                output=output,
+                labels=atlas_labels,
+                meas=fc_label,
+                **FIGURE_FILLS,
             )
 
     logging.info(
