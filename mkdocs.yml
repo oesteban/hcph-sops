@@ -24,6 +24,7 @@ nav:
       - Post-session retrieval and BIDS: data-management/post-session.md
       - QC of unprocessed data: data-management/mriqc.md
     - Preprocessing: preprocessing.md
+    - Extracting functional connectivity: preprocessing/functional-connectivity.md
     - Release of data: release.md
 theme:
   name: material

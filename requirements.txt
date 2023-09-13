@@ -7,3 +7,6 @@ git-changelog
 git+https://github.com/dimrozakis/mkpdfs-mkdocs-plugin.git@master
 pygments
 weasyprint<53
+matplotlib==3.3
+pybids
+nilearn

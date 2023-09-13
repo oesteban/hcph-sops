@@ -345,6 +345,7 @@ def extract_timeseries(
             func_filename, confounds=confounds, sample_mask=sample_mask
         )
     except ValueError:
+        # See nilearn issue #3967 for more details
         logging.warning("Using patched version of 'MultiNiftiMapsMasker ...'")
         masker = MultiNiftiMapsMasker_patched(
             maps_img=atlas_filename,
