@@ -3,7 +3,11 @@ connectivity matrices from BIDS derivatives (e.g. fmriprep).
 
 Run as (see 'python compute_fc.py -h' for options):
 
-    python compute_fc.py BIDS_derivatives
+    python compute_fc.py path_to_BIDS_derivatives
+
+In the context of HCPh (pilot), it would be:
+
+    python compute_fc.py /data/datasets/hcph-pilot/derivatives/fmriprep-23.1.4/
 """
 
 import argparse
@@ -12,18 +16,21 @@ import os
 import os.path as op
 
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
-from matplotlib.cm import get_cmap
 import numpy as np
 from bids import BIDSLayout
 from bids.layout import parse_file_entities
 from bids.layout.writing import build_path
+from matplotlib.cm import get_cmap
+from matplotlib.lines import Line2D
 from nilearn.connectome import ConnectivityMeasure, vec_to_sym_matrix
 from nilearn.datasets import fetch_atlas_difumo
 from nilearn.interfaces.fmriprep import load_confounds
+from nilearn.interfaces.fmriprep.load_confounds import _load_single_confounds_file
 from nilearn.maskers import MultiNiftiMapsMasker
 from nilearn.plotting import plot_design_matrix, plot_matrix
 from sklearn.covariance import GraphicalLassoCV, LedoitWolf
+
+from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
 
 FC_PATTERN = [
     "sub-{subject}[/ses-{session}]/func/sub-{subject}"
@@ -45,6 +52,13 @@ FIGURE_PATTERN = [
     "[_task-{task}][_desc-{desc}]_{suffix}{extension}",
 ]
 FIGURE_FILLS = {"extension": "png"}
+CONFOUND_PATTERN = [
+    "sub-{subject}[_ses-{session}][_task-{task}][_part-{part}][_desc-{desc}]"
+    "_{suffix}{extension}"
+]
+CONFOUND_FILLS = {"desc": "confounds", "suffix": "timeseries", "extension": "tsv"}
+
+DENOISING_STRATEGY = ["high_pass", "motion", "scrub"]
 
 TS_FIGURE_SIZE = (50, 25)
 FC_FIGURE_SIZE = (50, 45)
@@ -239,6 +253,29 @@ def load_timeseries(func_filename, output):
     return loaded_ts
 
 
+def get_confounds_manually(func_filename, **kwargs):
+    confounds, sample_mask = [], []
+
+    for filename in func_filename:
+        dir_name = op.dirname(filename)
+        confounds_file = op.join(
+            dir_name,
+            get_bids_savename(filename, patterns=CONFOUND_PATTERN, **CONFOUND_FILLS),
+        )
+
+        # confounds_json_file = load_confounds._get_json(confounds_file)
+        confounds_json_file = confounds_file.replace("tsv", "json")
+        individual_sm, individual_conf = _load_single_confounds_file(
+            confounds_file=confounds_file,
+            confounds_json_file=confounds_json_file,
+            **kwargs,
+        )
+        confounds.append(individual_conf)
+        sample_mask.append(individual_sm)
+
+    return confounds, sample_mask
+
+
 def extract_timeseries(
     func_filename,
     atlas_filename,
@@ -255,6 +292,44 @@ def extract_timeseries(
     logging.info(f"Extracting and denoising timeseries for {len(func_filename)} files.")
     logging.debug(f"Denoising parameters are: {kwargs}")
 
+    # There is currently a bug in nilearn that prevent "load_confounds" from finding
+    # the confounds file if it contains any other BIDS entity than "ses" and "run".
+    # It should be fixed in release 0.13.
+    try:
+        confounds, sample_mask = load_confounds(
+            func_filename,
+            demean=False,
+            strategy=DENOISING_STRATEGY,
+            motion="basic",
+            **kwargs,
+        )
+    except ValueError:
+        logging.warning(
+            "Nilearn could not find the confounds file (this is likely due to a"
+            " bug in nilearn.interface.fmriprep.load_confouds that should be fixed in"
+            " release 0.13, see nilearn issue #3792)."
+        )
+        logging.warning("Searching manually ...")
+
+        confounds, sample_mask = get_confounds_manually(
+            func_filename,
+            demean=False,
+            strategy=DENOISING_STRATEGY,
+            motion="basic",
+            **kwargs,
+        )
+
+    # The outputs of "load_confounds" will not be in a list if
+    # "func_filename" is a list with one element.
+    if not isinstance(confounds, list):
+        confounds = [confounds]
+    if not isinstance(sample_mask, list):
+        sample_mask = [sample_mask]
+
+    # TODO: implement cubicBspline interpolation independantly to
+    # avoid censoring frames with high motion
+    # use "signal._interpolate_volumes(volumes, sample_mask, t_r)"
+
     masker = MultiNiftiMapsMasker(
         maps_img=atlas_filename,
         low_pass=low_pass,
@@ -265,30 +340,22 @@ def extract_timeseries(
         n_jobs=2,
     )
 
-    # TODO remove unnecessary entities from BIDS name to ensute "load_confounds"
-    # is able to find the confounds file (due to a bug in NiLearn).
+    try:
+        time_series = masker.fit_transform(
+            func_filename, confounds=confounds, sample_mask=sample_mask
+        )
+    except ValueError:
+        logging.warning("Using patched version of 'MultiNiftiMapsMasker ...'")
+        masker = MultiNiftiMapsMasker_patched(
+            maps_img=atlas_filename,
+            low_pass=low_pass,
+            t_r=t_r,
+            standardize="zscore_sample",
+            verbose=verbose,
+            reports=True,
+            n_jobs=2,
+        )
 
-    confounds, sample_mask = load_confounds(
-        func_filename,
-        demean=False,
-        strategy=["high_pass", "motion", "scrub"],
-        motion="basic",
-        **kwargs,
-    )
-
-    # The outputs of "load_confounds" will not be in a list if
-    # "func_filename" is a list with one element.
-    if not isinstance(confounds, list):
-        confounds = [confounds]
-    if not isinstance(sample_mask, list):
-        sample_mask = [sample_mask]
-
-    if interpolate:
-        # TODO: implement cubicBspline interpolation independantly to
-        # avoid censoring frames with high motion
-        # use "signal._interpolate_volumes(volumes, sample_mask, t_r)"
-        pass
-    else:
         time_series = masker.fit_transform(
             func_filename, confounds=confounds, sample_mask=sample_mask
         )
@@ -623,7 +690,7 @@ def main():
                 output=output,
                 confounds=confounds,
                 labels=atlas_labels,
-                networks=NETWORK_MAPPING,
+                networks=atlas_network,
             )
     else:
         # TESTING VISUAL REPORTS
@@ -635,7 +702,7 @@ def main():
                 filename=filename,
                 output=output,
                 labels=atlas_labels,
-                networks=NETWORK_MAPPING,
+                networks=atlas_network,
             )
 
     logging.info("Saving connectivity matrices ...")
