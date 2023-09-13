@@ -33,6 +33,18 @@ python compute_fc.py path_to_dataset/derivatives/fmriprep-23.1.4
     Most parameters of the pipeline can be specified in the options (see `python compute_fc.py -h` for more details).
 
 Finally, the pipeline will save the denoised timeseries and connectivity matrices as well as various visual reports (i.e., figures).
+
+??? info "Example of visual report"
+    
+    - [ ] Denoising confounds as a *design matrix*:
+    ![Timeseries_denoise](../assets/images/sub-pilot_ses-15_task-rest_desc-designmatrix_bold.png "Denoising design matrix")
+    - [ ] Denoised timeseries as a *carpet plot*:
+    ![Timeseries_carpet](../assets/images/sub-pilot_ses-15_task-rest_desc-carpetplot_bold.png "Denoised timeseries carpet plot")
+    - [ ] Denoised timeseries as a *signal plot*:
+    ![Timeseries_signal](../assets/images/sub-pilot_ses-15_task-rest_desc-timeseries_bold.png "Denoised timeseries signal plot")
+    - [ ] Functional connetivity matrix as a *heatmap*:
+    ![FC_matrix_heatmap](../assets/images/sub-pilot_ses-15_task-rest_meas-sparseinversecovariance_desc-heatmap_bold.png "Functional connectivity heatmap")
+
 The outputs will be stored in a `functional-connectivity` folder in the same parent directory as the preprocessed derivatives dataset.
 In the end, the data structure will look like this:
 ```
