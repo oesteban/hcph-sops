@@ -57,8 +57,9 @@ In the end, the data structure will look like this:
 │   │           ├── anat
 │   │           └── func
 │   └── functional_connectivity
-│       └── sub-pilot
-│           ├── figures
-│           └── ses-15
-│               └── func
+│       └── DiFuMo64-LP
+│           └── sub-pilot
+│               ├── figures
+│               └── ses-15
+│                   └── func
 ```

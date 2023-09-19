@@ -28,6 +28,8 @@ from nilearn.interfaces.fmriprep import load_confounds
 from nilearn.interfaces.fmriprep.load_confounds import _load_single_confounds_file
 from nilearn.maskers import MultiNiftiMapsMasker
 from nilearn.plotting import plot_design_matrix, plot_matrix
+from nilearn.signal import clean, _handle_scrubbed_volumes, _sanitize_confounds
+from nilearn._utils import stringify_path
 from sklearn.covariance import GraphicalLassoCV, LedoitWolf
 
 from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
@@ -139,6 +141,12 @@ def get_arguments():
         type=str,
         help="""type of connectivity to compute (can be 'correlation', 'covariance' or
         'sparse')""",
+    )
+    parser.add_argument(
+        "--no-censor",
+        default=False,
+        action="store_true",
+        help="interpolate volumes with high motion without censoring",
     )
 
     parser.add_argument(
@@ -276,14 +284,128 @@ def get_confounds_manually(func_filename, **kwargs):
     return confounds, sample_mask
 
 
-def extract_timeseries(
+def fit_transform_patched(
+    func_filename, atlas_filename, confounds=None, sample_mask=None, **kwargs
+):
+    masker = MultiNiftiMapsMasker(maps_img=atlas_filename, **kwargs)
+
+    try:
+        time_series = masker.fit_transform(
+            func_filename, confounds=confounds, sample_mask=sample_mask
+        )
+    except ValueError:
+        # See nilearn issue #3967 for more details
+        logging.warning("Using patched version of 'MultiNiftiMapsMasker ...'")
+        masker = MultiNiftiMapsMasker_patched(maps_img=atlas_filename, **kwargs)
+
+        time_series = masker.fit_transform(
+            func_filename, confounds=confounds, sample_mask=sample_mask
+        )
+
+    return time_series
+
+
+def interpolate_and_denoise_timeseries(
     func_filename,
     atlas_filename,
-    masker=None,
+    confounds,
+    sample_mask,
+    t_r=None,
+    low_pass=None,
+    output=None,
+    verbose=2,
+):
+    logging.info("Interpolating signal (no censoring) ...")
+    # Extract the regional signals
+    extracted_time_series = fit_transform_patched(
+        func_filename,
+        atlas_filename,
+        standardize="zscore_sample",
+        verbose=verbose,
+        n_jobs=8,
+    )
+
+    interpolated_signals = []
+    interpolated_confounds = []
+    denoised_signals = []
+    for ts, conf, sm, fn in zip(
+        extracted_time_series, confounds, sample_mask, func_filename
+    ):
+        logging.debug(
+            f"Timeserie has length {ts.shape[0]} and sample mask has "
+            f"length {len(sm)}"
+        )
+
+        conf = _sanitize_confounds(ts.shape[0], n_runs=1, confounds=conf)
+        conf = stringify_path(conf)
+
+        ts_to_interpolate = ts.copy()
+
+        inter_sig, inter_conf = _handle_scrubbed_volumes(
+            signals=ts_to_interpolate,
+            confounds=conf,
+            sample_mask=sm,
+            filter_type="butterworth",
+            t_r=t_r,
+        )
+
+        if output is not None:
+            plot_interpolation(ts, inter_sig, fn, output)
+
+        # Denoise the signals
+        denoised_sig = clean(
+            inter_sig,
+            standardize="zscore_sample",
+            confounds=inter_conf,
+            low_pass=low_pass,
+            t_r=t_r,
+        )
+
+        interpolated_signals.append(inter_sig)
+        interpolated_confounds.append(inter_conf)
+        denoised_signals.append(denoised_sig)
+
+    return denoised_signals, interpolated_confounds
+
+
+def plot_interpolation(ts, interpolated_ts, filename, output):
+    ax = plot_timeseries_signal(ts)
+    ax = plot_timeseries_signal(interpolated_ts, color="tab:red", ax=ax, linewidth=2)
+
+    legend_elements = [
+        Line2D([0], [0], color=col, label=lab)
+        for lab, col in zip(["Timeserie", "Interpolation"], ["tab:blue", "tab:red"])
+    ]
+
+    ax.legend(
+        handles=legend_elements,
+        ncol=2,
+        loc="upper left",
+        bbox_to_anchor=(0, 1.04),
+        fontsize=LABELSIZE,
+    )
+
+    interpolate_saveloc = get_bids_savename(
+        filename,
+        patterns=FIGURE_PATTERN,
+        desc="interpolatedtimeseries",
+        **FIGURE_FILLS,
+    )
+
+    logging.debug("Saving interpolated timeseries visual report at:")
+    logging.debug(f"\t{op.join(output, interpolate_saveloc)}")
+    os.makedirs(op.join(output, op.dirname(interpolate_saveloc)), exist_ok=True)
+    plt.savefig(op.join(output, interpolate_saveloc))
+
+
+def extract_and_denoise_timeseries(
+    func_filename,
+    atlas_filename,
     verbose=2,
     interpolate=False,
     low_pass=None,
     t_r=None,
+    output=None,
     **kwargs,
 ):
     if not len(func_filename):
@@ -326,40 +448,30 @@ def extract_timeseries(
     if not isinstance(sample_mask, list):
         sample_mask = [sample_mask]
 
-    # TODO: implement cubicBspline interpolation independantly to
-    # avoid censoring frames with high motion
-    # use "signal._interpolate_volumes(volumes, sample_mask, t_r)"
+    if interpolate:
+        interpolate_and_denoise_timeseries(
+            func_filename,
+            atlas_filename,
+            confounds,
+            sample_mask,
+            t_r=t_r,
+            low_pass=low_pass,
+            output=output,
+            verbose=verbose,
+        )
 
-    masker = MultiNiftiMapsMasker(
-        maps_img=atlas_filename,
+    time_series = fit_transform_patched(
+        func_filename,
+        atlas_filename,
+        confounds,
+        sample_mask,
         low_pass=low_pass,
         t_r=t_r,
         standardize="zscore_sample",
         verbose=verbose,
         reports=True,
-        n_jobs=2,
+        n_jobs=8,
     )
-
-    try:
-        time_series = masker.fit_transform(
-            func_filename, confounds=confounds, sample_mask=sample_mask
-        )
-    except ValueError:
-        # See nilearn issue #3967 for more details
-        logging.warning("Using patched version of 'MultiNiftiMapsMasker ...'")
-        masker = MultiNiftiMapsMasker_patched(
-            maps_img=atlas_filename,
-            low_pass=low_pass,
-            t_r=t_r,
-            standardize="zscore_sample",
-            verbose=verbose,
-            reports=True,
-            n_jobs=2,
-        )
-
-        time_series = masker.fit_transform(
-            func_filename, confounds=confounds, sample_mask=sample_mask
-        )
 
     return time_series, confounds
 
@@ -406,6 +518,9 @@ def compute_connectivity(
 
 def plot_timeseries_carpet(timeseries, labels=None, networks=None):
     n_timepoints, n_area = timeseries.shape
+
+    if labels is None:
+        labels = np.arange(n_area)
 
     networks_provided = networks is not None
 
@@ -469,15 +584,26 @@ def plot_timeseries_carpet(timeseries, labels=None, networks=None):
 
 
 def plot_timeseries_signal(
-    timeseries, labels=None, networks=None, vert_scale=5, margin_value=0.01
+    timeseries,
+    labels=None,
+    networks=None,
+    vert_scale=5,
+    margin_value=0.01,
+    color="tab:blue",
+    linewidth=4,
+    ax=None,
 ):
     n_timepoints, n_area = timeseries.shape
 
+    if labels is None:
+        labels = np.arange(n_area)
+
     networks_provided = networks is not None
     sorting_index = np.arange(n_area)
-    colors = ["tab:blue"] * n_area
+    colors = [color] * n_area
 
-    _, ax = plt.subplots(figsize=TS_FIGURE_SIZE)
+    if ax is None:
+        _, ax = plt.subplots(figsize=TS_FIGURE_SIZE)
 
     if networks_provided:
         networks_sorted = networks.sort_values()
@@ -512,7 +638,7 @@ def plot_timeseries_signal(
 
     x_plot = np.arange(n_timepoints)
     for i, (roi_signal, col) in enumerate(zip(timeseries.T[sorting_index], colors)):
-        ax.plot(x_plot, i * vert_scale + roi_signal, color=col, linewidth=4)
+        ax.plot(x_plot, i * vert_scale + roi_signal, color=col, linewidth=linewidth)
 
     ax.set_yticks(np.arange(n_area) * vert_scale)
     ax.set_yticklabels(labels, fontsize=LABELSIZE)
@@ -520,6 +646,8 @@ def plot_timeseries_signal(
 
     ax.grid(visible=True, axis="y")
     ax.margins(x=margin_value, y=margin_value)
+
+    return ax
 
 
 def visual_report_timeserie(timeseries, filename, output, confounds=None, **kwargs):
@@ -599,6 +727,7 @@ def main():
     std_dvars_threshold = args.SDVARS_thresh
     scrub = args.n_scrub_frames
     fc_estimator = args.fc_estimator
+    interpolate = args.no_censor
 
     verbosity_level = args.verbosity
     nilearn_verbose = verbosity_level - 1
@@ -631,7 +760,13 @@ def main():
     atlas_network = getattr(atlas_data, "labels").loc[:, NETWORK_MAPPING]
 
     if output is None:
-        output = op.join(find_derivative(input_path), "functional_connectivity")
+        run_name = f"DiFuMo{atlas_dimension:d}"
+        run_name += (low_pass is not None) * "-LP"
+        run_name += (interpolate) * "-noCensoring"
+
+        output = op.join(
+            find_derivative(input_path), "functional_connectivity", run_name
+        )
     logging.info(f"Output will be save as derivatives in:\n\t{output}")
 
     covar_estimator, fc_kind, fc_label = get_fc_strategy(fc_estimator)
@@ -659,7 +794,7 @@ def main():
         logging.info(f"{len(missing_output)} files are missing FC matrices.")
         existing_timeseries = load_timeseries(missing_only_fc, output)
 
-    time_series, all_confounds = extract_timeseries(
+    time_series, all_confounds = extract_and_denoise_timeseries(
         missing_ts,
         atlas_filename,
         verbose=nilearn_verbose,
@@ -668,6 +803,8 @@ def main():
         fd_threshold=fd_threshold,
         std_dvars_threshold=std_dvars_threshold,
         scrub=scrub,
+        interpolate=interpolate,
+        output=output,
     )
 
     # Saving aggregated/denoised timeseries and visual reports
