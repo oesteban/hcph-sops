@@ -37,7 +37,7 @@ FMRIPREP_CMD="/data /out/fmriprep-23.1.4 participant \
 -vv"
 
 #Create json file to filter undistorted anatomical scans
-echo '{"T1w": {"datatype": "anat", "acq": "undistorted", "suffix": "T1w"}}' > $DATADIR/code/filter_file_undistorted.json
+echo '{"t1w": {"datatype": "anat", "acquisition": "undistorted", "suffix": "T1w"}}' > $DATADIR/code/filter_file_undistorted.json
 
 SING_CMD="singularity run -e $BINDINGS $IMG $FMRIPREP_CMD"
 echo $SING_CMD
