@@ -2,8 +2,8 @@
 
 #SBATCH --partition=russpold
 #SBATCH --mem=55GB
-#SBATCH --cpus-per-task=4
-#SBATCH --time=2-00:00:00
+#SBATCH --cpus-per-task=16
+#SBATCH --time=20:00:00
 #SBATCH --job-name=fmriprep
 #SBATCH --error="slurm-%A_%a.err"
 

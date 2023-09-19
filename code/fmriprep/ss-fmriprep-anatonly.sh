@@ -2,8 +2,8 @@
 
 #SBATCH --partition=russpold
 #SBATCH --mem=30GB
-#SBATCH --cpus-per-task=4
-#SBATCH --time=2-00:00:00
+#SBATCH --cpus-per-task=16
+#SBATCH --time=20:00:00
 #SBATCH --job-name=fmriprep
 #SBATCH --error="slurm-%A_%a.err"
 
@@ -33,7 +33,7 @@ $PATCHES"
 
 FMRIPREP_CMD="/data /out/fmriprep-23.1.4 participant \
 -w /work --bids-filter-file /filter_file_undistorted.json --anat-only --skip_bids_validation \
---nprocs 4 --mem 25G --omp-nthreads 2 \
+--nprocs 4 --mem 25G --omp-nthreads 16 \
 -vv"
 
 #Create json file to filter undistorted anatomical scans
