@@ -1,13 +1,15 @@
-## Executing fMRIPrep
-In order to run multiple sessions in parallel for a single subject, a trick needs to be applied to avoid several jobs to work simultaneously on the same file thus compromising it.
+## Executing *fMRIPrep*
+Because *fMRIPrep* creates a single anatomical reference for all sessions, we will need first to run with ``--anat-only`` so that the results get cached and *fMRIPrep* processes do not run into race conditions.
 
-- [ ] First, run only the anatomical workflow through a single fMRIPrep instance to fetch the needed template from templateflow and to generate the outputs of FreeSurfer. 
-``` bash title="Executing anatomical workflow of fMRIPrep"
-{% include 'code/fmriprep/ss-fmriprep-anatonly.sh' %}
-```
+Similarly, when running *fMRIPrep* on a dataset with many sessions, the safest approach is to submit one job per session.
 
-- [ ] Once that process is successfull, you can run the sessions in parallel using the `--bids-filter-file` to launch one session per job and the `--fs-subjects-dir` flag to inform the process that the anatomical derivatives already exist.
-``` bash title="Launch each session through fMRIPrep in parallel"
-cd code/fmriprep
-bash submit-fmriprep.sh
-```
+- [ ] Submit the anatomical workflow:
+    ``` bash title="Executing anatomical workflow of fMRIPrep"
+    {% include 'code/fmriprep/ss-fmriprep-anatonly.sh' %}
+    ```
+
+- [ ] Submit a *job array* with one scanning session each with the `--bids-filter-file` argument selecting the corresponding sessions, and point the `--fs-subjects-dir` argument to the folder where *FreeSurfer* results were stored.
+    ``` bash title="Launch each session through fMRIPrep in parallel"
+    cd code/fmriprep
+    bash submit-fmriprep.sh
+    ```

@@ -28,12 +28,16 @@ BINDINGS="-B $DATADIR/inputs:/data:ro \
 -B ${WORKDIR}:/work \
 -B ${OUTDIR}:/out \
 -B `pwd`/license.txt:/opt/freesurfer/license.txt \
+-B `pwd`/filter_file_undistorted.json:/filter_file_undistorted.json \
 $PATCHES"
 
 FMRIPREP_CMD="/data /out/fmriprep-23.1.4 participant \
--w /work --anat-only --skip_bids_validation \
+-w /work --bids-filter-file ./filter_file_undistorted.json --anat-only --skip_bids_validation \
 --nprocs 4 --mem 25G --omp-nthreads 2 \
 -vv"
+
+#Create json file to filter undistorted anatomical scans
+echo '{"T1w": {"datatype": "anat", "acq": "undistorted", "suffix": "T1w"}}' > filter_file_undistorted.json
 
 SING_CMD="singularity run -e $BINDINGS $IMG $FMRIPREP_CMD"
 echo $SING_CMD
