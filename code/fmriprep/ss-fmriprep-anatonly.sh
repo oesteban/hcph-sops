@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --time=20:00:00
 #SBATCH --job-name=fmriprep
-#SBATCH --error="slurm-%A_%a.err"
+#SBATCH --error="slurm-%A.err"
 
 # Run only the anatomical workflow of fMRIPrep
 
@@ -33,8 +33,7 @@ $PATCHES"
 
 FMRIPREP_CMD="/data /out/fmriprep-23.1.4 participant \
 -w /work --bids-filter-file /filter_file_undistorted.json --anat-only --skip_bids_validation \
---nprocs 4 --mem 25G --omp-nthreads 16 \
--vv"
+--nprocs 4 --mem 25G --omp-nthreads 16 -vv"
 
 #Create json file to filter undistorted anatomical scans
 echo '{"t1w": {"datatype": "anat", "acquisition": "undistorted", "suffix": "T1w"}}' > $DATADIR/code/filter_file_undistorted.json
