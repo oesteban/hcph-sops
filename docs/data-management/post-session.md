@@ -64,7 +64,10 @@ To support backward compatibility (and some extra, currently unsupported feature
 
 ??? info "Our custom heuristic file"
 
-    ``` python
+    Our heuristic file largely derives from [*ReproIn*'s at the time of writing](https://github.com/nipy/heudiconv/blob/55524168b02519bbf0a3a1c94cafb29a419728a0/heudiconv/heuristics/reproin.py).
+    The heuristic has a a `#!python protocols2fix: dict[str | re.Pattern[str], list[tuple[str, str]]]` ([lines 113-148](#__codelineno-6-113)), where replacement patterns to permit backward compatibility are written.
+
+    ``` py linenums="1" hl_lines="113-148"
 {% filter indent(width=4) %}
 {% include 'code/heudiconv/heuristic_reproin.py' %}
 {% endfilter %}
