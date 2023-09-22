@@ -9,7 +9,12 @@ import re
 
 import pydicom as dcm
 
-from heudiconv.heuristics.reproin import *
+from heudiconv.utils import SeqInfo
+from heudiconv.heuristics.reproin import (
+    _apply_substitutions,
+    get_study_hash,
+    get_study_description,
+)
 
 lgr = logging.getLogger("heudiconv")
 
@@ -65,7 +70,7 @@ fix_accession2run: dict[str, list[str]] = {
 # If the  key is an empty string`''''`, it would apply to any study.
 protocols2fix: dict[str | re.Pattern[str], list[tuple[str, str]]] = {
     "": [
-        ("t1_mprage_pre_Morpho", "anat-T1w__mprage_morpho"),
+        ("t1_mprage_pre_Morpho", "anat-T1w_acq-morphobox__mprage"),
         (
             "micro_struct_137dir_BIPOLAR_b3000_1.6mm-iso",
             "dwi-dwi_acq-highres_dir-unknown__137dir_bipolar",
@@ -97,7 +102,7 @@ protocols2fix: dict[str | re.Pattern[str], list[tuple[str, str]]] = {
         ),
         ("cmrr_mbep2d_bold_me4_sms4", "func-bold_task-qct__cmrr"),
         ("_task-qc_", "_task-qct_"),
-        ("AAHead_Scout", "anat-scout"),
+        ("AAHead_Scout_.*", "anat-scout"),
     ]
     # e.g., QA:
     # '43b67d9139e8c7274578b7451ab21123':
@@ -154,6 +159,81 @@ def filter_files(_fn: str) -> bool:
     return not _fn.endswith((".csv", ".dvs"))
 
 
+def fix_canceled_runs(seqinfo: list[SeqInfo]) -> list[SeqInfo]:
+    """Function that adds cancelme_ to known bad runs which were forgotten"""
+    if not fix_accession2run:
+        return seqinfo  # nothing to do
+    for i, s in enumerate(seqinfo):
+        accession_number = s.accession_number
+        if accession_number and accession_number in fix_accession2run:
+            lgr.info(
+                "Considering some runs possibly marked to be "
+                "canceled for accession %s",
+                accession_number,
+            )
+            # This code is reminiscent of prior logic when operating on
+            # a single accession, but left as is for now
+            badruns = fix_accession2run[accession_number]
+            badruns_pattern = "|".join(badruns)
+            if re.match(badruns_pattern, s.series_id):
+                lgr.info("Fixing bad run {0}".format(s.series_id))
+                fixedkwargs = dict()
+                for key in series_spec_fields:
+                    fixedkwargs[key] = "cancelme_" + getattr(s, key)
+                seqinfo[i] = s._replace(**fixedkwargs)
+    return seqinfo
+
+
+def fix_dbic_protocol(seqinfo: list[SeqInfo]) -> list[SeqInfo]:
+    """Ad-hoc fixup for existing protocols.
+
+    It will operate in 3 stages on `protocols2fix` records.
+    1. consider a record which has md5sum of study_description
+    2. apply all substitutions, where key is a regular expression which
+       successfully searches (not necessarily matches, so anchor appropriately)
+       study_description
+    3. apply "catch all" substitutions in the key containing an empty string
+
+    3. is somewhat redundant since `re.compile('.*')` could match any, but is
+    kept for simplicity of its specification.
+    """
+
+    study_hash = get_study_hash(seqinfo)
+    study_description = get_study_description(seqinfo)
+
+    # We will consider first study specific (based on hash)
+    if study_hash in protocols2fix:
+        _apply_substitutions(
+            seqinfo, protocols2fix[study_hash], "study (%s) specific" % study_hash
+        )
+    # Then go through all regexps returning regex "search" result
+    # on study_description
+    for sub, substitutions in protocols2fix.items():
+        if isinstance(sub, re.Pattern) and sub.search(study_description):
+            _apply_substitutions(
+                seqinfo, substitutions, "%r regex matching" % sub.pattern
+            )
+    # and at the end - global
+    if "" in protocols2fix:
+        _apply_substitutions(seqinfo, protocols2fix[""], "global")
+
+    return seqinfo
+
+
+def fix_seqinfo(seqinfo: list[SeqInfo]) -> list[SeqInfo]:
+    """Just a helper on top of both fixers"""
+    # add cancelme to known bad runs
+    seqinfo = fix_canceled_runs(seqinfo)
+    seqinfo = fix_dbic_protocol(seqinfo)
+    return seqinfo
+
+
+def create_key(template, outtype=("nii.gz",), annotation_classes=None):
+    if template is None or not template:
+        raise ValueError("Template must be a valid format string")
+    return template, outtype, annotation_classes
+
+
 def infotodict(seqinfo):
     """Heuristic evaluator for determining which runs belong where
 
@@ -164,6 +244,9 @@ def infotodict(seqinfo):
     seqitem: run number during scanning
     subindex: sub index within group
     """
+    seqinfo = fix_seqinfo(seqinfo)
+    lgr.info("Processing %d seqinfo entries", len(seqinfo))
+
     t1w = create_key(
         "sub-{subject}/{session}/anat/sub-{subject}_{session}_acq-{acquisition}{run_entity}_T1w"
     )
@@ -247,8 +330,11 @@ def infotodict(seqinfo):
 
         if "T1w" in s.protocol_name:
             thiskey = t1w
+            acquisition_present = thisitem.pop("acq", None)
             thisitem["acquisition"] = (
-                "original" if s.dcm_dir_name.endswith("_ND") else "undistorted"
+                ("original" if s.dcm_dir_name.endswith("_ND") else "undistorted")
+                if not acquisition_present
+                else acquisition_present
             )
         elif "T2w" in s.protocol_name:
             thiskey = t2w
