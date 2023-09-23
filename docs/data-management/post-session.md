@@ -114,9 +114,9 @@ To support backward compatibility (and some extra, currently unsupported feature
 - [ ] Plot an overview of the data with the following command.
      This command generates a PNG plot of the data within the current directory without processing the data itself.
      The physiological data folder is specified via the `-in` command line argument.
-```
-phys2bids -in {{ settings.paths.pilot_sourcedata }}/physio/session-recording.acq -info
-```
+    ``` shell
+    phys2bids -in {{ settings.paths.pilot_sourcedata }}/physio/session-recording.acq -info
+    ```
 - [ ] Check that all the channels are present in the PNG plot.
 - [ ] If this is the case, proceed to process the file using the subsequent command.
     Use the `-ntp` argument to specify the number of volumes for each task, and the `-tr` argument to indicate the task's repetition time.
@@ -124,16 +124,17 @@ phys2bids -in {{ settings.paths.pilot_sourcedata }}/physio/session-recording.acq
     Adjust the subject and session numbers accordingly.
     Should scanner trigger transmission encounter issues and manual adjustments are made to the trigger data, it is possible to allocate one trigger per task.
     Set the repetition time duration as the task length, as demonstrated in the example below.
-```
-phys2bids -in modified-last-session_multiscan.txt -chtrig 4 -ntp  1 1 1 -tr 158 1200 331 -thr 2 -outdir outputdir -heur heur_physio.py -sub pilot -ses pilot016
-```
+    ``` shell
+    phys2bids -in modified-last-session_multiscan.txt -chtrig 4 -ntp  1 1 1 -tr 158 1200 331 -thr 2 -outdir outputdir -heur heur_physio.py -sub pilot -ses pilot016
+    ```
+
 - [ ] Execute the script `write_event_file.py` as shown below to generate task event files.
     This script creates JSON and TSV files containing event information and generates PNG plots for each task, displaying both physiological data and corresponding events.
     These plots are saved in the current directory.
     The script must be executed with the following command, where `outputdir` is the output directory of *phys2bids*:
-```
-python write_event_file.py --path ./outputdir/sub-001/ses-pilot016/func/
-```
+    ``` shell
+    python write_event_file.py --path ./outputdir/sub-001/ses-pilot016/func/
+    ```
 
 Once the script is executed, the BIDS folder (consisting solely of physiological data in this case) will have the following structure:
 ```
@@ -152,3 +153,17 @@ ses-pilot016
         ├── sub-001_ses-pilot016_task-rest_physio.json
         └── sub-001_ses-pilot016_task-rest_physio.tsv.gz
 ```
+
+### Add new data to the *DataLad* dataset
+
+As new sessions are collected, the corresponding BIDS structures MUST be saved within the *DataLad* dataset and pushed to remote storage systems:
+
+- [ ] Save the files in the dataset history using the command below.
+    Replace `<session_id>` below with the number of the session (e.g., `pilot017`):
+    ``` shell
+    datalad save -r -m "add: session <session_id>" sub-001/ses-<session_id>
+    ```
+- [ ] Push the new data to the remote storage (if your git containing *DataLad* and the Git annex is different from `origin`, e.g., `github`, replace the name below):
+    ``` shell
+    datalad push --to origin
+    ```

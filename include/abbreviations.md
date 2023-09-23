@@ -18,6 +18,7 @@
 *[GA]: gas analyzer
 *[GRE]: gradient-recalled echo
 *[HCPh]: Human Connectome Phantom (this project)
+*[HPC]: high-performance computing
 *[HDMI]: High-Definition Multimedia Interface
 *[hOrus]: HOspital Research Unified data and analytics Services
 *[HRA]: humans research act
@@ -41,6 +42,7 @@
 *[RIA]: Remote Indexed Archives
 *[RL]: right-to-left
 *[RSfMRI]: resting-state fMRI
+*[SLURM]: Slurm Workload Manager, formerly known as Simple Linux Utility for Resource Management
 *[SMS]: Short Message Service
 *[SOP]: standard operating procedure
 *[SOPs]: standard operating procedures
@@ -52,3 +54,4 @@
 *[UNIL]: University of Lausanne
 *[USB]: Universal Serial Bus
 *[W3C]: World Wide Web Consortium
+*[YODA]: YODA's Organigram on Data Analysis
