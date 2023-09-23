@@ -67,7 +67,7 @@ When employing high-performance computing (HPC), we provide [some specific guide
 ## *Client* side: Installing the *DataLad* dataset
 
 Wherever you want to process the data, you'll need to `datalad install` it before you can pull down (`datalad get`) the data.
-To access the metadata (e.g., sidecar JSON files of the BIDS structure), you'll need to have access to the git repository that corresponds to the data (https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}.git)
+To access the metadata (e.g., sidecar JSON files of the BIDS structure), you'll need to have access to the git repository that corresponds to the data (https://github.com/{{ secrets.data.gh_repo | default('&lt;organization&gt;/&lt;repo_name&gt;') }}.git)
 To fetch the dataset from the RIA store, you will need your SSH key be added to the authorized keys.
 
 ??? important "Getting access to the RIA store"
