@@ -7,7 +7,7 @@ When employing high-performance computing (HPC), we provide [some specific guide
 ## Creating a *DataLad* dataset
 
 - [ ] Designate a host and folder where data will be centralized.
-    In the context of this study, the primary copy of data will be downloaded into {{ secrets.hosts.oesteban | default('\<hostname>') }}, under the path `{{ settings.paths.pilot_sourcedata }}` for the piloting acquisitions and `{{ settings.paths.sourcedata }}` for the experimental data collection.
+    In the context of this study, the primary copy of data will be downloaded into {{ secrets.hosts.oesteban | default('&lt;hostname&gt;') }}, under the path `{{ settings.paths.pilot_sourcedata }}` for the piloting acquisitions and `{{ settings.paths.sourcedata }}` for the experimental data collection.
 - [ ] Install the `bids` *DataLad procedure* provided from this repository to facilitate the correct intake of data and metadata:
 
     ``` shell
