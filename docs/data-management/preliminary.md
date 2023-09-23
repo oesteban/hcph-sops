@@ -181,4 +181,4 @@ When HPC is planned for processing, *DataLad* will be required on that system(s)
     git config --global --add user.email doe@example.com
     ```
 
-[1]: https://doi.org/10.5281/zenodo.4495661 "Hanke, Michael, Yaroslav O. Halchenko, Benjamin Poldrack, Kyle Meyer, Debanjum Singh Solanky, Gergana Alteva, Jason Gors, et al. “Datalad/Datalad: ## 0.14.0 (February 02, 2021).” Zenodo, February 2, 2021. doi:10.5281/zenodo.4495661"
+[1]: https://doi.org/10.5281/zenodo.808846 "Hanke, Michael, et al. “Datalad.” Open Source Software, 2021. doi:10.5281/zenodo.808846"
