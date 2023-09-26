@@ -1,4 +1,4 @@
-""" Python script to denoise and aggregate timeseries before computing functional
+""" Python script to denoise and aggregate timeseries and, using the latter, compute functional
 connectivity matrices from BIDS derivatives (e.g. fmriprep).
 
 Run as (see 'python compute_fc.py -h' for options):
@@ -210,7 +210,7 @@ def get_atlas_data(atlas_name="DiFuMo", **kwargs):
     logging.info("Fetching the DiFuMo atlas ...")
 
     if kwargs["dimension"] not in [64, 128, 512]:
-        logging.warning("Dimension for DiFuMo atlas is different from 64, 128 or 512 !")
+        logging.warning("Dimension for DiFuMo atlas is different from 64, 128 or 512 ! Are you certain you want to deviate from those optimized modes? ")
 
     return fetch_atlas_difumo(legacy_format=False, **kwargs)
 
@@ -481,7 +481,11 @@ def get_fc_strategy(strategy="sparse inverse covariance"):
     connectivity_label = "correlation"
     estimator = LedoitWolf(store_precision=False)
 
-    if strategy not in ["cor", "corr", "correlation"]:
+    if strategy in ["cor", "corr", "correlation"]:
+        connectivity_kind = "correlation"
+        connectivity_label = "correlation"
+        estimator = LedoitWolf(store_precision=False)
+    elif strategy in ["sparse", "sparse inverse covariance"]:
         connectivity_kind = "precision"
         connectivity_label = "sparseinversecovariance"
         estimator = GraphicalLassoCV(alphas=6, max_iter=1000)
