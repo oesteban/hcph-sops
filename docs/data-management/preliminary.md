@@ -64,7 +64,9 @@ When employing high-performance computing (HPC), we provide [some specific guide
             --publish-depends ria-storage
     ```
 
-## *Client* side: Installing the *DataLad* dataset
+## *Client* side operations (when *consuming* the data)
+
+### Installing the *DataLad* dataset
 
 Wherever you want to process the data, you'll need to `datalad install` it before you can pull down (`datalad get`) the data.
 To access the metadata (e.g., sidecar JSON files of the BIDS structure), you'll need to have access to the git repository that corresponds to the data (https://github.com/{{ secrets.data.gh_repo | default('&lt;organization&gt;/&lt;repo_name&gt;') }}.git)
@@ -90,6 +92,43 @@ To fetch the dataset from the RIA store, you will need your SSH key be added to 
 
         ``` shell
         datalad install -g -J 8 https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}.git
+        ```
+
+### Synchronizing your *DataLad* dataset
+
+Once the dataset is installed, new sessions will be added as data collection goes on.
+When a new session is added, your *DataLad* dataset will remain at the same point in history (meaning, it will become out-of-date).
+
+- [ ] Pull new changes in the git history.
+    *DataLad* will first fetch Git remotes and merge for you.
+
+    ``` shell
+    cd hcph-dataset/  # <--- cd into the dataset's path
+    datalad update -r --merge true .
+    ```
+
+- [ ] If you need the data, now you can get the data as usual:
+
+    ``` shell
+    find sub-001/ses-pilot019 -name "*.nii.gz" | xargs datalad get -J 8
+    ```
+
+### Adding data or metadata
+
+- [ ] Use `datalad save` indicating the paths you want to add, and include `--to-git` if the file contains only metadata (e.g., JSON files).
+
+    === "Adding data files (e.g., NIfTI and compressed TSV files)"
+
+        ``` shell
+        find sub-001/ses-pilot019 -name "*.nii" -or -name "*.nii.gz" -or -name "*.tsv.gz" | \
+            xargs datalad save -m '"add(pilot019): new session data (NIfTI and compressed TSV)"'
+        ```
+
+    === "Adding metadata files"
+
+        ``` shell
+        find sub-001/ses-pilot019 -name "*.json" -or -name "*.tsv" -or -name "*.bvec" -or -name "*.bval" | \
+            xargs datalad save -m '"add(pilot019): new session metadata (JSON, TSV, bvec/bval)"'
         ```
 
 ### HPC users - instructions to install *DataLad*
