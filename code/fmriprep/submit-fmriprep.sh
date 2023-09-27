@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DATADIR="/oak/stanford/groups/russpold/inprocess/cprovins/hcph-pilot/"
-SUB="sub-pilot"
+SUB="sub-001"
 pushd $DATADIR/inputs/$SUB > /dev/null
 ALL_SES=(`ls -d ses-*`)
 popd > /dev/null

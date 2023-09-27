@@ -10,7 +10,7 @@
 # Run only the anatomical workflow of fMRIPrep
 
 DATADIR="/oak/stanford/groups/russpold/inprocess/cprovins/hcph-pilot/"
-SUB="sub-pilot"
+SUB="sub-001"
 STUDY=`basename $DATADIR`
 
 echo "Processing the anatomical workflow on subject: $SUB"
@@ -31,8 +31,10 @@ BINDINGS="-B $DATADIR/inputs:/data:ro \
 $PATCHES"
 
 FMRIPREP_CMD="/data /out/fmriprep-23.1.4 participant \
--w /work --bids-filter-file /work/filter_file_undistorted.json --anat-only --skip_bids_validation \
---nprocs 4 --mem 25G --omp-nthreads 16 -vv"
+        -w /work \
+        --bids-filter-file /work/filter_file_undistorted.json \
+        --anat-only --skip_bids_validation \
+        --nprocs 4 --mem 25G --omp-nthreads 16 -vv"
 
 #Create json file to filter undistorted anatomical scans
 echo '{"t1w": {"datatype": "anat", "acquisition": "undistorted", "suffix": "T1w"}}' > ${WORKDIR}/filter_file_undistorted.json
