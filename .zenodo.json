@@ -1,0 +1,108 @@
+{
+  "title": "The Human Connectome PHantom (HCPh) study: Standard Operating Procedures",
+  "description": "<p>Standard operating procedures (SOPs) associated to our HCPh study. Overall, this study will equip researchers with a framework for the extraction of reliable and precise structural, functional and dynamic networks that permit their joint modeling and analysis with interpretable and reproducible methods. The project will publicly release two highly valuable datasets necessary for the improvement of the workflow for structural and functional network extraction under open access and reuse terms. Upon conclusion, this study will mark a turning point for MRI research as a fundamental resource for academic training and a necessary assessment to unlock clinical applications in the long-term with the improvement of the reliability of MRI-network analyses. At a local scale, the project will substantially contribute to ensuring the reliability of the MRI clinical workflow that routinely aids medical decisions at CHUV.</p>",
+  "creators":
+  [
+    {
+      "affiliation": "Department of Radiology, Lausanne University Hospital and University of Lausanne, Lausanne, Switzerland",
+      "name": "Provins, Celine",
+      "orcid": "0000-0002-1668-9629"
+    },
+    {
+      "affiliation": "Department of Radiology, Lausanne University Hospital and University of Lausanne, Lausanne, Switzerland",
+      "name": "Savary, Elodie",
+      "orcid": "0000-0002-3896-6906"
+    },
+    {
+      "affiliation": "Department of Radiology, Lausanne University Hospital and University of Lausanne, Lausanne, Switzerland",
+      "name": "Cionca, Alexandre",
+      "orcid": "0000-0002-1910-9650"
+    },
+    {
+      "affiliation": "Department of Radiology, Lausanne University Hospital and University of Lausanne, Lausanne, Switzerland",
+      "name": "Lajous, Hélène",
+      "orcid": "0000-0001-7729-6274"
+    },
+    {
+      "affiliation": "Department of Radiology, Lausanne University Hospital and University of Lausanne, Lausanne, Switzerland",
+      "name": "de Riedmatten, Inès",
+      "orcid": "0000-0003-0383-4046"
+    },
+    {
+      "affiliation": "Institute of Systems Engineering, School of Engineering, HES-SO Valais-Wallis, Sion, Switzerland",
+      "name": "Franceschiello, Benedetta",
+      "orcid": "0000-0003-0754-5081"
+    },
+    {
+      "affiliation": "Department of Radiology, Lausanne University Hospital and University of Lausanne, Lausanne, Switzerland",
+      "name": "Esteban, Oscar",
+      "orcid": "0000-0001-8435-6191"
+    }
+  ],
+  "contributors":
+  [
+    {
+      "affiliation": "CIBM Center for Biomedical Imaging, Switzerland",
+      "name": "Fornari, Eleonora",
+      "orcid": "0000-0002-4398-8640",
+      "type": "Researcher"
+    },
+    {
+      "affiliation": "Department of Radiology, Lausanne University Hospital and University of Lausanne, Lausanne, Switzerland",
+      "name": "Jelescu, Ileana",
+      "orcid": "0000-0002-3664-0195",
+      "type": "Researcher"
+    },
+    {
+      "affiliation": "Department of Radiology, Lausanne University Hospital and University of Lausanne, Lausanne, Switzerland",
+      "name": "Hagmann, Patric",
+      "orcid": "0000-0002-2854-6561",
+      "type": "Researcher"
+    }
+  ],
+  "keywords":
+  [
+    "neuroimaging",
+    "quality control",
+    "quality assessment",
+    "exclusion criteria",
+    "standard operating procedures",
+    "protocol",
+    "HCPh",
+    "connectivity",
+    "MRI",
+    "fMRI",
+    "dMRI",
+    "fMRIPrep",
+    "MRIQC",
+    "DataLad"
+  ],
+  "access_right": "open",
+  "license": "cc-by",
+  "doi": "10.17605/OSF.IO/VAMQ6",
+  "related_identifiers":
+  [
+    {
+      "identifier": "https://www.axonlab.org/hcph-sops/",
+      "relation": "documents",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://doi.org/10.17605/OSF.IO/VAMQ6",
+      "relation": "isPartOf",
+      "scheme": "url"
+    }
+  ],
+  "upload_type": "publication",
+  "publication_type": "report",
+  "grants":
+  [
+    {
+      "id": "10.13039/501100001711::185872"
+    },
+    {
+      "id": "10.13039/100000002::RF1MH12186"
+    }
+  ],
+  "notes": "This entry records <a href='https://www.axonlab.org/hcph-sops/'>the rendered version of the SOPs</a> corresponding to the pre-registration of the HCPh study (with doi:<a href='https://doi.org/10.17605/OSF.IO/VAMQ6'>10.17605/OSF.IO/VAMQ6</a>)."
+}
