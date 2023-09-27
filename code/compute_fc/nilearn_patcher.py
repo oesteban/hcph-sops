@@ -9,7 +9,6 @@ from nilearn._utils.niimg_conversions import _iter_check_niimg
 from nilearn.maskers.nifti_maps_masker import NiftiMapsMasker
 
 
-@fill_doc
 class MultiNiftiMapsMasker(NiftiMapsMasker):
     """Class for masking of Niimg-like objects.
 

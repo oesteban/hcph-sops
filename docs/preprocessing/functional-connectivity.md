@@ -23,7 +23,9 @@ python compute_fc.py path_to_dataset/derivatives/fmriprep-23.1.4
     
     - [ ] Fetch the [DiFuMo](https://doi.org/10.1016/j.neuroimage.2020.117126) atlas (64 dimensions)
     - [ ] Extract the region-wise averaged timeseries
-    - [ ] Interpolate high motion volumes (framewise displacement higher than 0.4 mm) with cubic spline interpolation
+    - [ ] Find high motion volumes that have framewise displacement higher than 0.4 mm or higher than 5 standardized DVAR.
+    Then also flag as outlier the segments that are shorter than 5 timepoints.
+    - [ ] Interpolate high motion volumes with cubic spline interpolation
     - [ ] Apply a low-pass butterworth filter (cutoff frequency of 0.15 Hz)
     - [ ] Censor high motion volumes
     - [ ] Remove confounds: motions (6 parameters) and discrete cosine transform basis (high-pass filtering)

@@ -1,5 +1,5 @@
-""" Python script to denoise and aggregate timeseries and, using the latter, compute functional
-connectivity matrices from BIDS derivatives (e.g. fmriprep).
+""" Python script to denoise and aggregate timeseries and, using the latter, compute
+functional connectivity matrices from BIDS derivatives (e.g. fmriprep).
 
 Run as (see 'python compute_fc.py -h' for options):
 
@@ -122,7 +122,7 @@ def get_arguments():
     )
     parser.add_argument(
         "--SDVARS-thresh",
-        default=3,
+        default=5,
         action="store",
         type=float,
         help="standardised DVAR threshold",
@@ -175,7 +175,6 @@ def get_func_filenames_bids(paths_to_func_dir, task_filter=[]):
         scope="all",
         return_type="file",
         extension="nii.gz",
-        session=[15],
         suffix="bold",
         task=task_filter,
     )
@@ -210,7 +209,10 @@ def get_atlas_data(atlas_name="DiFuMo", **kwargs):
     logging.info("Fetching the DiFuMo atlas ...")
 
     if kwargs["dimension"] not in [64, 128, 512]:
-        logging.warning("Dimension for DiFuMo atlas is different from 64, 128 or 512 ! Are you certain you want to deviate from those optimized modes? ")
+        logging.warning(
+            "Dimension for DiFuMo atlas is different from 64, 128 or 512 ! "
+            "Are you certain you want to deviate from those optimized modes? "
+        )
 
     return fetch_atlas_difumo(legacy_format=False, **kwargs)
 
@@ -477,22 +479,17 @@ def extract_and_denoise_timeseries(
 
 
 def get_fc_strategy(strategy="sparse inverse covariance"):
-    connectivity_kind = "correlation"
-    connectivity_label = "correlation"
-    estimator = LedoitWolf(store_precision=False)
+    connectivity_kind = "precision"
+    connectivity_label = "sparseinversecovariance"
+    estimator = GraphicalLassoCV(alphas=6, max_iter=1000)
 
     if strategy in ["cor", "corr", "correlation"]:
         connectivity_kind = "correlation"
         connectivity_label = "correlation"
         estimator = LedoitWolf(store_precision=False)
-    elif strategy in ["sparse", "sparse inverse covariance"]:
-        connectivity_kind = "precision"
-        connectivity_label = "sparseinversecovariance"
-        estimator = GraphicalLassoCV(alphas=6, max_iter=1000)
-
-        if strategy not in ["sparse", "sparse inverse covariance"]:
-            connectivity_kind = "covariance"
-            connectivity_label = "covariance"
+    elif strategy not in ["sparse", "sparse inverse covariance"]:
+        connectivity_kind = "covariance"
+        connectivity_label = "covariance"
 
     return estimator, connectivity_kind, connectivity_label
 
