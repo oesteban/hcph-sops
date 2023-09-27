@@ -7,6 +7,7 @@
 *[CR]: corneal reflection
 *[DICOM]: Digital Imaging and Communications in Medicine
 *[dMRI]: diffusion MRI
+*[DOI]: digital object identifier
 *[DWI]: diffusion weighted imaging
 *[ECG]: electrocardiogram
 *[EDF]: EyeLink Data Format
@@ -28,6 +29,7 @@
 *[MR]: Magnetic Resonance
 *[MRI]: Magnetic Resonance Imaging
 *[NIfTI]: Neuroimaging Informatics Technology Initiative
+*[OSF]: Open Science Framework (Center for Open Science)
 *[PA]: posterior-to-anterior
 *[PACS]: picture archiving and communication system
 *[PC]: personal computer
@@ -37,6 +39,7 @@
 *[PI]: principal investigator
 *[PNG]: portable networks graphics
 *[PR]: pull-request
+*[PRs]: pull-requests
 *[QC]: quality control
 *[QCT]: quality control task
 *[RB]: respiration belt

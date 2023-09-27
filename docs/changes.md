@@ -7,6 +7,38 @@ All notable changes to these SOPs are documented below, starting with the most r
 	If you have identified a problem, a typo, or something missing, and you know it is not in our tracker, please report it by [creating a new issue](https://github.com/TheAxonLab/hcph-protocol/issues/new).
 
 <!-- insertion marker -->
+## [0.4.0](https://github.com/TheAxonLab/hcph-protocol/releases/tag/0.4.0) (September 27, 2023)
+
+<small>[Compare with 0.3.0](https://github.com/TheAxonLab/hcph-protocol/compare/0.3.0...0.4.0)</small>
+
+### Enhancements, new features, and additions
+
+- Add report pre-registered on OSF and fix references
+ ([f9a8360](https://github.com/TheAxonLab/hcph-protocol/commit/f9a8360efd56e8ab33876b68f0c51012c47f6cb1) by [Oscar Esteban](https://github.com/oesteban)).
+- Replace ``--merge true`` with ``--how merge`` in datalad updates
+ ([d297d45](https://github.com/TheAxonLab/hcph-protocol/commit/d297d45c9f4ab837702b748bb961277fecdf07ac) by [Oscar Esteban](https://github.com/oesteban)).
+- Add *DataLad* documentation for synchronizing and adding new data
+ ([5d57e74](https://github.com/TheAxonLab/hcph-protocol/commit/5d57e7475f5a4a2bf77658fc6ad1c0099324eeb6) by [Oscar Esteban](https://github.com/oesteban)).
+- Add a ``.zenodo.json`` with the intent of connecting Zenodo
+ ([ee429ea](https://github.com/TheAxonLab/hcph-protocol/commit/ee429ea4ef72479fd6b0e8baf5a650f3f20e9a81) by [Oscar Esteban](https://github.com/oesteban)).
+- Play nice with Apache license in heuristic, better documentation
+ ([2dffffc](https://github.com/TheAxonLab/hcph-protocol/commit/2dffffcc8fae8fb4abd4f3c7ed275a9960c41178) by [Oscar Esteban](https://github.com/oesteban)).
+
+### Bug Fixes
+
+- Datalad DOI and link
+ ([fc63118](https://github.com/TheAxonLab/hcph-protocol/commit/fc6311836865c3b564610601e19d5f917f5602ef) by [Oscar Esteban](https://github.com/oesteban)).
+- Escape HTML special characters
+ ([e54c468](https://github.com/TheAxonLab/hcph-protocol/commit/e54c468b08520de764ba3cf6c8650f3f50bbc204) by [Oscar Esteban](https://github.com/oesteban)).
+- Escaping characters
+ ([737edce](https://github.com/TheAxonLab/hcph-protocol/commit/737edce814c7ca1b4dda1ffee850cce08cdf73fa) by [Oscar Esteban](https://github.com/oesteban)).
+- Remaining bugs in heuristic file
+ ([443493c](https://github.com/TheAxonLab/hcph-protocol/commit/443493c6f91fe59ee9656362253d2d0388456043) by [Oscar Esteban](https://github.com/oesteban)). Related issues/PRs: [#179](https://github.com/TheAxonLab/hcph-protocol/issues/179)
+- Revise heuristic after testing it
+ ([ca49867](https://github.com/TheAxonLab/hcph-protocol/commit/ca49867f1712e61cefb0327d91f05e9a966d6013) by [Oscar Esteban](https://github.com/oesteban)).
+- Overhaul of the data-management section with DataLad
+ ([5afcd97](https://github.com/TheAxonLab/hcph-protocol/commit/5afcd97004f96d8314e5eaf034d152d8cf2d1b8d) by [Oscar Esteban](https://github.com/oesteban)). Related issues/PRs: [#100](https://github.com/TheAxonLab/hcph-protocol/issues/100), [#163](https://github.com/TheAxonLab/hcph-protocol/issues/163), [#160](https://github.com/TheAxonLab/hcph-protocol/issues/160)
+
 ## [0.3.0](https://github.com/TheAxonLab/hcph-protocol/releases/tag/0.3.0) (September 06, 2023)
 
 <small>[Compare with 0.2.0](https://github.com/TheAxonLab/hcph-protocol/compare/0.2.0...0.3.0)</small>
