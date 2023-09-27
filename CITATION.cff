@@ -5,7 +5,26 @@ title: >-
 message: >-
   If you use this dataset, please cite it using the metadata
   from this file.
-type: dataset
+type: report
+copyright: CC-BY-4.0
+abstract: >-
+  Standard operating procedures (SOPs) associated with our
+  HCPh study. Overall, this study will equip researchers
+  with a framework for extracting reliable and precise
+  structural, functional, and dynamic networks that permit
+  their joint modeling and analysis with interpretable and
+  reproducible methods. The project will publicly release
+  two highly valuable datasets necessary to improve the
+  workflow for structural and functional network extraction
+  under open access and reuse terms. Upon conclusion, this
+  study will mark a turning point for MRI research as a
+  fundamental resource for academic training and a necessary
+  assessment to unlock clinical applications in the
+  long-term with the improvement of the reliability of
+  MRI-network analyses. At a local scale, the project will
+  substantially contribute to ensuring the reliability of
+  the MRI clinical workflow that routinely aids medical
+  decisions at CHUV.
 authors:
 - affiliation: Department of Radiology, Lausanne University Hospital and University
     of Lausanne, Lausanne, Switzerland
@@ -62,4 +81,3 @@ keywords:
   - fMRIPrep
   - MRIQC
   - DataLad
-license: CC-BY-4.0
