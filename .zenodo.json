@@ -94,14 +94,5 @@
   ],
   "upload_type": "publication",
   "publication_type": "report",
-  "grants":
-  [
-    {
-      "id": "10.13039/501100001711::185872"
-    },
-    {
-      "id": "10.13039/100000002::RF1MH12186"
-    }
-  ],
   "notes": "This entry records <a href='https://www.axonlab.org/hcph-sops/'>the rendered version of the SOPs</a> corresponding to the pre-registration of the HCPh study (with doi:<a href='https://doi.org/10.17605/OSF.IO/VAMQ6'>10.17605/OSF.IO/VAMQ6</a>)."
 }
