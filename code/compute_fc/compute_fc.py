@@ -1,3 +1,25 @@
+# emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: nil -*-
+# vi: set ft=python sts=4 ts=4 sw=4 et:
+#
+# Copyright 2023 The Axon Lab <theaxonlab@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# We support and encourage derived works from this project, please read
+# about our expectations at
+#
+#     https://www.nipreps.org/community/licensing/
+#
 """ Python script to denoise and aggregate timeseries and, using the latter, compute
 functional connectivity matrices from BIDS derivatives (e.g. fmriprep).
 
@@ -14,63 +36,66 @@ import argparse
 import logging
 import os
 import os.path as op
+from typing import Optional, Union
 
 import matplotlib.pyplot as plt
 import numpy as np
 from bids import BIDSLayout
 from bids.layout import parse_file_entities
 from bids.layout.writing import build_path
+from matplotlib.axes import Axes
 from matplotlib.cm import get_cmap
 from matplotlib.lines import Line2D
+from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
+from pandas import Series
+from sklearn.covariance import GraphicalLassoCV, LedoitWolf
+
+from nilearn._utils import stringify_path
 from nilearn.connectome import ConnectivityMeasure, vec_to_sym_matrix
 from nilearn.datasets import fetch_atlas_difumo
 from nilearn.interfaces.fmriprep import load_confounds
 from nilearn.interfaces.fmriprep.load_confounds import _load_single_confounds_file
 from nilearn.maskers import MultiNiftiMapsMasker
 from nilearn.plotting import plot_design_matrix, plot_matrix
-from nilearn.signal import clean, _handle_scrubbed_volumes, _sanitize_confounds
-from nilearn._utils import stringify_path
-from sklearn.covariance import GraphicalLassoCV, LedoitWolf
+from nilearn.signal import _handle_scrubbed_volumes, _sanitize_confounds, clean
 
-from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
-
-FC_PATTERN = [
+FC_PATTERN: list = [
     "sub-{subject}[/ses-{session}]/func/sub-{subject}"
     "[_ses-{session}][_task-{task}][_meas-{meas}]"
     "_{suffix}{extension}"
 ]
-FC_FILLS = {"suffix": "relmat", "extension": ".tsv"}
-TIMESERIES_PATTERN = [
+FC_FILLS: dict = {"suffix": "relmat", "extension": ".tsv"}
+TIMESERIES_PATTERN: list = [
     "sub-{subject}[/ses-{session}]/func/sub-{subject}"
     "[_ses-{session}][_task-{task}][_desc-{desc}]"
     "_{suffix}{extension}"
 ]
-TIMESERIES_FILLS = {"desc": "denoised", "extension": ".tsv"}
-FIGURE_PATTERN = [
+TIMESERIES_FILLS: dict = {"desc": "denoised", "extension": ".tsv"}
+FIGURE_PATTERN: list = [
     "sub-{subject}/figures/sub-{subject}[_ses-{session}]"
     "[_task-{task}][_meas-{meas}][_desc-{desc}]"
     "_{suffix}{extension}",
     "sub-{subject}/figures/sub-{subject}[_ses-{session}]"
     "[_task-{task}][_desc-{desc}]_{suffix}{extension}",
 ]
-FIGURE_FILLS = {"extension": "png"}
-CONFOUND_PATTERN = [
+FIGURE_FILLS: dict = {"extension": "png"}
+CONFOUND_PATTERN: list = [
     "sub-{subject}[_ses-{session}][_task-{task}][_part-{part}][_desc-{desc}]"
     "_{suffix}{extension}"
 ]
-CONFOUND_FILLS = {"desc": "confounds", "suffix": "timeseries", "extension": "tsv"}
+CONFOUND_FILLS: dict = {"desc": "confounds", "suffix": "timeseries", "extension": "tsv"}
 
-DENOISING_STRATEGY = ["high_pass", "motion", "scrub"]
+DENOISING_STRATEGY: list = ["high_pass", "motion", "scrub"]
 
-TS_FIGURE_SIZE = (50, 25)
-FC_FIGURE_SIZE = (50, 45)
-LABELSIZE = 22
-NETWORK_MAPPING = "yeo_networks7"  # Also yeo_networks17
-NETWORK_CMAP = "turbo"
+TS_FIGURE_SIZE: tuple = (50, 25)
+FC_FIGURE_SIZE: tuple = (50, 45)
+LABELSIZE: int = 22
+NETWORK_MAPPING: str = "yeo_networks7"  # Also yeo_networks17
+NETWORK_CMAP: str = "turbo"
 
 
-def get_arguments():
-    parser = argparse.ArgumentParser(
+def get_arguments() -> argparse.Namespace:
+    parser: argparse.ArgumentParser = argparse.ArgumentParser(
         description="""Compute functional connectivity matrices from fmriprep
                     output directory.""",
     )
@@ -78,15 +103,25 @@ def get_arguments():
     # Input/Output arguments and options
     parser.add_argument("data_dir", help="BIDS dataset or derivatives with data")
     parser.add_argument(
-        "-s", "--save", action="store_true", default=False, help="save the outputs"
+        "-s",
+        "--save",
+        action="store_true",
+        default=False,
+        help="save the outputs",
     )
     parser.add_argument(
-        "-o", "--output", default=None, help="specify an alternative output directory"
+        "-o",
+        "--output",
+        default=None,
+        help="specify an alternative output directory",
     )
 
     # Script specific options
     parser.add_argument(
-        "--overwrite", default=False, action="store_true", help="force computation"
+        "--overwrite",
+        default=False,
+        action="store_true",
+        help="force computation",
     )
     parser.add_argument(
         "--task",
@@ -97,9 +132,6 @@ def get_arguments():
     )
 
     # fMRI and denoising specific options
-    # parser.add_argument(
-    #     "--denoise-only", default=False, action="store_true", help="NOT IMPLEMENTED"
-    # )
     parser.add_argument(
         "--atlas-dimension",
         default=64,
@@ -163,7 +195,24 @@ def get_arguments():
     return args
 
 
-def get_func_filenames_bids(paths_to_func_dir, task_filter=[]):
+def get_func_filenames_bids(
+    paths_to_func_dir: str, task_filter: list = []
+) -> tuple[list, float]:
+    """Return the BIDS functional imaging files matching the specified task filter as
+    well as the first (if multiple) unique repetition time (TR).
+
+    Parameters
+    ----------
+    paths_to_func_dir : str
+        Path to the BIDS (usually derivatives) directory
+    task_filter : list, optional
+        List of task names to consider, by default []
+
+    Returns
+    -------
+    tuple[list, float]
+        Returns a tuple of two with: a list of filenames and a TR.
+    """
     logging.debug("Using BIDS to find functional files...")
 
     layout = BIDSLayout(
@@ -174,7 +223,7 @@ def get_func_filenames_bids(paths_to_func_dir, task_filter=[]):
     all_derivatives = layout.get(
         scope="all",
         return_type="file",
-        extension="nii.gz",
+        extension=["nii.gz", "gz"],
         suffix="bold",
         task=task_filter,
     )
@@ -193,7 +242,22 @@ def get_func_filenames_bids(paths_to_func_dir, task_filter=[]):
     return all_derivatives, list(unique_tr_s)[0]
 
 
-def get_bids_savename(filename, patterns=FC_PATTERN, **kwargs):
+def get_bids_savename(filename: str, patterns: list = FC_PATTERN, **kwargs) -> str:
+    """Return the BIDS filename following the specified patterns and modifying the
+    entities from the keywords arguments.
+
+    Parameters
+    ----------
+    filename : str
+        Name of the original BIDS file
+    patterns : list, optional
+        Patterns for the output file, by default FC_PATTERN
+
+    Returns
+    -------
+    str
+        BIDS output filename.
+    """
     entity = parse_file_entities(filename)
 
     for key, value in kwargs.items():
@@ -205,28 +269,78 @@ def get_bids_savename(filename, patterns=FC_PATTERN, **kwargs):
     return bids_savename
 
 
-def get_atlas_data(atlas_name="DiFuMo", **kwargs):
+def get_atlas_data(atlas_name: str = "DiFuMo", **kwargs) -> dict:
+    """Fetch the specifies atlas filename and data.
+
+    Parameters
+    ----------
+    atlas_name : str, optional
+        Name of the atlas to fetch, by default "DiFuMo"
+
+    Returns
+    -------
+    dict
+        Dictionnary with keys "maps" (filename) and "labels" (ROI labels).
+    """
     logging.info("Fetching the DiFuMo atlas ...")
 
-    if kwargs["dimension"] not in [64, 128, 512]:
+    if kwargs["dimension"] not in [64, 128, 256, 512]:
         logging.warning(
-            "Dimension for DiFuMo atlas is different from 64, 128 or 512 ! "
-            "Are you certain you want to deviate from those optimized modes? "
+            f"{kwargs['dimension']} is not a supported atlas dimension for the DiFuMo"
         )
 
     return fetch_atlas_difumo(legacy_format=False, **kwargs)
 
 
-def find_derivative(path, derivatives_name="derivatives"):
-    if op.split(path)[-1] == derivatives_name:
-        return path
-    if op.split(path)[0] == "":
-        logging.error(f'"{derivatives_name}" could not be found on path !')
-        return ""
-    return find_derivative(path=op.split(path)[0])
+def find_derivative(path: str, derivatives_name: str = "derivatives") -> str:
+    """Find the corresponding BIDS derivative folder (if existing, otherwise it will be
+    created).
+
+    Parameters
+    ----------
+    path : str
+        Path to the BIDS (usually derivatives) dataset.
+    derivatives_name : str, optional
+        Name of the derivatives folder, by default "derivatives"
+
+    Returns
+    -------
+    str
+        Absolute path to the derivative folder.
+    """
+    splitted_path = path.split("/")
+    if derivatives_name in splitted_path:
+        while splitted_path[-1] != derivatives_name:
+            splitted_path.pop()
+        return "/".join(splitted_path)
+    logging.warning(
+        f'"{derivatives_name}" could not be found on path - '
+        f'creating at: {op.join(path, derivatives_name)}"'
+    )
+    return op.join(path, derivatives_name)
 
 
-def check_existing_output(output, func_filename, return_existing=False, **kwargs):
+def check_existing_output(
+    output: str, func_filename: list[str], return_existing: bool = False, **kwargs
+) -> tuple[list[str], list[str]]:
+    """Check for existing output.
+
+    Parameters
+    ----------
+    output : str
+        Path to the output directory
+    func_filename : list[str]
+        Original file to be computed in the futur
+    return_existing : bool, optional
+        Condition to return a boolean filter with True for existing data, by default
+        False
+
+    Returns
+    -------
+    tuple[list[str], list[str]]
+        Boolean filter with True for missing data (optionally, a second filter with
+        existing data)
+    """
     logging.debug("\n\t".join(func_filename))
 
     missing_data_filter = [
@@ -246,7 +360,21 @@ def check_existing_output(output, func_filename, return_existing=False, **kwargs
     return missing_data.tolist()
 
 
-def load_timeseries(func_filename, output):
+def load_timeseries(func_filename: list[str], output: str) -> list[np.ndarray]:
+    """Load existing timeseries from .csv files.
+
+    Parameters
+    ----------
+    func_filename : list[str]
+        List of timeseries filenames.
+    output : str
+        Path to the output folder.
+
+    Returns
+    -------
+    list[np.ndarray]
+        List of loaded timeseries.
+    """
     if len(func_filename):
         logging.info(f"Loading existing timeseries for {len(func_filename)} files ...")
 
@@ -263,7 +391,20 @@ def load_timeseries(func_filename, output):
     return loaded_ts
 
 
-def get_confounds_manually(func_filename, **kwargs):
+def get_confounds_manually(func_filename: list[str], **kwargs) -> tuple[list, list]:
+    """Manually load the fMRIPrep confounds.
+
+    Parameters
+    ----------
+    func_filename : list[str]
+        List of BIDS functional filenames
+
+    Returns
+    -------
+    tuple[list, list]
+        Two lists, one with the loaded confounds (for each input file) and one with the
+        corresponding sample mask.
+    """
     confounds, sample_mask = [], []
 
     for filename in func_filename:
@@ -287,8 +428,33 @@ def get_confounds_manually(func_filename, **kwargs):
 
 
 def fit_transform_patched(
-    func_filename, atlas_filename, confounds=None, sample_mask=None, **kwargs
-):
+    func_filename: list[str],
+    atlas_filename: str,
+    confounds: Optional[list] = None,
+    sample_mask: Optional[list] = None,
+    **kwargs,
+) -> list[np.ndarray]:
+    """Attempt to use NiLearn's MultiNiftiMapsMaskers, if it fails it will use the
+    patched version of the maskers (to be implemented into NiLearn in the future).
+
+    Parameters
+    ----------
+    func_filename : list[str]
+        List of BIDS functional filenames
+    atlas_filename : str
+        Path to the atlas file
+    confounds : Optional[list], optional
+        List of confounds (usually from nilearn.interface.fmriprep.load_confouds),
+        by default None
+    sample_mask : Optional[list], optional
+        List of sample masks (usually from nilearn.interface.fmriprep.load_confouds),
+        by default None
+
+    Returns
+    -------
+    list[np.ndarray]
+        List of extracted and denoised timerseries
+    """
     masker = MultiNiftiMapsMasker(maps_img=atlas_filename, **kwargs)
 
     try:
@@ -308,15 +474,42 @@ def fit_transform_patched(
 
 
 def interpolate_and_denoise_timeseries(
-    func_filename,
-    atlas_filename,
-    confounds,
-    sample_mask,
-    t_r=None,
-    low_pass=None,
-    output=None,
-    verbose=2,
-):
+    func_filename: list[str],
+    atlas_filename: str,
+    confounds: list,
+    sample_mask: list,
+    t_r: Optional[float] = None,
+    low_pass: Optional[float] = None,
+    output: Optional[str] = None,
+    verbose: int = 2,
+) -> tuple[list[np.ndarray], list]:
+    """Interpolate and denoise the timeseries without censoring high motion volumes.
+
+    Parameters
+    ----------
+    func_filename : list[str]
+        List of BIDS functional filenames
+    atlas_filename : str
+        Path to the atlas filename
+    confounds : list
+        List of confounds (usually from nilearn.interface.fmriprep.load_confouds).
+    sample_mask : list
+        List of sample_masks (usually from nilearn.interface.fmriprep.load_confouds).
+    t_r : Optional[float], optional
+        Repetition time of the MRI acquisition, by default None
+    low_pass : Optional[float], optional
+        Low-pass filtering cutoff frequency, by default None
+    output : Optional[str], optional
+        Path to the output directory, by default None
+    verbose : int, optional
+        Amount of verbosity, by default 2
+
+    Returns
+    -------
+    tuple[list[np.ndarray], list]
+        Two lists, one with the denoised timeseries and one with the corresponding
+        confounds.
+    """
     logging.info("Interpolating signal (no censoring) ...")
     # Extract the regional signals
     extracted_time_series = fit_transform_patched(
@@ -370,7 +563,23 @@ def interpolate_and_denoise_timeseries(
     return denoised_signals, interpolated_confounds
 
 
-def plot_interpolation(ts, interpolated_ts, filename, output):
+def plot_interpolation(
+    ts: np.ndarray, interpolated_ts: np.ndarray, filename: str, output: str
+) -> None:
+    """Plot the interpolated timeseries overlayed with the timeseries before
+    interpolation.
+
+    Parameters
+    ----------
+    ts : np.ndarray
+        Timeseries before interpolation
+    interpolated_ts : np.ndarray
+        Interpolated timeseries
+    filename : str
+        Name of the corresponding BIDS functional file
+    output : str
+        Path to the output directory
+    """
     ax = plot_timeseries_signal(ts)
     ax = plot_timeseries_signal(interpolated_ts, color="tab:red", ax=ax, linewidth=2)
 
@@ -401,22 +610,48 @@ def plot_interpolation(ts, interpolated_ts, filename, output):
 
 
 def extract_and_denoise_timeseries(
-    func_filename,
-    atlas_filename,
-    verbose=2,
-    interpolate=False,
-    low_pass=None,
-    t_r=None,
-    output=None,
+    func_filename: list[str],
+    atlas_filename: str,
+    verbose: int = 2,
+    interpolate: bool = False,
+    low_pass: Optional[float] = None,
+    t_r: Optional[float] = None,
+    output: Optional[str] = None,
     **kwargs,
-):
+) -> tuple[list[np.ndarray], list]:
+    """_summary_
+
+    Parameters
+    ----------
+    func_filename : list[str]
+        List of BIDS functional filenames
+    atlas_filename : str
+        Path to the atlas filename
+    verbose : int, optional
+        Amount of verbosity, by default 2
+    interpolate : bool, optional
+        Condition to ONLY interpolate the timeseries (without censoring),
+        by default False
+    low_pass : Optional[float], optional
+        Low-pass filtering cutoff frequency, by default None
+    t_r : Optional[float], optional
+        Repetition time of the MRI, by default None
+    output : Optional[str], optional
+        Path to the output directory, by default None
+
+    Returns
+    -------
+    tuple[list[np.ndarray], list]
+        Two lists, one with the extracted and denoised timeseries and one with the
+        corresponding confounds.
+    """
     if not len(func_filename):
         return [], []
 
     logging.info(f"Extracting and denoising timeseries for {len(func_filename)} files.")
     logging.debug(f"Denoising parameters are: {kwargs}")
 
-    # There is currently a bug in nilearn that prevent "load_confounds" from finding
+    # There is currently a bug in nilearn that prevents "load_confounds" from finding
     # the confounds file if it contains any other BIDS entity than "ses" and "run".
     # It should be fixed in release 0.13.
     try:
@@ -478,7 +713,23 @@ def extract_and_denoise_timeseries(
     return time_series, confounds
 
 
-def get_fc_strategy(strategy="sparse inverse covariance"):
+def get_fc_strategy(
+    strategy: str = "sparse inverse covariance",
+) -> tuple[Union[GraphicalLassoCV, LedoitWolf], str, str]:
+    """Get the strategy to compute functional connectivity.
+
+    Parameters
+    ----------
+    strategy : str, optional
+        Name of the strategy, could be "correlation", "covariance" or "sparse",
+        by default "sparse inverse covariance"
+
+    Returns
+    -------
+    tuple[Union[GraphicalLassoCV, LedoitWolf], str, str]
+        Returns the covariance estimator, the name of the metric (covariance or
+        precision) as well as standardized label for file naming.
+    """
     connectivity_kind = "precision"
     connectivity_label = "sparseinversecovariance"
     estimator = GraphicalLassoCV(alphas=6, max_iter=1000)
@@ -495,10 +746,28 @@ def get_fc_strategy(strategy="sparse inverse covariance"):
 
 
 def compute_connectivity(
-    time_series,
-    estimator=LedoitWolf(store_precision=False),
-    connectivity_kind="correlation",
-):
+    time_series: list[np.ndarray],
+    estimator: Union[LedoitWolf, GraphicalLassoCV] = LedoitWolf(store_precision=False),
+    connectivity_kind: str = "correlation",
+) -> list[np.ndarray]:
+    """Compute the functional connectivity using the specified estimator and
+    connectivity kind.
+
+    Parameters
+    ----------
+    time_series : list[np.ndarray]
+        List of timeseries
+    estimator : Union[LedoitWolf, GraphicalLassoCV], optional
+        Covariance estimator (usually from Scikit-Learn),
+        by default LedoitWolf(store_precision=False)
+    connectivity_kind : str, optional
+        Type of connectivity to compute, by default "correlation"
+
+    Returns
+    -------
+    list[np.ndarray]
+        List of functional connectivity matrices
+    """
     if not len(time_series):
         return []
     n_ts = len(time_series)
@@ -517,7 +786,27 @@ def compute_connectivity(
     return vec_to_sym_matrix(connectivity_measures, diagonal=np.zeros((n_ts, n_area)))
 
 
-def plot_timeseries_carpet(timeseries, labels=None, networks=None):
+def plot_timeseries_carpet(
+    timeseries: np.ndarray,
+    labels: Optional[list[str]] = None,
+    networks: Optional[Series] = None,
+) -> list[Axes]:
+    """Plot the timeseries as a carpet plot.
+
+    Parameters
+    ----------
+    timeseries : np.ndarray
+        Timeseries to show
+    labels : Optional[list[str]], optional
+        Labels corresponding to the atlas ROIs, by default None
+    networks : Optional[Series], optional
+        Networks of the atlas ROIs, by default None
+
+    Returns
+    -------
+    list[Axes]
+        Axes of the plot.
+    """
     n_timepoints, n_area = timeseries.shape
 
     if labels is None:
@@ -583,17 +872,45 @@ def plot_timeseries_carpet(timeseries, labels=None, networks=None):
 
     plt.subplots_adjust(right=1.11, left=0.151)
 
+    return [ax_net, ax_carpet]
+
 
 def plot_timeseries_signal(
-    timeseries,
-    labels=None,
-    networks=None,
-    vert_scale=5,
-    margin_value=0.01,
-    color="tab:blue",
-    linewidth=4,
-    ax=None,
-):
+    timeseries: np.ndarray,
+    labels: Optional[list[str]] = None,
+    networks: Optional[Series] = None,
+    vert_scale: float = 5,
+    margin_value: float = 0.01,
+    color: str = "tab:blue",
+    linewidth: float = 4,
+    ax: Optional[Axes] = None,
+) -> Axes:
+    """Plot the timeseries as a signal plot.
+
+    Parameters
+    ----------
+    timeseries : np.ndarray
+        Timeseries to show
+    labels : Optional[list[str]], optional
+        Labels corresponding to the atlas ROIs, by default None
+    networks : Optional[Series], optional
+        Networks of the atlas ROIs, by default None
+    vert_scale : float, optional
+        Vertical space between each signal , by default 5
+    margin_value : float, optional
+        Plot margin, by default 0.01
+    color : _type_, optional
+        Default color of the line plots, by default "tab:blue"
+    linewidth : float, optional
+        Linewidth of the line plots, by default 4
+    ax : Optional[Axes], optional
+        Axes to draw on, by default None
+
+    Returns
+    -------
+    Axes
+        Axes of the plot.
+    """
     n_timepoints, n_area = timeseries.shape
 
     if labels is None:
@@ -651,7 +968,26 @@ def plot_timeseries_signal(
     return ax
 
 
-def visual_report_timeserie(timeseries, filename, output, confounds=None, **kwargs):
+def visual_report_timeserie(
+    timeseries: np.ndarray,
+    filename: str,
+    output: str,
+    confounds: Optional[np.ndarray] = None,
+    **kwargs,
+) -> None:
+    """Plot and save the timeseries visual reports.
+
+    Parameters
+    ----------
+    timeseries : np.ndarray
+        Timeseries to show
+    filename : str
+        Original filename corresponding to the timeseries
+    output : str
+        Path to the output directory
+    confounds : Optional[np.ndarray], optional
+        Confounds to plot, by default None
+    """
     # Plotting denoised and aggregated timeseries
     for plot_func, plot_desc in zip(
         [plot_timeseries_carpet, plot_timeseries_signal], ["carpetplot", "timeseries"]
@@ -680,7 +1016,26 @@ def visual_report_timeserie(timeseries, filename, output, confounds=None, **kwar
         plt.savefig(op.join(output, conf_saveloc))
 
 
-def visual_report_fc(matrix, filename, output, labels=None, **kwargs):
+def visual_report_fc(
+    matrix: np.ndarray,
+    filename: str,
+    output: str,
+    labels: Optional[list] = None,
+    **kwargs,
+) -> None:
+    """Plot and save the functional connectivity visual reports.
+
+    Parameters
+    ----------
+    matrix : np.ndarray
+        Functional connectivity matrix
+    filename : str
+        Original filename corresponding to the FC matrix
+    output : str
+        Path to the output directory
+    labels : Optional[list], optional
+        Labels of the atlas ROIs, by default None
+    """
     fc_saveloc = get_bids_savename(
         filename, patterns=FIGURE_PATTERN, desc="heatmap", **kwargs
     )
@@ -702,7 +1057,23 @@ def visual_report_fc(matrix, filename, output, labels=None, **kwargs):
     plt.savefig(op.join(output, fc_saveloc))
 
 
-def save_output(data_list, original_filenames, output=None, **kwargs):
+def save_output(
+    data_list: list[np.ndarray],
+    original_filenames: list[str],
+    output: Optional[str] = None,
+    **kwargs,
+) -> None:
+    """Save the output files.
+
+    Parameters
+    ----------
+    data_list : list[np.ndarray]
+        List of data arrays (usually timeseries or matrices)
+    original_filenames : list[str]
+        List of original filenames
+    output : Optional[str], optional
+        Path to the output directory, by default None
+    """
     for data, filename in zip(data_list, original_filenames):
         path_to_save = get_bids_savename(filename, **kwargs)
         saveloc = op.join(output, path_to_save)
