@@ -27,6 +27,7 @@
 *[LR]: left-to-right
 *[MR]: Magnetic Resonance
 *[MRI]: Magnetic Resonance Imaging
+*[NIfTI]: Neuroimaging Informatics Technology Initiative
 *[PA]: posterior-to-anterior
 *[PACS]: picture archiving and communication system
 *[PC]: personal computer
