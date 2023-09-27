@@ -34,18 +34,17 @@ BINDINGS="-B $DATADIR/inputs:/data:ro \
 -B ${WORKDIR}:/work \
 -B ${OUTDIR}:/out \
 -B $DATADIR/code/license.txt:/opt/freesurfer/license.txt \
--B $DATADIR/code/filter_file_$SES.json:/filter_file_$SES.json \
 -B ${HOME}/.cache/templateflow/tpl-MNI152NLin6Asym/:${HOME}/.cache/templateflow/tpl-MNI152NLin6Asym/
 $PATCHES"
 
 FMRIPREP_CMD="/data /out/fmriprep-23.1.4 participant \
--w /work --bids-filter-file /filter_file_$SES.json --skip_bids_validation \
+-w /work --bids-filter-file /work/filter_file_$SES.json --skip_bids_validation \
 --fs-subjects-dir /out/fmriprep-23.1.4/sourcedata/freesurfer \
 --anat-derivatives /out/fmriprep-23.1.4 \
 --nprocs 4 --mem 45G --omp-nthreads 2 -vv"
 
 #Create json file to filter one session only
-echo '{"bold": {"datatype": "func", "session": "'${SES: -2}'", "suffix": "bold"}}' > $DATADIR/code/filter_file_${SES}.json
+echo '{"bold": {"datatype": "func", "session": "'${SES: -2}'", "suffix": "bold"}}' > ${WORKDIR}/filter_file_${SES}.json
 
 SING_CMD="singularity run -e $BINDINGS $IMG $FMRIPREP_CMD"
 echo $SING_CMD
