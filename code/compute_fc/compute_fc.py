@@ -124,6 +124,13 @@ def get_arguments() -> argparse.Namespace:
         help="force computation",
     )
     parser.add_argument(
+        "--ses",
+        default=[],
+        action="store",
+        nargs="+",
+        help="a space delimited list of session(s)",
+    )
+    parser.add_argument(
         "--task",
         default=[],
         action="store",
@@ -196,10 +203,10 @@ def get_arguments() -> argparse.Namespace:
 
 
 def get_func_filenames_bids(
-    paths_to_func_dir: str, task_filter: list = []
+    paths_to_func_dir: str, task_filter: list = [], ses_filter: list = []
 ) -> tuple[list, float]:
-    """Return the BIDS functional imaging files matching the specified task filter as
-    well as the first (if multiple) unique repetition time (TR).
+    """Return the BIDS functional imaging files matching the specified task and session
+    filters as well as the first (if multiple) unique repetition time (TR).
 
     Parameters
     ----------
@@ -207,6 +214,8 @@ def get_func_filenames_bids(
         Path to the BIDS (usually derivatives) directory
     task_filter : list, optional
         List of task names to consider, by default []
+    ses_filter : list, optional
+        List of session names to consider, by default []
 
     Returns
     -------
@@ -226,6 +235,7 @@ def get_func_filenames_bids(
         extension=["nii.gz", "gz"],
         suffix="bold",
         task=task_filter,
+        session=ses_filter,
     )
 
     t_rs = []
@@ -686,7 +696,7 @@ def extract_and_denoise_timeseries(
         sample_mask = [sample_mask]
 
     if interpolate:
-        interpolate_and_denoise_timeseries(
+        time_series, confounds = interpolate_and_denoise_timeseries(
             func_filename,
             atlas_filename,
             confounds,
@@ -696,6 +706,7 @@ def extract_and_denoise_timeseries(
             output=output,
             verbose=verbose,
         )
+        return time_series, confounds
 
     time_series = fit_transform_patched(
         func_filename,
@@ -1089,6 +1100,7 @@ def main():
     save = args.save
     output = args.output
 
+    ses_filter = args.ses
     task_filter = args.task
     overwrite = args.overwrite
 
@@ -1120,7 +1132,9 @@ def main():
 
     logging.captureWarnings(True)
 
-    func_filenames, t_r = get_func_filenames_bids(input_path, task_filter=task_filter)
+    func_filenames, t_r = get_func_filenames_bids(
+        input_path, task_filter=task_filter, ses_filter=ses_filter
+    )
     logging.info(f"Found {len(func_filenames)} functional file(s):")
     logging.info(
         "\t" + "\n\t".join([op.basename(filename) for filename in func_filenames])
