@@ -629,7 +629,7 @@ def extract_and_denoise_timeseries(
     output: Optional[str] = None,
     **kwargs,
 ) -> tuple[list[np.ndarray], list]:
-    """_summary_
+    """Extract and denoise regional timeseries for a given atlas.
 
     Parameters
     ----------
