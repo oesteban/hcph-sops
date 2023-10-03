@@ -1,3 +1,4 @@
+blank_issues_enabled: false
 name: Scan session
 description: log session
 title: "[SCAN] sub-xx_ses-yyy"
