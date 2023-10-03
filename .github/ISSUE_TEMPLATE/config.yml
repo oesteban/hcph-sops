@@ -1,0 +1,136 @@
+name: Scan session
+description: log session
+title: "[SCAN] sub-xx_ses-yyy"
+labels: [scan]
+assignees: 
+  - acionca
+body:
+- type: markdown
+  attributes:
+    value: "# general infos"
+
+- type: checkboxes
+  id: setup
+  attributes:
+    label: Setup
+    description: Check all the equipment that was set up
+    options:
+      - label: Biopac
+      - label: Respiration belt
+      - label: ECG
+      - label: EyeTracker
+
+- type: textarea
+  attributes:
+    label: General notes
+
+
+- type: markdown
+  attributes:
+    value: "## Anatomical scans"
+- type: checkboxes
+  attributes:
+    label: Anatomical scans completion
+    options:
+      - label: Localizer was completed.
+      - label: Localizer looked ok.
+      - label: T1w was completed.
+      - label: T1w looked ok.
+- type: dropdown
+  attributes:
+    label: anat issues
+    multiple: true
+    options:
+      - bad localizer quality
+      - badly placed FoV
+      - bad t1w quality
+- type: textarea
+  attributes:
+    label: Anatomical scans notes
+
+- type: markdown
+  attributes:
+    value: "## Diffusion scan"
+- type: checkboxes
+  attributes:
+    label: Diffusion scan completion
+    options:
+      - label: Diffusion was completed.
+- type: dropdown
+  attributes:
+    label: diffusions issues
+    multiple: true
+    options:
+      - participant fell asleep
+      - excessive motion
+- type: textarea
+  attributes:
+    label: Diffusion scan notes
+
+- type: markdown
+  attributes:
+    value: "## Fieldmap scans"
+- type: checkboxes
+  attributes:
+    label: Fieldmap scans completion
+    options:
+      - label: DWI was completed.
+      - label: GRE was completed.
+      - label: EPI BOLD was completed.
+- type: textarea
+  attributes:
+    label: Fieldmap scans notes
+
+
+- type: markdown
+  attributes:
+    value: "## Functional scans"
+- type: checkboxes
+  attributes:
+    label: Positive-control task completion
+    options:
+      - label: Positive-control task was completed.
+- type: dropdown
+  attributes:
+    label: task-pct issues
+    multiple: true
+    options:
+      - participant fell asleep
+      - excessive motion
+- type: textarea
+  attributes:
+    label: Positive-control task notes
+    
+- type: checkboxes
+  attributes:
+    label: Resting-state completion
+    options:
+      - label: Resting-state was completed.
+- type: dropdown
+  attributes:
+    label: task-rest issues
+    multiple: true
+    options:
+      - participant fell asleep
+      - excessive motion
+      - naturalistic movie issue
+- type: textarea
+  attributes:
+    label: Resting-state notes
+    
+- type: checkboxes
+  attributes:
+    label: Breath-holding task completion
+    options:
+      - label: Breath-holding task was completed.
+- type: dropdown
+  attributes:
+    label: task-bht issues
+    multiple: true
+    options:
+      - participant fell asleep
+      - excessive motion
+      - respiration belt issue
+- type: textarea
+  attributes:
+    label: Breath-holding task notes
