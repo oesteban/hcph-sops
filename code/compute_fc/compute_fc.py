@@ -50,6 +50,8 @@ from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
 from pandas import Series
 from sklearn.covariance import GraphicalLassoCV, LedoitWolf
 
+from nibabel import loadsave
+
 from nilearn._utils import stringify_path
 from nilearn.connectome import ConnectivityMeasure, vec_to_sym_matrix
 from nilearn.datasets import fetch_atlas_difumo
@@ -137,6 +139,13 @@ def get_arguments() -> argparse.Namespace:
         nargs="+",
         help="a space delimited list of task(s)",
     )
+    parser.add_argument(
+        "--run",
+        default=[],
+        action="store",
+        nargs="+",
+        help="a space delimited list of run(s)",
+    )
 
     # fMRI and denoising specific options
     parser.add_argument(
@@ -203,7 +212,10 @@ def get_arguments() -> argparse.Namespace:
 
 
 def get_func_filenames_bids(
-    paths_to_func_dir: str, task_filter: list = [], ses_filter: list = []
+    paths_to_func_dir: str,
+    task_filter: list = [],
+    ses_filter: list = [],
+    run_filter: list = [],
 ) -> tuple[list, float]:
     """Return the BIDS functional imaging files matching the specified task and session
     filters as well as the first (if multiple) unique repetition time (TR).
@@ -213,9 +225,11 @@ def get_func_filenames_bids(
     paths_to_func_dir : str
         Path to the BIDS (usually derivatives) directory
     task_filter : list, optional
-        List of task names to consider, by default []
+        List of task name(s) to consider, by default []
     ses_filter : list, optional
-        List of session names to consider, by default []
+        List of session name(s) to consider, by default []
+    run_filter : list, optional
+        List of run(s) to consider, by default []
 
     Returns
     -------
@@ -236,17 +250,38 @@ def get_func_filenames_bids(
         suffix="bold",
         task=task_filter,
         session=ses_filter,
+        run=run_filter,
     )
 
     t_rs = []
+    affines = []
     for file in all_derivatives:
         t_rs.append(layout.get_metadata(file)["RepetitionTime"])
+        affines.append(loadsave.load(file).affine)
+
+    affines = np.array(affines)
+    unique_affines = np.unique(affines[:, 0, 0])
+    if len(unique_affines) > 1:
+        files_by_affine_message = ""
+        for unique_affine_value in unique_affines:
+            affine_filter = affines[:, 0, 0] == unique_affine_value
+            have_similar_affine = [
+                op.basename(filename)
+                for filename, mask in zip(all_derivatives, affine_filter)
+                if mask
+            ]
+            files_by_affine_message += "\nFiles with similar FoVs:\n\t- "
+            files_by_affine_message += "\n\t- ".join(have_similar_affine)
+        raise ValueError(
+            "Multiple FoVs (affines) have been found. "
+            "Files with similar FoVs should be computed together (See groups below)."
+            f"{files_by_affine_message}"
+        )
 
     unique_tr_s = set(t_rs)
-
     if len(unique_tr_s) > 1:
         logging.warning(
-            "Multiple TR values found, temporal filtering may not" " work as intended !"
+            "Multiple TR values found, temporal filtering may not work as intended !"
         )
 
     return all_derivatives, list(unique_tr_s)[0]
@@ -471,7 +506,9 @@ def fit_transform_patched(
         time_series = masker.fit_transform(
             func_filename, confounds=confounds, sample_mask=sample_mask
         )
-    except ValueError:
+    except ValueError as msg:
+        if "Number of sample_mask" not in msg:
+            raise
         # See nilearn issue #3967 for more details
         logging.warning("Using patched version of 'MultiNiftiMapsMasker ...'")
         masker = MultiNiftiMapsMasker_patched(maps_img=atlas_filename, **kwargs)
@@ -672,7 +709,10 @@ def extract_and_denoise_timeseries(
             motion="basic",
             **kwargs,
         )
-    except ValueError:
+    except ValueError as msg:
+        if "Could not find associated confound file. " not in str(msg):
+            raise
+
         logging.warning(
             "Nilearn could not find the confounds file (this is likely due to a"
             " bug in nilearn.interface.fmriprep.load_confouds that should be fixed in"
@@ -1102,6 +1142,7 @@ def main():
 
     ses_filter = args.ses
     task_filter = args.task
+    run_filter = args.run
     overwrite = args.overwrite
 
     # denoise_only = args.denoise_only
@@ -1133,7 +1174,10 @@ def main():
     logging.captureWarnings(True)
 
     func_filenames, t_r = get_func_filenames_bids(
-        input_path, task_filter=task_filter, ses_filter=ses_filter
+        input_path,
+        task_filter=task_filter,
+        ses_filter=ses_filter,
+        run_filter=run_filter,
     )
     logging.info(f"Found {len(func_filenames)} functional file(s):")
     logging.info(
@@ -1216,20 +1260,7 @@ def main():
                 labels=atlas_labels,
                 networks=atlas_network,
             )
-    else:
-        # TESTING VISUAL REPORTS
-        for individual_time_serie, filename in zip(
-            time_series + existing_timeseries, missing_output
-        ):
-            visual_report_timeserie(
-                individual_time_serie,
-                filename=filename,
-                output=output,
-                labels=atlas_labels,
-                networks=atlas_network,
-            )
 
-    logging.info("Saving connectivity matrices ...")
     fc_matrices = compute_connectivity(
         time_series + existing_timeseries,
         estimator=covar_estimator,
@@ -1262,6 +1293,9 @@ def main():
         f"Computation is done for {len(missing_output)} files out of the "
         f"{len(func_filenames)} provided."
     )
+
+    if not len(missing_output):
+        logging.warning("Nothing was computed. Use --overwrite to overwrite data.")
     logging.info("Functional connectivity finished successfully !")
 
 
