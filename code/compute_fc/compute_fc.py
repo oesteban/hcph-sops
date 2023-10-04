@@ -225,9 +225,11 @@ def get_func_filenames_bids(
     paths_to_func_dir : str
         Path to the BIDS (usually derivatives) directory
     task_filter : list, optional
-        List of task names to consider, by default []
+        List of task name(s) to consider, by default []
     ses_filter : list, optional
-        List of session names to consider, by default []
+        List of session name(s) to consider, by default []
+    run_filter : list, optional
+        List of run(s) to consider, by default []
 
     Returns
     -------
