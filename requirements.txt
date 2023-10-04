@@ -9,4 +9,4 @@ pygments
 weasyprint<53
 matplotlib==3.3
 pybids
-nilearn==0.10.*
+nilearn>=0.10.1
