@@ -36,6 +36,8 @@ import argparse
 import logging
 import os
 import os.path as op
+from collections import defaultdict
+from itertools import chain
 from typing import Optional, Union
 
 import matplotlib.pyplot as plt
@@ -46,11 +48,10 @@ from bids.layout.writing import build_path
 from matplotlib.axes import Axes
 from matplotlib.cm import get_cmap
 from matplotlib.lines import Line2D
+from nibabel import loadsave
 from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
 from pandas import Series
 from sklearn.covariance import GraphicalLassoCV, LedoitWolf
-
-from nibabel import loadsave
 
 from nilearn._utils import stringify_path
 from nilearn.connectome import ConnectivityMeasure, vec_to_sym_matrix
@@ -105,17 +106,22 @@ def get_arguments() -> argparse.Namespace:
     # Input/Output arguments and options
     parser.add_argument("data_dir", help="BIDS dataset or derivatives with data")
     parser.add_argument(
-        "-s",
-        "--save",
-        action="store_true",
-        default=False,
-        help="save the outputs",
+        "--no-save",
+        action="store_false",
+        default=True,
+        help="disable saving of the output",
     )
     parser.add_argument(
         "-o",
         "--output",
         default=None,
         help="specify an alternative output directory",
+    )
+    parser.add_argument(
+        "--study-name",
+        default="",
+        help="name of the study"
+        "(will be followed by the name and dimension of the atlas)",
     )
 
     # Script specific options
@@ -211,12 +217,41 @@ def get_arguments() -> argparse.Namespace:
     return args
 
 
+def separate_by_similar_values(
+    input_list: list, external_value: Optional[list] = None
+) -> dict:
+    """This returns elements of `input_list` with similar values (optionally set by
+    `external_value`) separated into sub-lists.
+
+    Parameters
+    ----------
+    input_list : list
+        List to be separated.
+    external_value : Optional[list], optional
+        Values corresponding to the elements of `input_list`, by default None
+
+    Returns
+    -------
+    dict
+        Dictionnary where each entry is a list of elements that have similar values and
+        the keys are the value for each list.
+    """
+    if external_value is None:
+        external_value = input_list
+
+    data_by_value = defaultdict(list)
+
+    for val, data in zip(external_value, input_list):
+        data_by_value[val].append(data)
+    return data_by_value
+
+
 def get_func_filenames_bids(
     paths_to_func_dir: str,
     task_filter: list = [],
     ses_filter: list = [],
     run_filter: list = [],
-) -> tuple[list, float]:
+) -> tuple[list[list[str]], list[float]]:
     """Return the BIDS functional imaging files matching the specified task and session
     filters as well as the first (if multiple) unique repetition time (TR).
 
@@ -233,8 +268,8 @@ def get_func_filenames_bids(
 
     Returns
     -------
-    tuple[list, float]
-        Returns a tuple of two with: a list of filenames and a TR.
+    tuple[list[list[str]], list[float]]
+        Returns two lists with: a list of sorted filenames and a list of TRs.
     """
     logging.debug("Using BIDS to find functional files...")
 
@@ -253,38 +288,39 @@ def get_func_filenames_bids(
         run=run_filter,
     )
 
-    t_rs = []
     affines = []
     for file in all_derivatives:
-        t_rs.append(layout.get_metadata(file)["RepetitionTime"])
         affines.append(loadsave.load(file).affine)
 
-    affines = np.array(affines)
-    unique_affines = np.unique(affines[:, 0, 0])
-    if len(unique_affines) > 1:
-        files_by_affine_message = ""
-        for unique_affine_value in unique_affines:
-            affine_filter = affines[:, 0, 0] == unique_affine_value
-            have_similar_affine = [
-                op.basename(filename)
-                for filename, mask in zip(all_derivatives, affine_filter)
-                if mask
-            ]
-            files_by_affine_message += "\nFiles with similar FoVs:\n\t- "
-            files_by_affine_message += "\n\t- ".join(have_similar_affine)
-        raise ValueError(
-            "Multiple FoVs (affines) have been found. "
-            "Files with similar FoVs should be computed together (See groups below)."
-            f"{files_by_affine_message}"
-        )
-
-    unique_tr_s = set(t_rs)
-    if len(unique_tr_s) > 1:
+    similar_fov_dict = separate_by_similar_values(
+        all_derivatives, np.array(affines)[:, 0, 0]
+    )
+    if len(similar_fov_dict) > 1:
         logging.warning(
-            "Multiple TR values found, temporal filtering may not work as intended !"
+            f"{len(similar_fov_dict)} different FoV found ! "
+            "Files with similar FoV will be computed together. "
+            "Computation time may increase."
         )
 
-    return all_derivatives, list(unique_tr_s)[0]
+    separated_files = []
+    separated_trs = []
+    for file_group in similar_fov_dict.values():
+        t_rs = []
+        for file in file_group:
+            t_rs.append(layout.get_metadata(file)["RepetitionTime"])
+
+        similar_tr_dict = separate_by_similar_values(file_group, t_rs)
+        separated_files += list(similar_tr_dict.values())
+        separated_trs += list(similar_tr_dict.keys())
+
+        if len(similar_tr_dict) > 1:
+            logging.warning(
+                "Multiple TR values found ! "
+                "Files with similar TR will be computed together. "
+                "Computation time may increase."
+            )
+
+    return separated_files, separated_trs
 
 
 def get_bids_savename(filename: str, patterns: list = FC_PATTERN, **kwargs) -> str:
@@ -309,7 +345,6 @@ def get_bids_savename(filename: str, patterns: list = FC_PATTERN, **kwargs) -> s
         entity[key] = value
 
     bids_savename = build_path(entity, patterns)
-    logging.debug(f"BIDS filename is :\n\t{build_path(entity, patterns)}")
 
     return bids_savename
 
@@ -329,9 +364,10 @@ def get_atlas_data(atlas_name: str = "DiFuMo", **kwargs) -> dict:
     """
     logging.info("Fetching the DiFuMo atlas ...")
 
-    if kwargs["dimension"] not in [64, 128, 256, 512]:
+    if kwargs["dimension"] not in [64, 128, 512]:
         logging.warning(
-            f"{kwargs['dimension']} is not a supported atlas dimension for the DiFuMo"
+            "Dimension for DiFuMo atlas is different from 64, 128 or 512 ! Are you"
+            "certain you want to deviate from those optimized modes? "
         )
 
     return fetch_atlas_difumo(legacy_format=False, **kwargs)
@@ -386,7 +422,6 @@ def check_existing_output(
         Boolean filter with True for missing data (optionally, a second filter with
         existing data)
     """
-    logging.debug("\n\t".join(func_filename))
 
     missing_data_filter = [
         not op.exists(op.join(output, get_bids_savename(filename, **kwargs)))
@@ -394,8 +429,10 @@ def check_existing_output(
     ]
 
     missing_data = np.array(func_filename)[missing_data_filter]
-    logging.debug(f"\t{sum(missing_data_filter)} missing data found")
-    logging.debug("\n\t".join(missing_data))
+    logging.debug(
+        f"\t{sum(missing_data_filter)} missing data found for files:"
+        "\n\t" + "\n\t".join(missing_data)
+    )
 
     if return_existing:
         existing_data = np.array(func_filename)[
@@ -654,6 +691,7 @@ def plot_interpolation(
     logging.debug(f"\t{op.join(output, interpolate_saveloc)}")
     os.makedirs(op.join(output, op.dirname(interpolate_saveloc)), exist_ok=True)
     plt.savefig(op.join(output, interpolate_saveloc))
+    plt.close()
 
 
 def extract_and_denoise_timeseries(
@@ -696,6 +734,7 @@ def extract_and_denoise_timeseries(
         return [], []
 
     logging.info(f"Extracting and denoising timeseries for {len(func_filename)} files.")
+    logging.debug(f"Denoising strategy includes : {' '.join(DENOISING_STRATEGY)}")
     logging.debug(f"Denoising parameters are: {kwargs}")
 
     # There is currently a bug in nilearn that prevents "load_confounds" from finding
@@ -1052,6 +1091,7 @@ def visual_report_timeserie(
         logging.debug(f"\t{op.join(output, ts_saveloc)}")
         os.makedirs(op.join(output, op.dirname(ts_saveloc)), exist_ok=True)
         plt.savefig(op.join(output, ts_saveloc))
+        plt.close()
 
     # Plotting confounds as a design matrix
     if confounds is not None:
@@ -1065,6 +1105,7 @@ def visual_report_timeserie(
         logging.debug(f"\t{op.join(output, conf_saveloc)}")
 
         plt.savefig(op.join(output, conf_saveloc))
+        plt.close()
 
 
 def visual_report_fc(
@@ -1106,6 +1147,7 @@ def visual_report_fc(
     logging.debug(f"\t{op.join(output, fc_saveloc)}")
 
     plt.savefig(op.join(output, fc_saveloc))
+    plt.close()
 
 
 def save_output(
@@ -1137,8 +1179,10 @@ def main():
     args = get_arguments()
 
     input_path = args.data_dir
-    save = args.save
+    save = args.no_save
     output = args.output
+
+    study_name = args.study_name
 
     ses_filter = args.ses
     task_filter = args.task
@@ -1173,15 +1217,16 @@ def main():
 
     logging.captureWarnings(True)
 
-    func_filenames, t_r = get_func_filenames_bids(
+    func_filenames, t_r_list = get_func_filenames_bids(
         input_path,
         task_filter=task_filter,
         ses_filter=ses_filter,
         run_filter=run_filter,
     )
-    logging.info(f"Found {len(func_filenames)} functional file(s):")
+    all_filenames = list(chain.from_iterable(func_filenames))
+    logging.info(f"Found {len(all_filenames)} functional file(s):")
     logging.info(
-        "\t" + "\n\t".join([op.basename(filename) for filename in func_filenames])
+        "\t" + "\n\t".join([op.basename(filename) for filename in all_filenames])
     )
 
     atlas_data = get_atlas_data(dimension=atlas_dimension)
@@ -1191,6 +1236,9 @@ def main():
 
     if output is None:
         run_name = f"DiFuMo{atlas_dimension:d}"
+        if study_name:
+            run_name = "-".join([study_name, run_name])
+
         run_name += (low_pass is not None) * "-LP"
         run_name += (interpolate) * "-noCensoring"
 
@@ -1203,39 +1251,52 @@ def main():
     logging.info(f"'{fc_label}' has been selected as connectivity metric")
 
     # By default, the timeseries and FC of all filenames in input will be computed
-    missing_ts = missing_output = func_filenames.copy()
+    all_missing_ts = func_filenames.copy()
     existing_timeseries = []
     if not overwrite:
         logging.debug("Looking for existing timeseries ...")
-        missing_ts, existing_ts = check_existing_output(
+        all_missing_ts, all_existing_ts = check_existing_output(
             output,
-            func_filenames,
+            all_filenames,
             return_existing=True,
             patterns=TIMESERIES_PATTERN,
             **TIMESERIES_FILLS,
         )
 
-        logging.info(f"{len(missing_ts)} files are missing timeseries.")
+        logging.info(f"{len(all_missing_ts)} files are missing timeseries.")
         logging.debug("Looking for existing fc matrices ...")
         missing_only_fc = check_existing_output(
-            output, existing_ts, patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
+            output, all_existing_ts, patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
         )
-        missing_output = missing_ts + missing_only_fc
-        logging.info(f"{len(missing_output)} files are missing FC matrices.")
+        logging.info(
+            f"{len(all_missing_ts + missing_only_fc)} files are missing FC matrices."
+        )
         existing_timeseries = load_timeseries(missing_only_fc, output)
 
-    time_series, all_confounds = extract_and_denoise_timeseries(
-        missing_ts,
-        atlas_filename,
-        verbose=nilearn_verbose,
-        t_r=t_r,
-        low_pass=low_pass,
-        fd_threshold=fd_threshold,
-        std_dvars_threshold=std_dvars_threshold,
-        scrub=scrub,
-        interpolate=interpolate,
-        output=output,
-    )
+    separated_missing_ts = [
+        [file for file in file_group if file in all_missing_ts]
+        for file_group in func_filenames
+    ]
+    sorted_missing_ts = list(chain.from_iterable(separated_missing_ts))
+    missing_something = sorted_missing_ts + missing_only_fc
+
+    time_series = []
+    all_confounds = []
+    for filenames_to_ts, t_r in zip(separated_missing_ts, t_r_list):
+        ts, conf = extract_and_denoise_timeseries(
+            filenames_to_ts,
+            atlas_filename,
+            verbose=nilearn_verbose,
+            t_r=t_r,
+            low_pass=low_pass,
+            fd_threshold=fd_threshold,
+            std_dvars_threshold=std_dvars_threshold,
+            scrub=scrub,
+            interpolate=interpolate,
+            output=output,
+        )
+        time_series += ts
+        all_confounds += conf
 
     # Saving aggregated/denoised timeseries and visual reports
     if save and len(time_series):
@@ -1243,14 +1304,14 @@ def main():
         os.makedirs(output, exist_ok=True)
         save_output(
             time_series,
-            missing_ts,
+            sorted_missing_ts,
             output,
             patterns=TIMESERIES_PATTERN,
             **TIMESERIES_FILLS,
         )
 
         for individual_time_serie, confounds, filename in zip(
-            time_series, all_confounds, missing_ts
+            time_series, all_confounds, sorted_missing_ts
         ):
             visual_report_timeserie(
                 individual_time_serie,
@@ -1272,14 +1333,14 @@ def main():
         logging.info("Saving connectivity matrices ...")
         save_output(
             fc_matrices,
-            missing_output,
+            missing_something,
             output,
             patterns=FC_PATTERN,
             meas=fc_label,
             **FC_FILLS,
         )
 
-        for individual_matrix, filename in zip(fc_matrices, missing_output):
+        for individual_matrix, filename in zip(fc_matrices, missing_something):
             visual_report_fc(
                 individual_matrix,
                 filename=filename,
@@ -1290,11 +1351,11 @@ def main():
             )
 
     logging.info(
-        f"Computation is done for {len(missing_output)} files out of the "
-        f"{len(func_filenames)} provided."
+        f"Computation is done for {len(missing_something)} files out of the "
+        f"{len(all_filenames)} provided."
     )
 
-    if not len(missing_output):
+    if not len(missing_something):
         logging.warning("Nothing was computed. Use --overwrite to overwrite data.")
     logging.info("Functional connectivity finished successfully !")
 
