@@ -128,7 +128,7 @@
         Please keep your underwear on [if a woman, ask whether **their undergarment DOES NOT contain any large metallic part** such as shaping guides, and request their removal if they do].
 
     ???+ quote "*Dress code* inside the scanner **if they CAN WEAR THEIR CLOTHES**"
-        Before we continute, we need to make sure we do not introduce any dangerous object in the magnet room.
+        Before we continue, we need to make sure we do not introduce any dangerous object in the magnet room.
 
         Please deposit here all your belongings, your belt, your glasses, your jewelry and any accessories, piercings, etc. that you have on you.
         If a woman, ask whether **their undergarment DOES NOT contain any large metallic part** such as shaping guides, and request their removal in the changing room.
