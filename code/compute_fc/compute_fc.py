@@ -345,7 +345,6 @@ def get_bids_savename(filename: str, patterns: list = FC_PATTERN, **kwargs) -> s
         entity[key] = value
 
     bids_savename = build_path(entity, patterns)
-    logging.debug(f"BIDS filename is :\n\t{build_path(entity, patterns)}")
 
     return bids_savename
 
@@ -365,9 +364,10 @@ def get_atlas_data(atlas_name: str = "DiFuMo", **kwargs) -> dict:
     """
     logging.info("Fetching the DiFuMo atlas ...")
 
-    if kwargs["dimension"] not in [64, 128, 256, 512]:
+    if kwargs["dimension"] not in [64, 128, 512]:
         logging.warning(
-            f"{kwargs['dimension']} is not a supported atlas dimension for the DiFuMo"
+            "Dimension for DiFuMo atlas is different from 64, 128 or 512 ! Are you"
+            "certain you want to deviate from those optimized modes? "
         )
 
     return fetch_atlas_difumo(legacy_format=False, **kwargs)
@@ -422,7 +422,6 @@ def check_existing_output(
         Boolean filter with True for missing data (optionally, a second filter with
         existing data)
     """
-    logging.debug("\n\t".join(func_filename))
 
     missing_data_filter = [
         not op.exists(op.join(output, get_bids_savename(filename, **kwargs)))
@@ -430,8 +429,10 @@ def check_existing_output(
     ]
 
     missing_data = np.array(func_filename)[missing_data_filter]
-    logging.debug(f"\t{sum(missing_data_filter)} missing data found")
-    logging.debug("\n\t".join(missing_data))
+    logging.debug(
+        f"\t{sum(missing_data_filter)} missing data found for files:"
+        "\n\t" + "\n\t".join(missing_data)
+    )
 
     if return_existing:
         existing_data = np.array(func_filename)[
@@ -733,6 +734,7 @@ def extract_and_denoise_timeseries(
         return [], []
 
     logging.info(f"Extracting and denoising timeseries for {len(func_filename)} files.")
+    logging.debug(f"Denoising strategy includes : {' '.join(DENOISING_STRATEGY)}")
     logging.debug(f"Denoising parameters are: {kwargs}")
 
     # There is currently a bug in nilearn that prevents "load_confounds" from finding
