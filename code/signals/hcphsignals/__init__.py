@@ -33,9 +33,11 @@ class signals(IntFlag):
     RUN = 0x80
     """When a run (e.g., a task fMRI protocol) starts."""
     ET_START_AND_STOP = 0x02
-    """Issued when the EyeTraker starts and when it stops recording."""
+    """Issued when the EyeTracker starts and when it stops recording."""
     ET_START_FIXATION = 0x04
+    """For tasks/runs with a fixation point Eye Tracker."""
     ET_STOP_FIXATION = 0x10
+    """For tasks/runs with a fixation point Eye Tracker."""
 
     # QCT events
     QCT_VIS = 0x04
