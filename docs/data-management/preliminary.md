@@ -1,6 +1,6 @@
 This project maintains data under version control thanks to *DataLad*<sup>[1]</sup>.
 For instructions on how to setup *DataLad* on your PC, please refer to the [official documentation](https://handbook.datalad.org/en/latest/intro/installation.html).
-When employing high-performance computing (HPC), we provide [some specific guidelines below](#hpc-users-instructions-to-install-datalad).
+When employing high-performance computing (HPC), we provide [some specific guidelines](#hpc-users-instructions-to-install-datalad).
 
 !!! important "Please read the [*DataLad Handbook*](https://handbook.datalad.org/en/latest/index.html), especially if you are new to this tool"
 

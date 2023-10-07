@@ -80,6 +80,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 ## Setting up the BIOPAC system and physiological recording sensors
 
 - [ ] Ensure you have the *AcqKnowledge* software USB license key. Plug the USB key to the multiport adapter for Mac and plug that adapter to the computer *{{ secrets.hosts.oesteban | default("███") }}* as shown in the picture below. **It needs to stay plugged at all times during the acquisition.**
+    ![mac_setup](../assets/images/mac_setup.png)
 - [ ] Open the *AcqKnowledge* software
 - [ ] Initiate an *Amphetamin* session to avoid the computer to go to sleep/lock the screen:
     - [ ] Click on the pill icon on the Mac's status bar
@@ -87,7 +88,6 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Plug the power cord of the BIOPAC and of the GA into suitable power sockets.
 - [ ] Plug in the Ethernet (the plug is on the back side of the BIOPAC) to the multiport adapter connected to the computer *{{ secrets.hosts.oesteban | default("███") }}*.
     ![biopack-back](../assets/images/biopack-back.jpg "BIOPAC back side")
-    ![mac_setup](../assets/images/mac_setup.png)
 - [ ] Connect the parallel cable to the 25-pin socket at the back of the SPT100D of the BIOPAC and to the parallel port of the MMBT-S Trigger Interface Box adapter (N-shaped pink box).
     ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side")
 
