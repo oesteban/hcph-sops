@@ -200,7 +200,7 @@ Instructions of operations to be performed before the participant arrival, **bef
         Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room.
         Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner because they are magnetic.
 
-        ![cable_passage](../assets/images/cable_passage.jpg)
+        ![cable_passage](../assets/images/cable_passage.png)
 
     !!! important "Since someone will enter the Scanning Room to receive the cables, this is a perfect moment for the helper from inside to take the plexiglass panel with them when entering the Scanning Room."
 
