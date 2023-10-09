@@ -130,6 +130,12 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
     pip3 install attrdict py2app bdist_mpkg
     ```
+- [ ] Install wxPython. Careful to replace the ubuntu version with the one corresponding to your system (you can check which Ubuntu version is installed on your system by running `lsb_release -a` in the terminal)
+    ```
+    pip3 install -U \
+        -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 \
+        wxPython
+    ```
 - [ ] Install Psychopy using the following command:
     ```
     pip3 install -e .
