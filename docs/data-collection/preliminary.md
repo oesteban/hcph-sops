@@ -100,6 +100,7 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
 
 #### Stimuli presentation with *psychopy*
 
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
 - [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
 - [ ] Clone the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks):
     ```
@@ -109,8 +110,6 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
     git remote add upstream git@github.com:theaxonlab/HCPh-fMRI-tasks.git
     ```
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
-
 - [ ] Clone the [PsychoPy repository](https://github.com/psychopy/psychopy.git):
     ```
     git clone git@github.com:psychopy/psychopy.git
@@ -129,7 +128,7 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
 - [ ] Install bdist_mpkg, py2app and attrdict:
     ```
-    pip3 attrdict py2app bdist_mpkg
+    pip3 install attrdict py2app bdist_mpkg
     ```
 - [ ] Install Psychopy using the following command:
     ```
