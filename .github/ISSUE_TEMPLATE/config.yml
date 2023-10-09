@@ -1,7 +1,7 @@
 blank_issues_enabled: true
 name: Scan session
 description: log session
-title: "[SCAN] sub-xx_ses-yyy"
+title: "[SCAN] sub-001_ses-yyy"
 labels: [scan]
 assignees: 
   - acionca
@@ -20,6 +20,7 @@ body:
       - label: Respiration belt
       - label: ECG
       - label: EyeTracker
+      - label: PhysioPy
 
 - type: textarea
   attributes:
@@ -42,9 +43,10 @@ body:
     label: anat issues
     multiple: true
     options:
-      - bad localizer quality
+      - noisy localizer
       - badly placed FoV
-      - bad t1w quality
+      - bad t1w quality (give more detail in the notes)
+      - interrupted scan
 - type: textarea
   attributes:
     label: Anatomical scans notes
@@ -64,9 +66,11 @@ body:
     options:
       - participant fell asleep
       - excessive motion
+      - interrupted scan
 - type: textarea
   attributes:
     label: Diffusion scan notes
+    description: If you detected an issue, please describe it in detail here.
 
 - type: markdown
   attributes:
@@ -78,9 +82,17 @@ body:
       - label: DWI was completed.
       - label: GRE was completed.
       - label: EPI BOLD was completed.
+      - label: Physiological signals are still recording and look ok.
+- type: dropdown
+  attributes:
+    label: fieldmaps issues
+    multiple: true
+    options:
+      - interrupted scan
 - type: textarea
   attributes:
     label: Fieldmap scans notes
+    description: If you detected an issue, please describe it in detail here.
 
 
 - type: markdown
@@ -91,22 +103,29 @@ body:
     label: Positive-control task completion
     options:
       - label: Positive-control task was completed.
+      - label: Physiological signals are still recording and look ok.
 - type: dropdown
   attributes:
     label: task-pct issues
     multiple: true
     options:
       - participant fell asleep
+      - participant did not perform the task
+      - task/physiopy/screen issue
       - excessive motion
+      - eye-tracking issues (crash, pupil loss)
+      - interrupted scan
 - type: textarea
   attributes:
     label: Positive-control task notes
+    description: If you detected an issue, please describe it in detail here.
     
 - type: checkboxes
   attributes:
     label: Resting-state completion
     options:
       - label: Resting-state was completed.
+      - label: Physiological signals are still recording and look ok.
 - type: dropdown
   attributes:
     label: task-rest issues
@@ -115,9 +134,12 @@ body:
       - participant fell asleep
       - excessive motion
       - naturalistic movie issue
+      - eye-tracking issues (crash, pupil loss)
+      - interrupted scan
 - type: textarea
   attributes:
     label: Resting-state notes
+    description: If you detected an issue, please describe it in detail here.
     
 - type: checkboxes
   attributes:
@@ -130,8 +152,12 @@ body:
     multiple: true
     options:
       - participant fell asleep
+      - participant did not perform the task
+      - task/physiopy/screen issue
       - excessive motion
       - respiration belt issue
+      - interrupted scan
 - type: textarea
   attributes:
     label: Breath-holding task notes
+    description: If you detected an issue, please describe it in detail here.
