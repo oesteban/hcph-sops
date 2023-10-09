@@ -36,6 +36,11 @@
 
     ![adjustFOV.jpg](../assets/images/adjustFOV.jpg)
 
+### Interrupted scan
+- [ ] In case, you have to interrupt a sequence because a problem occured (e.g your participant fell asleep, the physiological recordings did not start etc.), click right on the sequence that needs to be restarted and click on `Repeat` to restart the scan **without changing anything in its name!**
+
+    ![repeat_scan.png](../assets/images/repeat_scan.png)
+
 ## Eye-Tracker Calibration Process
 
 - [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected (9-point for QCT and 5-point for resting state and breath-holding tasks):
