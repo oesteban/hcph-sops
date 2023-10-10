@@ -1,9 +1,8 @@
-blank_issues_enabled: true
 name: Scan session
 description: log session
 title: "[SCAN] sub-001_ses-yyy"
 labels: [scan]
-assignees: 
+assignees:
   - acionca
 body:
 - type: markdown
@@ -21,6 +20,7 @@ body:
       - label: ECG
       - label: EyeTracker
       - label: PhysioPy
+
 
 - type: textarea
   attributes:
