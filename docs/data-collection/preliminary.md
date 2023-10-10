@@ -140,7 +140,11 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
     pip3 install -e .
     ```
-- [ ] Open Psychopy, open the experiment-files corresponding to each task:
+- [ ] Open Psychopy, open the experiment-files corresponding to each task by typing the following command in the terminal:
+    ```
+    psychopy your_experiment.psyexp
+    ```
+- [ ] For each task, check the following:
     - [ ] {{ settings.psychopy.tasks.func_qct }} (positive-control task, QCT) :
         - [ ] time it to confirm the length, and
         - [ ] check the task runs properly.
