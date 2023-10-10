@@ -16,11 +16,16 @@ body:
     label: Setup
     description: Check all the equipment that was set up
     options:
+      - label: Syncbox
       - label: Biopac
+      - label: Gas analyzer
+      - label: EyeTracker
+      - label: PsychoPy
+      - label: Acqknowledge
       - label: Respiration belt
       - label: ECG
-      - label: EyeTracker
-      - label: PhysioPy
+      
+
 
 - type: textarea
   attributes:
