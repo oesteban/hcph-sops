@@ -36,8 +36,8 @@
 
     ![adjustFOV.jpg](../assets/images/adjustFOV.jpg)
 
-### Interrupted scan
-- [ ] In case, you have to interrupt a sequence because a problem occured (e.g your participant fell asleep, the physiological recordings did not start etc.), right click on the sequence that needs to be restarted and click on `Repeat` to restart the scan **without changing anything in its name!**
+### Repeat scan
+- [ ] In case, you have to interrupt a sequence because a problem occured (e.g your participant fell asleep, the physiological recordings did not start etc.) or you have to repeat a sequence because the image was of bad quality, right click on the sequence that needs to be restarted and click on `Repeat` to restart the scan **without changing anything in its name!**
 
     ![repeat_scan.png](../assets/images/repeat_scan.png)
 
