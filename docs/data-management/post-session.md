@@ -5,7 +5,7 @@
     - [ ] Indicate on [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}) that the participant's first session has been submitted for screening.
     - [ ] Wait for response from {{ secrets.people.medical_contact | default("███") }} and note down the result of the screening in our [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
 
-To do so, you'll need to first [download the data from PACS](#download-the-data-from-the-pacs-with-pacsman-only-authorized-users) and then [convert the data into BIDS](#convert-data-to-bids-with-heudiconv-and-phys2bids) as indicated below.
+To do so, you'll need to first [download the data from PACS](#download-the-data-from-the-pacs-with-pacsman-only-authorized-users) and then [convert the data into BIDS](#convert-data-to-bids-with-heudiconv-and-phys2bids).
 
 !!! warning "What to do when there are incidental findings"
 

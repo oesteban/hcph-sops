@@ -187,9 +187,10 @@
 - [ ] Instruct the participant to lay on the MRI bed.
 
 ### Connecting physiological recording sensors and probes
-- [ ] Connect the ECG leads to the three electrodes. The electrodes MUST be connected following the color scheme shown in the picture above.
+- [ ] Connect the ECG leads to the three electrodes. The electrodes MUST be connected following the color scheme shown in the picture below.
+    ![prep-ecg-electrodes](../assets/images/prep-ECG-electrodes.png)
 - [ ] Install the RB below the participant's chest and connect it to the tube as shown in the picture below. The RB measures the stretching induced by breathing, so it MUST surround the chest or stomach comfortably. Positioning the RB higher (chest) or lower (stomach) depends on the individual's preferential respiration mode (chest breathing or diaphragmatic, respectively).
-- [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten under the chin for comfort and stability by sliding the ring as shown in the picture above.
+- [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten under the chin for comfort and stability by sliding the ring as shown in the picture below.
 
     ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
 

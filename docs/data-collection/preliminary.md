@@ -54,7 +54,7 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
 
 ### Install the BIOPAC
 
-- [ ] Make sure you understand the components and settings of the BIOPAC, described above.
+- [ ] Make sure you understand the components and settings of the BIOPAC, described in the [introduction section](intro.md#biopac-documentation-and-devices).
 - [ ] Set up the line frequency switches on the back of the BIOPAC amplifier depending on your country frequency to reduce noise. Both switches should be DOWN if your country's line frequency is 50Hz. Both switches should be UP if your country's line frequency line is 60Hz.
     ![biopack-frequency-switch](../assets/images/biopack-frequency-switch.jpg "BIOPAC frequency switch")
 - [ ] Plug the different units of the BIOPAC together if it has not been done yet.
@@ -328,8 +328,8 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     A second reference mixture is necessary, and room air can be used, knowing that atmospheric contents by volume are 0.039 ±0.001%
     for CO<sub>2</sub> and 20.946 ±0.003% for O<sub>2</sub>.
 
-- [ ] Connect the GA to the BIOPAC as described above.
-- [ ] Connect the BIOPAC to the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}) as described above.
+- [ ] Connect the GA to the BIOPAC as described in [this section](pre-session.md#setting-up-the-biopac-system-and-physiological-recording-sensors).
+- [ ] Connect the BIOPAC to the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}) as described in [this section](pre-session.md#setting-up-the-biopac-system-and-physiological-recording-sensors).
 - [ ] Connect the *AcqKnowledge* License Key into a USB Port of the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}).
 - [ ] Open *AcqKnowledge* software on the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}).
 - [ ] Open the template *graph file* ([`EXP_BASE.gtl`](../assets/files/EXP_BASE.gtl))
