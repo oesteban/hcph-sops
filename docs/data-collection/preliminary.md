@@ -96,6 +96,14 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
 ### Install *Psychopy* for stimuli presentation and development
 This block describes how to prepare an environment with a running *Psychopy 3* installation.
 
+!!! warning "Multiple screens"
+
+    If you want to use multiple screens, install the corresponding libxcb extension:
+
+    ``` shell
+    sudo apt-get install libxcb-xinerama0
+    ```
+
 - [ ] Clone the [*Psychopy* repository](https://github.com/psychopy/psychopy.git):
     ``` shell
     git clone git@github.com:psychopy/psychopy.git
@@ -109,9 +117,13 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     ``` shell
     conda deactivate
     ```
-- [ ] Update pip to the latest version:
+- [ ] Update *Pypi* to the latest version:
     ``` shell
-    python3 -m pip install --upgrade pip
+    python3 -m pip install -U pip
+    ```
+- [ ] Update *Numpy* to the latest version:
+    ``` shell
+    python3 -m pip install -U numpy
     ```
 - [ ] Install bdist_mpkg, py2app and attrdict:
     ``` shell
@@ -166,6 +178,21 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     A quick attempt to solve this would be adding our user to the `video` group.
 
     However, that is unlikely to work out so you'll need to take more actions (see [this](https://github.com/mmatl/pyrender/issues/13), and [this](https://askubuntu.com/questions/1255841/how-do-i-fix-the-glxinfo-badvalue-error-on-ubuntu-18-04))
+
+??? bug "*Psychopy* crashes when trying to run a experiment: `qt.qpa.plugin: Could not load the Qt platform plugin 'xcb'`"
+
+    If you installed `libxcb-xinerama0`, or you don't have multiple screens, first try:
+
+    ``` shell
+    python3 -m pip uninstall opencv-python
+    python3 -m pip install opencv-python-headless
+    ```
+
+    If that doesn't work, try a brute force solution by installing libxcb fully:
+
+    ``` shell
+    sudo apt-get install libxcb-*
+    ```
 
 ### Preparing the *Stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }})
 
