@@ -96,12 +96,19 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
 ### Install *Psychopy* for stimuli presentation and development
 This block describes how to prepare an environment with a running *Psychopy 3* installation.
 
-!!! warning "Multiple screens"
+??? warning "Multiple screens"
 
     If you want to use multiple screens, install the corresponding libxcb extension:
 
     ``` shell
     sudo apt-get install libxcb-xinerama0
+    ```
+
+??? important "*Psychopy* should not be installed with *Conda*/*Anaconda*"
+
+    If an anaconda environment is activated, run the following command to deactivate it:
+    ``` shell
+    conda deactivate
     ```
 
 - [ ] Clone the [*Psychopy* repository](https://github.com/psychopy/psychopy.git):
@@ -112,11 +119,6 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     ``` shell
     cd psychopy
     ```
-- [ ] *Psychopy* should not be installed with *Anaconda*.
-    If an anaconda environment is activated, run the following command to deactivate it:
-    ``` shell
-    conda deactivate
-    ```
 - [ ] Update *Pypi* to the latest version:
     ``` shell
     python3 -m pip install -U pip
@@ -125,7 +127,7 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     ``` shell
     python3 -m pip install -U numpy
     ```
-- [ ] Install bdist_mpkg, py2app and attrdict:
+- [ ] Install other necessary dependencies:
     ``` shell
     python3 -m pip install attrdict py2app bdist_mpkg
     ```
@@ -199,6 +201,15 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
 #### Prepare the *Psychopy* experiments
 
 - [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
+- [ ] Deactivate conda environment (if needed):
+    ``` shell
+    conda deactivate
+    ```
+- [ ] Install our *HCPh-signals* package (assumes these SOPs are checked out at `{{ secrets.data.sops_clone_path | default('<path>') }}`:
+    ``` shell
+    cd {{ secrets.data.sops_clone_path | default('<path>') }}/code/signals
+    python3 -m pip install .
+    ```
 - [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
 - [ ] Clone the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks):
     ```
