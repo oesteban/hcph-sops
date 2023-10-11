@@ -39,6 +39,39 @@
     - [ ] check the ECG and RB signals, and fix unanticipated problems (e.g., the respiration belt needs to be fastened tighter);
     - [ ] the *Amphetamine* app is running and keeping the computer unlocked while *AcqKnoledge* is working.
 
+- [ ] Check the quality of physiological signals
+
+    Please find in the following image examples of good and bad RB and CO2 signals to support and illustrate the criteria to consider to assess the quality of the physiological signals.
+
+    ??? thanks "Thank you to Cesar Caballero-Gaudes, Stefano Moia, Kristina Zvolankek, Elenor Morgenroth for putting together the slide below [1]."
+    ![qa_physio](../assets/images/qa_physio.png)
+
+    - [ ] Check the respiration belt signal
+        - [ ] The RB signal should not plateau (nor on the peaks, nor on the troughs). This means the RB is maxing out and needs to be loosen.
+        - [ ] The envelope of your signal should remain approximately constant. If the peaks drop or the trough rise, it might be a sign that the RB is too loose. Go back in the scanning room and tighten the RB.
+        - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+    - [ ] Check the CO2 signal
+        - [ ] The period of the CO2 signal should remain constant. If it is not, it is a sign that the vacuum is too low [WHAT SHOULD BE DONE TO SOLVE IT?].
+        - [ ] The envelope of your signal should remain approximately constant. If the peaks get smaller and smaller, it might be a sign that the participant is breathing through his mouth, as such remind the participant to breath through the nose.
+
+            ???+ quote "Remind the participant to breath through the nose"
+                Hey [NAME],
+
+                Everything ok?
+                
+                Please remember to breath through your nose and not your mouth so the CO2 expired can be recorded through the canula. Thank you.
+
+        - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+    - [ ] Check the ECG signal
+        - [ ] The period and the envelope of the signal should remain constant.
+        - [ ] [The way we placed the ECG electrodes](participant-prep.md#connecting-physiological-recording-sensors-and-probes) should give a ECG signal that looks vaguely like the familiar QRS shape. It is normal that the signal does not look as neat as on the schema, because the magnetic fields of the MR interfere with the electrodes (even if they are MR compatible electrodes).
+
+            ![qrs](../assets/images/qrs.png){: style="height:220px;width:220px"}
+
+        - [ ] Check the corresponding box in the issue collecting notes about the session.
+
 ## Acquire a localizer (*AAhead_scout*)
 - [ ] Indicate the participant that the scanning will soon start:
 
@@ -110,7 +143,7 @@
 
         It is critical that you don't move, especially at all at the very beginning and the next 20 seconds after you hear the first blipping sounds.
 
-        Try to minimize swallowing, and eye movements (for example, blinking) and try to maintain comfortable and shallow breathing.
+        Try to minimize swallowing, and eye movements (for example, blinking) and try to maintain comfortable and shallow breathing. Remember to breathe from the nose (not the mouth), so the CO2 expired can be measured through the canula.
 
         Are you ready?
 
@@ -256,3 +289,7 @@
     - [ ] Put the exhaust and inlet caps back.
 
 - [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
+
+## References
+[1]: Moia, Stefano, Molly Bright, D. Phil., and Cesar Caballero-Gaudes. “Physiologic fMRI Signals: Friend or Foe? How and Why to Measure, Model and Account for Physiology.” Presented at the Organization for Human Brain Mapping (OHBM), Glasgow, June 19, 2022.
+

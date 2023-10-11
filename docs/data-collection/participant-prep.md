@@ -91,7 +91,7 @@
 
         As you probably remember, we acquire three types of images.
         For two of them you just stay still in the scanner, but we will also require your collaboration for the third, which is functional MRI.
-        During the whole duration of the exam, please do not create closed loops by crossing your legs or holding your hands together.
+        During the whole duration of the exam, please do not create closed loops by crossing your legs or holding your hands together and remember to breathe from your nose not your mouth so the CO2 expired can be measured through the canula.
         It is possible that your peripheral nerves get stimulated at some points, so you will feel twitching of muscles, for instance, of your pectorals.
         Do not panic, it is okay, but if it feels too uncomfortable, please squeeze the alarm button.
 
