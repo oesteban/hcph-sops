@@ -60,7 +60,7 @@
         Are you ready?
 
 - [ ] Wait for the participant confirmation and set the speaker off afterward.
-- [ ] Launch the `AAhead_scout_{32,64}ch-head-coil` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
+- [ ] Launch the `AAhead_scout_64ch-head-coil` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] Once the localizer is concluded, you can drag and drop the image stack icon (something like 🗇, with an object on the top stack) onto the image viewer. That will open the localizer on the viewer.
 
     ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
@@ -132,7 +132,7 @@
 - [ ] While the fieldmap sequence is running,
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence following the abovementioned steps, and
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_qct }}).
-    - [ ] Verify that the positive-control task {{ settings.psychopy.tasks.func_qct }} is open in psychopy, that you calibrated the ET.
+    - [ ] Verify that the positive-control task `{{ settings.psychopy.tasks.func_qct }}` is open in psychopy, that you calibrated the ET.
 
 ## Acquire the functional MRI block
 - [ ] Inform the participant about the fMRI block
@@ -176,7 +176,7 @@
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
-- [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_rest }}.
+- [ ] Once the sequence is over, close the current experiment on psychopy and open `{{ settings.psychopy.tasks.func_rest }}`.
 
 ### Resting state fMRI
 - [ ] Inform the participant:
@@ -205,7 +205,7 @@
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
-- [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_bht }}.
+- [ ] Once the sequence is over, close the current experiment on psychopy and open `{{ settings.psychopy.tasks.func_bht }}`.
 
 ### Breath-holding task (BHT)
 - [ ] Inform the participant:

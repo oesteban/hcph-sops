@@ -93,13 +93,112 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
 ### Install the gas analyzer (GA)
 
 
+### Install *Psychopy* for stimuli presentation and development
+This block describes how to prepare an environment with a running *Psychopy 3* installation.
+
+!!! warning "Multiple screens"
+
+    If you want to use multiple screens, install the corresponding libxcb extension:
+
+    ``` shell
+    sudo apt-get install libxcb-xinerama0
+    ```
+
+- [ ] Clone the [*Psychopy* repository](https://github.com/psychopy/psychopy.git):
+    ``` shell
+    git clone git@github.com:psychopy/psychopy.git
+    ```
+- [ ] Navigate to the *Psychopy* directory:
+    ``` shell
+    cd psychopy
+    ```
+- [ ] *Psychopy* should not be installed with *Anaconda*.
+    If an anaconda environment is activated, run the following command to deactivate it:
+    ``` shell
+    conda deactivate
+    ```
+- [ ] Update *Pypi* to the latest version:
+    ``` shell
+    python3 -m pip install -U pip
+    ```
+- [ ] Update *Numpy* to the latest version:
+    ``` shell
+    python3 -m pip install -U numpy
+    ```
+- [ ] Install bdist_mpkg, py2app and attrdict:
+    ``` shell
+    python3 -m pip install attrdict py2app bdist_mpkg
+    ```
+- [ ] Install *wxPython*.
+    ``` shell
+    python3 -m pip install -U \
+        -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-$( lsb_release -r -s ) \
+        wxPython
+    ```
+- [ ] Install *Psychopy* using the following command:
+    ``` shell
+    pip3 install -e .
+    ```
+- [ ] Try opening *Psychopy* by typing:
+    ``` shell
+    psychopy --no-splash -b
+    ```
+
+    ??? important "The first time it runs, *Psychopy* will likely request some increased permissions"
+
+        - [ ] Add a new `psychopy` group to your system.
+            ``` shell
+            sudo groupadd --force psychopy
+            ```
+        - [ ] Add your current user to the new group:
+            ``` shell
+            sudo usermod -a -G psychopy $USER
+            ```
+        - [ ] Raise security thresholds for *Psychopy*, by inserting the following into `/etc/security/limits.d/99-psychopylimits.conf`:
+            ``` text
+            @psychopy - nice -20
+            @psychopy - rtprio 50
+            @psychopy - memlock unlimited
+            ```
+
+??? bug "*Psychopy* crashes when trying to run a experiment: `pyglet.gl.ContextException: Could not create GL context`"
+
+    This is likely related to your computer having a GPU and a nonfunctional configuration:
+
+    ``` shell
+    $ glxinfo | grep PyOpenGL
+    X Error of failed request:  BadValue (integer parameter out of range for operation)
+      Major opcode of failed request:  151 (GLX)
+      Minor opcode of failed request:  24 (X_GLXCreateNewContext)
+      Value in failed request:  0x0
+      Serial number of failed request:  110
+      Current serial number in output stream:  111
+    ```
+
+    A quick attempt to solve this would be adding our user to the `video` group.
+
+    However, that is unlikely to work out so you'll need to take more actions (see [this](https://github.com/mmatl/pyrender/issues/13), and [this](https://askubuntu.com/questions/1255841/how-do-i-fix-the-glxinfo-badvalue-error-on-ubuntu-18-04))
+
+??? bug "*Psychopy* crashes when trying to run a experiment: `qt.qpa.plugin: Could not load the Qt platform plugin 'xcb'`"
+
+    If you installed `libxcb-xinerama0`, or you don't have multiple screens, first try:
+
+    ``` shell
+    python3 -m pip uninstall opencv-python
+    python3 -m pip install opencv-python-headless
+    ```
+
+    If that doesn't work, try a brute force solution by installing libxcb fully:
+
+    ``` shell
+    sudo apt-get install libxcb-*
+    ```
 
 ### Preparing the *Stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }})
 
-This block describes how to prepare a laptop with a running *Psychopy 3* installation, the *EyeLink* software corresponding to the Eye Tracker, and finally an *Experiment synchronization service*.
+#### Prepare the *Psychopy* experiments
 
-#### Stimuli presentation with *psychopy*
-
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
 - [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
 - [ ] Clone the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks):
     ```
@@ -109,69 +208,20 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
     git remote add upstream git@github.com:theaxonlab/HCPh-fMRI-tasks.git
     ```
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
-
-- [ ] Clone the [PsychoPy repository](https://github.com/psychopy/psychopy.git):
+- [ ] Open *Psychopy* and (optionally) a experiment file corresponding to a task by typing the following command in the terminal:
     ```
-    git clone git@github.com:psychopy/psychopy.git
+    psychopy {{ settings.psychopy.tasks.func_qct }}
     ```
-- [ ] Navigate to the Psychopy directory:
-    ```
-    cd psychopy
-    ```
-- [ ] Psychopy should not be installed with anaconda. If an anaconda environment is activated, run the following command to deactivate it:
-    ```
-    conda deactivate
-    ```
-- [ ] Update pip to the latest version:
-    ```
-    pip3 install --upgrade pip
-    ```
-- [ ] Install bdist_mpkg, py2app and attrdict:
-    ```
-    pip3 attrdict py2app bdist_mpkg
-    ```
-- [ ] Install Psychopy using the following command:
-    ```
-    pip3 install -e .
-    ```
-- [ ] Open Psychopy, open the experiment-files corresponding to each task:
-    - [ ] {{ settings.psychopy.tasks.func_qct }} (positive-control task, QCT) :
-        - [ ] time it to confirm the length, and
+- [ ] For each task, check the following:
+    - [ ] `{{ settings.psychopy.tasks.func_qct }}` (positive-control task, QCT) :
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check the task runs properly.
-    - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
+    - [ ] `{{ settings.psychopy.tasks.func_rest }}` (resting-state fMRI):
         - [ ] time it to confirm the length, and
         - [ ] check that the movie is played.
-    - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
+    - [ ] `{{ settings.psychopy.tasks.func_bht }}` (breath-holding task, BHT):
         - [ ] time it to confirm the length, and
         - [ ] check the task runs properly.
-
-#### Installing *EyeLink* (eye tracker software)
-
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
-
-- [ ] Enable Canonical's universe repository with the following command:
-    ```
-    sudo add-apt-repository universe
-    sudo apt update
-    ```
-- [ ] Install and update the ca-certificates package:
-    ```
-    sudo apt update
-    sudo apt install ca-certificates
-    ```
-- [ ] Add the SR Research Software Repository signing key:
-    ```
-    sudo apt-key adv --fetch-keys https://apt.sr-research.com/SRResearch_key
-    ```
-- [ ] Install the EyeLink Developers Kit:
-    ```
-    sudo apt install eyelink-display-software
-    ```
-- [ ] Install the EyeLink Data Viewer:
-    ```
-    sudo apt install eyelink-dataviewer
-    ```
 
 #### Setting up a synchronization service
 
@@ -239,6 +289,34 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
           screen /dev/ttyACM0
           ```
       - [ ] Press <span class="keypress">s</span> and verify that `^A` appears in the screen terminal.
+
+
+#### Installing *EyeLink* (eye tracker software)
+
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
+
+- [ ] Enable Canonical's universe repository with the following command:
+    ```
+    sudo add-apt-repository universe
+    sudo apt update
+    ```
+- [ ] Install and update the ca-certificates package:
+    ```
+    sudo apt update
+    sudo apt install ca-certificates
+    ```
+- [ ] Add the SR Research Software Repository signing key:
+    ```
+    sudo apt-key adv --fetch-keys https://apt.sr-research.com/SRResearch_key
+    ```
+- [ ] Install the EyeLink Developers Kit:
+    ```
+    sudo apt install eyelink-display-software
+    ```
+- [ ] Install the EyeLink Data Viewer:
+    ```
+    sudo apt install eyelink-dataviewer
+    ```
 
 ## Every two months
 

@@ -168,7 +168,7 @@ Most of what is described in the present SOPs addresses the *Reliability Imaging
     The stimuli presentation laptop ({{ secrets.hosts.psychopy | default("███") }}) will execute four experiments, which will allow the synchronization of all devices by sending the adequate signals at their predesignated times and also present visual stimuli with the scanner's projector.
     The lengths of the four *Psychopy experiments* should be:
 
-    * {{ settings.psychopy.tasks.dwi }} ➜ <mark>**{{ settings.mri.timings.dwi }}**</mark>,
-    * {{ settings.psychopy.tasks.func_qct }} ➜ <mark>**{{ settings.mri.timings.func_qct }}**</mark>,
-    * {{ settings.psychopy.tasks.func_rest }} ➜ <mark>**{{ settings.mri.timings.func_rest }}**</mark>, and
-    * {{ settings.psychopy.tasks.func_bht }} ➜ <mark>**{{ settings.mri.timings.func_bht }}**</mark>.
+    * `{{ settings.psychopy.tasks.dwi }}` ➜ <mark>**{{ settings.mri.timings.dwi }}**</mark>,
+    * `{{ settings.psychopy.tasks.func_qct }}` ➜ <mark>**{{ settings.mri.timings.func_qct }}**</mark>,
+    * `{{ settings.psychopy.tasks.func_rest }}` ➜ <mark>**{{ settings.mri.timings.func_rest }}**</mark>, and
+    * `{{ settings.psychopy.tasks.func_bht }}` ➜ <mark>**{{ settings.mri.timings.func_bht }}**</mark>.

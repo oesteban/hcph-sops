@@ -28,15 +28,12 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] On the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
 - [ ] Open psychopy 3 by typing `psychopy`
 - [ ] Load in the different experiments and check for proper functioning:
-    - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
-        - [ ] time it to [confirm the length](intro.md#task-timing), and
+    - [ ] `{{ settings.psychopy.tasks.func_rest }}` (resting-state fMRI):
         - [ ] check that the movie is played.
-    - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
-        - [ ] time it to [confirm the length](intro.md#task-timing), and
-        - [ ] check that the movie is played.
-    - [ ] {{ settings.psychopy.tasks.func_qct }} (quality-control task, QCT):
-        - [ ] time it to [confirm the length](intro.md#task-timing), and
-        - [ ] check that the movie is played.
+    - [ ] `{{ settings.psychopy.tasks.func_bht }}` (breath-holding task, BHT):
+        - [ ] check that the task runs properly.
+    - [ ] `{{ settings.psychopy.tasks.func_qct }}` (quality-control task, QCT):
+        - [ ] check that the task runs properly.
 
 ## Documentation and other non-experimental devices
 
