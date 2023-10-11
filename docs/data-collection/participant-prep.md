@@ -14,6 +14,8 @@
         - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at :fontawesome-solid-square-phone: {{ secrets.phones.medical_contact | default("###-###-####") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
         - [ ] In case of discovering any previously undisclosed contraindication, the volunteer **MUST NOT** participate in the study.
 
+- Ask the participant to fill out the `Before scan` part of the covariates collection on the issue you opened [earlier](pre-session.md#collection-of-covariates).
+
 - [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }}).
 
     !!!warning "Only female participants, only the first session"

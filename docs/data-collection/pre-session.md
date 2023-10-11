@@ -52,8 +52,42 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     ![nuprep-tube](https://shop.neurospec.com/media/catalog/product/cache/8af976a03d45f9b6d7f91e69feeeffb9/w/e/weaver_nuprep-skin-prep-gel-single-tube-front.jpg)
 
+- [ ] Open a new issue in [the github repository](https://github.com/TheAxonLab/hcph-sops/) to collect comments and annotations about the session [ON WHICH COMPUTER SHOULD THIS BE DONE?]
+    - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
+    - [ ] This should lead you a page that looks like this 
+        ![](../assets/images/session_issue_template.png)
+        - [ ] Click on <span class="consolebutton green">Get started</span> on the issue template `Scan session`.
+    - [ ] Modify the title of the issue by replacing `yyy` with the session index. If you don't remember the session index of today, check the session index of the last issue.
 - [ ] Verify that your phone is on ringing mode so the participants can reach you
 - [ ] Check the time regularly to be on time to meet with the participant at the predefined location
+
+## Collection of covariates
+- [ ] Open a new issue in [the github repository dedicated to collecting covariates](https://github.com/TheAxonLab/hcph-mood-quest/) [ON WHICH COMPUTER SHOULD THIS BE DONE?]
+    - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
+
+- [ ] Fill the date of the scan
+- [ ] Fill in meteorological details of the scanning day based [MeteoSwiss](https://www.meteoswiss.admin.ch/local-forecasts/lausanne/1003.html#forecast-tab=detail-view) in 1003 Lausanne.
+    - [ ] Report the maximum and minimum temperature in degrees celsius.
+    - [ ] Report the wind speed at the time of scanning in km/h.
+    - [ ] Report the precipitation in mm.
+
+    ??? info "How to find the precited information on MeteoSwiss"
+        Here is what the MeteoSwiss interface looks like on a computer.
+            ![meteoswiss](../assets/images/meteoswiss.png)
+
+        In the screenshot above, the information to be reported would be:
+
+        * Minimum outside temperature for the day of the scan (°C): 14°C
+        * Maximum outside temperature for the day of the scan (°C): 23°C
+        * Wind speed (km/h): 2.7 km/h
+        * Precipitation (mm): 0mm
+        * Hours of daylight (h): 11h (18:54-07:44=11:10h roundup)
+
+- [ ] Report MR helium level (%) 
+    - [ ] In the top bar of the MR console, click on `System`>`Control`.
+    - [ ] In the window that just opened, click on the section `MR Scanner`.
+    - [ ] Report Helium Fill Level in percentage.
+    
 
 ## Boot the scanner up if it is shut down
 
