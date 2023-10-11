@@ -130,23 +130,23 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
     pip3 install attrdict py2app bdist_mpkg
     ```
-- [ ] Install wxPython. Careful to replace the ubuntu version with the one corresponding to your system (you can check which Ubuntu version is installed on your system by running `lsb_release -a` in the terminal)
-    ```
+- [ ] Install *wxPython*.
+    ``` shell
     pip3 install -U \
-        -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 \
+        -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-$( lsb_release -r -s ) \
         wxPython
     ```
-- [ ] Install Psychopy using the following command:
+- [ ] Install *Psychopy* using the following command:
     ```
     pip3 install -e .
     ```
-- [ ] Open Psychopy, open the experiment-files corresponding to each task by typing the following command in the terminal:
+- [ ] Open *Psychopy* and (optionally) a experiment file corresponding to a task by typing the following command in the terminal:
     ```
     psychopy your_experiment.psyexp
     ```
 - [ ] For each task, check the following:
     - [ ] {{ settings.psychopy.tasks.func_qct }} (positive-control task, QCT) :
-        - [ ] time it to confirm the length, and
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check the task runs properly.
     - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
         - [ ] time it to confirm the length, and
