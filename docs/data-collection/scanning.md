@@ -157,7 +157,7 @@
         It is critical that you don't move, especially at all at the very beginning and the next 20 seconds after you hear the first blipping sounds.
 
         Try to minimize swallowing and eye movements (for example, blinking) and maintain comfortable and shallow breathing.
-        Remember to breathe through your nose, not through your mouth, so the expired CO<sub>2</sub> can be measured through the cannula.
+        Remember to breathe through your nose, not through your mouth, so the expired CO<sub>2</sub> can be measured with the cannula.
 
         Are you ready?
 
