@@ -198,6 +198,151 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
 
 ### Preparing the *Stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }})
 
+The stimuli presentation laptop and any other box you want to use for debugging and development will require a few additional software packages to be available.
+
+
+#### Installing our synchronization server
+
+- [ ] Locate the latest version of the synchronization service on your system.
+    It is within the SOPs repository, at ``{{ secrets.data.sops_clone_path | default('<path>') }}/code/synchronization/forward-trigger-service.py``.
+- [ ] Install the necessary libraries <mark>as root</mark>:
+    ``` shell
+    sudo python3 -m pip install -r {{ secrets.data.sops_clone_path | default('<path>') }}/code/synchronization/requirements.txt
+    ```
+- [ ] Test the service is properly installed:
+    ``` shell
+    sudo python3 code/synchronization/forward-trigger-service.py --disable-mmbt-check
+    ```
+
+    !!! important "Use the `--disable-mmbt-check` flag only if you do not plan to connect the MMBT-S trigger box"
+
+- [ ] Test operation with our test client:
+
+    !!! tip "Check the server's log file at `/var/log/forward-trigger-service.log`"
+
+    Open a separate terminal on a separate window
+    Then, open and follow the log file:
+    ``` shell
+    less +F /var/log/forward-trigger-service.log
+    ```
+
+    Return to the original terminal, keeping the other window visible and execute:
+    ``` shell
+    python code/synchronization/forward-trigger-client.py
+    ```
+
+    The log file should now have added two lines like:
+    ```
+    2023-10-12 14:44:31.788 - INFO - Data received: <b'\x02'>
+    2023-10-12 14:44:31.788 - INFO - Forwarded <b'\x02'>
+    ```
+
+??? important "Testing the service without the MMBT-S connected"
+
+    Testing the service without the MMBT-S trigger box connected requires emmulating `/dev/ttyACM0`:
+
+      - [ ] Ensure `socat` and `screen` are installed (if not already):
+          ``` shell
+          sudo apt-get update
+          sudo apt-get install socat screen
+          ```
+      - [ ] Create a virtual serial port and establish a symbolic link to `/dev/ttyACM0` using the following command:
+          ``` shell
+          sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=666,b9600
+          ```
+      - [ ] With `screen`, listen to the new virtual serial port:
+          ``` shell
+          screen /dev/ttyACM0
+          ```
+
+          !!! tip "Alternatively, you can check the server's log file at `/var/log/forward-trigger-service.log`"
+
+      - [ ] Press <span class="keypress">s</span> and verify that `^A` appears in the screen terminal.
+
+#### Setting up the synchronization service as a daemon in the background
+
+!!! important "It's fundamental to have a reliable means of communication with the BIOPAC digital inputs"
+
+    The following guidelines set up a little service on a linux box that keeps listening for key presses (mainly, the <span class="keypress">s</span> trigger from the trigger box), and RPC (remote procedure calls) from typically *Psychopy* or similar software.
+
+    The service is spun up automatically when you connect the MMBT-S modem interface that communicates with the BIOPAC (that is, the *N-shaped pink box*)
+
+- [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
+    ``` shell
+    sudo nano /etc/udev/rules.d/99-forward-trigger.rules
+    ```
+- [ ] Add the following rule to the file:
+    ```
+    ACTION=="add", KERNEL=="ttyACM0", SUBSYSTEM=="tty", TAG+="systemd", ENV{SYSTEMD_WANTS}="forward-trigger.service"
+    ```
+- [ ] Save the file and exit the editor.
+- [ ] Run the following command to reload the udev rules:
+    ``` shell
+    sudo udevadm control --reload-rules
+    ```
+- [ ] Create a systemd service unit file:
+    ``` shell
+    sudo nano /etc/systemd/system/forward-trigger.service
+    ```
+- [ ] Add the following content to the file (Adapt the path to forward-trigger.py to the location on your computer):
+    ```
+    [Unit]
+    Description=Forward Trigger Service
+    After=network.target
+
+    [Service]
+    ExecStart=/usr/bin/python3 /path/to/forward-trigger.py
+    WorkingDirectory=/path/to/forward-trigger/directory
+    StandardOutput=null
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+- [ ] Save the file and exit the text editor.
+- [ ] Run the following command to enable the service to start at boot:
+    ``` shell
+    sudo systemctl enable forward-trigger
+    ```
+- [ ] Run the following command to reload the systemd daemon:
+    ``` shell
+    sudo systemctl daemon-reload
+    ```
+
+#### Installing *EyeLink* (eye tracker software)
+
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
+
+- [ ] Enable Canonical's universe repository with the following command:
+    ``` shell
+    sudo add-apt-repository universe
+    sudo apt update
+    ```
+- [ ] Install and update the ca-certificates package:
+    ``` shell
+    sudo apt update
+    sudo apt install ca-certificates
+    ```
+- [ ] Add the SR Research Software Repository signing key:
+    ``` shell
+    curl -sS https://apt.sr-research.com/SRResearch_key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sr-research.gpg
+    ```
+- [ ] Add the SR Research Software Repository as an *Aptitude* source:
+    ``` shell
+    sudo add-apt-repository 'deb [arch=amd64] https://apt.sr-research.com SRResearch main'
+    ```
+- [ ] Install the EyeLink Developers Kit:
+    ``` shell
+    sudo apt install eyelink-display-software
+    ```
+- [ ] Install the EyeLink Data Viewer:
+    ``` shell
+    sudo apt install eyelink-dataviewer
+    ```
+- [ ] Install the *Python* module:
+    ``` shell
+    python3 -m pip install pylink
+    ```
+
 #### Prepare the *Psychopy* experiments
 
 - [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
@@ -233,101 +378,6 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     - [ ] `{{ settings.psychopy.tasks.func_bht }}` (breath-holding task, BHT):
         - [ ] time it to confirm the length, and
         - [ ] check the task runs properly.
-
-#### Setting up a synchronization service
-
-!!! important "It's fundamental to have a reliable means of communication with the BIOPAC digital inputs"
-
-    The following guidelines set up a little service on a linux box that keeps listening for key presses (mainly, the <span class="keypress">s</span> trigger from the trigger box), and RPC (remote procedure calls) from typically *Psychopy* or similar software.
-
-    The service is spun up automatically when you connect the MMBT-S modem interface that communicates with the BIOPAC (that is, the *N-shaped pink box*)
-
-- [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/hcph-sops/blob/mkdocs/code/synchronization/forward-trigger-service.py)
-- [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
-    ```
-    sudo nano /etc/udev/rules.d/99-forward-trigger.rules
-    ```
-- [ ] Add the following rule to the file:
-    ```
-    ACTION=="add", KERNEL=="ttyACM0", SUBSYSTEM=="tty", TAG+="systemd", ENV{SYSTEMD_WANTS}="forward-trigger.service"
-    ```
-- [ ] Save the file and exit the editor.
-- [ ] Run the following command to reload the udev rules:
-    ```
-    sudo udevadm control --reload-rules
-    ```
-- [ ] Create a systemd service unit file:
-    ```
-    sudo nano /etc/systemd/system/forward-trigger.service
-    ```
-- [ ] Add the following content to the file (Adapt the path to forward-trigger.py to the location on your computer):
-    ```
-    [Unit]
-    Description=Forward Trigger Service
-    After=network.target
-
-    [Service]
-    ExecStart=/usr/bin/python3 /path/to/forward-trigger.py
-    WorkingDirectory=/path/to/forward-trigger/directory
-    StandardOutput=null
-
-    [Install]
-    WantedBy=multi-user.target
-    ```
-- [ ] Save the file and exit the text editor.
-- [ ] Run the following command to enable the service to start at boot:
-    ```
-    sudo systemctl enable forward-trigger
-    ```
-- [ ] Run the following command to reload the systemd daemon:
-    ```
-    sudo systemctl daemon-reload
-    ```
-
-??? important "Testing the service without the syncbox connected"
-
-      - [ ] Ensure `socat` and `screen` are installed (if not already):
-          ```
-          sudo apt-get update
-          sudo apt-get install socat screen
-          ```
-      - [ ] Create a virtual serial port and establish a symbolic link to `/dev/ttyACM0` using the following command:
-          ```
-          sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=666,b9600
-          ```
-      - [ ] With `screen`, listen to the new virtual serial port:
-          ```
-          screen /dev/ttyACM0
-          ```
-      - [ ] Press <span class="keypress">s</span> and verify that `^A` appears in the screen terminal.
-
-
-#### Installing *EyeLink* (eye tracker software)
-
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
-
-- [ ] Enable Canonical's universe repository with the following command:
-    ```
-    sudo add-apt-repository universe
-    sudo apt update
-    ```
-- [ ] Install and update the ca-certificates package:
-    ```
-    sudo apt update
-    sudo apt install ca-certificates
-    ```
-- [ ] Add the SR Research Software Repository signing key:
-    ```
-    sudo apt-key adv --fetch-keys https://apt.sr-research.com/SRResearch_key
-    ```
-- [ ] Install the EyeLink Developers Kit:
-    ```
-    sudo apt install eyelink-display-software
-    ```
-- [ ] Install the EyeLink Data Viewer:
-    ```
-    sudo apt install eyelink-dataviewer
-    ```
 
 ## Every two months
 
