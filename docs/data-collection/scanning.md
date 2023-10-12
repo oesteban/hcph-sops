@@ -6,7 +6,7 @@
     In addition to the brief guidelines given in these SOPs, further safety information is found in {{ secrets.tribu.mri_security | default("███") }}.
 
 !!!warning "Report all observations in the session notes"
-    It is easy to forget details about particular sessions, especially when so many session are acquired. 
+    It is easy to forget details about particular sessions, especially when so many sessions are acquired. 
     They can however be very informative for quality control of your data or understand idiosyncracies, so it is important to keep track of them.
     As such, please note any observation in the issue dedicated to collecting session notes that you should have opened in [the preparation of the session](pre-session.md#documentation-and-other-non-experimental-devices).
 
@@ -94,13 +94,13 @@
 
     ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
 - [ ] In the issue collecting notes about the session, check the box confirming that the localizer has been acquired. 
-    - [ ] If the quality looks good, check the box stating `Localizer looked ok`. If  not, follow the paragraph below.
+    - [ ] If the quality looks good, check the box stating `Localizer looked ok`. If not, follow the paragraph below.
 
 ### If the localizer presents very low quality
 
 !!! warning "The localizer may present very low quality if the head-coil has not been properly initiated by the scanner"
 
-- [ ] In the issue collecting notes about the session, specifically under anat issues select the problem and describe it in detail in the anatomical scan notes section. 
+- [ ] In the issue collecting notes about the session, specifically under *anat* issues select the problem and describe it in detail in the anatomical scan notes section. 
 - [ ] Enter the scanning room, extract the participant from the scanner by pressing the home (:fontawesome-solid-house:) button.
 - [ ] Tell the participant that you need to reset the head coil
 - [ ] Unplug and replug the head coil
@@ -119,7 +119,7 @@
         - [ ] Open the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence and under the section *Diff.*, uncheck all the derivatives except for *Diff. Weighted Image*.
 
 - [ ] In the issue collecting notes about the session, check the box confirming that the T1w image has been acquired. 
-    - [ ] If the quality looks good, check the box stating `T1w looked ok`. If  not, please follow [the instructions to repeat the scan](scanning-notes.md#repeat-scan) and report the problem in the session notes.
+    - [ ] If the quality looks good, check the box stating `T1w looked ok`. If not, please follow [the instructions to repeat the scan](scanning-notes.md#repeat-scan) and report the problem in the session notes.
 
 ## Acquire the diffusion MRI run
 
