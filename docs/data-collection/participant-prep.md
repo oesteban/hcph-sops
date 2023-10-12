@@ -173,7 +173,14 @@
     - [ ] Click the <span class="consolebutton red">Exam</span> button (red background, rightmost-bottom).
 
 - [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
-    - [ ] Double-check that all PE prescriptions are correct.
+
+    ???+ important "Session schedule"
+
+        Today is <mark>{{ now() }}</mark>:
+
+{% filter indent(width=8) %}
+{% include 'code/sessions/schedule.md' %}
+{% endfilter %}
 
 ## Installing the participant in the SCANNING ROOM
 

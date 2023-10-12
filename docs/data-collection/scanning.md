@@ -5,6 +5,15 @@
 
     In addition to the brief guidelines given in these SOPs, further safety information is found in {{ secrets.tribu.mri_security | default("███") }}.
 
+## Before initiating the session
+
+??? warning "Double check the protocol with the correct phase-encoding direction was selected"
+
+    For conveniency, this is the session schedule (<mark>today is {{ now() }}</mark>):
+
+{% filter indent(width=4) %}
+{% include 'code/sessions/schedule.md' %}
+{% endfilter %}
 
 ## During the session
 
