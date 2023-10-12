@@ -338,6 +338,10 @@ The stimuli presentation laptop and any other box you want to use for debugging 
     ``` shell
     sudo apt install eyelink-dataviewer
     ```
+- [ ] Install the *Python* module:
+    ``` shell
+    python3 -m pip install pylink
+    ```
 
 #### Prepare the *Psychopy* experiments
 
