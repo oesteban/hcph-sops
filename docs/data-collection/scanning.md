@@ -5,6 +5,10 @@
 
     In addition to the brief guidelines given in these SOPs, further safety information is found in {{ secrets.tribu.mri_security | default("███") }}.
 
+!!!warning "Report all observations in the session notes"
+    It is easy to forget details about particular sessions, especially when so many sessions are acquired. 
+    They can however be very informative for quality control of your data or understand idiosyncracies, so it is important to keep track of them.
+    As such, please note any observation in the issue dedicated to collecting session notes that you should have opened in [the preparation of the session](pre-session.md#documentation-and-other-non-experimental-devices).
 
 ## During the session
 
@@ -15,11 +19,18 @@
 ## Check experimental setup
 !!! danger "DO NOT FORGET to check the readiness of the experimental setup at this point"
 
-- [ ] Check the trigger box:
+- [ ] Check the syncbox:
     - [ ] the box is on,
     - [ ] *Synchronization mode* is on,
     - [ ] session has been started,
     - [ ] USB cable to *{{ secrets.hosts.psychopy | default("███") }}* is connected.
+    - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+- [ ] Check the Biopac:
+    - [ ] All cables are connected and not loose or hanging.
+    - [ ] The Biopac is turned on (switch it on if necessary).
+    - [ ] Check the corresponding box in the issue collecting notes about the session.
+
 - [ ] Check the GA:
     - [ ] the tubing coming from the scanning room is properly connected,
     - [ ] the CO<sub>2</sub> BNC output is plugged through the filter to the BIOPAC AMI200, on input channel 3,
@@ -27,17 +38,35 @@
     - [ ] the GA is on (switch it on if necessary),
     - [ ] ensure **the PUMP IS ON**, and
     - [ ] **turn the pump's power knob to MAXIMUM position**.
+    - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+- [ ] Check the eye-tracker setup:
+    - [ ] The ET computer is turned on (switch it on if necessary),
+    - [ ] The pupil is correctly detected (as described [here](participant-prep.md#final-preparatory-steps-of-the-et))
+    - [ ] Check the corresponding box in the issue collecting notes about the session.
+
 - [ ] Check *{{ secrets.hosts.psychopy | default("███") }}*:
     - [ ] has enough battery, and plug the power cord if necessary;
     - [ ] USB cable to the MMBT-S Trigger Interface Box is connected;
     - [ ] serial cable from the MMBT-S Trigger Interface Box is connected to the back of the SPT100D digital interface (gray block) of the BIOPAC;
     - [ ] computer is ready, with psychopy open, and with the appropriate version of experiments; and
     - [ ] leave the computer with a pleasant screen projecting (e.g., a gray background).
+    - [ ] Check the corresponding box in the issue collecting notes about the session.
+
 - [ ] Check *{{ secrets.hosts.acqknowledge | default("███") }}*:
     - [ ] has enough battery, and plug the power cord if necessary;
     - [ ] computer is ready, with the *AcqKnowledge* software open and collecting data;
     - [ ] check the ECG and RB signals, and fix unanticipated problems (e.g., the respiration belt needs to be fastened tighter);
     - [ ] the *Amphetamine* app is running and keeping the computer unlocked while *AcqKnoledge* is working.
+    - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+- [ ] Check the respiration belt signal
+    - [ ] [ADD DETAILS ABOUT RB QA]
+    - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+- [ ] Check the ECG signal
+    - [ ] [ADD DETAILS ABOUT ECG QA]
+    - [ ] Check the corresponding box in the issue collecting notes about the session.
 
 ## Acquire a localizer (*AAhead_scout*)
 - [ ] Indicate the participant that the scanning will soon start:
@@ -64,11 +93,14 @@
 - [ ] Once the localizer is concluded, you can drag and drop the image stack icon (something like 🗇, with an object on the top stack) onto the image viewer. That will open the localizer on the viewer.
 
     ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
+- [ ] In the issue collecting notes about the session, check the box confirming that the localizer has been acquired. 
+    - [ ] If the quality looks good, check the box stating `Localizer looked ok`. If not, follow the paragraph below.
 
 ### If the localizer presents very low quality
 
 !!! warning "The localizer may present very low quality if the head-coil has not been properly initiated by the scanner"
 
+- [ ] In the issue collecting notes about the session, specifically under *anat* issues select the problem and describe it in detail in the anatomical scan notes section. 
 - [ ] Enter the scanning room, extract the participant from the scanner by pressing the home (:fontawesome-solid-house:) button.
 - [ ] Tell the participant that you need to reset the head coil
 - [ ] Unplug and replug the head coil
@@ -86,9 +118,12 @@
         - [ ] Repeat the configuration of *Magnitude et phase* for all sequences name `func-bold_task-{bht,qct,rest}_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`.
         - [ ] Open the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence and under the section *Diff.*, uncheck all the derivatives except for *Diff. Weighted Image*.
 
+- [ ] In the issue collecting notes about the session, check the box confirming that the T1w image has been acquired. 
+    - [ ] If the quality looks good, check the box stating `T1w looked ok`. If not, please follow [the instructions to repeat the scan](scanning-notes.md#repeat-scan) and report the problem in the session notes.
+
 ## Acquire the diffusion MRI run
 
-- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence as indicated below.
+- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence.
 - [ ] Verify again the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` parameters under section *Diff.* All the derivatives MUST be unchecked except for *Diff. Weighted Image*.
 - [ ] Inform the participant that the diffusion scan will follow.
 
@@ -122,6 +157,7 @@
     - [ ] Ask the participant to take three deep breathes, to then go back to a comfortable, normal respiration pace. Check on the *AcqKnoledge* window that the three breathes are distinctly registered (taking into account that there may be 10-25 seconds of delay because of the tubing).
 
 ### Once the main diffusion MRI run is done, proceed with fieldmaps
+- [ ] In the issue collecting notes about the session, check the box confirming that the diffusion sequence has been acquired. Don't forget to report any observations there.
 - [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
 - [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
@@ -130,9 +166,10 @@
     - [ ] Verify that in the next sequence parameters under *Contrast>Reconstruction* the option *Magnitude et phase* is selected!
 - [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While the fieldmap sequence is running,
-    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence following the abovementioned steps, and
+    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence, and
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_qct }}).
-    - [ ] Verify that the positive-control task {{ settings.psychopy.tasks.func_qct }} is open in psychopy, that you calibrated the ET.
+    - [ ] Verify that the positive-control task {{ settings.psychopy.tasks.func_qct }} is open in psychopy, that you calibrated the ET and that the physiological signals are still recording and look ok.
+- [ ] In the issue collecting notes about the session, check the boxes confirming that each fieldmap has been acquired and that you check that the physiological signal are still recording. Don't forget to report any observations there.
 
 ## Acquire the functional MRI block
 - [ ] Inform the participant about the fMRI block
@@ -177,6 +214,7 @@
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_rest }}.
+- [ ] In the issue collecting notes about the session, check the box confirming that the quality control task fMRI has been acquired and that you check that the physiological signal are still recording. Don't forget to report any observations there.
 
 ### Resting state fMRI
 - [ ] Inform the participant:
@@ -206,6 +244,7 @@
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, close the current experiment on psychopy and open {{ settings.psychopy.tasks.func_bht }}.
+- [ ] In the issue collecting notes about the session, check the box confirming that the resting-state fMRI has been acquired and that you check that the physiological signal are still recording. Don't forget to report any observations there.
 
 ### Breath-holding task (BHT)
 - [ ] Inform the participant:
@@ -234,6 +273,7 @@
 
 - [ ] Launch the `func-bold_task-bht_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running, determine whether there is enough time to run the anatomical T2-weighted run. If so, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
+- [ ] When the breath-holding task fMRI is done, check the box confirming that it has been acquired in the issue collecting notes about the session. Don't forget to report any observations there.
 
 
 !!! warning "ONLY if time permits"
