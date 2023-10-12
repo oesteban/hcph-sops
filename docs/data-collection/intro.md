@@ -1,6 +1,6 @@
 The goal of the experimental setting is to obtain several functional MRI tasks and a long diffusion MRI scan with synchronized physiological recordings, including gas contents with a gas analyzer (GA), eye tracking (ET; including the right eye position, pupil size, blinks, etc.), respiration tracking through a pneumatic respiration belt (RB), and finally MRI-compatible electrocardiogram (ECG).
 
-The overall experimental setting can be sumarized as follows:
+The overall experimental setting can be summarized as follows:
 
 ``` mermaid
 flowchart TB
@@ -168,7 +168,7 @@ Most of what is described in the present SOPs addresses the *Reliability Imaging
     The stimuli presentation laptop ({{ secrets.hosts.psychopy | default("███") }}) will execute four experiments, which will allow the synchronization of all devices by sending the adequate signals at their predesignated times and also present visual stimuli with the scanner's projector.
     The lengths of the four *Psychopy experiments* should be:
 
-    * {{ settings.psychopy.tasks.dwi }} ➜ <mark>**{{ settings.mri.timings.dwi }}**</mark>,
-    * {{ settings.psychopy.tasks.func_qct }} ➜ <mark>**{{ settings.mri.timings.func_qct }}**</mark>,
-    * {{ settings.psychopy.tasks.func_rest }} ➜ <mark>**{{ settings.mri.timings.func_rest }}**</mark>, and
-    * {{ settings.psychopy.tasks.func_bht }} ➜ <mark>**{{ settings.mri.timings.func_bht }}**</mark>.
+    * `{{ settings.psychopy.tasks.dwi }}` ➜ <mark>**{{ settings.mri.timings.dwi }}**</mark>,
+    * `{{ settings.psychopy.tasks.func_qct }}` ➜ <mark>**{{ settings.mri.timings.func_qct }}**</mark>,
+    * `{{ settings.psychopy.tasks.func_rest }}` ➜ <mark>**{{ settings.mri.timings.func_rest }}**</mark>, and
+    * `{{ settings.psychopy.tasks.func_bht }}` ➜ <mark>**{{ settings.mri.timings.func_bht }}**</mark>.

@@ -1,6 +1,6 @@
 # The Human Connectome PHantom (HCPh) study: Standard Operating Procedures
 
-!!! abstract "These SOPs correspond to a Pre-registered report"
+!!! abstract "These SOPs correspond to a pre-registered report"
 
     These documents correspond to a pre-registration<sup>[1]</sup>.
     Please check the corresponding [registered report](https://osf.io/fh8mc) ([direct download](assets/files/HCPh_RR_1.4.pdf)) to get a better understanding of what these SOPs implement.

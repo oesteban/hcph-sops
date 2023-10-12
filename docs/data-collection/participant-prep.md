@@ -92,6 +92,7 @@
         As you probably remember, we acquire three types of images.
         For two of them you just stay still in the scanner, but we will also require your collaboration for the third, which is functional MRI.
         During the whole duration of the exam, please do not create closed loops by crossing your legs or holding your hands together.
+        Also, remember to breathe through your nose, not through your mouth, so the expired CO<sub>2</sub> can be measured with the cannula.
         It is possible that your peripheral nerves get stimulated at some points, so you will feel twitching of muscles, for instance, of your pectorals.
         Do not panic, it is okay, but if it feels too uncomfortable, please squeeze the alarm button.
 
@@ -128,7 +129,7 @@
         Please keep your underwear on [if a woman, ask whether **their undergarment DOES NOT contain any large metallic part** such as shaping guides, and request their removal if they do].
 
     ???+ quote "*Dress code* inside the scanner **if they CAN WEAR THEIR CLOTHES**"
-        Before we continute, we need to make sure we do not introduce any dangerous object in the magnet room.
+        Before we continue, we need to make sure we do not introduce any dangerous object in the magnet room.
 
         Please deposit here all your belongings, your belt, your glasses, your jewelry and any accessories, piercings, etc. that you have on you.
         If a woman, ask whether **their undergarment DOES NOT contain any large metallic part** such as shaping guides, and request their removal in the changing room.
@@ -173,7 +174,14 @@
     - [ ] Click the <span class="consolebutton red">Exam</span> button (red background, rightmost-bottom).
 
 - [ ] Load the adequate protocol, making sure of loading the right phase-encoding (PE) direction corresponding to the session.
-    - [ ] Double-check that all PE prescriptions are correct.
+
+    ???+ important "Session schedule"
+
+        Today is <mark>{{ now() }}</mark>:
+
+{% filter indent(width=8) %}
+{% include 'code/sessions/schedule.md' %}
+{% endfilter %}
 
 ## Installing the participant in the SCANNING ROOM
 
@@ -187,9 +195,10 @@
 - [ ] Instruct the participant to lay on the MRI bed.
 
 ### Connecting physiological recording sensors and probes
-- [ ] Connect the ECG leads to the three electrodes. The electrodes MUST be connected following the color scheme shown in the picture above.
+- [ ] Connect the ECG leads to the three electrodes. The electrodes MUST be connected following the color scheme shown in the picture below.
+    ![prep-ecg-electrodes](../assets/images/prep-ECG-electrodes.png)
 - [ ] Install the RB below the participant's chest and connect it to the tube as shown in the picture below. The RB measures the stretching induced by breathing, so it MUST surround the chest or stomach comfortably. Positioning the RB higher (chest) or lower (stomach) depends on the individual's preferential respiration mode (chest breathing or diaphragmatic, respectively).
-- [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten under the chin for comfort and stability by sliding the ring as shown in the picture above.
+- [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten under the chin for comfort and stability by sliding the ring as shown in the picture below.
 
     ![subject_setup](../assets/images/subject_setup_cannula_RB.jpg)
 
