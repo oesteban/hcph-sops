@@ -48,6 +48,52 @@
     - [ ] check the ECG and RB signals, and fix unanticipated problems (e.g., the respiration belt needs to be fastened tighter);
     - [ ] the *Amphetamine* app is running and keeping the computer unlocked while *AcqKnoledge* is working.
 
+- [ ] Check the quality of physiological signals.
+    Please find in the following image examples of good and bad RB and CO<sub>2</sub> signals to support and illustrate the criteria to consider to assess the quality of the physiological signals.
+
+    ??? thanks "Thanks to César Caballero-Gaudés, Stefano Moia, Kristina Zvolankek, Elenor Morgenroth for putting together the slide below [1]."
+
+        ![qa_physio](../assets/images/qa_physio.png)
+
+    - [ ] Check the RB signal:
+        - [ ] The RB signal SHOULD NOT plateau (neither saturate at a peak value nor floor at the troughs).
+            This means the RB is maxing out and it requires loosening.
+        - [ ] The envelope of your signal SHOULD remain approximately constant.
+            If peaks drop or troughs rise, it might be a sign that the RB is too loose.
+            Go back into the scanning room and tighten the RB.
+        - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+    - [ ] Check the CO<sub>2</sub> signal
+        - [ ] The period of the CO<sub>2</sub> signal should remain constant.
+            If it varies, the vacuum MAY be too low:
+            
+            - [ ] Check that the nasal cannula is correctly placed in the participant's nostrils.
+            - [ ] Check that all the extension connections of the tube are air-tight
+            - [ ] Check that the tube is not hanging at any point.
+        - [ ] The envelope of your signal SHOULD remain approximately constant.
+            If the peaks diminish, it might be a sign that the participant is breathing through their mouth.
+            In such a case, remind the participant to breathe through their nose.
+
+            ???+ quote "Remind the participant they MUST breathe through their nose at all times"
+                Hey [NAME],
+
+                Everything ok?
+                
+                I needed to ask you whether you are breathing through your nose because we are not recording sensible levels of CO<sub>2</sub>.
+                [WAIT FOR THEIR RESPONSE]
+                Thank you.
+
+        - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+    - [ ] Check the ECG signal:
+        - [ ] The period and the envelope of the signal should remain constant.
+        - [ ] [We are placing the ECG electrodes in lead-1 mode](participant-prep.md#connecting-physiological-recording-sensors-and-probes), which should give an ECG signal that looks vaguely like the familiar QRS shape (see below).
+            Typically, the signal does not look as neat as on the schema because the magnetic fields of the MR interfere with the electrodes (even if they are MR-compatible electrodes).
+
+            ![qrs](../assets/images/qrs.png){: style="height:220px;width:220px"}
+
+        - [ ] Check the corresponding box in the issue collecting notes about the session.
+
 ## Acquire a localizer (*AAhead_scout*)
 - [ ] Indicate the participant that the scanning will soon start:
 
@@ -119,7 +165,8 @@
 
         It is critical that you don't move, especially at all at the very beginning and the next 20 seconds after you hear the first blipping sounds.
 
-        Try to minimize swallowing, and eye movements (for example, blinking) and try to maintain comfortable and shallow breathing.
+        Try to minimize swallowing and eye movements (for example, blinking) and maintain comfortable and shallow breathing.
+        Remember to breathe through your nose, not through your mouth, so the expired CO<sub>2</sub> can be measured with the cannula.
 
         Are you ready?
 
@@ -265,3 +312,7 @@
     - [ ] Put the exhaust and inlet caps back.
 
 - [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
+
+## References
+[1]: https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=4055 "Moia, Stefano, Molly Bright, D. Phil., and Cesar Caballero-Gaudes. “Physiologic fMRI Signals: Friend or Foe? How and Why to Measure, Model and Account for Physiology.” Presented at the Organization for Human Brain Mapping (OHBM), Glasgow, June 19, 2022."
+
