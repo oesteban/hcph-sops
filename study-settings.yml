@@ -13,6 +13,7 @@ psychopy:
     func_rest: 'task-rest_bold.psyexp'
     func_bht: 'task-bht_bold.psyexp'
     func_qct: 'task-qct_bold.psyexp'
+  version: '2023.2.3'
 
 paths:
   sourcedata: '/data/datasets/hcph-sourcedata'

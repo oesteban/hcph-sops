@@ -16,7 +16,6 @@ nav:
       - Preliminary work: data-collection/preliminary.md
       - Before each session: data-collection/pre-session.md
       - Preparing the participant: data-collection/participant-prep.md
-      - Notes on the scanner's console and recording devices: data-collection/scanning-notes.md
       - Running the scanning session: data-collection/scanning.md
       - Session tear-down: data-collection/tear-down.md
       - Emergency procedures: data-collection/emergency-procedures.md
@@ -27,6 +26,9 @@ nav:
     - Preprocessing: preprocessing.md
     - Extracting functional connectivity: preprocessing/functional-connectivity.md
     - Release of data: release.md
+    - Appendices:
+      - Notes on the scanner's console and recording devices: data-collection/scanning-notes.md
+      - Notes on software installation and tips: data-collection/software.md
 theme:
   name: material
   palette:
@@ -44,8 +46,12 @@ theme:
     admonition:
       thanks: octicons/code-of-conduct-16
       quote: fontawesome/solid/comment-dots
-      danger: fontawesome/solid/biohazard
-      important: fontawesome/solid/circle-exclamation
+      danger: fontawesome/solid/ban
+      warning: fontawesome/solid/triangle-exclamation
+      important: fontawesome/solid/bullhorn
+      tip: fontawesome/solid/hat-wizard
+      bug: fontawesome/regular/circle-xmark
+
 
 plugins:
   - search
