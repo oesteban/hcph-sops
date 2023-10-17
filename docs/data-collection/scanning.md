@@ -36,9 +36,9 @@
     - [ ] USB cable to *{{ secrets.hosts.psychopy | default("███") }}* is connected.
     - [ ] Check the corresponding box in the issue collecting notes about the session.
 
-- [ ] Check the Biopac:
+- [ ] Check the BIOPAC:
     - [ ] All cables are connected and not loose or hanging.
-    - [ ] The Biopac is turned on (switch it on if necessary).
+    - [ ] The BIOPAC is turned on (switch it on if necessary).
     - [ ] Check the corresponding box in the issue collecting notes about the session.
 
 - [ ] Check the GA:
@@ -68,14 +68,6 @@
     - [ ] computer is ready, with the *AcqKnowledge* software open and collecting data;
     - [ ] check the ECG and RB signals, and fix unanticipated problems (e.g., the respiration belt needs to be fastened tighter);
     - [ ] the *Amphetamine* app is running and keeping the computer unlocked while *AcqKnoledge* is working.
-    - [ ] Check the corresponding box in the issue collecting notes about the session.
-
-- [ ] Check the respiration belt signal
-    - [ ] [ADD DETAILS ABOUT RB QA]
-    - [ ] Check the corresponding box in the issue collecting notes about the session.
-
-- [ ] Check the ECG signal
-    - [ ] [ADD DETAILS ABOUT ECG QA]
     - [ ] Check the corresponding box in the issue collecting notes about the session.
 
 - [ ] Check the quality of physiological signals.
@@ -175,7 +167,8 @@
         - [ ] Open the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence and under the section *Diff.*, uncheck all the derivatives except for *Diff. Weighted Image*.
 
 - [ ] In the issue collecting notes about the session, check the box confirming that the T1w image has been acquired. 
-    - [ ] If the quality looks good, check the box stating `T1w looked ok`. If not, please follow [the instructions to repeat the scan](scanning-notes.md#repeat-scan) and report the problem in the session notes.
+    - [ ] If the quality looks good, check the box stating *T1w looked okay*.
+        If not, please follow [the instructions to repeat the scan](scanning-notes.md#repeat-scan) and report the problem in the session notes.
 
 ## Acquire the diffusion MRI run
 
@@ -214,7 +207,8 @@
     - [ ] Ask the participant to take three deep breathes, to then go back to a comfortable, normal respiration pace. Check on the *AcqKnoledge* window that the three breathes are distinctly registered (taking into account that there may be 10-25 seconds of delay because of the tubing).
 
 ### Once the main diffusion MRI run is done, proceed with fieldmaps
-- [ ] In the issue collecting notes about the session, check the box confirming that the diffusion sequence has been acquired. Don't forget to report any observations there.
+- [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the diffusion sequence has been acquired.
+    Don't forget to report any observations there.
 - [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
 - [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
@@ -271,7 +265,8 @@
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, close the current experiment on psychopy and open `{{ settings.psychopy.tasks.func_rest }}`.
-- [ ] In the issue collecting notes about the session, check the box confirming that the quality control task fMRI has been acquired and that you check that the physiological signal are still recording. Don't forget to report any observations there.
+- [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the quality control task fMRI has been acquired and that you check that the physiological signals are still being recorded.
+    Don't forget to report any observations there.
 
 ### Resting state fMRI
 - [ ] Inform the participant:
@@ -301,7 +296,8 @@
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
     - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 - [ ] Once the sequence is over, close the current experiment on psychopy and open `{{ settings.psychopy.tasks.func_bht }}`.
-- [ ] In the issue collecting notes about the session, check the box confirming that the resting-state fMRI has been acquired and that you check that the physiological signal are still recording. Don't forget to report any observations there.
+- [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the quality control task fMRI has been acquired and that you check that the physiological signals are still being recorded.
+    Don't forget to report any observations there.
 
 
 ### Breath-holding task (BHT)
@@ -331,7 +327,8 @@
 
 - [ ] Launch the `func-bold_task-bht_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 - [ ] While it is running, determine whether there is enough time to run the anatomical T2-weighted run. If so, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
-- [ ] When the breath-holding task fMRI is done, check the box confirming that it has been acquired in the issue collecting notes about the session. Don't forget to report any observations there.
+- [ ] When the breath-holding task is completed, check the box confirming that it has been acquired in the issue collecting notes about the session.
+    Don't forget to report any observations there.
 
 
 !!! warning "ONLY if time permits"
