@@ -65,8 +65,8 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Open a new issue in [the github repository dedicated to collecting covariates](https://github.com/TheAxonLab/hcph-mood-quest/) (a laptop should be available to fill the issue).
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
 
-- [ ] Fill the date of the scan as well as the PE for this session (accessible in the schedule just above [this section](participant-prep.md/#installing-the-participant-in-the-scanning-room))
-- [ ] Fill in meteorological details of the scanning day based [MeteoSwiss](https://www.meteoswiss.admin.ch/local-forecasts/lausanne/1003.html#forecast-tab=detail-view) in 1003 Lausanne.
+- [ ] Fill the date of the scan as well as the PE for this session (accessible in the [schedule](scanning.md/#before-initiating-the-session))
+- [ ] Fill in weather details of the scanning day based [MeteoSwiss](https://www.meteoswiss.admin.ch/local-forecasts/lausanne/1003.html#forecast-tab=detail-view) in 1003 Lausanne.
     - [ ] Report the maximum and minimum temperature in degrees celsius.
     - [ ] Report the wind speed at the time of scanning in km/h.
     - [ ] Report the precipitation type and ammount (in mm).
@@ -93,17 +93,18 @@ Instructions of operations to be performed before the participant arrival, **bef
         * Current outside atmospheric pressure (hPa): 963 hPa
         * Current outside relative humidity (%): 75.8%
 
-- [ ] Report the MR room temperature (°C) and relative humidity (%)
+- [ ] Fill in the details related to the MR and scanner room.
+    - [ ] Report the MR room temperature (°C) and relative humidity (%)
 
-    ??? info "Location of the MR room termometer"
-        The termometer in the MR room can be found on the left of the operator window when inside the scanner room (see below).
+    ??? info "Location of the MR room thermometer"
+        The thermometer in the MR room can be found on the left of the operator window when inside the scanner room (see below).
         
         [ADD_PICTURE]
 
-- [ ] Report MR helium level (%) 
-    - [ ] In the top bar of the MR console, click on `System`>`Control`.
-    - [ ] In the window that just opened, click on the section `MR Scanner`.
-    - [ ] Report Helium Fill Level in percentage.
+    - [ ] Report MR helium level (%) 
+        - [ ] In the top bar of the MR console, click on `System`>`Control`.
+        - [ ] In the window that just opened, click on the section `MR Scanner`.
+        - [ ] Report Helium Fill Level in percentage.
     
 
 ## Boot the scanner up if it is shut down
