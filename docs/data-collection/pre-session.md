@@ -52,7 +52,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     ![nuprep-tube](https://shop.neurospec.com/media/catalog/product/cache/8af976a03d45f9b6d7f91e69feeeffb9/w/e/weaver_nuprep-skin-prep-gel-single-tube-front.jpg)
 
-- [ ] Open a new issue in [the github repository](https://github.com/TheAxonLab/hcph-sops/) to collect comments and annotations about the session [ON WHICH COMPUTER SHOULD THIS BE DONE?]
+- [ ] Open a new issue in [the github repository](https://github.com/TheAxonLab/hcph-sops/) to collect comments and annotations about the session (a laptop should be available to fill the issue).
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
     - [ ] This should lead you a page that looks like this 
         ![](../assets/images/session_issue_template.png)
@@ -62,7 +62,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Check the time regularly to be on time to meet with the participant at the predefined location
 
 ## Collection of covariates
-- [ ] Open a new issue in [the github repository dedicated to collecting covariates](https://github.com/TheAxonLab/hcph-mood-quest/) [ON WHICH COMPUTER SHOULD THIS BE DONE?]
+- [ ] Open a new issue in [the github repository dedicated to collecting covariates](https://github.com/TheAxonLab/hcph-mood-quest/) (a laptop should be available to fill the issue).
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
 
 - [ ] Fill the date of the scan as well as the PE for this session (accessible in the schedule just above [this section](participant-prep.md/#installing-the-participant-in-the-scanning-room))
