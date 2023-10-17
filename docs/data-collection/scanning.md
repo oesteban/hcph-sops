@@ -17,7 +17,7 @@
 
 !!! warning "Report all observations in the session notes"
     It is easy to forget details about particular sessions, especially when so many sessions are acquired. 
-    They can however be very informative for quality control of your data or understand idiosyncracies, so it is important to keep track of them.
+    They can however be very informative for quality control of your data or understand idiosyncrasies, so it is important to keep track of them.
     As such, please note any observation in the issue dedicated to collecting session notes that you should have opened in [the preparation of the session](pre-session.md#documentation-and-other-non-experimental-devices).
 
 ## During the session
