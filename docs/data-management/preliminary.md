@@ -104,7 +104,7 @@ When a new session is added, your *DataLad* dataset will remain at the same poin
 
     ``` shell
     cd hcph-dataset/  # <--- cd into the dataset's path
-    datalad update -r --how merge .
+    datalad update -r --how merge
     ```
 
 - [ ] If you need the data, now you can get the data as usual:
