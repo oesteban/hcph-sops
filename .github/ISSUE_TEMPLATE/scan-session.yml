@@ -7,7 +7,7 @@ assignees:
 body:
 - type: markdown
   attributes:
-    value: "# general infos"
+    value: "# General information"
 
 - type: checkboxes
   id: setup
@@ -40,9 +40,9 @@ body:
     label: Anatomical scans completion
     options:
       - label: Localizer was completed.
-      - label: Localizer looked ok.
+      - label: Localizer looked okay.
       - label: T1w was completed.
-      - label: T1w looked ok.
+      - label: T1w looked okay.
 - type: dropdown
   attributes:
     label: anat issues
