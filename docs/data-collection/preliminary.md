@@ -54,7 +54,7 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
 
 ### Install the BIOPAC
 
-- [ ] Make sure you understand the components and settings of the BIOPAC, described above.
+- [ ] Make sure you understand the components and settings of the BIOPAC, described in the [introduction section](intro.md#biopac-documentation-and-devices).
 - [ ] Set up the line frequency switches on the back of the BIOPAC amplifier depending on your country frequency to reduce noise. Both switches should be DOWN if your country's line frequency is 50Hz. Both switches should be UP if your country's line frequency line is 60Hz.
     ![biopack-frequency-switch](../assets/images/biopack-frequency-switch.jpg "BIOPAC frequency switch")
 - [ ] Plug the different units of the BIOPAC together if it has not been done yet.
@@ -93,87 +93,173 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
 ### Install the gas analyzer (GA)
 
 
+### Install *Psychopy* for stimuli presentation and development
+This block describes how to prepare an environment with a running *Psychopy 3* installation.
+
+??? warning "Multiple screens"
+
+    If you want to use multiple screens, install the corresponding libxcb extension:
+
+    ``` shell
+    sudo apt-get install libxcb-xinerama0
+    ```
+
+??? important "*Psychopy* should not be installed with *Conda*/*Anaconda*"
+
+    If an anaconda environment is activated, run the following command to deactivate it:
+    ``` shell
+    conda deactivate
+    ```
+
+- [ ] Clone the [*Psychopy* repository](https://github.com/psychopy/psychopy.git):
+    ``` shell
+    git clone git@github.com:psychopy/psychopy.git
+    ```
+- [ ] Navigate to the *Psychopy* directory:
+    ``` shell
+    cd psychopy
+    ```
+- [ ] Update *Pypi* to the latest version:
+    ``` shell
+    python3 -m pip install -U pip
+    ```
+- [ ] Update *Numpy* to the latest version:
+    ``` shell
+    python3 -m pip install -U numpy
+    ```
+- [ ] Install other necessary dependencies:
+    ``` shell
+    python3 -m pip install attrdict py2app bdist_mpkg
+    ```
+- [ ] Install *wxPython*.
+    ``` shell
+    python3 -m pip install -U \
+        -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-$( lsb_release -r -s ) \
+        wxPython
+    ```
+- [ ] Install *Psychopy* using the following command:
+    ``` shell
+    pip3 install -e .
+    ```
+- [ ] Try opening *Psychopy* by typing:
+    ``` shell
+    psychopy --no-splash -b
+    ```
+
+    ??? important "The first time it runs, *Psychopy* will likely request some increased permissions"
+
+        - [ ] Add a new `psychopy` group to your system.
+            ``` shell
+            sudo groupadd --force psychopy
+            ```
+        - [ ] Add your current user to the new group:
+            ``` shell
+            sudo usermod -a -G psychopy $USER
+            ```
+        - [ ] Raise security thresholds for *Psychopy*, by inserting the following into `/etc/security/limits.d/99-psychopylimits.conf`:
+            ``` text
+            @psychopy - nice -20
+            @psychopy - rtprio 50
+            @psychopy - memlock unlimited
+            ```
+
+??? bug "*Psychopy* crashes when trying to run a experiment: `pyglet.gl.ContextException: Could not create GL context`"
+
+    This is likely related to your computer having a GPU and a nonfunctional configuration:
+
+    ``` shell
+    $ glxinfo | grep PyOpenGL
+    X Error of failed request:  BadValue (integer parameter out of range for operation)
+      Major opcode of failed request:  151 (GLX)
+      Minor opcode of failed request:  24 (X_GLXCreateNewContext)
+      Value in failed request:  0x0
+      Serial number of failed request:  110
+      Current serial number in output stream:  111
+    ```
+
+    A quick attempt to solve this would be adding our user to the `video` group.
+
+    However, that is unlikely to work out so you'll need to take more actions (see [this](https://github.com/mmatl/pyrender/issues/13), and [this](https://askubuntu.com/questions/1255841/how-do-i-fix-the-glxinfo-badvalue-error-on-ubuntu-18-04))
+
+??? bug "*Psychopy* crashes when trying to run a experiment: `qt.qpa.plugin: Could not load the Qt platform plugin 'xcb'`"
+
+    If you installed `libxcb-xinerama0`, or you don't have multiple screens, first try:
+
+    ``` shell
+    python3 -m pip uninstall opencv-python
+    python3 -m pip install opencv-python-headless
+    ```
+
+    If that doesn't work, try a brute force solution by installing libxcb fully:
+
+    ``` shell
+    sudo apt-get install libxcb-*
+    ```
 
 ### Preparing the *Stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }})
 
-This block describes how to prepare a laptop with a running *Psychopy 3* installation, the *EyeLink* software corresponding to the Eye Tracker, and finally an *Experiment synchronization service*.
+The stimuli presentation laptop and any other box you want to use for debugging and development will require a few additional software packages to be available.
 
-#### Stimuli presentation with *psychopy*
 
-- [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
-- [ ] Clone the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks):
-    ```
-    git clone git@github.com:<your-gh-username>/HCPh-fMRI-tasks.git
-    ```
-- [ ] Set-up the original repository as upstream remote:
-    ```
-    git remote add upstream git@github.com:theaxonlab/HCPh-fMRI-tasks.git
-    ```
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
+#### Installing our synchronization server
 
-- [ ] Clone the [PsychoPy repository](https://github.com/psychopy/psychopy.git):
+- [ ] Locate the latest version of the synchronization service on your system.
+    It is within the SOPs repository, at ``{{ secrets.data.sops_clone_path | default('<path>') }}/code/synchronization/forward-trigger-service.py``.
+- [ ] Install the necessary libraries <mark>as root</mark>:
+    ``` shell
+    sudo python3 -m pip install -r {{ secrets.data.sops_clone_path | default('<path>') }}/code/synchronization/requirements.txt
     ```
-    git clone git@github.com:psychopy/psychopy.git
-    ```
-- [ ] Navigate to the Psychopy directory:
-    ```
-    cd psychopy
-    ```
-- [ ] Psychopy should not be installed with anaconda. If an anaconda environment is activated, run the following command to deactivate it:
-    ```
-    conda deactivate
-    ```
-- [ ] Update pip to the latest version:
-    ```
-    pip3 install --upgrade pip
-    ```
-- [ ] Install bdist_mpkg, py2app and attrdict:
-    ```
-    pip3 attrdict py2app bdist_mpkg
-    ```
-- [ ] Install Psychopy using the following command:
-    ```
-    pip3 install -e .
-    ```
-- [ ] Open Psychopy, open the experiment-files corresponding to each task:
-    - [ ] {{ settings.psychopy.tasks.func_qct }} (positive-control task, QCT) :
-        - [ ] time it to confirm the length, and
-        - [ ] check the task runs properly.
-    - [ ] {{ settings.psychopy.tasks.func_rest }} (resting-state fMRI):
-        - [ ] time it to confirm the length, and
-        - [ ] check that the movie is played.
-    - [ ] {{ settings.psychopy.tasks.func_bht }} (breath-holding task, BHT):
-        - [ ] time it to confirm the length, and
-        - [ ] check the task runs properly.
-
-#### Installing *EyeLink* (eye tracker software)
-
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
-
-- [ ] Enable Canonical's universe repository with the following command:
-    ```
-    sudo add-apt-repository universe
-    sudo apt update
-    ```
-- [ ] Install and update the ca-certificates package:
-    ```
-    sudo apt update
-    sudo apt install ca-certificates
-    ```
-- [ ] Add the SR Research Software Repository signing key:
-    ```
-    sudo apt-key adv --fetch-keys https://apt.sr-research.com/SRResearch_key
-    ```
-- [ ] Install the EyeLink Developers Kit:
-    ```
-    sudo apt install eyelink-display-software
-    ```
-- [ ] Install the EyeLink Data Viewer:
-    ```
-    sudo apt install eyelink-dataviewer
+- [ ] Test the service is properly installed:
+    ``` shell
+    sudo python3 code/synchronization/forward-trigger-service.py --disable-mmbt-check
     ```
 
-#### Setting up a synchronization service
+    !!! important "Use the `--disable-mmbt-check` flag only if you do not plan to connect the MMBT-S trigger box"
+
+- [ ] Test operation with our test client:
+
+    !!! tip "Check the server's log file at `/var/log/forward-trigger-service.log`"
+
+    Open a separate terminal on a separate window
+    Then, open and follow the log file:
+    ``` shell
+    less +F /var/log/forward-trigger-service.log
+    ```
+
+    Return to the original terminal, keeping the other window visible and execute:
+    ``` shell
+    python code/synchronization/forward-trigger-client.py
+    ```
+
+    The log file should now have added two lines like:
+    ```
+    2023-10-12 14:44:31.788 - INFO - Data received: <b'\x02'>
+    2023-10-12 14:44:31.788 - INFO - Forwarded <b'\x02'>
+    ```
+
+??? important "Testing the service without the MMBT-S connected"
+
+    Testing the service without the MMBT-S trigger box connected requires emmulating `/dev/ttyACM0`:
+
+      - [ ] Ensure `socat` and `screen` are installed (if not already):
+          ``` shell
+          sudo apt-get update
+          sudo apt-get install socat screen
+          ```
+      - [ ] Create a virtual serial port and establish a symbolic link to `/dev/ttyACM0` using the following command:
+          ``` shell
+          sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=666,b9600
+          ```
+      - [ ] With `screen`, listen to the new virtual serial port:
+          ``` shell
+          screen /dev/ttyACM0
+          ```
+
+          !!! tip "Alternatively, you can check the server's log file at `/var/log/forward-trigger-service.log`"
+
+      - [ ] Press <span class="keypress">s</span> and verify that `^A` appears in the screen terminal.
+
+#### Setting up the synchronization service as a daemon in the background
 
 !!! important "It's fundamental to have a reliable means of communication with the BIOPAC digital inputs"
 
@@ -181,9 +267,8 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
 
     The service is spun up automatically when you connect the MMBT-S modem interface that communicates with the BIOPAC (that is, the *N-shaped pink box*)
 
-- [ ] Copy the [latest version of the code to send triggers](https://github.com/TheAxonLab/hcph-sops/blob/mkdocs/code/synchronization/forward-trigger-service.py)
 - [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
-    ```
+    ``` shell
     sudo nano /etc/udev/rules.d/99-forward-trigger.rules
     ```
 - [ ] Add the following rule to the file:
@@ -192,11 +277,11 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
 - [ ] Save the file and exit the editor.
 - [ ] Run the following command to reload the udev rules:
-    ```
+    ``` shell
     sudo udevadm control --reload-rules
     ```
 - [ ] Create a systemd service unit file:
-    ```
+    ``` shell
     sudo nano /etc/systemd/system/forward-trigger.service
     ```
 - [ ] Add the following content to the file (Adapt the path to forward-trigger.py to the location on your computer):
@@ -215,30 +300,84 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     ```
 - [ ] Save the file and exit the text editor.
 - [ ] Run the following command to enable the service to start at boot:
-    ```
+    ``` shell
     sudo systemctl enable forward-trigger
     ```
 - [ ] Run the following command to reload the systemd daemon:
-    ```
+    ``` shell
     sudo systemctl daemon-reload
     ```
 
-??? important "Testing the service without the syncbox connected"
+#### Installing *EyeLink* (eye tracker software)
 
-      - [ ] Ensure `socat` and `screen` are installed (if not already):
-          ```
-          sudo apt-get update
-          sudo apt-get install socat screen
-          ```
-      - [ ] Create a virtual serial port and establish a symbolic link to `/dev/ttyACM0` using the following command:
-          ```
-          sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=666,b9600
-          ```
-      - [ ] With `screen`, listen to the new virtual serial port:
-          ```
-          screen /dev/ttyACM0
-          ```
-      - [ ] Press <span class="keypress">s</span> and verify that `^A` appears in the screen terminal.
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
+
+- [ ] Enable Canonical's universe repository with the following command:
+    ``` shell
+    sudo add-apt-repository universe
+    sudo apt update
+    ```
+- [ ] Install and update the ca-certificates package:
+    ``` shell
+    sudo apt update
+    sudo apt install ca-certificates
+    ```
+- [ ] Add the SR Research Software Repository signing key:
+    ``` shell
+    curl -sS https://apt.sr-research.com/SRResearch_key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sr-research.gpg
+    ```
+- [ ] Add the SR Research Software Repository as an *Aptitude* source:
+    ``` shell
+    sudo add-apt-repository 'deb [arch=amd64] https://apt.sr-research.com SRResearch main'
+    ```
+- [ ] Install the EyeLink Developers Kit:
+    ``` shell
+    sudo apt install eyelink-display-software
+    ```
+- [ ] Install the EyeLink Data Viewer:
+    ``` shell
+    sudo apt install eyelink-dataviewer
+    ```
+- [ ] Install the *Python* module:
+    ``` shell
+    python3 -m pip install pylink
+    ```
+
+#### Prepare the *Psychopy* experiments
+
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
+- [ ] Deactivate conda environment (if needed):
+    ``` shell
+    conda deactivate
+    ```
+- [ ] Install our *HCPh-signals* package (assumes these SOPs are checked out at `{{ secrets.data.sops_clone_path | default('<path>') }}`:
+    ``` shell
+    cd {{ secrets.data.sops_clone_path | default('<path>') }}/code/signals
+    python3 -m pip install .
+    ```
+- [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
+- [ ] Clone the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks):
+    ```
+    git clone git@github.com:<your-gh-username>/HCPh-fMRI-tasks.git
+    ```
+- [ ] Set-up the original repository as upstream remote:
+    ```
+    git remote add upstream git@github.com:theaxonlab/HCPh-fMRI-tasks.git
+    ```
+- [ ] Open *Psychopy* and (optionally) a experiment file corresponding to a task by typing the following command in the terminal:
+    ```
+    psychopy {{ settings.psychopy.tasks.func_qct }}
+    ```
+- [ ] For each task, check the following:
+    - [ ] `{{ settings.psychopy.tasks.func_qct }}` (positive-control task, QCT) :
+        - [ ] time it to [confirm the length](intro.md#task-timing), and
+        - [ ] check the task runs properly.
+    - [ ] `{{ settings.psychopy.tasks.func_rest }}` (resting-state fMRI):
+        - [ ] time it to confirm the length, and
+        - [ ] check that the movie is played.
+    - [ ] `{{ settings.psychopy.tasks.func_bht }}` (breath-holding task, BHT):
+        - [ ] time it to confirm the length, and
+        - [ ] check the task runs properly.
 
 ## Every two months
 
@@ -250,8 +389,8 @@ This block describes how to prepare a laptop with a running *Psychopy 3* install
     A second reference mixture is necessary, and room air can be used, knowing that atmospheric contents by volume are 0.039 ±0.001%
     for CO<sub>2</sub> and 20.946 ±0.003% for O<sub>2</sub>.
 
-- [ ] Connect the GA to the BIOPAC as described above.
-- [ ] Connect the BIOPAC to the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}) as described above.
+- [ ] Connect the GA to the BIOPAC as described in [this section](pre-session.md#setting-up-the-biopac-system-and-physiological-recording-sensors).
+- [ ] Connect the BIOPAC to the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}) as described in [this section](pre-session.md#setting-up-the-biopac-system-and-physiological-recording-sensors).
 - [ ] Connect the *AcqKnowledge* License Key into a USB Port of the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}).
 - [ ] Open *AcqKnowledge* software on the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}).
 - [ ] Open the template *graph file* ([`EXP_BASE.gtl`](../assets/files/EXP_BASE.gtl))
