@@ -65,11 +65,13 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Open a new issue in [the github repository dedicated to collecting covariates](https://github.com/TheAxonLab/hcph-mood-quest/) [ON WHICH COMPUTER SHOULD THIS BE DONE?]
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
 
-- [ ] Fill the date of the scan
+- [ ] Fill the date of the scan as well as the PE for this session (accessible in the schedule just above [this section](participant-prep.md/#installing-the-participant-in-the-scanning-room))
 - [ ] Fill in meteorological details of the scanning day based [MeteoSwiss](https://www.meteoswiss.admin.ch/local-forecasts/lausanne/1003.html#forecast-tab=detail-view) in 1003 Lausanne.
     - [ ] Report the maximum and minimum temperature in degrees celsius.
     - [ ] Report the wind speed at the time of scanning in km/h.
-    - [ ] Report the precipitation in mm.
+    - [ ] Report the precipitation type and ammount (in mm).
+    - [ ] Report the outside atmospheric pressure (in hPa) and relative humidity (in %).
+    - [ ] Report the hours of daylight (rounded to the number of hours).
 
     ??? info "How to find the precited information on MeteoSwiss"
         Here is what the MeteoSwiss interface looks like on a computer.
@@ -82,6 +84,21 @@ Instructions of operations to be performed before the participant arrival, **bef
         * Wind speed (km/h): 2.7 km/h
         * Precipitation (mm): 0mm
         * Hours of daylight (h): 11h (18:54-07:44=11:10h roundup)
+
+        Scrolling down, you will find additional measurement values that look like:
+            ![meteoswiss_details](../assets/images/meteoswiss_details.png)
+
+        Here the relevant additional informations are:
+
+        * Current outside atmospheric pressure (hPa): 963 hPa
+        * Current outside relative humidity (%): 75.8%
+
+- [ ] Report the MR room temperature (°C) and relative humidity (%)
+
+    ??? info "Location of the MR room termometer"
+        The termometer in the MR room can be found on the left of the operator window when inside the scanner room (see below).
+        
+        [ADD_PICTURE]
 
 - [ ] Report MR helium level (%) 
     - [ ] In the top bar of the MR console, click on `System`>`Control`.
