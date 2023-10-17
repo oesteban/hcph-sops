@@ -241,7 +241,7 @@
 
         Are you ready?
 
-- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration (instructions below)](scanning-notes.md#eye-tracker-calibration)
+- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration](scanning-notes.md#eye-tracker-calibration).
 
 ### Quality-control task (QCT)
 - [ ] Verify that the task's program is awaiting the scanner's trigger to start.
@@ -280,7 +280,7 @@
 
         Is everything alright?
 
-- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration (instructions below)](scanning-notes.md#eye-tracker-calibration)
+- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration](scanning-notes.md#eye-tracker-calibration)
 - [ ] Once the ET is calibrated, verify that the task is left and awaiting for the sequence's trigger to start.
 - [ ] Inform the participant that the next sequence is resting-state fMRI (rsfMRI).
 
@@ -312,7 +312,7 @@
 
         Is everything alright?
 
-- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration (instructions below)](scanning-notes.md#eye-tracker-calibration)
+- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration](scanning-notes.md#eye-tracker-calibration)
 - [ ] Once the ET is calibrated, verify that the task is left and awaiting for the sequence's trigger to start.
 - [ ] Inform the participant that the next sequence is breath-holding task fMRI. Repeat the instructions for the task.
 

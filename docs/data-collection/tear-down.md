@@ -27,6 +27,7 @@
 - [ ] Help the participant step down and accompany them out to the control room.
 - [ ] Help the participant recover their personal belongings and change clothes if necessary.
 - [ ] Solicit more feedback on participant's comfort for future sessions.
+- [ ] Ask the participant to fill out the `After scan` part of the covariates collection on the issue you opened [earlier](pre-session.md#collection-of-covariates).
 - [ ] Solicit tickets and receipts for transportation.
 - [ ] Give the participant the corresponding compensation for the participation and transportation.
 - [ ] Ask the participant to sign the receipt of the amount of the financial compensation.
