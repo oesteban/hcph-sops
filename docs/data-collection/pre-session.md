@@ -51,7 +51,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Open a new issue in [the github repository](https://github.com/TheAxonLab/hcph-sops/) to collect comments and annotations about the session (a laptop should be available to fill the issue).
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
-    - [ ] This should lead you a page that looks like this 
+    - [ ] This should lead you to a page that looks like this 
         ![](../assets/images/session_issue_template.png)
         - [ ] Click on <span class="consolebutton green">Get started</span> on the issue template `Scan session`.
     - [ ] Modify the title of the issue by replacing `yyy` with the session index. If you don't remember the session index of today, check the session index of the last issue.
