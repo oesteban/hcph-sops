@@ -49,6 +49,12 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     ![nuprep-tube](https://shop.neurospec.com/media/catalog/product/cache/8af976a03d45f9b6d7f91e69feeeffb9/w/e/weaver_nuprep-skin-prep-gel-single-tube-front.jpg)
 
+- [ ] Open a new issue in [the github repository](https://github.com/TheAxonLab/hcph-sops/) to collect comments and annotations about the session [ON WHICH COMPUTER SHOULD THIS BE DONE?]
+    - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
+    - [ ] This should lead you to a page that looks like this 
+        ![](../assets/images/session_issue_template.png)
+        - [ ] Click on <span class="consolebutton green">Get started</span> on the issue template `Scan session`.
+    - [ ] Modify the title of the issue by replacing `yyy` with the session index. If you don't remember the session index of today, check the session index of the last issue.
 - [ ] Verify that your phone is on ringing mode so the participants can reach you
 - [ ] Check the time regularly to be on time to meet with the participant at the predefined location
 
