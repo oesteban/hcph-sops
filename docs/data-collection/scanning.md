@@ -141,6 +141,7 @@
 - [ ] Once the localizer is concluded, you can drag and drop the image stack icon (something like 🗇, with an object on the top stack) onto the image viewer. That will open the localizer on the viewer.
 
     ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
+
 - [ ] In the issue collecting notes about the session, check the box confirming that the localizer has been acquired. 
     - [ ] If the quality looks good, check the box stating `Localizer looked ok`. If not, follow the paragraph below.
 
@@ -167,7 +168,7 @@
         - [ ] Open the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence and under the section *Diff.*, uncheck all the derivatives except for *Diff. Weighted Image*.
 
 - [ ] In the issue collecting notes about the session, check the box confirming that the T1w image has been acquired. 
-    - [ ] If the quality looks good, check the box stating *T1w looked okay*.
+    - [ ] If the quality looks good, check the box stating `T1w looked okay`.
         If not, please follow [the instructions to repeat the scan](scanning-notes.md#repeat-scan) and report the problem in the session notes.
 
 ## Acquire the diffusion MRI run
@@ -220,7 +221,8 @@
     - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence, and
     - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_qct }}).
     - [ ] Verify that the positive-control task `{{ settings.psychopy.tasks.func_qct }}` is open in psychopy, that you calibrated the ET and that the physiological signals are still recording and look ok.
-- [ ] In the issue collecting notes about the session, check the boxes confirming that each fieldmap has been acquired and that you check that the physiological signal are still recording. Don't forget to report any observations there.
+- [ ] In the issue collecting notes about the session, check the boxes confirming that each fieldmap has been acquired and that you check that the physiological signal are still recording.
+    Don't forget to report any observations there.
 
 ## Acquire the functional MRI block
 - [ ] Inform the participant about the fMRI block
