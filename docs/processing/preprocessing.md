@@ -5,22 +5,29 @@ We will then run one *fMRIPrep* process for each dataset's session, which is the
 We avert that session-wise *fMRIPrep*'s processes run into race conditions by pre-computing the anatomical reference.
 
 - [ ] Submit the anatomical workflow:
-    ``` bash title="Executing anatomical workflow of fMRIPrep"
-    {% filter indent(width=4) %}
-    {% include 'code/fmriprep/ss-fmriprep-anatonly.sh' %}
-    {% endfilter %}
+    ``` bash title="Launch each session through fMRIPrep in parallel"
+    cd code/fmriprep
+    bash ss-fmriprep.sh
     ```
+
+    ??? abstract "The sbatch file to run *fMRIPrep* with `--anat-only`"
+
+        ``` bash
+{% filter indent(width=8) %}
+{% include 'code/fmriprep/ss-fmriprep-anatonly.sh' %}
+{% endfilter %}
+        ```
 
 - [ ] Submit a *job array* with one scanning session each with the `--bids-filter-file` argument selecting the corresponding sessions, and point the `--fs-subjects-dir` argument to the folder where *FreeSurfer* results were stored.
     ``` bash title="Launch each session through fMRIPrep in parallel"
     cd code/fmriprep
-    bash submit-fmriprep.sh
+    bash ss-fmriprep.sh
     ```
 
-    ??? important "The sbatch file to run fMRIPrep session-wise"
+    ??? abstract "The sbatch file to run *fMRIPrep* session-wise"
 
-        ``` bash title="Executing anatomical workflow of fMRIPrep"
-        {% filter indent(width=8) %}
-        {% include 'code/fmriprep/ss-fmriprep.sh' %}
-        {% endfilter %}
+        ``` bash
+{% filter indent(width=8) %}
+{% include 'code/fmriprep/ss-fmriprep.sh' %}
+{% endfilter %}
         ```
