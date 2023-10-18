@@ -23,8 +23,9 @@ nav:
       - Before data acquisition (storage preparation): data-management/preliminary.md
       - Post-session retrieval and BIDS: data-management/post-session.md
       - QC of unprocessed data: data-management/mriqc.md
-    - Preprocessing: preprocessing.md
-    - Extracting functional connectivity: preprocessing/functional-connectivity.md
+    - Processing: 
+      - Preprocessing: processing/preprocessing.md
+      - Extracting functional connectivity: processing/functional-connectivity.md
     - Release of data: release.md
     - Appendices:
       - Notes on the scanner's console and recording devices: data-collection/scanning-notes.md
