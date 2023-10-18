@@ -93,115 +93,67 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
 ### Install the gas analyzer (GA)
 
 
-### Install *Psychopy* for stimuli presentation and development
-This block describes how to prepare an environment with a running *Psychopy 3* installation.
-
-??? warning "Multiple screens"
-
-    If you want to use multiple screens, install the corresponding libxcb extension:
-
-    ``` shell
-    sudo apt-get install libxcb-xinerama0
-    ```
-
-??? important "*Psychopy* should not be installed with *Conda*/*Anaconda*"
-
-    If an anaconda environment is activated, run the following command to deactivate it:
-    ``` shell
-    conda deactivate
-    ```
-
-- [ ] Clone the [*Psychopy* repository](https://github.com/psychopy/psychopy.git):
-    ``` shell
-    git clone git@github.com:psychopy/psychopy.git
-    ```
-- [ ] Navigate to the *Psychopy* directory:
-    ``` shell
-    cd psychopy
-    ```
-- [ ] Update *Pypi* to the latest version:
-    ``` shell
-    python3 -m pip install -U pip
-    ```
-- [ ] Update *Numpy* to the latest version:
-    ``` shell
-    python3 -m pip install -U numpy
-    ```
-- [ ] Install other necessary dependencies:
-    ``` shell
-    python3 -m pip install attrdict py2app bdist_mpkg
-    ```
-- [ ] Install *wxPython*.
-    ``` shell
-    python3 -m pip install -U \
-        -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-$( lsb_release -r -s ) \
-        wxPython
-    ```
-- [ ] Install *Psychopy* using the following command:
-    ``` shell
-    pip3 install -e .
-    ```
-- [ ] Try opening *Psychopy* by typing:
-    ``` shell
-    psychopy --no-splash -b
-    ```
-
-    ??? important "The first time it runs, *Psychopy* will likely request some increased permissions"
-
-        - [ ] Add a new `psychopy` group to your system.
-            ``` shell
-            sudo groupadd --force psychopy
-            ```
-        - [ ] Add your current user to the new group:
-            ``` shell
-            sudo usermod -a -G psychopy $USER
-            ```
-        - [ ] Raise security thresholds for *Psychopy*, by inserting the following into `/etc/security/limits.d/99-psychopylimits.conf`:
-            ``` text
-            @psychopy - nice -20
-            @psychopy - rtprio 50
-            @psychopy - memlock unlimited
-            ```
-
-??? bug "*Psychopy* crashes when trying to run a experiment: `pyglet.gl.ContextException: Could not create GL context`"
-
-    This is likely related to your computer having a GPU and a nonfunctional configuration:
-
-    ``` shell
-    $ glxinfo | grep PyOpenGL
-    X Error of failed request:  BadValue (integer parameter out of range for operation)
-      Major opcode of failed request:  151 (GLX)
-      Minor opcode of failed request:  24 (X_GLXCreateNewContext)
-      Value in failed request:  0x0
-      Serial number of failed request:  110
-      Current serial number in output stream:  111
-    ```
-
-    A quick attempt to solve this would be adding our user to the `video` group.
-
-    However, that is unlikely to work out so you'll need to take more actions (see [this](https://github.com/mmatl/pyrender/issues/13), and [this](https://askubuntu.com/questions/1255841/how-do-i-fix-the-glxinfo-badvalue-error-on-ubuntu-18-04))
-
-??? bug "*Psychopy* crashes when trying to run a experiment: `qt.qpa.plugin: Could not load the Qt platform plugin 'xcb'`"
-
-    If you installed `libxcb-xinerama0`, or you don't have multiple screens, first try:
-
-    ``` shell
-    python3 -m pip uninstall opencv-python
-    python3 -m pip install opencv-python-headless
-    ```
-
-    If that doesn't work, try a brute force solution by installing libxcb fully:
-
-    ``` shell
-    sudo apt-get install libxcb-*
-    ```
-
 ### Preparing the *Stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }})
 
 The stimuli presentation laptop and any other box you want to use for debugging and development will require a few additional software packages to be available.
 
+#### Installing *EyeLink* (eye tracker software)
+
+!!! warning "The *EyeLink* software MUST be installed BEFORE *Pychopy*"
+
+- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
+
+- [ ] Enable Canonical's universe repository with the following command:
+    ``` shell
+    sudo add-apt-repository universe
+    sudo apt update
+    ```
+- [ ] Install and update the ca-certificates package:
+    ``` shell
+    sudo apt update
+    sudo apt install ca-certificates
+    ```
+- [ ] Add the SR Research Software Repository signing key:
+    ``` shell
+    curl -sS https://apt.sr-research.com/SRResearch_key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sr-research.gpg
+    ```
+- [ ] Add the SR Research Software Repository as an *Aptitude* source:
+    ``` shell
+    sudo add-apt-repository 'deb [arch=amd64] https://apt.sr-research.com SRResearch main'
+    ```
+- [ ] Install the EyeLink Developers Kit:
+    ``` shell
+    sudo apt install eyelink-display-software
+    ```
+- [ ] Install the EyeLink Data Viewer:
+    ``` shell
+    sudo apt install eyelink-dataviewer
+    ```
+- [ ] Install the *Pylink* module made by *SR Research*, it is prepared with the installation of the `eyelink-display-software`:
+
+    ``` shell
+    python3 -m pip install /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp310-cp310-linux_x86_64.whl
+    ```
+
+    ??? warning "Find the appropriate version for your *Python* distribution"
+
+        The example above is for *cPython* 3.10, alternative installations are:
+
+        ```
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp27-cp27mu-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp310-cp310-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp311-cp311-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp36-cp36m-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp37-cp37m-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp38-cp38-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp39-cp39-linux_x86_64.whl
+        ```
 
 #### Installing our synchronization server
+
+During the session, we run a synchronization server that acts as a hub for the signals (triggers, task events, etc.) that define the experiment.
+For the best experience, we *daemonize* the synchronization service (meaning, we make it a service of the operative system that runs in the background).
+To install it as a service, please follow [the documentation in the appendix](software.md#setting-up-the-synchronization-service-as-a-daemon-in-the-background)
 
 - [ ] Locate the latest version of the synchronization service on your system.
     It is within the SOPs repository, at ``{{ secrets.data.sops_clone_path | default('<path>') }}/code/synchronization/forward-trigger-service.py``.
@@ -259,91 +211,9 @@ The stimuli presentation laptop and any other box you want to use for debugging 
 
       - [ ] Press <span class="keypress">s</span> and verify that `^A` appears in the screen terminal.
 
-#### Setting up the synchronization service as a daemon in the background
-
-!!! important "It's fundamental to have a reliable means of communication with the BIOPAC digital inputs"
-
-    The following guidelines set up a little service on a linux box that keeps listening for key presses (mainly, the <span class="keypress">s</span> trigger from the trigger box), and RPC (remote procedure calls) from typically *Psychopy* or similar software.
-
-    The service is spun up automatically when you connect the MMBT-S modem interface that communicates with the BIOPAC (that is, the *N-shaped pink box*)
-
-- [ ] To automatically start the program when the BIOPAC is connected, create a udev rule as follows:
-    ``` shell
-    sudo nano /etc/udev/rules.d/99-forward-trigger.rules
-    ```
-- [ ] Add the following rule to the file:
-    ```
-    ACTION=="add", KERNEL=="ttyACM0", SUBSYSTEM=="tty", TAG+="systemd", ENV{SYSTEMD_WANTS}="forward-trigger.service"
-    ```
-- [ ] Save the file and exit the editor.
-- [ ] Run the following command to reload the udev rules:
-    ``` shell
-    sudo udevadm control --reload-rules
-    ```
-- [ ] Create a systemd service unit file:
-    ``` shell
-    sudo nano /etc/systemd/system/forward-trigger.service
-    ```
-- [ ] Add the following content to the file (Adapt the path to forward-trigger.py to the location on your computer):
-    ```
-    [Unit]
-    Description=Forward Trigger Service
-    After=network.target
-
-    [Service]
-    ExecStart=/usr/bin/python3 /path/to/forward-trigger.py
-    WorkingDirectory=/path/to/forward-trigger/directory
-    StandardOutput=null
-
-    [Install]
-    WantedBy=multi-user.target
-    ```
-- [ ] Save the file and exit the text editor.
-- [ ] Run the following command to enable the service to start at boot:
-    ``` shell
-    sudo systemctl enable forward-trigger
-    ```
-- [ ] Run the following command to reload the systemd daemon:
-    ``` shell
-    sudo systemctl daemon-reload
-    ```
-
-#### Installing *EyeLink* (eye tracker software)
-
-- [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy | default("███") }}* and password `{{ secrets.login.password_psychopy | default("*****") }}`.
-
-- [ ] Enable Canonical's universe repository with the following command:
-    ``` shell
-    sudo add-apt-repository universe
-    sudo apt update
-    ```
-- [ ] Install and update the ca-certificates package:
-    ``` shell
-    sudo apt update
-    sudo apt install ca-certificates
-    ```
-- [ ] Add the SR Research Software Repository signing key:
-    ``` shell
-    curl -sS https://apt.sr-research.com/SRResearch_key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sr-research.gpg
-    ```
-- [ ] Add the SR Research Software Repository as an *Aptitude* source:
-    ``` shell
-    sudo add-apt-repository 'deb [arch=amd64] https://apt.sr-research.com SRResearch main'
-    ```
-- [ ] Install the EyeLink Developers Kit:
-    ``` shell
-    sudo apt install eyelink-display-software
-    ```
-- [ ] Install the EyeLink Data Viewer:
-    ``` shell
-    sudo apt install eyelink-dataviewer
-    ```
-- [ ] Install the *Python* module:
-    ``` shell
-    python3 -m pip install pylink
-    ```
-
 #### Prepare the *Psychopy* experiments
+
+!!! tip "The appendix has some guides on [how to install *Psychopy*](software.md#psychopy-installation)."
 
 - [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
 - [ ] Deactivate conda environment (if needed):
