@@ -66,7 +66,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Fill in weather details of the scanning day based [MeteoSwiss](https://www.meteoswiss.admin.ch/local-forecasts/lausanne/1003.html#forecast-tab=detail-view) in 1003 Lausanne.
     - [ ] Report the maximum and minimum temperature in degrees celsius.
     - [ ] Report the wind speed at the time of scanning in km/h.
-    - [ ] Report the precipitation type and ammount (in mm).
+    - [ ] Report the precipitation type and amount (in mm).
     - [ ] Report the outside atmospheric pressure (in hPa) and relative humidity (in %).
     - [ ] Report the hours of daylight (rounded to the number of hours).
 
@@ -85,7 +85,7 @@ Instructions of operations to be performed before the participant arrival, **bef
         Scrolling down, you will find additional measurement values that look like:
             ![meteoswiss_details](../assets/images/meteoswiss_details.png)
 
-        Here the relevant additional informations are:
+        Here the relevant additional information is:
 
         * Current outside atmospheric pressure (hPa): 963 hPa
         * Current outside relative humidity (%): 75.8%
