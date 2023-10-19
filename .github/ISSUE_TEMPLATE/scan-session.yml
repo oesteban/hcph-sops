@@ -58,6 +58,15 @@ body:
 
 - type: markdown
   attributes:
+    value: "## Eye-tracker calibration"
+- type: checkboxes
+  attributes:
+    label: Eye-tracker calibration completion
+    options:
+      - label: Eye-tracker calibration was completed.
+
+- type: markdown
+  attributes:
     value: "## Diffusion scan"
 - type: checkboxes
   attributes:
@@ -99,6 +108,14 @@ body:
     label: Fieldmap scans notes
     description: If you detected an issue, please describe it in detail here.
 
+- type: markdown
+  attributes:
+    value: "## Eye-tracker drift check"
+- type: checkboxes
+  attributes:
+    label: Eye-tracker drift correction
+    options:
+      - label: Eye-tracker drift was corrected.
 
 - type: markdown
   attributes:
@@ -166,3 +183,30 @@ body:
   attributes:
     label: Breath-holding task notes
     description: If you detected an issue, please describe it in detail here.
+
+- type: markdown
+  attributes:
+    value: "## T2w scan (optional)"
+
+- type: checkboxes
+  attributes:
+    label: T2w scan completion
+    options:
+      - label: T2w scan was completed.
+- type: dropdown
+  attributes:
+    label: T2w issues
+    multiple: true
+    options:
+      - scan was not acquired
+      - interrupted scan
+- type: textarea
+  attributes:
+    label: T2w notes
+    description: If you detected an issue, please describe it in detail here.
+
+- type: checkboxes
+  attributes:
+    label: Were all scans acquired successfully ?
+    options:
+      - label: Yes, all went well.
