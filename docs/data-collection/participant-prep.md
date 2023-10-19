@@ -14,7 +14,24 @@
         - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at :fontawesome-solid-square-phone: {{ secrets.phones.medical_contact | default("###-###-####") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
         - [ ] In case of discovering any previously undisclosed contraindication, the volunteer **MUST NOT** participate in the study.
 
-- Ask the participant to fill out the `Before scan` part of the covariates collection on the issue you opened [earlier](pre-session.md#collection-of-covariates).
+- [ ] Ask the participant to fill out the `Before scan` part of the covariates collection on the issue you opened [earlier](pre-session.md#collection-of-covariates).
+    - [ ] In the beginning, the participant should ask you to measure the blood pressure.
+
+    ???+ info "Measuring blood pressure"
+        - [ ] Turn the blood pressure machine on.
+        ![Blood pressure machine](../assets/images/Blood_pressure-machine.jpg)
+        - [ ] Carrefully place the arm band on the patient's **right** arm.
+            - [ ] Make sure the tubes are placed correctly (see below).
+        ![Blood pressure arm band](../assets/images/Blood_pressure-armband.jpg)
+        - [ ] Check that the adult preset is loaded (if not, load it).
+        ??? info "Load a new preset"
+            - [ ] Press **CONFIG MONITEUR** to open the options.
+                - [ ] Scroll using the wheel and select by pressing it.
+            - [ ] Enter to **PATIENT**, and select **ADULTE**.
+            - [ ] Exit by pressing the wheel on **RETOUR**.
+            ![Blood pressure preset](../assets/images/Blood_pressure-preset.jpg)
+        - [ ] Measure the blood pressure by pressing the **DEBUT ARRET** button.
+        ![Blood pressure interface](../assets/images/Blood_pressure-interface.jpg)
 
 - [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }}).
 
