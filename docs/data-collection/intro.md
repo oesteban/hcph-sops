@@ -76,6 +76,10 @@ The above graph can be broken down as follows:
 
 ## Getting familiar with the instruments
 
+Below is the overall setup of the instruments:
+
+![Overall instrumental setup](../assets/images/Biopac_full_setup.jpg)
+
 !!! warning "Emergency procedures"
 
     It is critical you fully understand and study the [emergency procedures to run an MRI scan at CHUV](./emergency-procedures.md).
