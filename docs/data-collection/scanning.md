@@ -70,6 +70,16 @@
 - [ ] leave the computer with a pleasant screen projecting (e.g., a gray background).
 - [ ] Check the corresponding box in the issue collecting notes about the session.
 
+??? danger "Make sure to load the correct environment"
+
+    - [ ] Deactivate conda (if active):
+        ``` shell
+        conda deactivate
+        ```
+    - [ ] Load the new virtual environment:
+        ``` shell
+        source $HOME/psychopyenv/bin/activate
+
 ### Check *{{ secrets.hosts.acqknowledge | default("███") }}*:
 
 - [ ] has enough battery, and plug the power cord if necessary;
@@ -203,15 +213,16 @@ It is critical to check that physiological signals are looking good:
         - [ ] Repeat the configuration of *Magnitude et phase* for all sequences name `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__*`.
         - [ ] Repeat the configuration of *Magnitude et phase* for all sequences name `func-bold_task-{bht,qct,rest}_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`.
         - [ ] Open the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence and under the section *Diff.*, uncheck all the derivatives except for *Diff. Weighted Image*.
+        - [ ] Open the `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__*` sequences and under the section *Diff.*, uncheck all the derivatives except for *Diff. Weighted Image*.
 
 - [ ] In the issue collecting notes about the session, check the box confirming that the T1w image has been acquired. 
     - [ ] If the quality looks good, check the box stating `T1w looked okay`.
         If not, please follow [the instructions to repeat the scan](scanning-notes.md#repeat-scan) and report the problem in the session notes.
 
-## Acquire the diffusion MRI run
+## Acquire the dMRI EPI fieldmaps
 
-- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence.
-- [ ] Verify again the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` parameters under section *Diff.* All the derivatives MUST be unchecked except for *Diff. Weighted Image*.
+- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) of the `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar*` sequences.
+- [ ] Verify again the `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` parameters under section *Diff.* All the derivatives MUST be unchecked except for *Diff. Weighted Image*.
 - [ ] Inform the participant that the diffusion scan will follow.
 
     ??? quote "Only for the participant of Cohort I"
@@ -224,7 +235,8 @@ It is critical to check that physiological signals are looking good:
 
     ???+ quote "Participant of Cohort II"
 
-        Hey [NAME], the next block is a bit long, around 30 minutes.
+        Hey [NAME], the next block is a bit long.
+        First, we will run four short sequences of less than one minute and then a long block of around 30 minutes.
 
         You can close your eyes and even sleep if you wish.
 
@@ -237,48 +249,137 @@ It is critical to check that physiological signals are looking good:
 
         Are you ready?
 
-- [ ] Launch the diffusion `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
+- [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
+
+**While the fieldmaps are running:**
+
+- [ ] [adjust the FoV](scanning-notes.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence, and
+- [ ] prepare the execution of the fixation program on the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), which will be played during the DWI by typing the following on a terminal:
+
+    ??? danger "Make sure to have the correct environment loaded before invoking the task"
+
+        - [ ] Deactivate conda (if active):
+            ``` shell
+            conda deactivate
+            ```
+        - [ ] Load the new virtual environment:
+            ``` shell
+            source $HOME/psychopyenv/bin/activate
+            ```
+
+    ``` shell
+    cd ~/workspace/HCPh-fMRI-tasks
+    python {{ settings.psychopy.tasks.dwi }}.py
+    ```
+
+    A modal dialog will ask you for the number of trial (automatically calculated, DO NOT modify) and the session number.
+
+!!! warning "The following two steps MUST be executed in this order"
+
+        - [ ] Drag and drop the modal dialog into the scanner's projector screen.
+        - [ ] Update the session number with the corresponding number.
 
 !!! important "At this point, the GA should have finished the warm-up so you can verify it is working"
 
-    - [ ] Ask the participant to take three deep breathes, to then go back to a comfortable, normal respiration pace. Check on the *AcqKnoledge* window that the three breathes are distinctly registered (taking into account that there may be 10-25 seconds of delay because of the tubing).
+    - [ ] Ask the participant to take three deep breathes, to then go back to a comfortable, normal respiration pace.
+    - [ ] Check on the *AcqKnoledge* window that the three breathes are distinctly registered (taking into account that there may be 10-25 seconds of delay because of the tubing).
 
-### Once the main diffusion MRI run is done, proceed with fieldmaps
-- [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the diffusion sequence has been acquired.
-    Don't forget to report any observations there.
-- [ ] Launch the DWI-EPI sequence `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
-- [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] While it is running,
-    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
-    - [ ] Verify that in the next sequence parameters under *Contrast>Reconstruction* the option *Magnitude et phase* is selected!
-- [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] While the fieldmap sequence is running,
-    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence, and
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_qct }}).
-    - [ ] Verify that the positive-control task `{{ settings.psychopy.tasks.func_qct }}` is open in psychopy, that you calibrated the ET and that the physiological signals are still recording and look ok.
-- [ ] In the issue collecting notes about the session, check the boxes confirming that each fieldmap has been acquired and that you check that the physiological signal are still recording.
-    Don't forget to report any observations there.
+## Acquire the diffusion MRI run
 
-## Acquire the functional MRI block
-- [ ] Inform the participant about the fMRI block
+- [ ] Verify again the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` parameters under section *Diff.* All the derivatives MUST be unchecked except for *Diff. Weighted Image*.
+- [ ] Inform the participant that before the long dMRI block, the ET must be calibrated.
 
-    ???+ quote "Starting the fMRI block - calibrating the eye tracker"
-        Hey [NAME], we are now to move into measuring the activity of your brain.
+    ???+ quote "Starting the dMRI block after calibrating the eye tracker"
 
-        Is everything alright thus far?
+        Hey [NAME], is everything alright thus far?
 
         [Allow some time for response]
 
-        Before we start, we need to calibrate the eye-tracker device, which follows your right eye during experiments.
+        Before we start the long dMRI block, we need to calibrate the eye-tracker device, which follows your right eye during experiments.
 
         Your are going to see a round fixation point, and the point is going to move randomly over the screen space.
         Please follow it with your gaze, trying to look at it as stable as possible and without moving your head.
 
         Are you ready?
 
-- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration](scanning-notes.md#eye-tracker-calibration).
+- [ ] On the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), check the correct session number is set and hit *OK*.
+
+    ??? danger "The OK button MUST be clicked with this modal dialog on the projector's screen"
+
+        Otherwise, the wrong screen will be selected by *Psychopy*
+
+- [ ] Proceed with [the ET calibration](scanning-notes.md#eye-tracker-calibration).
+    **The ET control menu will appear after hitting *OK* on the modal dialog**.
+- [ ] Launch the diffusion `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
+- [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
+
+## Acquire the GRE fieldmap
+- [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the diffusion sequence has been acquired.
+    Don't forget to report any observations there.
+- [ ] Launch the GRE (*phase difference*) sequence `fmap-phasediff__gre` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
+
+**While the GRE fieldmap is running:**
+
+- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence,
+- [ ] verify that in the next sequence parameters under *Contrast>Reconstruction* the option *Magnitude et phase* is selected,
+- [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_qct }}), and
+- [ ] prepare the execution of the QCT by executing the following on a terminal:
+
+    ??? danger "Make sure to have the correct environment loaded before invoking the task"
+
+        - [ ] Deactivate conda (if active):
+            ``` shell
+            conda deactivate
+            ```
+        - [ ] Load the new virtual environment:
+            ``` shell
+            source $HOME/psychopyenv/bin/activate
+            ```
+
+    ``` shell
+    cd ~/workspace/HCPh-fMRI-tasks
+    python {{ settings.psychopy.tasks.func_qct }}.py
+    ```
+
+    A modal dialog will ask you for the number of trial (automatically calculated, DO NOT modify) and the session number.
+
+    !!! warning "The following two steps MUST be executed in this order"
+
+            - [ ] Drag and drop the modal dialog into the scanner's projector screen.
+            - [ ] Update the session number with the corresponding number.
+
+
+- [ ] In the issue collecting notes about the session, check the boxes confirming that each fieldmap has been acquired and that you check that the physiological signal are still recording.
+    Don't forget to report any observations there.
+
+## Acquire the functional MRI block
+- [ ] Inform the participant about the fMRI block
+
+    ???+ quote "Starting the fMRI block"
+        Hey [NAME], we are now to move into measuring the activity of your brain.
+
+        Is everything alright thus far?
+
+        [Allow some time for response]
+
+        Before we start, we are going to check if the eye-tracker is still accurate.
+
+        Your are going to see a fixed, round fixation point.
+        Please focus your gaze on it, trying to look at it as stable as possible and without moving your head.
+
+        If the eye-tracker is very off, we will re-calibrate it.
+
+        Are you ready?
+
+- [ ] Wait for confirmation, respond to follow-up comments.
+- [ ] On the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), check the correct session number is set and hit *OK*.
+
+    ??? danger "The OK button MUST be clicked with this modal dialog on the projector's screen"
+
+        Otherwise, the wrong screen will be selected by *Psychopy*
+
+- [ ] [Initiate the ET drift correction procedure](scanning-notes.md#eye-tracker-drift).
+    **The ET control menu will appear after hitting *OK* on the modal dialog**.
 
 ### Quality-control task (QCT)
 - [ ] Verify that the task's program is awaiting the scanner's trigger to start.
@@ -306,6 +407,10 @@ It is critical to check that physiological signals are looking good:
 - [ ] Once the sequence is over, close the current experiment on psychopy and open `{{ settings.psychopy.tasks.func_rest }}`.
 - [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the quality control task fMRI has been acquired and that you check that the physiological signals are still being recorded.
     Don't forget to report any observations there.
+
+### fMRI fieldmaps
+- [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
+- [ ] While the fieldmap sequence is running,
 
 ### Resting state fMRI
 - [ ] Inform the participant:

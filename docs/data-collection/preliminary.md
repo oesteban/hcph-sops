@@ -129,25 +129,6 @@ The stimuli presentation laptop and any other box you want to use for debugging 
     ``` shell
     sudo apt install eyelink-dataviewer
     ```
-- [ ] Install the *Pylink* module made by *SR Research*, it is prepared with the installation of the `eyelink-display-software`:
-
-    ``` shell
-    python3 -m pip install /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp310-cp310-linux_x86_64.whl
-    ```
-
-    ??? warning "Find the appropriate version for your *Python* distribution"
-
-        The example above is for *cPython* 3.10, alternative installations are:
-
-        ```
-        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp27-cp27mu-linux_x86_64.whl
-        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp310-cp310-linux_x86_64.whl
-        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp311-cp311-linux_x86_64.whl
-        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp36-cp36m-linux_x86_64.whl
-        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp37-cp37m-linux_x86_64.whl
-        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp38-cp38-linux_x86_64.whl
-        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp39-cp39-linux_x86_64.whl
-        ```
 
 #### Installing our synchronization server
 
@@ -216,15 +197,18 @@ To install it as a service, please follow [the documentation in the appendix](so
 !!! tip "The appendix has some guides on [how to install *Psychopy*](software.md#psychopy-installation)."
 
 - [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
-- [ ] Deactivate conda environment (if needed):
-    ``` shell
-    conda deactivate
-    ```
-- [ ] Install our *HCPh-signals* package (assumes these SOPs are checked out at `{{ secrets.data.sops_clone_path | default('<path>') }}`:
-    ``` shell
-    cd {{ secrets.data.sops_clone_path | default('<path>') }}/code/signals
-    python3 -m pip install .
-    ```
+
+??? important "Make sure to load the correct environment"
+
+    - [ ] Deactivate conda (if active):
+        ``` shell
+        conda deactivate
+        ```
+    - [ ] Load the new virtual environment:
+        ``` shell
+        source $HOME/psychopyenv/bin/activate
+        ```
+
 - [ ] [Fork the HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks/fork) under your user on GitHub.
 - [ ] Clone the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks):
     ```
@@ -236,16 +220,19 @@ To install it as a service, please follow [the documentation in the appendix](so
     ```
 - [ ] Open *Psychopy* and (optionally) a experiment file corresponding to a task by typing the following command in the terminal:
     ```
-    psychopy {{ settings.psychopy.tasks.func_qct }}
+    psychopy --no-splash -b {{ settings.psychopy.tasks.func_qct }}.psyexp
     ```
 - [ ] For each task, check the following:
-    - [ ] `{{ settings.psychopy.tasks.func_qct }}` (positive-control task, QCT) :
+    - [ ] `{{ settings.psychopy.tasks.func_qct }}.psyexp` (quality-control task, QCT):
         - [ ] time it to [confirm the length](intro.md#task-timing), and
         - [ ] check the task runs properly.
-    - [ ] `{{ settings.psychopy.tasks.func_rest }}` (resting-state fMRI):
+    - [ ] `{{ settings.psychopy.tasks.func_rest }}.psyexp` (resting-state fMRI):
         - [ ] time it to confirm the length, and
         - [ ] check that the movie is played.
-    - [ ] `{{ settings.psychopy.tasks.func_bht }}` (breath-holding task, BHT):
+    - [ ] `{{ settings.psychopy.tasks.func_bht }}.psyexp` (breath-holding task, BHT):
+        - [ ] time it to confirm the length, and
+        - [ ] check the task runs properly.
+    - [ ] `{{ settings.psychopy.tasks.dwi }}.psyexp` (fixation point during DWI):
         - [ ] time it to confirm the length, and
         - [ ] check the task runs properly.
 

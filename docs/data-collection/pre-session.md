@@ -22,17 +22,29 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Make sure you have internet access, and update the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks) on *{{ secrets.hosts.psychopy | default("███") }}*:
     ```
     git fetch upstream
-    git checkout main
-    git rebase upstream/main
+    git checkout master
+    git rebase upstream/master
     ```
-- [ ] On the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
-- [ ] Open psychopy 3 by typing `psychopy`
+
+??? important "Make sure to load the correct environment"
+
+    - [ ] Deactivate conda (if active):
+        ``` shell
+        conda deactivate
+        ```
+    - [ ] Load the new virtual environment:
+        ``` shell
+        source $HOME/psychopyenv/bin/activate
+        ```
+
+- [ ] Open a terminal and move it to the secondary screen
+- [ ] Run the compiled tasks with *Python* directly.
 - [ ] Load in the different experiments and check for proper functioning:
-    - [ ] `{{ settings.psychopy.tasks.func_rest }}` (resting-state fMRI):
+    - [ ] `python {{ settings.psychopy.tasks.func_rest }}.py` (resting-state fMRI):
         - [ ] check that the movie is played.
-    - [ ] `{{ settings.psychopy.tasks.func_bht }}` (breath-holding task, BHT):
+    - [ ] `{{ settings.psychopy.tasks.func_bht }}.py` (breath-holding task, BHT):
         - [ ] check that the task runs properly.
-    - [ ] `{{ settings.psychopy.tasks.func_qct }}` (quality-control task, QCT):
+    - [ ] `{{ settings.psychopy.tasks.func_qct }}.py` (quality-control task, QCT):
         - [ ] check that the task runs properly.
 
 ## Documentation and other non-experimental devices
