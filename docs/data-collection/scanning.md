@@ -67,7 +67,7 @@
     - [ ] has enough battery, and plug the power cord if necessary;
     - [ ] computer is ready, with the *AcqKnowledge* software open and collecting data;
     - [ ] check the ECG and RB signals, and fix unanticipated problems (e.g., the respiration belt needs to be fastened tighter);
-    - [ ] the *Amphetamine* app is running and keeping the computer unlocked while *AcqKnoledge* is working.
+    - [ ] the *Amphetamine* app is running and keeping the computer unlocked while *AcqKnowledge* is working.
     - [ ] Check the corresponding box in the issue collecting notes about the session.
 
 - [ ] Check the quality of physiological signals.
