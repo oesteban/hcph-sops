@@ -69,7 +69,7 @@ To support backward compatibility (and some extra, currently unsupported feature
 
     ``` py linenums="1" hl_lines="113-148"
 {% filter indent(width=4) %}
-{% include 'code/heudiconv/heuristic_reproin.py' %}
+{% include 'code/heudiconv/reproin.py' %}
 {% endfilter %}
     ```
 
@@ -79,11 +79,11 @@ To support backward compatibility (and some extra, currently unsupported feature
     varied substantially.
     Please note the `protocols2fix` variable in our heuristic file, where the compatibility is implemented.
 
-- [ ] Run *HeuDiConv* with our heuristic file `{{ secrets.data.sops_clone_path | default('<path>') }}/code/heudiconv/heuristic_reproin.py`:
+- [ ] Run *HeuDiConv* with our heuristic file `{{ secrets.data.sops_clone_path | default('<path>') }}/code/heudiconv/reproin.py`:
 
     ``` bash title="Executing HeuDiConv"
 {% filter indent(width=4) %}
-{% include 'code/heudiconv/reproin.sh' %}
+{% include 'code/heudiconv/heudiconv_example.sh' %}
 {% endfilter %}
     ```
 
