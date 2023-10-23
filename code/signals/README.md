@@ -1,10 +1,5 @@
 # hcphsignals
 
-[![PyPI - Version](https://img.shields.io/pypi/v/hcphsignals.svg)](https://pypi.org/project/hcphsignals)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/hcphsignals.svg)](https://pypi.org/project/hcphsignals)
-
------
-
 **Table of Contents**
 
 - [Installation](#installation)
@@ -13,9 +8,9 @@
 ## Installation
 
 ```console
-pip install hcphsignals
+python -m pip install code/signals/
 ```
 
 ## License
 
-`hcphsignals` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+`hcphsignals` is distributed under the terms of the [Apache 2.0](https://spdx.org/licenses/Apache-2.0.html) license.
