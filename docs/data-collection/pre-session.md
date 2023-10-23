@@ -96,7 +96,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     ??? info "Location of the MR room thermometer"
         The thermometer in the MR room can be found on the left of the operator window when inside the scanner room (see below).
         
-        [ADD_PICTURE]
+        ![MR room thermometer](../assets/images/MR_room-thermometer.jpeg)
 
     - [ ] Report MR helium level (%) 
         - [ ] In the top bar of the MR console, click on `System`>`Control`.
