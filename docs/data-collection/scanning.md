@@ -33,6 +33,7 @@
     - [ ] the box is on,
     - [ ] *Synchronization mode* is on,
     - [ ] session has been started,
+    - [ ] volume count is reset to 0 out of 9999,
     - [ ] USB cable to *{{ secrets.hosts.psychopy | default("███") }}* is connected.
     - [ ] Check the corresponding box in the issue collecting notes about the session.
 
@@ -78,6 +79,11 @@
         ![qa_physio](../assets/images/qa_physio.png)
 
     - [ ] Check the RB signal:
+
+        !!! warning "To ensure the best RB signal"
+            Calibrate the RB with the tube **unplugged** while the participant is **in** the scanner (you may have to help the participant).
+            Then, ask (and/or help) the participant to plug it back.
+
         - [ ] The RB signal SHOULD NOT plateau (neither saturate at a peak value nor floor at the troughs).
             This means the RB is maxing out and it requires loosening.
         - [ ] The envelope of your signal SHOULD remain approximately constant.
@@ -115,6 +121,18 @@
             ![qrs](../assets/images/qrs.png){: style="height:220px;width:220px"}
 
         - [ ] Check the corresponding box in the issue collecting notes about the session.
+
+!!! warning "When running multiple sessions back-to-back"
+        - [ ] Make sure the number of triggers forwarded by the syncbox (the maximum number of triggers is 9999 and we usually reached 9000+):
+            - [ ] Press the central button to stop the session,
+            - [ ] select `start session`,
+            - [ ] Press the central button again to start the new session.
+        - [ ] In *AcqKnowledge*, make sure you stopped the previous recording and started a new one (it will probably ask for a calibration of the respiration belt).
+        - [ ] Start a new examination on the MR console:
+            - [ ] Make sure all acquisitions are done,
+            - [ ] close any open patient window,
+            - [ ] find the patient in the system (or write new informations for a new participant)
+            - [ ] right click on the patient and press `start new examination`.
 
 ## Acquire a localizer (*AAhead_scout*)
 - [ ] Indicate the participant that the scanning will soon start:
