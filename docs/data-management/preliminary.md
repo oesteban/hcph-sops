@@ -1,3 +1,5 @@
+!!! danger "*DataLad* must be version 0.19 or later"
+
 This project maintains data under version control thanks to *DataLad*<sup>[1]</sup>.
 For instructions on how to setup *DataLad* on your PC, please refer to the [official documentation](https://handbook.datalad.org/en/latest/intro/installation.html).
 When employing high-performance computing (HPC), we provide [some specific guidelines](#hpc-users-instructions-to-install-datalad).
