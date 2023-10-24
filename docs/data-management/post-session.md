@@ -205,6 +205,18 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
 
         Please read [*DataLad*'s `save` documentation](http://docs.datalad.org/en/stable/generated/man/datalad-save.html)
 
+    !!! tip "Saving batches of sessions"
+
+        It is possible to save several sessions with the following *Bash* script by enumerating them in the array defined in the first line here:
+
+        ``` shell
+        SESSIONS=( 001 003 pilot21 ); \
+        for SESSION in ${SESSIONS[@]}; do \
+            find sub-001/ses-$SESSION -name "*.tsv" -or -name "*.json" -or -name "*.bvec" -or -name "*.bval" | xargs datalad save --to-git -m '"add('"$SESSION"'): new session metadata"'; \
+            find sub-001/ses-$SESSION -name "*.nii.gz" -or -name "_eyetrack.tsv.gz" -or -name "_physio.tsv.gz" | xargs datalad save -m '"add('"$SESSION"'): new session NIfTI data, eye tracking and physio"'; \
+        done
+        ```
+
 - [ ] Push the new data to the remote storage (if your git containing *DataLad* and the Git annex is different from `origin`, e.g., `github`, replace the name below):
     ``` shell
     datalad push --to ria-storage
