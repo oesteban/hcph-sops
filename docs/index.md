@@ -13,7 +13,7 @@
 
 ??? thanks "Thanks to César Caballero-Gaudés and Stefano Moia"
 
-    We highly appreciate the decisive help we have received from César Stefano to bring together the physiology component of this project.
+    We highly appreciate the decisive help we have received from César and Stefano to bring together the physiology component of this project.
 
     César provided very valuable feedback at the earliest stages of the design of the project and has also facilitated it with key feedback (including a visit to show their settings at BCBL).
 
