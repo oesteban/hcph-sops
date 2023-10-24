@@ -351,13 +351,13 @@ Instructions of operations to be performed before the participant arrival, **bef
         The console will prompt you for the common user password: `{{ secrets.login.password_psychopy | default("*****") }}`
 
 - [ ] Check that you can send trigger events manually:
-    - [ ] Enter the "Synchronization" menu by selecting it and pushing the enter button :fontawesome-solid-circle:{ .bluecolor }.
-    - [ ] Hit the down arrow button :fontawesome-solid-caret-down:{ .bluecolor } until you find "Send trigger"
+    - [ ] Enter the <span class="syncbox">Synchronization</span> mode by selecting it and pushing the enter button :fontawesome-solid-circle:{ .bluecolor }.
+    - [ ] Hit the down arrow button :fontawesome-solid-caret-down:{ .bluecolor } until you find <span class="syncbox">Send trigger</span>
     - [ ] Push the enter button :fontawesome-solid-circle:{ .bluecolor } every time you want to send an <span class="keypress">s</span> character.
     - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
     - [ ] Check that the BIOPAC is properly registering the trigger too. Every trigger sent should be seen in the *AcqKnowledge* GUI.
 - [ ] Start the syncbox session:
-    - [ ] Push the up arrow button :fontawesome-solid-caret-up:{ .bluecolor } until you find "Start session"
+    - [ ] Push the up arrow button :fontawesome-solid-caret-up:{ .bluecolor } until you find <span class="syncbox">Start Session</span>
     - [ ] Push the enter button :fontawesome-solid-circle:{ .bluecolor } and the syncbox will be now waiting for the scanner's trigger signal to forward it.
 
     | ![choose-synchronisation-syncbox](../assets/images/choose-synchronisation-syncbox.png) |
