@@ -88,7 +88,7 @@
         - [ ] Start a *New examination* on the MR console:
             - [ ] Make sure all acquisitions are done,
             - [ ] close any open patient window,
-            - [ ] find the patient in the system (or write new informations for a new participant)
+            - [ ] find the patient in the system (or write new information for a new participant)
             - [ ] right click on the patient and press `start new examination`.
 
 ## Ensuring the quality of physiological signals
