@@ -27,94 +27,131 @@
       If you detect motion or the participant falls asleep at inadequate points, use the speaker to inform them.
 
 ## Check experimental setup
+
 !!! danger "DO NOT FORGET to check the readiness of the experimental setup at this point"
 
-- [ ] Check the syncbox:
-    - [ ] the box is on,
-    - [ ] *Synchronization mode* is on,
-    - [ ] session has been started,
-    - [ ] USB cable to *{{ secrets.hosts.psychopy | default("███") }}* is connected.
-    - [ ] Check the corresponding box in the issue collecting notes about the session.
+### Check the syncbox
 
-- [ ] Check the BIOPAC:
-    - [ ] All cables are connected and not loose or hanging.
-    - [ ] The BIOPAC is turned on (switch it on if necessary).
-    - [ ] Check the corresponding box in the issue collecting notes about the session.
+- [ ] the box is on,
+- [ ] *Synchronization mode* is on,
+- [ ] session has been started,
+- [ ] volume count is reset to 0 out of 9999,
+- [ ] USB cable to *{{ secrets.hosts.psychopy | default("███") }}* is connected.
+- [ ] Check the corresponding box in the issue collecting notes about the session.
 
-- [ ] Check the GA:
-    - [ ] the tubing coming from the scanning room is properly connected,
-    - [ ] the CO<sub>2</sub> BNC output is plugged through the filter to the BIOPAC AMI200, on input channel 3,
-    - [ ] **the exhaust cap IS REMOVED**
-    - [ ] the GA is on (switch it on if necessary),
-    - [ ] ensure **the PUMP IS ON**, and
-    - [ ] **turn the pump's power knob to MAXIMUM position**.
-    - [ ] Check the corresponding box in the issue collecting notes about the session.
+### Check the BIOPAC
 
-- [ ] Check the eye-tracker setup:
-    - [ ] The ET computer is turned on (switch it on if necessary),
-    - [ ] The pupil is correctly detected (as described [here](participant-prep.md#final-preparatory-steps-of-the-et))
-    - [ ] Check the corresponding box in the issue collecting notes about the session.
+- [ ] All cables are connected and not loose or hanging.
+- [ ] The BIOPAC is turned on (switch it on if necessary).
+- [ ] Check the corresponding box in the issue collecting notes about the session.
 
-- [ ] Check *{{ secrets.hosts.psychopy | default("███") }}*:
-    - [ ] has enough battery, and plug the power cord if necessary;
-    - [ ] USB cable to the MMBT-S Trigger Interface Box is connected;
-    - [ ] serial cable from the MMBT-S Trigger Interface Box is connected to the back of the SPT100D digital interface (gray block) of the BIOPAC;
-    - [ ] computer is ready, with psychopy open, and with the appropriate version of experiments; and
-    - [ ] leave the computer with a pleasant screen projecting (e.g., a gray background).
-    - [ ] Check the corresponding box in the issue collecting notes about the session.
+### Check the GA
 
-- [ ] Check *{{ secrets.hosts.acqknowledge | default("███") }}*:
-    - [ ] has enough battery, and plug the power cord if necessary;
-    - [ ] computer is ready, with the *AcqKnowledge* software open and collecting data;
-    - [ ] check the ECG and RB signals, and fix unanticipated problems (e.g., the respiration belt needs to be fastened tighter);
-    - [ ] the *Amphetamine* app is running and keeping the computer unlocked while *AcqKnowledge* is working.
-    - [ ] Check the corresponding box in the issue collecting notes about the session.
+- [ ] **the exhaust cap IS REMOVED**
+- [ ] the tubing coming from the scanning room is properly connected,
+- [ ] the CO<sub>2</sub> BNC output is plugged through the filter to the BIOPAC AMI200, on input channel 3,
+- [ ] the GA is on (switch it on if necessary),
+- [ ] ensure **the PUMP IS ON**, and
+- [ ] **turn the pump's power knob to MAXIMUM position**.
+- [ ] Check the corresponding box in the issue collecting notes about the session.
 
-- [ ] Check the quality of physiological signals.
-    Please find in the following image examples of good and bad RB and CO<sub>2</sub> signals to support and illustrate the criteria to consider to assess the quality of the physiological signals.
+### Check the eye-tracker
 
-    ??? thanks "Thanks to César Caballero-Gaudés, Stefano Moia, Kristina Zvolankek, Elenor Morgenroth for putting together the slide below [1]."
+- [ ] The ET computer is turned on (switch it on if necessary),
+- [ ] The pupil is correctly detected (as described [here](participant-prep.md#final-preparatory-steps-of-the-et))
+- [ ] Check the corresponding box in the issue collecting notes about the session.
 
-        ![qa_physio](../assets/images/qa_physio.png)
+### Check *{{ secrets.hosts.psychopy | default("███") }}*:
 
-    - [ ] Check the RB signal:
-        - [ ] The RB signal SHOULD NOT plateau (neither saturate at a peak value nor floor at the troughs).
-            This means the RB is maxing out and it requires loosening.
-        - [ ] The envelope of your signal SHOULD remain approximately constant.
-            If peaks drop or troughs rise, it might be a sign that the RB is too loose.
-            Go back into the scanning room and tighten the RB.
-        - [ ] Check the corresponding box in the issue collecting notes about the session.
+- [ ] has enough battery, and plug the power cord if necessary;
+- [ ] USB cable to the MMBT-S Trigger Interface Box is connected;
+- [ ] serial cable from the MMBT-S Trigger Interface Box is connected to the back of the SPT100D digital interface (gray block) of the BIOPAC;
+- [ ] computer is ready, with psychopy open, and with the appropriate version of experiments; and
+- [ ] leave the computer with a pleasant screen projecting (e.g., a gray background).
+- [ ] Check the corresponding box in the issue collecting notes about the session.
 
-    - [ ] Check the CO<sub>2</sub> signal
-        - [ ] The period of the CO<sub>2</sub> signal should remain constant.
-            If it varies, the vacuum MAY be too low:
-            
-            - [ ] Check that the nasal cannula is correctly placed in the participant's nostrils.
-            - [ ] Check that all the extension connections of the tube are air-tight
-            - [ ] Check that the tube is not hanging at any point.
-        - [ ] The envelope of your signal SHOULD remain approximately constant.
-            If the peaks diminish, it might be a sign that the participant is breathing through their mouth.
-            In such a case, remind the participant to breathe through their nose.
+### Check *{{ secrets.hosts.acqknowledge | default("███") }}*:
 
-            ???+ quote "Remind the participant they MUST breathe through their nose at all times"
-                Hey [NAME],
+- [ ] has enough battery, and plug the power cord if necessary;
+- [ ] computer is ready, with the *AcqKnowledge* software open and collecting data;
+- [ ] check the ECG and RB signals, and fix unanticipated problems (e.g., the respiration belt needs to be fastened tighter);
+- [ ] the *Amphetamine* app is running and keeping the computer unlocked while *AcqKnowledge* is working.
+- [ ] Check the corresponding box in the issue collecting notes about the session.
 
-                Everything ok?
-                
-                I needed to ask you whether you are breathing through your nose because we are not recording sensible levels of CO<sub>2</sub>.
-                [WAIT FOR THEIR RESPONSE]
-                Thank you.
+!!! warning "When running multiple sessions back-to-back"
 
-        - [ ] Check the corresponding box in the issue collecting notes about the session.
+        - [ ] Restart a new session of the syncbox (within one session we usually see 9,000+, and the maximum is 9,999):
+            - [ ] Press the central button :fontawesome-solid-circle:{ .bluecolor } to stop the session,
+            - [ ] use the up :fontawesome-solid-caret-up:{ .bluecolor } and down :fontawesome-solid-caret-down:{ .bluecolor } arrows to find and select the option <span class="syncbox">Start Session</span> and hit enter :fontawesome-solid-circle:{ .bluecolor },
+            - [ ] Press the central button :fontawesome-solid-circle:{ .bluecolor } again to start the new session.
+        - [ ] In *AcqKnowledge*, make sure you stopped the previous recording and started a new one (it will ask for a re-calibration of the respiration belt).
+        - [ ] Start a *New examination* on the MR console:
+            - [ ] Make sure all acquisitions are done,
+            - [ ] close any open patient window,
+            - [ ] find the patient in the system (or write new informations for a new participant)
+            - [ ] right click on the patient and press `start new examination`.
 
-    - [ ] Check the ECG signal:
-        - [ ] The period and the envelope of the signal should remain constant.
-        - [ ] [We are placing the ECG electrodes in lead-1 mode](participant-prep.md#connecting-physiological-recording-sensors-and-probes), which should give an ECG signal that looks vaguely like the familiar QRS shape (see below).
-            Typically, the signal does not look as neat as on the schema because the magnetic fields of the MR interfere with the electrodes (even if they are MR-compatible electrodes).
+## Ensuring the quality of physiological signals
 
-            ![qrs](../assets/images/qrs.png){: style="height:220px;width:220px"}
+It is critical to check that physiological signals are looking good:
 
-        - [ ] Check the corresponding box in the issue collecting notes about the session.
+* Before starting the session, and
+* from time to time within the session.
+
+| ![qa_physio](../assets/images/qa_physio.png) |
+|:--:|
+| ***Examples of good and problematic RB and CO<sub>2</sub> signals.*** *Following these guidelines, our physiological signals should resemble the cases labeled as "good" above.* |
+
+!!! thanks "Thanks to César Caballero-Gaudés, Stefano Moia, Kristina Zvolankek, Elenor Morgenroth for the slide above<sup>[1]</sup>."
+
+### Checking the RB
+
+!!! warning "To ensure the best RB signal"
+    Calibrate the RB with the tube **unplugged** while the participant is **in** the scanner (you may have to help the participant).
+    Then, ask (and/or help) the participant to plug it back.
+
+- [ ] The RB signal SHOULD NOT plateau (neither saturate at a peak value nor floor at the troughs).
+    This means the RB is maxing out and it requires loosening.
+- [ ] The envelope of your signal SHOULD remain approximately constant.
+    If peaks drop or troughs rise, it might be a sign that the RB is too loose.
+    Go back into the scanning room and tighten the RB.
+- [ ] Check the corresponding box in the issue collecting notes about the session.
+
+### Checking the CO<sub>2</sub> signal
+
+- [ ] The period of the CO<sub>2</sub> signal should remain constant.
+    If it varies, the vacuum MAY be too low:
+
+    - [ ] Check that the nasal cannula is correctly placed in the participant's nostrils.
+    - [ ] Check that all the extension connections of the tube are air-tight
+    - [ ] Check that the tube is not hanging at any point.
+
+- [ ] The envelope of your signal SHOULD remain approximately constant.
+    If the peaks diminish, it might be a sign that the participant is breathing through their mouth.
+    In such a case, remind the participant to breathe through their nose.
+
+    ???+ quote "Remind the participant they MUST breathe through their nose at all times"
+        Hey [NAME],
+
+        Is everything okay?
+
+        I needed to ask you whether you are breathing through your nose because we are not recording sensible levels of CO<sub>2</sub>.
+
+        [WAIT FOR THEIR RESPONSE]
+
+        Thank you.
+
+- [ ] Check the corresponding box in the issue collecting notes about the session.
+
+### Checking the ECG signal
+
+- [ ] The period and the envelope of the signal should remain constant.
+- [ ] [We are placing the ECG electrodes in lead-1 mode](participant-prep.md#connecting-physiological-recording-sensors-and-probes), which should give an ECG signal that looks vaguely like the familiar QRS shape (see below).
+    Typically, the signal does not look as neat as on the schema because the magnetic fields of the MR interfere with the electrodes (even if they are MR-compatible electrodes).
+
+    ![qrs](../assets/images/qrs.png){: style="height:220px;width:220px"}
+
+- [ ] Check the corresponding box in the issue collecting notes about the session.
 
 ## Acquire a localizer (*AAhead_scout*)
 - [ ] Indicate the participant that the scanning will soon start:
@@ -354,6 +391,5 @@
 
 - [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
 
-## References
-[1]: https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=4055 "Moia, Stefano, Molly Bright, D. Phil., and Cesar Caballero-Gaudes. “Physiologic fMRI Signals: Friend or Foe? How and Why to Measure, Model and Account for Physiology.” Presented at the Organization for Human Brain Mapping (OHBM), Glasgow, June 19, 2022."
 
+[1]: https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=4055 "Moia, Stefano, Molly Bright, D. Phil., and Cesar Caballero-Gaudes. “Physiologic fMRI Signals: Friend or Foe? How and Why to Measure, Model and Account for Physiology.” Presented at the Organization for Human Brain Mapping (OHBM), Glasgow, June 19, 2022."

@@ -156,11 +156,11 @@ Most of what is described in the present SOPs addresses the *Reliability Imaging
 | Head scout | 00:14 | Head scout | 00:14 |
 | FoV Manual positioning | 01:00 | FoV Manual positioning | 01:00 |
 | T1w (anatomical reference) | 5:41 | T1w (anatomical reference) | 5:41  |
-| DWI (dMRI, structural connectivity) | 33:52 | EPI BOLD ($B_\text{0}$ field mapping) | 00:30 |
-| DWI ($B_\text{0}$ field mapping) | 00:54 | BOLD (single-echo RSfMRI, eyes open) | 20:09 |
+| DWI ($B_\text{0}$ field mapping) | 00:54 | EPI BOLD ($B_\text{0}$ field mapping) | 00:30 |
+| DWI (dMRI, structural connectivity) | 33:52 | BOLD (single-echo RSfMRI, eyes open) | 20:09 |
 | GRE ($B_\text{0}$ field mapping) | 02:38 | GRE ($B_\text{0}$ field mapping) | 03:08 |
-| EPI BOLD ($B_\text{0}$ field mapping) | 00:27 | BOLD (multi-echo RSfMRI, eyes open, **only {{ secrets.rooms.mri1 | default("███") }}**) | 10:09 |
-| BOLD (positive-control task fMRI) | 03:07 | DWI (dMRI, structural connectivity) | 27:31 |
+| BOLD (positive-control task fMRI) | 03:07 | BOLD (multi-echo RSfMRI, eyes open, **only {{ secrets.rooms.mri1 | default("███") }}**) | 10:09 |
+| EPI BOLD ($B_\text{0}$ field mapping) | 00:27 | DWI (dMRI, structural connectivity) | 27:31 |
 | BOLD (multi-echo RSfMRI, naturalistic movie) | 20:09 | DWI ($B_\text{0}$ field mapping) | 01:10 |
 | BOLD (breath-holding task fMRI) | 06:00  | T2w (anatomical reference) | 08:24 |
 | T2w (anatomical reference) | 05:10  | | |
