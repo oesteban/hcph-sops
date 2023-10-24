@@ -11,6 +11,23 @@
 
     Future reports and public communications of results of this project will be pre-registered whenever that is possible.
 
+??? thanks "Thanks to César Caballero-Gaudés and Stefano Moia"
+
+    We highly appreciate the decisive help we have received from César and Stefano to bring together the physiology component of this project.
+
+    César provided very valuable feedback at the earliest stages of the design of the project and has also facilitated it with key feedback (including a visit to show their settings at BCBL).
+
+    Stefano helped edit our registered report, and traveled to Lausanne twice to help us on the spot with the BIOPAC and calibration.
+
+??? thanks "Thanks to Garikoitz Lerma-Usabiaga"
+
+    Gari filmed several versions of the *Mundaka clip*, that allowed us to edit the final clip that is presented during the resting state fMRI.
+
+??? thanks "Thanks to Inès de Riedmatten and Arthur Spencer"
+
+    Inès has contributed with excellent materials to the initial versions of these SOPs, and re-enabled the trigger issuing by our dMRI sequence (which had disappeared after a scanner's software upgrade...)
+    Arthur helped us with more recent aspects regarding the gas analyzer calibration and has supported us in other meaningful ways.
+
 | ![](assets/images/cohort1.png) |
 |:--:|
 | ***Figure 1. Experimental design of Cohort I.*** *The first section of the study involves acquiring 72 sessions across three scanners of a single subject.* |
