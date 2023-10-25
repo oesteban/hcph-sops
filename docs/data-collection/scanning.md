@@ -163,6 +163,8 @@ It is critical to check that physiological signals are looking good:
 
 - [ ] Check the corresponding box in the issue collecting notes about the session.
 
+---
+
 ## Acquire a localizer (*AAhead_scout*)
 - [ ] Indicate the participant that the scanning will soon start:
 
@@ -185,7 +187,11 @@ It is critical to check that physiological signals are looking good:
 
 - [ ] Wait for the participant confirmation and set the speaker off afterward.
 - [ ] Launch the `AAhead_scout_64ch-head-coil` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] Once the localizer is concluded, you can drag and drop the image stack icon (something like 🗇, with an object on the top stack) onto the image viewer. That will open the localizer on the viewer.
+
+**Once the localizer is concluded:**
+
+- [ ] Drag and drop the image stack icon (something like 🗇, with an object on the top stack) onto the image viewer.
+    That will open the localizer on the viewer.
 
     ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
 
@@ -256,7 +262,7 @@ It is critical to check that physiological signals are looking good:
 - [ ] [adjust the FoV](scanning-notes.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence, and
 - [ ] prepare the execution of the fixation program on the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), which will be played during the DWI by typing the following on a terminal:
 
-    ??? danger "Make sure to have the correct environment loaded before invoking the task"
+    ??? warning "Make sure to have the correct environment loaded before invoking the task"
 
         - [ ] Deactivate conda (if active):
             ``` shell
@@ -274,10 +280,10 @@ It is critical to check that physiological signals are looking good:
 
     A modal dialog will ask you for the number of trial (automatically calculated, DO NOT modify) and the session number.
 
-!!! warning "The following two steps MUST be executed in this order"
+    !!! danger "The following two steps MUST be executed in this order"
 
-        - [ ] Drag and drop the modal dialog into the scanner's projector screen.
-        - [ ] Update the session number with the corresponding number.
+            - [ ] Drag and drop the modal dialog into the scanner's projector screen.
+            - [ ] Update the session number with the corresponding number.
 
 !!! important "At this point, the GA should have finished the warm-up so you can verify it is working"
 
@@ -311,7 +317,16 @@ It is critical to check that physiological signals are looking good:
 - [ ] Proceed with [the ET calibration](scanning-notes.md#eye-tracker-calibration).
     **The ET control menu will appear after hitting *OK* on the modal dialog**.
 - [ ] Launch the diffusion `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] While it is running, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
+
+**While the dMRI is running:**
+
+- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence (GRE fieldmap).
+
+**When the dMRI concludes:**
+
+- [ ] Wait for the current task program to finish on *{{ secrets.hosts.psychopy | default("███") }}*.
+
+    !!! warning "If you must interrupt the task program, check first that the EDF files have been copied."
 
 ## Acquire the GRE fieldmap
 - [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the diffusion sequence has been acquired.
@@ -322,10 +337,11 @@ It is critical to check that physiological signals are looking good:
 
 - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence,
 - [ ] verify that in the next sequence parameters under *Contrast>Reconstruction* the option *Magnitude et phase* is selected,
-- [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_qct }}), and
+- [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_qct }}),
+- [ ] verify that the EDF file with the ET recordings corresponding to the dMRI have been stored, and
 - [ ] prepare the execution of the QCT by executing the following on a terminal:
 
-    ??? danger "Make sure to have the correct environment loaded before invoking the task"
+    ??? warning "Make sure to have the correct environment loaded before invoking the task"
 
         - [ ] Deactivate conda (if active):
             ``` shell
@@ -343,7 +359,7 @@ It is critical to check that physiological signals are looking good:
 
     A modal dialog will ask you for the number of trial (automatically calculated, DO NOT modify) and the session number.
 
-    !!! warning "The following two steps MUST be executed in this order"
+    !!! danger "The following two steps MUST be executed in this order"
 
             - [ ] Drag and drop the modal dialog into the scanner's projector screen.
             - [ ] Update the session number with the corresponding number.
@@ -353,6 +369,7 @@ It is critical to check that physiological signals are looking good:
     Don't forget to report any observations there.
 
 ## Acquire the functional MRI block
+
 - [ ] Inform the participant about the fMRI block
 
     ???+ quote "Starting the fMRI block"
@@ -399,32 +416,84 @@ It is critical to check that physiological signals are looking good:
         Before we start, please leave the alarm button on your tummy to free your hand for finger tapping. Please do not hesitate to grab it in case you need to squeeze it.
 
 - [ ] Launch the `func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] Wait for the calibration scans to be finished (the process is reported on the bottom left corner of the console) and verify that the first volume's trigger signal was received by *{{ secrets.hosts.psychopy | default("███") }}* (meaning **CHECK that the task program was initiated**).
-- [ ] While it is running:
-    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
-    - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
-- [ ] Once the sequence is over, close the current experiment on psychopy and open `{{ settings.psychopy.tasks.func_rest }}`.
+- [ ] Confirm that the task program starts on *{{ secrets.hosts.psychopy | default("███") }}* after the calibration scans.
+
+**While the QCT is running:**
+
+- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
+- [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
+- [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
+
+**Once the QCT has concluded:**
+
+- [ ] Wait for the current task program to finish on *{{ secrets.hosts.psychopy | default("███") }}*.
+
+    !!! warning "If you must interrupt the task program, check first that the EDF files have been copied."
+
 - [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the quality control task fMRI has been acquired and that you check that the physiological signals are still being recorded.
     Don't forget to report any observations there.
 
-### fMRI fieldmaps
+### BOLD fieldmaps
 - [ ] Launch the BOLD-EPI sequence `fmap-epi_acq-bold_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` for *B<sub>0</sub>* field mapping by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] While the fieldmap sequence is running,
+
+**While the BOLD fieldmaps are running:**
+
+- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
+- [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
+- [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
+
+!!! important "Do not attempt to initiate the next task program before fieldmaps conclude"
+
+    The BOLD fieldmaps will be sending trigger pulses that will make the process almost impossible.
+
+**Once the BOLD fieldmaps are concluded:**
+
+- [ ] Prepare the execution of the RSfMRI by executing the following on a terminal:
+
+    ??? warning "Make sure to have the correct environment loaded before invoking the task"
+
+        - [ ] Deactivate conda (if active):
+            ``` shell
+            conda deactivate
+            ```
+        - [ ] Load the new virtual environment:
+            ``` shell
+            source $HOME/psychopyenv/bin/activate
+            ```
+
+    ``` shell
+    cd ~/workspace/HCPh-fMRI-tasks
+    python {{ settings.psychopy.tasks.func_rest }}.py
+    ```
+
+    A modal dialog will ask you for the number of trial (automatically calculated, DO NOT modify) and the session number.
+
+    !!! danger "The following steps MUST be executed in this order"
+
+            - [ ] Drag and drop the modal dialog into the scanner's projector screen.
+            - [ ] Update the session number with the corresponding number.
+
+- [ ] On the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), check the correct session number is set and hit *OK*.
+
+    ??? danger "The OK button MUST be clicked with this modal dialog on the projector's screen"
+
+        Otherwise, the wrong screen will be selected by *Psychopy*
 
 ### Resting state fMRI
 - [ ] Inform the participant:
 
-    ???+ quote "Quick re-calibration the ET before continuing"
+    ???+ quote "Drift-check ET before continuing"
         Thanks [NAME], that was a short behavioral task.
 
-        Before moving on, we will run another calibration of the eye tracker, please follow the moving fixation point.
+        Before moving on, we will run another check of the eye tracker, please focus your sight on the fixation point.
 
         Is everything alright?
 
-- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration](scanning-notes.md#eye-tracker-calibration)
-- [ ] Once the ET is calibrated, verify that the task is left and awaiting for the sequence's trigger to start.
-- [ ] Inform the participant that the next sequence is resting-state fMRI (rsfMRI).
+- [ ] Wait for confirmation, respond to follow-up comments
+- [ ] [Initiate the ET drift correction procedure](scanning-notes.md#eye-tracker-drift).
+    **The ET control menu must have appeared after hitting *OK* on the modal dialog**.
+    - [ ] Once the ET is calibrated, verify that the task is left and awaiting for the sequence's trigger to start.
+- [ ] Inform the participant that the next sequence is resting-state fMRI (RSfMRI).
 
     ???+ quote "Starting the resting-state block"
         Hey [NAME], we are about to start resting-state fMRI.
@@ -434,29 +503,70 @@ It is critical to check that physiological signals are looking good:
 
         Are you ready?
 
-- [ ] Launch the rsfMRI sequence `func-bold_task-rest_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] While it is running:
-    - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
-    - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
-    - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
-- [ ] Once the sequence is over, close the current experiment on psychopy and open `{{ settings.psychopy.tasks.func_bht }}`.
+- [ ] Launch the RSfMRI sequence `func-bold_task-rest_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
+- [ ] Confirm that the task program starts on *{{ secrets.hosts.psychopy | default("███") }}* after the calibration scans.
+
+**While the RSfMRI is running**:
+
+- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
+- [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
+- [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
+
+**Once the RSfMRI is concluded:**
+
+- [ ] Wait for the current task program to finish on *{{ secrets.hosts.psychopy | default("███") }}*.
+
+    !!! warning "If you must interrupt the task program, check first that the EDF files have been copied."
+
 - [ ] In the corresponding issue for the collection of notes about the session, check the box confirming that the quality control task fMRI has been acquired and that you check that the physiological signals are still being recorded.
     Don't forget to report any observations there.
+- [ ] Prepare the execution of the BHT by executing the following on a terminal:
 
+    ??? warning "Make sure to have the correct environment loaded before invoking the task"
+
+        - [ ] Deactivate conda (if active):
+            ``` shell
+            conda deactivate
+            ```
+        - [ ] Load the new virtual environment:
+            ``` shell
+            source $HOME/psychopyenv/bin/activate
+            ```
+
+    ``` shell
+    cd ~/workspace/HCPh-fMRI-tasks
+    python {{ settings.psychopy.tasks.func_bht }}.py
+    ```
+
+    A modal dialog will ask you for the number of trial (automatically calculated, DO NOT modify) and the session number.
+
+    !!! danger "The following steps MUST be executed in this order"
+
+            - [ ] Drag and drop the modal dialog into the scanner's projector screen.
+            - [ ] Update the session number with the corresponding number.
+
+- [ ] On the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), check the correct session number is set and hit *OK*.
+
+    ??? danger "The OK button MUST be clicked with this modal dialog on the projector's screen"
+
+        Otherwise, the wrong screen will be selected by *Psychopy*
 
 ### Breath-holding task (BHT)
 - [ ] Inform the participant:
 
-    ??? quote "Quick re-calibration the ET before continuing"
-        Thanks [NAME], that was a long behavioral block.
+    ???+ quote "Drift-check ET before continuing"
+        Thanks [NAME], that was a long behavioral task.
 
-        Before moving on, we will run another calibration of the eye tracker, please follow the moving fixation point.
+        Before moving on, we will run another check of the eye tracker, please focus your sight on the fixation point.
 
         Is everything alright?
 
-- [ ] Wait for confirmation, respond to follow-up comments, and [initiate the ET calibration](scanning-notes.md#eye-tracker-calibration)
-- [ ] Once the ET is calibrated, verify that the task is left and awaiting for the sequence's trigger to start.
-- [ ] Inform the participant that the next sequence is breath-holding task fMRI. Repeat the instructions for the task.
+- [ ] Wait for confirmation, respond to follow-up comments
+- [ ] [Initiate the ET drift correction procedure](scanning-notes.md#eye-tracker-drift).
+    **The ET control menu must have appeared after hitting *OK* on the modal dialog**.
+    - [ ] Once the ET is *drift-checked* and no calibration is needed, verify that the ET menu is removed and the task program awaits for the sequence's trigger to start.
+- [ ] Inform the participant that the next sequence is breath-holding task fMRI.
+    Repeat the instructions for the task.
 
     ???+ quote "Starting the breath-holding task"
         Hey [NAME], we will proceed now with a breath-holding task.
@@ -470,14 +580,42 @@ It is critical to check that physiological signals are looking good:
         Are you ready?
 
 - [ ] Launch the `func-bold_task-bht_dir-{RL,LR,PA,AP}__cmrr_me4_sms4` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
-- [ ] While it is running, determine whether there is enough time to run the anatomical T2-weighted run. If so, [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence.
-- [ ] When the breath-holding task is completed, check the box confirming that it has been acquired in the issue collecting notes about the session.
+- [ ] Confirm that the task program starts on *{{ secrets.hosts.psychopy | default("███") }}* after the calibration scans.
+
+**While the BHT is running:**
+
+- [ ] Determine whether there is enough time to run the anatomical T2-weighted run.
+    If so,
+    - [ ] [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence; or alternatively
+    - [ ] wait for the sequence to complete.
+
+**Once the BHT is concluded:**
+
+- [ ] Wait for the current task program to finish on *{{ secrets.hosts.psychopy | default("███") }}*.
+
+    !!! warning "If you must interrupt the task program, check first that the EDF files have been copied."
+
+- [ ] Check the box confirming that it has been acquired in the issue collecting notes about the session.
     Don't forget to report any observations there.
 
 
-!!! warning "ONLY if time permits"
+## Acquire a T2w image (if time permits)
 
-    - [ ] Launch the `anat-T2w__flair` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }
+- [ ] Launch the `anat-T2w__flair` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }, or
+- [ ] skip the T<sub>2</sub>-weighted collection.
+
+## Stop physiology collection
+
+!!! warning "The following step MAY be done while the T2w is running."
+
+- [ ] Stop the *AcqKnowledge* recording on the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
+
+!!! tip "The following steps MAY be done while the T2w is running IF (and only if) there's no back-to-back session upon conclusion of the current"
+
+    - [ ] Switch the BIOPAC MP160 module off.
+    - [ ] Turn off the pump of the GA.
+    - [ ] Switch the GA off.
+    - [ ] Put the exhaust and inlet caps back.
 
 ## Concluding the session
 
@@ -486,15 +624,12 @@ It is critical to check that physiological signals are looking good:
     ???+ quote "Session is finished"
         Thanks [NAME], the session has concluded and we will shortly let you out of the scanner.
 
-!!! warning "These operations may be done during the T2w acquisition"
+---
 
-    - [ ] Stop the *AcqKnowledge* recording on the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
-    - [ ] Switch the BIOPAC MP160 module off.
-    - [ ] Turn off the pump of the GA.
-    - [ ] Switch the GA off.
-    - [ ] Put the exhaust and inlet caps back.
+## Session completed
 
-- [ ] The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
+The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
 
+---
 
 [1]: https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=4055 "Moia, Stefano, Molly Bright, D. Phil., and Cesar Caballero-Gaudes. “Physiologic fMRI Signals: Friend or Foe? How and Why to Measure, Model and Account for Physiology.” Presented at the Organization for Human Brain Mapping (OHBM), Glasgow, June 19, 2022."
