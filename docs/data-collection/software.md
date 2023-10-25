@@ -1,21 +1,87 @@
+### Preparing Ubuntu for *Psychopy*
 
-### *Psychopy* installation
-This block describes how to prepare an environment with a running *Psychopy 3* installation.
-
-??? warning "Multiple screens"
-
-    If you want to use multiple screens, install the corresponding libxcb extension:
-
-    ``` shell
-    sudo apt-get install libxcb-xinerama0
-    ```
-
-??? important "*Psychopy* should not be installed with *Conda*/*Anaconda*"
+??? important "*Psychopy* is preferably installed in a pure *Python* environment"
 
     If an anaconda environment is activated, run the following command to deactivate it:
     ``` shell
     conda deactivate
     ```
+
+- [ ] Ensure your Ubuntu system has all necessary dependencies:
+    ``` shell
+    sudo apt install python3-dev \
+                     libgtk-4-dev \
+                     libgstreamer1.0-dev \
+                     libgstreamer-plugins-base1.0-dev \
+                     freeglut3-dev \
+                     libwebkitgtk-6.0-dev \
+                     libjpeg8-dev \
+                     libpng-dev \
+                     libtiff-dev \
+                     libsdl1.2-dev \
+                     libnotify-dev \
+                     libsm-dev
+    ```
+
+    ??? warning "Multiple screens"
+
+        If you want to use multiple screens, install the corresponding libxcb extension:
+
+        ``` shell
+        sudo apt-get install libxcb-xinerama0
+        ```
+
+- [ ] Create a *Python* virtual environment:
+    ``` shell
+    python3 -m venv $HOME/psychopyenv
+    ```
+- [ ] Load the new virtual environment:
+    ``` shell
+    source $HOME/psychopyenv/bin/activate
+    ```
+- [ ] Update *Pypi* and *setuptools* to the latest version:
+    ``` shell
+    python -m pip install -U pip setuptools six wheel
+    ```
+- [ ] Update *Numpy* to the latest version:
+    ``` shell
+    python -m pip install -U numpy
+    ```
+- [ ] Download the *wxPython* sources:
+    ``` shell
+    python -m pip download wxPython
+    ```
+- [ ] Build *wxPython* (version of package may change on your settings, edit accordingly):
+    ``` shell
+    python -m pip wheel -v wxPython-{{ settings.psychopy.wxPython }}.tar.gz  2>&1 | tee build.log
+    ```
+- [ ] Install the wheel you just created:
+    ``` shell
+    python -m pip install wxPython-{{ settings.psychopy.wxPython }}-<python-version>-linux_x86_64.whl
+    ```
+- [ ] Test the installation (an empty window should we created without errors):
+    ``` shell
+    python -c "import wx; a=wx.App(); wx.Frame(None,title='hello world').Show(); a.MainLoop();"
+    ```
+- [ ] Install our *HCPh-signals* package (assumes these SOPs are checked out at `{{ secrets.data.sops_clone_path | default('<path>') }}`:
+    ``` shell
+    cd {{ secrets.data.sops_clone_path | default('<path>') }}/code/signals
+    python -m pip install .
+    ```
+
+### *Psychopy* installation
+This block describes how to prepare an environment with a running *Psychopy 3* installation.
+
+??? important "Make sure to load the correct environment"
+
+    - [ ] Deactivate conda (if active):
+        ``` shell
+        conda deactivate
+        ```
+    - [ ] Load the new virtual environment:
+        ``` shell
+        source $HOME/psychopyenv/bin/activate
+        ```
 
 - [ ] Clone the [*Psychopy* repository](https://github.com/psychopy/psychopy):
     ``` shell
@@ -26,31 +92,13 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     cd psychopy
     git checkout {{ settings.psychopy.version }}
     ```
-- [ ] Update *Pypi* and *setuptools* to the latest version:
-    ``` shell
-    python3 -m pip install -U pip setuptools
-    ```
-- [ ] Update *Numpy* to the latest version:
-    ``` shell
-    python3 -m pip install -U numpy
-    ```
-- [ ] Install other necessary dependencies:
-    ``` shell
-    python3 -m pip install attrdict py2app bdist_mpkg
-    ```
-- [ ] Install *wxPython*.
-    ``` shell
-    python3 -m pip install -U \
-        -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-$( lsb_release -r -s ) \
-        wxPython
-    ```
 - [ ] Install *Psychopy* using the following command:
     ``` shell
-    python3 -m pip install .[suggested]
+    python -m pip install .[suggested]
     ```
 - [ ] Install the *EyeLink* plugin for *Psychopy*:
     ``` shell
-    python3 -m pip install git+https://github.com/oesteban/psychopy-eyetracker-eyelink.git
+    python -m pip install git+https://github.com/oesteban/psychopy-eyetracker-eyelink.git
     ```
 
     ??? tip "On MacOSX or if you don't have access to pip directly, *Psychopy*'s package manager"
@@ -60,6 +108,26 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
         There, you can type:
         ``` shell
         pip install git+https://github.com/oesteban/psychopy-eyetracker-eyelink.git
+        ```
+
+- [ ] Install the *Pylink* module made by *SR Research*, it is distributed with the [installation of the `eyelink-display-software`](preliminary.md#installing-eyelink-eye-tracker-software) done previously:
+
+    ``` shell
+    python -m pip install /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp310-cp310-linux_x86_64.whl
+    ```
+
+    ??? warning "Find the appropriate version for your *Python* distribution"
+
+        The example above is for *cPython* 3.10, alternative installations are:
+
+        ```
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp27-cp27mu-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp310-cp310-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp311-cp311-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp36-cp36m-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp37-cp37m-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp38-cp38-linux_x86_64.whl
+        /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp39-cp39-linux_x86_64.whl
         ```
 
 - [ ] Try opening *Psychopy* by typing:
@@ -113,8 +181,8 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     If you installed `libxcb-xinerama0`, or you don't have multiple screens, first try:
 
     ``` shell
-    python3 -m pip uninstall opencv-python
-    python3 -m pip install opencv-python-headless
+    python -m pip uninstall opencv-python
+    python -m pip install opencv-python-headless
     ```
 
     If that doesn't work, try a brute force solution by installing libxcb fully:

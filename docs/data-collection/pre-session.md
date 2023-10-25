@@ -1,7 +1,7 @@
 Instructions of operations to be performed before the participant arrival, **before EACH session** (i.e., DAY OF SCAN)
 
 
-## Three days BEFORE THE FIRST SESSION
+## Three days before 1<sup>st</sup> session
 
 - [ ] Verify that as part of the [recruitement and screening procedure](../recruitment-scheduling-screening/recruitment.md), you have sent a copy of the MRI Safety and screening form ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)) to the participant over email and confirm reception by checking the 'First contact email sent' column in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
 - [ ] Verify also that you confirmed that the participant has read and understood the document, and in particular, you double-checked that they do not have any MRI contraindications, by checking the 'Phone interview done' and 'Participant volunteer and eligible' column in [our recruits spreadsheet]({{ secrets.data.recruits_url | default("/redacted.html") }}).
@@ -16,26 +16,104 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] **FEMALE PARTICIPANTS ONLY**: Remind the participant that pregnant women cannot undergo our MRI protocols. Therefore, they will take a pregnancy test (which we will have prepared) before the first session.
 - [ ] If participant has indicated nervousness or history of claustrophobia, organize a session to use the mock scanner.
 
-## BEFORE DAY OF SCAN
 
-- [ ] Print [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**), an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)) and a receipt form for each participant that will get scanned.
-- [ ] Make sure you have internet access, and update the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks) on *{{ secrets.hosts.psychopy | default("███") }}*:
+## Three days before EVERY session
+
+We MUST verify that *{{ secrets.hosts.psychopy | default("███") }}* correctly runs all *Psychopy* experiments.
+
+- [ ] Connect a secondary screen to the HDMI input of the computer
+- [ ] Switch it on and log in into the common user (password: `{{ secrets.login.password_psychopy | default("*****") }}`).
+- [ ] Open a terminal
+
+    !!! tip "Shortcut <span class='keypress'>:fontawesome-brands-windows:</span> + <span class='keypress'>t</span>"
+
+
+- [ ] Update the [HCPh-fMRI-tasks repository](https://github.com/TheAxonLab/HCPh-fMRI-tasks) on *{{ secrets.hosts.psychopy | default("███") }}*:
     ```
+    cd ~/workspace/HCPh-fMRI-tasks
     git fetch upstream
-    git checkout main
-    git rebase upstream/main
+    git checkout master
+    git rebase upstream/master
     ```
-- [ ] On the *{{ secrets.hosts.psychopy | default("███") }}* laptop, open a terminal and execute `conda deactivate`.
-- [ ] Open psychopy 3 by typing `psychopy`
-- [ ] Load in the different experiments and check for proper functioning:
-    - [ ] `{{ settings.psychopy.tasks.func_rest }}` (resting-state fMRI):
-        - [ ] check that the movie is played.
-    - [ ] `{{ settings.psychopy.tasks.func_bht }}` (breath-holding task, BHT):
-        - [ ] check that the task runs properly.
-    - [ ] `{{ settings.psychopy.tasks.func_qct }}` (quality-control task, QCT):
-        - [ ] check that the task runs properly.
 
-## Documentation and other non-experimental devices
+??? important "The following two commands are executed with `sudo`"
+
+    The console will request the common user password (`{{ secrets.login.password_psychopy | default("*****") }}`).
+
+- [ ] Spin up a mock MMBT-S device listening on `/dev/ttyACM0`:
+    ``` shell
+    sudo socat PTY,link=/tmp/virtual_serial_port PTY,link=/dev/ttyACM0,group-late=dialout,mode=666,b9600
+    ```
+- [ ] Manually spin up the trigger-forwarding service:
+    ``` shell
+    sudo python3 code/synchronization/forward-trigger-service.py --disable-mmbt-check
+    ```
+
+??? important "Make sure to load the correct environment"
+
+    - [ ] Deactivate conda (if active):
+        ``` shell
+        conda deactivate
+        ```
+    - [ ] Load the new virtual environment:
+        ``` shell
+        source $HOME/psychopyenv/bin/activate
+        ```
+
+- [ ] Run the compiled tasks with *Python* directly.
+- [ ] Load in the different experiments and check for proper functioning and timing:
+    - dMRI (only fixation):
+        ``` shell
+        python {{ settings.psychopy.tasks.dwi }}.py
+        ```
+    - QCT:
+        ``` shell
+        python {{ settings.psychopy.tasks.func_qct }}.py
+        ```
+    - RSfMRI
+        ``` shell
+        python {{ settings.psychopy.tasks.func_rest }}.py
+        ```
+    - BHT:
+        ``` shell
+        python {{ settings.psychopy.tasks.func_bht }}.py
+        ```
+
+    All of the above command lines SHOULD open a modal dialog asking you for the number of trial (automatically calculated, DO NOT modify) and the session number.
+
+    !!! danger "The following steps MUST be executed in this order"
+
+            - [ ] Drag and drop the modal dialog into the scanner's projector screen.
+            - [ ] Update the session number with the corresponding number.
+
+- [ ] Check the correct session number is set (use the default 9999 for testing) and hit *OK*.
+
+    ??? danger "The OK button MUST be clicked with this modal dialog on the secondary screen"
+
+        Otherwise, the wrong screen will be selected by *Psychopy*
+
+??? warning "Updating *Ubuntu* or *Psychopy* is not recommended in the proximity of data collection"
+
+    However, you should make sure you are on *Ubuntu* {{ settings.psychopy.ubuntu }}, *Python* {{ settings.psychopy.python }}, and *Psychopy* {{ settings.psychopy.version }}.
+
+## One day before the session
+
+- [ ] Print [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**)
+- [ ] Print the MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)).
+- [ ] Print a receipt form for each participant that will get scanned.
+
+## Day of scan, BEFORE the participant arrives
+
+### Boot the scanner up if it is shut down
+
+!!! warning "Please wait for all systems to finalize their boot-up (about 10 minutes), even if only the satellite station is to be used."
+
+![on-off-button](../assets/images/on-off-box.jpg)
+
+- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (:fontawesome-solid-unlock:)
+- [ ] Push the blue button with the sun symbol :octicons-issue-opened-16: and the **SYSTEM ON** label above, which is found right above the key
+
+### Documentation and secondary instruments
 
 - [ ] Prepare [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**)
 - [ ] Prepare an MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf))
@@ -49,17 +127,25 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     ![nuprep-tube](https://shop.neurospec.com/media/catalog/product/cache/8af976a03d45f9b6d7f91e69feeeffb9/w/e/weaver_nuprep-skin-prep-gel-single-tube-front.jpg)
 
-- [ ] Open a new issue in [the github repository](https://github.com/TheAxonLab/hcph-sops/) to collect comments and annotations about the session (a laptop should be available to fill the issue).
+### Start a new session log form
+Collect comments and annotations about the session using GitHub issues.
+A laptop should be available to fill the issue.
+
+- [ ] [Click this link](https://github.com/TheAxonLab/hcph-sops/issues/new?assignees=acionca&labels=scan&projects=&template=scan-session.yml&title=%5BSCAN%5D+sub-001_ses-yyy), or alternatively
+- [ ] manually open a GitHub Issue at the [SOPs repository](https://github.com/TheAxonLab/hcph-sops):
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
     - [ ] This should lead you to a page that looks like this 
         ![](../assets/images/session_issue_template.png)
         - [ ] Click on <span class="consolebutton green">Get started</span> on the issue template `Scan session`.
-    - [ ] Modify the title of the issue by replacing `yyy` with the session index. If you don't remember the session index of today, check the session index of the last issue.
-- [ ] Verify that your phone is on ringing mode so the participants can reach you
+- [ ] Modify the title of the issue by replacing `yyy` with the session index.
+    If you don't remember the session index of today, check the [session index table](participant-prep.md#session-schedule).
+- [ ] Verify that your phone is on ringing mode so the participants can reach you.
 - [ ] Check the time regularly to be on time to meet with the participant at the predefined location
 
-## Collection of covariates
-- [ ] Open a new issue in [the github repository dedicated to collecting covariates](https://github.com/TheAxonLab/hcph-mood-quest/) (a laptop should be available to fill the issue).
+### Start a new session log for the collection of covariates
+
+- [ ] [Click this link](https://github.com/{{ secrets.data.covariates_repo | default('<gh_user>/<name>') }}/issues/new?assignees=acionca&labels=mood&projects=&template=mood-questionnaire.yml&title=%5BMOOD%5D+sub-001_ses-yyy), or alternatively
+- [ ] manually open a GitHub Issue at the [questionnaire repository](https://github.com/{{ secrets.data.covariates_repo | default('<gh_user>/<name>') }}):
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
 
 - [ ] Fill the date of the scan as well as the PE for this session (accessible in the [schedule](scanning.md/#before-initiating-the-session))
@@ -70,7 +156,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     - [ ] Report the outside atmospheric pressure (in hPa) and relative humidity (in %).
     - [ ] Report the hours of daylight (rounded to the number of hours).
 
-    ??? info "How to find the precited information on MeteoSwiss"
+    ??? info "How to find the precipitation information on MeteoSwiss"
         Here is what the MeteoSwiss interface looks like on a computer.
             ![meteoswiss](../assets/images/meteoswiss.png)
 
@@ -102,18 +188,8 @@ Instructions of operations to be performed before the participant arrival, **bef
         - [ ] In the top bar of the MR console, click on `System`>`Control`.
         - [ ] In the window that just opened, click on the section `MR Scanner`.
         - [ ] Report Helium Fill Level in percentage.
-    
 
-## Boot the scanner up if it is shut down
-
-!!! warning "Please wait for all systems to finalize their boot-up (about 10 minutes), even if only the satellite station is to be used."
-
-![on-off-button](../assets/images/on-off-box.jpg)
-
-- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (:fontawesome-solid-unlock:)
-- [ ] Push the blue button with the sun symbol :octicons-issue-opened-16: and the **SYSTEM ON** label above, which is found right above the key
-
-## Basic preparations in the scanning room
+### Basic preparations in the scanning room
 
 - [ ] If any head coil from the last exam is still plugged, remove it:
     - [ ] If it is the 64-channel coil, you can just temporarily move it into the scanner's bore.
@@ -126,7 +202,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     !!! danger "Remove the light and ventilation to facilitate the best performance of the ET"
 
-## Setting up the BIOPAC system and physiological recording sensors
+### Setting up the BIOPAC system and physiological recording sensors
 
 - [ ] Ensure you have the *AcqKnowledge* software USB license key. Plug the USB key to the multiport adapter for Mac and plug that adapter to the computer *{{ secrets.hosts.oesteban | default("███") }}* as shown in the picture below. **It needs to stay plugged at all times during the acquisition.**
     ![mac_setup](../assets/images/mac_setup.png)
@@ -184,7 +260,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the cable from the RJ-45 output of the syncbox to the first filter (BNC connector; has a label "External signal") in the cupboard covering the access panel to the Faraday cage. The cable might be stored in the lower left cupboard of office {{ secrets.rooms.et_camera | default("███") }}. Make sure you will have access to the cable with sufficient time ahead. [INSERT PICTURE]
 - [ ] Connect the syncbox to the Biopac via the white trigger cable. [TOCHECK]
 
-## Setting up the projector
+### Setting up the projector
 
 - [ ] Go to room {{ secrets.rooms.projector | default("███") }}, where the projector is installed.
 - [ ] Switch the projector **ON** by hitting the power button, located on its right side.
@@ -204,7 +280,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Verify the projection corresponds to the *Psychopy* laptop ({{ secrets.hosts.psychopy | default("███") }}) screen.
 - [ ] Before you exit room {{ secrets.rooms.projector | default("███") }}, go to the next step.
 
-## Setting up the eye-tracker (ET) computer
+### Setting up the eye-tracker (ET) computer
 
 - [ ] The eye-tracker (ET) computer is kept on its designated rolling table, which is stored under the projector in room {{ secrets.rooms.projector | default("███") }}.
     Behind the rolling table, there is a transparent panel (the *plexiglas* in the following) where the ET arm will stand inside the scanner bore.
@@ -216,7 +292,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Connect the Ethernet cable from the ET computer into the Ethernet plug of the *Psychopy laptop* ({{ secrets.hosts.psychopy | default("███") }}).
 - [ ] Connect the power strip attached to the rolling table on to the closest power plug (likely, a power strip coming across the corridor).
 
-## Setting up the ET arm
+### Setting up the ET arm
 
 - [ ] Go to room {{ secrets.rooms.et_camera | default("███") }} and bring the blue box labeled *Eye-Tracker only for fMRI* into the scanning room.
     This box contains the ET arm with the camera and infrared lamp mounted on it, lenses, and the special infrared mirror.
@@ -253,7 +329,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
     !!! important "Since someone will enter the Scanning Room to receive the cables, this is a perfect moment for the helper from inside to take the plexiglass panel with them when entering the Scanning Room."
 
-## INSIDE the scanner room
+### INSIDE the scanner room
 
 - [ ] Take the ET arm inside the Scanning Room (check that the plexiglass panel is already inside the Scanning Room, and bring it inside with you if not).
 - [ ] Place the plexiglass standing panel inside the scanner bore: a sign notes the top side that faces up.
@@ -268,7 +344,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 - [ ] Take the half-circle one-direction screen from the table behind the scanner and put it on the back of the scanner, behind the ET system (don't push the plexiglass yet)
     ![halfcircle_screen](../assets/images/halfcircle_screen.jpg)
 
-### Placing the infrared mirror
+**Placing the infrared mirror**
 
 - [ ] Detach the standard mirror's frame from the head coil, if it is placed there.
     Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
@@ -295,7 +371,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Place the mirror frame back on the head coil. As always, **DO NOT TOUCH THE MIRROR**.
 
-## Back OUTSIDE THE SCANNER ROOM (control room)
+### Back OUTSIDE THE SCANNER ROOM (control room)
 
 - [ ] Plug in the Power strip containing the ET Power Cable, the PC-tower power, etc
     ![powerstrip](../assets/images/powerstrip.png)
@@ -352,7 +428,7 @@ Instructions of operations to be performed before the participant arrival, **bef
 
 - [ ] Check that you can send trigger events manually:
     - [ ] Enter the <span class="syncbox">Synchronization</span> mode by selecting it and pushing the enter button :fontawesome-solid-circle:{ .bluecolor }.
-    - [ ] Hit the down arrow button :fontawesome-solid-caret-down:{ .bluecolor } until you find <span class="syncbox">Send trigger</span>
+    - [ ] Hit the down arrow button :fontawesome-solid-caret-down:{ .bluecolor } until you find <span class="syncbox">Send triggerpulse</span>
     - [ ] Push the enter button :fontawesome-solid-circle:{ .bluecolor } every time you want to send an <span class="keypress">s</span> character.
     - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt).
     - [ ] Check that the BIOPAC is properly registering the trigger too. Every trigger sent should be seen in the *AcqKnowledge* GUI.
@@ -366,7 +442,7 @@ Instructions of operations to be performed before the participant arrival, **bef
     | ![run-session-syncbox](../assets/images/trigger_box.jpg) |
 
 
-## Final checks inside the scanning room
+### Final checks inside the scanning room
 
 - [ ] Prepare padding: under-knee padding, neck padding, inflatable head-padding.
     - [ ] Wrap a sanitary cover around each padding.

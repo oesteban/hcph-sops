@@ -2,18 +2,21 @@
 
 mri:
   timings:
-    dwi: '##min ##s'
+    dwi: '33min 11s'
     func_rest: '20min 6s'
     func_bht: '5min 41s'
     func_qct: '2min 38s'
 
 psychopy:
   tasks:
-    dwi: 'dwi.psyexp'
-    func_rest: 'task-rest_bold.psyexp'
-    func_bht: 'task-bht_bold.psyexp'
-    func_qct: 'task-qct_bold.psyexp'
+    dwi: 'task-fixation_dwi'
+    func_rest: 'task-rest_bold'
+    func_bht: 'task-bht_bold'
+    func_qct: 'task-qct_bold'
   version: '2023.2.3'
+  wxPython: '4.2.1'
+  ubuntu: '22.04 LTS'
+  python: '3.10'
 
 paths:
   sourcedata: '/data/datasets/hcph-sourcedata'

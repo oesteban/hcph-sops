@@ -47,10 +47,10 @@ theme:
     admonition:
       thanks: octicons/code-of-conduct-16
       quote: fontawesome/solid/comment-dots
-      danger: fontawesome/solid/ban
-      warning: fontawesome/solid/triangle-exclamation
+      danger: fontawesome/solid/circle-exclamation
+      warning: fontawesome/solid/traffic-light
       important: fontawesome/solid/bullhorn
-      tip: fontawesome/solid/hat-wizard
+      tip: fontawesome/solid/bookmark
       bug: fontawesome/regular/circle-xmark
 
 

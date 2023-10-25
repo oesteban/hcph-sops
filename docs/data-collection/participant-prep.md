@@ -198,6 +198,7 @@
 
     ???+ important "Session schedule"
 
+        <a name="session-schedule"></a>
         Today is <mark>{{ now() }}</mark>:
 
 {% filter indent(width=8) %}

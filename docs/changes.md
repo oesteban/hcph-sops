@@ -127,7 +127,7 @@ All notable changes to these SOPs are documented below, starting with the most r
 ## [0.1.0](https://github.com/TheAxonLab/hcph-protocol/releases/tag/0.1.0) (June 29, 2023)
 
 The first release of these SOPs.
-Currently, the document is still a work in progress, with the [Data management](data-management/post-session.md), [Preprocessing](preprocessing.md), and [Release of data](release.md) yet to be written.
+Currently, the document is still a work in progress, with the [Data management](data-management/post-session.md), [Preprocessing](processing/preprocessing.md), and [Release of data](release.md) yet to be written.
 
 <small>[Compare with first commit](https://github.com/TheAxonLab/hcph-protocol/compare/51fbd53f255aa8ee25b1ecb38b3429c400fabea3...0.1.0)</small>
 
