@@ -192,7 +192,7 @@ It is critical to check that physiological signals are looking good:
 **Once the localizer is concluded:**
 
 - [ ] Click on the image stack icon (something like 🗇, with an object on the top stack) and drag the image with a **1** onto the image viewer.
-    That will open the **reconstructed** localizer on the viewer.
+    That will open the **interpolated** localizer on the viewer.
 
     ![drag_t1w.jpg](../assets/images/drag_localizer.jpg)
 
