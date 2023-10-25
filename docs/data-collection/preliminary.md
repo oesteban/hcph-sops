@@ -52,6 +52,14 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
         - [ ] Save the PDF in your USB key.
 - [ ] Make sure you save a different protocol for each of the four PE directions (i.e., AP, PA, LR, RL).
 
+!!! important "Final protocol printouts"
+
+    The final printouts are here:
+    [HCPh_AP](../assets/files/HCPh_AP.pdf),
+    [HCPh_PA](../assets/files/HCPh_PA.pdf),
+    [HCPh_LR](../assets/files/HCPh_LR.pdf), and
+    [HCPh_RL](../assets/files/HCPh_RL.pdf).
+
 ### Install the BIOPAC
 
 - [ ] Make sure you understand the components and settings of the BIOPAC, described in the [introduction section](intro.md#biopac-documentation-and-devices).
