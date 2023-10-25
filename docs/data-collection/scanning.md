@@ -79,6 +79,7 @@
     - [ ] Load the new virtual environment:
         ``` shell
         source $HOME/psychopyenv/bin/activate
+        ```
 
 ### Check *{{ secrets.hosts.acqknowledge | default("███") }}*:
 
@@ -190,10 +191,10 @@ It is critical to check that physiological signals are looking good:
 
 **Once the localizer is concluded:**
 
-- [ ] Drag and drop the image stack icon (something like 🗇, with an object on the top stack) onto the image viewer.
-    That will open the localizer on the viewer.
+- [ ] Click on the image stack icon (something like 🗇, with an object on the top stack) and drag the image with a **1** onto the image viewer.
+    That will open the **reconstructed** localizer on the viewer.
 
-    ![drag_t1w.jpg](../assets/images/drag_t1w.jpg)
+    ![drag_t1w.jpg](../assets/images/drag_localizer.jpg)
 
 - [ ] In the issue collecting notes about the session, check the box confirming that the localizer has been acquired. 
     - [ ] If the quality looks good, check the box stating `Localizer looked ok`. If not, follow the paragraph below.
@@ -421,7 +422,6 @@ It is critical to check that physiological signals are looking good:
 **While the QCT is running:**
 
 - [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
-- [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
 - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 
 **Once the QCT has concluded:**

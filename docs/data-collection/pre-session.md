@@ -83,8 +83,8 @@ We MUST verify that *{{ secrets.hosts.psychopy | default("███") }}* correc
 
     !!! danger "The following steps MUST be executed in this order"
 
-            - [ ] Drag and drop the modal dialog into the scanner's projector screen.
-            - [ ] Update the session number with the corresponding number.
+        - [ ] Drag and drop the modal dialog into the scanner's projector screen.
+        - [ ] Update the session number with the corresponding number.
 
 - [ ] Check the correct session number is set (use the default 9999 for testing) and hit *OK*.
 
