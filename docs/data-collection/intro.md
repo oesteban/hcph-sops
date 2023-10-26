@@ -54,16 +54,17 @@ The above graph can be broken down as follows:
     |:---:|
     | The *NordicLabs Syncbox* |
 
+1. **Physiology recording hub (BIOPAC)**.
+    We use the *{{ settings.biopac.model }}* ({{ settings.biopac.vendor }}, {{ settings.biopac.place }}) to record most of physiological signals.
+    The main unit ({{ settings.biopac.model }}) has directly attached several additional modules for the reception and recording of several analogical signals from the Scanning Room (for the case of the RB and the ECG), and indirectly from the gas analyzer (see next item).
+    The physiology recording hub also registers digital signals from the *stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }}) through the digital signal module (described below).
 1. **Gas analyzer (GA)**.
+    We use the *{{ settings.gas.model }}* ({{ settings.gas.vendor }}, {{ settings.gas.place }}).
     The GA is a device that continuously measures the amount of two gases (CO<sub>2</sub> and O<sub>2</sub>) from a sample fed at the front of the device with a connected tube (this tube comes from inside of the Scanning Room and ends in the nasal cannula the participant is wearing, as shown in the graph).
-1. **BIOPAC**.
-    The BIOPAC is the main recording hub.
-    It directly receives analogical signals from the Scanning Room (for the case of the RB and the ECG).
-    Indirectly, it receives the analogical signal from the GA, and digital signals from the *Psychopy laptop* ({{ secrets.hosts.psychopy | default("███") }}).
-
 1. **Eye tracker (ET)**.
-    The ET is composed of two main elements:
-    (i) inside the scanner's bore, we place an arm that holds an infrared lens and camera sensor on one side and an infrared lamp that illuminates the right eye of the subject through a special mirror to reflect the infrared spectrum; and (ii) a PC tower that receives the camera recordings, postprocess the images and calculates the final parameters of interest (position of the eye, pupil size, etc.).
+    We use the *{{ settings.eyetracker.model }}* ({{ settings.eyetracker.vendor }}, {{ settings.eyetracker.place }}).
+    Our particular variant «{{ settings.eyetracker.submodel }}» is composed of three main elements:
+    (i) inside the scanner's bore, we place an arm that holds an infrared lens and camera sensor on one side and an infrared lamp that illuminates the {{ settings.eyetracker.eye }} eye of the subject through a special mirror (ii) to reflect the infrared spectrum; and (iii) a PC tower that receives the camera recordings, postprocesses the images and calculates the final parameters of interest (position of the eye, pupil size, etc.).
     The ET is also connected to the *Psychopy laptop* ({{ secrets.hosts.psychopy | default("███") }}), and communicates bi-directionally with it (e.g., to record logs or receive "messages" such as triggers or task events).
     The ET **is NOT connected to the BIOPAC**, with the implication that the ET data is not stored with the other physiological information.
 1. **Stimuli presentation laptop**.
@@ -76,36 +77,7 @@ The above graph can be broken down as follows:
 
 ## Getting familiar with the instruments
 
-Below is the overall setup of the instruments:
-
-![Overall instrumental setup](../assets/images/Biopac_full_setup.jpg)
-
-!!! warning "Emergency procedures"
-
-    It is critical you fully understand and study the [emergency procedures to run an MRI scan at CHUV](./emergency-procedures.md).
-
-### BIOPAC documentation and devices
-
-Get familiar with the BIOPAC setup and read through the [hardware documentation](https://www.biopac.com/wp-content/uploads/MP_Hardware_Guide.pdf).
-The system is composed by the main unit (MP160; extreme left in the picture below), to which modules are attached depending on what signals are to be recorded.
-
-![Biopac_setup](../assets/images/Biopac_setup.jpg "BIOPAC front side")
-
-Additional modules in our settings are (from left to right in the above picture):
-
-* The [SPT100D (solid state relay driver unit)](../assets/files/STP100D.pdf) is used to input digital signals that must be recorded.
-* The AMI100C unit can receive up to 16 analog signals.
-* The DA100C unit records the signal coming from the respiration belt.
-    This unit requires the pressure transducer TSD160A unit to be connected.
-* The ECG100C MRI unit records the electrical signal coming from the heart via the ECG.
-    This unit requires the MECMRI-2 unit on the ECG100C unit.
-
-In addition to the main unit, we have a data modem to feed digital signals into the SPT100D.
-This modem is the [MMBT-S Trigger Interface Box adapter (N-shaped, pink box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf):
-
-![neurospec](../assets/images/neurospec.jpg)
-
-### AD Instruments ML206 Gas analyzer: documentation and basics
+### Gas analyzer {{ settings.gas.model }}: documentation and basics
 
 The front of the gas analyzer (GA) looks like this:
 
@@ -115,21 +87,37 @@ It is critical to familiarize with the [GA's manual](../assets/files/GA_manual.p
 
 !!! danger "Make sure you understand the switching on and off procedures described in these SOPs"
 
-The input to the GA must be connected through a DM-060-24 desiccant chamber and a MLA0110 flow valve and a MLA0343 drying tube:
-
-![desiccant_chamber](../assets/images/desiccant_chamber.png)
-
-!!! warning "The MLA0343 drying tube and the DM-060-24 desiccant chamber MUST be replaced when their inside color turns into pink."
-
 Finally, make sure to watch the following video:
 <video id="wistia_simple_video_119" crossorigin="anonymous" style="background: transparent; display: block; height: 100%; max-height: none; max-width: none; position: static; visibility: visible; width: 100%; object-fit: fill;" aria-label="Video" src="https://embed-ssl.wistia.com/deliveries/5e08ccab25ab45382329671a82dfe5123f6e840e/file.mp4" playsinline="" preload="metadata" type="video/mp4" x-webkit-airplay="allow" controls>
   <source src="https://embed-ssl.wistia.com/deliveries/5e08ccab25ab45382329671a82dfe5123f6e840e/file.mp4" type="video/mp4" />
   Your browser does not support the video. <a href="./assets/files/GA_video.mp4">Click here to download it</a>
 </video>
 
-### EyeLink 1000 Plus eye tracker: documentation and basics
+### Physiological recording hub BIOPAC: documentation and devices
 
-Get familiar with the setup and read through the [Eye Tracker Instruction Manual](../assets/files/EL1000Plus_UserManual_1.0.20_GOP.pdf).
+Get familiar with the BIOPAC setup and read through the [hardware documentation](https://www.biopac.com/wp-content/uploads/MP_Hardware_Guide.pdf).
+The system is composed by the main unit ({{ settings.biopac.model }}; extreme left in the picture below), to which modules are attached depending on what signals are to be recorded.
+
+![Biopac_setup](../assets/images/Biopac_setup.jpg "BIOPAC front side")
+
+Additional modules in our settings are (from left to right in the above picture):
+
+* The [{{ settings.biopac.digital }} (solid state relay driver unit)](../assets/files/STP100D.pdf) is used to input digital signals that must be recorded.
+* The {{ settings.biopac.analog }} unit can receive up to 16 analog signals.
+* The {{ settings.biopac.rb_unit }} unit records the signal coming from the respiration belt.
+    This unit requires the pressure transducer and amplifier {{ settings.biopac.rb_trans }} unit to be connected at its front.
+* The {{ settings.biopac.ecg_unit }} unit records the electrical signal coming from the heart via three ECG leads.
+    This unit requires the amplifier {{ settings.biopac.ecg_trans }} unit to be connected at its front.
+
+In addition to the main unit, we have a data modem to feed digital signals into the SPT100D.
+This modem is the [{{ settings.biopac.pinkbox_long }} (N-shaped, pink box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf):
+
+![{{ settings.biopac.pinkbox }}](../assets/images/neurospec.jpg)
+
+
+### Eye tracker {{ settings.eyetracker.model }}: documentation and basics
+
+Get familiar with the setup and read through the [ET Instruction Manual](../assets/files/EL1000Plus_UserManual_1.0.20_GOP.pdf).
 
 ??? thanks "Thanks to Benedetta Franceschiello!"
 
@@ -138,18 +126,26 @@ Get familiar with the setup and read through the [Eye Tracker Instruction Manual
 
 | <img src="../../assets/images/ET_connections.jpg" alt="ET arm and connections" width="250px" /> | ![pctower](../assets/images/pctower.png) | ![infrared-mirror](../assets/images/infrared-mirror.png) |
 |:---:|:---:|:---:|
-| The ET is composed of three major elements: the ET arm (left), which holds the lens and camera and an infrared lamp, the *Host Computer* (middle), and the infrared mirror (right) {: colspan=3} | | |
+| **The ET is an *{{ settings.eyetracker.model }} ({{ settings.eyetracker.submodel }})***. The ET is composed of three major elements: the ET arm (left), which holds the lens and camera and an infrared lamp, the *Host Computer* (middle), and the infrared mirror (right) {: colspan=3} | | |
 
 * The ET arm is an articulated support for the infrared camera and lens in one end and with an infrared lamp at the other end.
     The ET arm is installed inside the Scanning Room, inside the scanner's bore, standing on a transparent plexiglass panel tailored to the scanner's bed rail.
     Two lengthy cables (black for power and orange for signal) are passed through the access panel and connect the ET arm to the ET computer.
 * The ET computer is a standard PC with customized software for the control of the ET.
-* The infrared mirror is critical to be able to record the **right eye** of the participant, and is mounted covering the standard mirror of the coil.
+* The infrared mirror is critical to be able to record the **{{ settings.eyetracker.eye }} eye** of the participant, and is mounted covering the standard mirror of the coil.
 
 ## Scanning protocols
 
 The study will collect data with two different scanning protocols.
 Most of what is described in the present SOPs addresses the *Reliability Imaging Protocol* that will be acquired on the {{ secrets.rooms.mri1 | default("███") }} scanner.
+
+!!! important "Reliability imaging protocol printouts"
+
+    The final printouts are here:
+    [HCPh_AP](../assets/files/HCPh_AP.pdf),
+    [HCPh_PA](../assets/files/HCPh_PA.pdf),
+    [HCPh_LR](../assets/files/HCPh_LR.pdf), and
+    [HCPh_RL](../assets/files/HCPh_RL.pdf).
 
 | **Reliability Imaging Protocol (36 sessions $\times$ one scanner)** | mm:ss | **Standard Imaging Protocol (12 sessions $\times$ three scanners)** | mm:ss |
 |---|---|---|---|
@@ -166,7 +162,7 @@ Most of what is described in the present SOPs addresses the *Reliability Imaging
 | T2w (anatomical reference) | 05:10  | | |
 | **Total Acquisition Time** | 79:12 | **Total Acquisition Time** | 77:56 |
 
-!!! important "Stimulation program timings"
+!!! important "Stimulation program timings (reliability imaging protocol only)"
 
     <a name="task-timing"></a>
     The stimuli presentation laptop ({{ secrets.hosts.psychopy | default("███") }}) will execute four experiments, which will allow the synchronization of all devices by sending the adequate signals at their predesignated times and also present visual stimuli with the scanner's projector.

@@ -1,73 +1,109 @@
-## Once, at the beginning of the project
+## Scanner
 
-### Setting up the scanner protocol at the MR console
+Once finalized the protocol development (before the first session of the first participant), the protocol(s) MUST be *frozen* and remain unchanged throughout the data collection effort.
 
-The pilot phase will conclude when the protocol is decided upon.
-Once finalized the protocol design, it will be *frozen* and it cannot be changed anymore.
+- [ ] Create [the necessary protocols](intro.md#scanning-protocols) as described in the [protocol management section](scanning-notes.md#managing-protocols).
 
-- [ ] (Optional) Load an existing protocol
-- [ ] Edit the protocol as needed
+---
 
-    !!! important "Follow Reproin conventions"
+## Hardware: installation of instruments
 
-        When assigning names to the MR sequences in the protocol, make sure to follow the [Reproin conventions](https://dbic-handbook.readthedocs.io/en/latest/mri/reproin.html) to maximally facilitate the conversion into BIDS.
+Below is the overall setup of the instruments:
 
-- [ ] Update the *Number of measurements* in all `func-bold_task-*` sequences, according to the [previously recorded timings](intro.md#task-timing):
-
-    $$N_\text{measurements} = L_t / \text{TR}, \quad t \in \{\text{bht}, \text{qct}, \text{rest}\},$$
-
-    where $L_t$ is the length of a particular task $t$ (either BHT, QCT, or resting state) in seconds as timed before, and
-    $\text{TR}$ is the **repetition time** of the BOLD sequence, in seconds.
-
-- [ ] Save the protocol
-
-    !!! warning "Logging in as an advanced user is required before saving the protocol"
-
-        As a good practice, always work as the standard user `{{ secrets.login.username_scanner | default("janedoe") }}`.
-        However, you MUST change into *advanced user mode* before saving the protocol.
-
-        Simultaneously press the <span class="keypress">Tab</span> + <span class="keypress">Delete</span> + <span class="keypress">:octicons-sign-out-16:</span> on the control-computer's keyboard:
-
-        > Username: `{{ secrets.login.superusername_scanner | default("superjanedoe") }}`
-        >
-        > Password: `{{ secrets.login.superuserpass_scanner | default("******") }}`
-
-        !!! danger "After three wrong password entries, access will be denied, and only a Siemens engineer will be able to unlock the MR scanner."
-
-    - [ ] Open the Dot-Cockpit window
-        ![](../assets/images/save_protocol1.jpg)
-    - [ ] In `Browse`, find the right folder to save the protocol in (*RESEARCH* ⤷ *Oscar*).
-    - [ ] Right click on the folder and select *New* ⤷ *Program*. This opens an empty page in the program editor
-        ![](../assets/images/save_protocol2.jpg)
-        ![](../assets/images/save_protocol3.jpg)
-    - [ ] Select all the sequences you want to run from the sequence list and click right to copy.
-        ![](../assets/images/save_protocol4.jpg)
-    - [ ] Drag or paste the copied sequences in the program editor.
-        ![](../assets/images/save_protocol5.jpg)
-    - [ ] Once finished, click on the floppy disk icon (:fontawesome-solid-floppy-disk:) in the upper left to save.
-    - [ ] Give the protocol a relevant name starting with the date of acquisition in the format YYYYMMDD and click <span class="consolebutton">Save</span>.
-        ![](../assets/images/save_protocol6.jpg)
-    - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.
-        - [ ] Right-click on the protocol and select *Print*
-        - [ ] Save the PDF in your USB key.
-- [ ] Make sure you save a different protocol for each of the four PE directions (i.e., AP, PA, LR, RL).
-
-!!! important "Final protocol printouts"
-
-    The final printouts are here:
-    [HCPh_AP](../assets/files/HCPh_AP.pdf),
-    [HCPh_PA](../assets/files/HCPh_PA.pdf),
-    [HCPh_LR](../assets/files/HCPh_LR.pdf), and
-    [HCPh_RL](../assets/files/HCPh_RL.pdf).
+| ![Overall instrumental setup](../assets/images/Biopac_full_setup.jpg) |
+|:---:|
+| **Stable configuration of the pyshiological and eye-tracking recording elements**. Most of the recording devices are located on a rack in the access panel cupboard of the Control Room. |
 
 ### Install the BIOPAC
 
-- [ ] Make sure you understand the components and settings of the BIOPAC, described in the [introduction section](intro.md#biopac-documentation-and-devices).
-- [ ] Set up the line frequency switches on the back of the BIOPAC amplifier depending on your country frequency to reduce noise. Both switches should be DOWN if your country's line frequency is 50Hz. Both switches should be UP if your country's line frequency line is 60Hz.
-    ![biopack-frequency-switch](../assets/images/biopack-frequency-switch.jpg "BIOPAC frequency switch")
-- [ ] Plug the different units of the BIOPAC together if it has not been done yet.
-- [ ] Ensure that the *Mode* switch of the [MMBT-S Trigger Interface Box adapter (pink color box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf) is set on the **P** position.
+- [ ] ![biopac-frequency-switch](../assets/images/biopac-frequency-switch.jpg "BIOPAC frequency switch"){ width="300" align="right" }
+    Set up the line frequency switches on the back of the BIOPAC amplifier depending on your country frequency to reduce noise.
+    Both switches should be DOWN if your country's line frequency is 50Hz.
+    Both switches should be UP if your country's line frequency line is 60Hz.
+- [ ] Check that the RB ({{ settings.biopac.rb_unit }}) and ECG ({{ settings.biopac.ecg_unit }}) channels are set to **channel 1** and **channel 2**, respectively.
+    ![Biopac-RB-ECG-channels](../assets/images/Biopac-RB-ECG-channels.jpg "DA100C and ECG100C MRI input channels")
+- [ ] Connect the {{ settings.biopac.model }}, {{ settings.biopac.digital }}, {{ settings.biopac.analog }}, {{ settings.biopac.rb_unit }}, and {{ settings.biopac.ecg_unit }} together if it has not been done yet.
+- [ ] Plug in the Ethernet (the plug is on the back side of the BIOPAC), and leave it ready to connect the recording PC.
+    ![BIOPAC-Ethernet](../assets/images/biopac-back.jpg "BIOPAC Data link")
+- [ ] Ensure that the *Mode* switch of the [{{ settings.biopac.pinkbox_long }} (pink color box)](../assets/files/MMBT-S_instruction_manual_v2.2.pdf) is set on the **P** position.
+- [ ] Connect the micro-USB B end of a long USB-A to micro-USB B cable into the appropriate input socket of the {{ settings.biopac.pinkbox_long }} (N-shaped pink-color box).
+    Leave the USB-A open end accessible for connection to the stimuli presentation computer *{{ secrets.hosts.psychopy | default("███") }}*.
+- [ ] Connect the parallel cable to the 25-pin socket at the back of the {{ settings.biopac.digital}} of the BIOPAC and to the parallel port of the {{ settings.biopac.pinkbox}} (N-shaped pink box).
+
+    | ![biopac-parallel-plug](../assets/images/biopac-parallel-plug.jpg "BIOPAC back side") | ![neurospec](../assets/images/neurospec.jpg) |
+    |:---:|:---:|
+    | **Connection of digital signals** {: colspan=2} |
+
+- [ ] Pass the RB's tube through the access cylinder with the help of one person inside the Scanning Room.
+- [ ] Connect the RB's tube proximal end to the {{ settings.biopac.rb_trans }}'s inlet marked with the **minus** (-) symbol.
+- [ ] Connect the parallel port end of the cable that comes out of the {{ settings.biopac.ecg_trans }} amplifier to the filter weld onto the access panel.
+    ![ecg-filter](../assets/images/ecg_filter.jpg)
+- [ ] **Inside the Scanning Room**, connect the MRI-compatible cable where the ECG leads will be connected to the parallel port weld to the access panel.
+- [ ] Plug the power cord to the back socket of the BIOPAC and onto the multiple power socket extension.
+
+### Install the GA
+
+- [ ] Set the GA on the middle shelf of the rack.
+- [ ] Connect two medical oxygen tubes (with length 4.2m each) with an adaptor.
+- [ ] Pass the composite oxygen tube through the access cylinder with the help of someone else at the Scanning Room end.
+- [ ] Connect the proximal end of the composite oxygen tube to one inlet of {{ settings.gas.chamber }} desiccant chamber.
+- [ ] Connect the free inlet of the dessicant chamber to the {{ settings.gas.tube }} drying tube.
+- [ ] Remove the cap of the gas input (Sample In, front panel of the GA).
+    ![gaz-analyser-front](../assets/images/gaz-analyser-front.jpg "Gas Analyzer front")
+
+- [ ] Connect the {{ settings.gas.valve }} flow valve to the gas inlet of the GA.
+
+    !!! warning "The {{ settings.gas.valve }} flow valve MUST be replaced after some ten sessions."
+
+- [ ] Connect the {{ settings.gas.tube }} drying tube to the {{ settings.gas.valve }} flow valve.
+    ![desiccant_chamber](../assets/images/desiccant_chamber.png)
+
+!!! warning "The {{ settings.gas.tube }} drying tube and the {{ settings.gas.chamber }} desiccant chamber MUST be replaced when their inside color turns into pink."
+
+- [ ] Plug the power cord to the back socket of the GA and onto the multiple power socket extension.
+    ![gaz-analyser-back](../assets/images/gaz-analyser-back.jpg "Gas Analyzer back")
+- [ ] Connect the coaxial end of one BNC-jack cable to the CO<sub>2</sub> output in the back of the GA and connect the other end (jack plug) into the input end of the INISO/A filter.
+    ![co2-cable](../assets/images/CO2_cable.jpg "Input GA")
+- [ ] Connect one end (RJ-11 to RJ-11) to the output of the INISO/A filter you just installed.
+- [ ] Connect the other RJ-11 end into **channel 3** of the {{ settings.biopac.analog }} module.
+    ![biopac-annotated-font](../assets/images/Biopac_setup.jpg "Biopac front, annotated")
+- [ ] Connect the coaxial end of the other BNC-jack cable to the O<sub>2</sub> output in the back of the GA and connect the other end (jack plug) into the input end of the INISO/A filter.
+- [ ] Connect one end (RJ-11 to RJ-11) to the output of the INISO/A filter you just installed.
+- [ ] Connect the other RJ-11 end into **channel 4** of the {{ settings.biopac.analog }} module.
+
+### Install the ET computer
+
+- [ ] Install the ET computer on the bottom shelf.
+- [ ] Install the screen and peripherals (keyboard, mouse) on the top shelf, and connect them to the PC.
+- [ ] Connect the power cord of the PC to the power multiple-socket extension.
+- [ ] Pass the optic fiber (orange wire) and the power cable (the one with a fabric sheet) through the access cylinder with the help of someone else inside the Scanning Room.
+
+    ??? warning "This operation requires two people"
+
+        One person will feed the cables from the control room interface of the access cupboard.
+        The other person will gently pull the two cables from inside.
+        Both people will lift the cable to avoid its abrasion with the edges of the metallic cylinder, which is the passage between exterior and interior of the scanner room.
+        Once the sliding of the cable is finished, leave the extremities inside the scanner room in the left-top corner, far from the scanner because they are magnetic.
+
+        ![cable_passage](../assets/images/cable_passage.png)
+
+### Cleanup inside the scanning room
+
+Several tubes and cables will be now hanging from the access cylinder at the Scanning Room end.
+
+- [ ] Roll these cables and tubes and store them organized in the cupboard, ready for their connection when needed.
+- [ ] The RB may be stored with these cables and tubes to.
+
+---
+
+## Software
+
+### Preparing the *physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }})
+
+- [ ] Ensure you have the *AcqKnowledge* software USB license key. Plug the USB key to the multiport adapter for Mac and plug that adapter to the computer *{{ secrets.hosts.oesteban | default("███") }}* as shown in the picture below. **It needs to stay plugged at all times during the acquisition.**
+    ![mac_setup](../assets/images/mac_setup.png)
 - [ ] Install the BIOPAC recording software (*AcqKnowledge*).
+- [ ] Open the *AcqKnowledge* software.
 - [ ] Create a template *graph file* ([`EXP_BASE.gtl`](../assets/files/EXP_BASE.gtl))
 
     !!! important "Creating the *AcqKnowledge*'s template graph file"
@@ -98,10 +134,7 @@ Once finalized the protocol design, it will be *frozen* and it cannot be changed
         - [ ] Configure whether you want to collect directly to hard disk and autosave settings
         - [ ] Save the experiment, making sure you choose a "graph template file" (with extension `.gtl`)
 
-### Install the gas analyzer (GA)
-
-
-### Preparing the *Stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }})
+### Preparing the *stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }})
 
 The stimuli presentation laptop and any other box you want to use for debugging and development will require a few additional software packages to be available.
 
@@ -244,9 +277,11 @@ To install it as a service, please follow [the documentation in the appendix](so
         - [ ] time it to confirm the length, and
         - [ ] check the task runs properly.
 
-## Every two months
+---
 
-### Calibrate the GA
+## Calibration of the GA
+
+The *AcqKnowledge* software must be re-calibrated every two months, approximately.
 
 ??? important "A gas mixture bottle with a known CO<sub>2</sub> and O<sub>2</sub> concentrations is necessary"
 
@@ -254,7 +289,6 @@ To install it as a service, please follow [the documentation in the appendix](so
     A second reference mixture is necessary, and room air can be used, knowing that atmospheric contents by volume are 0.039 ±0.001%
     for CO<sub>2</sub> and 20.946 ±0.003% for O<sub>2</sub>.
 
-- [ ] Connect the GA to the BIOPAC as described in [this section](pre-session.md#setting-up-the-biopac-system-and-physiological-recording-sensors).
 - [ ] Connect the BIOPAC to the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}) as described in [this section](pre-session.md#setting-up-the-biopac-system-and-physiological-recording-sensors).
 - [ ] Connect the *AcqKnowledge* License Key into a USB Port of the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}).
 - [ ] Open *AcqKnowledge* software on the *Physiology recording laptop* ({{ secrets.hosts.acqknowledge | default("███") }}).

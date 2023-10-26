@@ -110,7 +110,7 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
         pip install git+https://github.com/oesteban/psychopy-eyetracker-eyelink.git
         ```
 
-- [ ] Install the *Pylink* module made by *SR Research*, it is distributed with the [installation of the `eyelink-display-software`](preliminary.md#installing-eyelink-eye-tracker-software) done previously:
+- [ ] Install the *Pylink* module made by *SR Research*, it is distributed with the [installation of the `eyelink-display-software`](setup.md#installing-eyelink-eye-tracker-software) done previously:
 
     ``` shell
     python -m pip install /usr/share/EyeLink/SampleExperiments/Python/wheels/sr_research_pylink-2.1.762.0-cp310-cp310-linux_x86_64.whl
@@ -138,7 +138,7 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     ??? warning "Check that the *EyeLink* eye tracker is available in the dropdown under the experiment's options"
 
         If the *EyeLink* is not available, most likely the appropriate *Pylink* is missing.
-        See the last checkbox in the [installation of the eye tracker](preliminary.md#preparing-the-stimuli-presentation-laptop-hos68752) to install it.
+        See the last checkbox in the [installation of the eye tracker](setup.md#preparing-the-stimuli-presentation-laptop-hos68752) to install it.
         Otherwise, make sure you installed the *EyeLink* plugin above.
 
     ??? important "The first time it runs, *Psychopy* will likely request some increased permissions"
