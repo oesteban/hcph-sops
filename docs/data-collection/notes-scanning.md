@@ -166,7 +166,7 @@ Adjust settings by pressing the respective button and then turning the central k
     - [ ] Click *Apply*
 
 !!!warning "Emergency buttons"
-    The <span style="background-color: red; color: white; font-size: 0.85em; border-radius: 50%; text-align: center; height: 30px; width: 30px; display:inline-block; background-position: center; padding-top: 7px; font-weight: bold;">STOP</span> button (3) immediately stops the currently running sequence.
+    The <span style="background-color: red; color: white; font-size: 0.85em; border-radius: 50%; text-align: center; height: 30px; width: 30px; display:inline-block; background-position: center; padding-top: 7px; font-weight: bold;">STOP</span> button (3) immediately stops the currently running sequence and will require you to go inside the scanner room and simultaneously press the `bed up` and `bed down` buttons to keep going.
     The crossed-out bell <span class="fliplr">:fontawesome-solid-bell-slash:</span> button (4) stops the alarm if the participant actioned it.
 
 ### Participant insertion
