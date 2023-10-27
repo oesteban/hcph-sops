@@ -5,7 +5,7 @@
 
     !!! quote "Hi [NAME], thanks a lot for your collaboration. We will get you out in a second."
 
-- [ ] Extract the participant [following the standard procedure](scanning-notes.md#standard-extraction-of-the-participant).
+- [ ] Extract the participant [following the standard procedure](notes-scanning.md#standard-extraction-of-the-participant).
 - [ ] Unplug the head coil from the bed connector, lift the lever that releases the upper part of the coil and put it aside (e.g., inside the bore or on a chair next to the scanner).
 - [ ] Remove the tape band across the coil and touching the participants forehead.
 - [ ] Lift the nasal cannula and put it away so the participant does not get tangled.
@@ -79,7 +79,7 @@
 
     !!! important "If the next user is already there or you know the current coil will be also used in the next session, plug it back into the bed socket."
 
-- [ ] Return the bed to its *Home* position by pressing the :fontawesome-solid-house: button ([more info](scanning-notes.md#standard-extraction-of-the-participant)).
+- [ ] Return the bed to its *Home* position by pressing the :fontawesome-solid-house: button ([more info](notes-scanning.md#standard-extraction-of-the-participant)).
 - [ ] Take the ET arm outside to the Control Room and place it in a stable place.
 - [ ] Take the ECG electrodes, ECG cable, the RB, and the plexiglass panel outside to the control room.
 - [ ] Exit and close the external door.

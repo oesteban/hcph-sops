@@ -2,7 +2,7 @@
 
 Once finalized the protocol development (before the first session of the first participant), the protocol(s) MUST be *frozen* and remain unchanged throughout the data collection effort.
 
-- [ ] Create [the necessary protocols](intro.md#scanning-protocols) as described in the [protocol management section](scanning-notes.md#managing-protocols).
+- [ ] Create [the necessary protocols](intro.md#scanning-protocols) as described in the [protocol management section](notes-scanning.md#managing-protocols).
 
 ---
 
@@ -175,7 +175,7 @@ The stimuli presentation laptop and any other box you want to use for debugging 
 
 During the session, we run a synchronization server that acts as a hub for the signals (triggers, task events, etc.) that define the experiment.
 For the best experience, we *daemonize* the synchronization service (meaning, we make it a service of the operative system that runs in the background).
-To install it as a service, please follow [the documentation in the appendix](software.md#setting-up-the-synchronization-service-as-a-daemon-in-the-background)
+To install it as a service, please follow [the documentation in the appendix](notes-software.md#setting-up-the-synchronization-service-as-a-daemon-in-the-background)
 
 - [ ] Locate the latest version of the synchronization service on your system.
     It is within the SOPs repository, at ``{{ secrets.data.sops_clone_path | default('<path>') }}/code/synchronization/forward-trigger-service.py``.
@@ -235,7 +235,7 @@ To install it as a service, please follow [the documentation in the appendix](so
 
 #### Prepare the *Psychopy* experiments
 
-!!! tip "The appendix has some guides on [how to install *Psychopy*](software.md#psychopy-installation)."
+!!! tip "The appendix has some guides on [how to install *Psychopy*](notes-software.md#psychopy-installation)."
 
 - [ ] Log on *{{ secrets.hosts.psychopy | default("███") }}* with the username *{{ secrets.login.username_psychopy| default("███") }}* and password `{{ secrets.login.password_psychopy| default("*****") }}`.
 

@@ -5,7 +5,7 @@ The following section describes how to prepare the session on the day of scan, B
 !!! important "Switching the GA on early is critical to allow time for its warm-up period (~25 min)"
 
 - [ ] Arrive to the Control Room at least 30 min ahead the session start time.
-- [ ] If necessary, [boot the scanner up](scanning-notes.md#scanner-boot-up-protocol)
+- [ ] If necessary, [boot the scanner up](notes-scanning.md#scanner-boot-up-protocol)
 - [ ] Unroll the bundle of cables that will cross the corridor (one RJ-45/Ethernet-ended for the ET, one mini-USB B -ended, and one standard Swiss power plug, i.e., type J) and stick it to the floor.
 - [ ] Connect the standard type J plug of the bundle to a suitable power outlet.
     This plug comes from the multiple-socket power cord extension feeding the physiological recording hardware.
@@ -227,15 +227,19 @@ The following section describes how to prepare the session on the day of scan, B
 
 ### Final checks inside the scanning room
 
-- [ ] Prepare padding: under-knee padding, neck padding, under-elbows padding, head-sides padding, top-head wedge padding.
+- [ ] Prepare padding: under-knee padding, neck-and-head padding, under-elbows padding, head-sides padding, top-head wedge padding.
     - [ ] Wrap a sanitary cover around each padding.
-    - [ ] The head padding should be chosen and adjusted to each participant depending on their head size so that their nose is only 1-2mm away from the anterior part of the coil.
-        The anterior part of the head coil will be tight around the participant's nose, so ensure they are nonetheless comfortable.
+    - [ ] Place a double neck-and-head padding inside the coil, to ensure the eyes are close to the coil's windows:
+
+        | ![two_pillows](../assets/images/two_pillows.jpg) | ![superpose_pillows](../assets/images/superpose_pillows.jpg) |
+        |:---|:---|
+        | Padding should be chosen and adjusted to each participant depending on their head size so that their nose is only 1-2mm away from the anterior part of the coil. The anterior part of the head coil will be tight around the participant's nose, so ensure they are nonetheless comfortable. {: colspan=2 } |
+
 - [ ] Prepare a blanket to cover the participant.
 - [ ] Prepare a new pair of earplugs.
 - [ ] Connect the ECG leads to the hub and leave it prepared on the bed.
 - [ ] Check the RB, ECG, and nasal cannula are prepared.
-- [ ] Completely disable the light inside of the scanner and the ventilation of the scanning room using [the scanner's interface](scanning-notes.md#scanners-settings-buttons).
+- [ ] Completely disable the light inside of the scanner and the ventilation of the scanning room using [the scanner's interface](notes-scanning.md#scanners-settings-buttons).
 
     !!! danger "Disable the light and ventilation to facilitate the best performance of the ET"
 

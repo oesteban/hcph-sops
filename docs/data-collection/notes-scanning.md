@@ -1,4 +1,31 @@
-## Quick guide to the protocol settings and configuration
+## Protocol setup and management
+
+### Preparing the protocol
+
+- [ ] Close open patients discarding changes.
+    ![](../assets/images/console-00-close-patient.jpg)
+- [ ] Search for the participant by clicking on the "Patient Browser" in the top left corner.
+      If the participant is not shown (because it is archived and hence not locally found):
+      - [ ] Click on the *DICOM Q/R* button on the top-right area.
+          ![](../assets/images/console-02-retrieve.jpg)
+      - [ ] Introduce some unambiguous search criteria:
+          ![](../assets/images/console-03-dicom-search.jpg)
+      - [ ] Select the subject (left column) or the sequence (right column) you want to retrieve and hit *Retrieve*. Be careful, **you probably want to retrieve a subject**, that means make sure you have selected a row on the left column:
+          ![](../assets/images/console-04-dicom-retrieve.jpg)
+      - [ ] Go back to the "Patient Browser" and check that the patient now shows up in the local search.
+- [ ] Check the head coil **is not** plugged before initiating a "New examination" to ensure good SNR of the localizer sequence.
+- [ ] Right click and select "New examination".
+    ![](../assets/images/console-01-search-patient.jpg)
+- [ ] Fill in the requested information (e.g., height and weight).
+- [ ] Introduce the *Operator* name(s) on the middle column of options, e.g., "ES/AC".
+- [ ] In the *Program Selection* tab:
+    ![](../assets/images/console-04-new-exam.jpg)
+    - [ ] Enter the weight and height of the participant.
+    - [ ] Select the right protocol under *RESEARCH* ⤷ *Oscar*.
+    - [ ] Select *Brain* as the organ.
+    - [ ] Select the *Position* as "Head First Supine".
+    - [ ] Before you hit <span class="consolebutton red">Exam</span>, you can edit general patient's data by changing to the *Patient Registration* tab if you need to edit general information about the patient.
+    - [ ] Click the <span class="consolebutton red">Exam</span> button (red background, rightmost-bottom).
 
 ### Editing a sequence
 - [ ] Double click on the sequence name.
@@ -93,14 +120,17 @@
 
 ### Scanner boot-up protocol
 
-!!! warning "Please wait for all systems to finalize their boot-up (about 10 minutes), even if only the satellite station (*{{ secrets.hosts.console_lef | default('██████')}}*) is to be used."
+!!! warning "Please wait for all systems to finalize their boot-up (about 10 minutes), even if only the satellite station (*{{ secrets.hosts.console_left | default('██████')}}*) is to be used."
 
 ![on-off-button](../assets/images/on-off-box.jpg)
 
 - [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (:fontawesome-solid-unlock:)
 - [ ] Push the blue button with the sun symbol :octicons-issue-opened-16: and the **SYSTEM ON** label above, which is found right above the key
 
+---
+
 ## Scanner interface
+
 The picture below shows you the scanner interface as you will see it when you operate the MR machine. The arrow points to the screen and the red circles indicate the control buttons.
 ![alarm_button](../assets/images/alarm_button.png)
 
@@ -118,6 +148,43 @@ Adjust settings by pressing the respective button and then turning the central k
 
 !!! warning "The central knob (button 1) will turn off the alarm if pushed when the alarm is on"
 
+### Communication with the participant
+
+- [ ] ![speaker](../assets/images/speaker.jpg){ align="right" width="250px" }
+    Make sure the speaker is audible (and not annoying) and confirm the participant's feedback.
+    First, keep the speak mode button (1) pressed while you talk to the participant:
+
+    !!! quote "Hey [NAME], can you hear me well? Is the audio too loud or too low?"
+
+- [ ] Enable the feedback channel from the Scanning Room by pressing the listen mode button (2) once.
+    Release the speak mode button (1) before you are ready to listen to participant responses.
+- [ ] Set the volume control of your microphone and the participant's speaker by pressing the corresponding :fontawesome-solid-plus-minus: buttons.
+- [ ] If this volume increase is not enough for the participant to hear you well, proceed as follow:
+    - [ ] In the Siemens program, click on Configuration represented by a gear wheel (:fontawesome-solid-gear:) at the top right of the screen.
+    - [ ] Click on *Configuration panel*
+    - [ ] Under the section *Scan application*, locate the icon of the speaker and tune the volume to the maximum.
+    - [ ] Click *Apply*
+
+!!!warning "Emergency buttons"
+    The <span style="background-color: red; color: white; font-size: 0.85em; border-radius: 50%; text-align: center; height: 30px; width: 30px; display:inline-block; background-position: center; padding-top: 7px; font-weight: bold;">STOP</span> button (3) immediately stops the currently running sequence and will require you to go inside the scanner room and simultaneously press the `bed up` and `bed down` buttons to keep going.
+    The crossed-out bell <span class="fliplr">:fontawesome-solid-bell-slash:</span> button (4) stops the alarm if the participant actioned it.
+
+### Participant insertion
+
+- [ ] ![take_table_up](../assets/images/take_table_up.png){ align="right" width="150px" }
+    Move the scanner bed up until it is aligned with the bore's rails.
+- [ ] Move the bed forward slowly with the manual regulation knob.
+    Stop when the head is under the head-localizer.
+- [ ] **Ask the participant to close their eyes**
+- [ ] ![laser_button](../assets/images/laser_button.png){ align="right" width="150px" }
+    Press the laser alignment button and align the head-coil markers with the red light.
+- [ ] Switch off the alignment light.
+- [ ] Inform the participant that they can open their eyes now.
+- [ ] ![send_isocenter](../assets/images/send_isocenter.png){ align="right" width="150px" }
+    Move the bed inside the scanner with either of these two options:
+    - [ ] manually with the designated knob until the mm counter marks "Isometric", or
+    - [ ] press the knob for two seconds, which will place the participant into the isocenter automatically.
+
 ### Standard extraction of the participant
 
 There are two options to extract the participant, when the session has concluded or within the session if the participant needs to be extracted and there is no emergency (e.g., in case of technical error the scanner does not permit continuing the session and it needs to be aborted).
@@ -126,31 +193,9 @@ There are two options to extract the participant, when the session has concluded
 |:--:|:--:|
 | *The participant can be extracted by pressing the extraction button (bottom arrow in the leftmost picture) and then genly rolling the central knob. Alternatively, you can just press the* Home :fontawesome-solid-house: *button (rightmost picture).* {: colspan=2} |
 
+
 ---
 
-## Eye-Tracker Calibration Process
-
-- [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected (9-point for QCT and 5-point for resting state and breath-holding tasks):
-    - [ ] Click on <span class="keypress">Set Options</span> located on the right side of ET computer screen.
-    - [ ] Under **Calibration type** in the top left corner, choose the image containing either 9 or 5 points.
-
-        ![9-points_calibration](../assets/images/9-points_calibration.jpg)
-
-- [ ] Two crosses should appear on the ET computer screen: one at the center of the pupil and the other at the center of the corneal reflection.
-
-    !!! warning "If the two crosses do not appear, the coverage, focus and intensity of the ET are incorrect"
-
-        - [ ] Repeat the steps for their setting up given in [the participant's preparation section](participant-prep.md#final-preparatory-steps-of-the-et)
-
-- [ ] Initiate the ET calibration by pressing <span class="keypress">C</span> on the laptop keyboard or by clicking on <span class="keypress">Calibration</span> on the ET interface.
-- [ ] Once the participant's gaze stabilizes on the first fixation point, the <span class="keypress">Accept Fixation</span> button turns green.
-    Click on it to confirm the initial position.
-
-    ![accept_fixation](../assets/images/accept_fixation.jpg)
-
-- [ ] Subsequent positions should be automatically validated when the gaze remains stable.
-    If not, manually click the <span class="keypress">Accept Fixation</span> button when it turns green.
-- [ ] After the calibration, ensure that the fixation points' positions match the expected pattern corresponding to the 9- or 5-point calibration.
-    If the pattern appears too distorted, restart the calibration.
-- [ ] Upon successful calibration, initiate validation by clicking <span class="keypress">Validation</span> on the ET interface or pressing the <span class="keypress">V</span> key on the laptop keyboard. Follow the same instructions as in the calibration to validate positions.
-- [ ] If validation fails, repeat previous steps and restart calibration. Otherwise, you can leave the calibration mode and proceed with the task program by pressing the <span class="keypress">Esc</span> key on the laptop (*{{ secrets.hosts.psychopy | default("███") }}*).
+??? thanks "Thanks to Stephanie Bogaert, MSc, Pieter Vandemaele, MSc and Pim Pullens, PhD"
+    Some of the pictures in this section have been extracted from the [Ghent Institute for functional and Metabolic Imaging MRI User 2019](http://gifmi.ugent.be/drupal/system/files/documents/GIfMI_MRI%20user%20manual_BASIC_SiemensPrisma_EN.pdf) written by Stephanie Bogaert, MSc, Pieter Vandemaele, MSc and Pim Pullens, PhD.
+    We express our gratitude that they put together such a comprehensive guide.
