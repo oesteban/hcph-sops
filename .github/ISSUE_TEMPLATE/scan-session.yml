@@ -64,6 +64,18 @@ body:
     label: Eye-tracker calibration completion
     options:
       - label: Eye-tracker calibration was completed.
+- type: input
+  id: et-calibration-error-avg
+  attributes:
+    label: Calibration error avg.
+    description: What is the average calibration error of the RIGHT eye ?
+    placeholder: e.g. 0.50°
+- type: input
+  id: et-calibration-error-max
+  attributes:
+    label: Calibration error max.
+    description: What is the maximum calibration error of the RIGHT eye ?
+    placeholder: e.g. 0.95°
 
 - type: markdown
   attributes:
