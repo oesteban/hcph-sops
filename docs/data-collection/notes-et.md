@@ -103,3 +103,8 @@
 - [ ] If validation fails, repeat previous steps and restart calibration. Otherwise, you can leave the calibration mode and proceed with the task program by pressing the <span class="keypress">Esc</span> key on the laptop (*{{ secrets.hosts.psychopy | default("███") }}*).
 
 ## Drift check
+
+- [ ]  On the eye-tracking (ET) Setup's menu, locate and select <span class="keypress">Drift Check</span>.
+- [ ]  Instruct the participant to focus their gaze on the fixation point displayed on the screen.
+- [ ]  Press on <span class="keypress">Accept</span> when the gaze is stable.
+- [ ]  If the drift is significant and the eye-tracking system suggests recalibration, proceed with the recalibration process.

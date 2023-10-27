@@ -291,7 +291,7 @@ A laptop should be available to fill the issue.
 
 ### Start a new session log for the collection of covariates
 
-- [ ] [Click this link](https://github.com/{{ secrets.data.covariates_repo | default('<gh_user>/<name>') }}/issues/new?assignees=acionca&labels=mood&projects=&template=mood-questionnaire.yml&title=%5BMOOD%5D+sub-001_ses-yyy), or alternatively
+- [ ] [Click this link](https://github.com/{{ secrets.data.covariates_repo | default('<gh_user>/<name>') }}/issues/new?assignees=acionca&labels=mood%2Cbefore&projects=&template=mood-questionnaire-before.yml&title=%5BMOOD%5D%5BBEFORE%5D+sub-001_ses-yyy), or alternatively
 - [ ] manually open a GitHub Issue at the [questionnaire repository](https://github.com/{{ secrets.data.covariates_repo | default('<gh_user>/<name>') }}):
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
 

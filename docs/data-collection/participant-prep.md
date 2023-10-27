@@ -32,7 +32,7 @@
 ### Collecting participant's data
 
 - [ ] Measure the participan's [blood pressure](notes-misc.md#measuring-blood-pressure) and write it in the covariates collection form.
-- [ ] Ask the participant to fill out the `Before scan` part of the covariates collection on the issue you opened [earlier](pre-session.md#collection-of-covariates).
+- [ ] Ask the participant to fill out the `Before scan` part of the covariates collection on the issue you opened [earlier](tear-up.md#start-a-new-session-log-for-the-collection-of-covariates).
 - [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }}).
 
 !!!warning "Only female participants, only the first session"

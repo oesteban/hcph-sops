@@ -260,7 +260,7 @@ It is critical to check that physiological signals are looking good:
 
 **While the fieldmaps are running:**
 
-- [ ] [adjust the FoV](notes-scanning.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence, and
+- [ ] [Adjust the FoV](notes-scanning.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence, and
 - [ ] prepare the execution of the fixation program on the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), which will be played during the DWI by typing the following on a terminal:
 
     ??? warning "Make sure to have the correct environment loaded before invoking the task"
