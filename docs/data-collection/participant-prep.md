@@ -220,8 +220,8 @@
 - [ ] Connect the ECG leads to the three electrodes. The electrodes MUST be connected following the color scheme shown in the picture below.
     ![prep-ecg-electrodes](../assets/images/prep-ECG-electrodes.png)
 - [ ] Install the RB below the participant's chest and connect it to the tube as shown in the picture below.
-    The RB measures the stretching induced by breathing, so it MUST surround the chest or stomach comfortably. Positioning the RB higher (chest) or lower (stomach) depends on the individual's preferential respiration mode (chest breathing or diaphragmatic, respectively).
-- [ ] Connect the distal end of the RB tube to the RB and leave it on the bed.
+    The RB measures the stretching induced by breathing, so it MUST surround the chest or stomach comfortably.
+    Positioning the RB higher (chest) or lower (stomach) depends on the individual's preferential respiration mode (chest breathing or diaphragmatic, respectively).
     ![RB_connection](../assets/images/RB_connection.jpg "RB_connection")
 - [ ] Place the nasal cannula in the nose of the participant making sure the two protrusions are aligned with the nostrils of the participant. Place the tube behind the ears and tighten under the chin for comfort and stability by sliding the ring as shown in the picture below.
 

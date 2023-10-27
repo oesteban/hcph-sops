@@ -64,7 +64,7 @@ The above graph can be broken down as follows:
 1. **Eye tracker (ET)**.
     We use the *{{ settings.eyetracker.model }}* ({{ settings.eyetracker.vendor }}, {{ settings.eyetracker.place }}).
     Our particular variant «{{ settings.eyetracker.submodel }}» is composed of three main elements:
-    (i) inside the scanner's bore, we place an arm that holds an infrared lens and camera sensor on one side and an infrared lamp that illuminates the {{ settings.eyetracker.eye }} eye of the subject through a special mirror (ii) to reflect the infrared spectrum; and (iii) a PC tower that receives the camera recordings, postprocesses the images and calculates the final parameters of interest (position of the eye, pupil size, etc.).
+    (i) inside the scanner's bore, we place an arm that holds an infrared lens and camera sensor on one side and an infrared lamp that illuminates the {{ settings.eyetracker.eye }} eye of the subject through (ii) a special mirror to reflect the infrared spectrum; and (iii) a PC tower that receives the camera recordings, postprocesses the images and calculates the final parameters of interest (position of the eye, pupil size, etc.).
     The ET is also connected to the *Psychopy laptop* ({{ secrets.hosts.psychopy | default("███") }}), and communicates bi-directionally with it (e.g., to record logs or receive "messages" such as triggers or task events).
     The ET **is NOT connected to the BIOPAC**, with the implication that the ET data is not stored with the other physiological information.
 1. **Stimuli presentation laptop**.

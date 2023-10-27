@@ -2,7 +2,7 @@
 
 - [ ] Detach the standard mirror's frame from the head coil, if it is placed there.
     Remove unnecessary items from the scanning bed, and prepare the mirror to attach the infrared mirror of the ET at a later step.
-- [ ] Prepare two long strips of scotch tape and leave them in a convenient place to attach the ET mirror later.
+- [ ] Prepare two long strips of tape and leave them in a convenient place to attach the ET mirror later.
     E.g., attach the corner of each strip to the back part of the mirror frame.
 - [ ] Go back to the control room and take the infrared mirror out of the «fMRI usage» box. **<span style="color:red">DO NOT EXTRACT THE MIRROR OUT FROM ITS BOX YET</span>**. The mirror's box is labeled as [*RELIQUIA DI SAN GENNARO*](https://it.wikipedia.org/wiki/San_Gennaro#La_reliquia) to emphasize that **THIS IS THE MOST DELICATE PART, BECAUSE THE MIRROR CANNOT BE REPLACED <span style="color:red">NOR CLEANED</span>**. This mirror is **EXTREMELY EXPENSIVE**.
 
