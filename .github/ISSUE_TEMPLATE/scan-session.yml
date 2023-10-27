@@ -122,20 +122,12 @@ body:
 
 - type: markdown
   attributes:
-    value: "## Eye-tracker drift check"
-- type: checkboxes
-  attributes:
-    label: Eye-tracker drift correction
-    options:
-      - label: Eye-tracker drift was corrected.
-
-- type: markdown
-  attributes:
     value: "## Functional scans"
 - type: checkboxes
   attributes:
     label: Positive-control task completion
     options:
+      - label: Eye-tracker drift was corrected.
       - label: Positive-control task was completed.
       - label: Physiological signals are still recording and look ok.
 - type: dropdown
@@ -158,6 +150,7 @@ body:
   attributes:
     label: Resting-state completion
     options:
+      - label: Eye-tracker drift was corrected.
       - label: Resting-state was completed.
       - label: Physiological signals are still recording and look ok.
 - type: dropdown
@@ -179,7 +172,9 @@ body:
   attributes:
     label: Breath-holding task completion
     options:
+      - label: Eye-tracker drift was corrected.
       - label: Breath-holding task was completed.
+      - label: Physiological signals are still recording and look ok.
 - type: dropdown
   attributes:
     label: task-bht issues
