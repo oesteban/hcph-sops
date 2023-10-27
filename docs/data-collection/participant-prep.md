@@ -29,7 +29,7 @@
 ### Collecting participant's data
 
 - [ ] Measure the participan's [blood pressure](notes-misc.md#measuring-blood-pressure) and write it in the covariates collection form.
-- [ ] Ask the participant to fill out the `Before scan` part of the covariates collection on the issue you opened [earlier](pre-session.md#collection-of-covariates).
+- [ ] Ask the participant to fill out the `Before scan` part of the covariates collection on the issue you opened [earlier](tear-up.md#start-a-new-session-log-for-the-collection-of-covariates).
 - [ ] Remind the participant to use the bathroom at this moment if they need ({{ secrets.rooms.bathroom | default("███") }}).
 
 !!!warning "Only female participants, only the first session"
@@ -223,8 +223,5 @@
 - [ ] Once the participant is lying on the scanner bed, check that no arms/legs rest on the GA or the RB tubes and may block them.
 - [ ] Before continuing with the setup, make sure all cables and tubes leave the scanner's bed *perpendicularly* and lie on the floor.
     Tape them to the floor so that they don't move accidentally.
-
-###
-
 - [ ] Check the [communication with the participant](notes-scanning.md#communication-with-the-participant).
 - [ ] Proceed with the [ET aiming and focusing protocol](notes-et.md#setting-viewframe-and-focusing)
