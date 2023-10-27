@@ -3,9 +3,8 @@
     It is critical to stay alert and anticipate any potential risk to the participant to avert them.
     This is particularly important for the first session.
 
-## Preparation of the participant in the CONTROL ROOM
 
-### Participant reception
+## Participant reception
 - [ ] Meet the participant at an easily locatable place (e.g., the reception desk of the Radiology Unit) and show them the way into the control room. <mark>Allow sufficient time before the experiment for the preparation (min. 30 minutes)</mark>.
 - [ ] Show the participant the scanning room and explain to them how the device is controlled from outside.
 - [ ] Ask the participant to fill out the consent form and MRI safety screener, and verbally confirm responses, paying attention to frequently forgotten devices and implants, like orthodontia.
@@ -14,7 +13,7 @@
         - [ ] In case of any doubts emerging from the MRI safety screening, contact {{ secrets.people.medical_contact | default("███") }} immediately at :fontawesome-solid-square-phone: {{ secrets.phones.medical_contact | default("###-###-####") }}. <span style="color:red">**DO NOT PROCEED** if the medical contact cannot be reached</span>.
         - [ ] In case of discovering any previously undisclosed contraindication, the volunteer **MUST NOT** participate in the study.
 
-- [ ] Load the adequate protocol ([guidelines here](notes-scanning.md#preparing-the-protocol))
+- [ ] Load the adequate protocol ([guidelines here](notes-scanning.md#preparing-the-protocol)).
     **Verify you are loading the appropriate phase-encoding (PE) direction corresponding to the session.**
 
     ???+ important "Session schedule"
@@ -25,6 +24,10 @@
 {% filter indent(width=8) %}
 {% include 'code/sessions/schedule.md' %}
 {% endfilter %}
+
+---
+
+## Preparation of the participant in the CONTROL ROOM
 
 ### Collecting participant's data
 
@@ -224,7 +227,20 @@
 - [ ] Before continuing with the setup, make sure all cables and tubes leave the scanner's bed *perpendicularly* and lie on the floor.
     Tape them to the floor so that they don't move accidentally.
 
-###
+---
 
+## Final preparations
+
+- [ ] Inform the participant that you are leaving the room and will shortly come back for a final preparation.
+- [ ] Proceed with the [ET aiming and focusing protocol](notes-et.md#setting-viewframe-and-focusing).
+- [ ] Inform the participant that you are leaving the room and will now close the door to start.
+    Let them also know that you are going to communicate with them very shortly to check that communications through the speaker are functioning.
+- [ ] Exit the Scanning Room.
+- [ ] Close the Scanning Room door.
 - [ ] Check the [communication with the participant](notes-scanning.md#communication-with-the-participant).
-- [ ] Proceed with the [ET aiming and focusing protocol](notes-et.md#setting-viewframe-and-focusing)
+
+    ??? warning "Do not allow a delay before talking to the participant"
+
+        Delays in establishing contact with the participant will likely increase their anxiety.
+
+You can now move on to [initiating the session](scanning.md)

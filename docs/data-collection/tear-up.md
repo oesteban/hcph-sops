@@ -101,7 +101,7 @@ The following section describes how to prepare the session on the day of scan, B
 
 - [ ] Hit the *Start* button of *AcqKnowledge*.
 - [ ] Enter the <span class="syncbox">Synchronization</span> mode by selecting it and pushing the enter button :fontawesome-solid-circle:{ .bluecolor }.
-- [ ] Hit the down arrow button :fontawesome-solid-caret-down:{ .bluecolor } until you find <span class="syncbox">Send triggerpulse</span>
+- [ ] Hit the down arrow button :fontawesome-solid-caret-down:{ .bluecolor } until you find <span class="syncbox">Send triggerpulse to PC</span>
 - [ ] Push the enter button :fontawesome-solid-circle:{ .bluecolor } every time you want to send an <span class="keypress">s</span> character.
 - [ ] Check that the *{{ secrets.hosts.psychopy | default("███") }}* laptop types those triggers (e.g., on an open editor receiving keypresses, or the shell prompt, or looking at your open log).
 - [ ] Check that the *AcqKnowledge* session running on *{{ secrets.hosts.acqknowledge }}* is properly registering the trigger too in the corresponding digital channel.
