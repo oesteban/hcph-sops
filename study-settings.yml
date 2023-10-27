@@ -21,3 +21,31 @@ psychopy:
 paths:
   sourcedata: '/data/datasets/hcph-sourcedata'
   pilot_sourcedata: '/data/datasets/hcph-pilot-sourcedata'
+
+eyetracker:
+  vendor: 'SR Research Ltd.'
+  place: 'Ottawa, Canada'
+  model: 'EyeLink 1000 Plus'
+  submodel: 'Long Range'
+  eye: 'right'
+
+gas:
+  vendor: 'AD Instruments Pty. Ltd.'
+  place: 'Sydney, Australia'
+  model: 'ML206'
+  tube: 'MLA0343'
+  chamber: 'DM-060-24'
+  valve: 'MLA0110'
+
+biopac:
+  vendor: 'BIOPAC Systems, Inc.'
+  place: 'Goleta, CA, US'
+  model: 'MP160'
+  digital: 'SPT100D'
+  analog: 'AMI100C'
+  rb_unit: 'DA100C'
+  rb_trans: 'TSD160A'
+  ecg_unit: 'ECG100C'
+  ecg_trans: 'MECMRI-2'
+  pinkbox: 'MMBT-S'
+  pinkbox_long: 'MMBT-S Trigger Interface Box adapter'

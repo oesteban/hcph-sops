@@ -41,32 +41,64 @@
 
     ![repeat_scan.png](../assets/images/repeat_scan.png)
 
-## Eye-Tracker Calibration Process
 
-- [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected (9-point for QCT and 5-point for resting state and breath-holding tasks):
-    - [ ] Click on <span class="keypress">Set Options</span> located on the right side of ET computer screen.
-    - [ ] Under **Calibration type** in the top left corner, choose the image containing either 9 or 5 points.
+### Managing protocols
 
-        ![9-points_calibration](../assets/images/9-points_calibration.jpg)
+- [ ] (Optional) Load an existing protocol
+- [ ] Edit the protocol as needed
 
-- [ ] Two crosses should appear on the ET computer screen: one at the center of the pupil and the other at the center of the corneal reflection.
+    !!! important "Follow Reproin conventions"
 
-    !!! warning "If the two crosses do not appear, the coverage, focus and intensity of the ET are incorrect"
+        When assigning names to the MR sequences in the protocol, make sure to follow the [Reproin conventions](https://dbic-handbook.readthedocs.io/en/latest/mri/reproin.html) to maximally facilitate the conversion into BIDS.
 
-        - [ ] Repeat the steps for their setting up given in [the participant's preparation section](participant-prep.md#final-preparatory-steps-of-the-et)
+- [ ] Update the *Number of measurements* in all `func-bold_task-*` sequences, according to the [previously recorded timings](intro.md#task-timing):
 
-- [ ] Initiate the ET calibration by pressing <span class="keypress">C</span> on the laptop keyboard or by clicking on <span class="keypress">Calibration</span> on the ET interface.
-- [ ] Once the participant's gaze stabilizes on the first fixation point, the <span class="keypress">Accept Fixation</span> button turns green.
-    Click on it to confirm the initial position.
+    $$N_\text{measurements} = L_t / \text{TR}, \quad t \in \{\text{bht}, \text{qct}, \text{rest}\},$$
 
-    ![accept_fixation](../assets/images/accept_fixation.jpg)
+    where $L_t$ is the length of a particular task $t$ (either BHT, QCT, or resting state) in seconds as timed before, and
+    $\text{TR}$ is the **repetition time** of the BOLD sequence, in seconds.
 
-- [ ] Subsequent positions should be automatically validated when the gaze remains stable.
-    If not, manually click the <span class="keypress">Accept Fixation</span> button when it turns green.
-- [ ] After the calibration, ensure that the fixation points' positions match the expected pattern corresponding to the 9- or 5-point calibration.
-    If the pattern appears too distorted, restart the calibration.
-- [ ] Upon successful calibration, initiate validation by clicking <span class="keypress">Validation</span> on the ET interface or pressing the <span class="keypress">V</span> key on the laptop keyboard. Follow the same instructions as in the calibration to validate positions.
-- [ ] If validation fails, repeat previous steps and restart calibration. Otherwise, you can leave the calibration mode and proceed with the task program by pressing the <span class="keypress">Esc</span> key on the laptop (*{{ secrets.hosts.psychopy | default("███") }}*).
+- [ ] Save the protocol
+
+    !!! warning "Logging in as an advanced user is required before saving the protocol"
+
+        As a good practice, always work as the standard user `{{ secrets.login.username_scanner | default("janedoe") }}`.
+        However, you MUST change into *advanced user mode* before saving the protocol.
+
+        Simultaneously press the <span class="keypress">Tab</span> + <span class="keypress">Delete</span> + <span class="keypress">:octicons-sign-out-16:</span> on the control-computer's keyboard:
+
+        > Username: `{{ secrets.login.superusername_scanner | default("superjanedoe") }}`
+        >
+        > Password: `{{ secrets.login.superuserpass_scanner | default("******") }}`
+
+        !!! danger "After three wrong password entries, access will be denied, and only a Siemens engineer will be able to unlock the MR scanner."
+
+    - [ ] Open the Dot-Cockpit window
+        ![](../assets/images/save_protocol1.jpg)
+    - [ ] In `Browse`, find the right folder to save the protocol in (*RESEARCH* ⤷ *Oscar*).
+    - [ ] Right click on the folder and select *New* ⤷ *Program*. This opens an empty page in the program editor
+        ![](../assets/images/save_protocol2.jpg)
+        ![](../assets/images/save_protocol3.jpg)
+    - [ ] Select all the sequences you want to run from the sequence list and click right to copy.
+        ![](../assets/images/save_protocol4.jpg)
+    - [ ] Drag or paste the copied sequences in the program editor.
+        ![](../assets/images/save_protocol5.jpg)
+    - [ ] Once finished, click on the floppy disk icon (:fontawesome-solid-floppy-disk:) in the upper left to save.
+    - [ ] Give the protocol a relevant name starting with the date of acquisition in the format YYYYMMDD and click <span class="consolebutton">Save</span>.
+        ![](../assets/images/save_protocol6.jpg)
+    - [ ] If desired, the protocol details can also be downloaded as a pdf on a peripherical USB key.
+        - [ ] Right-click on the protocol and select *Print*
+        - [ ] Save the PDF in your USB key.
+- [ ] Make sure you save a different protocol for each of the four PE directions (i.e., AP, PA, LR, RL).
+
+### Scanner boot-up protocol
+
+!!! warning "Please wait for all systems to finalize their boot-up (about 10 minutes), even if only the satellite station (*{{ secrets.hosts.console_lef | default('██████')}}*) is to be used."
+
+![on-off-button](../assets/images/on-off-box.jpg)
+
+- [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (:fontawesome-solid-unlock:)
+- [ ] Push the blue button with the sun symbol :octicons-issue-opened-16: and the **SYSTEM ON** label above, which is found right above the key
 
 ## Scanner interface
 The picture below shows you the scanner interface as you will see it when you operate the MR machine. The arrow points to the screen and the red circles indicate the control buttons.
@@ -93,3 +125,32 @@ There are two options to extract the participant, when the session has concluded
 | ![take_table_down](../assets/images/take_table_down.png) | ![quick_return](../assets/images/quick_return.png) |
 |:--:|:--:|
 | *The participant can be extracted by pressing the extraction button (bottom arrow in the leftmost picture) and then genly rolling the central knob. Alternatively, you can just press the* Home :fontawesome-solid-house: *button (rightmost picture).* {: colspan=2} |
+
+---
+
+## Eye-Tracker Calibration Process
+
+- [ ] On the eye-tracking (ET) computer, ensure that the appropriate calibration type is selected (9-point for QCT and 5-point for resting state and breath-holding tasks):
+    - [ ] Click on <span class="keypress">Set Options</span> located on the right side of ET computer screen.
+    - [ ] Under **Calibration type** in the top left corner, choose the image containing either 9 or 5 points.
+
+        ![9-points_calibration](../assets/images/9-points_calibration.jpg)
+
+- [ ] Two crosses should appear on the ET computer screen: one at the center of the pupil and the other at the center of the corneal reflection.
+
+    !!! warning "If the two crosses do not appear, the coverage, focus and intensity of the ET are incorrect"
+
+        - [ ] Repeat the steps for their setting up given in [the participant's preparation section](participant-prep.md#final-preparatory-steps-of-the-et)
+
+- [ ] Initiate the ET calibration by pressing <span class="keypress">C</span> on the laptop keyboard or by clicking on <span class="keypress">Calibration</span> on the ET interface.
+- [ ] Once the participant's gaze stabilizes on the first fixation point, the <span class="keypress">Accept Fixation</span> button turns green.
+    Click on it to confirm the initial position.
+
+    ![accept_fixation](../assets/images/accept_fixation.jpg)
+
+- [ ] Subsequent positions should be automatically validated when the gaze remains stable.
+    If not, manually click the <span class="keypress">Accept Fixation</span> button when it turns green.
+- [ ] After the calibration, ensure that the fixation points' positions match the expected pattern corresponding to the 9- or 5-point calibration.
+    If the pattern appears too distorted, restart the calibration.
+- [ ] Upon successful calibration, initiate validation by clicking <span class="keypress">Validation</span> on the ET interface or pressing the <span class="keypress">V</span> key on the laptop keyboard. Follow the same instructions as in the calibration to validate positions.
+- [ ] If validation fails, repeat previous steps and restart calibration. Otherwise, you can leave the calibration mode and proceed with the task program by pressing the <span class="keypress">Esc</span> key on the laptop (*{{ secrets.hosts.psychopy | default("███") }}*).

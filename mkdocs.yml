@@ -13,8 +13,9 @@ nav:
       - Scheduling: recruitment-scheduling-screening/scheduling.md
     - Data collection:
       - Overall experimental settings: data-collection/intro.md
-      - Preliminary work: data-collection/preliminary.md
-      - Before each session: data-collection/pre-session.md
+      - Before data collection starts: data-collection/setup.md
+      - Before session day: data-collection/pre-session.md
+      - Session preparation: data-collection/tear-up.md
       - Preparing the participant: data-collection/participant-prep.md
       - Running the scanning session: data-collection/scanning.md
       - Session tear-down: data-collection/tear-down.md
@@ -30,6 +31,7 @@ nav:
     - Appendices:
       - Notes on the scanner's console and recording devices: data-collection/scanning-notes.md
       - Notes on software installation and tips: data-collection/software.md
+      - Legacy procedure for the ET mirror: data-collection/legacy-et.md
 theme:
   name: material
   palette:
