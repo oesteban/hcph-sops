@@ -224,11 +224,11 @@ It is critical to check that physiological signals are looking good:
 
 - [ ] In the issue collecting notes about the session, check the box confirming that the T1w image has been acquired. 
     - [ ] If the quality looks good, check the box stating `T1w looked okay`.
-        If not, please follow [the instructions to repeat the scan](scanning-notes.md#repeat-scan) and report the problem in the session notes.
+        If not, please follow [the instructions to repeat the scan](notes-scanning.md#repeat-scan) and report the problem in the session notes.
 
 ## Acquire the dMRI EPI fieldmaps
 
-- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) of the `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar*` sequences.
+- [ ] [Adjust the FoV](notes-scanning.md#setting-the-fov) of the `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar*` sequences.
 - [ ] Verify again the `fmap-epi_acq-b0_dir-{RL,LR,PA,AP}__6dir_monopolar` parameters under section *Diff.* All the derivatives MUST be unchecked except for *Diff. Weighted Image*.
 - [ ] Inform the participant that the diffusion scan will follow.
 
@@ -260,7 +260,7 @@ It is critical to check that physiological signals are looking good:
 
 **While the fieldmaps are running:**
 
-- [ ] [adjust the FoV](scanning-notes.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence, and
+- [ ] [adjust the FoV](notes-scanning.md#setting-the-fov) of the `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence, and
 - [ ] prepare the execution of the fixation program on the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), which will be played during the DWI by typing the following on a terminal:
 
     ??? warning "Make sure to have the correct environment loaded before invoking the task"
@@ -315,13 +315,13 @@ It is critical to check that physiological signals are looking good:
 
         Otherwise, the wrong screen will be selected by *Psychopy*
 
-- [ ] Proceed with [the ET calibration](scanning-notes.md#eye-tracker-calibration).
+- [ ] Proceed with [the ET calibration](notes-et.md#calibration).
     **The ET control menu will appear after hitting *OK* on the modal dialog**.
 - [ ] Launch the diffusion `dwi-dwi_dir-{RL,LR,PA,AP}__279dir_monopolar` sequence by pressing *Continue* :fontawesome-solid-play:{ .redcolor }.
 
 **While the dMRI is running:**
 
-- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence (GRE fieldmap).
+- [ ] [Adjust the FoV](notes-scanning.md#setting-the-fov) for the following sequence (GRE fieldmap).
 
 **When the dMRI concludes:**
 
@@ -336,7 +336,7 @@ It is critical to check that physiological signals are looking good:
 
 **While the GRE fieldmap is running:**
 
-- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence,
+- [ ] [Adjust the FoV](notes-scanning.md#setting-the-fov) for the positive-control-task (`func-bold_task-qct_dir-{RL,LR,PA,AP}__cmrr_me4_sms4`) fMRI sequence,
 - [ ] verify that in the next sequence parameters under *Contrast>Reconstruction* the option *Magnitude et phase* is selected,
 - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_qct }}),
 - [ ] verify that the EDF file with the ET recordings corresponding to the dMRI have been stored, and
@@ -396,7 +396,7 @@ It is critical to check that physiological signals are looking good:
 
         Otherwise, the wrong screen will be selected by *Psychopy*
 
-- [ ] [Initiate the ET drift correction procedure](scanning-notes.md#eye-tracker-drift).
+- [ ] [Initiate the ET drift correction procedure](notes-et.md#eye-tracker-drift).
     **The ET control menu will appear after hitting *OK* on the modal dialog**.
 
 ### Quality-control task (QCT)
@@ -421,7 +421,7 @@ It is critical to check that physiological signals are looking good:
 
 **While the QCT is running:**
 
-- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
+- [ ] [Adjust the FoV](notes-scanning.md#setting-the-fov) for the following sequence,
 - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 
 **Once the QCT has concluded:**
@@ -438,7 +438,7 @@ It is critical to check that physiological signals are looking good:
 
 **While the BOLD fieldmaps are running:**
 
-- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
+- [ ] [Adjust the FoV](notes-scanning.md#setting-the-fov) for the following sequence,
 - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_rest }}), and
 - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 
@@ -490,7 +490,7 @@ It is critical to check that physiological signals are looking good:
         Is everything alright?
 
 - [ ] Wait for confirmation, respond to follow-up comments
-- [ ] [Initiate the ET drift correction procedure](scanning-notes.md#eye-tracker-drift).
+- [ ] [Initiate the ET drift correction procedure](notes-et.md#drift-check).
     **The ET control menu must have appeared after hitting *OK* on the modal dialog**.
     - [ ] Once the ET is calibrated, verify that the task is left and awaiting for the sequence's trigger to start.
 - [ ] Inform the participant that the next sequence is resting-state fMRI (RSfMRI).
@@ -508,7 +508,7 @@ It is critical to check that physiological signals are looking good:
 
 **While the RSfMRI is running**:
 
-- [ ] [Adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence,
+- [ ] [Adjust the FoV](notes-scanning.md#setting-the-fov) for the following sequence,
 - [ ] verify the *Number of measurements* with respect to the [task's timing](intro.md#task-timing) ({{ settings.mri.timings.func_bht }}), and
 - [ ] double check that it has the setting *Magnitude et phase* selected in the drop-down menu under *Contrast>Reconstruction*.
 
@@ -562,7 +562,7 @@ It is critical to check that physiological signals are looking good:
         Is everything alright?
 
 - [ ] Wait for confirmation, respond to follow-up comments
-- [ ] [Initiate the ET drift correction procedure](scanning-notes.md#eye-tracker-drift).
+- [ ] [Initiate the ET drift correction procedure](notes-et.md#drift-check).
     **The ET control menu must have appeared after hitting *OK* on the modal dialog**.
     - [ ] Once the ET is *drift-checked* and no calibration is needed, verify that the ET menu is removed and the task program awaits for the sequence's trigger to start.
 - [ ] Inform the participant that the next sequence is breath-holding task fMRI.
@@ -586,7 +586,7 @@ It is critical to check that physiological signals are looking good:
 
 - [ ] Determine whether there is enough time to run the anatomical T2-weighted run.
     If so,
-    - [ ] [adjust the FoV](scanning-notes.md#setting-the-fov) for the following sequence; or alternatively
+    - [ ] [adjust the FoV](notes-scanning.md#setting-the-fov) for the following sequence; or alternatively
     - [ ] wait for the sequence to complete.
 
 **Once the BHT is concluded:**

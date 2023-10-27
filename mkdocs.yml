@@ -29,8 +29,10 @@ nav:
       - Extracting functional connectivity: processing/functional-connectivity.md
     - Release of data: release.md
     - Appendices:
-      - Notes on the scanner's console and recording devices: data-collection/scanning-notes.md
-      - Notes on software installation and tips: data-collection/software.md
+      - Notes on the scanner's console: data-collection/notes-scanning.md
+      - ET extended guidelines: data-collection/notes-et.md
+      - Additional miscellaneous protocols: data-collection/notes-misc.md
+      - Notes on software installation and tips: data-collection/notes-software.md
       - Legacy procedure for the ET mirror: data-collection/legacy-et.md
 theme:
   name: material
