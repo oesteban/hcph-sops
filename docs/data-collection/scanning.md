@@ -610,12 +610,14 @@ It is critical to check that physiological signals are looking good:
 
 - [ ] Stop the *AcqKnowledge* recording on the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
 
+    !!! danger "Allow some 30s after the BHT has concluded before stopping *AcqKnowledge*"
+
 !!! tip "The following steps MAY be done while the T2w is running IF (and only if) there's no back-to-back session upon conclusion of the current"
 
     - [ ] Switch the BIOPAC MP160 module off.
     - [ ] Turn off the pump of the GA.
     - [ ] Switch the GA off.
-    - [ ] Put the exhaust and inlet caps back.
+    - [ ] Put the exhaust cap back.
 
 ## Concluding the session
 
@@ -630,6 +632,5 @@ It is critical to check that physiological signals are looking good:
 
 The exam is over, you can proceed with the [tear-down protocol](./tear-down.md).
 
----
 
 [1]: https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=4055 "Moia, Stefano, Molly Bright, D. Phil., and Cesar Caballero-Gaudes. “Physiologic fMRI Signals: Friend or Foe? How and Why to Measure, Model and Account for Physiology.” Presented at the Organization for Human Brain Mapping (OHBM), Glasgow, June 19, 2022."

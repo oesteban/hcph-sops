@@ -4,16 +4,45 @@
 
 !!! warning "To ensure accurate performance and prevent minor drifts in the pupil and corneal reflection (CR) thresholds, perform the ET Setup 10-15 minutes after powering the ET on."
 
-- [ ] Open the QCT experiment in *Psychopy* (`task-qct_bold.psyexp` file).
-    - [ ] Run the experiment by pressing the green play button.
-    - [ ] Press enter to begin the *camera setup mode*.
-    - [ ] The camera setup mode contains a view of one eye, and you can switch that view between two modes: one is the field-of-view of the ET, the second is an automatic zoom on the eye itself (or a random part if the eye is not visible).
-    - [ ] To ease the setup of the ET, switch to the field-of-view mode in the camera setup mode by pressing the <span class="keypress">:fontawesome-solid-caret-left:</span> or <span class="keypress">:fontawesome-solid-caret-right:</span> arrow.
-        This will allow you to adjust the ET position as the infrared camera provides feedback inside the scanning room on the projection screen.
-- [ ]  Enter the scanning room and adjust the ET arm position and focus of the lens until the eye is fully visible.
-    The **right** eye should be visible at the center of the coil's square window for the eye.
+- [ ] Initiate the fixation program on the stimuli laptop (*{{ secrets.hosts.psychopy | default("███") }}*), by typing the following on a terminal:
 
-    !!! important "Adjusting the camera's field-of-view and focus"
+    ??? warning "Make sure to have the correct environment loaded before invoking the task"
+
+        - [ ] Deactivate conda (if active):
+            ``` shell
+            conda deactivate
+            ```
+        - [ ] Load the new virtual environment:
+            ``` shell
+            source $HOME/psychopyenv/bin/activate
+            ```
+
+    ``` shell
+    cd ~/workspace/HCPh-fMRI-tasks
+    python {{ settings.psychopy.tasks.dwi }}.py
+    ```
+
+    A modal dialog will ask you for the number of trial (automatically calculated, DO NOT modify) and the session number.
+
+    !!! danger "The following two steps MUST be executed in this order"
+
+            - [ ] Drag and drop the modal dialog into the scanner's projector screen.
+            - [ ] Update the session number with the corresponding number.
+
+- [ ] Press <span class="keypress">Enter</span> to begin the *Camera Setup Mode*.
+
+    !!! tip "The *Camera Setup Mode* contains a view of one eye, and you can switch that view between two modes"
+
+        - The *Head Camera* will allow you to "find" and aim the right eye, as it has a wider field-of-view.
+        - The *{{ settings.eyetracker.eye | title }} Eye Camera* is a zoomed clip of the eye, if it is properly identified by the software (i.e., the eye is fully within the field-of-view of the camera).
+
+- [ ] Switch to the *Head Camera* mode by pressing the <span class="keypress">:fontawesome-solid-caret-left:</span> or <span class="keypress">:fontawesome-solid-caret-right:</span> arrow.
+    This will allow you to adjust the ET position as the infrared camera provides feedback inside the scanning room on the projection screen.
+- [ ] Enter the scanning room.
+- [ ] Ask the participant to slide the mirror with their hands until the infrared mirror fully covers the image on the screen.
+- [ ] Action the ET arm position looking at the *Head Camera* view that should be now projecting on the screen to ensure the {{ settings.eyetracker.eye }} eye is in the center of the field-of-view.
+
+    !!! warning "The **{{ settings.eyetracker.eye }}** eye should be visible at the center of the coil's square window for the eye."
 
         ![base-eye-tracker](../assets/images/base-eye-tracker.png){ align="right" }
 
@@ -25,22 +54,25 @@
         - [ ] **If the eye coverage is still inappropriate**, revise the vertical position of the infrared mirror with respect to the standard mirror (this will require new gloves and replacing the tape to stick the infrared mirror).
             Even a tiny adjustment can impact calibration and eye positioning.
         - [ ] Repeat the previous steps until the eye is properly aimed and focused.
-        - [ ]  If the image appears blurry, fine-tune the focus using the lens barrel.
-            Refer to the example image below.
-            ![focus_example](../assets/images/focus.png)
+        - [ ] As a last resort, you can also adjust the strength of the infrared light (emitter).
+            This is the black box on the opposite side of the lens on the ET arm.
+            Under the emitter there are two little screws.
+            Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.
 
+- [ ] Tighten the nut that locks the arm's position.
+- [ ] Focus the lens so that the image is sharp (e.g., the eyebrows and eyelashes are well defined).
+    ![focus_example](../assets/images/focus.png)
+- [ ] Switch the ET to *{{ settings.eyetracker.eye | title }} Eye Camera* mode (zoomed in).
+- [ ] Verify that the eye is still well covered by the view and the pupil is segmented.
 - [ ] Press the <span class="keypress">A</span> key to set the pupil and CR detection thresholds automatically.
+- [ ] Check that two crosses appear on the eye.
 - [ ] Fine-tune the pupil detection threshold using the <span class="keypress">:fontawesome-solid-caret-up:</span> and <span class="keypress">:fontawesome-solid-caret-down:</span> arrow keys if necessary.
     While checking the pupil/CR image and thresholding, ask the participant to look at the screen corners to verify correct detection even in extreme positions.
     ![pupil_threshold](../assets/images/pupil_threshold.png)
 
-- [ ] As a last resort, you can also adjust the strength of the infrared light (emitter).
-    This is the black box on the opposite side of the lens on the ET arm.
-    Under the emitter there are two little screws.
-    Unscrew, move the emitter front/back, check the contrast of the face image, re-screw.
-- [ ] Switch the ET to *Eye camera* mode (zoomed in) and check the eye is still well covered by the view and the pupil is segmented.
-- [ ] Check that two crosses appear on the eye.
-- [ ] If the pupil is correctly seen, as well as the eye (indicated by the crosses following their movement), inform the participant that you are leaving the room, and that you are going to first check with them whether the speaker works well, immediately.
+**At this point, the pupil should correctly be seen and segmented**, and the crosses on the ET computer should appear in the {{ settings.eyetracker.eye }} eye.
+
+- [ ] Inform the participant that you are leaving the room.
 - [ ] Exit the camera mode by pressing <span class="keypress">Enter</span>.
 
 ## Calibration
