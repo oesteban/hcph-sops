@@ -200,7 +200,7 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
         Correspondingly, we can store NIfTI data and physiological information:
 
         ``` shell
-        find sub-001/ses-pilot020 -name "*.nii.gz" -or -name "_eyetrack.tsv.gz" -or -name "_physio.tsv.gz" | xargs datalad save -m '"add(pilot020): new session NIfTI data, eye tracking and physio"'
+        find sub-001/ses-pilot020 -name "*.nii.gz" -or -name "*_eyetrack.tsv.gz" -or -name "*_physio.tsv.gz" | xargs datalad save -m '"add(pilot020): new session NIfTI data, eye tracking and physio"'
         ```
 
         Please read [*DataLad*'s `save` documentation](http://docs.datalad.org/en/stable/generated/man/datalad-save.html)
@@ -213,7 +213,7 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
         SESSIONS=( 001 003 pilot21 ); \
         for SESSION in ${SESSIONS[@]}; do \
             find sub-001/ses-$SESSION -name "*.tsv" -or -name "*.json" -or -name "*.bvec" -or -name "*.bval" | xargs datalad save --to-git -m '"add('"$SESSION"'): new session metadata"'; \
-            find sub-001/ses-$SESSION -name "*.nii.gz" -or -name "_eyetrack.tsv.gz" -or -name "_physio.tsv.gz" | xargs datalad save -m '"add('"$SESSION"'): new session NIfTI data, eye tracking and physio"'; \
+            find sub-001/ses-$SESSION -name "*.nii.gz" -or -name "*_eyetrack.tsv.gz" -or -name "*_physio.tsv.gz" -or -name "*_stim.tsv.gz" | xargs datalad save -m '"add('"$SESSION"'): new session NIfTI data, eye tracking and physio"'; \
         done
         ```
 
