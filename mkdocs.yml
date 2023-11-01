@@ -70,8 +70,8 @@ plugins:
   - mkdocs-jupyter:
       ignore:
         - "*.py"
-        - "assets/code/physioconv/.ipynb_checkpoints/Physio to BIDS conversion-checkpoint.ipynb"
-        - "assets/code/physioconv/Physio to BIDS conversion.ipynb"
+        - "assets/code/physioconv/.ipynb_checkpoints/physio-to-bids-checkpoint.ipynb"
+        - "assets/code/physioconv/physio-to-bids.ipynb"
   # - mkpdfs:
   #     company: Lausanne University Hospital (CHUV)
   #     author: The Axon Lab
