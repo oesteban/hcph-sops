@@ -1,6 +1,7 @@
 codespell
 markdown-include
 mkdocs
+mkdocs-jupyter
 mkdocs-macros-plugin
 mkdocs-material
 git-changelog

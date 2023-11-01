@@ -34,6 +34,7 @@ nav:
       - Additional miscellaneous protocols: data-collection/notes-misc.md
       - Notes on software installation and tips: data-collection/notes-software.md
       - Legacy procedure for the ET mirror: data-collection/legacy-et.md
+      - Converting physio into BIDS (notebook): data-management/physio-to-bids.ipynb
 theme:
   name: material
   palette:
@@ -66,12 +67,17 @@ plugins:
         - secrets: 'secrets/settings.yml'
         - settings: 'study-settings.yml'
       on_undefined: lax
-  - mkpdfs:
-      company: Lausanne University Hospital (CHUV)
-      author: The Axon Lab
-      toc_title: Table of Contents
-      design: design/report.css
-      output_path: pdf/documentation.pdf
+  - mkdocs-jupyter:
+      ignore:
+        - "*.py"
+        - "assets/code/physioconv/.ipynb_checkpoints/Physio to BIDS conversion-checkpoint.ipynb"
+        - "assets/code/physioconv/Physio to BIDS conversion.ipynb"
+  # - mkpdfs:
+  #     company: Lausanne University Hospital (CHUV)
+  #     author: The Axon Lab
+  #     toc_title: Table of Contents
+  #     design: design/report.css
+  #     output_path: pdf/documentation.pdf
 
 markdown_extensions:
   - abbr
