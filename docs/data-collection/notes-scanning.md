@@ -135,6 +135,7 @@
 
 - [ ] Turn off the satellite station ({{ secrets.hosts.console_left | default("███") }}, the computer on the left side of the control desk)
 - [ ] Turn off the control station ({{ secrets.hosts.console_right | default("███") }}, the computer on the right side of the control desk)
+- [ ] Wait for both computers to shut down.
 - [ ] Push the blue button displaying an overdotted circle and the **SYSTEM OFF** label above, which is found right above the key
 - [ ] Turn the key into the *closed lock* position (:fontawesome-solid-lock:)
 
