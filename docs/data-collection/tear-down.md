@@ -44,7 +44,6 @@
 
     !!! danger "The infrared mirror MUST be manipulated with clean gloves at all times."
 
-- [ ] Re-attach the standard mirror to the coil's frame.
 - [ ] Take the projector's screen off and store it in its designated shelf.
 - [ ] Disconnect the ECG cable from the filter of the access panel, roll the cable.
 - [ ] Roll the RB tube and the GA tube and store them in the cupboard.
