@@ -127,6 +127,17 @@
 - [ ] Turn the key of the **System ON/OFF Station Box** into the *open lock* position (:fontawesome-solid-unlock:)
 - [ ] Push the blue button with the sun symbol :octicons-issue-opened-16: and the **SYSTEM ON** label above, which is found right above the key
 
+### Scanner shutdown protocol
+
+!!! warning "Do not switch the scanner off if some data are yet to be archived"
+
+![on-off-button](../assets/images/on-off-box.jpg)
+
+- [ ] Turn off the satellite station ({{ secrets.hosts.console_left | default("███") }}, the computer on the left side of the control desk)
+- [ ] Turn off the control station ({{ secrets.hosts.console_right | default("███") }}, the computer on the right side of the control desk)
+- [ ] Push the blue button displaying an overdotted circle and the **SYSTEM OFF** label above, which is found right above the key
+- [ ] Turn the key into the *closed lock* position (:fontawesome-solid-lock:)
+
 ---
 
 ## Scanner interface

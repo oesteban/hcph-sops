@@ -610,14 +610,16 @@ It is critical to check that physiological signals are looking good:
 
 - [ ] Stop the *AcqKnowledge* recording on the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
 
-    !!! danger "Allow some 30s after the BHT has concluded before stopping *AcqKnowledge*"
+    !!! danger "Allow some 60s after the BHT has concluded before stopping *AcqKnowledge*"
 
 !!! tip "The following steps MAY be done while the T2w is running IF (and only if) there's no back-to-back session upon conclusion of the current"
 
-    - [ ] Switch the BIOPAC MP160 module off.
+    - [ ] Switch the BIOPAC MP160 module off (**WAIT ~60s after the BHT**).
     - [ ] Turn off the pump of the GA.
     - [ ] Switch the GA off.
     - [ ] Put the exhaust cap back.
+    - [ ] Exit the EyeLink 1000 Plus Host PC application by clicking on the <span class="keypress">Exit EyeLink</span> button, that will exit and leave you in the MS-DOS prompt.
+    - [ ] Push the switch-off button of the ET PC (MS-DOS does not have a *shutdown* command, so you just physically switch off the box).
 
 ## Concluding the session
 

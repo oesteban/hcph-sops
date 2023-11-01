@@ -1,4 +1,3 @@
-
 ## Showing the participant out
 
 - [ ] Enter the scanner room, and announce yourself to the participant:
@@ -6,9 +5,11 @@
     !!! quote "Hi [NAME], thanks a lot for your collaboration. We will get you out in a second."
 
 - [ ] Extract the participant [following the standard procedure](notes-scanning.md#standard-extraction-of-the-participant).
-- [ ] Unplug the head coil from the bed connector, lift the lever that releases the upper part of the coil and put it aside (e.g., inside the bore or on a chair next to the scanner).
+- [ ] Remove the upper side of the head coil:
+    - [ ] Unplug the head coil from the bed connector.
+    - [ ] Lift the lever that releases the upper part of the coil and put it aside (e.g., inside the bore or on a chair next to the scanner).
 - [ ] Remove the tape band across the coil and touching the participants forehead.
-- [ ] Lift the nasal cannula and put it away so the participant does not get tangled.
+- [ ] Lift the nasal cannula and put it away so the participant can sit down.
 - [ ] Assist the participant to remove the padding elements around their head.
 - [ ] Help the participant sit down.
 - [ ] Instruct the participant to remove the earplugs and dispose of them.
@@ -32,30 +33,21 @@
 - [ ] Give the participant the corresponding compensation for the participation and transportation.
 - [ ] Ask the participant to sign the receipt of the amount of the financial compensation.
 
-
 ## Clearing up the Scanning Room
 
 ### ET arm, ET cables, infrared mirror and stimuli screen
 
 - [ ] Unplug the two cables (signal and power) connected to the ET arm.
-    Put their extremities aside far from the scanner.
-- [ ] Agree with another experimenter, who will exit the room, sit on the other side of the access tubes in the Control Room, and pull cables (fiber and power of the ET) and tubes (RB and GA) out of the room.
-    At the same time, you carefully feed them so they do not suffer abrasion from touching the edges of the tube.
-
-    !!! warning "Extracting the cables and tubes requires two experimenters"
-
-- [ ] The experimenter currently outside in the Control Room will re-enter the Scanner Room with the plastic bag of the mirror and a fresh pair of gloves and will leave them prepared on the bed.
+- [ ] Roll the cables and put them in the cupboard inside the Scanning room.
 - [ ] Remove the mirror frame from its rails mounted on the head coil and lay it on the bed.
-- [ ] Put the gloves on and detach the infrared mirror from the standard mirror.
+- [ ] Put the gloves on and cover the infrared mirror for storage.
 
     !!! danger "The infrared mirror MUST be manipulated with clean gloves at all times."
 
-- [ ] Immediately insert the infrared mirror back into its plastic pouch.
-- [ ] Take the pouch containing the infrared mirror outside to the Control Room and place it back in its designated box, with extreme care.
-- [ ] Clean the standard mirror removing all residues of glue from the scotch tape.
-- [ ] Re-attach the mirror to the coil's frame.
+- [ ] Re-attach the standard mirror to the coil's frame.
 - [ ] Take the projector's screen off and store it in its designated shelf.
 - [ ] Disconnect the ECG cable from the filter of the access panel, roll the cable.
+- [ ] Roll the RB tube and the GA tube and store them in the cupboard.
 
 ### Readying the scanner for the next session
 
@@ -81,7 +73,8 @@
 
 - [ ] Return the bed to its *Home* position by pressing the :fontawesome-solid-house: button ([more info](notes-scanning.md#standard-extraction-of-the-participant)).
 - [ ] Take the ET arm outside to the Control Room and place it in a stable place.
-- [ ] Take the ECG electrodes, ECG cable, the RB, and the plexiglass panel outside to the control room.
+- [ ] Take the infrared outside to the Control Room and store it in the ET/fMRI box.
+- [ ] Take the plexiglass panel outside to the control room.
 - [ ] Exit and close the external door.
 
 ## Clearing up the Control Room
@@ -94,27 +87,16 @@
 
     !!! danger "REMEMBER | the infrared mirror is inside that box already: DO NOT crush the mirror."
 
+- [ ] Store the *fMRI box* back in room {{ secrets.rooms.et_camera| default("███") }}.
+
 ### Finalize the *boxing* of other physiological recording instruments
 
-- [ ] Store the ECG cable and the pouch with the ECG leads in its designated box / storage.
-- [ ] Carefully roll the fiber and power cable of the ET, and place them in the rolling table of the ET PC.
-- [ ] Carefully roll the GA tube and put it in its designated bag.
-- [ ] Carefully roll the RB tube and put it in its designated bag.
-- [ ] Disconnect the MMBT-S Interface, and the two corresponding cables (pink USB, 25-pin parallel), and insert them in their designated bags.
-- [ ] Remove the cable connecting the GA to the AMI100D module of the BIOPAC, roll it and put it in its designated bag.
-- [ ] Put the GA and the corresponding cables in the designated box.
-- [ ] Disconnect and bag the remaining cables connected to the BIOPAC:
-    - [ ] Ethernet to the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
-    - [ ] Power cord.
-- [ ] Retrieve and bag the *AcqKnowledge USB License Key* from the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
-- [ ] Store the *fMRI box*, BIOPAC and GA boxes back in room {{ secrets.rooms.et_camera| default("███") }}.
-
-### Finalizing with the ET's PC
-
-- [ ] Exit the EyeLink 1000 Plus Host PC application by pressing <span class="keypress">Ctrl</span>+<span class="keypress">Alt</span>+<span class="keypress">Q</span> on the ET PC and next click on the <span class="keypress">Shutdown</span> button from the **File Manager** toolbar.
-- [ ] Secure the rolled cable with the scotch tape on the ET PC Tower.
-- [ ] Take the ET PC Tower and the plexiglass back into room {{ secrets.rooms.projector | default("███") }}.
-- [ ] Switch the projector off before exiting room {{ secrets.rooms.projector | default("███") }}.
+- [ ] Disconnect the bundle of cables coming out of the access panel in the Control Room (Ethernet from the ET PC, USB from MMBT-S Interface and power strip cable plug).
+- [ ] Roll the bundle and place it at the bottom shelf.
+- [ ] Disconnect the Ethernet cable of the BIOPAC from the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
+- [ ] Disconnect the *AcqKnowledge USB License Key* from the *{{ secrets.hosts.acqknowledge | default("███") }}* computer and bag it (pink bag next to the BIOPAC unit).
+- [ ] Retrieve the *{{ secrets.hosts.acqknowledge | default("███") }}* computer from the closet and put it on the control desk.
+    - [ ] Retrieve the power cord and plug if they are set.
 
 ### Finalizing the support laptops
 - [ ] Unplug from {{ secrets.hosts.psychopy | default("███") }} the USB cable coming from the SyncBox.
@@ -124,13 +106,13 @@
 - [ ] Switch off the {{ secrets.hosts.psychopy | default("███") }} computer.
 - [ ] Exit the *Amphetamine* session and lock the screen of the {{ secrets.hosts.acqknowledge | default("███") }} computer.
 
-## Turn off the MRI system if no more sessions are scheduled afterward
+### Switching off the projector
 
-!!! warning "It is critical to follow the steps in order, ensuring each step is completed before proceeding further"
+- [ ] Take the plexiglass panel back into room {{ secrets.rooms.projector | default("███") }}.
+- [ ] Switch the projector off before exiting room {{ secrets.rooms.projector | default("███") }}.
 
-![on-off-button](../assets/images/on-off-box.jpg)
+---
 
-- [ ] Turn off the satellite station ({{ secrets.hosts.console_left | default("███") }}, the computer on the left side of the control desk)
-- [ ] Turn off the control station ({{ secrets.hosts.console_right | default("███") }}, the computer on the right side of the control desk)
-- [ ] Push the blue button displaying an overdotted circle and the **SYSTEM OFF** label above, which is found right above the key
-- [ ] Turn the key into the *closed lock* position (:fontawesome-solid-lock:)
+**If no more sessions are scheduled afterward**:
+
+- [ ] [Turn off the MRI system](notes-scanning.md#scanner-shutdown-protocol).
