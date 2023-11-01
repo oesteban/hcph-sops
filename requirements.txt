@@ -1,7 +1,7 @@
 codespell
 markdown-include
 mkdocs
-mkdocs-jupyter
+mkdocs-jupyter==0.24.2
 mkdocs-macros-plugin
 mkdocs-material
 git-changelog
