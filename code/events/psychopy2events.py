@@ -159,9 +159,15 @@ def pandas2bids(input_df: pd.DataFrame) -> pd.DataFrame:
         onsets = subdf.start_end.notna() & subdf.start_end.str.contains("True")
         offsets = subdf.start_end.notna() & subdf.start_end.str.contains("False")
 
+        # Psychopy stimuli generate two "autoDraw = False" events:
+        # first at the end of the stimuli presentation and a second at the end of the routine.
+        # When the tracked stimuli end with the psychopy routine, the two "autoDraw = False"
+        # events occur at the same time and they are deduplicated by psychopy2bids.
         if len(subdf[onsets].onset.values) == len(subdf[offsets].onset.values):
             durations = subdf[offsets].onset.values - subdf[onsets].onset.values
         else:
+            # In the BHT, the stimuli do not last for the full span of the routine, and we have
+            # two "autoDraw = False" events. We need to drop the second corresponding to the routine.
             durations = subdf[offsets].onset.values[::2] - subdf[onsets].onset.values
 
         # And assign the duration to the first event row (the one containing autoDraw = True)
