@@ -96,3 +96,4 @@ We MUST verify that *{{ secrets.hosts.psychopy | default("███") }}* correc
 - [ ] Print [the informed consent form](../assets/files/icf_FR.pdf) (**first session only**)
 - [ ] Print the MRI safety screener ([EN](../assets/files/safety_form_EN.pdf)|[FR](../assets/files/safety_form_FR.pdf)).
 - [ ] Print a receipt form for each participant that will get scanned.
+- [ ] Prepare a gas cannula (oxygen mask) by cutting it before the fork and plugging two medication line tubes.

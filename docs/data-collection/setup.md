@@ -34,9 +34,9 @@ Below is the overall setup of the instruments:
     |:---:|:---:|
     | **Connection of digital signals** {: colspan=2} |
 
-- [ ] Pass the RB's tube through the access cylinder with the help of one person inside the Scanning Room.
+- [ ] Pass the RB's tube ({{ settings.biopac.rb_tube_long }} {{ settings.biopac.rb_tube_long_length }}) through the access cylinder with the help of one person inside the Scanning Room.
 - [ ] Connect the RB's tube proximal end to the {{ settings.biopac.rb_trans }}'s inlet marked with the **minus** (-) symbol.
-- [ ] Connect the parallel port end of the cable that comes out of the {{ settings.biopac.ecg_trans }} amplifier to the filter weld onto the access panel.
+- [ ] Connect the parallel port end of the cable that comes out of the {{ settings.biopac.ecg_trans }} amplifier to the filter welded onto the access panel.
     ![ecg-filter](../assets/images/ecg_filter.jpg)
 - [ ] **Inside the Scanning Room**, connect the MRI-compatible cable where the ECG leads will be connected to the parallel port weld to the access panel.
 - [ ] Plug the power cord to the back socket of the BIOPAC and onto the multiple power socket extension.
@@ -44,8 +44,7 @@ Below is the overall setup of the instruments:
 ### Install the GA
 
 - [ ] Set the GA on the middle shelf of the rack.
-- [ ] Connect two medical oxygen tubes (with length 4.2m each) with an adaptor.
-- [ ] Pass the composite oxygen tube through the access cylinder with the help of someone else at the Scanning Room end.
+- [ ] Pass the RB's short tube ({{ settings.biopac.rb_tube_short }} {{ settings.biopac.rb_tube_short_length }}) through the access cylinder with the help of someone else at the Scanning Room end.
 - [ ] Connect the proximal end of the composite oxygen tube to one inlet of {{ settings.gas.chamber }} desiccant chamber.
 - [ ] Connect the free inlet of the dessicant chamber to the {{ settings.gas.tube }} drying tube.
 - [ ] Remove the cap of the gas input (Sample In, front panel of the GA).
