@@ -209,6 +209,7 @@ def pandas2bids(input_df: pd.DataFrame) -> pd.DataFrame:
             f"block{v}" for block in range(1, 7) for v in [block] * 13
         ][:len_remaining]
 
+    df = df.replace({"value": {"nan": "n/a"}})
     return df[["onset", "duration", "trial_type", "value"]]
 
 
