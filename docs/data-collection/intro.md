@@ -106,6 +106,7 @@ Additional modules in our settings are (from left to right in the above picture)
 * The {{ settings.biopac.analog }} unit can receive up to 16 analog signals.
 * The {{ settings.biopac.rb_unit }} unit records the signal coming from the respiration belt.
     This unit requires the pressure transducer and amplifier {{ settings.biopac.rb_trans }} unit to be connected at its front.
+    The belt has a pneumatic sensor {{ settings.biopac.rb_sensor }} (see [product sheet](https://www.biopac.com/wp-content/uploads/TSD221-MRI.pdf)), that is connected to the pressure transducer {{ settings.biopac.rb_trans }} via the longer tube ({{ settings.biopac.rb_tube_long }} {{ settings.biopac.rb_tube_long_length }}).
 * The {{ settings.biopac.ecg_unit }} unit records the electrical signal coming from the heart via three ECG leads.
     This unit requires the amplifier {{ settings.biopac.ecg_trans }} unit to be connected at its front.
 
