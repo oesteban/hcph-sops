@@ -66,10 +66,11 @@ When employing high-performance computing (HPC), we provide [some specific guide
             --publish-depends ria-storage
     ```
     
-- [ ] Create a sub-dataset to host the *MRIQC* derivatives. If you will not run *MRIQC* version 23.1.0, replace the version with the one you intend to run in the command below.
+- [ ] Create a sub-dataset to host the *MRIQC* derivatives.
+    Remember to set the correct version of the container (in our case {{ settings.versions.mriqc }}).
     ``` shell
     cd /data/datasets/hcph-dataset
-    datalad create -d . derivatives/mriqc-23.1.0
+    datalad create -d . derivatives/mriqc-{{ settings.versions.mriqc }}
     ```
 
 ## *Client* side operations (when *consuming* the data)
