@@ -287,21 +287,34 @@ To support backward compatibility (and some extra, currently unsupported feature
 
 ### Convert eye-tracking into BIDS with *bidsphysio*
 - [ ] Pull the latest docker image of esavary/bidsphysio with:
-``` shell
-docker pull esavary/bidsphysio
-```
-- [ ] Open [schedule_ET_data.tsv](../code/physioconv/schedule_ET_data.tsv) to find the phase encoding direction and the name of the .EDF file corresponding to the session you want to convert.
-- [ ] In the folder containing your data, create a new folder named metadata. Copy the file containing information about the eye-tracker, named [info_ET.json](../code/physioconv/info_ET.json), inside this metadata folder.
+    ``` shell
+    docker pull esavary/bidsphysio
+    ```
+- [ ] Open [`schedule_ET_data.tsv`](../code/physioconv/schedule_ET_data.tsv) to find the phase encoding direction and the name of the `.EDF` file corresponding to the session you want to convert.
+- [ ] In the folder containing your data, create a new folder named metadata.
+    Copy the file containing information about the ET, named [`info_ET.json`](../code/physioconv/info_ET.json), inside this metadata folder.
 - [ ]  Run the following command for the file corresponding to the DWI (Diffusion-Weighted Imaging) data, replacing PATH_RAW_DATA,PATH_OUTPUT, DWI_FILENAME, SESSION_NUMBER, and PHASE_ENCODING_DIRECTION with the information corresponding to the file you want to process:
-``` shell
-docker run -u $( id -u ):$( id -g ) --rm -it -v PATH_RAW_DATA:/data -v PATH_OUTPUT:/output --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio --infile DWI_FILENAME --bidsprefix /output/dwi/sub-001_ses-SESSION_NUMBER_acq-highres_dir-PHASE_ENCODING_DIRECTION -m /data/metadata/info_ET.json
-
-```
+    ``` shell
+    docker run -u $( id -u ):$( id -g ) --rm -it \
+        -v PATH_RAW_DATA:/data -v PATH_OUTPUT:/output \
+        --entrypoint=/opt/venv/bin/python esavary/bidsphysio \
+        /opt/venv/bin/edf2bidsphysio --infile DWI_FILENAME \
+        --bidsprefix /output/dwi/sub-001_ses-SESSION_NUMBER_acq-highres_dir-PHASE_ENCODING_DIRECTION \
+        -m /data/metadata/info_ET.json
+    ```
 - [ ] Run the following command for the three files corresponding to the functional tasks:
-``` shell
-docker run -u $( id -u ):$( id -g ) --rm -it -v PATH_RAW_DATA:/data -v PATH_OUTPUT:/output --entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio --infile /data/FILENAME --bidsprefix /output/session01/func/sub-001_ses-SESSION_NUMBER_task-TASK_NAME_dir-PHASE_ENCODING_DIRECTION -m /data/metadata/info_ET.json
-```
-!!! In addition to the eyetracker data and metadata JSON file, the code also generates a .tsv file containing all messages sent to the eye-tracker and the header of the .EDF file (named ..._eventlist_raw.tsv). Please exercise caution and ensure that you do not copy these generated files into the BIDS-compatible repository."
+    ``` shell
+    docker run -u $( id -u ):$( id -g ) --rm -it \
+        -v PATH_RAW_DATA:/data -v PATH_OUTPUT:/output \
+        --entrypoint=/opt/venv/bin/python bidsphysio \
+        /opt/venv/bin/edf2bidsphysio \
+        --infile /data/FILENAME \
+        --bidsprefix /output/session01/func/sub-001_ses-SESSION_NUMBER_task-TASK_NAME_dir-PHASE_ENCODING_DIRECTION -m /data/metadata/info_ET.json
+    ```
+    !!! danger "Do not copy all output files directly"
+    
+        In addition to the eye-tracking data (`<prefix>_eyetrack.tsv.gz` file) and metadata (`<prefix>_eyetrack.json` file), the code also generates a TSV file containing all messages sent to the ET and the header of the `.EDF` file (with name `<prefix>_eventlist_raw.tsv`).
+        Please do not copy these generated files into the *DataLad* dataset in BIDS.
 
 
 !!! warning "Instead of the current specifications, we will use [the following BEP](https://bids-specification--1128.org.readthedocs.build/en/1128/modality-specific-files/eye-tracking.html)"
