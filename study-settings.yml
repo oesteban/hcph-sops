@@ -54,3 +54,8 @@ biopac:
   ecg_trans: 'MECMRI-2'
   pinkbox: 'MMBT-S'
   pinkbox_long: 'MMBT-S Trigger Interface Box adapter'
+
+versions:
+  mriqc: '23.1.0'
+  fmriprep: 'xxxx'
+  dmriprep: 'xxxx'

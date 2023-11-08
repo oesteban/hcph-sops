@@ -422,3 +422,10 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
     ```
 
     !!! danger "Always double-check that data in the annex are uploaded to the RIA store"
+
+### Visual assessment of unprocessed data with *MRIQC*
+Checking the data quality shortly after they are acquired increases the likelihood of catching systematic artifacts early enough to avert spreading throughout the whole dataset.
+It also modulates the burden of visual inspection over time, such that we avoid overwhelming raters with outbursts of images to assess.
+Better pacing in rating throughput also contributes to reducing raters' attrition and fatigue.
+
+- [ ] Screen all the unprocessed data and assess them as described in the [next section](./mriqc.md).

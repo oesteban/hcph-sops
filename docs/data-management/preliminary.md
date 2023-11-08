@@ -38,7 +38,7 @@ When employing high-performance computing (HPC), we provide [some specific guide
 
     ``` shell
     cd /data/datasets/
-    datalad create -c bids hcph
+    datalad create -c bids hcph-dataset
     ```
 <!--
 - [ ] Create a *DataLad* subdataset called `sourcedata`
@@ -52,8 +52,8 @@ When employing high-performance computing (HPC), we provide [some specific guide
 
 - [ ] Configure a [RIA store](https://handbook.datalad.org/en/latest/beyond_basics/101-147-riastores.html), where large files will be pushed (and pulled from when installing the dataset in other computers)
     ``` shell title="Creating a RIA sibling to store large files"
-    cd hcph
-    datalad create-sibling-ria -s ria-storage --alias hcph \
+    cd hcph-dataset
+    datalad create-sibling-ria -s ria-storage --alias hcph-dataset \
             --new-store-ok --storage-sibling=only \
             "ria+ssh://{{ secrets.data.curnagl_backup | default('<username>@<hostname>:<path>') }}/dataset/"
     ```
@@ -64,6 +64,13 @@ When employing high-performance computing (HPC), we provide [some specific guide
             --pushurl git@github.com:{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}.git \
             --url https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}.git \
             --publish-depends ria-storage
+    ```
+    
+- [ ] Create a sub-dataset to host the *MRIQC* derivatives.
+    Remember to set the correct version of the container (in our case {{ settings.versions.mriqc }}).
+    ``` shell
+    cd /data/datasets/hcph-dataset
+    datalad create -d . derivatives/mriqc-{{ settings.versions.mriqc }}
     ```
 
 ## *Client* side operations (when *consuming* the data)
@@ -132,6 +139,41 @@ When a new session is added, your *DataLad* dataset will remain at the same poin
         find sub-001/ses-pilot019 -name "*.json" -or -name "*.tsv" -or -name "*.bvec" -or -name "*.bval" | \
             xargs datalad save -m '"add(pilot019): new session metadata (JSON, TSV, bvec/bval)"'
         ```
+
+### Registering containers
+
+We use *DataLad containers-run* to execute software while keeping track of provenance.
+Prior to first use, containers must be added to *DataLad* as follows (example for *MRIQC*):
+
+- [ ] Register the *MRIQC* container to the dataset
+
+    === "Registering a *Singularity* container"
+
+        ``` shell
+        datalad containers-add \
+            --call-fmt 'singularity exec -B {% raw %}{{${HOME}/tmp/}}:/tmp --cleanenv {img} {cmd}{% endraw %}' \
+            mriqc \
+            --url docker://nipreps/mriqc:{{ settings.versions.mriqc }}
+        ```
+
+        ??? important "Insert relevant arguments to the `singularity` command line with `--call-fmt`"
+
+            In the example above, we configure the container's call to automatically *bind* (`-B` flag to mount the filesystem) the temporary folder.
+            *MRIQC* will store the working directory there by default.
+            Please replace the path with the appropriate path for your settings (i.e., laptop, cluster, etc.).
+
+    === "Registering a *Docker* container"
+
+        ``` shell
+        datalad containers-add \
+            --call-fmt 'docker run -v {% raw %}{{${HOME}/tmp/}}:/tmp --cleanenv {img} {cmd}{% endraw %}' \
+            mriqc \
+            --url docker://nipreps/mriqc:{{ settings.versions.mriqc }}
+        ```
+
+    ??? info "Pinning a particular version of *MRIQC*"
+
+        If a different version of *MRIQC* should be executed, replace the *Docker* image's tag (`{{ settings.versions.mriqc }}`) with the adequate version tag within the above command line.
 
 ### HPC users - instructions to install *DataLad*
 

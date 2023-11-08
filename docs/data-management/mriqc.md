@@ -1,15 +1,19 @@
+## Executing *MRIQC*
 
-
-## Executing MRIQC
-- [ ] Register the MRIQC container with DataLad containers-run
-- [ ] Run MRIQC:
+- [ ] Run *MRIQC*.
     ```shell
+    #Assign the variable to the last session ID
+    lastsession=01
     datalad containers-run \
-        --container-name containers/mriqc \
+        --container-name mriqc \
         --input sourcedata \
-        --output . \
-        '{inputs}' '{outputs}' participant --session lastsession -w workdir
+        --output ./derivatives/mriqc-23.1.0 \
+        "{inputs} {outputs} participant --session-id ${lastsession} -w ${HOME}/tmp/hcph-derivatives/mriqc-23.1.0 --mem 40G"
     ```
-- [ ] Screen the T1w, DWI and BOLD visual reports, assign a quality assessment using *Q'Kay*
-- [ ] If either the dMRI or the RSfMRI quality is insufficient, schedule an extra session after the initially-planned scanning
-period to reacquire it.
+- [ ] Push the new derivatives to the remote storage.
+    ```shell
+    datalad push --to ria-storage
+    datalad push --to origin
+    ```
+- [ ] Screen the T1w, DWI and BOLD visual reports
+- [ ] Schedule an extra session after the initially-planned scanning period to reacquire it if either the dMRI or the RSfMRI quality is insufficient.
