@@ -287,9 +287,42 @@ To support backward compatibility (and some extra, currently unsupported feature
 
 ### Convert eye-tracking into BIDS with *bidsphysio*
 
-We will adapt [*bidsphysio*](https://github.com/cbinyu/bidsphysio) to convert eye-tracking from the EDF proprietary format of EyeLink (SR Instruments).
+!!! warning "Instead of the current specifications, we are using [the following BEP](https://bids-specification--1128.org.readthedocs.build/en/1128/modality-specific-files/eye-tracking.html)"
 
-!!! warning "Instead of the current specifications, we will use [the following BEP](https://bids-specification--1128.org.readthedocs.build/en/1128/modality-specific-files/eye-tracking.html)"
+- [ ] Pull the latest docker image of esavary/bidsphysio with:
+    ``` shell
+    docker pull esavary/bidsphysio
+    ```
+- [ ] Open [`schedule.tsv`](../code/eyetracking/schedule.tsv) to find the phase encoding direction and the name of the `.EDF` file corresponding to the session you want to convert.
+- [ ] Create a new folder named `metadata/` inside the folder containing the target `.EDF` file.
+    Copy the file containing information about the ET, named [`info_ET.json`](../code/eyetracking/info_ET.json) into the `metadata/` folder.
+- [ ]  Execute the ET to BIDS conversion on the dMRI data.
+    Run the following command for the corresponding file in the [`schedule.tsv`](../code/eyetracking/schedule.tsv) file:
+    ``` shell
+    docker run -u $( id -u ):$( id -g ) --rm -it \
+        -v <path-to-EDF-data>:/data \
+        -v <output-path-on-host>:/output \
+        --entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio \
+        --infile /data/fixation_2023-10-20_18h48.03.561_5_session_1.EDF \
+        --bidsprefix /output/session01/dwi/sub-001_ses-001_acq-highres_dir-LR \
+        -m /data/metadata/info_ET.json
+    ```
+- [ ] Run the following command for the files corresponding to the functional tasks:
+    ``` shell
+    docker run -u $( id -u ):$( id -g ) --rm -it \
+        -v <path-to-EDF-data>:/data \
+        -v <output-path-on-host>:/output \
+        --entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio \
+        --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
+        --bidsprefix /output/session01/func/sub-001_ses-001_task-qct_dir-LR \
+        -m /data/metadata/info_ET.json
+    ```
+- [ ] Copy all `<prefix>_eyetrack.tsv.gz` and `<prefix>_eyetrack.json` generated into your copy of the *DataLad* dataset in BIDS.
+
+!!! danger "Do not copy all output files directly"
+
+    In addition to the eye-tracking data (`<prefix>_eyetrack.tsv.gz` file) and metadata (`<prefix>_eyetrack.json` file), the code also generates a TSV file containing all messages sent to the ET and the header of the `.EDF` file (with name `<prefix>_eventlist_raw.tsv`).
+    Please do not copy these generated files into the *DataLad* dataset in BIDS.
 
 ??? abstract "Example of a session with eye-tracking recordings"
 
