@@ -11,6 +11,7 @@
 *[DWI]: diffusion weighted imaging
 *[ECG]: electrocardiogram
 *[EDF]: EyeLink Data Format
+*[EM]: electromagnetic
 *[EPFL]: École Polytechnique Fédérale de Lausanne
 *[EPI]: echo-planar imaging
 *[ET]: eye tracker
@@ -40,9 +41,11 @@
 *[PNG]: portable networks graphics
 *[PR]: pull-request
 *[PRs]: pull-requests
+*[QA]: quality assessment
 *[QC]: quality control
 *[QCT]: quality control task
 *[RB]: respiration belt
+*[RF]: radiofrequency
 *[RIA]: Remote Indexed Archives
 *[RL]: right-to-left
 *[RSfMRI]: resting-state fMRI
