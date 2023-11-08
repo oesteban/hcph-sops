@@ -317,7 +317,7 @@ To support backward compatibility (and some extra, currently unsupported feature
         --bidsprefix /output/session01/func/sub-001_ses-001_task-qct_dir-LR \
         -m /data/metadata/info_ET.json
     ```
-- [ ] Copy all _eyetrack.tsv.gz and .json generated into your copy of the *DataLad* dataset in BIDS.
+- [ ] Copy all `<prefix>_eyetrack.tsv.gz` and `<prefix>_eyetrack.json` generated into your copy of the *DataLad* dataset in BIDS.
 
 !!! danger "Do not copy all output files directly"
 
