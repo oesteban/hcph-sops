@@ -306,13 +306,11 @@ To support backward compatibility (and some extra, currently unsupported feature
     ```
 - [ ] Run the following command for the files corresponding to the functional tasks:
     ``` shell
-    
-docker run -u $( id -u ):$( id -g ) --rm -it \
--v /home/esavary/Projects/HCPH-BIDS_ET/data/:/data -v /home/esavary/Projects/HCPH-BIDS_ET/output/:/output \
---entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio \
---infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
---bidsprefix /output/session01/func/sub-001_ses-001_task-qct_dir-LR -m /data/metadata/info_ET.json
-
+    docker run -u $( id -u ):$( id -g ) --rm -it \
+    -v /home/esavary/Projects/HCPH-BIDS_ET/data/:/data -v /home/esavary/Projects/HCPH-BIDS_ET/output/:/output \
+    --entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio \
+    --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
+    --bidsprefix /output/session01/func/sub-001_ses-001_task-qct_dir-LR -m /data/metadata/info_ET.json
     ```
 !!! danger "Do not copy all output files directly"
     In addition to the eye-tracking data (`<prefix>_eyetrack.tsv.gz` file) and metadata (`<prefix>_eyetrack.json` file), the code also generates a TSV file containing all messages sent to the ET and the header of the `.EDF` file (with name `<prefix>_eventlist_raw.tsv`).
