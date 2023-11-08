@@ -297,6 +297,10 @@ docker pull esavary/bidsphysio
 docker run -u $( id -u ):$( id -g ) --rm -it -v PATH_RAW_DATA:/data -v PATH_OUTPUT:/output --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio --infile DWI_FILENAME --bidsprefix /output/dwi/sub-001_ses-SESSION_NUMBER_acq-highres_dir-PHASE_ENCODING_DIRECTION -m /data/metadata/info_ET.json
 
 ```
+- [ ] Run the following command for the three files corresponding to the functional tasks:
+``` shell
+docker run -u $( id -u ):$( id -g ) --rm -it -v PATH_RAW_DATA:/data -v PATH_OUTPUT:/output --entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio --infile /data/FILENAME --bidsprefix /output/session01/func/sub-001_ses-SESSION_NUMBER_task-TASK_NAME_dir-PHASE_ENCODING_DIRECTION -m /data/metadata/info_ET.json
+```
 !!! In addition to the eyetracker data and metadata JSON file, the code also generates a .tsv file containing all messages sent to the eye-tracker and the header of the .EDF file (named ..._eventlist_raw.tsv). Please exercise caution and ensure that you do not copy these generated files into the BIDS-compatible repository."
 
 
