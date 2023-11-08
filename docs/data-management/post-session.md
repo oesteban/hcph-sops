@@ -294,29 +294,28 @@ To support backward compatibility (and some extra, currently unsupported feature
     docker pull esavary/bidsphysio
     ```
 - [ ] Open [`schedule_ET_data.tsv`](../code/physioconv/schedule_ET_data.tsv) to find the phase encoding direction and the name of the `.EDF` file corresponding to the session you want to convert.
-- [ ] In the folder containing your data, create a new folder named metadata.
+- [ ] Create a new folder named metadata inside the folder containing your .EDF file.
     Copy the file containing information about the ET, named [`info_ET.json`](../code/physioconv/info_ET.json), inside this metadata folder.
 - [ ]  Run the following command for the file corresponding to the DWI (Diffusion-Weighted Imaging) data, replacing PATH_RAW_DATA,PATH_OUTPUT, DWI_FILENAME, SESSION_NUMBER, and PHASE_ENCODING_DIRECTION with the information corresponding to the file you want to process:
     ``` shell
     docker run -u $( id -u ):$( id -g ) --rm -it \
-        -v PATH_RAW_DATA:/data -v PATH_OUTPUT:/output \
-        --entrypoint=/opt/venv/bin/python esavary/bidsphysio \
-        /opt/venv/bin/edf2bidsphysio --infile DWI_FILENAME \
-        --bidsprefix /output/dwi/sub-001_ses-SESSION_NUMBER_acq-highres_dir-PHASE_ENCODING_DIRECTION \
-        -m /data/metadata/info_ET.json
+    -v /home/esavary/Projects/HCPH-BIDS_ET/data/:/data -v /home/esavary/Projects/HCPH-BIDS_ET/output/:/output \
+    --entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio \
+    --infile /data/fixation_2023-10-20_18h48.03.561_5_session_1.EDF \
+    --bidsprefix /output/session01/dwi/sub-001_ses-001_acq-highres_dir-LR -m /data/metadata/info_ET.json
     ```
-- [ ] Run the following command for the three files corresponding to the functional tasks:
+- [ ] Run the following command for the files corresponding to the functional tasks:
     ``` shell
-    docker run -u $( id -u ):$( id -g ) --rm -it \
-        -v PATH_RAW_DATA:/data -v PATH_OUTPUT:/output \
-        --entrypoint=/opt/venv/bin/python bidsphysio \
-        /opt/venv/bin/edf2bidsphysio \
-        --infile /data/FILENAME \
-        --bidsprefix /output/session01/func/sub-001_ses-SESSION_NUMBER_task-TASK_NAME_dir-PHASE_ENCODING_DIRECTION -m /data/metadata/info_ET.json
-    ```
-    !!! danger "Do not copy all output files directly"
     
-        In addition to the eye-tracking data (`<prefix>_eyetrack.tsv.gz` file) and metadata (`<prefix>_eyetrack.json` file), the code also generates a TSV file containing all messages sent to the ET and the header of the `.EDF` file (with name `<prefix>_eventlist_raw.tsv`).
+docker run -u $( id -u ):$( id -g ) --rm -it \
+-v /home/esavary/Projects/HCPH-BIDS_ET/data/:/data -v /home/esavary/Projects/HCPH-BIDS_ET/output/:/output \
+--entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio \
+--infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
+--bidsprefix /output/session01/func/sub-001_ses-001_task-qct_dir-LR -m /data/metadata/info_ET.json
+
+    ```
+!!! danger "Do not copy all output files directly"
+    In addition to the eye-tracking data (`<prefix>_eyetrack.tsv.gz` file) and metadata (`<prefix>_eyetrack.json` file), the code also generates a TSV file containing all messages sent to the ET and the header of the `.EDF` file (with name `<prefix>_eventlist_raw.tsv`).
         Please do not copy these generated files into the *DataLad* dataset in BIDS.
 
 ??? abstract "Example of a session with eye-tracking recordings"
