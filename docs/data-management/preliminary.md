@@ -75,95 +75,6 @@ When employing high-performance computing (HPC), we provide [some specific guide
 
 ## *Client* side operations (when *consuming* the data)
 
-??? info "HPC users - instructions to install *DataLad*"
-
-    When HPC is planned for processing, *DataLad* will be required on that system(s).
-
-    - [ ] Start an interactive session on the HPC cluster
-
-        ??? warning "Do not run the installation of *Conda* and *DataLad* in the login node"
-
-            HPC systems typically recommend using their login nodes only for tasks related to job submission, data management, and preparing jobscripts.
-            Therefore, the execution of resource-intensive tasks such as *fMRIPrep* or building containers on login nodes can negatively impact the overall performance and responsiveness of the system for all users.
-            Interactive sessions are a great alternative when available and **should** be used when creating the *DataLad* dataset.
-            For example, in the case of systems operating SLURM, the following command would open a new interactive session:
-            ```
-            srun --nodes=1 --ntasks-per-node=1 --time=01:00:00 --pty bash -i
-            ```
-
-    - [ ] Install *DataLad*.
-        Generally, the most convenient and user-sandboxed installation (i.e., without requiring elevated permissions) can be achieved by using *Conda*, but other alternatives (such as *lmod*) can be equally valid:
-
-        === "Install *DataLad* with *Conda*"
-
-            - [ ] Get and install *Conda* if it is not already deployed in the system:
-
-                ``` shell
-                wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-                bash Miniconda3-latest-Linux-x86_64.sh
-                ```
-
-            - [ ] Install *DataLad*:
-
-                ``` shell
-                conda install -c conda-forge -y "datalad>=0.19" datalad-container
-                ```
-
-        === "Install *DataLad* in HPC with *lmod* enabled"
-
-            - [ ] Check the availability and dependencies for a specific Python version (here we check 3.8.2):
-
-                ``` bash
-                module spider Python/3.8.2
-                ```
-
-            - [ ] Load Python (please note `ml` below is a shorthand for `module load`)
-
-                ``` bash
-                ml GCCcore/9.3.0 Python/3.8.2
-                ```
-
-            - [ ] Update *pip*:
-
-                ``` bash
-                python -m pip --user -U pip
-                ```
-
-            - [ ] Install *DataLad*:
-
-                ``` bash
-                python -m pip install --user "datalad>=0.19" datalad-container
-                ```
-
-    - [ ] Check datalad is properly installed, for instance:
-
-        ``` shell
-        $ datalad --version
-        datalad 0.19.2
-        ```
-
-        ??? bug "*DataLad* crashes (*Conda* installations)"
-
-            *DataLad* may fail with the following error:
-            ``` py
-            ImportError: cannot import name 'getargspec' from 'inspect' (/home/users/cprovins/miniconda3/lib/python3.11/inspect.py)
-            ```
-
-            In such a scenario, create a *Conda* environment with a lower version of Python, and re-install datalad
-            ``` shell
-            conda create -n "datalad" python=3.10
-            conda activate datalad
-            conda install -c conda-forge datalad datalad-container
-            ```
-
-    - [ ] Configure your Git identity settings.
-
-        ``` shell
-        cd ~
-        git config --global --add user.name "Jane Doe"
-        git config --global --add user.email doe@example.com
-        ```
-
 ### Installing the *DataLad* dataset
 
 Wherever you want to process the data, you'll need to `datalad install` it before you can pull down (`datalad get`) the data.
@@ -228,5 +139,129 @@ When a new session is added, your *DataLad* dataset will remain at the same poin
         find sub-001/ses-pilot019 -name "*.json" -or -name "*.tsv" -or -name "*.bvec" -or -name "*.bval" | \
             xargs datalad save -m '"add(pilot019): new session metadata (JSON, TSV, bvec/bval)"'
         ```
+
+### Registering containers
+
+We use *DataLad containers-run* to execute software while keeping track of provenance.
+Prior to first use, containers must be added to *DataLad* as follows (example for *MRIQC*):
+
+- [ ] Register the *MRIQC* container to the dataset
+
+    === "Registering a *Singularity* container"
+
+        ``` shell
+        datalad containers-add \
+            --call-fmt 'singularity exec -B {% raw %}{{${HOME}/tmp/}}:/tmp --cleanenv {img} {cmd}{% endraw %}' \
+            mriqc \
+            --url docker://nipreps/mriqc:{{ settings.versions.mriqc }}
+        ```
+
+        ??? important "Insert relevant arguments to the `singularity` command line with `--call-fmt`"
+
+            In the example above, we configure the container's call to automatically *bind* (`-B` flag to mount the filesystem) the temporary folder.
+            *MRIQC* will store the working directory there by default.
+            Please replace the path with the appropriate path for your settings (i.e., laptop, cluster, etc.).
+
+    === "Registering a *Docker* container"
+
+        ``` shell
+        datalad containers-add \
+            --call-fmt 'docker run -v {% raw %}{{${HOME}/tmp/}}:/tmp --cleanenv {img} {cmd}{% endraw %}' \
+            mriqc \
+            --url docker://nipreps/mriqc:{{ settings.versions.mriqc }}
+        ```
+
+    ??? info "Pinning a particular version of *MRIQC*"
+
+        If a different version of *MRIQC* should be executed, replace the *Docker* image's tag (`{{ settings.versions.mriqc }}`) with the adequate version tag within the above command line.
+
+### HPC users - instructions to install *DataLad*
+
+When HPC is planned for processing, *DataLad* will be required on that system(s).
+
+- [ ] Start an interactive session on the HPC cluster
+
+    ??? warning "Do not run the installation of *Conda* and *DataLad* in the login node"
+
+        HPC systems typically recommend using their login nodes only for tasks related to job submission, data management, and preparing jobscripts.
+        Therefore, the execution of resource-intensive tasks such as *fMRIPrep* or building containers on login nodes can negatively impact the overall performance and responsiveness of the system for all users.
+        Interactive sessions are a great alternative when available and **should** be used when creating the *DataLad* dataset.
+        For example, in the case of systems operating SLURM, the following command would open a new interactive session:
+        ```
+        srun --nodes=1 --ntasks-per-node=1 --time=01:00:00 --pty bash -i
+        ```
+
+- [ ] Install *DataLad*.
+    Generally, the most convenient and user-sandboxed installation (i.e., without requiring elevated permissions) can be achieved by using *Conda*, but other alternatives (such as *lmod*) can be equally valid:
+
+    === "Install *DataLad* with *Conda*"
+
+        - [ ] Get and install *Conda* if it is not already deployed in the system:
+
+            ``` shell
+            wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+            bash Miniconda3-latest-Linux-x86_64.sh
+            ```
+
+        - [ ] Install *DataLad*:
+
+            ``` shell
+            conda install -c conda-forge -y "datalad>=0.19" datalad-container
+            ```
+
+    === "Install *DataLad* in HPC with *lmod* enabled"
+
+        - [ ] Check the availability and dependencies for a specific Python version (here we check 3.8.2):
+
+            ``` bash
+            module spider Python/3.8.2
+            ```
+
+        - [ ] Load Python (please note `ml` below is a shorthand for `module load`)
+
+            ``` bash
+            ml GCCcore/9.3.0 Python/3.8.2
+            ```
+
+        - [ ] Update *pip*:
+
+            ``` bash
+            python -m pip --user -U pip
+            ```
+
+        - [ ] Install *DataLad*:
+
+            ``` bash
+            python -m pip install --user "datalad>=0.19" datalad-container
+            ```
+
+- [ ] Check datalad is properly installed, for instance:
+
+    ``` shell
+    $ datalad --version
+    datalad 0.19.2
+    ```
+
+    ??? bug "*DataLad* crashes (*Conda* installations)"
+
+        *DataLad* may fail with the following error:
+        ``` py
+        ImportError: cannot import name 'getargspec' from 'inspect' (/home/users/cprovins/miniconda3/lib/python3.11/inspect.py)
+        ```
+
+        In such a scenario, create a *Conda* environment with a lower version of Python, and re-install datalad
+        ``` shell
+        conda create -n "datalad" python=3.10
+        conda activate datalad
+        conda install -c conda-forge datalad datalad-container
+        ```
+
+- [ ] Configure your Git identity settings.
+
+    ``` shell
+    cd ~
+    git config --global --add user.name "Jane Doe"
+    git config --global --add user.email doe@example.com
+    ```
 
 [1]: https://doi.org/10.5281/zenodo.808846 "Hanke, Michael, et al. “Datalad.” Open Source Software, 2021. doi:10.5281/zenodo.808846"
