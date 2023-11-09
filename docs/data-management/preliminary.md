@@ -144,7 +144,7 @@ Prior to first use, containers must be added to *DataLad* as follows (example fo
 
         ``` shell
         datalad containers-add \
-            --call-fmt 'singularity exec -B {% raw %}{{${HOME}/tmp/}}:/tmp --cleanenv {img} {cmd}{% endraw %}' \
+            --call-fmt 'singularity exec --cleanenv -B {% raw %}{{${HOME}/tmp/}}:/tmp {img} {cmd}{% endraw %}' \
             mriqc \
             --url docker://nipreps/mriqc:{{ settings.versions.mriqc }}
         ```
@@ -159,7 +159,7 @@ Prior to first use, containers must be added to *DataLad* as follows (example fo
 
         ``` shell
         datalad containers-add \
-            --call-fmt 'docker run -v {% raw %}{{${HOME}/tmp/}}:/tmp --cleanenv {img} {cmd}{% endraw %}' \
+            --call-fmt 'docker run -u $( id -u ) -it -v {% raw %}{{${HOME}/tmp/}}:/tmp {img} {cmd}{% endraw %}' \
             mriqc \
             --url docker://nipreps/mriqc:{{ settings.versions.mriqc }}
         ```
