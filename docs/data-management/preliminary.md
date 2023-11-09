@@ -65,13 +65,6 @@ When employing high-performance computing (HPC), we provide [some specific guide
             --url https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}.git \
             --publish-depends ria-storage
     ```
-    
-- [ ] Create a sub-dataset to host the *MRIQC* derivatives.
-    Remember to set the correct version of the container (in our case {{ settings.versions.mriqc }}).
-    ``` shell
-    cd /data/datasets/hcph-dataset
-    datalad create -d . derivatives/mriqc-{{ settings.versions.mriqc }}
-    ```
 
 ## *Client* side operations (when *consuming* the data)
 
