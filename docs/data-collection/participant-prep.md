@@ -84,7 +84,7 @@
         Other times it will be fixed on the center, and have a blank gray background or a flickering or grating circular area behind it.
         The last element of this block will show the words LEFT or RIGHT.
         When either appears, please tap your thumb on each of the your other four fingers of the hand designated by the word, sequentially with all fingers and reversing the direction at the extremes (your pointer and your pinkie).
-        This positive-control task has a length of {{ settings.mri.timings.func_qct }}.
+        This quality-control task has a length of {{ settings.mri.timings.func_qct }}.
         During this task, please leave the alarm button on your tummy, where you can recover it when it finishes.
 
         Then there is a long block of {{ settings.mri.timings.func_rest }} that we call *resting* state.
