@@ -298,25 +298,57 @@ To support backward compatibility (and some extra, currently unsupported feature
     Copy the file containing information about the ET, named [`info_ET.json`](../code/eyetracking/info_ET.json) into the `metadata/` folder.
 - [ ]  Execute the ET to BIDS conversion on the dMRI data.
     Run the following command for the corresponding file in the [`schedule.tsv`](../code/eyetracking/schedule.tsv) file:
-    ``` shell
-    docker run -u $( id -u ):$( id -g ) --rm -it \
-        -v <path-to-EDF-data>:/data \
-        -v <output-path-on-host>:/output \
-        --entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio \
-        --infile /data/fixation_2023-10-20_18h48.03.561_5_session_1.EDF \
-        --bidsprefix /output/session01/dwi/sub-001_ses-001_acq-highres_dir-LR \
-        -m /data/metadata/info_ET.json
-    ```
-- [ ] Run the following command for the files corresponding to the functional tasks:
-    ``` shell
-    docker run -u $( id -u ):$( id -g ) --rm -it \
-        -v <path-to-EDF-data>:/data \
-        -v <output-path-on-host>:/output \
-        --entrypoint=/opt/venv/bin/python bidsphysio /opt/venv/bin/edf2bidsphysio \
-        --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
-        --bidsprefix /output/session01/func/sub-001_ses-001_task-qct_dir-LR \
-        -m /data/metadata/info_ET.json
-    ```
+
+    !!! danger "Input data path MUST be mounted in read-only mode (`:ro` suffix)"
+
+    === "dMRI (fixation)"
+
+        ``` shell
+        docker run -u $( id -u ):$( id -g ) --rm -it \
+            -v <path-to-EDF-data>:/data:ro \
+            -v <output-path-on-host>:/output \
+            --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio \
+            --infile /data/fixation_2023-10-20_18h48.03.561_5_session_1.EDF \
+            --bidsprefix /output/session01/dwi/sub-001_ses-001_acq-highres_dir-LR \
+            -m /data/metadata/info_ET.json
+        ```
+
+    === "fMRI (QCT)"
+
+        ``` shell
+        docker run -u $( id -u ):$( id -g ) --rm -it \
+            -v <path-to-EDF-data>:/data:ro \
+            -v <output-path-on-host>:/output \
+            --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio \
+            --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
+            --bidsprefix /output/session01/func/sub-001_ses-001_task-qct_dir-LR \
+            -m /data/metadata/info_ET.json
+        ```
+
+    === "fMRI (BHT)"
+
+        ``` shell
+        docker run -u $( id -u ):$( id -g ) --rm -it \
+            -v <path-to-EDF-data>:/data:ro \
+            -v <output-path-on-host>:/output \
+            --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio \
+            --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
+            --bidsprefix /output/session01/func/sub-001_ses-001_task-bht_dir-LR \
+            -m /data/metadata/info_ET.json
+        ```
+
+    === "fMRI (resting-state)"
+
+        ``` shell
+        docker run -u $( id -u ):$( id -g ) --rm -it \
+            -v <path-to-EDF-data>:/data:ro \
+            -v <output-path-on-host>:/output \
+            --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio \
+            --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
+            --bidsprefix /output/session01/func/sub-001_ses-001_task-rest_dir-LR \
+            -m /data/metadata/info_ET.json
+        ```
+
 - [ ] Copy all `<prefix>_eyetrack.tsv.gz` and `<prefix>_eyetrack.json` generated into your copy of the *DataLad* dataset in BIDS.
 
 !!! danger "Do not copy all output files directly"
