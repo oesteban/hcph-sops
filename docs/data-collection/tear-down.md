@@ -1,3 +1,5 @@
+# Session tear-down
+
 ## Showing the participant out
 
 - [ ] Enter the scanner room, and announce yourself to the participant:
@@ -23,7 +25,9 @@
 - [ ] Disconnect the tube from the RB and then lift the velcro attachment to remove the RB.
 - [ ] Prepare the belt on the bed to be removed from the room when you show the participant out.
 - [ ] Help the participant carefully remove the ECG leads.
-- [ ] Disconnect the three ECG terminals from the cable and put them in their pouch.
+- [ ] Disconnect the three ECG leads from the electrodes fixed on the participant's skin.
+- [ ] Indicate the participant that they may remove the electrodes outside in the changing room.
+- [ ] Bag the ECG leads into their designated self-sealing pouch.
 - [ ] Disconnect the last section of the cannula and dispose of it in the trash can.
 - [ ] Help the participant step down and accompany them out to the control room.
 - [ ] Help the participant recover their personal belongings and change clothes if necessary.
@@ -38,25 +42,37 @@
 ### ET arm, ET cables, infrared mirror and stimuli screen
 
 - [ ] Unplug the two cables (signal and power) connected to the ET arm.
-- [ ] Roll the cables and put them in the cupboard inside the Scanning room.
+- [ ] Roll the ET's cables and put them in the cupboard inside the Scanning room.
 - [ ] Remove the mirror frame from its rails mounted on the head coil and lay it on the bed.
 - [ ] Put the gloves on and cover the infrared mirror for storage.
 
     !!! danger "The infrared mirror MUST be manipulated with clean gloves at all times."
 
 - [ ] Take the projector's screen off and store it in its designated shelf.
-- [ ] Disconnect the ECG cable from the filter of the access panel, roll the cable.
-- [ ] Roll the RB tube and the GA tube and store them in the cupboard.
+
+### Gas mask/cannula and tubing, RB and tubing, ECG cables
+
+- [ ] Roll the ECG cable after checking the leads are bagged.
+- [ ] Bag the ECG cable once rolled.
+- [ ] Detach the RB tube from the RB inlet.
+- [ ] Roll the RB tube and the GA tube and store them bagged in the cupboard.
 
 ### Readying the scanner for the next session
 
-!!! warning "Every setting altered for the experiment MUST be put back to its original status at the end of the experiment (e.g., position of the bed, coil, emergency button, padding elements, etc.)"
+!!! important "Reset all scanner settings in the Scanning Room to defaults"
 
-- [ ] Put the used bed-sheet and the blanket inside the soiled linen bag.
+    Every setting altered for the experiment MUST be put back to its original status at the end of the experiment (e.g., position of the bed, coil, emergency button, padding elements, etc.)
 
-    !!! important "Put them away in the trash if they are disposable"
+- [ ] Remove used blankets and bed-sheets <mark>**ONE-BY-ONE**</mark>:
+    - [ ] extend them <mark>**ONE-BY-ONE**</mark> to let any forgotten items fall on the floor before you fold it; and
+    - [ ] dispose of them <mark>**ONE-BY-ONE**</mark> in the adequate bin (soiled linen bag if they are fabric and trash if they are disposable).
 
-- [ ] Dispose all single-use sanitary protections.
+    ??? danger "Make sure you do not accidentally dispose of valuable items or instrumentation"
+
+        At the end of the scanning session everyone is tired and the likelihood of a misshapen is large because the attention levels are at at their lowest.
+        Stay focused during the tear-down.
+
+- [ ] Dispose of all single-use sanitary protections (padding covers, earplugs, etc.).
 - [ ] Put the pillows back in their designated storage places.
 - [ ] Remove the head coil and put it in the scanner's bore.
 - [ ] Remove the back padding elements and put them back in their designated storage.
@@ -74,11 +90,13 @@
 - [ ] Take the ET arm outside to the Control Room and place it in a stable place.
 - [ ] Take the infrared outside to the Control Room and store it in the ET/fMRI box.
 - [ ] Take the plexiglass panel outside to the control room.
+- [ ] Take the RB outside the scanning room and box it in the ET/fMRI box.
 - [ ] Exit and close the external door.
 
 ## Clearing up the Control Room
 
 ### Finalize the *boxing* of the ET elements
+
 - [ ] Put the lens cover.
 - [ ] Unscrew the ET lens, while **ALWAYS** keeping one hand under the lens while screwing/unscrewing it and put it back into its pouch.
     ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
@@ -98,6 +116,7 @@
     - [ ] Retrieve the power cord and plug if they are set.
 
 ### Finalizing the support laptops
+
 - [ ] Unplug from {{ secrets.hosts.psychopy | default("███") }} the USB cable coming from the SyncBox.
 - [ ] Switch the SyncBox off, and make sure you leave it connected exactly as you found it.
 - [ ] Unplug from {{ secrets.hosts.psychopy | default("███") }} the HDMI cable from the display switch.
