@@ -33,11 +33,31 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 
 ### Assessing functional images
 
-
 !!! danger "Insufficient quality of an fMRI run requires recalling the session"
 
     - [ ] Immediately report images deemed *exclude*, as an issue in the dataset's repository.
     - [ ] Proceed to scheduling an extra session after the initially-planned scanning period.
+
+#### RSfMRI
+- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Visualize the first mosaic (BOLD average) and apply the [exclusion criteria](qaqc-criteria.md#bold-average)
+- [ ] Scroll down to the standard-deviation (std) mosaic and apply the [exclusion criteria](qaqc-criteria.md#standard-deviation-mosaic)
+- [ ] Scroll down to the background noise mosaic and apply the [exclusion criteria](qaqc-criteria.md#background-noise-mosaic)
+- [ ] Scroll down to the fMRI summary plot and apply the [exclusion criteria](qaqc-criteria.md#fmri-summary-plot) as well as [the exclusion criteria specific to the BHT](qaqc-criteria.md#resting-state).
+
+#### QCT
+- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Visualize the first mosaic (BOLD average) and apply the [exclusion criteria](qaqc-criteria.md#bold-average)
+- [ ] Scroll down to the standard-deviation (std) mosaic and apply the [exclusion criteria](qaqc-criteria.md#standard-deviation-mosaic)
+- [ ] Scroll down to the background noise mosaic and apply the [exclusion criteria](qaqc-criteria.md#background-noise-mosaic)
+- [ ] Scroll down to the fMRI summary plot and apply the [exclusion criteria](qaqc-criteria.md#fmri-summary-plot) as well as [the exclusion criteria specific to the BHT](qaqc-criteria.md#quality-control-task) 
+
+#### BHT
+- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Visualize the first mosaic (BOLD average) and apply the [exclusion criteria](qaqc-criteria.md#bold-average)
+- [ ] Scroll down to the standard-deviation (std) mosaic and apply the [exclusion criteria](qaqc-criteria.md#standard-deviation-mosaic)
+- [ ] Scroll down to the background noise mosaic and apply the [exclusion criteria](qaqc-criteria.md#background-noise-mosaic)
+- [ ] Scroll down to the fMRI summary plot and apply the [exclusion criteria](qaqc-criteria.md#fmri-summary-plot) as well as [the exclusion criteria specific to the BHT](qaqc-criteria.md#breath-holding-task) 
 
 ### Assessing diffusion images
 

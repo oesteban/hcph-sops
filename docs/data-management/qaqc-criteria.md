@@ -11,13 +11,11 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     Since the latter preprocessing steps are relatively robust to structural images with mild artifacts, the exclusion criteria for unprocessed T1w images are lenient.
     However, individual T1w images may be excluded without such a decision lead to exclusion of the whole session in which it belongs.
     We annotate subjects with visible artifacts in the T1w images in order to ensure rigorous scrutinizing of spatial normalization and surface reconstruction outputs from fMRIPrep (if both modalities passed the first QC checkpoint with MRIQC).
-    The explanation and the description of the flagging criteria 1 to 7 are the same as their counterpart in the previous section.
-
-
-
-## Anatomical
 
 ### Zoomed-in brain mosaic:
+- [ ] Check that the brain is not presented upside down. 
+    This indicates an issue of the header. 
+    Either the header needs to be corrected manually or exclude the session.
 - [ ] Check for signal *ripples* around the frontal/prefrontal cortex typically caused by head motion.
     Exclude this particular T1w if ripples are clear and globally localized.
     These T1w images could degrade the quality of surface reconstruction. 
@@ -58,9 +56,96 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 
 ## Functional MRI
 
+### Exclusion criteria applicable to all types of fMRI scans in our study
+
+#### BOLD average mosaic
+- [ ] Check that the brain is not presented upside down. 
+    This indicates an issue of the header. 
+    Either the header needs to be corrected manually or exclude the session.
+
+- [ ] Check for signal *ripples* around the frontal/prefrontal cortex typically caused by head motion.
+    Exclude the session if ripples are clear and globally localized.
+
+- [ ] Check for ghosts within the brain:
+      - [ ] Overlapping wrap-around.
+      - [ ] Nyquist aliases or aliasing ghost (typically through PE direction).
+      - [ ] Ghosts caused by external elements such as headsets or mirror frames.
+
+      Exclude the session if any of these ghosts overlap cortical gray matter.
+
+- [ ] Check for high standard deviation vertical strikes in the saggital plane of the standard deviation map.
+
+??? warning "Do not exclude subjects presenting susceptibility distortion artifacts yet!"
+
+    For each session, we acquired fieldmaps that can be leveraged by fMRIPrep to perform susceptibility distortion correction. As such, those artifacts might be corrected by the preprocessing.
+
+#### Standard deviation mosaic
+
+- [ ] Check for ghosts within the brain:
+      - [ ] Overlapping wrap-around.
+      - [ ] Nyquist aliases or aliasing ghost (typically through PE direction).
+      - [ ] Ghosts caused by external elements such as headsets or mirror frames.
+
+      Exclude the session if any of these ghosts overlap cortical gray matter.
+
+- [ ] Check for high-std vertical strikes in the saggital plane of the std map.
+
+#### Background noise mosaic
+
+- [ ] Check for ghosts within the brain:
+      - [ ] Overlapping wrap-around.
+      - [ ] Ghosts caused by external elements such as headsets or mirror frames.
+
+      Exclude the session if any of these ghosts overlap cortical gray matter.
+
+      - [ ] Nyquist aliases or aliasing ghost (typically through PE direction).
+        Exclude the session if the intensity of the ghost is similar to the intensity of the inside of the brain.
+
+#### FMRI Summary plot
+
+- [ ] Check for periodic modulations of the signal, a sign that your signal is aliased by a regular and slow 
+    motion, like respiration. 
+    Exclude the session if the modulation is visible throughout the majority of the scan.
+- [ ] Check for coil failures. They appear as abrupt changes in overall signal intensity not paired with motion 
+    peaks. 
+    Exclude the session if any coil failure is observed.
+- [ ] Check for strong polarized structure in the crown. 
+    Exclude the session if the polarized structure is prolonged throughout a majority of the scan and if the blocks 
+    are particularly pronounced.
+
 ### Resting-state
+
+!!! info "The following exclusion criteria are tailored to how the RSfMRI will be used."
+
+    The RSfMRI images will be used to construct and analyze whole-brain functional connectomes.
+    As such the quality of all regions in the brain is important, i.e. there is not a region where we can be more lenient.
+
+#### FMRI Summary plot
+- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
+    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
+
+- [ ] Check for hyperintensity in single slices.
+    Exclude the session if any single-slice hyperintensities are observed. Correlation analysis are likely to be biased by such peaks.
+
 ### Quality control task
+
+!!! info "The following exclusion criteria are tailored to how the QCT fMRI will be used."
+
+    Task activation maps will be extracted from the QCT fMRI images and compared across phase encoding directions.
+
+#### FMRI Summary plot
+- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
+    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
+
 ### Breath-holding task
+
+!!! info "The following exclusion criteria are tailored to how the BHT fMRI will be used."
+
+    
+
+#### FMRI Summary plot
+- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
+    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
 
 ## Diffusion MRI
 
