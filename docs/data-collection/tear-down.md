@@ -42,7 +42,7 @@
 ### ET arm, ET cables, infrared mirror and stimuli screen
 
 - [ ] Unplug the two cables (signal and power) connected to the ET arm.
-- [ ] Roll the ET's cables and put them in the cupboard inside the Scanning room.
+- [ ] Roll the two ET cables and put them in the cupboard inside the Scanning room.
 - [ ] Remove the mirror frame from its rails mounted on the head coil and lay it on the bed.
 - [ ] Put the gloves on and cover the infrared mirror for storage.
 
@@ -69,7 +69,7 @@
 
     ??? danger "Make sure you do not accidentally dispose of valuable items or instrumentation"
 
-        At the end of the scanning session everyone is tired and the likelihood of a misshapen is large because the attention levels are at at their lowest.
+        At the end of the scanning session everyone is tired and the likelihood of a misshapen is large because the attention levels are at their lowest.
         Stay focused during the tear-down.
 
 - [ ] Dispose of all single-use sanitary protections (padding covers, earplugs, etc.).
