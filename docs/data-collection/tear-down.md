@@ -98,7 +98,7 @@
 ### Finalize the *boxing* of the ET elements
 
 - [ ] Put the lens cover.
-- [ ] Unscrew the ET lens, while **ALWAYS** keeping one hand under the lens while screwing/unscrewing it and put it back into its pouch.
+- [ ] Unscrew the ET lens, while **ALWAYS** keeping one hand under the lens while screwing/unscrewing it, put back its cover and put the lens back into its pouch.
     ![cover-mri-compatible-lens](../assets/images/cover-mri-compatible-lens.png "Cover MRI compatible lens")
 - [ ] Store the ET arm in its designated box.
 
