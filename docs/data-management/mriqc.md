@@ -87,6 +87,12 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 - [ ] Scroll down to the background noise mosaic and apply the [exclusion criteria](qaqc-criteria.md#background-noise-mosaic)
 - [ ] Scroll down to the fMRI summary plot and apply the [exclusion criteria](qaqc-criteria.md#fmri-summary-plot) as well as [the exclusion criteria specific to the BHT](qaqc-criteria.md#breath-holding-task) 
 
+## Visualizing *MRIQC*'s group reports
+
+### Assessing functional images
+- [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Visualize the IQMs distributions and apply the [exclusion critera](qaqc-criteria.md#group-report) for all BOLD scans and apply [these exclusion criteria](qaqc-criteria.md#group-report-1) to RSfMRI.
+
 ### Assessing diffusion images
 
 
