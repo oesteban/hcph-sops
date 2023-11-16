@@ -253,8 +253,7 @@ def check_durations(events):
             indices = events[events["trial_type"] == trial_type].index
             for index in indices:
                 duration = events.loc[index, "duration"]
-                tolerance = max(0.1, 0.1*duration)
-                if not abs(duration - expected_duration) < tolerance:
+                if not abs(duration - expected_duration) < 0.2:
                     raise ValueError(f"The duration {duration}s of the task '{events.loc[index, 'trial_type']}' does not match its expected duration of {expected_duration}s")
 
 def check_repetitions(events):
