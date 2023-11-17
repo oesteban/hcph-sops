@@ -114,6 +114,8 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 - [ ] Check for strong polarized structure in the crown. 
     Exclude the session if the polarized structure is prolonged throughout a majority of the scan and if the blocks 
     are particularly pronounced.
+- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
+    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
 
 #### Group report
 - [ ] If they are not excluded yet, re-inspect the individual visual report of the three scans with the highest mean FD and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
@@ -128,9 +130,6 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     As such the quality of all regions in the brain is important, i.e. there is not a region where we can be more lenient.
 
 #### FMRI Summary plot
-- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
-    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
-
 - [ ] Check for hyperintensity in single slices.
     Exclude the session if any single-slice hyperintensities are observed. Correlation analysis are likely to be biased by such peaks.
 
@@ -143,17 +142,9 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 
     Task activation maps will be extracted from the QCT fMRI images and compared across phase encoding directions.
 
-#### FMRI Summary plot
-- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
-    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
-
 ### Breath-holding task
 
-!!! info "The following exclusion criteria are tailored to how the BHT fMRI will be used." 
-
-#### FMRI Summary plot
-- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
-    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
+!!! info "The following exclusion criteria are tailored to how the BHT fMRI will be used."
 
 ??? important "For task fMRI, you should verify that your subjects are attempting to perform the instructed task."
     For accurate estimation of task activation, it is essential to check the quality of both the fMRI images and the task behavior [Etzel 2023]. As such, it is important to verify that the subjects were attempting to perform the instructed task (i.e not sleeping and not responding randomly). For QCT, this can be done by verifying that the subjects look at the fixation points and for BHT, you can use the respiration belt to verify that the subjects inhales, exhales and holds his breath when he is suppose to. We will however not spend time developing those QC methods, as we estimate that the participant, being the principal investigator of this project, has enough incentive to follow the tasks accurately.
