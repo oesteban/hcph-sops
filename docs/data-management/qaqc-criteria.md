@@ -63,6 +63,8 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     This indicates an issue of the header. 
     Either the header needs to be corrected manually or exclude the session.
 
+- [ ] Check that the brain structure is clearly visible. Exclude the session if it is not.
+
 - [ ] Check for signal *ripples* around the frontal/prefrontal cortex typically caused by head motion.
     Exclude the session if ripples are clear and globally localized.
 
@@ -147,13 +149,14 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 
 ### Breath-holding task
 
-!!! info "The following exclusion criteria are tailored to how the BHT fMRI will be used."
-
-    
+!!! info "The following exclusion criteria are tailored to how the BHT fMRI will be used." 
 
 #### FMRI Summary plot
 - [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
     Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
+
+??? important "For task fMRI, you should verify that your subjects are attempting to perform the instructed task."
+    For accurate estimation of task activation, it is essential to check the quality of both the fMRI images and the task behavior [Etzel 2023]. As such, it is important to verify that the subjects were attempting to perform the instructed task (i.e not sleeping and not responding randomly). For QCT, this can be done by verifying that the subjects look at the fixation points and for BHT, you can use the respiration belt to verify that the subjects inhales, exhales and holds his breath when he is suppose to. We will however not spend time developing those QC methods, as we estimate that the participant, being the principal investigator of this project, has enough incentive to follow the tasks accurately.
 
 ## Diffusion MRI
 
@@ -164,6 +167,8 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 # References
 
 * Birn, Rasmus M. “Quality Control Procedures and Metrics for Resting-State Functional MRI.” Frontiers in Neuroimaging 2 (2023). <https://doi.org/10.3389/fnimg.2023.1072927>.
+
+* Etzel, Joset A. “Efficient Evaluation of the Open QC Task fMRI Dataset.” Frontiers in Neuroimaging 2 (2023). https://www.frontiersin.org/articles/10.3389/fnimg.2023.1070274.
 
 * Van Dijk, Koene R. A., Trey Hedden, Archana Venkataraman, Karleyton C. Evans, Sara W. Lazar, and Randy L. Buckner. “Intrinsic Functional Connectivity As a Tool For Human Connectomics: Theory, Properties, and Optimization.” Journal of Neurophysiology 103, no. 1 (January 2010): 297–321. <https://doi.org/10.1152/jn.00783.2009>.
 
