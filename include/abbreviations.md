@@ -7,6 +7,7 @@
 *[CR]: corneal reflection
 *[DICOM]: Digital Imaging and Communications in Medicine
 *[dMRI]: diffusion MRI
+*[DOF]: effective degrees of freedom
 *[DOI]: digital object identifier
 *[DWI]: diffusion weighted imaging
 *[ECG]: electrocardiogram

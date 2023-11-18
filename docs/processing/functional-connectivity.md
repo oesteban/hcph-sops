@@ -65,3 +65,11 @@ In the end, the data structure will look like this:
 │               └── ses-15
 │                   └── func
 ```
+
+## QA/QC of denoised data
+- [ ] Run ... to generate the QC report for denoised data.
+- [ ] Open the QC report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Visualize the DOF distribution and apply the [exclusion criteria](qaqc-criteria.md#dof-distribution).
+- [ ] Scroll down to the FC distributions and apply the [exclusion criteria](qaqc-criteria.md#fc-distributions).
+- [ ] Scroll down to the QC-FC distributions and apply the [exclusion criteria](qaqc-criteria.md#qc-fc-distributions).
+- [ ] Scroll down to the plot QC-FC versus euclidean distance and apply the [exclusion criteria] (qaqc-criteria.md#qc-fc-versus-eucliden-distance)
