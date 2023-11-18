@@ -63,6 +63,8 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     This indicates an issue of the header. 
     Either the header needs to be corrected manually or exclude the session.
 
+- [ ] Check that the brain structure is clearly visible. Exclude the session if it is not.
+
 - [ ] Check for signal *ripples* around the frontal/prefrontal cortex typically caused by head motion.
     Exclude the session if ripples are clear and globally localized.
 
@@ -112,6 +114,13 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 - [ ] Check for strong polarized structure in the crown. 
     Exclude the session if the polarized structure is prolonged throughout a majority of the scan and if the blocks 
     are particularly pronounced.
+- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
+    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
+
+#### Group report
+- [ ] If they are not excluded yet, re-inspect the individual visual report of the three scans with the highest mean FD and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
+
+- [ ] If they are not excluded yet, re-inspect the individual visual report of the three scans with the highest temporal signal-to-noise ratio (tSNR) and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
 
 ### Resting-state
 
@@ -121,11 +130,11 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     As such the quality of all regions in the brain is important, i.e. there is not a region where we can be more lenient.
 
 #### FMRI Summary plot
-- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
-    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
-
 - [ ] Check for hyperintensity in single slices.
     Exclude the session if any single-slice hyperintensities are observed. Correlation analysis are likely to be biased by such peaks.
+
+#### Group report
+- [ ] Exclude sessions for which `fd_perc` > 75% which is the percentage of frames with a framewise displacement (FD) above the motion censoring threshold (by default 0.2mm in *MRIQC*). This corresponds to a QC cutoff of at least 5min of RSfMRI to accurately estimate functional connectivity (FC) [Van Dijk et al. 2010, Birn 2023].
 
 ### Quality control task
 
@@ -133,19 +142,12 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 
     Task activation maps will be extracted from the QCT fMRI images and compared across phase encoding directions.
 
-#### FMRI Summary plot
-- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
-    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
-
 ### Breath-holding task
 
 !!! info "The following exclusion criteria are tailored to how the BHT fMRI will be used."
 
-    
-
-#### FMRI Summary plot
-- [ ] Check for prolonged dark deflections accompanied by peaks in the FD trace as a sign for motion outbursts.
-    Exclude the session in case the prolonged dark deflections cover more than half of the scan duration.
+??? important "For task fMRI, you should verify that your subjects are attempting to perform the instructed task."
+    For accurate estimation of task activation, it is essential to check the quality of both the fMRI images and the task behavior [Etzel 2023]. As such, it is important to verify that the subjects were attempting to perform the instructed task (i.e not sleeping and not responding randomly). For QCT, this can be done by verifying that the subjects look at the fixation points and for BHT, you can use the respiration belt to verify that the subjects inhales, exhales and holds his breath when he is suppose to. We will however not spend time developing those QC methods, as we estimate that the participant, being the principal investigator of this project, has enough incentive to follow the tasks accurately.
 
 ## Diffusion MRI
 
@@ -155,31 +157,9 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 
 # References
 
-* Aquino, Kevin M., Ben D. Fulcher, Linden Parkes, Kristina Sabaroedin, and Alex Fornito. 2020. “Identifying and Removing Widespread Signal Deflections from FMRI Data: Rethinking the Global Signal Regression Problem.” NeuroImage 212 (May): 116614. <https://doi.org/10.1016/j.neuroimage.2020.116614>.
+* Birn, Rasmus M. “Quality Control Procedures and Metrics for Resting-State Functional MRI.” Frontiers in Neuroimaging 2 (2023). <https://doi.org/10.3389/fnimg.2023.1072927>.
 
-* Behzadi, Yashar, Khaled Restom, Joy Liau, and Thomas T. Liu. 2007. “A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based FMRI.” NeuroImage 37 (1): 90–101. <https://doi.org/10.1016/j.neuroimage.2007.04.042>.
+* Etzel, Joset A. “Efficient Evaluation of the Open QC Task fMRI Dataset.” Frontiers in Neuroimaging 2 (2023). https://www.frontiersin.org/articles/10.3389/fnimg.2023.1070274.
 
-* Ciric, Rastko, Daniel H. Wolf, Jonathan D. Power, David R. Roalf, Graham L. Baum, Kosha Ruparel, Russell T. Shinohara, et al. 2017. “Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity.” NeuroImage, Cleaning up the fMRI time series: Mitigating noise with advanced acquisition and correction strategies, 154: 174–87. <https://doi.org/10.1016/j.neuroimage.2017.03.020>.
-
-* Cox, R.W., J. Ashbruner, H. Breman, K. Fissell, C. Haselgrove, and C. J. Holmes. 2004. “A (Sort of) New Image Data Format Standard: NIfTI-1.” In the 10th Annual Meeting of the Organization for Human Brain Mapping in Budapest.
-
-* Cusack, Rhodri. 2006. “CommonArtefacts - MRC CBU Imaging Wiki.” March 2006. <https://imaging.mrc-cbu.cam.ac.uk/imaging/CommonArtefacts>.
-
-* Esteban, Oscar, Azeez Adebimpe, Christopher J. Markiewicz, Mathias Goncalves, Ross W. Blair, Matthew Cieslak, Mikaël Naveau, et al. 2021. “The Bermuda Triangle of D- and f-MRI Sailors - Software for Susceptibility Distortions (SDCFlows).” OSF Preprints. <https://doi.org/10.31219/osf.io/gy8nt>.
-
-* Fischl, Bruce. 2012. “FreeSurfer.” NeuroImage 62 (2): 774–81. https://doi.org/10.1016/j.neuroimage.2012.01.021.
-
-* Glen, Daniel R., Paul A. Taylor, Bradley R. Buchsbaum, Robert W. Cox, and Richard C. Reynolds. 2020. “Beware (Surprisingly Common) Left-Right Flips in Your MRI Data: An Efficient and Robust Method to Check MRI Dataset Consistency Using AFNI.” Frontiers in Neuroinformatics 14. <https://www.frontiersin.org/articles/10.3389/fninf.2020.00018>.
-
-* Hutton, Chloe, Andreas Bork, Oliver Josephs, Ralf Deichmann, John Ashburner, and Robert Turner. 2002. “Image Distortion Correction in FMRI: A Quantitative Evaluation.” NeuroImage 16 (1): 217–40. <https://doi.org/10.1006/nimg.2001.1054>.
-
-* Klapwijk, Eduard T., Ferdi van de Kamp, Mara van der Meulen, Sabine Peters, and Lara M. Wierenga. 2019. “Qoala-T: A Supervised-Learning Tool for Quality Control of FreeSurfer Segmented MRI Data.” NeuroImage 189 (April): 116–29. <https://doi.org/10.1016/j.neuroimage.2019.01.014>.
-
-* Power, Jonathan D. 2017. “A Simple but Useful Way to Assess FMRI Scan Qualities.” NeuroImage, Cleaning up the fMRI time series: Mitigating noise with advanced acquisition and correction strategies, 154 (July): 150–58. <https://doi.org/10.1016/j.neuroimage.2016.08.009>.
-
-* Provins, Céline, Yasser Alemán-Gómez, Martine Cleusix, Raoul Jenni, Jonas Richiardi, Patric Hagmann, and Oscar Esteban. 2022. “Defacing Biases Manual and Automated Quality Assessments of Structural MRI with MRIQC.” OSF Preprints. <https://doi.org/10.31219/osf.io/8mcyz>.
-
-* Provins, Céline, Christopher J. Markiewicz, Rastko Ciric, Mathias Goncalves, César Caballero-Gaudes, Russell Poldrack, Patric Hagmann, and Oscar Esteban. 2022. “Quality Control and Nuisance Regression of FMRI, Looking out Where Signal Should Not Be Found.” OSF Preprints. <https://doi.org/10.31219/osf.io/hz52v>.
-
-* White, Tonya, Philip R. Jansen, Ryan L. Muetzel, Gustavo Sudre, Hanan El Marroun, Henning Tiemeier, Anqi Qiu, Philip Shaw, Andrew M. Michael, and Frank C. Verhulst. 2018. “Automated Quality Assessment of Structural Magnetic Resonance Images in Children: Comparison with Visual Inspection and Surface-Based Reconstruction.” Human Brain Mapping 39 (3): 1218–31. <https://doi.org/10.1002/hbm.23911>.
+* Van Dijk, Koene R. A., Trey Hedden, Archana Venkataraman, Karleyton C. Evans, Sara W. Lazar, and Randy L. Buckner. “Intrinsic Functional Connectivity As a Tool For Human Connectomics: Theory, Properties, and Optimization.” Journal of Neurophysiology 103, no. 1 (January 2010): 297–321. <https://doi.org/10.1152/jn.00783.2009>.
 

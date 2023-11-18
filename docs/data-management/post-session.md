@@ -423,6 +423,29 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
 
     !!! danger "Always double-check that data in the annex are uploaded to the RIA store"
 
+### Formal QC
+The BIDS validator automatize the verification that the files are in the right format, that the filenames follow [the BIDS specifications](https://bids-specification.readthedocs.io/en/stable/), that each session contains the same modalities and the consistency of parameters across sessions.
+
+- [ ] Open the [BIDS validator](https://bids-standard.github.io/bids-validator/) in a Web browser.
+
+- [ ] Click on <span class='keypress'>Browse</span> 
+- [ ] A pop up window will appear
+    
+    > **bids-standard.github.io**
+    > 
+    > Are you sure you want to upload all files from “Papers”? Only do this if you trust the site.
+    
+    Click <span class='keypress'>Upload</span>. You do not have to worry, no data will be uploaded to the Web interface, only the folder structure.
+
+- [ ] Verify that there is no unexpected error or warning. If it is not the case, identify the problem and repeat the BIDS conversion of the affected files.
+
+!!! danger "The eye-tracker file will generate an error"
+    Because we are not following the current specification, the eyetracker files will generate the following error:
+    > 1: [ERR] Files with such naming scheme are not part of BIDS specification.
+
+!!! info "If you do not have access to a Web browser (e.g in a HPC)"
+    You can also run the BIDS validator via the command line. See [the README.md in its github repository](https://github.com/bids-standard/bids-validator) for the different ways to run it. It will generate exactly the same error report as the web interface.
+
 ### Visual assessment of unprocessed data with *MRIQC*
 Checking the data quality shortly after they are acquired increases the likelihood of catching systematic artifacts early enough to avert spreading throughout the whole dataset.
 It also modulates the burden of visual inspection over time, such that we avoid overwhelming raters with outbursts of images to assess.

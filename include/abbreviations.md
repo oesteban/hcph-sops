@@ -15,6 +15,8 @@
 *[EPFL]: École Polytechnique Fédérale de Lausanne
 *[EPI]: echo-planar imaging
 *[ET]: eye tracker
+*[FC]: functional connectivity
+*[FD]: framewise displacement
 *[fMRI]: functional MRI
 *[FoV]: field-of-view
 *[GA]: gas analyzer
@@ -25,6 +27,8 @@
 *[hOrus]: HOspital Research Unified data and analytics Services
 *[HRA]: humans research act
 *[HTML]: Hyper Text Markup Language
+*[IQM]: Image Quality Metric
+*[IQMs]: Image Quality Metrics
 *[JSON]: JavaScript Object Notation
 *[LR]: left-to-right
 *[MR]: Magnetic Resonance
