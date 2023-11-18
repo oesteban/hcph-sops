@@ -12,6 +12,17 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     However, individual T1w images may be excluded without such a decision lead to exclusion of the whole session in which it belongs.
     We annotate subjects with visible artifacts in the T1w images in order to ensure rigorous scrutinizing of spatial normalization and surface reconstruction outputs from fMRIPrep (if both modalities passed the first QC checkpoint with MRIQC).
 
+### Background-enhanced mosaic
+- [ ] Check for signal *ripples* around the head typically caused by head motion.
+    Exclude this T1w only if identifying these ripples leads to revising the decision on the brain mosaic.
+- [ ] Check for signal interference leaked from the eyeballs across the PE direction.
+    Exclude this T1w only if identifying these leakages leads to revising the decision on the brain mosaic.
+- [ ] Check for ghosts outside the brain, and evaluate whether they may overlap with brain tissue:
+        - [ ] Overlapping wrap-around.
+        - [ ] Nyquist aliases (typically through PE direction).
+        - [ ] Ghosts caused by external elements such as headsets or mirror frames.
+    Exclude this T1w only if identifying these ghosts leads to revising the decision on the brain mosaic.
+
 ### Zoomed-in brain mosaic:
 - [ ] Check that the brain is not presented upside down. 
     This indicates an issue of the header. 
@@ -29,27 +40,16 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
       
     Exclude this particular T1w if any of these ghosts overlap cortical gray matter.
 
-- [ ] Check for other artifacts such as fat shifts or RF spoiling within the brain.
+- [ ] Check for other artifacts such as [fat shifts](https://mriquestions.com/chemical-shift-artifact.html) or RF spoiling within the brain.
    Exclude this particular T1w if any of these ghosts overlap cortical gray matter.
-- [ ] Check for zipper artifacts and other EM interferences.
+- [ ] Check for [zipper artifacts](https://mriquestions.com/zipper-artifact.html) and other EM interferences.
     Exclude this particular T1w if any of these ghosts overlap cortical gray matter.
 - [ ] Check for excessive B<sub>1</sub> field inhomogeneity.
     Exclude only if it is evident that a coil failure happened.
-- [ ] Check for inhomogeneous *salt-and-pepper* noise patterns.
+- [ ] Check for inhomogeneous [*salt-and-pepper* noise patterns](https://en.wikipedia.org/wiki/Salt-and-pepper_noise).
     Generally, do not exclude this T1w image unless the noise pattern destroys cortical gray matter areas.
-- [ ] Check for global *salt-and-pepper* noise distribution.
+- [ ] Check for global [*salt-and-pepper* noise](https://en.wikipedia.org/wiki/Salt-and-pepper_noise) distribution.
     Generally, do not exclude this T1w image except evident imaging global failure.
-
-### Background-enhanced mosaic
-- [ ] Check for signal *ripples* around the head typically caused by head motion.
-    Exclude this T1w only if identifying these ripples leads to revising the decision on the brain mosaic.
-- [ ] Check for signal interference leaked from the eyeballs across the PE direction.
-    Exclude this T1w only if identifying these leakages leads to revising the decision on the brain mosaic.
-- [ ] Check for ghosts outside the brain, and evaluate whether they may overlap with brain tissue:
-        - [ ] Overlapping wrap-around.
-        - [ ] Nyquist aliases (typically through PE direction).
-        - [ ] Ghosts caused by external elements such as headsets or mirror frames.
-    Exclude this T1w only if identifying these ghosts leads to revising the decision on the brain mosaic.
 
 ... continued ...
 

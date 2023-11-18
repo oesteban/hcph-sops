@@ -23,8 +23,8 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 
 ### Assessing anatomical images (T<sub>1</sub>-weighted and T<sub>2</sub>-weighted)
 - [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the first mosaic (zoomed into brain mask) and apply the [exclusion criteria](qaqc-criteria.md#zoomed-in-brain-mosaic)
-- [ ] Scroll down to the background-enhanced mosaic and apply the [exclusion criteria](qaqc-criteria.md#background-enhanced-mosaic)
+- [ ] Visualize the first mosaic (background-enhanced mosaic) and apply the [exclusion criteria](qaqc-criteria.md#background-enhanced-mosaic)
+- [ ] Scroll down to the zoom in the brain mask mosaic and apply the [exclusion criteria](qaqc-criteria.md#zoomed-in-brain-mosaic)
 - [ ] Assign a quality rating and indicate artifacts with the *Rating widget*.
     To assign a quality rating, follow the [QA/QC criteria]() stated below.
 - [ ] Download the rating file as a JSON and add it to the derivatives dataset.
