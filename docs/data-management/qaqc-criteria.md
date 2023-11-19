@@ -27,6 +27,7 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 - [ ] Check that the brain is not presented upside down. 
     This indicates an issue of the header. 
     Either the header needs to be corrected manually or exclude the session.
+- [ ] Check for potential incidental findings (e.g unusual black hole in the cortex). If you have a doubt about sth, you need to transfer the image to {{ secrets.people.medical_contact | default("███") }} for thorough inspection.
 - [ ] Check for signal *ripples* around the frontal/prefrontal cortex typically caused by head motion.
     Exclude this particular T1w if ripples are clear and globally localized.
     These T1w images could degrade the quality of surface reconstruction. 
@@ -135,6 +136,7 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 
 #### Group report
 - [ ] Exclude sessions for which `fd_perc` > 75% which is the percentage of frames with a framewise displacement (FD) above the motion censoring threshold (by default 0.2mm in *MRIQC*). This corresponds to a QC cutoff of at least 5min of RSfMRI to accurately estimate functional connectivity (FC) [Van Dijk et al. 2010, Birn 2023].
+- [ ] Re-examine the individual visual report of sessions for which `fd_perc` > 50% and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
 
 ### Quality control task
 

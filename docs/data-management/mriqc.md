@@ -37,7 +37,6 @@
     - [ ] If that did not help, you might find help on [NeuroStars](https://neurostars.org/).
     - [ ] If no issue has been opened regarding this error and you did not find answer in NeuroStars, then open an issue in the *MRIQC* github repository. Your description of the problem need to be as complete and detailed as possible to help the maintainers identify the problem efficiently.
 
-
 - [ ] Push the new derivatives to the remote storage.
     ```shell
     datalad push --to ria-storage
