@@ -60,6 +60,7 @@
 *[SSH]: Secure Shell or Secure Socket Shell
 *[TE]: echo time
 *[TR]: repetition time
+*[tSNR]: temporal signal-to-noise ratio
 *[TSV]: tab-separated values
 *[TTL]: transistor-transistor logic
 *[UNIL]: University of Lausanne

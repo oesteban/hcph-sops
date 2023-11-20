@@ -51,8 +51,12 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     Generally, do not exclude this T1w image unless the noise pattern destroys cortical gray matter areas.
 - [ ] Check for global [*salt-and-pepper* noise](https://en.wikipedia.org/wiki/Salt-and-pepper_noise) distribution.
     Generally, do not exclude this T1w image except evident imaging global failure.
+- [ ] Check for low SNR characterized by a grainy picture. Generally, do not exclude this T1w image unless the noise pattern destroys cortical gray matter areas.
 
 ... continued ...
+
+### Group report
+- If they are not excluded yet, re-inspect the individual visual report of the three scans with the lowest SNR and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
 
 
 ## Functional MRI
@@ -77,6 +81,8 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
       Exclude the session if any of these ghosts overlap cortical gray matter.
 
 - [ ] Check for high standard deviation vertical strikes in the saggital plane of the standard deviation map.
+
+- [ ] Check for low SNR characterized by a grainy picture. This dataset is specifically subject to this artifact, because multiband acceleration was used.
 
 ??? warning "Do not exclude subjects presenting susceptibility distortion artifacts yet!"
 
@@ -121,7 +127,9 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 #### Group report
 - [ ] If they are not excluded yet, re-inspect the individual visual report of the three scans with the highest mean FD and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
 
-- [ ] If they are not excluded yet, re-inspect the individual visual report of the three scans with the highest temporal signal-to-noise ratio (tSNR) and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
+- [ ] If they are not excluded yet, re-inspect the individual visual report of the three scans with the highest tSNR and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
+
+- [ ] If they are not excluded yet, re-inspect the individual visual report of the three scans with the lowest SNR and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
 
 ### Resting-state
 
