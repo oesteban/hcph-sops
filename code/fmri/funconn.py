@@ -23,13 +23,13 @@
 """ Python script to denoise and aggregate timeseries and, using the latter, compute
 functional connectivity matrices from BIDS derivatives (e.g. fmriprep).
 
-Run as (see 'python compute_fc.py -h' for options):
+Run as (see 'python funconn.py -h' for options):
 
-    python compute_fc.py path_to_BIDS_derivatives
+    python funconn.py path_to_BIDS_derivatives
 
 In the context of HCPh (pilot), it would be:
 
-    python compute_fc.py /data/datasets/hcph-pilot/derivatives/fmriprep-23.1.4/
+    python funconn.py /data/datasets/hcph-pilot/derivatives/fmriprep-23.1.4/
 """
 
 import argparse
