@@ -56,7 +56,7 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 ... continued ...
 
 ### Group report
-- If they are not excluded yet, re-inspect the individual visual report of the three scans with the lowest SNR and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
+- [ ] Check again the individual visual report of runs with outlying-low SNR, ensuring they do not fall into one of the [exclusion criteria](#functional-mri).
 
 
 ## Functional MRI

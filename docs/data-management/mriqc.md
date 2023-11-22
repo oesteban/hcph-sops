@@ -10,8 +10,9 @@
         --output ./derivatives/mriqc-23.1.0 \
         "{inputs} {outputs} participant --session-id ${lastsession} -w ${HOME}/tmp/hcph-derivatives/mriqc-23.1.0 --mem 40G"
     ```
-- [ ] Check that *MRIQC* generated all expected derivatives. For each session, you should have the following files:
-    ``` {.shell hl_lines="22-23 40-41 58-59"}
+- [ ] Check that *MRIQC* generated all expected individual reports.
+    For each session, the following files must be generated:
+    ``` text
     derivatives
         ├── mriqc_23.2.0
         │   ├── dataset_description.json
@@ -21,22 +22,24 @@
         │   ├── sub-001_ses-001_acq-original_T2w.html
         │   ├── sub-001_ses-001_acq-undistorted_T1w.html
         │   ├── sub-001_ses-001_acq-undistorted_T2w.html
-        │   ├── sub-001_ses-001_task-bht_dir-AP_part-mag_bold.html
-        │   ├── sub-001_ses-001_task-bht_dir-AP_part-phase_bold.html
-        │   ├── sub-001_ses-001_task-qct_dir-AP_part-mag_bold.html
-        │   ├── sub-001_ses-001_task-qct_dir-AP_part-phase_bold.html
-        │   ├── sub-001_ses-001_task-rs_dir-AP_part-mag_bold.html
-        │   ├── sub-001_ses-001_task-rs_dir-AP_part-phase_bold.html
+        │   ├── sub-001_ses-001_task-bht_dir-AP_bold.html
+        │   ├── sub-001_ses-001_task-qct_dir-AP_bold.html
+        │   ├── sub-001_ses-001_task-rest_dir-AP_bold.html
     ```
 
-??? warning "Not all *MRIQC* derivatives were generated"
+    ??? bug "*MRIQC* failed to produce all the expected visual reports"
 
-    - [ ] If some derivatives are missing, it is a sign that *MRIQC* encountered an error. Identify what failed in the "About > Errors" section of the visual report or in the log of the *MRIQC* run.
-    - [ ] If you could find the solution to the problem, re-run *MRIQC* on that particular subject implementing this solution.
-    - [ ] In case you do not understand the error message, search for associated keywords in the [issues of the *MRIQC* github repository](https://github.com/nipreps/mriqc/issues); it is likely someone else experienced the same problem before you and reported it. The solution might be documented in the issue. Don't forget to check closed issues!
-    - [ ] If that did not help, you might find help on [NeuroStars](https://neurostars.org/).
-    - [ ] If no issue has been opened regarding this error and you did not find answer in NeuroStars, then open an issue in the *MRIQC* github repository. Your description of the problem need to be as complete and detailed as possible to help the maintainers identify the problem efficiently.
+        Depending on the specific error condition hit by *MRIQC*, some visual reports may not be generated at all.
+        
+        - [ ] Check for corresponding *crash files* under the `logs/` directory under the output folder.
+        - [ ] Address the issue (e.g., insufficient disk space) and re-run *MRIQC*.
+            If the issue is unclear, search for similar problems reported previously in the [issues of the *MRIQC* GitHub repository](https://github.com/nipreps/mriqc/issues).
+            The solution could be documented in some existing issue opened by a user who experienced the same problem before you and reported it.
+            Don't forget to check closed issues!
+            If that did not help, you might find help on [NeuroStars](https://neurostars.org/).
+        - [ ] Open a new issue in the *MRIQC* GitHub repository if all the above fails.
 
+- [ ] Check that the `group_{T1w,T2w,bold,dwi}.tsv` file contains the image quality metrics (IQMs) for all the expected inputs (one row per individual run at the input).
 - [ ] Push the new derivatives to the remote storage.
     ```shell
     datalad push --to ria-storage
@@ -50,6 +53,14 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 
 ### Assessing anatomical images (T<sub>1</sub>-weighted and T<sub>2</sub>-weighted)
 - [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Check that the visual report is complete when you open it.
+
+    ??? bug "A visual report is incomplete"
+
+        - [ ] Identify what failed in the "About > Errors" section of the visual report.
+        - [ ] Address the issue (e.g., out-of-memory when running a container) and re-run *MRIQC*.
+            Proceed as in the previous case by finding documentation on the *MRIQC* repository or NeuroStars.
+
 - [ ] Visualize the first mosaic (background-enhanced mosaic) and apply the [exclusion criteria](qaqc-criteria.md#background-enhanced-mosaic)
 - [ ] Scroll down to the zoom in the brain mask mosaic and apply the [exclusion criteria](qaqc-criteria.md#zoomed-in-brain-mosaic)
 - [ ] Assign a quality rating and indicate artifacts with the *Rating widget*.
@@ -60,7 +71,7 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 
 ### Assessing functional images
 
-!!! danger "Insufficient quality of an fMRI run requires recalling the session"
+!!! danger "Insufficient quality of an RSfMRI run requires recalling the session"
 
     - [ ] Immediately report images deemed *exclude*, as an issue in the dataset's repository.
     - [ ] Proceed to scheduling an extra session after the initially-planned scanning period.
@@ -93,7 +104,6 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 - [ ] Visualize the IQMs distributions and apply the [exclusion critera](qaqc-criteria.md#group-report) for all BOLD scans and apply [these exclusion criteria](qaqc-criteria.md#group-report-1) to RSfMRI.
 
 ### Assessing diffusion images
-
 
 !!! danger "Insufficient quality of a dMRI run requires recalling the session"
 

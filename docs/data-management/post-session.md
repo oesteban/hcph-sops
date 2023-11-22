@@ -424,20 +424,11 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
     !!! danger "Always double-check that data in the annex are uploaded to the RIA store"
 
 ### Formal QC
-The BIDS validator automatize the verification that the files are in the right format, that the filenames follow [the BIDS specifications](https://bids-specification.readthedocs.io/en/stable/), that each session contains the same modalities and the consistency of parameters across sessions.
 
-- [ ] Open the [BIDS validator](https://bids-standard.github.io/bids-validator/) in a Web browser.
-
-- [ ] Click on <span class='keypress'>Browse</span> 
-- [ ] A pop up window will appear
-    
-    > **bids-standard.github.io**
-    > 
-    > Are you sure you want to upload all files from “Papers”? Only do this if you trust the site.
-    
-    Click <span class='keypress'>Upload</span>. You do not have to worry, no data will be uploaded to the Web interface, only the folder structure.
-
-- [ ] Verify that there is no unexpected error or warning. If it is not the case, identify the problem and repeat the BIDS conversion of the affected files.
+- [ ] Run the *BIDS Validator* to check the *formal* quality of the dataset (filenames, homogeneity of modalities and parameters across sessions, etc.)
+    ``` shell
+    docker run ...
+    ```
 
 !!! danger "The eye-tracker file will generate an error"
     Because we are not following the current specification, the eyetracker files will generate the following error:
