@@ -72,4 +72,4 @@ In the end, the data structure will look like this:
 - [ ] Visualize the DOF distribution and apply the [exclusion criteria](qaqc-criteria.md#dof-distribution).
 - [ ] Scroll down to the FC distributions and apply the [exclusion criteria](qaqc-criteria.md#fc-distributions).
 - [ ] Scroll down to the QC-FC distributions and apply the [exclusion criteria](qaqc-criteria.md#qc-fc-distributions).
-- [ ] Scroll down to the plot QC-FC versus euclidean distance and apply the [exclusion criteria] (qaqc-criteria.md#qc-fc-versus-eucliden-distance)
+- [ ] Scroll down to the plot QC-FC versus euclidean distance and apply the [exclusion criteria](qaqc-criteria.md#qc-fc-versus-eucliden-distance)

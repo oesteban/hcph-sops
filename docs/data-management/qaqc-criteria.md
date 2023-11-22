@@ -1,10 +1,10 @@
 # QA/QC criteria for denoised data
 
 ## DOF distribution
-- [ ] Check that the DOF for each session has a large positive value. If the some DOF are close to zero or negative, revise the preprocessing to increase the motion censoring threshold, include less regressors or tweak/eliminate band-pass filtering.
+- [ ] Check that the DOF for each session has a large positive value. If some DOF are close to zero or negative, revise the preprocessing to increase the motion censoring threshold, include less regressors or tweak/eliminate band-pass filtering.
 
 ## FC distributions
-- [ ] Check that the FC distributions appear similar across sessions and are gaussians, centered approximately around zero with a small positive mean [Morfini et al. 2023].If the FC distributions appear shifted towards positive values, skewed, flat or bimodal, the denoising was either too aggressive for the number of functional frames available or the BOLD signal is still contaminated with residual noise.
+- [ ] Check that the FC distributions appear similar across sessions and are gaussians, centered approximately around zero with a small positive mean [Morfini et al. 2023]. If the FC distributions appear shifted towards positive values, skewed, flat or bimodal, the denoising was either too aggressive for the number of functional frames available or the BOLD signal is still contaminated with residual noise.
     - [ ] If the sessions with a non-conform distribution present a DOF close to zero or negative, revise the preprocessing to increase the motion censoring threshold, include less regressors or tweak/eliminate band-pass filtering.
     - [ ] If the DOF has a large positive value, exclude the sessions with the non-conform distribution.
 
