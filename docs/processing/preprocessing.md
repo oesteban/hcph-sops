@@ -46,7 +46,17 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
 Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be assessed before after preprocessing to verify it did not go awry.
 
 - [ ] Open each *fMRIPrep* report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the first mosaic () and apply the [exclusion criteria](qaqc-criteria.md#background-enhanced-mosaic)
-- [ ] Scroll down to the and apply the [exclusion criteria]()
+- [ ] Visualize the first section entitled `Summary` and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#summary).
+- [ ] Scroll down to the next section entitled `Anatomical conformation` and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#anatomical-conformation).
+- [ ] Scroll down to the first mosaic (brain mask and brain tissue segmentation) and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#brain-mask-and-brain-tissue-segmentation-of-the-t1w).
+- [ ] Scroll down to the dynamic visualization of the spatial normalization and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#spatial-normalization-of-the-anatomical-t1w-reference).
+- [ ] Scroll down to the next mosaic (surface reconstruction) and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#surface-reconstruction).
+- [ ] Scroll down to the functional section, starting with the textual summary and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#textual-summary).
+- [ ] Next, apply the [exclusion criteria](qaqc-criteria-preprocessed.md#t2-map) for the T2* map mosaic.
+- [ ] Scroll down to the histogram of T2* gray-matter values and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#t2-gray-matter-values).
+- [ ] Visualize the dynamic visualization of the co-registration by hovering your mouse on the image to make it toggle and removing it from the image for pausing. Apply the [exclusion criteria](qaqc-criteria-preprocessed.md#alignment-of-functional-and-anatomical-mri-data).
+- [ ] Visualize the next mosaic and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#brain-mask-and-anatomicaltemporal-compcor-rois).
+- [ ] Skip to the BOLD summary and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#bold-summary).
+- [ ] Scroll down to the heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-among-nuisance-regressors) you will include in the nuisance regression model.
 
 !!! warning "Immediately report images deemed *exclude*, as an issue in the dataset's repository"

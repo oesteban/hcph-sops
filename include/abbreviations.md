@@ -5,6 +5,7 @@
 *[BOLD]: blood-oxygen-level dependent
 *[CHUV]: Lausanne University Hospital
 *[CR]: corneal reflection
+*[CSF]: cerebrospinal fluid
 *[DICOM]: Digital Imaging and Communications in Medicine
 *[dMRI]: diffusion MRI
 *[DOI]: digital object identifier
@@ -17,6 +18,7 @@
 *[fMRI]: functional MRI
 *[FoV]: field-of-view
 *[GA]: gas analyzer
+*[GM]: gray matter
 *[GRE]: gradient-recalled echo
 *[HCPh]: Human Connectome Phantom (this project)
 *[HPC]: high-performance computing
@@ -24,6 +26,7 @@
 *[hOrus]: HOspital Research Unified data and analytics Services
 *[HRA]: humans research act
 *[HTML]: Hyper Text Markup Language
+*[INU]: intensity non-uniformity
 *[JSON]: JavaScript Object Notation
 *[LR]: left-to-right
 *[MR]: Magnetic Resonance
@@ -45,6 +48,8 @@
 *[RB]: respiration belt
 *[RIA]: Remote Indexed Archives
 *[RL]: right-to-left
+*[ROI]: region-of-interest
+*[ROIs]: regions-of-interest
 *[RSfMRI]: resting-state fMRI
 *[SLURM]: Slurm Workload Manager, formerly known as Simple Linux Utility for Resource Management
 *[SMS]: Short Message Service
@@ -58,4 +63,5 @@
 *[UNIL]: University of Lausanne
 *[USB]: Universal Serial Bus
 *[W3C]: World Wide Web Consortium
+*[WM]: white matter
 *[YODA]: YODA's Organigram on Data Analysis
