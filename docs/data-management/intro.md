@@ -15,26 +15,26 @@ flowchart TB
     subgraph et_pc[Eye-tracker Computer]
     end
 
-    subgraph psychopy_pc["Stimuli presentation Laptop ({{ secrets.hosts.psychopy | default("███") }})"]
+    subgraph psychopy_pc["Stimuli Presentation Laptop ({{ secrets.hosts.psychopy | default("███") }})"]
     end
 
-    subgraph local_data[Local Storage]
+    subgraph local_data[<b>Local Storage</b>]
         raw_mri[Raw MRI]
         bids_mri[BIDS MRI]
-        bids_phys[BIDS physio]
+        bids_phys[BIDS Physio]
         bids_edf[BIDS edf]
     end
 
-    subgraph dropbox[Dropbox]
-        raw_phys[Raw physio]
+    subgraph dropbox[<b>Dropbox</b>]
+        raw_phys[Raw Physio]
         raw_edf[Raw edf]
     end
     
-    subgraph datalad[DataLad]
+    subgraph datalad[<b>DataLad</b>]
         bids_mri_datalad[BIDS MRI]
-        bids_phys_datalad[BIDS physio]
+        bids_phys_datalad[BIDS Physio]
         bids_edf_datalad[BIDS edf]
-        %%bids_phys_datalad[BIDS physio]
+        %%bids_phys_datalad[BIDS Physio]
 
         mriqc_out[Visual reports]
         preproc_fMRI[Preprocessed fMRI]
@@ -42,11 +42,11 @@ flowchart TB
 
         FC
 
-        dti_out[dMRI derivatives]
+        dti_out[dMRI Derivatives]
         SC
     end
     
-    subgraph openneuro[Open Neuro Datasets]
+    subgraph openneuro[<b>Open Neuro Datasets</b>]
         unprocessed[Unprocessed Dataset]
         processed[Preprocessed Dataset]
         connectivity[SC, FC]
@@ -56,31 +56,31 @@ flowchart TB
         rel_3[HCPh Release 3]
     end
 
-    PACS --->|pacsman Script| raw_mri
+    PACS --->|<i>pacsman</i> Script| raw_mri
     physio -->|Dropbox Sync| raw_phys
     et_pc -->|Psychopy| psychopy_pc
     psychopy_pc --> |Dropbox Sync| raw_edf
     
-    raw_mri -->|HeudiConv script| bids_mri
-    raw_phys --->|phys2bids script| bids_phys
-    raw_edf ---> |edf2bids script| bids_edf
+    raw_mri -->|<i>HeudiConv</i> Script| bids_mri
+    raw_phys --->|<i>phys2bids</i> Script| bids_phys
+    raw_edf ---> |<i>edf2bids</i> Script| bids_edf
 
-    bids_mri -->|FIRST session only !| med[Clinical screening]
-    med -->|"Incidental(s)"| alert[Alert participant]
+    bids_mri -->|FIRST Session Only !| med[Clinical Screening]
+    med -->|"Incidental(s)"| alert[Alert Participant]
     class alert imp
 
-    local_data --->|cron Job| HOrUs
+    local_data --->|<i>cron</i> Job| HOrUs
     HOrUs ---> datalad
     bids_mri_datalad -->|MRIQC| mriqc_out[Visual Reports]
 
     mriqc_out -->|Q'Kay| mri_qc_screen[Screening]
-    mri_qc_screen -->|exclusion criterium met| Reschedule
+    mri_qc_screen -->|Exclusion Criterium Met| Reschedule
     class Reschedule imp
 
     bids_mri_datalad -->|fMRIPrep| preproc_fMRI[Preprocessed fMRI]
     bids_mri_datalad -->|dMRIPrep| preproc_dMRI[Preprocessed dMRI]
     
-    bids_mri_datalad -->|pydeface Script| unprocessed
+    bids_mri_datalad -->|<i>pydeface</i> Script| unprocessed
     %%mriqc_out --> unprocessed
 
     preproc_dMRI --> processed
@@ -92,7 +92,7 @@ flowchart TB
     %%regressed --- filtered
     %%bids_phys_datalad --- filtered
     %%filtered --> FC
-    preproc_fMRI --->|compute_fc Script| FC
+    preproc_fMRI --->|<i>compute_fc</i> Script| FC
 
     %% dMRI pipeline
     %%preproc_dMRI --- dti_dki
