@@ -22,9 +22,36 @@
 #
 """ Python module for loading and saving fMRI related data"""
 
+import os
+import os.path as op
+from collections import defaultdict
+import logging
+from typing import Optional, Union
+
+from bids import BIDSLayout
+import numpy as np
+from nibabel import loadsave
+from bids.layout import parse_file_entities
+from bids.layout.writing import build_path
+from nilearn.datasets import fetch_atlas_difumo
+from nilearn.interfaces.fmriprep.load_confounds import _load_single_confounds_file
+
+
+TIMESERIES_PATTERN: list = [
+    "sub-{subject}[/ses-{session}]/func/sub-{subject}"
+    "[_ses-{session}][_task-{task}][_desc-{desc}]"
+    "_{suffix}{extension}"
+]
+TIMESERIES_FILLS: dict = {"desc": "denoised", "extension": ".tsv"}
+CONFOUND_PATTERN: list = [
+    "sub-{subject}[_ses-{session}][_task-{task}][_part-{part}][_desc-{desc}]"
+    "_{suffix}{extension}"
+]
+CONFOUND_FILLS: dict = {"desc": "confounds", "suffix": "timeseries", "extension": "tsv"}
+
 
 def separate_by_similar_values(
-    input_list: list, external_value: Optional[list] = None
+    input_list: list, external_value: Optional[Union[list, np.ndarray]] = None
 ) -> dict:
     """This returns elements of `input_list` with similar values (optionally set by
     `external_value`) separated into sub-lists.
@@ -129,7 +156,7 @@ def get_func_filenames_bids(
     return separated_files, separated_trs
 
 
-def get_bids_savename(filename: str, patterns: list = FC_PATTERN, **kwargs) -> str:
+def get_bids_savename(filename: str, patterns: list, **kwargs) -> str:
     """Return the BIDS filename following the specified patterns and modifying the
     entities from the keywords arguments.
 
@@ -152,7 +179,7 @@ def get_bids_savename(filename: str, patterns: list = FC_PATTERN, **kwargs) -> s
 
     bids_savename = build_path(entity, patterns)
 
-    return bids_savename
+    return str(bids_savename)
 
 
 def get_atlas_data(atlas_name: str = "DiFuMo", **kwargs) -> dict:
@@ -277,3 +304,64 @@ def load_timeseries(func_filename: list[str], output: str) -> list[np.ndarray]:
         )
 
     return loaded_ts
+
+
+def get_confounds_manually(func_filename: list[str], **kwargs) -> tuple[list, list]:
+    """Manually load the fMRIPrep confounds.
+
+    Parameters
+    ----------
+    func_filename : list[str]
+        List of BIDS functional filenames
+
+    Returns
+    -------
+    tuple[list, list]
+        Two lists, one with the loaded confounds (for each input file) and one with the
+        corresponding sample mask.
+    """
+    confounds, sample_mask = [], []
+
+    for filename in func_filename:
+        dir_name = op.dirname(filename)
+        confounds_file = op.join(
+            dir_name,
+            get_bids_savename(filename, patterns=CONFOUND_PATTERN, **CONFOUND_FILLS),
+        )
+
+        # confounds_json_file = load_confounds._get_json(confounds_file)
+        confounds_json_file = confounds_file.replace("tsv", "json")
+        individual_sm, individual_conf = _load_single_confounds_file(
+            confounds_file=confounds_file,
+            confounds_json_file=confounds_json_file,
+            **kwargs,
+        )
+        confounds.append(individual_conf)
+        sample_mask.append(individual_sm)
+
+    return confounds, sample_mask
+
+
+def save_output(
+    data_list: list[np.ndarray],
+    original_filenames: list[str],
+    output: str,
+    **kwargs,
+) -> None:
+    """Save the output files.
+
+    Parameters
+    ----------
+    data_list : list[np.ndarray]
+        List of data arrays (usually timeseries or matrices)
+    original_filenames : list[str]
+        List of original filenames
+    output : Optional[str], optional
+        Path to the output directory, by default None
+    """
+    for data, filename in zip(data_list, original_filenames):
+        path_to_save = get_bids_savename(filename, **kwargs)
+        saveloc = op.join(output, path_to_save)
+        logging.debug(f"Saving data of type {type(data)} to: {saveloc}")
+        os.makedirs(op.dirname(saveloc), exist_ok=True)
+        np.savetxt(saveloc, data, delimiter="\t")

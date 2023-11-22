@@ -22,13 +22,30 @@
 #
 """ Python module for functional connectivity visual reports """
 
+import logging
+import os
+import os.path as op
+from typing import Optional, Union
+
+import matplotlib.pyplot as plt
 import numpy as np
 from pandas import Series
-import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
 from matplotlib.cm import get_cmap
 from matplotlib.lines import Line2D
-from typing import Optional, Union
+from nilearn.plotting import plot_design_matrix, plot_matrix
+
+from load_save import get_bids_savename
+
+
+FIGURE_PATTERN: list = [
+    "sub-{subject}/figures/sub-{subject}[_ses-{session}]"
+    "[_task-{task}][_meas-{meas}][_desc-{desc}]"
+    "_{suffix}{extension}",
+    "sub-{subject}/figures/sub-{subject}[_ses-{session}]"
+    "[_task-{task}][_desc-{desc}]_{suffix}{extension}",
+]
+FIGURE_FILLS: dict = {"extension": "png"}
 
 TS_FIGURE_SIZE: tuple = (50, 25)
 FC_FIGURE_SIZE: tuple = (50, 45)
@@ -38,7 +55,7 @@ NETWORK_CMAP: str = "turbo"
 
 def plot_timeseries_carpet(
     timeseries: np.ndarray,
-    labels: Optional[list[str]] = None,
+    labels: Optional[Union[list[str], np.ndarray]] = None,
     networks: Optional[Series] = None,
 ) -> list[Axes]:
     """Plot the timeseries as a carpet plot.
@@ -127,7 +144,7 @@ def plot_timeseries_carpet(
 
 def plot_timeseries_signal(
     timeseries: np.ndarray,
-    labels: Optional[list[str]] = None,
+    labels: Optional[Union[list[str], np.ndarray]] = None,
     networks: Optional[Series] = None,
     vert_scale: float = 5,
     margin_value: float = 0.01,
@@ -190,7 +207,7 @@ def plot_timeseries_signal(
                 marker="s",
                 color="w",
                 label=net,
-                markerfacecolor=net_cmap(val - 1),
+                markerfacecolor=net_cmap(val - 1),  # type: ignore
                 markersize=15,
             )
             for net, val in net_dict.items()
@@ -319,7 +336,7 @@ def visual_report_fc(
     matrix: np.ndarray,
     filename: str,
     output: str,
-    labels: Optional[list] = None,
+    labels: Optional[Union[list, np.ndarray]] = None,
     **kwargs,
 ) -> None:
     """Plot and save the functional connectivity visual reports.
@@ -336,11 +353,11 @@ def visual_report_fc(
         Labels of the atlas ROIs, by default None
     """
     fc_saveloc = get_bids_savename(
-        filename, patterns=FIGURE_PATTERN, desc="heatmap", **kwargs
+        filename, patterns=FIGURE_PATTERN, desc="heatmap", **FIGURE_FILLS, **kwargs
     )
     _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
 
-    plot_matrix(matrix, labels=list(labels), axes=ax, vmin=-1, vmax=1)
+    plot_matrix(matrix, labels=list(labels), axes=ax, vmin=-1, vmax=1)  # type: ignore
     ax.tick_params(labelsize=LABELSIZE)
 
     # Update the size of the colorbar labels

@@ -36,31 +36,29 @@ import argparse
 import logging
 import os
 import os.path as op
-from collections import defaultdict
 from itertools import chain
 from typing import Optional, Union
 
-import matplotlib.pyplot as plt
 import numpy as np
-from bids import BIDSLayout
-from bids.layout import parse_file_entities
-from bids.layout.writing import build_path
-from matplotlib.axes import Axes
-from matplotlib.cm import get_cmap
-from matplotlib.lines import Line2D
-from nibabel import loadsave
 from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
-from pandas import Series
 from sklearn.covariance import GraphicalLassoCV, LedoitWolf
 
 from nilearn._utils import stringify_path
 from nilearn.connectome import ConnectivityMeasure, vec_to_sym_matrix
-from nilearn.datasets import fetch_atlas_difumo
 from nilearn.interfaces.fmriprep import load_confounds
-from nilearn.interfaces.fmriprep.load_confounds import _load_single_confounds_file
 from nilearn.maskers import MultiNiftiMapsMasker
-from nilearn.plotting import plot_design_matrix, plot_matrix
 from nilearn.signal import _handle_scrubbed_volumes, _sanitize_confounds, clean
+
+from reports import plot_interpolation, visual_report_timeserie, visual_report_fc
+from load_save import (
+    find_derivative,
+    check_existing_output,
+    get_atlas_data,
+    get_confounds_manually,
+    get_func_filenames_bids,
+    save_output,
+    load_timeseries,
+)
 
 FC_PATTERN: list = [
     "sub-{subject}[/ses-{session}]/func/sub-{subject}"
@@ -74,19 +72,6 @@ TIMESERIES_PATTERN: list = [
     "_{suffix}{extension}"
 ]
 TIMESERIES_FILLS: dict = {"desc": "denoised", "extension": ".tsv"}
-FIGURE_PATTERN: list = [
-    "sub-{subject}/figures/sub-{subject}[_ses-{session}]"
-    "[_task-{task}][_meas-{meas}][_desc-{desc}]"
-    "_{suffix}{extension}",
-    "sub-{subject}/figures/sub-{subject}[_ses-{session}]"
-    "[_task-{task}][_desc-{desc}]_{suffix}{extension}",
-]
-FIGURE_FILLS: dict = {"extension": "png"}
-CONFOUND_PATTERN: list = [
-    "sub-{subject}[_ses-{session}][_task-{task}][_part-{part}][_desc-{desc}]"
-    "_{suffix}{extension}"
-]
-CONFOUND_FILLS: dict = {"desc": "confounds", "suffix": "timeseries", "extension": "tsv"}
 
 DENOISING_STRATEGY: list = ["high_pass", "motion", "scrub"]
 
@@ -213,42 +198,6 @@ def get_arguments() -> argparse.Namespace:
     return args
 
 
-def get_confounds_manually(func_filename: list[str], **kwargs) -> tuple[list, list]:
-    """Manually load the fMRIPrep confounds.
-
-    Parameters
-    ----------
-    func_filename : list[str]
-        List of BIDS functional filenames
-
-    Returns
-    -------
-    tuple[list, list]
-        Two lists, one with the loaded confounds (for each input file) and one with the
-        corresponding sample mask.
-    """
-    confounds, sample_mask = [], []
-
-    for filename in func_filename:
-        dir_name = op.dirname(filename)
-        confounds_file = op.join(
-            dir_name,
-            get_bids_savename(filename, patterns=CONFOUND_PATTERN, **CONFOUND_FILLS),
-        )
-
-        # confounds_json_file = load_confounds._get_json(confounds_file)
-        confounds_json_file = confounds_file.replace("tsv", "json")
-        individual_sm, individual_conf = _load_single_confounds_file(
-            confounds_file=confounds_file,
-            confounds_json_file=confounds_json_file,
-            **kwargs,
-        )
-        confounds.append(individual_conf)
-        sample_mask.append(individual_sm)
-
-    return confounds, sample_mask
-
-
 def fit_transform_patched(
     func_filename: list[str],
     atlas_filename: str,
@@ -355,6 +304,7 @@ def interpolate_and_denoise_timeseries(
             f"length {len(sm)}"
         )
 
+        # This is required as we are manually doing some internal Nilearn machinery
         conf = _sanitize_confounds(ts.shape[0], n_runs=1, confounds=conf)
         conf = stringify_path(conf)
 
@@ -569,31 +519,6 @@ def compute_connectivity(
     return vec_to_sym_matrix(connectivity_measures, diagonal=np.zeros((n_ts, n_area)))
 
 
-def save_output(
-    data_list: list[np.ndarray],
-    original_filenames: list[str],
-    output: Optional[str] = None,
-    **kwargs,
-) -> None:
-    """Save the output files.
-
-    Parameters
-    ----------
-    data_list : list[np.ndarray]
-        List of data arrays (usually timeseries or matrices)
-    original_filenames : list[str]
-        List of original filenames
-    output : Optional[str], optional
-        Path to the output directory, by default None
-    """
-    for data, filename in zip(data_list, original_filenames):
-        path_to_save = get_bids_savename(filename, **kwargs)
-        saveloc = op.join(output, path_to_save)
-        logging.debug(f"Saving data of type {type(data)} to: {saveloc}")
-        os.makedirs(op.dirname(saveloc), exist_ok=True)
-        np.savetxt(saveloc, data, delimiter="\t")
-
-
 def main():
     args = get_arguments()
 
@@ -766,7 +691,6 @@ def main():
                 output=output,
                 labels=atlas_labels,
                 meas=fc_label,
-                **FIGURE_FILLS,
             )
 
     logging.info(
