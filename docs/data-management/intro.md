@@ -74,7 +74,7 @@ flowchart TB
     bids_mri_datalad -->|MRIQC| mriqc_out[Visual Reports]
 
     mriqc_out -->|Q'Kay| mri_qc_screen[Screening]
-    mri_qc_screen -->|QCs not ok| Reschedule
+    mri_qc_screen -->|exclusion criterium met| Reschedule
     class Reschedule imp
 
     bids_mri_datalad -->|fMRIPrep| preproc_fMRI[Preprocessed fMRI]
@@ -117,6 +117,6 @@ flowchart TB
 The above graph can be detailed into two main data workflows:
 
 1. **MRI data**.
-    Stored on the CHUV PACS, the raw MRI data should first be locally [converted to BIDS](post-session.md/#convert-imaging-data-to-bids-with-heudiconv). Then both the raw and BIDS compliant data are to be synchronized with the [*Datalad* dataset](preliminary.md/#adding-data-or-metadata). From there, the BIDS compliant data can be [pre-processed](../processing/preprocessing.md) using the corresponding packages (e.g. *fMRIPrep*, *dMRIPrep*) to allow computation of analysis-grade derivatives (e.g. [functional](../processing/functional-connectivity.md) or structural connectivity).
+    Stored on the CHUV PACS, the raw MRI data should first be locally [converted to BIDS](post-session.md/#convert-imaging-data-to-bids-with-heudiconv). Then both the raw and BIDS compliant data are to be synchronized with the [*Datalad* dataset](preliminary.md/#adding-data-or-metadata). From there, the BIDS compliant data can be [quality controlled](./mriqc.md) and [pre-processed](../processing/preprocessing.md) using the corresponding packages (e.g. *MRIQC*, *fMRIPrep*, *dMRIPrep*) to allow computation of analysis-grade derivatives (e.g. [functional](../processing/functional-connectivity.md) or structural connectivity).
 2. **Physiological data**.
     Physiological data stored in the *stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }}) and the *physio-recording Laptop* ({{ secrets.hosts.acqknowledge | default("███") }}) are synchronized with a cloud storage using *Dropbox*. The *AcqKnowledge* and ET physiological data are converted to BIDS using [*phys2bids*](physio-to-bids.ipynb) and *etf2bids* respectively. **Further processing steps such as denoising should be defined soon.**
