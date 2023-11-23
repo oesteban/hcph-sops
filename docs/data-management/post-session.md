@@ -526,6 +526,33 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
 
     !!! danger "Always double-check that data in the annex are uploaded to the RIA store"
 
+### Formal QC
+
+- [ ] Consult the [session logs](../data-collection/tear-up.md#start-a-new-session-log-form) to anticipate session peculiarities (e.g the session was aborted prematurely) and potential quality issues (e.g the participan fell asleep). Those are saved in [the issues of our repository](https://github.com/TheAxonLab/hcph-sops/issues) with the label <span class="consolebutton brown">scan</span>. Keep note of the peculiar events, associated with their session index, and keep it close to you during quality control.
+
+- [ ] Run the *BIDS Validator* to check the *formal* quality of the dataset (filenames, homogeneity of modalities and parameters across sessions, etc.)
+    ``` shell
+
+    docker run -ti --rm -v {{ secrets.data.path_data_sherlock | default('/path/to/data/') }}:/data:ro bids/validator /data
+    ```
+- [ ] Only the following ERRORS are expected. Errors that are not among this list should be addressed and BIDS conversion should be re-run on the affected files:
+    - [ ] Because we are not following the current specification, the eyetracker files will generate the following error:
+    > 1: [ERR] Files with such naming scheme are not part of BIDS specification.
+
+- [ ] Only the following WARNING are expected. Warnings that are not among this list should be addressed and BIDS conversion should be re-run on the affected files:
+    - [ ] During the piloting phase of the study, we tried out different sequence parameters and sequence type. As such, the following warning is expected:
+    > 2: [WARN] Not all subjects/sessions/runs have the same scanning parameters. (code: 39 - INCONSISTENT_PARAMETERS)
+
+    - [ ] At first, we did not know that we need to select a field at the console to save the phase fielmap image, so the `_phasediff.nii.gz` is missing for some pilot sessions:
+    > 5: [WARN] Each _phasediff.nii[.gz] file should be associated with a _magnitude1.nii[.gz] file. (code: 92
+    > MISSING_MAGNITUDE1_FILE)
+    >
+    >   ./sub-001/ses-pilot001/fmap/sub-001_ses-pilot001_phasediff.nii.gz
+    >
+    >   ./sub-001/ses-pilot004/fmap/sub-001_ses-pilot004_phasediff.nii.gz
+    >
+    >   ./sub-001/ses-pilot006/fmap/sub-001_ses-pilot006_phasediff.nii.gz
+
 ### Visual assessment of unprocessed data with *MRIQC*
 
 Checking the data quality shortly after they are acquired increases the likelihood of catching systematic artifacts early enough to avert spreading throughout the whole dataset.
