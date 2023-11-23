@@ -61,54 +61,70 @@ In addition, *MRIQC* is executed prior any further processing step considering o
         - [ ] Address the issue (e.g., out-of-memory when running a container) and re-run *MRIQC*.
             Proceed as in the previous case by finding documentation on the *MRIQC* repository or NeuroStars.
 
-- [ ] Visualize the first mosaic (background-enhanced mosaic) and apply the [exclusion criteria](qaqc-criteria.md#background-enhanced-mosaic)
-- [ ] Scroll down to the zoom in the brain mask mosaic and apply the [exclusion criteria](qaqc-criteria.md#zoomed-in-brain-mosaic)
+- [ ] Visualize the first mosaic (background mosaic) and apply the [exclusion criteria](qaqc-criteria.md#view-of-the-background-of-the-anatomical-image).
+- [ ] Scroll down to the zoom in the zoomed-in brain mosaic and apply the [exclusion criteria](qaqc-criteria.md#zoomed-in-mosaic-view-of-the-brain).
 - [ ] Assign a quality rating and indicate artifacts with the *Rating widget*.
-    To assign a quality rating, follow the [QA/QC criteria]() stated below.
+    To assign a quality rating, follow the .
+    - [ ] Open the *Rating widget* by clicking on it in the upper right corner of the *MRIQC* visual report.
+    - [ ] Open up the "Record specific artifacts" menu and select the artifacts that you spotted according to the [QA/QC criteria](qaqc-criteria.md).
+    - [ ] Assign a quality grade that reflects the number of artifacts you spotted and their severity, using the slider
+    - [ ] Optionally, you can write down any extra comment you might have about the data and indicate your level of confidence regarding your ratings in the "Extra details" menu.
 - [ ] Download the rating file as a JSON and add it to the derivatives dataset.
 
 !!! warning "Immediately report images deemed *exclude*, as an issue in the dataset's repository"
 
 ### Assessing functional images
 
+#### QCT
+
+!!! note "We are checking QCT fMRI first and in principle not excluding QCT scans"
+    Except if the image is [extremely distorted](qaqc-criteria.md#task-fmri-exclusion-criteria), we are not excluding QCT scans because we will leverage those images to evaluate the quality of fMRI scans and derived constructs throughout the whole analysis pipeline. We are however going through the *MRIQC* reports to train our eye, anticipate issues that might be affecting RSfMRI and flag the corresponding sessions.
+
+- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Repeat the following two steps for each echo:
+    - [ ] Visualize the first mosaic (standard-deviation) and search for [artifacts](qaqc-criteria.md#standard-deviation-of-signal-through-time)
+    - [ ] Scroll down to the carpetplot and search for [artifacts](qaqc-criteria.md#carpetplot-and-nuisance-signals).
+- [ ] Once you went through all the echo-wise visualization of the base report, scroll down to the "Extended echo-wise reports" section, inspect the background view and search for [artifacts](qaqc-criteria.md#view-of-the-background-of-the-voxel-wise-average-of-the-bold-timeseries).
+- [ ] Scroll down to the average BOLD mosaic and search for [artifacts](qaqc-criteria.md#average-signal-through-time)
+- [ ] Inspect the zoomed-in view of the average BOLD mosaic as well and search for the same [artifacts](qaqc-criteria.md#average-signal-through-time).
+
+
+#### BHT
+
+!!! note "Following the same reasoning as described in QCT, we are in principle not excluding BHT scans."
+
+- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Repeat the following two steps for each echo:
+    - [ ] Visualize the first mosaic (standard-deviation) and apply the [exclusion criteria](qaqc-criteria.md#standard-deviation-of-signal-through-time)
+    - [ ] Scroll down to the carpetplot and apply the [exclusion criteria](qaqc-criteria.md#carpetplot-and-nuisance-signals).
+- [ ] Once you went through all the echo-wise visualization of the base report, scroll down to the "Extended echo-wise reports" section, inspect the background view and apply the [exclusion criteria](qaqc-criteria.md#view-of-the-background-of-the-voxel-wise-average-of-the-bold-timeseries).
+- [ ] Scroll down to the average BOLD mosaic and apply the [exclusion criteria](qaqc-criteria.md#average-signal-through-time)
+- [ ] Inspect the zoomed-in view of the average BOLD mosaic as well and apply the same [exclusion criteria](qaqc-criteria.md#average-signal-through-time).
+
+#### RSfMRI
+
 !!! danger "Insufficient quality of an RSfMRI run requires recalling the session"
 
     - [ ] Immediately report images deemed *exclude*, as an issue in the dataset's repository.
-    - [ ] Proceed to scheduling an extra session after the initially-planned scanning period.
+    - [ ] Proceed to [scheduling an extra session](../recruitment-scheduling-screening/scheduling.md) after the initially-planned scanning period.
 
-#### RSfMRI
 - [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the first mosaic (BOLD average) and apply the [exclusion criteria](qaqc-criteria.md#bold-average)
-- [ ] Scroll down to the standard-deviation (std) mosaic and apply the [exclusion criteria](qaqc-criteria.md#standard-deviation-mosaic)
-- [ ] Scroll down to the background noise mosaic and apply the [exclusion criteria](qaqc-criteria.md#background-noise-mosaic)
-- [ ] Scroll down to the fMRI summary plot and apply the [exclusion criteria](qaqc-criteria.md#fmri-summary-plot) as well as [the exclusion criteria specific to the BHT](qaqc-criteria.md#resting-state).
-
-#### QCT
-- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the first mosaic (BOLD average) and apply the [exclusion criteria](qaqc-criteria.md#bold-average)
-- [ ] Scroll down to the standard-deviation (std) mosaic and apply the [exclusion criteria](qaqc-criteria.md#standard-deviation-mosaic)
-- [ ] Scroll down to the background noise mosaic and apply the [exclusion criteria](qaqc-criteria.md#background-noise-mosaic)
-- [ ] Scroll down to the fMRI summary plot and apply the [exclusion criteria](qaqc-criteria.md#fmri-summary-plot) as well as [the exclusion criteria specific to the BHT](qaqc-criteria.md#quality-control-task) 
-
-#### BHT
-- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the first mosaic (BOLD average) and apply the [exclusion criteria](qaqc-criteria.md#bold-average)
-- [ ] Scroll down to the standard-deviation (std) mosaic and apply the [exclusion criteria](qaqc-criteria.md#standard-deviation-mosaic)
-- [ ] Scroll down to the background noise mosaic and apply the [exclusion criteria](qaqc-criteria.md#background-noise-mosaic)
-- [ ] Scroll down to the fMRI summary plot and apply the [exclusion criteria](qaqc-criteria.md#fmri-summary-plot) as well as [the exclusion criteria specific to the BHT](qaqc-criteria.md#breath-holding-task) 
+- [ ] Repeat the following two steps for each echo:
+    - [ ] Visualize the first mosaic (standard-deviation) and apply the [exclusion criteria](qaqc-criteria.md#standard-deviation-of-signal-through-time)
+    - [ ] Scroll down to the carpetplot and apply the [exclusion criteria](qaqc-criteria.md#carpetplot-and-nuisance-signals). 
+- [ ] Once you went through all the echo-wise visualization of the base report, scroll down to the "Extended echo-wise reports" section, inspect the background view and apply the [exclusion criteria](qaqc-criteria.md#view-of-the-background-of-the-voxel-wise-average-of-the-bold-timeseries).
+- [ ] Scroll down to the average BOLD mosaic and apply the [exclusion criteria](qaqc-criteria.md#average-signal-through-time)
+- [ ] Inspect the zoomed-in view of the average BOLD mosaic as well and apply the same [exclusion criteria](qaqc-criteria.md#average-signal-through-time).
 
 ## Visualizing *MRIQC*'s group reports
 
+### Assessing anatomical images
+- [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Visualize the IQMs distributions and apply the [exclusion critera](qaqc-criteria.md#group-report).
+
 ### Assessing functional images
 - [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the IQMs distributions and apply the [exclusion critera](qaqc-criteria.md#group-report) for all BOLD scans and apply [these exclusion criteria](qaqc-criteria.md#group-report-1) to RSfMRI.
-
-### Assessing diffusion images
-
-!!! danger "Insufficient quality of a dMRI run requires recalling the session"
-
-    - [ ] Immediately report images deemed *exclude*, as an issue in the dataset's repository.
-    - [ ] Proceed to scheduling an extra session after the initially-planned scanning period.
+- [ ] Visualize the IQMs distributions and apply the [exclusion critera](qaqc-criteria.md#group-report-1).
 
 
 [1]: https://doi.org/10.3389/fnimg.2022.1073734 "Provins, C., … Esteban, O. (2023). Quality Control in functional MRI studies with MRIQC and fMRIPrep. Frontiers in Neuroimaging 1:1073734. doi:10.3389/fnimg.2022.1073734 (OA)."

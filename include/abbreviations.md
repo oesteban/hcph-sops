@@ -55,6 +55,7 @@
 *[RSfMRI]: resting-state fMRI
 *[SLURM]: Slurm Workload Manager, formerly known as Simple Linux Utility for Resource Management
 *[SMS]: Short Message Service
+*[SNR]: signal-to-noise ratio
 *[SOP]: standard operating procedure
 *[SOPs]: standard operating procedures
 *[SSH]: Secure Shell or Secure Socket Shell
