@@ -21,6 +21,7 @@ nav:
       - Session tear-down: data-collection/tear-down.md
       - Emergency procedures: data-collection/emergency-procedures.md
     - Data management:
+      - Overall post-scanner steps: data-management/intro.md
       - Before data acquisition (storage preparation): data-management/preliminary.md
       - Post-session retrieval and BIDS: data-management/post-session.md
       - QC of unprocessed data: data-management/mriqc.md
