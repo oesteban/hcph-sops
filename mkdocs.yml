@@ -21,6 +21,7 @@ nav:
       - Session tear-down: data-collection/tear-down.md
       - Emergency procedures: data-collection/emergency-procedures.md
     - Data management:
+      - Overall post-scanner steps: data-management/intro.md
       - Before data acquisition (storage preparation): data-management/preliminary.md
       - Post-session retrieval and BIDS: data-management/post-session.md
       - QC of unprocessed data: data-management/mriqc.md
@@ -35,6 +36,7 @@ nav:
       - Notes on software installation and tips: data-collection/notes-software.md
       - Legacy procedure for the ET mirror: data-collection/legacy-et.md
       - Converting physio into BIDS (notebook): data-management/physio-to-bids.ipynb
+      - QA/QC criteria: data-management/qaqc-criteria.md
 theme:
   name: material
   palette:
