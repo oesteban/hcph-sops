@@ -227,6 +227,10 @@ To support backward compatibility (and some extra, currently unsupported feature
 
 ### Convert physiological recordings into BIDS (in-house)
 
+- [ ] Install the necessary packages
+    ```
+    pip install bioread pandas matplotlib numpy pathlib scipy
+    ```
 - [ ] Update the appropriate session number within cell 3 in [the conversion *Jupyter* notebook](physio-to-bids).
 - [ ] Execute the notebook.
 
