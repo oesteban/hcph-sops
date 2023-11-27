@@ -3,8 +3,9 @@
 - [ ] Create a dataset to host the *MRIQC* derivatives.
     Remember to set the correct version of the container (in our case {{ settings.versions.mriqc }}).
     ``` shell
-    cd /data/datasets/hcph-dataset
-    datalad create derivatives/mriqc-{{ settings.versions.mriqc }}
+    mkdir -p /data/datasets/hcph-derivatives
+    cd /data/datasets/hcph-derivatives
+    datalad create -c bids mriqc_{{ settings.versions.mriqc }}
     ```
 ??? warning "We are not yet registering the *MRIQC* derivatives dataset as a sub-dataset."
 
