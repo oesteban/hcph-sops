@@ -87,7 +87,7 @@ For accurate estimation of task activation, it is essential to check the quality
 
       Exclude the session if any of these ghosts overlap cortical gray matter.
 
-- [ ] Check for high-standard-deviation vertical strikes in the saggital plane of the standard deviation map.
+- [ ] Check for high-standard-deviation vertical strikes in the sagittal plane of the standard deviation map.
 
 #### Carpetplot and nuisance signals
 
@@ -133,7 +133,7 @@ For accurate estimation of task activation, it is essential to check the quality
 
       Exclude the session if any of these ghosts overlap cortical gray matter.
 
-- [ ] Check for high standard deviation vertical strikes in the saggital plane of the standard deviation map.
+- [ ] Check for high standard deviation vertical strikes in the sagittal plane of the standard deviation map.
 
 - [ ] Check for low SNR characterized by a grainy picture. This dataset is specifically subject to this artifact, because we used multiband acceleration.
 
