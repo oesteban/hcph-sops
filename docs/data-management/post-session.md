@@ -302,7 +302,6 @@ To support backward compatibility (and some extra, currently unsupported feature
     │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.tsv.gz
     │   ├── sub-001_ses-024_acq-highres_dir-AP_stim.json
     │   └── sub-001_ses-024_acq-highres_dir-AP_stim.tsv.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_events.json
     │   ├── sub-001_ses-024_task-bht_dir-AP_events.tsv
     │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-mag_bold.json
     │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-mag_bold.nii.gz
@@ -326,7 +325,6 @@ To support backward compatibility (and some extra, currently unsupported feature
     │   ├── sub-001_ses-024_task-qct_dir-AP_recording-respiratory_physio.tsv.gz
     │   ├── sub-001_ses-024_task-qct_dir-AP_stim.json
     │   ├── sub-001_ses-024_task-qct_dir-AP_stim.tsv.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_events.json
     │   ├── sub-001_ses-024_task-qct_dir-AP_events.tsv
     │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-mag_bold.json
     │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-mag_bold.nii.gz
@@ -350,7 +348,6 @@ To support backward compatibility (and some extra, currently unsupported feature
     │   ├── sub-001_ses-024_task-rest_dir-AP_recording-respiratory_physio.tsv.gz
     │   ├── sub-001_ses-024_task-rest_dir-AP_stim.json
     │   └── sub-001_ses-024_task-rest_dir-AP_stim.tsv.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_events.json
     │   └── sub-001_ses-024_task-rest_dir-AP_events.tsv
     └── sub-001_ses-024_scans.tsv
     ```
