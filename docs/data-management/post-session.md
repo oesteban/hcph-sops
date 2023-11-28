@@ -147,113 +147,12 @@ To support backward compatibility (and some extra, currently unsupported feature
     chmod -R a-w $HOME/data/hcph-pilot/sub-{{ secrets.ids.pacs_subject | default("01") }}/
     ```
 
-### Convert physiological recordings into BIDS (in-house)
-
-- [ ] Install the necessary packages.
-    ```
-    pip install bioread pandas matplotlib numpy pathlib scipy
-    ```
-- [ ] Update the appropriate session number within cell 3 in [the conversion *Jupyter* notebook](physio-to-bids).
-- [ ] Execute the notebook.
-
-??? abstract "Example of a session with physiological recordings"
-
-    The execution of the notebook on session 24 yields the following new outputs (highlighted):
-
-    ``` {.shell hl_lines="8-13 32-37 54-59 76-81"}
-    ses-024
-    ├── anat
-    ├── dwi
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.bval
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.bvec
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.json
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.nii.gz
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-cardiac_physio.json
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-cardiac_physio.tsv.gz
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.json
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.tsv.gz
-    │   ├── sub-001_ses-024_acq-highres_dir-AP_stim.json
-    │   └── sub-001_ses-024_acq-highres_dir-AP_stim.tsv.gz
-    ├── fmap
-    ├── func
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-2_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-2_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-2_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-2_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-3_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-3_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-3_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-3_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_recording-cardiac_physio.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_recording-cardiac_physio.tsv.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_recording-respiratory_physio.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_recording-respiratory_physio.tsv.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_stim.json
-    │   ├── sub-001_ses-024_task-bht_dir-AP_stim.tsv.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-2_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-2_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-2_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-2_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-3_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-3_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-3_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-3_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-cardiac_physio.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-cardiac_physio.tsv.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-respiratory_physio.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-respiratory_physio.tsv.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_stim.json
-    │   ├── sub-001_ses-024_task-qct_dir-AP_stim.tsv.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-2_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-2_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-2_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-2_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-3_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-3_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-3_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-3_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-mag_bold.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-mag_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-phase_bold.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-cardiac_physio.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-cardiac_physio.tsv.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-respiratory_physio.json
-    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-respiratory_physio.tsv.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_stim.json
-    │   └── sub-001_ses-024_task-rest_dir-AP_stim.tsv.gz
-    └── sub-001_ses-024_scans.tsv
-    ```
-
 ### Generate BIDS' *events* files
 
-- [ ] Execute the script `write_event_file.py` as shown below to generate task event files.
-    This script creates JSON and TSV files containing event information and generates PNG plots for each task, displaying both physiological data and corresponding events.
-    These plots are saved in the current directory.
-    The script must be executed with the following command, where `outputdir` is the output directory of [the conversion *Jupyter* notebook](physio-to-bids):
+- [ ] Execute conversion with `code/events/psychopy2events`:
 
     ``` shell
-    python write_event_file.py --path ./outputdir/sub-001/ses-pilot016/func/
+    python psychopy2events.py --path ./outputdir/sub-001/ses-pilot016/func/
     ```
 
 ??? abstract "Example of a session with *events* files"
@@ -349,6 +248,105 @@ To support backward compatibility (and some extra, currently unsupported feature
     │   ├── sub-001_ses-024_task-rest_dir-AP_stim.json
     │   └── sub-001_ses-024_task-rest_dir-AP_stim.tsv.gz
     │   └── sub-001_ses-024_task-rest_dir-AP_events.tsv
+    └── sub-001_ses-024_scans.tsv
+    ```
+
+### Convert physiological recordings into BIDS (in-house)
+
+- [ ] Install the necessary packages.
+    ```
+    python -m pip install bioread pandas matplotlib numpy pathlib scipy
+    ```
+
+- [ ] Update the appropriate session number within cell 3 in [the conversion *Jupyter* notebook](physio-to-bids).
+- [ ] Execute the notebook.
+
+??? abstract "Example of a session with physiological recordings"
+
+    The execution of the notebook on session 24 yields the following new outputs (highlighted):
+
+    ``` {.shell hl_lines="8-13 32-37 54-59 76-81"}
+    ses-024
+    ├── anat
+    ├── dwi
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.bval
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.bvec
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.nii.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-cardiac_physio.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-cardiac_physio.tsv.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.tsv.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_stim.json
+    │   └── sub-001_ses-024_acq-highres_dir-AP_stim.tsv.gz
+    ├── fmap
+    ├── func
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-2_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-2_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-2_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-2_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-3_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-3_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-3_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-3_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_recording-cardiac_physio.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_recording-cardiac_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_recording-respiratory_physio.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_recording-respiratory_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-bht_dir-AP_stim.json
+    │   ├── sub-001_ses-024_task-bht_dir-AP_stim.tsv.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-2_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-2_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-2_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-2_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-3_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-3_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-3_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-3_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-cardiac_physio.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-cardiac_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-respiratory_physio.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-respiratory_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_stim.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_stim.tsv.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-2_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-2_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-2_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-2_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-3_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-3_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-3_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-3_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-mag_bold.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-mag_bold.nii.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-phase_bold.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-phase_bold.nii.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-cardiac_physio.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-cardiac_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-respiratory_physio.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-respiratory_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_stim.json
+    │   └── sub-001_ses-024_task-rest_dir-AP_stim.tsv.gz
     └── sub-001_ses-024_scans.tsv
     ```
 
