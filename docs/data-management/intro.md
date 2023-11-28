@@ -62,7 +62,7 @@ flowchart TB
     psychopy_pc --> |Dropbox Sync| raw_edf
     
     raw_mri -->|<i>HeudiConv</i> Script| bids_mri
-    raw_phys --->|<i>phys2bids</i> Script| bids_phys
+    raw_phys --->|<i>physio-to-bids.ipynb</i> Script| bids_phys
     raw_edf ---> |<i>edf2bids</i> Script| bids_edf
 
     bids_mri -->|FIRST Session Only !| med[Clinical Screening]
