@@ -19,7 +19,7 @@
         --container-name mriqc \
         --input sourcedata \
         --output ./derivatives/mriqc-23.1.0 \
-        "{inputs} {outputs} participant --session-id ${lastsession} -w ${HOME}/tmp/hcph-derivatives/mriqc-23.1.0 --mem 40G"
+        "{inputs} {outputs} participant --session-id ${lastsession} -w ${HOME}/tmp/hcph-derivatives/mriqc-23.1.0 --mem 40G --bids-database-dir {{ settings.paths.hcph_bids }}/.bids-index"
     ```
 
 - [ ] Check that *MRIQC* generated all expected individual reports.

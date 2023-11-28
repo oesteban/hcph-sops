@@ -1,5 +1,6 @@
 *[AP]: anterior-to-posterior
 *[BHT]: breath-holding task
+*[BEP]: BIDS Extension Proposal
 *[BIDS]: Brain Imaging Data Structure
 *[BNC]: a radio-frequency coaxial connector (initialism of 'Bayonet Neill–Concelman')
 *[BOLD]: blood-oxygen-level dependent
