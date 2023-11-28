@@ -19,7 +19,7 @@
         --container-name mriqc \
         --input sourcedata \
         --output ./derivatives/mriqc-23.1.0 \
-        "{inputs} {outputs} participant --session-id ${lastsession} -w ${HOME}/tmp/hcph-derivatives/mriqc-23.1.0 --mem 40G"
+        "{inputs} {outputs} participant --session-id ${lastsession} -w ${HOME}/tmp/hcph-derivatives/mriqc-23.1.0 --mem 40G --bids-database-dir {{ settings.paths.hcph_bids }}/.bids-index"
     ```
 
 - [ ] Check that *MRIQC* generated all expected individual reports.
@@ -132,11 +132,11 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 
 ### Assessing anatomical images
 - [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the IQMs distributions and apply the [exclusion critera](qaqc-criteria.md#group-report).
+- [ ] Visualize the IQMs distributions and apply the [exclusion criteria](qaqc-criteria.md#group-report).
 
 ### Assessing functional images
 - [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the IQMs distributions and apply the [exclusion critera](qaqc-criteria.md#group-report-1).
+- [ ] Visualize the IQMs distributions and apply the [exclusion criteria](qaqc-criteria.md#group-report-1).
 
 
 [1]: https://doi.org/10.3389/fnimg.2022.1073734 "Provins, C., … Esteban, O. (2023). Quality Control in functional MRI studies with MRIQC and fMRIPrep. Frontiers in Neuroimaging 1:1073734. doi:10.3389/fnimg.2022.1073734 (OA)."
