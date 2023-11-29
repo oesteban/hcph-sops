@@ -626,6 +626,7 @@ Better pacing in rating throughput also contributes to reducing raters' attritio
 - [ ] Reset the database file:
 
     ``` shell
+    conda install pybids
     $( dirname $( which python ) )/pybids layout --reset-db --no-validate . .bids-index/
     ```
 
