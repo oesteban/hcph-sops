@@ -598,6 +598,8 @@ It is critical to check that physiological signals are looking good:
 - [ ] Check the box confirming that it has been acquired in the issue collecting notes about the session.
     Don't forget to report any observations there.
 
+- [ ] Copy data from the ./data subfolder in the GitHub repository HCPh-fMRI-tasks into the synchronized Dropbox folder, and make sure the Wi-Fi is on for synchronization.
+
 
 ## Acquire a T2w image (if time permits)
 
@@ -608,7 +610,7 @@ It is critical to check that physiological signals are looking good:
 
 !!! warning "The following step MAY be done while the T2w is running."
 
-- [ ] Stop the *AcqKnowledge* recording on the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
+- [ ] Stop the *AcqKnowledge* recording on the *{{ secrets.hosts.acqknowledge | default("███") }}* computer and turn on the Wi-Fi to allow the synchronization of the Dropbox folder.
 
     !!! danger "Allow some 60s after the BHT has concluded before stopping *AcqKnowledge*"
 
