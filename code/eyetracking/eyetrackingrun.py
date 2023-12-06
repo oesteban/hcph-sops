@@ -30,8 +30,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from pyedfread import edf, edfread
-
 
 # EyeLink calibration coordinates from
 # https://www.sr-research.com/calibration-coordinate-calculator/
