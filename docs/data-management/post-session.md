@@ -627,7 +627,7 @@ Better pacing in rating throughput also contributes to reducing raters' attritio
 
     ``` shell
     python -m pip install "pybids>=0.16"
-    $( dirname $( which python ) )/pybids layout --reset-db --no-validate . .bids-index/
+    $( dirname $( which python ) )/pybids layout --reset-db --no-validate --index-metadata . .bids-index/
     ```
 
     Successful execution will finalize with a message: `Successfully generated database index at {{ settings.paths.hcph_bids }}/.bids-index`.
