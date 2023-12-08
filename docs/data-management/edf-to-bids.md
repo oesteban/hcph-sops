@@ -16,7 +16,7 @@ Our ET device produces EyeLink's EDF recording files, which will be accessed wit
 
     As a result, thre *Pandas*' dataframes will be obtained:
 
-    * `recoding` contains the actual ET data,
+    * `recording` contains the actual ET data,
     * `events` contains information of events reported by the device (most substantially these are fixations, saccades, and blinks), and
     * `messages` with the logged textual messages sent to the device.
 
