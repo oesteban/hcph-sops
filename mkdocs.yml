@@ -38,8 +38,8 @@ nav:
       - Notes on software installation and tips: data-collection/notes-software.md
       - Legacy procedure for the ET mirror: data-collection/legacy-et.md
       - Converting physio into BIDS (notebook): data-management/physio-to-bids.ipynb
-      - QA/QC criteria: data-management/qaqc-criteria.md
       - Converting eye-tracking into BIDS: data-management/edf-to-bids.md
+      - QA/QC criteria: data-management/qaqc-criteria.md
 theme:
   name: material
   palette:
