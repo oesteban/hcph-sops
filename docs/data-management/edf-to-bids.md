@@ -540,6 +540,8 @@ if not calibration.empty:
 ### Parsing the ``events`` dataframe
 
 The events dataframe contains several parameters calculated by the EyeLink software.
+It is important to remark that these *events* are not exactly the same as the experimental *events* that are encoded in the dataset.
+These *events* are specific to the recording of ET data with the EyeLink device.
 
 ```Python
 # Process events: first generate empty columns
