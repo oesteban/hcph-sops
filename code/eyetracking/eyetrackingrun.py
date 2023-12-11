@@ -325,8 +325,8 @@ class EyeTrackingRun:
             ]
 
         # Normalize timestamps (should be int and strictly positive)
+        self.recording = self.recording[self.recording["time"] > self.recording.loc[0, "time"]]
         self.recording = self.recording.astype({"time": int})
-        self.recording = self.recording[self.recording["time"] > 0]
 
         self.recording = self.recording.rename(
             columns={
