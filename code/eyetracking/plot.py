@@ -19,26 +19,28 @@
 #
 from __future__ import annotations
 
-import matplotlib.pyplot as plt
+from typing import Tuple
 
-from eyetrackingrun import EyeTrackingRun
+import matplotlib.pyplot as plt
+import pandas as pd
 
 
 PLT_FIGURE_WIDTH = 16
 
 
 def plot_heatmap_coordinate(
-    etrun: EyeTrackingRun,
+    data: pd.DataFrame,
     density: bool = False,
     cbar: bool = False,
+    screen_size: Tuple[int, int] = (800, 600),
 ) -> plt.Figure:
     """
     Plots a heatmap for eye tracking coordinates.
 
     Parameters
     ----------
-    etrun : :obj:`EyeTrackingRun`
-        The `EyeTrackingRun` object the plot will get data from.
+    data : :obj:`pandas.DataFrame`
+        The dataframe the plot will get data from.
     density : :obj:`bool`
         If `True`, a kernel density estimation is fit to show smooth frequencies.
     cbar : :obj:`bool`
@@ -52,23 +54,16 @@ def plot_heatmap_coordinate(
     """
     import seaborn as sns
 
-    _resx = etrun.metadata["ScreenAOIDefinition"][1][1]
-    _resy = etrun.metadata["ScreenAOIDefinition"][1][3]
-
     # Make the aspect ratio of the figure resemble the screen proportion
     fig = plt.figure(figsize=(
         PLT_FIGURE_WIDTH,
-        PLT_FIGURE_WIDTH * (1 - 0.2 * cbar) * _resy / _resx)
+        PLT_FIGURE_WIDTH * (1 - 0.2 * cbar) * screen_size[1] / screen_size[0])
     )
 
     cmap = sns.color_palette("coolwarm", as_cmap=True)
-
-    data = etrun.recording[["eye1_x_coordinate", "eye1_y_coordinate"]]
-
-    data = data[etrun.recording.eye1_blink < 1]
-
-    clip = ((0, _resx), (0, _resy))
+    clip = ((0, screen_size[0]), (0, screen_size[1]))
     if density:
+
         sns.kdeplot(
             data=data,
             cmap=cmap,
@@ -84,7 +79,7 @@ def plot_heatmap_coordinate(
             data["eye1_x_coordinate"],
             data["eye1_y_coordinate"],
             range=clip,
-            bins=(_resx // 10, _resy // 10),
+            bins=(screen_size[0] // 10, screen_size[1] // 10),
             cmap=cmap,
         )
 
