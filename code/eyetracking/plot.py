@@ -33,6 +33,7 @@ def plot_heatmap_coordinate(
     density: bool = False,
     cbar: bool = False,
     screen_size: Tuple[int, int] = (800, 600),
+    ax=None
 ) -> plt.Figure:
     """
     Plots a heatmap for eye tracking coordinates.
@@ -54,13 +55,16 @@ def plot_heatmap_coordinate(
     """
     import seaborn as sns
 
-    # Make the aspect ratio of the figure resemble the screen proportion
-    fig = plt.figure(figsize=(
-        PLT_FIGURE_WIDTH,
-        PLT_FIGURE_WIDTH * (1 - 0.2 * cbar) * screen_size[1] / screen_size[0])
-    )
-
     cmap = sns.color_palette("coolwarm", as_cmap=True)
+
+    # Make the aspect ratio of the figure resemble the screen proportion
+    if ax is None:
+        plt.figure(figsize=(
+            PLT_FIGURE_WIDTH,
+            PLT_FIGURE_WIDTH * (1 - 0.2 * cbar) * screen_size[1] / screen_size[0])
+        )
+        ax = plt.gca()
+
     clip = ((0, screen_size[0]), (0, screen_size[1]))
     if density:
 
@@ -73,9 +77,10 @@ def plot_heatmap_coordinate(
             cbar=cbar,
             clip=clip,
             thresh=0,
+            ax=ax,
         )
     else:
-        plt.hist2d(
+        ax.hist2d(
             data["eye1_x_coordinate"],
             data["eye1_y_coordinate"],
             range=clip,
@@ -83,7 +88,6 @@ def plot_heatmap_coordinate(
             cmap=cmap,
         )
 
-    ax = plt.gca()
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_visible(False)
     ax.spines['top'].set_visible(False)
@@ -94,4 +98,5 @@ def plot_heatmap_coordinate(
     plt.yticks([], [])
     plt.xlabel("x coordinate [pixels]")
     plt.ylabel("y coordinate [pixels]")
-    return fig
+    plt.show()
+    return ax
