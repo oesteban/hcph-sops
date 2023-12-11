@@ -25,7 +25,7 @@ from pathlib import Path
 from warnings import warn
 from collections import defaultdict
 from itertools import product, groupby
-from typing import List
+from typing import List, Type
 
 import numpy as np
 import pandas as pd
@@ -368,19 +368,6 @@ class EyeTrackingRun:
                 columns={f"pa_{eyename}": f"eye{eyenum + 1}_pupil_size"}
             )
 
-            # Clean-up implausible values for gaze x position
-            self.recording.loc[
-                (self.recording[f"gx_{eyename}"] < 0)
-                | (self.recording[f"gx_{eyename}"] > self.screen_resolution[0]),
-                f"gx_{eyename}",
-            ] = np.nan
-            # Clean-up implausible values for gaze y position
-            self.recording.loc[
-                (self.recording[f"gy_{eyename}"] <= 0)
-                | (self.recording[f"gy_{eyename}"] > self.screen_resolution[1]),
-                f"gy_{eyename}",
-            ] = np.nan
-
         # Interpolate BIDS column names
         columns = list(
             set(self.recording.columns)
@@ -426,7 +413,7 @@ class EyeTrackingRun:
 
             self.metadata["CalibrationLog"] = list(
                 zip(
-                    calibration.trialid_time.values.astype(int),
+                    calibration.trialid_time.values.astype(int).tolist(),
                     calibration.trialid.values,
                 )
             )
@@ -434,7 +421,7 @@ class EyeTrackingRun:
             calibrations_msg = calibration.trialid.str.startswith(
                 "VALIDATION"
             ) & calibration.trialid.str.contains("ERROR")
-            self.metadata["CalibrationCount"] = calibrations_msg.sum()
+            self.metadata["CalibrationCount"] = int(calibrations_msg.sum())
 
             calibration_last = calibration.index[calibrations_msg][-1]
             try:
@@ -449,7 +436,7 @@ class EyeTrackingRun:
                 self.metadata["CalibrationType"] = meta_calib["ctype"]
                 self.metadata["AverageCalibrationError"] = [float(meta_calib["avg"])]
                 self.metadata["MaximalCalibrationError"] = [float(meta_calib["max"])]
-                self.metadata["CalibrationResultQuality"] = [meta_calib["result"]]
+                self.metadata["CalibrationResultQuality"] = [meta_calib["result"].lower()]
                 self.metadata["CalibrationResultOffset"] = [
                     float(meta_calib["offsetdeg"]),
                     (float(meta_calib["offsetxpix"]), float(meta_calib["offsetypix"])),
@@ -490,6 +477,30 @@ class EyeTrackingRun:
                     "eye1_blink",
                 ] = 1
 
+    @classmethod
+    def from_edf(
+        cls: Type[EyeTrackingRun],
+        filename: str | Path,
+        message_first_trigger: str,
+        message_last_trigger: str,
+        trial_marker: bytes = b""
+    ) -> EyeTrackingRun:
+        """Create a new run from an EDF file."""
+        from pyedfread import edf
+
+        recording, events, messages = edf.pread(
+            str(filename),
+            trial_marker=b""
+        )
+
+        return cls(
+            recording=recording,
+            events=events,
+            messages=messages,
+            message_first_trigger=message_first_trigger,
+            message_last_trigger=message_last_trigger,
+        )
+
 
 def write_bids(
     et_run: EyeTrackingRun,
@@ -511,6 +522,7 @@ def write_bids(
         A list of generated files.
 
     """
+    from ppjson import CompactJSONEncoder
 
     exp_run = Path(exp_run)
     out_dir = exp_run.parent
@@ -526,7 +538,7 @@ def write_bids(
     # Write out sidecar JSON
     out_json = out_dir / refname.replace(extension, ".json")
     out_json.write_text(
-        json.dumps(et_run.metadata, sort_keys=True, indent=2)
+        json.dumps(et_run.metadata, sort_keys=True, indent=2, cls=CompactJSONEncoder)
     )
 
     # Write out data
