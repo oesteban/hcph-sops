@@ -243,3 +243,16 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     ``` shell
     sudo systemctl daemon-reload
     ```
+
+## Conversion of ET recordings into BIDS
+
+EyeLink's EDF recording files will be accessed with [*PyEDFRead*](https://github.com/oesteban/pyedfread).
+Please note, we will be using [@oesteban](https://github.com/oesteban)'s fork to include two bugfixes that, at the time of writing this document, have not been made it into the codebase of *PyEDFRead*.
+
+- [ ] Install *PyEDFRead* on the computer where the ET conversion into BIDS will be executed.
+
+    ``` python
+    python -m pip install git+https://github.com/oesteban/pyedfread.git@master
+    ```
+
+    !!! warning "*PyEDFRead* requires the EyeLink SDK be installed as described [here](../data-collection/setup.md#installing-eyelink-eye-tracker-software)"
