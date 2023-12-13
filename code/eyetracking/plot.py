@@ -23,16 +23,26 @@ from typing import Tuple
 
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
+
+from matplotlib.colors import ListedColormap
+import matplotlib.image as mpimg
 
 
 PLT_FIGURE_WIDTH = 16
 
+def non_linear_alpha(x):
+    b = 20
+    c = 0.1
+    sigmoid_transition = 1 / (1 + np.exp(-b * (x - c)))
+    return x + (1 - x) * sigmoid_transition * (1 / (1 + np.exp(-b * (x - c))))
 
 def plot_heatmap_coordinate(
     data: pd.DataFrame,
     density: bool = False,
     cbar: bool = False,
     screen_size: Tuple[int, int] = (800, 600),
+    background_image=None,
     ax=None
 ) -> plt.Figure:
     """
@@ -46,6 +56,8 @@ def plot_heatmap_coordinate(
         If `True`, a kernel density estimation is fit to show smooth frequencies.
     cbar : :obj:`bool`
         Plot a colorbar.
+    cbar : :obj:`Path`
+        Path to a background image that will be displayed behind the plot.
 
     Returns
     -------
@@ -55,7 +67,6 @@ def plot_heatmap_coordinate(
     """
     import seaborn as sns
 
-    cmap = sns.color_palette("coolwarm", as_cmap=True)
 
     # Make the aspect ratio of the figure resemble the screen proportion
     if ax is None:
@@ -66,6 +77,17 @@ def plot_heatmap_coordinate(
         ax = plt.gca()
 
     clip = ((0, screen_size[0]), (0, screen_size[1]))
+    if background_image:
+        original_cmap = sns.color_palette("YlOrBr", as_cmap=True)
+        # Adjust trasnparency using a non-linear function
+        cmap = original_cmap(np.arange(original_cmap.N))
+        cmap[:, -1] = non_linear_alpha(np.linspace(0, 1, original_cmap.N))
+        cmap = ListedColormap(cmap)
+        movie_background = mpimg.imread(background_image)
+        extent = [0,screen_size[0], screen_size[1], 0]
+        ax.imshow(movie_background, zorder=0, extent=extent, alpha=0.7)
+    else:
+        cmap = sns.color_palette("coolwarm", as_cmap=True)
     if density:
 
         sns.kdeplot(
@@ -98,5 +120,5 @@ def plot_heatmap_coordinate(
     plt.yticks([], [])
     plt.xlabel("x coordinate [pixels]")
     plt.ylabel("y coordinate [pixels]")
-    plt.show()
+    #plt.show()
     return ax
