@@ -39,7 +39,8 @@ nav:
       - Legacy procedure for the ET mirror: data-collection/legacy-et.md
       - Converting physio into BIDS (notebook): data-management/physio-to-bids.ipynb
       - Converting eye-tracking into BIDS: data-management/edf-to-bids.md
-      - QA/QC criteria: data-management/qaqc-criteria.md
+      - QA/QC criteria for unprocessed data: data-management/qaqc-criteria-unprocessed.md
+      - QA/QC criteria for preprocessed data: data-management/qaqc-criteria-preprocessed.md
 theme:
   name: material
   palette:

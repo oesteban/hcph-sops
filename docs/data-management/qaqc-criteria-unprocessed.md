@@ -1,4 +1,4 @@
-# QA/QC criteria
+# QA/QC criteria for unprocessed data
 
 The following lists the pre-defined exclusion criteria for analyses of whole-brain structural and functional connectomes.
 
@@ -57,7 +57,10 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 
 ## Task behavior
 
-For accurate estimation of task activation, it is essential to check the quality of both the fMRI images and the task behavior [Etzel 2023]. As such, it is important to verify that the subjects were attempting to perform the instructed task (i.e not sleeping and not responding randomly). One particularity of this project is that our single participant is the principal investigator of the project. As such, we trust that the participant, when actively awake, has enough incentive to follow the tasks accurately, even more so that the tasks are simple paradigms. We will however verify that the participant did not inadvertently fell asleep during one of the fMRI scans. 
+For accurate estimation of task activation, it is essential to check the quality of both the fMRI images and the task behavior [Etzel 2023]. 
+As such, it is important to verify that the subjects were attempting to perform the instructed task (i.e not sleeping and not responding randomly). 
+One particularity of this project is that our single participant is the principal investigator of the project. As such, we trust that the participant, when actively awake, has enough incentive to follow the tasks accurately, even more so that the tasks are simple paradigms. 
+We will however verify that the participant did not inadvertently fell asleep during one of the fMRI scans. 
 
 - [ ] Leveraging the eye-tracking data, verify that the subject did not close his eyes for an extended period.
 
@@ -67,8 +70,10 @@ For accurate estimation of task activation, it is essential to check the quality
 
 !!! important "Our QC protocol is very lenient for task fMRI as those scans have been primarily acquired for QC purposes or to aid in methodological development, rather than holding scientific significance."
 
-- [ ] Exclude the QCT fMRI scan only in case of extreme distortion of the image. Potential causes can be e.g. failure in the image reconstruction, mistake in the header leading to the image being in the wrong orientation, extreme noise...
-- [ ] Exclude the BHT fMRI scan only in case of extreme distortion of the image. Potential causes can be e.g. failure in the image reconstruction, mistake in the header leading to the image being in the wrong orientation, extreme noise...
+- [ ] Exclude the QCT fMRI scan only in case of extreme distortion of the image. 
+Potential causes can be e.g. failure in the image reconstruction, mistake in the header leading to the image being in the wrong orientation, extreme noise...
+- [ ] Exclude the BHT fMRI scan only in case of extreme distortion of the image. 
+Potential causes can be e.g. failure in the image reconstruction, mistake in the header leading to the image being in the wrong orientation, extreme noise...
 
 ### RSfMRI exclusion criteria
 
@@ -139,7 +144,9 @@ For accurate estimation of task activation, it is essential to check the quality
 
 ??? warning "Do not exclude subjects presenting susceptibility distortion artifacts yet!"
 
-    For each session, we acquired fieldmaps that can be leveraged by fMRIPrep to perform susceptibility distortion correction. As such, those artifacts might be corrected by the preprocessing.
+    For each session, we acquired fieldmaps that can be leveraged by fMRIPrep to perform susceptibility distortion correction. 
+    As such, those artifacts might be corrected by the preprocessing.
+    Note however that given each session is acquired with similar acquisition parameters, the signal dropout should be relatively consistent across session. If the dropouts for a single sessions are particularly large or different than tho other sessions, double check the visual report for other issues.
 
 #### Group report
 - [ ] Check again the individual visual report of runs with outlying-high FD, ensuring they do not fall into one of the [exclusion criteria](#function-mri).
@@ -149,6 +156,8 @@ For accurate estimation of task activation, it is essential to check the quality
 - [ ] Check again the individual visual report of runs with outlying-low SNR, ensuring they do not fall into one of the [exclusion criteria](#function-mri).
 
 - [ ] Re-examine the individual visual report of sessions for which `fd_perc` > 50% and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
+
+- [ ] Verify that smoothness estimate `FWHM` is roughly consistent across all sessions since they were all acquired with the same protocol. If it is not the case, re-examine the individual visual report of sessions with outlying (both low or high) `FWHM`.
 
 ## Diffusion MRI
 
