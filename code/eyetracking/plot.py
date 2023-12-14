@@ -28,14 +28,13 @@ import numpy as np
 from matplotlib.colors import ListedColormap
 import matplotlib.image as mpimg
 
-
 PLT_FIGURE_WIDTH = 16
 
-def non_linear_alpha(x):
-    b = 20
-    c = 0.1
+
+def _non_linear_alpha(x, b=20, c=0.1):
     sigmoid_transition = 1 / (1 + np.exp(-b * (x - c)))
     return x + (1 - x) * sigmoid_transition * (1 / (1 + np.exp(-b * (x - c))))
+
 
 def plot_heatmap_coordinate(
     data: pd.DataFrame,
@@ -43,7 +42,7 @@ def plot_heatmap_coordinate(
     cbar: bool = False,
     screen_size: Tuple[int, int] = (800, 600),
     background_image=None,
-    ax=None
+    ax=None,
 ) -> plt.Figure:
     """
     Plots a heatmap for eye tracking coordinates.
@@ -56,7 +55,7 @@ def plot_heatmap_coordinate(
         If `True`, a kernel density estimation is fit to show smooth frequencies.
     cbar : :obj:`bool`
         Plot a colorbar.
-    cbar : :obj:`Path`
+    background_image : :obj:`os.pathlike`
         Path to a background image that will be displayed behind the plot.
 
     Returns
@@ -67,29 +66,31 @@ def plot_heatmap_coordinate(
     """
     import seaborn as sns
 
-
     # Make the aspect ratio of the figure resemble the screen proportion
     if ax is None:
-        plt.figure(figsize=(
-            PLT_FIGURE_WIDTH,
-            PLT_FIGURE_WIDTH * (1 - 0.2 * cbar) * screen_size[1] / screen_size[0])
+        plt.figure(
+            figsize=(
+                PLT_FIGURE_WIDTH,
+                PLT_FIGURE_WIDTH * (1 - 0.2 * cbar) * screen_size[1] / screen_size[0],
+            )
         )
         ax = plt.gca()
 
     clip = ((0, screen_size[0]), (0, screen_size[1]))
+
     if background_image:
         original_cmap = sns.color_palette("YlOrBr", as_cmap=True)
-        # Adjust trasnparency using a non-linear function
         cmap = original_cmap(np.arange(original_cmap.N))
-        cmap[:, -1] = non_linear_alpha(np.linspace(0, 1, original_cmap.N))
+        cmap[:, -1] = _non_linear_alpha(np.linspace(0, 1, original_cmap.N))
         cmap = ListedColormap(cmap)
         movie_background = mpimg.imread(background_image)
-        extent = [0,screen_size[0], screen_size[1], 0]
+        extent = [0, screen_size[0], screen_size[1], 0]
         ax.imshow(movie_background, zorder=0, extent=extent, alpha=0.7)
+
     else:
         cmap = sns.color_palette("coolwarm", as_cmap=True)
-    if density:
 
+    if density:
         sns.kdeplot(
             data=data,
             cmap=cmap,
@@ -110,15 +111,14 @@ def plot_heatmap_coordinate(
             cmap=cmap,
         )
 
-    ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_visible(False)
-    ax.spines['top'].set_visible(False)
-    ax.spines['bottom'].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["bottom"].set_visible(False)
     ax.invert_yaxis()
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_xlabel("x coordinate [pixels]")
+    ax.set_ylabel("y coordinate [pixels]")
 
-    plt.xticks([], [])
-    plt.yticks([], [])
-    plt.xlabel("x coordinate [pixels]")
-    plt.ylabel("y coordinate [pixels]")
-    #plt.show()
     return ax
