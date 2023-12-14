@@ -47,6 +47,11 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
 
 - [ ] Open each *fMRIPrep* report on a current Web Browser (*Google Chrome* is preferred).
 - [ ] Visualize the first section entitled `Summary` and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#summary).
+
+    !!! warning "Running through the visual report does not have to be executed in a fixed order"
+
+        While we describe the run through the report as linear, often inspecting other reportlets can help make a decision about the exclusion criteria related to the reportlet at hand. As such, we encourage you to jump back and forth between visualizations as much as needed.
+
 - [ ] Scroll down to the next section entitled `Anatomical conformation` and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#anatomical-conformation).
 - [ ] Scroll down to the first mosaic (brain mask and brain tissue segmentation) and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#brain-mask-and-brain-tissue-segmentation-of-the-t1w).
 - [ ] Scroll down to the dynamic visualization of the spatial normalization and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#spatial-normalization-of-the-anatomical-t1w-reference).
@@ -58,5 +63,6 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
 - [ ] Visualize the next mosaic and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#brain-mask-and-anatomicaltemporal-compcor-rois).
 - [ ] Skip to the BOLD summary and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#bold-summary).
 - [ ] Scroll down to the heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-among-nuisance-regressors) you will include in the nuisance regression model.
+- [ ] Verify that no error is reported in the "Errors" section. If there is, follow the procedure described in the appendage "Not all *fMRIPrep* derivatives were generated".
 
 !!! warning "Immediately report images deemed *exclude*, as an issue in the dataset's repository"
