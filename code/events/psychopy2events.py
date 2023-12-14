@@ -23,8 +23,8 @@ import argparse
 import pandas as pd
 from pathlib import Path
 
-#Tolerance for duration tests
 EVENT_DURATION_EPSILON = 0.2
+"""Tolerance threshold for tests on event duration."""
 
 TRIAL_TYPE = {
     "eye_movement_fixation": "cog",
@@ -45,6 +45,7 @@ TRIAL_TYPE = {
     "polygon_5": "out",  # old
     "polygon_7": "out-last",  # old
 }
+"""A dictionary mapping the trial identifiers and their semantics in the paradigm."""
 
 
 def psychopy2pandas(log_path: str | Path) -> pd.DataFrame:
