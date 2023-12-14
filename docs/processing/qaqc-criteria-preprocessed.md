@@ -50,7 +50,7 @@ As we will proceed with voxel-wise analysis, re-running *fMRIPrep* is necessary 
 ### T2* gray-matter values
 
 ### Alignment of functional and anatomical MRI data
-- [ ] Check that the BOLD and the T1w image are well aligned
+- [ ] Check that the BOLD and the T1w image are well aligned:
     - [ ] Verify that the image boundaries as well as the anatomical landmarks, such as the ventricles and the corpus callosum, appear in the same place when toggling between images.
     - [ ] Verify that the white and pial surface outline (red and blue lines) correspond well to the tissues boundaries in the BOLD image.
 - [ ] Check that no residual susceptibility distortion affects the BOLD image. Susceptibility distortion manifests as signal drop-outs or brain distortions.
