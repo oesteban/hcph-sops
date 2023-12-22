@@ -598,7 +598,7 @@ It is critical to check that physiological signals are looking good:
 - [ ] Check the box confirming that it has been acquired in the issue collecting notes about the session.
     Don't forget to report any observations there.
 
-- [ ] Copy data from the ./data subfolder in the GitHub repository HCPh-fMRI-tasks into the synchronized Dropbox folder, and make sure the Wi-Fi is on for synchronization.
+- [ ] Copy data from the `./data` subfolder in the GitHub repository HCPh-fMRI-tasks into the synchronized Dropbox folder, and make sure the Wi-Fi is on for synchronization.
 
 
 ## Acquire a T2w image (if time permits)
