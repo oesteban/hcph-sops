@@ -41,8 +41,8 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
         The solution might be documented in the issue.
         Don't forget to check closed issues!
     - [ ] Search for the issue on [NeuroStars](https://neurostars.org/), if the solution remains unclear.
-    - [ ] If no issue has been opened regarding this error and you did not find answer in NeuroStars, then open an issue in the *fMRIPrep* github repository.
-    Your description of the problem need to be as complete and detailed as possible to help the maintainers identify the problem efficiently.
+    - [ ] Open an issue in *fMRIPrep*'s GitHub repository to report the problem, if the solution remains elusive.
+        Your description of the problem needs to be as complete and detailed as possible to help the maintainers identify the problem efficiently.
     - [ ] Re-run *fMRIPrep* on that particular subject and session after implementing a solution.
     
     !!! danger "If the error remains despite all efforts, the session MAY be excluded"
