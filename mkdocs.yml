@@ -40,7 +40,7 @@ nav:
       - Converting physio into BIDS (notebook): data-management/physio-to-bids.ipynb
       - Converting eye-tracking into BIDS: data-management/edf-to-bids.md
       - QA/QC criteria: data-management/qaqc-criteria.md
-      - QA/QC criteria for preprocessed data: data-management/qaqc-criteria-preprocessed.md
+      - QA/QC criteria for preprocessed data: processing/qaqc-criteria-preprocessed.md
 theme:
   name: material
   palette:
