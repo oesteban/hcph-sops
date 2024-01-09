@@ -31,18 +31,21 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
 {% include 'code/fmriprep/ss-fmriprep.sh' %}
 {% endfilter %}
         ```
-
 ??? warning "Not all *fMRIPrep* derivatives were generated"
 
-    - [ ] If some derivatives are missing, it is a sign that *fMRIPrep* encountered an error. Identify what failed in the "Errors" section of the visual report or in the log of the *fMRIPrep* run.
-    - [ ] If you could find the solution to the problem, re-run *fMRIPrep* on that particular subject implementing this solution.
-    - [ ] In case you do not understand the error message, search for associated keywords in the [issues of the *fMRIPrep* github repository](https://github.com/nipreps/fmriprep/issues); it is likely someone else experienced the same problem before you and reported it.
-    The solution might be documented in the issue.
-    Don't forget to check closed issues!
-    - [ ] If that did not help, you might find help on [NeuroStars](https://neurostars.org/).
+    If some derivatives are missing, it is a sign that *fMRIPrep* encountered an error.
+    
+    - [ ] Check the "Errors" section of the visual report.
+    - [ ] Check the `log/` folder corresponding to the *fMRIPrep* run, carefully ensuring no errors were missed out on the reports.
+    - [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
+        The solution might be documented in the issue.
+        Don't forget to check closed issues!
+    - [ ] Search for the issue on [NeuroStars](https://neurostars.org/), if the solution remains unclear.
     - [ ] If no issue has been opened regarding this error and you did not find answer in NeuroStars, then open an issue in the *fMRIPrep* github repository.
     Your description of the problem need to be as complete and detailed as possible to help the maintainers identify the problem efficiently.
-    - [ ] In case *fMRIPrep* repeatedly fails on that particular session even with the help of the maintainers and even after trying several solutions, exclude that session.
+    - [ ] Re-run *fMRIPrep* on that particular subject and session after implementing a solution.
+    
+    !!! danger "If the error remains despite all efforts, the session MAY be excluded"
 
 ## Visualizing *fMRIPrep*'s individual reports
 
@@ -56,18 +59,26 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
         While we describe the run through the report as linear, often inspecting other reportlets can help make a decision about the exclusion criteria related to the reportlet at hand. 
         As such, we encourage you to jump back and forth between visualizations as much as needed.
 
-- [ ] Scroll down to the next section entitled `Anatomical conformation` and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#anatomical-conformation).
-- [ ] Scroll down to the first mosaic (brain mask and brain tissue segmentation) and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#brain-mask-and-brain-tissue-segmentation-of-the-t1w).
-- [ ] Scroll down to the dynamic visualization of the spatial normalization and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#spatial-normalization-of-the-anatomical-t1w-reference).
-- [ ] Scroll down to the next mosaic (surface reconstruction) and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#surface-reconstruction).
-- [ ] Scroll down to the functional section, starting with the textual summary and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#textual-summary).
-- [ ] Next, apply the [exclusion criteria](qaqc-criteria-preprocessed.md#t2-map) for the T2* map mosaic.
-- [ ] Scroll down to the histogram of T2* gray-matter values and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#t2-gray-matter-values).
-- [ ] Visualize the dynamic visualization of the co-registration by hovering your mouse on the image to make it toggle and removing it from the image for pausing. Apply the [exclusion criteria](qaqc-criteria-preprocessed.md#alignment-of-functional-and-anatomical-mri-data).
-- [ ] Visualize the next mosaic and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#brain-mask-and-anatomicaltemporal-compcor-rois).
-- [ ] Skip to the BOLD summary and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#bold-summary).
-- [ ] Scroll down to the heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-among-nuisance-regressors) you will include in the nuisance regression model.
-- [ ] Verify that no error is reported in the "Errors" section. 
-If there is, follow the procedure described in the appendage "Not all *fMRIPrep* derivatives were generated".
+
+### Anatomical preprocessing assessment
+
+- [ ] Assess the "Anatomical conformation" section and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#anatomical-conformation).
+- [ ] Assess the mosaic showing the calculated brain mask and brain tissue segmentation, and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#brain-mask-and-brain-tissue-segmentation-of-the-t1w).
+- [ ] Visualize the spatial normalization flickering mosaic, and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#spatial-normalization-of-the-anatomical-t1w-reference).
+- [ ] Assess the surface reconstruction mosaic, and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#surface-reconstruction).
+### Assessment of fMRI Preprocessing
+
+- [ ] Scrutinize the textual summary and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#textual-summary).
+- [ ] Visualize the T2* map mosaic, and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#t2-map).
+- [ ] Check the T2* gray-matter intensity histogram, and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#t2-gray-matter-values).
+- [ ] Visualize the dynamic visualization of the co-registration, apply the [exclusion criteria](qaqc-criteria-preprocessed.md#alignment-of-functional-and-anatomical-mri-data).
+    Flickering between T1w and BOLD images is active while hovering your mouse on the mosaic area.
+- [ ] Visualize the next mosaic displaying regions of interest (ROIs) where nuisance series are estimated, and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#brain-mask-and-anatomicaltemporal-compcor-rois).
+- [ ] Visualize the carpet plot and nuisance signals panel, and apply the [exclusion criteria](qaqc-criteria-preprocessed.md#bold-summary).
+- [ ] Visualize the confound correlation heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-among-nuisance-regressors) you will include in the nuisance regression model.
+- [ ] Verify that no errors are reported within the "Errors" section. 
+
+If errors or quality issues are encountered, find the issue corresponding to that session in the dataset's repository and report a comprehensive description of the problems.
+In case of *fMRIPrep* failure, follow the procedure described above "Not all *fMRIPrep* derivatives were generated".
 
 !!! warning "Immediately report images deemed *exclude*, as an issue in the dataset's repository"
