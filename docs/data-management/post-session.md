@@ -132,11 +132,11 @@ To support backward compatibility (and some extra, currently unsupported feature
 
     ``` bash
     tar vczf ses-{{ secrets.ids.pacs_session | default("18950702") }}.tar.gz \
-             /data/datasets/hcph-pilot-sourcedata/\
+             {{ settings.paths.sourcedata }}/\
              sub-{{ secrets.ids.pacs_subject | default("01") }}/\
              ses-{{ secrets.ids.pacs_session | default("18950702") }} \
     && \
-    rm -rf /data/datasets/hcph-pilot-sourcedata/\
+    rm -rf {{ settings.paths.sourcedata }}/\
            sub-{{ secrets.ids.pacs_subject | default("01") }}/\
            ses-{{ secrets.ids.pacs_session | default("18950702") }}
     ```
@@ -144,28 +144,35 @@ To support backward compatibility (and some extra, currently unsupported feature
 - [ ] Remove write permissions on the newly downloaded data:
 
     ``` bash
-    chmod -R a-w $HOME/data/hcph-pilot/sub-{{ secrets.ids.pacs_subject | default("01") }}/
+    chmod -R a-w {{ settings.paths.sourcedata }}/sub-{{ secrets.ids.pacs_subject | default("01") }}/
     ```
 
 ### Generate BIDS' *events* files
 
-- [ ] Execute the script `write_event_file.py` as shown below to generate task event files.
-    This script creates JSON and TSV files containing event information and generates PNG plots for each task, displaying both physiological data and corresponding events.
-    These plots are saved in the current directory.
-    The script must be executed with the following command, where `outputdir` is the output directory of *phys2bids*:
+- [ ] Execute conversion with `code/events/psychopy2events`:
 
     ``` shell
-    python write_event_file.py --path ./outputdir/sub-001/ses-pilot016/func/
+    python psychopy2events.py --path ./outputdir/sub-001/ses-pilot016/func/
     ```
 
 ??? abstract "Example of a session with *events* files"
 
     The corresponding *events* files are highlighted below:
 
-    ``` {.shell hl_lines="22-23 40-41 58-59"}
+    ``` {.shell hl_lines="42-43 66-67 90-91"}
     ses-024
     ├── anat
     ├── dwi
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.bval
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.bvec
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.nii.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-cardiac_physio.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-cardiac_physio.tsv.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.tsv.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_stim.json
+    │   └── sub-001_ses-024_acq-highres_dir-AP_stim.tsv.gz
     ├── fmap
     ├── func
     │   ├── sub-001_ses-024_task-bht_dir-AP_echo-1_part-mag_bold.json
@@ -184,7 +191,16 @@ To support backward compatibility (and some extra, currently unsupported feature
     │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-mag_bold.nii.gz
     │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-phase_bold.json
     │   ├── sub-001_ses-024_task-bht_dir-AP_echo-4_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-bht_dir-AP_events.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.bval
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.bvec
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_dwi.nii.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-cardiac_physio.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-cardiac_physio.tsv.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.json
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_recording-respiratory_physio.tsv.gz
+    │   ├── sub-001_ses-024_acq-highres_dir-AP_stim.json
+    │   └── sub-001_ses-024_acq-highres_dir-AP_stim.tsv.gz
     │   ├── sub-001_ses-024_task-bht_dir-AP_events.tsv
     │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-mag_bold.json
     │   ├── sub-001_ses-024_task-qct_dir-AP_echo-1_part-mag_bold.nii.gz
@@ -202,7 +218,12 @@ To support backward compatibility (and some extra, currently unsupported feature
     │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-mag_bold.nii.gz
     │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-phase_bold.json
     │   ├── sub-001_ses-024_task-qct_dir-AP_echo-4_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-qct_dir-AP_events.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-cardiac_physio.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-cardiac_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-respiratory_physio.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_recording-respiratory_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-qct_dir-AP_stim.json
+    │   ├── sub-001_ses-024_task-qct_dir-AP_stim.tsv.gz
     │   ├── sub-001_ses-024_task-qct_dir-AP_events.tsv
     │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-mag_bold.json
     │   ├── sub-001_ses-024_task-rest_dir-AP_echo-1_part-mag_bold.nii.gz
@@ -220,12 +241,22 @@ To support backward compatibility (and some extra, currently unsupported feature
     │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-mag_bold.nii.gz
     │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-phase_bold.json
     │   ├── sub-001_ses-024_task-rest_dir-AP_echo-4_part-phase_bold.nii.gz
-    │   ├── sub-001_ses-024_task-rest_dir-AP_events.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-cardiac_physio.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-cardiac_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-respiratory_physio.json
+    │   ├── sub-001_ses-024_task-rest_dir-AP_recording-respiratory_physio.tsv.gz
+    │   ├── sub-001_ses-024_task-rest_dir-AP_stim.json
+    │   └── sub-001_ses-024_task-rest_dir-AP_stim.tsv.gz
     │   └── sub-001_ses-024_task-rest_dir-AP_events.tsv
     └── sub-001_ses-024_scans.tsv
     ```
 
 ### Convert physiological recordings into BIDS (in-house)
+
+- [ ] Install the necessary packages.
+    ```
+    python -m pip install bioread pandas matplotlib numpy pathlib scipy
+    ```
 
 - [ ] Update the appropriate session number within cell 3 in [the conversion *Jupyter* notebook](physio-to-bids).
 - [ ] Execute the notebook.
@@ -526,6 +557,48 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
 
     !!! danger "Always double-check that data in the annex are uploaded to the RIA store"
 
+### Formal QC
+
+- [ ] Consult the [session logs](../data-collection/tear-up.md#start-a-new-session-log-form) to anticipate session peculiarities (e.g the session was aborted prematurely) and potential quality issues (e.g the participan fell asleep).
+    Those are saved in [the issues of our repository](https://github.com/TheAxonLab/hcph-sops/issues) with the label <span class="consolebutton brown">scan</span>.
+    Keep note of the peculiar events, associated with their session index, and keep it close to you during quality control.
+
+- [ ] Run the *BIDS Validator* to check the *formal* quality of the dataset (filenames, homogeneity of modalities and parameters across sessions, etc.)
+
+    ``` shell
+
+    docker run -ti --rm -v {{ secrets.data.path_data_sherlock | default('/path/to/data/') }}:/data:ro bids/validator /data
+    ```
+
+??? bug "BIDS non-compliance: WARNINGS and ERRORS"
+
+    We do not fully comply with current BIDS specifications, so some ERRORS and WARNINGS will emerge.
+    If errors and warnings are not listed here, please reach out to decide on a solution.
+
+    1. **ERRORS**: Because we follow [BEP 020](https://bids-specification--1128.org.readthedocs.build/en/1128/modality-specific-files/eye-tracking.html) and it is not official yet, ET-related files will source ERRORS:
+
+        ```
+        [ERR] Files with such naming scheme are not part of BIDS specification.
+        ```
+
+    2. **WARNINGS**: some warnings are expected.
+        Warnings that are not among this list should be addressed and BIDS conversion should be re-run on the affected files:
+
+        - During the piloting phase of the study, we tried out different sequence parameters and sequence type. As such, the following warning is expected:
+
+            ```
+            [WARN] Not all subjects/sessions/runs have the same scanning parameters. (code: 39 - INCONSISTENT_PARAMETERS)
+            ```
+
+        - The `_magnitude{1,2}.nii.gz` files corresponding to some pilot sessions are missing:
+
+            ```
+            [WARN] Each _phasediff.nii[.gz] file should be associated with a _magnitude1.nii[.gz] file. (code: 92 MISSING_MAGNITUDE1_FILE)
+            ./sub-001/ses-pilot001/fmap/sub-001_ses-pilot001_phasediff.nii.gz
+            ./sub-001/ses-pilot004/fmap/sub-001_ses-pilot004_phasediff.nii.gz
+            ./sub-001/ses-pilot006/fmap/sub-001_ses-pilot006_phasediff.nii.gz
+            ```
+
 ### Visual assessment of unprocessed data with *MRIQC*
 
 Checking the data quality shortly after they are acquired increases the likelihood of catching systematic artifacts early enough to avert spreading throughout the whole dataset.
@@ -533,3 +606,40 @@ It also modulates the burden of visual inspection over time, such that we avoid 
 Better pacing in rating throughput also contributes to reducing raters' attrition and fatigue.
 
 - [ ] Screen all the unprocessed data and assess them as described in the [next section](./mriqc.md).
+
+## Upon updates and bugfixes of the dataset
+
+### Update *PyBIDS*'s database index
+
+??? tip "The *PyBIDS* index cache dramatically speeds up *MRIQC*, *fMRIPrep* and *dMRIPrep*"
+
+    To speed up the tear-up time of *NiPreps* tools (*MRIQC*, *fMRIPrep*, and *dMRIPrep*) and other relevant code using *PyBIDS*, we have added a database cache under the `{{ settings.paths.hcph_bids }}/.bids-index/` folder.
+    This cache can be leverage by adding the `--bids-database-dir {{ settings.paths.hcph_bids }}/.bids-index/` to the corresponding command line.
+
+- [ ] Unlock the database file to enable update:
+
+    ``` shell
+    cd {{ settings.paths.hcph_bids }}
+    datalad unlock .bids-index/layout_index.sqlite
+    ```
+
+- [ ] Reset the database file:
+
+    ``` shell
+    python -m pip install "pybids>=0.16"
+    $( dirname $( which python ) )/pybids layout --reset-db --no-validate --index-metadata . .bids-index/
+    ```
+
+    Successful execution will finalize with a message: `Successfully generated database index at {{ settings.paths.hcph_bids }}/.bids-index`.
+
+- [ ] Save the dataset again:
+
+    ``` shell
+    datalad save -m "enh: updated PyBIDS' database file" {{ settings.paths.hcph_bids }}/.bids-index
+    ```
+
+- [ ] Push the changes back to the repos:
+
+    ``` shell
+    datalad push --to=github
+    ```
