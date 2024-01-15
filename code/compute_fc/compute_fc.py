@@ -118,6 +118,11 @@ def get_arguments() -> argparse.Namespace:
         help="specify an alternative output directory",
     )
     parser.add_argument(
+        "--mriqc-path",
+        default=None,
+        help="specify the path to the mriqc derivatives",
+    )
+    parser.add_argument(
         "--study-name",
         default="",
         help="name of the study"
@@ -389,6 +394,45 @@ def find_derivative(path: str, derivatives_name: str = "derivatives") -> str:
     str
         Absolute path to the derivative folder.
     """
+    splitted_path = path.split("/")
+    if derivatives_name in splitted_path:
+        while splitted_path[-1] != derivatives_name:
+            splitted_path.pop()
+        return "/".join(splitted_path)
+    logging.warning(
+        f'"{derivatives_name}" could not be found on path - '
+        f'creating at: {op.join(path, derivatives_name)}"'
+    )
+    return op.join(path, derivatives_name)
+
+def load_iqms(derivative_path: str, mriqc_path: str = None, iqms_name: list = ['fd_mean', 'fd_num', 'fd_perc']) -> str:
+    """Find the corresponding BIDS derivative folder (if existing, otherwise it will be
+    created).
+
+    Parameters
+    ----------
+    derivative_path : str
+        Path to the BIDS dataset's derivatives.
+    iqms_name : list, optional
+        Name of the IQMs to find, by default ["fd_mean", "fd_num", "fd_perc"]
+
+    Returns
+    -------
+    panda.df
+        Dataframe containing the IQMs loaded from the derivatives folder.
+    """
+    if mriqc_path is None:
+        folders = [f for f in os.listdir(derivative_path) if op.isdir(op.join(derivative_path, f))]
+        mriqc_path = [f for f in folders if "mriqc" in f]
+        if len(mriqc_path) >= 2:
+            logging.warning(
+                f'More than one mriqc derivative folder was found: {mriqc_path}'
+                f'The first instance {mriqc_path[0]} is used for the computation.'
+                'In case you want to use another mriqc derivative folder, use the --mriqc-path flag'
+            )
+        mriqc_path = mriqc_path[0]
+
+
     splitted_path = path.split("/")
     if derivatives_name in splitted_path:
         while splitted_path[-1] != derivatives_name:
@@ -1149,6 +1193,90 @@ def visual_report_fc(
     plt.savefig(op.join(output, fc_saveloc))
     plt.close()
 
+def group_report_fc_dist(
+    fc_matrices: np.ndarray,
+    output: str,
+) -> None:
+    """Plot and save the functional connectivity density distributions.
+
+    Parameters
+    ----------
+    fc_matrices : list[np.ndarray]
+        List of functional connectivity matrices
+    output : str
+        Path to the output directory
+    """
+    import seaborn as sns
+    
+    _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
+
+    for fc_matrix in fc_matrices:
+        sns.displot(fc_matrix, kind='kde', fill=True, linewidth=3)
+
+    ax.tick_params(labelsize=LABELSIZE)
+
+    # Ensure the labels are within the figure
+    plt.tight_layout()
+
+    savename = "fc_dist.png"
+
+    logging.debug("Saving functional connectivity distribution visual report at:")
+    logging.debug(f"\t{op.join(output, savename)}")
+
+    plt.savefig(op.join(output, savename))
+    plt.close()
+
+def group_report_qc_fc(
+    fc_matrices: np.ndarray,
+    output: str,
+    mriqc_path : str = None
+) -> None:
+    """Plot and save the functional connectivity density distributions.
+
+    Parameters
+    ----------
+    fc_matrices : list[np.ndarray]
+        List of functional connectivity matrices
+    output : str
+        Path to the output directory
+    """
+    import seaborn as sns
+    
+    _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
+
+    iqms_df = load_iqms(output, mriqc_path = mriqc_path)
+    # Iterate over each IQM
+    for iqm_column in iqms_df.columns:
+        # Create an empty list to store correlations for each edge
+        correlations = []
+
+        # Iterate over each edge
+        for fc_matrix in fc_matrices:
+            # Compute correlation only on the upper triangle
+            # I THINK THIS IS WRONG AS IT DOES NOT COMPUTE THE CORRELATION OVER THE SESSIONS
+            upper_triangle_indices = np.triu_indices(fc_matrix.shape[0], k=1)
+            fc = fc_matrix[upper_triangle_indices]
+            correlation = np.corrcoef(fc, iqms_df[iqm_column])[0, 1]
+            correlations.append(correlation)
+
+        # Create a density distribution plot for the current IQM
+        sns.displot(correlations, kind='kde', fill=True, label=iqm_column, linewidth=3)
+
+    plt.title('QC-FC correlation distributions')
+    plt.legend()
+    # Ensure the labels are within the figure
+    plt.tight_layout()
+
+    ax.tick_params(labelsize=LABELSIZE)
+
+    savename = "QC-FC.png"
+
+    logging.debug("Saving QC-FC visual report at:")
+    logging.debug(f"\t{op.join(output, savename)}")
+
+    plt.savefig(op.join(output, savename))
+    plt.close()
+
 
 def save_output(
     data_list: list[np.ndarray],
@@ -1181,6 +1309,7 @@ def main():
     input_path = args.data_dir
     save = args.no_save
     output = args.output
+    mriqc_path = args.mriqc_path
 
     study_name = args.study_name
 
@@ -1339,6 +1468,9 @@ def main():
             meas=fc_label,
             **FC_FILLS,
         )
+
+        group_report_fc_dist(fc_matrices, output)
+        group_report_qc_fc(fc_matrices, output, mriqc_path = mriqc_path)
 
         for individual_matrix, filename in zip(fc_matrices, missing_something):
             visual_report_fc(
