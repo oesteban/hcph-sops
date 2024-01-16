@@ -36,6 +36,7 @@ import argparse
 import logging
 import os
 import os.path as op
+import pandas as pd
 from collections import defaultdict
 from itertools import chain
 from typing import Optional, Union
@@ -50,7 +51,6 @@ from matplotlib.cm import get_cmap
 from matplotlib.lines import Line2D
 from nibabel import loadsave
 from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
-from pandas import Series
 from sklearn.covariance import GraphicalLassoCV, LedoitWolf
 
 from nilearn._utils import stringify_path
@@ -405,14 +405,17 @@ def find_derivative(path: str, derivatives_name: str = "derivatives") -> str:
     )
     return op.join(path, derivatives_name)
 
-def load_iqms(derivative_path: str, mriqc_path: str = None, iqms_name: list = ['fd_mean', 'fd_num', 'fd_perc']) -> str:
-    """Find the corresponding BIDS derivative folder (if existing, otherwise it will be
-    created).
+def load_iqms(derivative_path: str, mriqc_path: str = None, mod = "bold", iqms_name: list = ['fd_mean', 'fd_num', 'fd_perc']) -> str:
+    """Load the IQMs.
 
     Parameters
     ----------
     derivative_path : str
         Path to the BIDS dataset's derivatives.
+    mriqc_path : str
+        Name of the MRIQC derivative folder
+    mod : str
+        Load the IQMs of that modality
     iqms_name : list, optional
         Name of the IQMs to find, by default ["fd_mean", "fd_num", "fd_perc"]
 
@@ -432,17 +435,18 @@ def load_iqms(derivative_path: str, mriqc_path: str = None, iqms_name: list = ['
             )
         mriqc_path = mriqc_path[0]
 
-
-    splitted_path = path.split("/")
-    if derivatives_name in splitted_path:
-        while splitted_path[-1] != derivatives_name:
-            splitted_path.pop()
-        return "/".join(splitted_path)
-    logging.warning(
-        f'"{derivatives_name}" could not be found on path - '
-        f'creating at: {op.join(path, derivatives_name)}"'
-    )
-    return op.join(path, derivatives_name)
+    #Load the IQMs from the group tsv
+    iqms_filename = op.join(derivative_path, mriqc_path, f'group_{mod}.tsv')
+    iqms_df = pd.read_csv(iqms_filename, sep='\t')
+    #If multi-echo dataset and the IQMs of interest are motion-related, keep only the IQMs from the second echo
+    if 'echo' in iqms_df['bids_name'][0] and all('fd' in i for i in iqms_name):
+        iqms_df = iqms_df[iqms_df['bids_name'].str.contains('echo-2')]
+        logging.info(
+            f'In the case of a multi-echo dataset, the IQMs of the second echo are considered.'
+        )
+    #Keep only the IQMs of interest
+    iqms_df = iqms_df[iqms_name]
+    return iqms_df
 
 
 def check_existing_output(
@@ -923,7 +927,7 @@ def compute_connectivity(
 def plot_timeseries_carpet(
     timeseries: np.ndarray,
     labels: Optional[list[str]] = None,
-    networks: Optional[Series] = None,
+    networks: Optional[pd.Series] = None,
 ) -> list[Axes]:
     """Plot the timeseries as a carpet plot.
 
@@ -933,7 +937,7 @@ def plot_timeseries_carpet(
         Timeseries to show
     labels : Optional[list[str]], optional
         Labels corresponding to the atlas ROIs, by default None
-    networks : Optional[Series], optional
+    networks : Optional[pd.Series], optional
         Networks of the atlas ROIs, by default None
 
     Returns
@@ -1012,7 +1016,7 @@ def plot_timeseries_carpet(
 def plot_timeseries_signal(
     timeseries: np.ndarray,
     labels: Optional[list[str]] = None,
-    networks: Optional[Series] = None,
+    networks: Optional[pd.Series] = None,
     vert_scale: float = 5,
     margin_value: float = 0.01,
     color: str = "tab:blue",
@@ -1027,7 +1031,7 @@ def plot_timeseries_signal(
         Timeseries to show
     labels : Optional[list[str]], optional
         Labels corresponding to the atlas ROIs, by default None
-    networks : Optional[Series], optional
+    networks : Optional[pd.Series], optional
         Networks of the atlas ROIs, by default None
     vert_scale : float, optional
         Vertical space between each signal , by default 5
@@ -1241,26 +1245,33 @@ def group_report_qc_fc(
         Path to the output directory
     """
     import seaborn as sns
-    
-    _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
 
+    # Stack the list of arrays into a 3D matrix
+    fc_matrices = np.stack(fc_matrices, axis=2)
+
+    # Keep only upper triangle as the matrix is symmetric
+    upper_triangle_indices = np.triu_indices(fc_matrices.shape[0], k=1)
+    fc_matrices = fc_matrices[upper_triangle_indices]
+
+    # Load IQMs
     iqms_df = load_iqms(output, mriqc_path = mriqc_path)
+
+    _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
     # Iterate over each IQM
     for iqm_column in iqms_df.columns:
         # Create an empty list to store correlations for each edge
         correlations = []
 
         # Iterate over each edge
-        for fc_matrix in fc_matrices:
+        for v in range(fc_matrices.shape[0]):
             # Compute correlation only on the upper triangle
-            # I THINK THIS IS WRONG AS IT DOES NOT COMPUTE THE CORRELATION OVER THE SESSIONS
-            upper_triangle_indices = np.triu_indices(fc_matrix.shape[0], k=1)
-            fc = fc_matrix[upper_triangle_indices]
-            correlation = np.corrcoef(fc, iqms_df[iqm_column])[0, 1]
+            # CAREFUL THE ORDER OF THE SESSION IN THE IQMS MIGHT NOT MATCH THE ORDER OF THE IQM IN THE FC
+            # ALSO IQMS CONTAIN EXCLUDED SUBJECT
+            correlation = np.corrcoef(fc_matrices[v,:], iqms_df[iqm_column])[0, 1]
             correlations.append(correlation)
 
         # Create a density distribution plot for the current IQM
-        sns.displot(correlations, kind='kde', fill=True, label=iqm_column, linewidth=3)
+        sns.kdeplot(correlations, fill=True, label=iqm_column, linewidth=3)
 
     plt.title('QC-FC correlation distributions')
     plt.legend()
@@ -1274,6 +1285,7 @@ def group_report_qc_fc(
     logging.debug("Saving QC-FC visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
 
+    plt.show()
     plt.savefig(op.join(output, savename))
     plt.close()
 
