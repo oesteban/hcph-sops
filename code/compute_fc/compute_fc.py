@@ -95,6 +95,7 @@ FC_FIGURE_SIZE: tuple = (50, 45)
 LABELSIZE: int = 22
 NETWORK_MAPPING: str = "yeo_networks7"  # Also yeo_networks17
 NETWORK_CMAP: str = "turbo"
+N_PERMUTATION: int = 10000
 
 
 def get_arguments() -> argparse.Namespace:
@@ -405,7 +406,13 @@ def find_derivative(path: str, derivatives_name: str = "derivatives") -> str:
     )
     return op.join(path, derivatives_name)
 
-def load_iqms(derivative_path: str, mriqc_path: str = None, mod = "bold", iqms_name: list = ['fd_mean', 'fd_num', 'fd_perc']) -> str:
+
+def load_iqms(
+    derivative_path: str,
+    mriqc_path: str = None,
+    mod="bold",
+    iqms_name: list = ["fd_mean", "fd_num", "fd_perc"],
+) -> str:
     """Load the IQMs.
 
     Parameters
@@ -425,26 +432,30 @@ def load_iqms(derivative_path: str, mriqc_path: str = None, mod = "bold", iqms_n
         Dataframe containing the IQMs loaded from the derivatives folder.
     """
     if mriqc_path is None:
-        folders = [f for f in os.listdir(derivative_path) if op.isdir(op.join(derivative_path, f))]
+        folders = [
+            f
+            for f in os.listdir(derivative_path)
+            if op.isdir(op.join(derivative_path, f))
+        ]
         mriqc_path = [f for f in folders if "mriqc" in f]
         if len(mriqc_path) >= 2:
             logging.warning(
-                f'More than one mriqc derivative folder was found: {mriqc_path}'
-                f'The first instance {mriqc_path[0]} is used for the computation.'
-                'In case you want to use another mriqc derivative folder, use the --mriqc-path flag'
+                f"More than one mriqc derivative folder was found: {mriqc_path}"
+                f"The first instance {mriqc_path[0]} is used for the computation."
+                "In case you want to use another mriqc derivative folder, use the --mriqc-path flag"
             )
         mriqc_path = mriqc_path[0]
 
-    #Load the IQMs from the group tsv
-    iqms_filename = op.join(derivative_path, mriqc_path, f'group_{mod}.tsv')
-    iqms_df = pd.read_csv(iqms_filename, sep='\t')
-    #If multi-echo dataset and the IQMs of interest are motion-related, keep only the IQMs from the second echo
-    if 'echo' in iqms_df['bids_name'][0] and all('fd' in i for i in iqms_name):
-        iqms_df = iqms_df[iqms_df['bids_name'].str.contains('echo-2')]
+    # Load the IQMs from the group tsv
+    iqms_filename = op.join(derivative_path, mriqc_path, f"group_{mod}.tsv")
+    iqms_df = pd.read_csv(iqms_filename, sep="\t")
+    # If multi-echo dataset and the IQMs of interest are motion-related, keep only the IQMs from the second echo
+    if "echo" in iqms_df["bids_name"][0] and all("fd" in i for i in iqms_name):
+        iqms_df = iqms_df[iqms_df["bids_name"].str.contains("echo-2")]
         logging.info(
-            f'In the case of a multi-echo dataset, the IQMs of the second echo are considered.'
+            f"In the case of a multi-echo dataset, the IQMs of the second echo are considered."
         )
-    #Keep only the IQMs of interest
+    # Keep only the IQMs of interest
     iqms_df = iqms_df[iqms_name]
     return iqms_df
 
@@ -1197,6 +1208,7 @@ def visual_report_fc(
     plt.savefig(op.join(output, fc_saveloc))
     plt.close()
 
+
 def group_report_fc_dist(
     fc_matrices: np.ndarray,
     output: str,
@@ -1211,11 +1223,11 @@ def group_report_fc_dist(
         Path to the output directory
     """
     import seaborn as sns
-    
+
     _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
 
     for fc_matrix in fc_matrices:
-        sns.displot(fc_matrix, kind='kde', fill=True, linewidth=3)
+        sns.displot(fc_matrix, kind="kde", fill=True, linewidth=3)
 
     ax.tick_params(labelsize=LABELSIZE)
 
@@ -1230,10 +1242,9 @@ def group_report_fc_dist(
     plt.savefig(op.join(output, savename))
     plt.close()
 
+
 def group_report_qc_fc(
-    fc_matrices: np.ndarray,
-    output: str,
-    mriqc_path : str = None
+    fc_matrices: np.ndarray, output: str, mriqc_path: str = None
 ) -> None:
     """Plot and save the functional connectivity density distributions.
 
@@ -1254,7 +1265,7 @@ def group_report_qc_fc(
     fc_matrices = fc_matrices[upper_triangle_indices]
 
     # Load IQMs
-    iqms_df = load_iqms(output, mriqc_path = mriqc_path)
+    iqms_df = load_iqms(output, mriqc_path=mriqc_path)
 
     _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
     # Iterate over each IQM
@@ -1267,13 +1278,25 @@ def group_report_qc_fc(
             # Compute correlation only on the upper triangle
             # CAREFUL THE ORDER OF THE SESSION IN THE IQMS MIGHT NOT MATCH THE ORDER OF THE IQM IN THE FC
             # ALSO IQMS CONTAIN EXCLUDED SUBJECT
-            correlation = np.corrcoef(fc_matrices[v,:], iqms_df[iqm_column])[0, 1]
+            correlation = np.corrcoef(fc_matrices[v, :], iqms_df[iqm_column])[0, 1]
             correlations.append(correlation)
 
         # Create a density distribution plot for the current IQM
         sns.kdeplot(correlations, fill=True, label=iqm_column, linewidth=3)
 
-    plt.title('QC-FC correlation distributions')
+    ## Permutation analyses
+    correlations_null = []
+    for v in range(fc_matrices.shape[0]):
+        for p in range(N_PERMUTATION):
+            permuted_fc = fc_matrices[v, np.random.default_rng(seed=42).permutation(fc_matrices.shape[1])]
+            # Correlation under null hypothesis
+            correlation = np.corrcoef(permuted_fc, iqms_df['fd_mean'])[0, 1]
+            correlations_null.append(correlation)
+
+    # Create a density distribution plot for the current IQM
+    sns.kdeplot(correlations_null, fill=False, color='red', label='Dist under null hypothesis', linewidth=3, linestyle='dashed')
+
+    plt.title("QC-FC correlation distributions")
     plt.legend()
     # Ensure the labels are within the figure
     plt.tight_layout()
@@ -1482,7 +1505,7 @@ def main():
         )
 
         group_report_fc_dist(fc_matrices, output)
-        group_report_qc_fc(fc_matrices, output, mriqc_path = mriqc_path)
+        group_report_qc_fc(fc_matrices, output, mriqc_path=mriqc_path)
 
         for individual_matrix, filename in zip(fc_matrices, missing_something):
             visual_report_fc(
