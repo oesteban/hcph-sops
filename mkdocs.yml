@@ -1,5 +1,5 @@
 site_name: "Standard Operating Procedures of the HCPh project"
-site_description: Templates and bootstrapping documentation for MRI standard operating procedures (SOPs)
+site_description: Step-by-step instructions (standard operating procedures; SOPs) to replicate our Human Connectome PHantom project (HCPh)
 site_author: The AxonLab
 
 # Copyright
@@ -34,12 +34,14 @@ nav:
     - Appendices:
       - Notes on the scanner's console: data-collection/notes-scanning.md
       - ET extended guidelines: data-collection/notes-et.md
+      - Eyetracking QA/QC (notebook): data-management/eyetrack-qc.ipynb
       - Additional miscellaneous protocols: data-collection/notes-misc.md
       - Notes on software installation and tips: data-collection/notes-software.md
       - Legacy procedure for the ET mirror: data-collection/legacy-et.md
       - Converting physio into BIDS (notebook): data-management/physio-to-bids.ipynb
-      - Converting eye-tracking into BIDS: data-management/edf-to-bids.md
-      - QA/QC criteria: data-management/qaqc-criteria.md
+      - QA/QC criteria (unprocessed data): data-management/qaqc-criteria.md
+      - QA/QC criteria (preprocessed data): processing/qaqc-criteria-preprocessed.md
+
 theme:
   name: material
   palette:
