@@ -81,9 +81,9 @@ def separate_by_similar_values(
 
 def get_func_filenames_bids(
     paths_to_func_dir: str,
-    task_filter: list = [],
-    ses_filter: list = [],
-    run_filter: list = [],
+    task_filter: Optional[list] = None,
+    ses_filter: Optional[list] = None,
+    run_filter: Optional[list] = None,
 ) -> tuple[list[list[str]], list[float]]:
     """Return the BIDS functional imaging files matching the specified task and session
     filters as well as the first (if multiple) unique repetition time (TR).
@@ -93,11 +93,11 @@ def get_func_filenames_bids(
     paths_to_func_dir : str
         Path to the BIDS (usually derivatives) directory
     task_filter : list, optional
-        List of task name(s) to consider, by default []
+        List of task name(s) to consider, by default `None`
     ses_filter : list, optional
-        List of session name(s) to consider, by default []
+        List of session name(s) to consider, by default `None`
     run_filter : list, optional
-        List of run(s) to consider, by default []
+        List of run(s) to consider, by default `None`
 
     Returns
     -------
@@ -116,9 +116,9 @@ def get_func_filenames_bids(
         return_type="file",
         extension=["nii.gz", "gz"],
         suffix="bold",
-        task=task_filter,
-        session=ses_filter,
-        run=run_filter,
+        task=task_filter or [],
+        session=ses_filter or [],
+        run=run_filter or [],
     )
 
     affines = []
