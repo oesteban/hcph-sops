@@ -81,6 +81,6 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
     If errors or quality issues are encountered, find the issue corresponding to that session in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues) and report a comprehensive description of the problems.
     In case of *fMRIPrep* failure, follow the procedure described above in "Not all *fMRIPrep* derivatives were generated".
 
-!!! warning "Immediately report images deemed *exclude*, as an issue in [the dataset's repository]((https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues))"
+!!! warning "Immediately report images deemed *exclude*, as an issue in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues)"
 
 [1]: https://doi.org/10.3389/fnimg.2022.1073734 "Provins, C., … Esteban, O. (2023). Quality Control in functional MRI studies with MRIQC and fMRIPrep. Frontiers in Neuroimaging 1:1073734. doi:10.3389/fnimg.2022.1073734 (OA)."
