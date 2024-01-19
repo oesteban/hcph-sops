@@ -36,7 +36,9 @@ import argparse
 import logging
 import os
 import os.path as op
+import nibabel as nib
 import pandas as pd
+import seaborn as sns
 from collections import defaultdict
 from itertools import chain
 from typing import Optional, Union
@@ -49,7 +51,6 @@ from bids.layout.writing import build_path
 from matplotlib.axes import Axes
 from matplotlib.cm import get_cmap
 from matplotlib.lines import Line2D
-from nibabel import loadsave
 from nilearn_patcher import MultiNiftiMapsMasker as MultiNiftiMapsMasker_patched
 from sklearn.covariance import GraphicalLassoCV, LedoitWolf
 
@@ -296,7 +297,7 @@ def get_func_filenames_bids(
 
     affines = []
     for file in all_derivatives:
-        affines.append(loadsave.load(file).affine)
+        affines.append(nib.loadsave.load(file).affine)
 
     similar_fov_dict = separate_by_similar_values(
         all_derivatives, np.array(affines)[:, 0, 0]
@@ -935,6 +936,34 @@ def compute_connectivity(
     return vec_to_sym_matrix(connectivity_measures, diagonal=np.zeros((n_ts, n_area)))
 
 
+def compute_distance(atlas_path: str) -> np.array:
+    """Compute the euclidean distance between the center of mass of the atlas regions.
+
+    Parameters
+    ----------
+    atlas_path : str
+        Path to the atlas Nifti
+    Returns
+    -------
+    np.array
+        Distance matrix
+    """
+    from scipy.ndimage.measurements import center_of_mass
+
+    atlas_img = nib.load(atlas_path)
+    atlas_data = atlas_img.get_fdata()
+    # Array to store the center of mass of each region
+    centroids = np.zeros((atlas_data.shape[3], 3), dtype=float)
+    for r in range(atlas_data.shape[3]):
+        centroids[r, ...] = np.array(center_of_mass(atlas_data[..., r]))
+
+    # Compute Euclidean distance matrix using broadcasting
+    diff = centroids[:, np.newaxis, :] - centroids
+    distance_matrix = np.sqrt(np.sum(diff**2, axis=-1))
+
+    return distance_matrix
+
+
 def plot_timeseries_carpet(
     timeseries: np.ndarray,
     labels: Optional[list[str]] = None,
@@ -1245,8 +1274,8 @@ def group_report_fc_dist(
 
 def group_report_qc_fc(
     fc_matrices: np.ndarray, output: str, mriqc_path: str = None
-) -> None:
-    """Plot and save the functional connectivity density distributions.
+) -> dict:
+    """Plot and save the QC-FC distributions.
 
     Parameters
     ----------
@@ -1254,8 +1283,9 @@ def group_report_qc_fc(
         List of functional connectivity matrices
     output : str
         Path to the output directory
+    mriqc_path : str
+        Name of the MRIQC derivative folder
     """
-    import seaborn as sns
 
     # Stack the list of arrays into a 3D matrix
     fc_matrices = np.stack(fc_matrices, axis=2)
@@ -1268,33 +1298,47 @@ def group_report_qc_fc(
     iqms_df = load_iqms(output, mriqc_path=mriqc_path)
 
     _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
+
     # Iterate over each IQM
+    qc_fc_dict = dict()
     for iqm_column in iqms_df.columns:
         # Create an empty list to store correlations for each edge
-        correlations = []
+        qc_fcs = []
 
         # Iterate over each edge
-        for v in range(fc_matrices.shape[0]):
+        for e in range(fc_matrices.shape[0]):
             # Compute correlation only on the upper triangle
             # CAREFUL THE ORDER OF THE SESSION IN THE IQMS MIGHT NOT MATCH THE ORDER OF THE IQM IN THE FC
             # ALSO IQMS CONTAIN EXCLUDED SUBJECT
-            correlation = np.corrcoef(fc_matrices[v, :], iqms_df[iqm_column])[0, 1]
-            correlations.append(correlation)
+            qc_fc = np.corrcoef(fc_matrices[e, :], iqms_df[iqm_column])[0, 1]
+            qc_fcs.append(qc_fc)
 
         # Create a density distribution plot for the current IQM
-        sns.kdeplot(correlations, fill=True, label=iqm_column, linewidth=3)
+        sns.kdeplot(qc_fcs, fill=True, label=iqm_column, linewidth=3)
+
+        # Save the QC-FC distributions in a dictionary
+        qc_fc_dict[iqm_column] = qc_fcs
 
     ## Permutation analyses
     correlations_null = []
-    for v in range(fc_matrices.shape[0]):
-        for p in range(N_PERMUTATION):
-            permuted_fc = fc_matrices[v, np.random.default_rng(seed=42).permutation(fc_matrices.shape[1])]
+    for e in range(fc_matrices.shape[0]):
+        for _ in range(N_PERMUTATION):
+            permuted_fc = fc_matrices[
+                e, np.random.default_rng(seed=42).permutation(fc_matrices.shape[1])
+            ]
             # Correlation under null hypothesis
-            correlation = np.corrcoef(permuted_fc, iqms_df['fd_mean'])[0, 1]
+            correlation = np.corrcoef(permuted_fc, iqms_df["fd_mean"])[0, 1]
             correlations_null.append(correlation)
 
     # Create a density distribution plot for the current IQM
-    sns.kdeplot(correlations_null, fill=False, color='red', label='Dist under null hypothesis', linewidth=3, linestyle='dashed')
+    sns.kdeplot(
+        correlations_null,
+        fill=False,
+        color="red",
+        label="Dist under null hypothesis",
+        linewidth=3,
+        linestyle="dashed",
+    )
 
     plt.title("QC-FC correlation distributions")
     plt.legend()
@@ -1306,6 +1350,69 @@ def group_report_qc_fc(
     savename = "QC-FC.png"
 
     logging.debug("Saving QC-FC visual report at:")
+    logging.debug(f"\t{op.join(output, savename)}")
+
+    plt.show()
+    plt.savefig(op.join(output, savename))
+    plt.close()
+
+    return qc_fc_dict
+
+
+def group_report_qc_fc_euclidean(
+    qc_fc_dict: dict, atlas_path: str, output: str
+) -> None:
+    """Plot and save the correlations between QC-FC and euclidean distance.
+    The euclidean distance is computed from the centers of mass of each region.
+
+    Parameters
+    ----------
+    qc_fc_dict : dict
+        Dictionary containing the qc-fc distribution over the edges for different IQMs.
+    atlas_path : str
+        Path to the atlas Nifti
+    output : str
+        Path to the output directory
+    """
+    d = compute_distance(atlas_path)
+    # Keep only upper triangle as the matrix is symmetric
+    upper_triangle_indices = np.triu_indices(d.shape[0], k=1)
+    d = d[upper_triangle_indices]
+
+    # Iterate over the IQMs
+    fig, axs = plt.subplots(1, 3, figsize=FC_FIGURE_SIZE)
+    for i, iqm in enumerate(qc_fc_dict.keys()):
+        qc_fc = qc_fc_dict[iqm]
+        correlation = np.corrcoef(qc_fc, d)[0, 1]
+        axs[i].text(
+            0.3,
+            76,
+            f"Correlation = {correlation:.2f}",
+            fontsize=LABELSIZE - 2,
+            bbox=dict(facecolor="grey", alpha=0.4, boxstyle="round,pad=0.5"),
+        )
+        axs[i].scatter(qc_fc, d)
+
+        # Plot trend line
+        axs[i].plot(
+            np.unique(qc_fc),
+            np.poly1d(np.polyfit(qc_fc, d, 1))(np.unique(qc_fc)),
+            "r-",
+            linewidth=3,
+        )
+        axs[i].tick_params(labelsize=LABELSIZE)
+
+    fig.suptitle(
+        "Dependence between euclidean distance and QC-FC", fontsize=LABELSIZE + 2
+    )
+    fig.supxlabel("QC-FC correlation of edge between nodes", fontsize=LABELSIZE)
+    fig.supylabel("Euclidean distance separating nodes", fontsize=LABELSIZE)
+    # Ensure the labels are within the figure
+    # plt.tight_layout()
+
+    savename = "QC-FC_euclidean.png"
+
+    logging.debug("Saving QC-FC vs euclidean distance visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
 
     plt.show()
@@ -1505,7 +1612,8 @@ def main():
         )
 
         group_report_fc_dist(fc_matrices, output)
-        group_report_qc_fc(fc_matrices, output, mriqc_path=mriqc_path)
+        qc_fc_dict = group_report_qc_fc(fc_matrices, output, mriqc_path=mriqc_path)
+        group_report_qc_fc_euclidean(qc_fc_dict, atlas_filename, output)
 
         for individual_matrix, filename in zip(fc_matrices, missing_something):
             visual_report_fc(
