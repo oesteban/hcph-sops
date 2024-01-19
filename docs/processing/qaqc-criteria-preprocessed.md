@@ -38,7 +38,10 @@
 - [ ] Verify that the WM and pial surface do not cross or overlap each other.
 - [ ] Verify that the pial surface (red line) does not extend past the actual pial boundary.
 
-!!! note "As we will proceed with voxel-wise analysis, re-running *fMRIPrep* is necessary only when the reconstructed surfaces are extremely inacurrate, which typically only happens in the presence of artifacts that we should have captured previously in the step of unprocessed data QA/QC using [MRIQC](qaqc-critera.md)."
+!!! Tip "Evaluating the quality of brain surfaces"
+
+    As we will proceed with voxel-wise analysis, re-running *fMRIPrep* is necessary only when the reconstructed surfaces are extremely inacurate.
+    That typically only happens in the presence of extreme artifacts that we should have captured previously in the step of [QA/QC for unprocessed data using *MRIQC*](../data-management/qaqc-criteria.md).
 
 ## Functional
 
