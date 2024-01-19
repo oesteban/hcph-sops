@@ -55,16 +55,6 @@ To do so, you'll need to first [download the data from PACS](#download-the-data-
 - [ ] Check that the *AcqKnowledge* file(s) corresponding to the session were added to the *Dropbox* shared folder and completely uploaded from {{ secrets.hosts.acqknowledge | default("████") }}.
 - [ ] Check that *Psychopy*'s logs and ET's `.EDF` files corresponding to the session were added to the *Dropbox* shared folder and completely uploaded from {{ secrets.hosts.psychopy | default("████") }}.
 
-### Copy original DICOM datasets into the archive of Stockage hOrus
-
-- [ ] Setup a cron job to execute automatically the synchronization:
-
-    ``` cron
-    crontab -e
-    [ within your file editor add the following line ]
-    0 2 * * * rsync -avurP {{ settings.paths.pilot_sourcedata }}* {{ secrets.data.curnagl_backup | default("<user>@<host>:<path>") }}/sourcedata-pilot &> $HOME/var/log/data-curnagl.log
-    ```
-
 ## Within two weeks after the completed session
 
 ### Convert imaging data to BIDS with *HeuDiConv*
