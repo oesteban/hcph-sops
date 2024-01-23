@@ -3,7 +3,7 @@ markdown-include
 mkdocs
 mkdocs-jupyter==0.24.2
 mkdocs-macros-plugin
-mkdocs-material
+mkdocs-material>=9.4
 git-changelog
 git+https://github.com/dimrozakis/mkpdfs-mkdocs-plugin.git@master
 pygments
