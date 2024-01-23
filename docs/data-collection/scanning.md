@@ -598,7 +598,6 @@ It is critical to check that physiological signals are looking good:
 - [ ] Check the box confirming that it has been acquired in the issue collecting notes about the session.
     Don't forget to report any observations there.
 
-
 ## Acquire a T2w image (if time permits)
 
 - [ ] Launch the `anat-T2w__flair` protocol by pressing *Continue* :fontawesome-solid-play:{ .redcolor }, or
