@@ -93,6 +93,26 @@
 - [ ] Take the RB outside the scanning room and box it in the ET/fMRI box.
 - [ ] Exit and close the external door.
 
+## Synchronize collected physiological data (eye-tracking and BIOPAC signals)
+
+**On the *stimuli laptop ({{ secrets.hosts.psychopy | default("███") }})*:**
+
+- [ ] Copy data from the `{{ secrets.psychopy_paths.data }}` subfolder in *{{ secrets.hosts.psychopy | default("███") }}* into the synchronized Dropbox folder `{{ secrets.psychopy_paths.dropbox }}`.
+
+    ??? danger "This reports what we did, but the setup MUST be updated to directly write into the synchronized folder."
+
+        *Psychopy* forcefully writes eye-tracking data into the `./data` folder of the experiment file.
+        In our case that means `{{ secrets.psychopy_paths.tasks }}/data`, which is a softlink to `{{ secrets.psychopy_paths.data }}`.
+        For future data collection efforts, the softlink should change to point directly to `{{ secrets.psychopy_paths.dropbox }}`.
+
+- [ ] Check that the computer is connected to the Internet and *Dropbox* initiates synchronization.
+
+**On the *physiology recording laptop ({{ secrets.hosts.acqknowledge | default("███") }})*:**
+
+- [ ] Disconnect the Ethernet cable from the adaptor dongle attached to *{{ secrets.hosts.acqknowledge | default("███") }}*.
+- [ ] Enable the Wireless connection, as it will be disabled to permit communications with the BIOPAC.
+- [ ] Check Internet access and that *Dropbox* initiates synchronization.
+
 ## Clearing up the Control Room
 
 ### Finalize the *boxing* of the ET elements

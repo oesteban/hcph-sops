@@ -12,14 +12,14 @@ An example of data structure should be as follows:
 │   │       └── ses-15
 ```
 
-Then, the functional connectivity matrices can be computed using the `compute_fc.py` script.
+Then, the functional connectivity matrices can be computed using the `funconn.py` script.
 The simplest call of the script only needs a derivative dataset (usually from *fMRIPrep*).
 Following the above data structure, it would be called as follows:
 ``` bash
-python compute_fc.py path_to_dataset/derivatives/fmriprep-23.1.4
+python funconn.py path_to_dataset/derivatives/fmriprep-23.1.4
 ```
 
-???+ info "Default call of the `compute_fc.py` script"
+???+ info "Default call of the `funconn.py` script"
     When using the default options, the pipeline will (in this order and for all functional tasks):
     
     - [ ] Fetch the [DiFuMo](https://doi.org/10.1016/j.neuroimage.2020.117126) atlas (64 dimensions)
@@ -33,7 +33,7 @@ python compute_fc.py path_to_dataset/derivatives/fmriprep-23.1.4
     - [ ] Standardize the timeseries
     - [ ] Compute the functional connectivity matrices as the sparse inverse covariance (see this [example](https://nilearn.github.io/stable/auto_examples/03_connectivity/plot_inverse_covariance_connectome.html), using [Graphical Lasso CV](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphicalLassoCV.html#sklearn.covariance.GraphicalLassoCV) of *scikit-learn*)
 
-    Most parameters of the pipeline can be specified in the options (see `python compute_fc.py -h` for more details).
+    Most parameters of the pipeline can be specified in the options (see `python funconn.py -h` for more details).
 
 Finally, the pipeline will save the denoised timeseries and connectivity matrices as well as various visual reports (i.e., figures).
 
