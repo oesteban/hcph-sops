@@ -36,7 +36,7 @@ TASK_TRIGGER_MSG = {
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Check and fix wrong PA fieldmaps.")
+    parser = argparse.ArgumentParser(description="Convert and EDF file that correspond to a BIDS imaging file.")
     parser.add_argument("recordings", type=Path, help="Folder containing EDF files.")
     parser.add_argument(
         "bids_file",
