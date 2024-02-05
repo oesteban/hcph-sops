@@ -81,8 +81,6 @@ TIMESERIES_PATTERN: list = [
 ]
 TIMESERIES_FILLS: dict = {"desc": "denoised", "extension": ".tsv"}
 
-DENOISING_STRATEGY: list = ["high_pass", "motion", "scrub"]
-
 NETWORK_MAPPING: str = "yeo_networks7"  # Also yeo_networks17
 
 
@@ -161,6 +159,21 @@ def get_arguments() -> argparse.Namespace:
         action="store",
         type=float,
         help="cutoff frequency of low pass filtering",
+    )
+    parser.add_argument(
+        "--denoising-strategy",
+        default=("high_pass", "motion", "scrub"),
+        action="store",
+        type=tuple,
+        help='type of noise components to include.'
+        '- "motion":  head motion estimates. Associated parameter: `motion`'
+        '- "wm_csf" confounds derived from white matter and cerebrospinal fluid.'
+        '- "global_signal" confounds derived from the global signal.'
+        '- "compcor" confounds derived from CompCor (:footcite:t:`Behzadi2007`).'
+        '  When using this noise component, "high_pass" must also be applied.'
+        '- "scrub" regressors for :footcite:t:`Power2014` scrubbing approach.'
+        '- "high_pass" adds discrete cosines transformation'
+        'basis regressors to handle low-frequency signal drifts.'
     )
     parser.add_argument(
         "--motion",
@@ -368,6 +381,7 @@ def extract_and_denoise_timeseries(
     verbose: int = 2,
     interpolate: bool = False,
     low_pass: Optional[float] = None,
+    denoising_strategy: Optional[tuple] = (),
     motion: Optional[str] = None,
     t_r: Optional[float] = None,
     output: Optional[str] = None,
@@ -388,6 +402,8 @@ def extract_and_denoise_timeseries(
         by default False
     low_pass : Optional[float], optional
         Low-pass filtering cutoff frequency, by default None
+    denoising_strategy = Optional[tuple], optional,
+        the type of noise regressors to include.
     motion: Optional[str], optional,
         type of confounds extracted from head motion estimates
     t_r : Optional[float], optional
@@ -405,7 +421,7 @@ def extract_and_denoise_timeseries(
         return [], []
 
     logging.info(f"Extracting and denoising timeseries for {len(func_filename)} files.")
-    logging.debug(f"Denoising strategy includes : {' '.join(DENOISING_STRATEGY)}")
+    logging.debug(f"Denoising strategy includes : {' '.join(denoising_strategy)}")
     logging.debug(f"Denoising parameters are: {kwargs}")
 
     # There is currently a bug in nilearn that prevents "load_confounds" from finding
@@ -415,7 +431,7 @@ def extract_and_denoise_timeseries(
         confounds, sample_mask = load_confounds(
             func_filename,
             demean=False,
-            strategy=DENOISING_STRATEGY,
+            strategy=denoising_strategy,
             motion=motion,
             **kwargs,
         )
@@ -433,7 +449,7 @@ def extract_and_denoise_timeseries(
         confounds, sample_mask = get_confounds_manually(
             func_filename,
             demean=False,
-            strategy=DENOISING_STRATEGY,
+            strategy=denoising_strategy,
             motion=motion,
             **kwargs,
         )
@@ -591,6 +607,7 @@ def main():
     # denoise_only = args.denoise_only
     atlas_dimension = args.atlas_dimension
     low_pass = args.low_pass
+    denoising_strategy = args.denoising_strategy
     motion = args.motion
     fd_threshold = args.FD_thresh
     std_dvars_threshold = args.SDVARS_thresh
@@ -689,6 +706,7 @@ def main():
             verbose=nilearn_verbose,
             t_r=t_r,
             low_pass=low_pass,
+            denoising_strategy=denoising_strategy,
             motion=motion,
             fd_threshold=fd_threshold,
             std_dvars_threshold=std_dvars_threshold,
