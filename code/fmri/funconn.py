@@ -163,6 +163,18 @@ def get_arguments() -> argparse.Namespace:
         help="cutoff frequency of low pass filtering",
     )
     parser.add_argument(
+        "--motion",
+        default="basic",
+        action="store",
+        choices=["basic", "power2", "derivatives", "full"],
+        type=str,
+        help='type of confounds extracted from head motion estimates.'
+             '- “basic” translation/rotation (6 parameters)'
+             '- “power2” translation/rotation + quadratic terms (12 parameters)'
+             '- “derivatives” translation/rotation + derivatives (12 parameters)'
+             '- “full” translation/rotation + derivatives + quadratic terms + power2d derivatives (24 parameters)'
+    )
+    parser.add_argument(
         "--FD-thresh",
         default=0.4,
         action="store",
@@ -228,16 +240,16 @@ def fit_transform_patched(
     atlas_filename : str
         Path to the atlas file
     confounds : Optional[list], optional
-        List of confounds (usually from nilearn.interface.fmriprep.load_confouds),
+        List of confounds (usually from nilearn.interface.fmriprep.load_confounds),
         by default None
     sample_mask : Optional[list], optional
-        List of sample masks (usually from nilearn.interface.fmriprep.load_confouds),
+        List of sample masks (usually from nilearn.interface.fmriprep.load_confounds),
         by default None
 
     Returns
     -------
     list[np.ndarray]
-        List of extracted and denoised timerseries
+        List of extracted and denoised timeseries
     """
     masker = MultiNiftiMapsMasker(maps_img=atlas_filename, **kwargs)
 
@@ -278,9 +290,9 @@ def interpolate_and_denoise_timeseries(
     atlas_filename : str
         Path to the atlas filename
     confounds : list
-        List of confounds (usually from nilearn.interface.fmriprep.load_confouds).
+        List of confounds (usually from nilearn.interface.fmriprep.load_confounds).
     sample_mask : list
-        List of sample_masks (usually from nilearn.interface.fmriprep.load_confouds).
+        List of sample_masks (usually from nilearn.interface.fmriprep.load_confounds).
     t_r : Optional[float], optional
         Repetition time of the MRI acquisition, by default None
     low_pass : Optional[float], optional
@@ -356,6 +368,7 @@ def extract_and_denoise_timeseries(
     verbose: int = 2,
     interpolate: bool = False,
     low_pass: Optional[float] = None,
+    motion: Optional[str] = None,
     t_r: Optional[float] = None,
     output: Optional[str] = None,
     **kwargs,
@@ -375,6 +388,8 @@ def extract_and_denoise_timeseries(
         by default False
     low_pass : Optional[float], optional
         Low-pass filtering cutoff frequency, by default None
+    motion: Optional[str], optional,
+        type of confounds extracted from head motion estimates
     t_r : Optional[float], optional
         Repetition time of the MRI, by default None
     output : Optional[str], optional
@@ -401,7 +416,7 @@ def extract_and_denoise_timeseries(
             func_filename,
             demean=False,
             strategy=DENOISING_STRATEGY,
-            motion="basic",
+            motion=motion,
             **kwargs,
         )
     except ValueError as msg:
@@ -410,7 +425,7 @@ def extract_and_denoise_timeseries(
 
         logging.warning(
             "Nilearn could not find the confounds file (this is likely due to a"
-            " bug in nilearn.interface.fmriprep.load_confouds that should be fixed in"
+            " bug in nilearn.interface.fmriprep.load_confounds that should be fixed in"
             " release 0.13, see nilearn issue #3792)."
         )
         logging.warning("Searching manually ...")
@@ -419,7 +434,7 @@ def extract_and_denoise_timeseries(
             func_filename,
             demean=False,
             strategy=DENOISING_STRATEGY,
-            motion="basic",
+            motion=motion,
             **kwargs,
         )
 
@@ -576,6 +591,7 @@ def main():
     # denoise_only = args.denoise_only
     atlas_dimension = args.atlas_dimension
     low_pass = args.low_pass
+    motion = args.motion
     fd_threshold = args.FD_thresh
     std_dvars_threshold = args.SDVARS_thresh
     scrub = args.n_scrub_frames
@@ -673,6 +689,7 @@ def main():
             verbose=nilearn_verbose,
             t_r=t_r,
             low_pass=low_pass,
+            motion=motion,
             fd_threshold=fd_threshold,
             std_dvars_threshold=std_dvars_threshold,
             scrub=scrub,
