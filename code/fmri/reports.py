@@ -560,12 +560,13 @@ def group_report_qc_fc_euclidean(
             linewidth=3,
         )
         axs[i].tick_params(labelsize=LABELSIZE)
+        axs[i].set_title(iqm, fontsize=LABELSIZE + 2)
 
     fig.suptitle(
-        "Dependence between euclidean distance and QC-FC", fontsize=LABELSIZE + 2
+        "Dependence between euclidean distance and QC-FC", fontsize=LABELSIZE + 4
     )
-    fig.supxlabel("QC-FC correlation of edge between nodes", fontsize=LABELSIZE)
-    fig.supylabel("Euclidean distance separating nodes", fontsize=LABELSIZE)
+    fig.supxlabel("QC-FC correlation of edge between nodes", fontsize=LABELSIZE + 2)
+    fig.supylabel("Euclidean distance separating nodes", fontsize=LABELSIZE + 2)
     # Ensure the labels are within the figure
     # plt.tight_layout()
 
