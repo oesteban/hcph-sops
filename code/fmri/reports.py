@@ -35,6 +35,7 @@ from matplotlib.axes import Axes
 from matplotlib.cm import get_cmap
 from matplotlib.lines import Line2D
 from nilearn.plotting import plot_design_matrix, plot_matrix
+from scipy.stats import pearsonr
 
 from load_save import get_bids_savename, load_iqms
 from funconn import compute_distance
@@ -54,6 +55,7 @@ FC_FIGURE_SIZE: tuple = (50, 45)
 LABELSIZE: int = 22
 NETWORK_CMAP: str = "turbo"
 N_PERMUTATION: int = 10000
+ALPHA = 0.05
 
 
 def plot_timeseries_carpet(
@@ -520,13 +522,16 @@ def group_report_qc_fc_euclidean(
     fig, axs = plt.subplots(1, 3, figsize=FC_FIGURE_SIZE)
     for i, iqm in enumerate(qc_fc_dict.keys()):
         qc_fc = qc_fc_dict[iqm]
-        correlation = np.corrcoef(qc_fc, d)[0, 1]
+        correlation, p_value = pearsonr(qc_fc, d)
+
+        # Plot the box in red if the correlation is significant
+        facecolor='red' if p_value < ALPHA else 'grey'
         axs[i].text(
             0.3,
             76,
-            f"Correlation = {correlation:.2f}",
+            f"Correlation = {correlation:.2f}, p-value = {p_value:.4f}",
             fontsize=LABELSIZE - 2,
-            bbox=dict(facecolor="grey", alpha=0.4, boxstyle="round,pad=0.5"),
+            bbox=dict(facecolor=facecolor, alpha=0.4, boxstyle="round,pad=0.5"),
         )
         axs[i].scatter(qc_fc, d)
 
