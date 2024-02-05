@@ -1,5 +1,5 @@
 site_name: "Standard Operating Procedures of the HCPh project"
-site_description: Templates and bootstrapping documentation for MRI standard operating procedures (SOPs)
+site_description: Step-by-step instructions (standard operating procedures; SOPs) to replicate our Human Connectome PHantom project (HCPh)
 site_author: The AxonLab
 
 # Copyright
@@ -36,11 +36,15 @@ nav:
       - ET extended guidelines: data-collection/notes-et.md
       - Additional miscellaneous protocols: data-collection/notes-misc.md
       - Notes on software installation and tips: data-collection/notes-software.md
-      - Legacy procedure for the ET mirror: data-collection/legacy-et.md
       - Converting physio into BIDS (notebook): data-management/physio-to-bids.ipynb
       - Converting eye-tracking into BIDS: data-management/edf-to-bids.md
-      - QA/QC criteria for unprocessed data: data-management/qaqc-criteria-unprocessed.md
-      - QA/QC criteria for preprocessed data: data-management/qaqc-criteria-preprocessed.md
+    - QA/QC Appendices:
+      - QA/QC criteria (unprocessed data): data-management/qaqc-criteria-unprocessed.md
+      - QA/QC criteria (preprocessed data): processing/qaqc-criteria-preprocessed.md
+      - Eyetracking data screening (notebook): data-management/eyetrack-qc.ipynb
+    - Deprecated procedures:
+      - Legacy procedure for the ET mirror: data-collection/legacy-et.md
+
 theme:
   name: material
   palette:
@@ -110,8 +114,8 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:

@@ -105,7 +105,7 @@ Several tubes and cables will be now hanging from the access cylinder at the Sca
 - [ ] Open the *AcqKnowledge* software.
 - [ ] Create a template *graph file* ([`EXP_BASE.gtl`](../assets/files/EXP_BASE.gtl))
 
-    !!! important "Creating the *AcqKnowledge*'s template graph file"
+    ??? important "Creating the *AcqKnowledge*'s template graph file"
 
         - [ ] Creating a graph file requires the BIOPAC system powered up and connected to the *{{ secrets.hosts.acqknowledge | default("███") }}* computer.
         - [ ] Add the RB module
@@ -132,6 +132,8 @@ Several tubes and cables will be now hanging from the access cylinder at the Sca
         - [ ] Configure the experiment length (at least 2.5 hours)
         - [ ] Configure whether you want to collect directly to hard disk and autosave settings
         - [ ] Save the experiment, making sure you choose a "graph template file" (with extension `.gtl`)
+
+- [ ] Check that *Dropbox* is operative and ensure that the graph template file is configured to store data into the designated folder.
 
 ### Preparing the *stimuli presentation laptop* ({{ secrets.hosts.psychopy | default("███") }})
 
@@ -275,6 +277,42 @@ To install it as a service, please follow [the documentation in the appendix](no
     - [ ] `{{ settings.psychopy.tasks.dwi }}.psyexp` (fixation point during DWI):
         - [ ] time it to confirm the length, and
         - [ ] check the task runs properly.
+
+- [ ] Check that *Dropbox* is operative.
+- [ ] Create a softlink under the tasks repository to directly store outputs into *Dropbox*:
+
+    ``` bash
+    ln -s {{ secrets.psychopy_paths.dropbox }} {{ secrets.psychopy_paths.tasks }}/data
+    ```
+
+    ??? danger "For the 'reliability sample' this link was created differently."
+
+        As a result, a manual copy step was necessary to synchronize the data (see [tear-down](tear-down.md#synchronize-collected-physiological-data-eye-tracking-and-biopac-signals))
+
+### Prepare data management (intake and backup) with {{ secrets.hosts.oesteban | default("███") }}
+
+We employ *{{ secrets.hosts.oesteban | default("███") }}* as the server to automatically upload data to the backup repository (*{{ secrets.data.curnagl_backup | default("\<user>@\<host>:\<path>") }}*).
+For the physiological recordings (acquired on *{{ secrets.hosts.acqknowledge | default("███") }}* for BIOPAC-registered signals, and on *{{ secrets.hosts.psychopy | default("███") }}* for the eye-tracking), data is synchronized into *{{ secrets.hosts.oesteban | default("███") }}* via *Dropbox*.
+
+- [ ] Create a softlink pointing to the BIOPAC data:
+
+    ``` bash
+    ln -s {{ secrets.oesteban_paths.biopac_dbox }} {{ settings.paths.pilot_sourcedata }}/recordings/BIOPAC
+    ```
+
+- [ ] Create a softlink pointing to the eye-tracking data:
+
+    ``` bash
+    ln -s {{ secrets.oesteban_paths.et_dbox }} {{ settings.paths.pilot_sourcedata }}/recordings/psychopy
+    ```
+
+- [ ] Setup a cron job to execute automatically the synchronization:
+
+    ``` cron
+    crontab -e
+    [ within your file editor add the following line ]
+    0 2 * * * rsync -avurP {{ settings.paths.pilot_sourcedata }}* {{ secrets.data.curnagl_backup | default("<user>@<host>:<path>") }}/sourcedata-pilot &> $HOME/var/log/data-curnagl.log
+    ```
 
 ---
 

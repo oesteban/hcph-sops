@@ -55,16 +55,6 @@ To do so, you'll need to first [download the data from PACS](#download-the-data-
 - [ ] Check that the *AcqKnowledge* file(s) corresponding to the session were added to the *Dropbox* shared folder and completely uploaded from {{ secrets.hosts.acqknowledge | default("████") }}.
 - [ ] Check that *Psychopy*'s logs and ET's `.EDF` files corresponding to the session were added to the *Dropbox* shared folder and completely uploaded from {{ secrets.hosts.psychopy | default("████") }}.
 
-### Copy original DICOM datasets into the archive of Stockage hOrus
-
-- [ ] Setup a cron job to execute automatically the synchronization:
-
-    ``` cron
-    crontab -e
-    [ within your file editor add the following line ]
-    0 2 * * * rsync -avurP {{ settings.paths.pilot_sourcedata }}* {{ secrets.data.curnagl_backup | default("<user>@<host>:<path>") }}/sourcedata-pilot &> $HOME/var/log/data-curnagl.log
-    ```
-
 ## Within two weeks after the completed session
 
 ### Convert imaging data to BIDS with *HeuDiConv*
@@ -258,7 +248,7 @@ To support backward compatibility (and some extra, currently unsupported feature
     python -m pip install bioread pandas matplotlib numpy pathlib scipy
     ```
 
-- [ ] Update the appropriate session number within cell 3 in [the conversion *Jupyter* notebook](physio-to-bids).
+- [ ] Update the appropriate session number within cell 3 in [the conversion *Jupyter* notebook](physio-to-bids.ipynb).
 - [ ] Execute the notebook.
 
 ??? abstract "Example of a session with physiological recordings"
@@ -350,78 +340,12 @@ To support backward compatibility (and some extra, currently unsupported feature
     └── sub-001_ses-024_scans.tsv
     ```
 
-### Convert eye-tracking into BIDS with *bidsphysio*
+### Convert eye-tracking into BIDS (in-house)
 
 !!! warning "Instead of the current specifications, we are using [the following BEP](https://bids-specification--1128.org.readthedocs.build/en/1128/modality-specific-files/eye-tracking.html)"
 
-- [ ] Pull the latest docker image of esavary/bidsphysio with:
-
-    ``` shell
-    docker pull esavary/bidsphysio
-    ```
-
-- [ ] Open [`schedule.tsv`](../assets/code/eyetracking/schedule.tsv) to find the phase encoding direction and the name of the `.EDF` file corresponding to the session you want to convert.
-- [ ] Create a new folder named `metadata/` inside the folder containing the target `.EDF` file.
-    Copy the file containing information about the ET, named [`info_ET.json`](../assets/code/eyetracking/info_ET.json) into the `metadata/` folder.
-- [ ]  Execute the ET to BIDS conversion on the dMRI data.
-    Run the following command for the corresponding file in the [`schedule.tsv`](../assets/code/eyetracking/schedule.tsv) file:
-
-    !!! danger "Input data path MUST be mounted in read-only mode (`:ro` suffix)"
-
-    === "dMRI (fixation)"
-
-        ``` shell
-        docker run -u $( id -u ):$( id -g ) --rm -it \
-            -v <path-to-EDF-data>:/data:ro \
-            -v <output-path-on-host>:/output \
-            --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio \
-            --infile /data/fixation_2023-10-20_18h48.03.561_5_session_1.EDF \
-            --bidsprefix /output/session01/dwi/sub-001_ses-001_acq-highres_dir-LR \
-            -m /data/metadata/info_ET.json
-        ```
-
-    === "fMRI (QCT)"
-
-        ``` shell
-        docker run -u $( id -u ):$( id -g ) --rm -it \
-            -v <path-to-EDF-data>:/data:ro \
-            -v <output-path-on-host>:/output \
-            --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio \
-            --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
-            --bidsprefix /output/session01/func/sub-001_ses-001_task-qct_dir-LR \
-            -m /data/metadata/info_ET.json
-        ```
-
-    === "fMRI (BHT)"
-
-        ``` shell
-        docker run -u $( id -u ):$( id -g ) --rm -it \
-            -v <path-to-EDF-data>:/data:ro \
-            -v <output-path-on-host>:/output \
-            --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio \
-            --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
-            --bidsprefix /output/session01/func/sub-001_ses-001_task-bht_dir-LR \
-            -m /data/metadata/info_ET.json
-        ```
-
-    === "fMRI (resting-state)"
-
-        ``` shell
-        docker run -u $( id -u ):$( id -g ) --rm -it \
-            -v <path-to-EDF-data>:/data:ro \
-            -v <output-path-on-host>:/output \
-            --entrypoint=/opt/venv/bin/python esavary/bidsphysio /opt/venv/bin/edf2bidsphysio \
-            --infile /data/qct_2023-10-20_19h40.38.964_2_session_1.EDF \
-            --bidsprefix /output/session01/func/sub-001_ses-001_task-rest_dir-LR \
-            -m /data/metadata/info_ET.json
-        ```
-
-- [ ] Copy all `<prefix>_eyetrack.tsv.gz` and `<prefix>_eyetrack.json` generated into your copy of the *DataLad* dataset in BIDS.
-
-!!! danger "Do not copy all output files directly"
-
-    In addition to the eye-tracking data (`<prefix>_eyetrack.tsv.gz` file) and metadata (`<prefix>_eyetrack.json` file), the code also generates a TSV file containing all messages sent to the ET and the header of the `.EDF` file (with name `<prefix>_eventlist_raw.tsv`).
-    Please do not copy these generated files into the *DataLad* dataset in BIDS.
+- [ ] Check that *PyEDFRead* is installed as described in [the software annex](../data-collection/notes-software.md#conversion-of-et-recordings-into-bids).
+- [ ] Employ our *in-house* conversion code, whose functioning is described in [our EDF to BIDS conversion how-to](edf-to-bids.md).
 
 ??? abstract "Example of a session with eye-tracking recordings"
 
