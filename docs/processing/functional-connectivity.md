@@ -69,9 +69,11 @@ In the end, the data structure will look like this:
 
 ## QA/QC of denoised data
 
-- [ ] Run ... to generate the QC report for denoised data.
-- [ ] Open the QC report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the DOF distribution and apply the [exclusion criteria](qaqc-criteria-FC.md#dof-distribution).
-- [ ] Scroll down to the FC distributions and apply the [exclusion criteria](qaqc-criteria-FC.md#fc-distributions).
-- [ ] Scroll down to the QC-FC distributions and apply the [exclusion criteria](qaqc-criteria-FC.md#qc-fc-distributions).
-- [ ] Scroll down to the plot QC-FC versus euclidean distance and apply the [exclusion criteria](qaqc-criteria-FC.md#qc-fc-versus-eucliden-distance)
+- [ ] Navigate to the `figures` folder where the visual reports where saved. Following the above data structure, 
+it would be the folder `path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figures`.
+- [ ] Open the figure `fc_dist.png`.
+- [ ] Visualize the FC distributions of each session and apply the [QA/QC criteria](qaqc-criteria-FC.md#fc-distributions).
+- [ ] Open the figure `QC-FC.png`.
+- [ ] Visualize the QC-FC distributions for the three IQMs and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-distributions).
+- [ ] Open the figure `QC-FC_euclidean.png`.
+- [ ] Visualize the three plots showing QC-FC versus euclidean distance and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-versus-eucliden-distance)
