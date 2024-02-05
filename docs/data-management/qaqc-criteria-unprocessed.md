@@ -57,7 +57,7 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 
 ## Task behavior
 
-For accurate estimation of task activation, it is essential to check the quality of both the fMRI images and the task behavior [Etzel 2023]. 
+For accurate estimation of task activation, it is essential to check the quality of both the fMRI images and the task behavior<sup>[1]</sup>. 
 As such, it is important to verify that the subjects were attempting to perform the instructed task (i.e not sleeping and not responding randomly). 
 One particularity of this project is that our single participant is the principal investigator of the project. As such, we trust that the participant, when actively awake, has enough incentive to follow the tasks accurately, even more so that the tasks are simple paradigms. 
 We will however verify that the participant did not inadvertently fell asleep during one of the fMRI scans. 
@@ -165,11 +165,4 @@ Potential causes can be e.g. failure in the image reconstruction, mistake in the
 
 ## Eye-tracking
 
-# References
-
-* Birn, Rasmus M. “Quality Control Procedures and Metrics for Resting-State Functional MRI.” Frontiers in Neuroimaging 2 (2023). <https://doi.org/10.3389/fnimg.2023.1072927>.
-
-* Etzel, Joset A. “Efficient Evaluation of the Open QC Task fMRI Dataset.” Frontiers in Neuroimaging 2 (2023). https://www.frontiersin.org/articles/10.3389/fnimg.2023.1070274.
-
-* Van Dijk, Koene R. A., Trey Hedden, Archana Venkataraman, Karleyton C. Evans, Sara W. Lazar, and Randy L. Buckner. “Intrinsic Functional Connectivity As a Tool For Human Connectomics: Theory, Properties, and Optimization.” Journal of Neurophysiology 103, no. 1 (January 2010): 297–321. <https://doi.org/10.1152/jn.00783.2009>.
-
+[1]: https://www.frontiersin.org/articles/10.3389/fnimg.2023.1070274 "Etzel, Joset A. “Efficient Evaluation of the Open QC Task fMRI Dataset.” Frontiers in Neuroimaging 2 (2023). doi:10.3389/fnimg.2023.1070274."
