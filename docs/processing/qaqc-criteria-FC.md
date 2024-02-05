@@ -41,8 +41,6 @@
     Those sessions's BOLD is still contaminated with residual noise, despite the preprocessing being adequate for the acquisition protocol. 
     A likely scenario is that the subject moved a lot during this particular session.
 
-    !!! note "It is unlikely such sessions did not get excluded at earlier checkpoints."
-
 ## QC-FC distributions
 
 - [ ] Exclude sessions associated with extreme IQM outliers if the 95% cutoff is still not met after revising the preprocessing.
