@@ -41,7 +41,7 @@ nav:
     - QA/QC Appendices:
       - QA/QC criteria (unprocessed data): data-management/qaqc-criteria.md
       - QA/QC criteria (preprocessed data): processing/qaqc-criteria-preprocessed.md
-      - QA/QC criteria (functional connectivity): data-management/qaqc-criteria-FC.md
+      - QA/QC criteria (functional connectivity): processing/qaqc-criteria-FC.md
       - Eyetracking data screening (notebook): data-management/eyetrack-qc.ipynb
     - Deprecated procedures:
       - Legacy procedure for the ET mirror: data-collection/legacy-et.md

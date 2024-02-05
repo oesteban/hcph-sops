@@ -45,7 +45,7 @@ Finally, the pipeline will save the denoised timeseries and connectivity matrice
     ![Timeseries_carpet](../assets/images/sub-pilot_ses-15_task-rest_desc-carpetplot_bold.png "Denoised timeseries carpet plot")
     - [ ] Denoised timeseries as a *signal plot*:
     ![Timeseries_signal](../assets/images/sub-pilot_ses-15_task-rest_desc-timeseries_bold.png "Denoised timeseries signal plot")
-    - [ ] Functional connetivity matrix as a *heatmap*:
+    - [ ] Functional connectivity matrix as a *heatmap*:
     ![FC_matrix_heatmap](../assets/images/sub-pilot_ses-15_task-rest_meas-sparseinversecovariance_desc-heatmap_bold.png "Functional connectivity heatmap")
 
 The outputs will be stored in a `functional-connectivity` folder in the same parent directory as the preprocessed derivatives dataset.
@@ -69,8 +69,11 @@ In the end, the data structure will look like this:
 
 ## QA/QC of denoised data
 
-- [ ] Navigate to the `figures` folder where the visual reports where saved. Following the above data structure, 
-it would be the folder `path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figures`.
+- [ ] Navigate to the `figures` folder where the visual reports were saved. Following the above data structure, 
+it would be the folder:
+```
+path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figures`.
+```
 - [ ] Open the figure `fc_dist.png`.
 - [ ] Visualize the FC distributions of each session and apply the [QA/QC criteria](qaqc-criteria-FC.md#fc-distributions).
 - [ ] Open the figure `QC-FC.png`.
