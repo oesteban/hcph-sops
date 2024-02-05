@@ -35,7 +35,7 @@ from matplotlib.axes import Axes
 from matplotlib.cm import get_cmap
 from matplotlib.lines import Line2D
 from nilearn.plotting import plot_design_matrix, plot_matrix
-from scipy.stats import pearsonr
+from scipy.stats import pearsonr, ks_2samp
 
 from load_save import get_bids_savename, load_iqms
 from funconn import compute_distance
@@ -56,6 +56,7 @@ LABELSIZE: int = 22
 NETWORK_CMAP: str = "turbo"
 N_PERMUTATION: int = 10000
 ALPHA = 0.05
+PERCENT_MATCH_CUT_OFF = 95
 
 
 def plot_timeseries_carpet(
@@ -436,11 +437,11 @@ def group_report_qc_fc(
     # Load IQMs
     iqms_df = load_iqms(output, mriqc_path=mriqc_path)
 
-    _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
+    fig, axs = plt.subplots(1,3,figsize=FC_FIGURE_SIZE)
 
     # Iterate over each IQM
     qc_fc_dict = dict()
-    for iqm_column in iqms_df.columns:
+    for i, iqm_column in enumerate(iqms_df.columns):
         # Create an empty list to store correlations for each edge
         qc_fcs = []
 
@@ -458,33 +459,49 @@ def group_report_qc_fc(
         # Save the QC-FC distributions in a dictionary
         qc_fc_dict[iqm_column] = qc_fcs
 
-    ## Permutation analyses
-    correlations_null = []
-    for e in range(fc_matrices.shape[0]):
-        for _ in range(N_PERMUTATION):
-            permuted_fc = fc_matrices[
-                e, np.random.default_rng(seed=42).permutation(fc_matrices.shape[1])
-            ]
-            # Correlation under null hypothesis
-            correlation = np.corrcoef(permuted_fc, iqms_df["fd_mean"])[0, 1]
-            correlations_null.append(correlation)
+        ## Permutation analyses
+        correlations_null = []
+        for e in range(fc_matrices.shape[0]):
+            for _ in range(N_PERMUTATION):
+                permuted_fc = fc_matrices[
+                    e, np.random.default_rng(seed=42).permutation(fc_matrices.shape[1])
+                ]
+                # Correlation under null hypothesis
+                correlation = np.corrcoef(permuted_fc, iqms_df[iqm_column])[0, 1]
+                correlations_null.append(correlation)
 
-    # Create a density distribution plot for the current IQM
-    sns.kdeplot(
-        correlations_null,
-        fill=False,
-        color="red",
-        label="Dist under null hypothesis",
-        linewidth=3,
-        linestyle="dashed",
+        # Create a density distribution plot for null distribution
+        sns.kdeplot(
+            correlations_null,
+            fill=False,
+            color="red",
+            label="Dist under null hypothesis",
+            linewidth=3,
+            linestyle="dashed",
+        )
+
+        # Compute percent match between the two distributions
+        ks_statistic, _ = ks_2samp(qc_fcs, correlations_null)
+        percent_match_ks = (1 - ks_statistic) * 100
+
+        # Plot the box in red if the correlation is significant
+        facecolor='red' if percent_match_ks < PERCENT_MATCH_CUT_OFF else 'grey'
+        axs[i].text(
+            0.3,
+            76,
+            f"QC-FC% = {percent_match_ks:.0f}",
+            fontsize=LABELSIZE - 2,
+            bbox=dict(facecolor=facecolor, alpha=0.4, boxstyle="round,pad=0.5"),
+        )
+        axs[i].tick_params(labelsize=LABELSIZE)
+        axs[i].set_title(iqm_column, fontsize=LABELSIZE + 2)
+
+    fig.suptitle(
+        "QC-FC correlation distributions", fontsize=LABELSIZE + 2
     )
-
-    plt.title("QC-FC correlation distributions")
     plt.legend()
     # Ensure the labels are within the figure
     plt.tight_layout()
-
-    ax.tick_params(labelsize=LABELSIZE)
 
     savename = "QC-FC.png"
 
