@@ -2,13 +2,16 @@
 
 ## FC distributions
 
-- [ ] Check that the FC distributions appear similar across sessions and are Gaussian centered approximately around zero with a small positive mean<sup>[1]</sup>. Two deviations from this scenario are possible:
-    1. The FC distributions of the majority of the sessions appear shifted towards positive values, skewed, flat, or bimodal. 
-    It indicates the denoising was either too aggressive for the number of functional frames available, or the BOLD signal is still contaminated with residual noise.
-    As such, the denoising needs to be revised as follows:
-        - [ ] Decrease the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py`
-        - [ ] If that modification is not enough, remove high-pass filtering by removing "high-pass" from the denoising strategy list. Do so by precising the flag `--confounds "motion" "scrubs"` to `funconn.py`.
-        - [ ] If those modifications are still not enough, decrease the cut-off frequency until the FC distributions of the majority of the subject is Gaussian centered approximately around zero with a small positive mean.
+- [ ] Check that the FC distributions appear similar across sessions and are Gaussian centered approximately around zero with a small positive mean<sup>[1]</sup>.
+    Two deviations from this scenario are possible:
+
+    1. The FC distributions of most sessions appear shifted towards positive values, skewed, flat, or bimodal. 
+        It indicates the denoising was either too aggressive for the number of functional frames available or the BOLD signal is still contaminated with residual noise.
+        As such, the denoising needs to be revised as follows:
+            - [ ] Decrease the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py`
+            - [ ] If that modification is insufficient, remove high-pass filtering by removing "high-pass" from the denoising strategy list.
+                Do so by precising the flag `--confounds "motion" "scrubs"` to `funconn.py`.
+            - [ ] If those modifications are still insufficient, decrease the cut-off frequency until the FC distributions of most subjects are Gaussian centered approximately around zero with a small positive mean.
 
         ??? note "Another tweak possible would be to increase the motion censoring threshold"
             However, in our study, we pre-registered that we would perform the analysis with three different motion censoring thresholds.
@@ -18,19 +21,22 @@
 
 ## QC-FC distributions
 
-- [ ] Check that the QC-FC distribution<sup>[2]</sup> and the null distribution represented by the red dotted line are approximately equivalent for all IQMs. 
-    - [ ] Verify that QC-FC% &ge; 95% for all IQM, where the QC-FC% value corresponds to the distance between the observed and the null distributions for each IQM.
+Now we will assess that QC-FC distribution<sup>[2]</sup> and the null distribution represented by the red dotted line are approximately equivalent for all IQMs. 
 
-        ??? note "Why QC-FC% &ge; 95%, in particular?"
-            QC-FC% &ge; 95% for all IQM is considered indicative of negligible modulations in the BOLD signal correlation structure<sup>[2]</sup>.
-        
-        However, if QC-FC% &lt; 95% for at least one IQM, then the preprocessing of the data requires revisiting as follows:
-            - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
-            - [ ] Increase the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py` if the QC-FC distribution still does not meet the 95% cutoff.
-            - [ ] If tweaking the preprocessing does not suffice to reach the threshold QC-FC% &ge; 95%, exclude additional sessions following [the exclusion criteria detailed below](#qc-fc-distributions-1).
+- [ ] Verify that QC-FC% &ge; 95% for all IQM, where the QC-FC% value corresponds to the distance between the observed and the null distributions for each IQM.
 
-        !!! warning "Contradictory QA criteria"
-            Please be aware that the QA criteria outlined here are in direct contrast to [those of the FC distributions](#fc-distributions). Therefore, it is necessary to find a trade-off that respects the QA criteria across all three group visualizations.
+    ??? note "Why QC-FC% &ge; 95%, in particular?"
+        QC-FC% &ge; 95% for all IQM is considered indicative of negligible modulations in the BOLD signal correlation structure<sup>[2]</sup>.
+
+    However, if QC-FC% &lt; 95% for at least one IQM, then the preprocessing of the data requires revisiting as follows:
+
+        - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
+        - [ ] Increase the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py` if the QC-FC distribution still does not meet the 95% cutoff.
+        - [ ] If tweaking the preprocessing does not suffice to reach the threshold QC-FC% &ge; 95%, exclude additional sessions following [the exclusion criteria detailed below](#qc-fc-distributions-1).
+
+!!! warning "Contradictory QA criteria"
+    Please be aware that the QA criteria outlined here directly contrast [those of the FC distributions](#fc-distributions).
+    Therefore, finding a trade-off that respects the QA criteria across all three group visualizations is necessary.
     
 ## QC-FC versus Euclidean distance
 
@@ -61,6 +67,4 @@
 [2]: https://doi.org/10.1016/j.neuroimage.2017.03.020 "Ciric, R. et al. “Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity. (2017)” NeuroImage, doi:10.1016/j.neuroimage.2017.03.020"
 [3]: https://doi.org/10.1016/j.neuroimage.2017.03.056 "Bright, M. & Murphy, K., Cleaning up the fMRI time series: Mitigating noise with advanced acquisition and correction strategies. (2017) NeuroImage. doi:10.1016/j.neuroimage.2017.03.056"
 [4]: https://doi.org/10.1016/j.neuroimage.2011.10.018 "Power, Jonathan D., Kelly A. Barnes, Abraham Z. Snyder, Bradley L. Schlaggar, and Steven E. Petersen. “Spurious but Systematic Correlations in Functional Connectivity MRI Networks Arise from Subject Motion.” NeuroImage 59, no. 3 (February 2012): 2142–54, doi:10.1016/j.neuroimage.2011.10.01" 
-
-
 

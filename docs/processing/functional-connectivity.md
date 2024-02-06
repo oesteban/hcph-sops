@@ -69,11 +69,11 @@ In the end, the data structure will look like this:
 
 ## QA/QC of denoised data
 
-- [ ] Navigate to the `figures` folder where the visual reports were saved. Following the above data structure, 
-it would be the folder:
-```
-path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figures`.
-```
+- [ ] Navigate to the `figures/` folder where the visual reports were saved.
+    Following the above data structure, it would be the folder:
+    ```
+    path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figures`.
+    ```
 - [ ] Open the figure `fc_dist.png`.
 - [ ] Visualize the FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#fc-distributions).
 - [ ] Open the figure `QC-FC.png`.
