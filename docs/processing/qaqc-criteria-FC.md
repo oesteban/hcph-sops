@@ -1,8 +1,8 @@
 # QA criteria for denoised data
 
-!!! warning "Contradictory QA criteria"
-    Please be aware that the QA criteria outlined in the different sections directly contrast one another.
-    Therefore, finding a trade-off that respects the QA criteria across all three group visualizations is necessary.
+!!! warning "Contradictory QA counter-measures"
+    In the following two subsections, the suggested counter-measures when QA criteria are not met propose changing the cut-off frequency of the low-pass filter in opposed directions, and therefore, *solutions compete*.
+    Although challenging, finding a trade-off cut-off that meets all QA criteria across all three group visualizations is necessary.
 
 ## FC distributions
 
@@ -17,7 +17,7 @@
                 Do so by precising the flag `--confounds "motion" "scrubs"` to `funconn.py`.
             - [ ] If those modifications are still insufficient, decrease the cut-off frequency until the FC distributions of most subjects are Gaussian centered approximately around zero with a small positive mean.
 
-        ??? note "Another tweak possible would be to increase the motion censoring threshold"
+        ??? note "Alternatively, increasing the motion censoring threshold would be a possibility to address this issue."
             However, in our study, we pre-registered that we would perform the analysis with three different motion censoring thresholds.
             Therefore, rather than optimizing the value of the motion censoring threshold, we will perform a *mulitverse* analysis and report the results for the three threshold levels we pre-registered.
 
