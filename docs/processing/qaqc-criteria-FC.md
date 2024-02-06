@@ -12,10 +12,11 @@
     1. The FC distributions of most sessions appear shifted towards positive values, skewed, flat, or bimodal. 
         It indicates the denoising was either too aggressive for the number of functional frames available or the BOLD signal is still contaminated with residual noise.
         As such, the denoising needs to be revised as follows:
-            - [ ] Decrease the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py`
-            - [ ] If that modification is insufficient, remove high-pass filtering by removing "high-pass" from the denoising strategy list.
-                Do so by precising the flag `--confounds "motion" "scrubs"` to `funconn.py`.
-            - [ ] If those modifications are still insufficient, decrease the cut-off frequency until the FC distributions of most subjects are Gaussian centered approximately around zero with a small positive mean.
+
+        - [ ] Decrease the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py`
+        - [ ] If that modification is insufficient, remove high-pass filtering by removing "high-pass" from the denoising strategy list.
+              Do so by precising the flag `--confounds "motion" "scrubs"` to `funconn.py`.
+        - [ ] Decrease the cut-off frequency until the FC distributions of most subjects are Gaussian centered approximately around zero with a small positive mean if the above modifications are still insufficient.
 
         ??? note "Alternatively, increasing the motion censoring threshold would be a possibility to address this issue."
             However, in our study, we pre-registered that we would perform the analysis with three different motion censoring thresholds.
