@@ -1,5 +1,9 @@
 # QA criteria for denoised data
 
+!!! warning "Contradictory QA criteria"
+    Please be aware that the QA criteria outlined in the different sections directly contrast one another.
+    Therefore, finding a trade-off that respects the QA criteria across all three group visualizations is necessary.
+
 ## FC distributions
 
 - [ ] Check that the FC distributions appear similar across sessions and are Gaussian centered approximately around zero with a small positive mean<sup>[1]</sup>.
@@ -33,10 +37,6 @@ Now we will assess that QC-FC distribution<sup>[2]</sup> and the null distributi
         - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
         - [ ] Increase the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py` if the QC-FC distribution still does not meet the 95% cutoff.
         - [ ] If tweaking the preprocessing does not suffice to reach the threshold QC-FC% &ge; 95%, exclude additional sessions following [the exclusion criteria detailed below](#qc-fc-distributions-1).
-
-!!! warning "Contradictory QA criteria"
-    Please be aware that the QA criteria outlined here directly contrast [those of the FC distributions](#fc-distributions).
-    Therefore, finding a trade-off that respects the QA criteria across all three group visualizations is necessary.
     
 ## QC-FC versus Euclidean distance
 
