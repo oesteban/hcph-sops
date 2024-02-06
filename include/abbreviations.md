@@ -9,6 +9,8 @@
 *[CSF]: cerebrospinal fluid
 *[DICOM]: Digital Imaging and Communications in Medicine
 *[dMRI]: diffusion MRI
+*[DOF]: degree of freedom
+*[DOFs]: degrees of freedom
 *[DOI]: digital object identifier
 *[DWI]: diffusion weighted imaging
 *[ECG]: electrocardiogram
