@@ -27,7 +27,7 @@
         However, if QC-FC% &lt; 95% for at least one IQM, then the preprocessing of the data requires revisiting as follows:
             - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
             - [ ] Increase the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py` if the QC-FC distribution still does not meet the 95% cutoff.
-            - [ ] If tweaking the preprocessing does not suffice, revise [the exclusion criteria by excluding additional sessions](#qc-fc-distributions-1)
+            - [ ] If tweaking the preprocessing does not suffice to reach the threshold QC-FC% &ge; 95%, exclude additional sessions following [the exclusion criteria detailed below](#qc-fc-distributions-1).
     
 ## QC-FC versus Euclidean distance
 
@@ -35,7 +35,7 @@
     If the correlation is significant for one IQM or more, it indicates that connectivity estimates are biased in a distance-dependent manner, with many long-distance correlations decreased by motion and many short-distance correlations increased by motion<sup>[4]</sup>.
     As such, motion correction needs to be revised as follows:
     - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
-    - [ ] If tweaking the preprocessing does not suffice, revise [the exclusion criteria by excluding additional sessions](qaqc-criteria-FC.md#qc-fc-versus-euclidean-distance-1)
+    - [ ] If tweaking the preprocessing does not suffice, revise [the exclusion criteria by excluding additional sessions](qaqc-criteria-FC.md#qc-fc-versus-euclidean-distance-1).
 
 # Exclusion criteria for denoised data
 
