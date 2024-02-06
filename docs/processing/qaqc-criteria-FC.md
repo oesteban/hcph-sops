@@ -35,9 +35,9 @@ Now we will assess that QC-FC distribution<sup>[2]</sup> and the null distributi
 
     However, if QC-FC% &lt; 95% for at least one IQM, then the preprocessing of the data requires revisiting as follows:
 
-        - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
-        - [ ] Increase the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py` if the QC-FC distribution still does not meet the 95% cutoff.
-        - [ ] If tweaking the preprocessing does not suffice to reach the threshold QC-FC% &ge; 95%, exclude additional sessions following [the exclusion criteria detailed below](#qc-fc-distributions-1).
+    - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
+    - [ ] Increase the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py` if the QC-FC distribution still does not meet the 95% cutoff.
+    - [ ] Exclude additional sessions following [the exclusion criteria detailed below](#qc-fc-distributions-1) if revising the preprocessing does not suffice to reach the threshold QC-FC% &ge; 95%.
     
 ## QC-FC versus Euclidean distance
 
