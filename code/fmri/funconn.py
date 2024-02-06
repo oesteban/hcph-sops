@@ -759,10 +759,7 @@ def main():
             **FC_FILLS,
         )
 
-        group_report_fc_dist(fc_matrices, output)
-        qc_fc_dict = group_report_qc_fc(fc_matrices, output, mriqc_path=mriqc_path)
-        group_report_qc_fc_euclidean(qc_fc_dict, atlas_filename, output)
-
+        # Generate session-specific figures
         for individual_matrix, filename in zip(fc_matrices, missing_something):
             visual_report_fc(
                 individual_matrix,
@@ -771,6 +768,14 @@ def main():
                 labels=atlas_labels,
                 meas=fc_label,
             )
+
+        # Generate group figures
+        group_report_fc_dist(fc_matrices, output)
+        qc_fc_dict = group_report_qc_fc(fc_matrices, output, mriqc_path=mriqc_path)
+        group_report_qc_fc_euclidean(qc_fc_dict, atlas_filename, output)
+
+        # Gather all group figures in a single HTML report
+        
 
     logging.info(
         f"Computation is done for {len(missing_something)} files out of the "

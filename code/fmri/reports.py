@@ -403,7 +403,7 @@ def group_report_fc_dist(
     # Ensure the labels are within the figure
     plt.tight_layout()
 
-    savename = "fc_dist.png"
+    savename = "group_fc_dist.png"
 
     logging.debug("Saving functional connectivity distribution visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
@@ -503,7 +503,7 @@ def group_report_qc_fc(
     # Ensure the labels are within the figure
     plt.tight_layout()
 
-    savename = "QC-FC.png"
+    savename = "group_QC-FC.png"
 
     logging.debug("Saving QC-FC visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
@@ -570,7 +570,7 @@ def group_report_qc_fc_euclidean(
     # Ensure the labels are within the figure
     # plt.tight_layout()
 
-    savename = "QC-FC_euclidean.png"
+    savename = "group_QC-FC_euclidean.png"
 
     logging.debug("Saving QC-FC vs euclidean distance visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
