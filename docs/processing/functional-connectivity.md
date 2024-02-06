@@ -80,3 +80,5 @@ path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figure
 - [ ] Visualize the QC-FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-distributions).
 - [ ] Open the figure `QC-FC_euclidean.png`.
 - [ ] Visualize the three plots showing QC-FC versus euclidean distance and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-versus-eucliden-distance)
+
+!!! warning "Immediately report sessions deemed *exclude*, as an issue in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues)"
