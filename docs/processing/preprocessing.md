@@ -19,7 +19,8 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
 {% endfilter %}
         ```
 
-- [ ] Once the anatomical workflow ran successfully, submit a *job array* with one scanning session each with the `--bids-filter-file` argument selecting the corresponding session, and point the `--fs-subjects-dir` argument to the folder where *FreeSurfer* results were stored.
+- [ ] Once the anatomical workflow ran successfully, submit a *job array* with one scanning session each with the `--bids-filter-file` argument selecting the
+    corresponding session, and point the `--fs-subjects-dir` argument to the folder where *FreeSurfer* results were stored.
     ``` bash title="Launch each session through fMRIPrep in parallel"
     cd code/fmriprep
     bash ss-fmriprep.sh
@@ -39,7 +40,8 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
     
     - [ ] Check the "Errors" section of the visual report.
     - [ ] Check the `log/` folder corresponding to the *fMRIPrep* run, carefully ensuring no errors were missed out on the reports.
-    - [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
+    - [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains
+        unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
         The solution might be documented in the issue.
         Don't forget to check closed issues!
     - [ ] Search for the issue on [NeuroStars](https://neurostars.org/), if the solution remains unclear.
@@ -82,10 +84,10 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
     - [ ] Visualize the co-registration flickering mosaic, apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#alignment-of-functional-and-anatomical-mri-data).
         Flickering between T1w and BOLD images is active while hovering your mouse on the mosaic area.
     - [ ] Visualize the next mosaic displaying regions of interest (ROIs) used to estimate the nuisance regressors, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#brain-mask-and-anatomicaltemporal-compcor-rois).
-    - [ ] Visualize the carpet plot and nuisance signals panel, 
+    - [ ] Visualize the carpet plot and nuisance signals panel,
         - [ ] Apply the [exclusion criteria](qaqc-criteria-preprocessed.md#bold-summary-1)
         - [ ] If you are visualizing the carpet plot corresponding to a RSfMRI run, apply [additional QA criteria](qaqc-criteria-preprocessed.md#qa-criteria-specifically-for-rsfmri).
-    - [ ] Visualize the confound correlation heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-between-nuisance-regressors) 
+    - [ ] Visualize the confound correlation heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-between-nuisance-regressors)
         you will include in the nuisance regression model.
     - [ ] Finally, verify that no errors are reported within the "Errors" section. If there are, proceed as indicated in ["Not all *fMRIPrep* derivatives were generated"](#fmriprep-failed).
     - [ ] Continue with the next fMRI run section

@@ -18,7 +18,7 @@
     - [ ] Check that the contours do not exclude single voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles).
       Be careful if those single excluded voxels only appear close to tissue boundaries.
       They are likely misclassified because of the partial volume effect, and as such, they do not constitute an exclusion criteria.
-    - [ ] Check that the contours do not include other tissues than the tissue of interest (GM; magenta, WM; blue). 
+    - [ ] Check that the contours do not include other tissues than the tissue of interest (GM; magenta, WM; blue).
     - [ ] **Do not** use the CompCor confounds for nuisance regression if you find any of the issues above.
 
 ### Spatial normalization of the anatomical T1w reference
@@ -35,22 +35,20 @@
 
 ### Textual summary
 
-- [ ] Check that the repetition time is the expected 1.6s. 
+- [ ] Check that the repetition time is the expected 1.6s.
   If not:
     - [ ] Investigate whether the TR metadata in the sidecar JSON file is wrong.
       Fix it and re-run *fMRIPrep*.
     - [ ] [Exclude the whole session](#textual-summary-1) if it was acquired with the wrong TR.
-- [ ] Verify that susceptibility distortion correction was applied. 
+- [ ] Verify that susceptibility distortion correction was applied.
   If not, check that fieldmaps were present in the unprocessed data, that there are no typos in their filename, and that the fields `B0FieldSource` and `B0FieldIdentifier` have been correctly set in the JSON sidecars.
-- [ ] Verify that registration was applied. 
+- [ ] Verify that registration was applied.
   If not, fix the problem and re-run *fMRIPrep*.
 - [ ] Check that four echoes are detected in the field `Multi-echo EPI sequence`.
   If not, check that four echoes were present in the unprocessed data and that they are no typos in their filename.
   [Exclude the session if those issues cannot be fixed](#textual-summary-1).
-
-### T2* map
-
-### T2* gray-matter values
+- [ ] If the four echoes are not detected in the field `Multi-echo EPI sequence` even after checking their presence in the unprocessed data and that they are no
+  typos in their filename, exclude the session.
 
 ### Alignment of functional and anatomical MRI data
 
@@ -88,7 +86,7 @@ The carpet plot MUST appear homogeneous:
 - [ ] Check that the carpet plot is unaffected by strong dark deflections (signal drops) associated with motion peaks (particularly in the brain edge).
 - [ ] Check that no periodic modulation is visible throughout the plot.
 
-If any of the latter patterns is observed, flag the session and double check that the carpetplot appears homogeneous after denoising. 
+If any of the latter patterns is observed, flag the session and double check that the carpetplot appears homogeneous after denoising.
 
 # Exclusion criteria for preprocessed data
 
