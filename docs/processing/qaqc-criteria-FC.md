@@ -19,12 +19,15 @@
 ## QC-FC distributions
 
 - [ ] Check that the QC-FC distribution<sup>[2]</sup> and the null distribution represented by the red dotted line are approximately equivalent for all IQMs. 
-    - [ ] Read the QC-FC% value corresponding to the distance between the observed and the null distributions for each IQM.
-    - [ ] QC-FC%  &ge; 95% for all IQM is considered indicative of negligible modulations in the BOLD signal correlation structure<sup>[2]</sup>.
-        QC-FC% &lt; 95% for one IQM or more requires revising the preprocessing of the data as follows:
-        - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
-        - [ ] Increase the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py` if the QC-FC distribution still does not meet the 95% cutoff.
-        - [ ] If tweaking the preprocessing does not suffice, revise [the exclusion criteria by excluding additional sessions](#qc-fc-distributions-1)
+    - [ ] Verify that QC-FC% &ge; 95% for all IQM, where the QC-FC% value corresponds to the distance between the observed and the null distributions for each IQM.
+
+        ??? note "Why QC-FC% &ge; 95%, in particular?"
+            QC-FC% &ge; 95% for all IQM is considered indicative of negligible modulations in the BOLD signal correlation structure<sup>[2]</sup>.
+        
+        However, if QC-FC% &lt; 95% for at least one IQM, then the preprocessing of the data requires revisiting as follows:
+            - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
+            - [ ] Increase the cut-off frequency of the low-pass filtering using the `--low-pass` flag of `funconn.py` if the QC-FC distribution still does not meet the 95% cutoff.
+            - [ ] If tweaking the preprocessing does not suffice, revise [the exclusion criteria by excluding additional sessions](#qc-fc-distributions-1)
     
 ## QC-FC versus Euclidean distance
 
