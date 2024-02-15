@@ -36,7 +36,6 @@ import argparse
 import logging
 import os
 import os.path as op
-import nibabel as nib
 from itertools import chain
 from typing import Optional, Union
 
@@ -561,33 +560,6 @@ def compute_connectivity(
     )
     connectivity_measures = connectivity_estimator.fit_transform(time_series)
     return vec_to_sym_matrix(connectivity_measures, diagonal=np.zeros((n_ts, n_area)))
-
-def compute_distance(atlas_path: str) -> np.array:
-    """Compute the euclidean distance between the center of mass of the atlas regions.
-
-    Parameters
-    ----------
-    atlas_path : str
-        Path to the atlas Nifti
-    Returns
-    -------
-    np.array
-        Distance matrix
-    """
-    from scipy.ndimage.measurements import center_of_mass
-
-    atlas_img = nib.load(atlas_path)
-    atlas_data = atlas_img.get_fdata()
-    # Array to store the center of mass of each region
-    centroids = np.zeros((atlas_data.shape[3], 3), dtype=float)
-    for r in range(atlas_data.shape[3]):
-        centroids[r, ...] = np.array(center_of_mass(atlas_data[..., r]))
-
-    # Compute Euclidean distance matrix using broadcasting
-    diff = centroids[:, np.newaxis, :] - centroids
-    distance_matrix = np.sqrt(np.sum(diff**2, axis=-1))
-
-    return distance_matrix
 
 def main():
     args = get_arguments()

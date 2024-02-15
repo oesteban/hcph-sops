@@ -28,6 +28,7 @@ import os.path as op
 from typing import Optional, Union
 
 import matplotlib.pyplot as plt
+import nibabel as nib
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -38,7 +39,6 @@ from nilearn.plotting import plot_design_matrix, plot_matrix
 from scipy.stats import pearsonr, ks_2samp
 
 from load_save import get_bids_savename, load_iqms
-from funconn import compute_distance
 
 
 FIGURE_PATTERN: list = [
@@ -514,6 +514,32 @@ def group_report_qc_fc(
 
     return qc_fc_dict
 
+def compute_distance(atlas_path: str) -> np.array:
+    """Compute the euclidean distance between the center of mass of the atlas regions.
+
+    Parameters
+    ----------
+    atlas_path : str
+        Path to the atlas Nifti
+    Returns
+    -------
+    np.array
+        Distance matrix
+    """
+    from scipy.ndimage.measurements import center_of_mass
+
+    atlas_img = nib.load(atlas_path)
+    atlas_data = atlas_img.get_fdata()
+    # Array to store the center of mass of each region
+    centroids = np.zeros((atlas_data.shape[3], 3), dtype=float)
+    for r in range(atlas_data.shape[3]):
+        centroids[r, ...] = np.array(center_of_mass(atlas_data[..., r]))
+
+    # Compute Euclidean distance matrix using broadcasting
+    diff = centroids[:, np.newaxis, :] - centroids
+    distance_matrix = np.sqrt(np.sum(diff**2, axis=-1))
+
+    return distance_matrix
 
 def group_report_qc_fc_euclidean(
     qc_fc_dict: dict, atlas_path: str, output: str
