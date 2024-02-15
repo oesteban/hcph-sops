@@ -244,7 +244,7 @@ def plot_timeseries_signal(
 def plot_interpolation(
     ts: np.ndarray, interpolated_ts: np.ndarray, filename: str, output: str
 ) -> None:
-    """Plot the interpolated timeseries overlayed with the timeseries before
+    """Plot the interpolated timeseries overlaid with the timeseries before
     interpolation.
 
     Parameters

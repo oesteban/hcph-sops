@@ -68,7 +68,7 @@ def separate_by_similar_values(
     Returns
     -------
     dict
-        Dictionnary where each entry is a list of elements that have similar values and
+        Dictionary where each entry is a list of elements that have similar values and
         the keys are the value for each list.
     """
     if external_value is None:
@@ -195,7 +195,7 @@ def get_atlas_data(atlas_name: str = "DiFuMo", **kwargs) -> dict:
     Returns
     -------
     dict
-        Dictionnary with keys "maps" (filename) and "labels" (ROI labels).
+        Dictionary with keys "maps" (filename) and "labels" (ROI labels).
     """
     logging.info("Fetching the DiFuMo atlas ...")
 
@@ -260,6 +260,7 @@ def load_iqms(
     panda.df
         Dataframe containing the IQMs loaded from the derivatives folder.
     """
+    #Find the MRIQC folder
     if mriqc_path is None:
         folders = [
             f
@@ -299,7 +300,7 @@ def check_existing_output(
     output : str
         Path to the output directory
     func_filename : list[str]
-        Original file to be computed in the futur
+        Original file to be computed in the future
     return_existing : bool, optional
         Condition to return a boolean filter with True for existing data, by default
         False
