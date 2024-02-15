@@ -640,8 +640,6 @@ def main():
     logging.info(f"'{fc_label}' has been selected as connectivity metric")
 
     # By default, the timeseries and FC of all filenames in input will be computed
-    all_missing_ts = func_filenames.copy()
-    existing_timeseries = []
     if not overwrite:
         logging.debug("Looking for existing timeseries ...")
         all_missing_ts, all_existing_ts = check_existing_output(
@@ -654,13 +652,17 @@ def main():
 
         logging.info(f"{len(all_missing_ts)} files are missing timeseries.")
         logging.debug("Looking for existing fc matrices ...")
-        missing_only_fc = check_existing_output(
+        missing_only_fc, _ = check_existing_output(
             output, all_existing_ts, patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
         )
         logging.info(
             f"{len(all_missing_ts + missing_only_fc)} files are missing FC matrices."
         )
         existing_timeseries = load_timeseries(missing_only_fc, output)
+    else:
+        missing_only_fc = []
+        existing_timeseries = []
+        all_missing_ts = all_filenames.copy()
 
     separated_missing_ts = [
         [file for file in file_group if file in all_missing_ts]
