@@ -225,15 +225,16 @@ def find_derivative(path: str, derivatives_name: str = "derivatives") -> str:
         Absolute path to the derivative folder.
     """
     splitted_path = path.split("/")
-    if derivatives_name in splitted_path:
-        while splitted_path[-1] != derivatives_name:
+    try:
+        while derivatives_name not in splitted_path[-1]:
             splitted_path.pop()
-        return "/".join(splitted_path)
-    logging.warning(
+    except IndexError:
+        logging.warning(
         f'"{derivatives_name}" could not be found on path - '
-        f'creating at: {op.join(path, derivatives_name)}"'
-    )
-    return op.join(path, derivatives_name)
+        f'creating at: {op.join(path, derivatives_name)}"')
+        return op.join(path, derivatives_name)
+
+    return "/".join(splitted_path)
 
 def load_iqms(
     derivative_path: str,
