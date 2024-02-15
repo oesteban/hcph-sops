@@ -93,12 +93,6 @@ def get_arguments() -> argparse.Namespace:
     # Input/Output arguments and options
     parser.add_argument("data_dir", help="BIDS dataset or derivatives with data")
     parser.add_argument(
-        "--no-save",
-        action="store_false",
-        default=True,
-        help="disable saving of the output",
-    )
-    parser.add_argument(
         "-o",
         "--output",
         default=None,
@@ -565,7 +559,6 @@ def main():
     args = get_arguments()
 
     input_path = args.data_dir
-    save = args.no_save
     output = args.output
     mriqc_path = args.mriqc_path
 
@@ -692,7 +685,7 @@ def main():
         all_confounds += conf
 
     # Saving aggregated/denoised timeseries and visual reports
-    if save and len(time_series):
+    if len(time_series):
         logging.info("Saving denoised timeseries ...")
         os.makedirs(output, exist_ok=True)
         save_output(
@@ -722,7 +715,7 @@ def main():
     )
 
     # Saving FC matrices and visual reports
-    if save and len(fc_matrices):
+    if len(fc_matrices):
         logging.info("Saving connectivity matrices ...")
         save_output(
             fc_matrices,
