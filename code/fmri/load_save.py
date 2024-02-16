@@ -23,6 +23,7 @@
 """ Python module for loading and saving fMRI related data"""
 
 import os
+import re
 import os.path as op
 from collections import defaultdict
 import logging
@@ -213,6 +214,32 @@ def get_atlas_data(atlas_name: str = "DiFuMo", **kwargs) -> dict:
         )
 
     return fetch_atlas_difumo(legacy_format=False, **kwargs)
+
+
+def find_atlas_dimension(path: str, atlas_name: str = "DiFuMo") -> int:
+    """Fetch the atlas dimension from the path where the functional connectivity are saved.
+    Parameters
+    ----------
+    path : str
+        Path to the directory where functional connectivity are saved.
+    atlas_name : str, optional
+        Name of the atlas to fetch, by default "DiFuMo"
+
+    Returns
+    -------
+    int
+        Atlas dimension.
+    """
+
+    # Using regular expression to extract the number of dimensions
+    dimension_match = re.search(rf"{atlas_name}(\d+)", path)
+
+    if dimension_match:
+        return int(dimension_match.group(1))
+    else:
+        raise ValueError(
+            f"The output path {path} does not contain the expected pattern: {atlas_name} followed by digits."
+        )
 
 
 def find_derivative(path: str, derivatives_name: str = "derivatives") -> str:

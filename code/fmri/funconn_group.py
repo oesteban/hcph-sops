@@ -1,0 +1,88 @@
+import argparse
+
+import os.path as op
+import numpy as np
+
+from itertools import chain
+from funconn import FC_FILLS, FC_PATTERN
+
+from load_save import (
+    get_atlas_data,
+    find_atlas_dimension,
+    find_derivative,
+    check_existing_output,
+    get_bids_savename,
+    get_func_filenames_bids,
+)
+
+from reports import (
+    group_report_fc_dist,
+    group_report_qc_fc,
+    group_report_qc_fc_euclidean,
+)
+
+
+def get_arguments() -> argparse.Namespace:
+    parser: argparse.ArgumentParser = argparse.ArgumentParser(
+        description="""Compute functional connectivity group report from functional connectivity matrices.""",
+    )
+
+    # Input/Output arguments and options
+    parser.add_argument(
+        "output",
+        help="path to the directory where the functional connectivity matrices are stored",
+    )
+    parser.add_argument(
+        "--mriqc-path",
+        default=None,
+        help="specify the path to the mriqc derivatives",
+    )
+    parser.add_argument(
+        "--fc-estimator",
+        default="sparse inverse covariance",
+        action="store",
+        choices=["correlation", "covariance", "sparse", "sparse inverse covariance"],
+        type=str,
+        help="""type of connectivity to compute (can be 'correlation', 'covariance' or
+        'sparse')""",
+    )
+
+
+def main():
+    args = get_arguments()
+    output = args.output
+    mriqc_path = args.mriqc_path
+    fc_label = args.fc_estimator.replace(" ", "")
+
+    # Find the atlas dimension from the output path
+    atlas_dimension = find_atlas_dimension(output)
+    atlas_data = get_atlas_data(dimension=atlas_dimension)
+    atlas_filename = getattr(atlas_data, "maps")
+
+    # Find all existing functional connectivity
+    input_path = find_derivative(output)
+    all_filenames = list(chain.from_iterable(get_func_filenames_bids(input_path)))
+
+    _, existing_fc = check_existing_output(
+        output, all_filenames, patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
+    )
+    if not existing_fc:
+        filename = op.join(
+            output,
+            get_bids_savename(
+                all_filenames[0], patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
+            ),
+        )
+        raise ValueError(
+            f"No functional connectivity of type {filename} were found. Please revise the arguments."
+        )
+
+    # Load functional connectivity matrices
+    fc_matrices = []
+    for file_path in existing_fc:
+        fc_matrices.append(np.loadtxt(file_path, delimiter="\t"))
+
+    # Generate group figures
+    group_report_fc_dist(fc_matrices, output)
+    qc_fc_dict = group_report_qc_fc(fc_matrices, output, mriqc_path=mriqc_path)
+    group_report_qc_fc_euclidean(qc_fc_dict, atlas_filename, output)

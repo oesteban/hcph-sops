@@ -49,14 +49,7 @@ from nilearn.interfaces.fmriprep import load_confounds
 from nilearn.maskers import MultiNiftiMapsMasker
 from nilearn.signal import _handle_scrubbed_volumes, _sanitize_confounds, clean
 
-from reports import (
-    plot_interpolation, 
-    visual_report_timeserie, 
-    visual_report_fc,
-    group_report_fc_dist,
-    group_report_qc_fc,
-    group_report_qc_fc_euclidean
-)
+from reports import plot_interpolation, visual_report_timeserie, visual_report_fc
 from load_save import (
     find_derivative,
     check_existing_output,
@@ -87,11 +80,6 @@ def get_arguments() -> argparse.Namespace:
         "--output",
         default=None,
         help="specify an alternative output directory",
-    )
-    parser.add_argument(
-        "--mriqc-path",
-        default=None,
-        help="specify the path to the mriqc derivatives",
     )
     parser.add_argument(
         "--study-name",
@@ -547,13 +535,12 @@ def compute_connectivity(
     connectivity_measures = connectivity_estimator.fit_transform(time_series)
     return vec_to_sym_matrix(connectivity_measures, diagonal=np.zeros((n_ts, n_area)))
 
+
 def main():
     args = get_arguments()
 
     input_path = args.data_dir
     output = args.output
-    mriqc_path = args.mriqc_path
-
     study_name = args.study_name
 
     ses_filter = args.ses
@@ -727,14 +714,6 @@ def main():
                 labels=atlas_labels,
                 meas=fc_label,
             )
-
-        # Generate group figures
-        group_report_fc_dist(fc_matrices, output)
-        qc_fc_dict = group_report_qc_fc(fc_matrices, output, mriqc_path=mriqc_path)
-        group_report_qc_fc_euclidean(qc_fc_dict, atlas_filename, output)
-
-        # Gather all group figures in a single HTML report
-        
 
     logging.info(
         f"Computation is done for {len(missing_something)} files out of the "
