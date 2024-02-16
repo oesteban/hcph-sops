@@ -65,23 +65,13 @@ from load_save import (
     get_func_filenames_bids,
     save_output,
     load_timeseries,
+    FC_FILLS,
+    FC_PATTERN,
+    TIMESERIES_FILLS,
+    TIMESERIES_PATTERN,
 )
 
-FC_PATTERN: list = [
-    "sub-{subject}[/ses-{session}]/func/sub-{subject}"
-    "[_ses-{session}][_task-{task}][_meas-{meas}]"
-    "_{suffix}{extension}"
-]
-FC_FILLS: dict = {"suffix": "relmat", "extension": ".tsv"}
-TIMESERIES_PATTERN: list = [
-    "sub-{subject}[/ses-{session}]/func/sub-{subject}"
-    "[_ses-{session}][_task-{task}][_desc-{desc}]"
-    "_{suffix}{extension}"
-]
-TIMESERIES_FILLS: dict = {"desc": "denoised", "extension": ".tsv"}
-
 NETWORK_MAPPING: str = "yeo_networks7"  # Also yeo_networks17
-
 
 
 def get_arguments() -> argparse.Namespace:
@@ -205,6 +195,7 @@ def get_arguments() -> argparse.Namespace:
         "--fc-estimator",
         default="sparse inverse covariance",
         action="store",
+        choices=["correlation", "covariance", "sparse", "sparse inverse covariance"],
         type=str,
         help="""type of connectivity to compute (can be 'correlation', 'covariance' or
         'sparse')""",

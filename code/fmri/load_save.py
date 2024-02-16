@@ -38,6 +38,12 @@ from bids.layout.writing import build_path
 from nilearn.datasets import fetch_atlas_difumo
 from nilearn.interfaces.fmriprep.load_confounds import _load_single_confounds_file
 
+FC_PATTERN: list = [
+    "sub-{subject}[/ses-{session}]/func/sub-{subject}"
+    "[_ses-{session}][_task-{task}][_meas-{meas}]"
+    "_{suffix}{extension}"
+]
+FC_FILLS: dict = {"suffix": "connectivity", "extension": ".tsv"}
 
 TIMESERIES_PATTERN: list = [
     "sub-{subject}[/ses-{session}]/func/sub-{subject}"
@@ -311,10 +317,8 @@ def check_existing_output(
     Returns
     -------
     tuple[list[str], list[str]]
-        Boolean filter with True for missing data (optionally, a second filter with
-        existing data)
+        List of missing data path (optionally, a second list of existing data path)
     """
-
     missing_data_filter = [
         not op.exists(op.join(output, get_bids_savename(filename, **kwargs)))
         for filename in func_filename
