@@ -158,7 +158,7 @@ def get_arguments() -> argparse.Namespace:
         default=("high_pass", "motion", "scrub"),
         action="store",
         type=tuple,
-        help='type of noise components to include.'
+        help="type of noise components to include."
         '- "motion":  head motion estimates. Associated parameter: `motion`'
         '- "wm_csf" confounds derived from white matter and cerebrospinal fluid.'
         '- "global_signal" confounds derived from the global signal.'
@@ -166,7 +166,7 @@ def get_arguments() -> argparse.Namespace:
         '  When using this noise component, "high_pass" must also be applied.'
         '- "scrub" regressors for :footcite:t:`Power2014` scrubbing approach.'
         '- "high_pass" adds discrete cosines transformation'
-        'basis regressors to handle low-frequency signal drifts.'
+        "basis regressors to handle low-frequency signal drifts.",
     )
     parser.add_argument(
         "--motion",
@@ -174,11 +174,11 @@ def get_arguments() -> argparse.Namespace:
         action="store",
         choices=["basic", "power2", "derivatives", "full"],
         type=str,
-        help='type of confounds extracted from head motion estimates.'
-             '- “basic” translation/rotation (6 parameters)'
-             '- “power2” translation/rotation + quadratic terms (12 parameters)'
-             '- “derivatives” translation/rotation + derivatives (12 parameters)'
-             '- “full” translation/rotation + derivatives + quadratic terms + power2d derivatives (24 parameters)'
+        help="type of confounds extracted from head motion estimates."
+        "- “basic” translation/rotation (6 parameters)"
+        "- “power2” translation/rotation + quadratic terms (12 parameters)"
+        "- “derivatives” translation/rotation + derivatives (12 parameters)"
+        "- “full” translation/rotation + derivatives + quadratic terms + power2d derivatives (24 parameters)",
     )
     parser.add_argument(
         "--FD-thresh",
@@ -228,6 +228,7 @@ def get_arguments() -> argparse.Namespace:
     args = parser.parse_args()
 
     return args
+
 
 def fit_transform_patched(
     func_filename: list[str],
@@ -645,7 +646,7 @@ def main():
 
         logging.info(f"{len(all_missing_ts)} files are missing timeseries.")
         logging.debug("Looking for existing fc matrices ...")
-        missing_only_fc, _ = check_existing_output(
+        missing_only_fc = check_existing_output(
             output, all_existing_ts, patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
         )
         logging.info(

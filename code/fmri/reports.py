@@ -379,8 +379,9 @@ def visual_report_fc(
     plt.savefig(op.join(output, fc_saveloc))
     plt.close()
 
+
 def group_report_fc_dist(
-    fc_matrices: np.ndarray,
+    fc_matrices: list[np.ndarray],
     output: str,
 ) -> None:
     """Plot and save the functional connectivity density distributions.
@@ -413,7 +414,7 @@ def group_report_fc_dist(
 
 
 def group_report_qc_fc(
-    fc_matrices: np.ndarray, output: str, mriqc_path: str = None
+    fc_matrices: list[np.ndarray], output: str, mriqc_path: str = None
 ) -> dict:
     """Plot and save the QC-FC distributions.
 
@@ -437,7 +438,7 @@ def group_report_qc_fc(
     # Load IQMs
     iqms_df = load_iqms(output, mriqc_path=mriqc_path)
 
-    fig, axs = plt.subplots(1,3,figsize=FC_FIGURE_SIZE)
+    fig, axs = plt.subplots(1, 3, figsize=FC_FIGURE_SIZE)
 
     # Iterate over each IQM
     qc_fc_dict = dict()
@@ -485,7 +486,7 @@ def group_report_qc_fc(
         percent_match_ks = (1 - ks_statistic) * 100
 
         # Plot the box in red if the correlation is significant
-        facecolor='red' if percent_match_ks < PERCENT_MATCH_CUT_OFF else 'grey'
+        facecolor = "red" if percent_match_ks < PERCENT_MATCH_CUT_OFF else "grey"
         axs[i].text(
             0.3,
             76,
@@ -496,9 +497,7 @@ def group_report_qc_fc(
         axs[i].tick_params(labelsize=LABELSIZE)
         axs[i].set_title(iqm_column, fontsize=LABELSIZE + 2)
 
-    fig.suptitle(
-        "QC-FC correlation distributions", fontsize=LABELSIZE + 2
-    )
+    fig.suptitle("QC-FC correlation distributions", fontsize=LABELSIZE + 2)
     plt.legend()
     # Ensure the labels are within the figure
     plt.tight_layout()
@@ -513,6 +512,7 @@ def group_report_qc_fc(
     plt.close()
 
     return qc_fc_dict
+
 
 def compute_distance(atlas_path: str) -> np.array:
     """Compute the euclidean distance between the center of mass of the atlas regions.
@@ -541,6 +541,7 @@ def compute_distance(atlas_path: str) -> np.array:
 
     return distance_matrix
 
+
 def group_report_qc_fc_euclidean(
     qc_fc_dict: dict, atlas_path: str, output: str
 ) -> None:
@@ -568,7 +569,7 @@ def group_report_qc_fc_euclidean(
         correlation, p_value = pearsonr(qc_fc, d)
 
         # Plot the box in red if the correlation is significant
-        facecolor='red' if p_value < ALPHA else 'grey'
+        facecolor = "red" if p_value < ALPHA else "grey"
         axs[i].text(
             0.3,
             76,

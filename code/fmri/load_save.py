@@ -45,6 +45,7 @@ TIMESERIES_PATTERN: list = [
     "_{suffix}{extension}"
 ]
 TIMESERIES_FILLS: dict = {"desc": "denoised", "extension": ".tsv"}
+
 CONFOUND_PATTERN: list = [
     "sub-{subject}[_ses-{session}][_task-{task}][_part-{part}][_desc-{desc}]"
     "_{suffix}{extension}"
@@ -230,11 +231,13 @@ def find_derivative(path: str, derivatives_name: str = "derivatives") -> str:
             splitted_path.pop()
     except IndexError:
         logging.warning(
-        f'"{derivatives_name}" could not be found on path - '
-        f'creating at: {op.join(path, derivatives_name)}"')
+            f'"{derivatives_name}" could not be found on path - '
+            f'creating at: {op.join(path, derivatives_name)}"'
+        )
         return op.join(path, derivatives_name)
 
     return "/".join(splitted_path)
+
 
 def load_iqms(
     derivative_path: str,
@@ -260,7 +263,7 @@ def load_iqms(
     panda.df
         Dataframe containing the IQMs loaded from the derivatives folder.
     """
-    #Find the MRIQC folder
+    # Find the MRIQC folder
     if mriqc_path is None:
         folders = [
             f
@@ -328,6 +331,7 @@ def check_existing_output(
             [not fltr for fltr in missing_data_filter]
         ]
         return missing_data.tolist(), existing_data.tolist()
+
     return missing_data.tolist()
 
 
