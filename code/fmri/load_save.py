@@ -131,6 +131,16 @@ def get_func_filenames_bids(
         run=run_filter or [],
     )
 
+    if not all_derivatives:
+        raise ValueError(
+            f"No functional derivatives were found under {paths_to_func_dir} with the following filters:"
+            f"\nExtension: ['nii.gz', 'gz']"
+            f"\nSuffix: bold"
+            f"\nTask: {task_filter or []}"
+            f"\nSession: {ses_filter or []}"
+            f"\nRun: {run_filter or []}"
+        )
+
     affines = []
     for file in all_derivatives:
         affines.append(loadsave.load(file).affine)
@@ -327,7 +337,11 @@ def load_iqms(
 
 
 def check_existing_output(
-    output: str, func_filename: list[str], return_existing: bool = False, **kwargs
+    output: str,
+    func_filename: list[str],
+    return_existing: bool = False,
+    return_output: bool = False,
+    **kwargs,
 ) -> tuple[list[str], list[str]]:
     """Check for existing output.
 
@@ -336,16 +350,23 @@ def check_existing_output(
     output : str
         Path to the output directory
     func_filename : list[str]
-        Original file to be computed in the future
+        Input files to be processed
     return_existing : bool, optional
-        Condition to return a boolean filter with True for existing data, by default
+        Condition to return the list of input corresponding to existing outputs, by default
         False
+    return_output: bool, optional
+        Condition to return the path of existing outputs, by default False
 
     Returns
     -------
     tuple[list[str], list[str]]
         List of missing data path (optionally, a second list of existing data path)
     """
+    if return_output == True and return_existing == False:
+        raise ValueError(
+            "Setting return_output=True in check_existing_output requires return_existing=True."
+        )
+
     missing_data_filter = [
         not op.exists(op.join(output, get_bids_savename(filename, **kwargs)))
         for filename in func_filename
@@ -358,10 +379,18 @@ def check_existing_output(
     )
 
     if return_existing:
-        existing_data = np.array(func_filename)[
-            [not fltr for fltr in missing_data_filter]
-        ]
-        return missing_data.tolist(), existing_data.tolist()
+        if return_output:
+            existing_output = [
+                op.join(output, get_bids_savename(filename, **kwargs))
+                for filename in func_filename
+                if op.exists(op.join(output, get_bids_savename(filename, **kwargs)))
+            ]
+            return existing_output
+        else:
+            existing_data = np.array(func_filename)[
+                [not fltr for fltr in missing_data_filter]
+            ]
+            return missing_data.tolist(), existing_data.tolist()
 
     return missing_data.tolist()
 
