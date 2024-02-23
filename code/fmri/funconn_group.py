@@ -1,4 +1,5 @@
 import argparse
+import logging
 
 import os.path as op
 import numpy as np
@@ -54,6 +55,14 @@ def get_arguments() -> argparse.Namespace:
         help="""type of connectivity to compute (can be 'correlation', 'covariance' or
         'sparse')""",
     )
+    parser.add_argument(
+        "-v",
+        "--verbosity",
+        action="count",
+        default=1,
+        help="""increase output verbosity (-v: standard logging infos; -vv: logging
+        infos and NiLearn verbose; -vvv: debug)""",
+    )
 
     args = parser.parse_args()
 
@@ -66,6 +75,24 @@ def main():
     task_filter = args.task
     mriqc_path = args.mriqc_path
     fc_label = args.fc_estimator.replace(" ", "")
+
+    verbosity_level = args.verbosity
+
+    logging_level_map = {
+        0: logging.WARN,
+        1: logging.INFO,
+        2: logging.INFO,
+        3: logging.DEBUG,
+    }
+
+    logging.basicConfig(
+        # filename='example.log',
+        # format='%(asctime)s %(levelname)s:%(message)s',
+        format="%(levelname)s: %(message)s",
+        level=logging_level_map[min([verbosity_level, 3])],
+    )
+
+    logging.captureWarnings(True)
 
     # Find the atlas dimension from the output path
     atlas_dimension = find_atlas_dimension(output)
@@ -103,13 +130,11 @@ def main():
         fc_matrices.append(np.loadtxt(file_path, delimiter="\t"))
 
     # Load IQMs
-    iqms_df = load_iqms(
-        output, existing_fc, task_filter=task_filter, mriqc_path=mriqc_path
-    )
+    iqms_df = load_iqms(output, existing_fc, mriqc_path=mriqc_path)
 
     # Generate group figures
     group_report_fc_dist(fc_matrices, output)
-    qc_fc_dict = group_report_qc_fc(fc_matrices, iqms_df, output, mriqc_path=mriqc_path)
+    qc_fc_dict = group_report_qc_fc(fc_matrices, iqms_df, output)
     group_report_qc_fc_euclidean(qc_fc_dict, atlas_filename, output)
 
 
