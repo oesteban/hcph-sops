@@ -25,6 +25,7 @@
 import os
 import re
 import os.path as op
+import pandas as pd
 from collections import defaultdict
 import logging
 from typing import Optional, Union
@@ -282,21 +283,81 @@ def find_derivative(path: str, derivatives_name: str = "derivatives") -> str:
     return "/".join(splitted_path)
 
 
+def find_mriqc(path: str) -> str:
+    """Find the path to the MRIQC folder (if existing, otherwise it will be
+    created).
+
+    Parameters
+    ----------
+    path : str
+        Path to the BIDS (usually derivatives) dataset.
+
+    Returns
+    -------
+    str
+        Absolute path to the mriqc folder.
+    """
+    logging.debug("Searching for MRIQC path...")
+    derivative_path = find_derivative(path)
+
+    folders = [
+        f for f in os.listdir(derivative_path) if op.isdir(op.join(derivative_path, f))
+    ]
+
+    mriqc_path = [f for f in folders if "mriqc" in f]
+    if len(mriqc_path) >= 2:
+        logging.warning(
+            f"More than one mriqc derivative folder was found: {mriqc_path}"
+            f"The first instance {mriqc_path[0]} is used for the computation."
+            "In case you want to use another mriqc derivative folder, use the --mriqc-path flag"
+        )
+    return op.join(derivative_path, mriqc_path[0])
+
+
+def reorder_iqms(iqms_df: pd.DataFrame, fc_paths: list[str]):
+    """Reorder the IQMs according to the list of filenames
+
+    Parameters
+    ----------
+    iqms_df : pd.Dataframe
+        Dataframe containing the IQMs value for each image
+    fc_paths : list [str]
+        List of paths to the functional connectivity matrices
+
+    Returns
+    -------
+    panda.df
+        Dataframe containing the IQMs dataframe with reordered rows.
+    """
+    iqms_df[["subject", "session", "task"]] = iqms_df["bids_name"].str.extract(
+        r"sub-(\d+)_ses-(\d+)_task-(\w+)_"
+    )
+    entities_list = [parse_file_entities(filepath) for filepath in fc_paths]
+    entities_df = pd.DataFrame(entities_list)
+
+    return pd.merge(
+        entities_df, iqms_df, on=["subject", "session", "task"], how="inner"
+    )
+
+
 def load_iqms(
     derivative_path: str,
+    fc_paths: list[str],
     mriqc_path: str = None,
     mod="bold",
     iqms_name: list = ["fd_mean", "fd_num", "fd_perc"],
 ) -> str:
-    """Load the IQMs.
+    """Load the IQMs and match their order with the corresponding functional matrix.
 
     Parameters
     ----------
     derivative_path : str
         Path to the BIDS dataset's derivatives.
-    mriqc_path : str
-        Name of the MRIQC derivative folder
-    mod : str
+    fc_paths : list [str]
+        List of paths to the functional connectivity matrices
+    mriqc_path : str, optional
+        Name of the MRIQC derivative folder, by default None
+    mod : str, optional
         Load the IQMs of that modality
     iqms_name : list, optional
         Name of the IQMs to find, by default ["fd_mean", "fd_num", "fd_perc"]
@@ -308,22 +369,10 @@ def load_iqms(
     """
     # Find the MRIQC folder
     if mriqc_path is None:
-        folders = [
-            f
-            for f in os.listdir(derivative_path)
-            if op.isdir(op.join(derivative_path, f))
-        ]
-        mriqc_path = [f for f in folders if "mriqc" in f]
-        if len(mriqc_path) >= 2:
-            logging.warning(
-                f"More than one mriqc derivative folder was found: {mriqc_path}"
-                f"The first instance {mriqc_path[0]} is used for the computation."
-                "In case you want to use another mriqc derivative folder, use the --mriqc-path flag"
-            )
-        mriqc_path = mriqc_path[0]
+        mriqc_path = find_mriqc(derivative_path)
 
     # Load the IQMs from the group tsv
-    iqms_filename = op.join(derivative_path, mriqc_path, f"group_{mod}.tsv")
+    iqms_filename = op.join(mriqc_path, f"group_{mod}.tsv")
     iqms_df = read_csv(iqms_filename, sep="\t")
     # If multi-echo dataset and the IQMs of interest are motion-related, keep only the IQMs from the second echo
     if "echo" in iqms_df["bids_name"][0] and all("fd" in i for i in iqms_name):
@@ -331,8 +380,13 @@ def load_iqms(
         logging.info(
             f"In the case of a multi-echo dataset, the IQMs of the second echo are considered."
         )
+
+    # Match the order of the rows in iqms_df with the corresponding FC
+    iqms_df = reorder_iqms(iqms_df, fc_paths)
+
     # Keep only the IQMs of interest
     iqms_df = iqms_df[iqms_name]
+
     return iqms_df
 
 
