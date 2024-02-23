@@ -52,7 +52,7 @@ FIGURE_FILLS: dict = {"extension": "png"}
 
 TS_FIGURE_SIZE: tuple = (50, 25)
 FC_FIGURE_SIZE: tuple = (50, 45)
-LABELSIZE: int = 22
+LABELSIZE: int = 36
 NETWORK_CMAP: str = "turbo"
 N_PERMUTATION: int = 10000
 ALPHA = 0.05
@@ -397,7 +397,14 @@ def group_report_fc_dist(
     _, ax = plt.subplots(figsize=FC_FIGURE_SIZE)
 
     for fc_matrix in fc_matrices:
-        sns.displot(fc_matrix, kind="kde", fill=True, linewidth=3)
+        sns.displot(
+            fc_matrix,
+            kind="kde",
+            fill=True,
+            linewidth=0.5,
+            legend=False,
+            palette="ch:s=.25,rot=-.25",
+        )
 
     ax.tick_params(labelsize=LABELSIZE)
 
@@ -437,6 +444,16 @@ def group_report_qc_fc(
     upper_triangle_indices = np.triu_indices(fc_matrices.shape[0], k=1)
     fc_matrices = fc_matrices[upper_triangle_indices]
 
+    if fc_matrices.shape[1] != iqms_df.shape[0]:
+        raise ValueError(
+            "The number of functional connectivity matrices and IQMs do not match."
+        )
+
+    if fc_matrices.shape[1] == 1:
+        raise ValueError(
+            "We need at least two functional connectivity matrices to be able to compute its correlation with IQMs."
+        )
+
     fig, axs = plt.subplots(1, 3, figsize=FC_FIGURE_SIZE)
 
     # Iterate over each IQM
@@ -446,20 +463,22 @@ def group_report_qc_fc(
         qc_fcs = []
 
         # Iterate over each edge
+        logging.debug("Compute QC-FC correlation for each edge.")
         for e in range(fc_matrices.shape[0]):
-            # Compute correlation only on the upper triangle
-            # CAREFUL THE ORDER OF THE SESSION IN THE IQMS MIGHT NOT MATCH THE ORDER OF THE IQM IN THE FC
-            # ALSO IQMS CONTAIN EXCLUDED SUBJECT
             qc_fc = np.corrcoef(fc_matrices[e, :], iqms_df[iqm_column])[0, 1]
             qc_fcs.append(qc_fc)
 
         # Create a density distribution plot for the current IQM
-        sns.kdeplot(qc_fcs, fill=True, label=iqm_column, linewidth=3)
+        logging.debug("Create the density distribution plot.")
+        sns.kdeplot(
+            qc_fcs, fill=True, label="QC-FC distribution", linewidth=3, ax=axs[i]
+        )
 
         # Save the QC-FC distributions in a dictionary
         qc_fc_dict[iqm_column] = qc_fcs
 
         ## Permutation analyses
+        logging.debug("Compute QC-FC distribution under the null hypothesis.")
         correlations_null = []
         for e in range(fc_matrices.shape[0]):
             for _ in range(N_PERMUTATION):
@@ -471,6 +490,7 @@ def group_report_qc_fc(
                 correlations_null.append(correlation)
 
         # Create a density distribution plot for null distribution
+        logging.debug("Create the density distribution plot for the null distribution.")
         sns.kdeplot(
             correlations_null,
             fill=False,
@@ -478,35 +498,40 @@ def group_report_qc_fc(
             label="Dist under null hypothesis",
             linewidth=3,
             linestyle="dashed",
+            ax=axs[i],
         )
+        plt.legend(fontsize=LABELSIZE + 2)
 
         # Compute percent match between the two distributions
+        logging.debug("Compute percent match between the two distributions.")
         ks_statistic, _ = ks_2samp(qc_fcs, correlations_null)
         percent_match_ks = (1 - ks_statistic) * 100
 
         # Plot the box in red if the correlation is significant
         facecolor = "red" if percent_match_ks < PERCENT_MATCH_CUT_OFF else "grey"
         axs[i].text(
-            0.3,
-            76,
+            0.08,
+            0.9,
             f"QC-FC% = {percent_match_ks:.0f}",
             fontsize=LABELSIZE - 2,
             bbox=dict(facecolor=facecolor, alpha=0.4, boxstyle="round,pad=0.5"),
+            transform=axs[i].transAxes,
         )
         axs[i].tick_params(labelsize=LABELSIZE)
         axs[i].set_title(iqm_column, fontsize=LABELSIZE + 2)
 
-    fig.suptitle("QC-FC correlation distributions", fontsize=LABELSIZE + 2)
-    plt.legend()
-    # Ensure the labels are within the figure
-    plt.tight_layout()
+    # Turn off individual plot y-labels
+    for ax in axs:
+        ax.set_ylabel("")
+
+    fig.supylabel("Density", fontsize=LABELSIZE + 2)
+    fig.suptitle("QC-FC correlation distributions", fontsize=LABELSIZE + 4)
 
     savename = "group_QC-FC.png"
 
     logging.debug("Saving QC-FC visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
 
-    plt.show()
     plt.savefig(op.join(output, savename))
     plt.close()
 
@@ -526,6 +551,8 @@ def compute_distance(atlas_path: str) -> np.array:
         Distance matrix
     """
     from scipy.ndimage.measurements import center_of_mass
+
+    logging.debug("Compute distance matrix from atlas centers of mass")
 
     atlas_img = nib.load(atlas_path)
     atlas_data = atlas_img.get_fdata()
@@ -565,16 +592,19 @@ def group_report_qc_fc_euclidean(
     fig, axs = plt.subplots(1, 3, figsize=FC_FIGURE_SIZE)
     for i, iqm in enumerate(qc_fc_dict.keys()):
         qc_fc = qc_fc_dict[iqm]
+
+        logging.debug("Compute the correlation between QC-FC and euclidean distance.")
         correlation, p_value = pearsonr(qc_fc, d)
 
         # Plot the box in red if the correlation is significant
         facecolor = "red" if p_value < ALPHA else "grey"
         axs[i].text(
-            0.3,
-            76,
+            0.15,
+            0.97,
             f"Correlation = {correlation:.2f}, p-value = {p_value:.4f}",
             fontsize=LABELSIZE - 2,
             bbox=dict(facecolor=facecolor, alpha=0.4, boxstyle="round,pad=0.5"),
+            transform=axs[i].transAxes,
         )
         axs[i].scatter(qc_fc, d)
 
@@ -601,6 +631,5 @@ def group_report_qc_fc_euclidean(
     logging.debug("Saving QC-FC vs euclidean distance visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
 
-    plt.show()
     plt.savefig(op.join(output, savename))
     plt.close()
