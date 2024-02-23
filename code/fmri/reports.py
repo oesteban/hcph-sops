@@ -38,7 +38,7 @@ from matplotlib.lines import Line2D
 from nilearn.plotting import plot_design_matrix, plot_matrix
 from scipy.stats import pearsonr, ks_2samp
 
-from load_save import get_bids_savename, load_iqms
+from load_save import get_bids_savename
 
 
 FIGURE_PATTERN: list = [
@@ -414,7 +414,9 @@ def group_report_fc_dist(
 
 
 def group_report_qc_fc(
-    fc_matrices: list[np.ndarray], output: str, mriqc_path: str = None
+    fc_matrices: list[np.ndarray],
+    iqms_df: pd.DataFrame,
+    output: str,
 ) -> dict:
     """Plot and save the QC-FC distributions.
 
@@ -422,10 +424,10 @@ def group_report_qc_fc(
     ----------
     fc_matrices : list[np.ndarray]
         List of functional connectivity matrices
+    iqms_df : pd.Dataframe
+        Dataframe containing the image quality metrics to correlate with
     output : str
         Path to the output directory
-    mriqc_path : str
-        Name of the MRIQC derivative folder
     """
 
     # Stack the list of arrays into a 3D matrix
@@ -434,9 +436,6 @@ def group_report_qc_fc(
     # Keep only upper triangle as the matrix is symmetric
     upper_triangle_indices = np.triu_indices(fc_matrices.shape[0], k=1)
     fc_matrices = fc_matrices[upper_triangle_indices]
-
-    # Load IQMs
-    iqms_df = load_iqms(output, mriqc_path=mriqc_path)
 
     fig, axs = plt.subplots(1, 3, figsize=FC_FIGURE_SIZE)
 

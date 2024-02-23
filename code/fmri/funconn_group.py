@@ -13,6 +13,7 @@ from load_save import (
     check_existing_output,
     get_bids_savename,
     get_func_filenames_bids,
+    load_iqms,
 )
 
 from reports import (
@@ -101,7 +102,16 @@ def main():
     for file_path in existing_fc:
         fc_matrices.append(np.loadtxt(file_path, delimiter="\t"))
 
+    # Load IQMs
+    iqms_df = load_iqms(
+        output, existing_fc, task_filter=task_filter, mriqc_path=mriqc_path
+    )
+
     # Generate group figures
     group_report_fc_dist(fc_matrices, output)
-    qc_fc_dict = group_report_qc_fc(fc_matrices, output, mriqc_path=mriqc_path)
+    qc_fc_dict = group_report_qc_fc(fc_matrices, iqms_df, output, mriqc_path=mriqc_path)
     group_report_qc_fc_euclidean(qc_fc_dict, atlas_filename, output)
+
+
+if __name__ == "__main__":
+    main()
