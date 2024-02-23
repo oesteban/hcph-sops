@@ -1,10 +1,15 @@
 import pytest
+import os
+import random
+import pandas as pd
 import os.path as op
 import fmri.load_save as fl
 
+from itertools import chain
+
 
 @pytest.mark.parametrize(
-    ("path", "expected_der_path"),
+    ("path", "expected_path"),
     [
         ("/home/hcph/fmriprep", "/home/hcph/fmriprep/derivatives"),
         ("/home/hcph-derivatives", "/home/hcph-derivatives"),
@@ -13,9 +18,75 @@ import fmri.load_save as fl
         ("/home/derivatives/fmriprep/23.2.0", "/home/derivatives"),
     ],
 )
-def test_find_derivative(path, expected_der_path):
+def test_find_derivative(path, expected_path):
     der_path = fl.find_derivative(path)
-    assert der_path == expected_der_path
+    assert der_path == expected_path
+
+
+@pytest.mark.parametrize(
+    "derivative_path", ["/home/derivatives", "/home/hcph-derivatives"]
+)
+@pytest.mark.parametrize("addition", ["fmriprep", "fmriprep/sub-001", ""])
+@pytest.mark.parametrize("mriqc_name", ["mriqc", "mriqc-23.1.0"])
+@pytest.mark.parametrize(
+    "other_folder_present",
+    [["fmriprep", "functional_connectivity"], [], ["mriqc-24.1.0"]],
+)
+def test_find_mriqc(
+    derivative_path, addition, mriqc_name, other_folder_present, monkeypatch
+):
+    def mock_listdir(path):
+        return list(chain.from_iterable([[mriqc_name], other_folder_present]))
+
+    def mock_isdir(path):
+        return True
+
+    monkeypatch.setattr(os, "listdir", mock_listdir)
+    monkeypatch.setattr(op, "isdir", mock_isdir)
+    print(op.join(derivative_path, addition))
+    mriqc_path = fl.find_mriqc(op.join(derivative_path, addition))
+    assert mriqc_path == op.join(derivative_path, mriqc_name)
+
+
+def test_reorder_iqms():
+    iqms = {
+        "bids_name": [
+            "sub-3_ses-1_task-rest_bold",
+            "sub-3_ses-1_task-qct_bold",
+            "sub-3_ses-2_task-rest_bold",
+            "sub-2_ses-1_task-rest_bold",
+            "sub-1_ses-1_task-rest_bold",
+            "sub-4_ses-1_task-rest_bold",
+        ],
+        "fd_mean": random.sample(range(101), 6),
+        "fd_num": random.sample(range(101), 6),
+        "fd_perc": random.sample(range(101), 6),
+    }
+
+    iqms_df = pd.DataFrame(iqms)
+
+    fc_paths = [
+        "/data/sub-2_ses-1_task-rest_connectivity.tsv",
+        "/data/sub-1_ses-1_task-rest_connectivity.tsv",
+        "/data/sub-3_ses-1_task-rest_connectivity.tsv",
+    ]
+
+    iqms_df = fl.reorder_iqms(iqms_df, fc_paths)
+
+    # Verify that sub-1 and ses-2 are not included in iqms_df
+    assert "4" not in iqms_df["subject"].values
+    assert "2" not in iqms_df["session"].values
+
+    # Verify that no row contains "task-qct" within the bids_name string
+    assert not iqms_df["bids_name"].str.contains("task-qct").any()
+
+    # Verify that the order of iqms_df matches the order of fc_paths and that the subject and bids_name match
+    assert iqms_df["subject"].values.tolist() == ["2", "1", "3"]
+    assert iqms_df["bids_name"].values.tolist() == [
+        "sub-2_ses-1_task-rest_bold",
+        "sub-1_ses-1_task-rest_bold",
+        "sub-3_ses-1_task-rest_bold",
+    ]
 
 
 @pytest.mark.parametrize(
@@ -39,10 +110,12 @@ def test_find_atlas_dimension(path, expected_dim):
 
 """
 @pytest.mark.parametrize('return_existing', [False, True])
-def test_check_existing_output(return_existing, monkeypatch):
+@pytest.mark.parametrize('return_output', [False, True])
+@pytest.mark.parametrize('fc_label', ['sparse inverse covariance', 'correlation'])
+def test_check_existing_output(return_existing, return_output, fc_label, monkeypatch):
     output = ""
-    func_filename = ["sub-1.txt", "sub-2.txt"]
-    existing_filenames = ["sub-2.txt"]
+    func_filename = ["sub-1_bold.txt", "sub-2_bold.txt"]
+    existing_filenames = ["sub-2_meas-sparseinversecovariance_connectivity.txt", "sub-2_meas-correlation_connectivity.txt"]
 
     FAKE_PATTERN: list = [
     "sub-{subject}"
@@ -55,10 +128,18 @@ def test_check_existing_output(return_existing, monkeypatch):
     monkeypatch.setattr(op, 'exists', mock_exists)
 
     if return_existing:
-        missing_file, existing_file = fl.check_existing_output(output,func_filename, return_existing=return_existing, patterns=FAKE_PATTERN)
-        assert missing_file == ['sub-1.txt']
-        assert existing_file == ['sub-2.txt']
+        if return_output:
+            existing_file = fl.check_existing_output(output,func_filename, return_existing=return_existing, return_output=return_output, patterns=FAKE_PATTERN, fc_label=fc_label)
+            assert existing_file == [f'sub-2_meas-{fc_label.replace(" ", "")}_connectivity.txt']
+        else:
+            missing_file, existing_file = fl.check_existing_output(output,func_filename, return_existing=return_existing, patterns=FAKE_PATTERN)
+            assert missing_file == ['sub-1_bold.txt']
+            assert existing_file == ['sub-2_bold.txt']
     else:
         missing_file = fl.check_existing_output(output,func_filename, return_existing=return_existing, patterns=FAKE_PATTERN)
-        assert missing_file == ['sub-2.txt']
+        assert missing_file == ['sub-2_bold.txt']
+
+    if return_output==True and return_existing==False:
+        with pytest.raises(ValueError):
+            fl.check_existing_output(output,func_filename, return_existing=return_existing, return_output=return_output, patterns=FAKE_PATTERN)
 """
