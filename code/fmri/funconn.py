@@ -104,7 +104,7 @@ def get_arguments() -> argparse.Namespace:
     )
     parser.add_argument(
         "--task",
-        default=[],
+        default=["rest"],
         action="store",
         nargs="+",
         help="a space delimited list of task(s)",

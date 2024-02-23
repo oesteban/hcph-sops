@@ -38,6 +38,13 @@ def get_arguments() -> argparse.Namespace:
         help="specify the path to the mriqc derivatives",
     )
     parser.add_argument(
+        "--task",
+        default=["rest"],
+        action="store",
+        nargs="+",
+        help="a space delimited list of task(s)",
+    )
+    parser.add_argument(
         "--fc-estimator",
         default="sparse inverse covariance",
         action="store",
@@ -47,10 +54,15 @@ def get_arguments() -> argparse.Namespace:
         'sparse')""",
     )
 
+    args = parser.parse_args()
+
+    return args
+
 
 def main():
     args = get_arguments()
     output = args.output
+    task_filter = args.task
     mriqc_path = args.mriqc_path
     fc_label = args.fc_estimator.replace(" ", "")
 
@@ -61,10 +73,17 @@ def main():
 
     # Find all existing functional connectivity
     input_path = find_derivative(output)
-    all_filenames = list(chain.from_iterable(get_func_filenames_bids(input_path)))
+    func_filenames, _ = get_func_filenames_bids(input_path, task_filter=task_filter)
+    all_filenames = list(chain.from_iterable(func_filenames))
 
-    _, existing_fc = check_existing_output(
-        output, all_filenames, patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
+    existing_fc = check_existing_output(
+        output,
+        all_filenames,
+        return_existing=True,
+        return_output=True,
+        patterns=FC_PATTERN,
+        meas=fc_label,
+        **FC_FILLS,
     )
     if not existing_fc:
         filename = op.join(
