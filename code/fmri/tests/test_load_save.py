@@ -108,38 +108,76 @@ def test_find_atlas_dimension(path, expected_dim):
             fl.find_atlas_dimension(path)
 
 
-"""
-@pytest.mark.parametrize('return_existing', [False, True])
-@pytest.mark.parametrize('return_output', [False, True])
-@pytest.mark.parametrize('fc_label', ['sparse inverse covariance', 'correlation'])
-def test_check_existing_output(return_existing, return_output, fc_label, monkeypatch):
-    output = ""
-    func_filename = ["sub-1_bold.txt", "sub-2_bold.txt"]
-    existing_filenames = ["sub-2_meas-sparseinversecovariance_connectivity.txt", "sub-2_meas-correlation_connectivity.txt"]
-
-    FAKE_PATTERN: list = [
-    "sub-{subject}"
-    "_{extension}"
+@pytest.mark.parametrize("return_existing", [False, True])
+@pytest.mark.parametrize("return_output", [False, True])
+@pytest.mark.parametrize("fc_label", ["sparse inverse covariance", "correlation"])
+def test_check_existing_output(return_existing, return_output, fc_label, tmp_path):
+    func_filename = ["sub-1/func/sub-1_bold.nii", "sub-2/func/sub-2_bold.nii"]
+    existing_filenames = [
+        "sub-2_meas-sparseinversecovariance_connectivity.tsv",
+        "sub-2_meas-correlation_connectivity.tsv",
+        "sub-3_meas-sparseinversecovariance_connectivity.tsv",
     ]
 
-    def mock_exists(file_path):
-        return file_path in existing_filenames
-    
-    monkeypatch.setattr(op, 'exists', mock_exists)
+    fc_label = fc_label.replace(" ", "")
+
+    FAKE_PATTERN: list = ["sub-{subject}[_meas-{meas}]" "_{suffix}.{extension}"]
+
+    for file in existing_filenames:
+        (tmp_path / file).write_text("")
 
     if return_existing:
         if return_output:
-            existing_file = fl.check_existing_output(output,func_filename, return_existing=return_existing, return_output=return_output, patterns=FAKE_PATTERN, fc_label=fc_label)
-            assert existing_file == [f'sub-2_meas-{fc_label.replace(" ", "")}_connectivity.txt']
+            existing_file = fl.check_existing_output(
+                tmp_path,
+                func_filename,
+                return_existing=return_existing,
+                return_output=return_output,
+                patterns=FAKE_PATTERN,
+                meas=fc_label,
+                **fl.FC_FILLS,
+            )
+            assert existing_file == [
+                str(
+                    tmp_path
+                    / f'sub-2_meas-{fc_label.replace(" ", "")}_connectivity.tsv'
+                )
+            ]
         else:
-            missing_file, existing_file = fl.check_existing_output(output,func_filename, return_existing=return_existing, patterns=FAKE_PATTERN)
-            assert missing_file == ['sub-1_bold.txt']
-            assert existing_file == ['sub-2_bold.txt']
+            missing_file, existing_file = fl.check_existing_output(
+                tmp_path,
+                func_filename,
+                return_existing=return_existing,
+                patterns=FAKE_PATTERN,
+                meas=fc_label,
+                **fl.FC_FILLS,
+            )
+            assert missing_file == ["sub-1/func/sub-1_bold.nii"]
+            assert existing_file == ["sub-2/func/sub-2_bold.nii"]
     else:
-        missing_file = fl.check_existing_output(output,func_filename, return_existing=return_existing, patterns=FAKE_PATTERN)
-        assert missing_file == ['sub-2_bold.txt']
+        missing_file = fl.check_existing_output(
+            tmp_path,
+            func_filename,
+            return_existing=return_existing,
+            patterns=FAKE_PATTERN,
+            meas=fc_label,
+            **fl.FC_FILLS,
+        )
+        assert missing_file == ["sub-1/func/sub-1_bold.nii"]
 
-    if return_output==True and return_existing==False:
+    if return_output == True and return_existing == False:
         with pytest.raises(ValueError):
-            fl.check_existing_output(output,func_filename, return_existing=return_existing, return_output=return_output, patterns=FAKE_PATTERN)
-"""
+            fl.check_existing_output(
+                tmp_path,
+                func_filename,
+                return_existing=return_existing,
+                return_output=return_output,
+                patterns=FAKE_PATTERN,
+                meas=fc_label,
+                **fl.FC_FILLS,
+            )
+
+    # Clear temporary directory
+    for file in existing_filenames:
+        (tmp_path / file).unlink()
+    tmp_path.rmdir()
