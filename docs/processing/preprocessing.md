@@ -19,8 +19,7 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
 {% endfilter %}
         ```
 
-- [ ] Once the anatomical workflow ran successfully, submit a *job array* with one scanning session each with the `--bids-filter-file` argument selecting the
-    corresponding session, and point the `--fs-subjects-dir` argument to the folder where *FreeSurfer* results were stored.
+- [ ] Once the anatomical workflow ran successfully, submit a *job array* with one scanning session each with the `--bids-filter-file` argument selecting the corresponding session, and point the `--fs-subjects-dir` argument to the folder where *FreeSurfer* results were stored.
     ``` bash title="Launch each session through fMRIPrep in parallel"
     cd code/fmriprep
     bash ss-fmriprep.sh
@@ -93,6 +92,7 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
     - [ ] Continue with the next fMRI run section
 
 !!! danger "Immediately report errors or quality issues encountered"
+
     If errors or quality issues are encountered, find the issue corresponding to that session in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues) and report a comprehensive description of the problems.
     In case of *fMRIPrep* failure, follow the procedure described above in ["Not all *fMRIPrep* derivatives were generated"](#fmriprep-failed).
 
