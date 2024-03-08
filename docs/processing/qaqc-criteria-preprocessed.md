@@ -15,9 +15,10 @@
     - [ ] Check that the blue line correctly outlines the boundary between GM and WM.
     - [ ] Check that the magenta line outlines ventricles.
     - [ ] Check that the contours do not exclude single voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles).
-      Careful if those single excluded voxels only appear close to tissue boundaries, they are likely misclassified because of partial volume effect, as such it does not constitute an exclusion criteria.
+      Be careful if those single excluded voxels only appear close to tissue boundaries.
+      They are likely misclassified because of the partial volume effect, and as such, they do not constitute an exclusion criteria.
     - [ ] Check that the contours do not include other tissues than the tissue of interest (GM; magenta, WM; blue). 
-    - [ ] If you found any of the issues above, do not use the CompCor confounds for nuisance regression.
+    - [ ] **Do not** use the CompCor confounds for nuisance regression if you find any of the issues above.
 
 ### Spatial normalization of the anatomical T1w reference
 
@@ -35,12 +36,13 @@
 
 - [ ] Check that the repetition time is the expected 1.6s. 
   If not:
-    - [ ] Investigate whether the TR has been mistakenly reported in the Nifti header, fix it and re-run *fMRIPrep*.
-    - [ ] If the session has been acquired with the wrong TR, [exclude that session](#textual-summary-1).
+    - [ ] Investigate whether the TR metadata in the sidecar JSON file is wrong.
+      Fix it and re-run *fMRIPrep*.
+    - [ ] [Exclude the whole session](#textual-summary-1) if it was acquired with the wrong TR.
 - [ ] Verify that slice timing correction was applied. 
   If not, fix the problem and re-run *fMRIPrep*.
 - [ ] Verify that susceptibility distortion correction was applied. 
-  If not, check that fieldmaps were present in the unprocessed data, that they are no typos in their filename and that the field `B0FieldSource` and `B0FieldIdentifier` have been correctly setup in the JSON sidecars.
+  If not, check that fieldmaps were present in the unprocessed data, that there are no typos in their filename, and that the fields `B0FieldSource` and `B0FieldIdentifier` have been correctly set in the JSON sidecars.
 - [ ] Verify that registration was applied. 
   If not, fix the problem and re-run *fMRIPrep*.
 - [ ] Check that four echoes are detected in the field `Multi-echo EPI sequence`.
@@ -56,11 +58,12 @@
 - [ ] Check that the BOLD and the T1w image are well aligned:
     - [ ] Verify that the image boundaries as well as the anatomical landmarks, such as the ventricles and the corpus callosum, appear in the same place when toggling between images.
     - [ ] Verify that the white and pial surface outline (red and blue lines) correspond well to the tissues boundaries in the BOLD image.
-    - [ ] If issues are observed in the points above, tweak the co-registration by increasing its degrees of freedom using the `--bold2t1w-dof 9` flag of *fMRIPrep* and re-run *fMRIPrep*.
-    - [ ] If that did not solve co-registration problem, assign the fMRIPrep flag `--bold2t1w-init header` and re-run *fMRIPrep*.
-    - [ ] If co-registration is still faulty, [exclude this session](#alignment-of-functional-and-anatomical-mri-data).
+    - [ ] Increase the degrees of freedom of the co-registration transform setting `--bold2t1w-dof 9` to the *fMRIPrep* call, and re-run *fMRIPrep* if issues are observed at any point above.
+    - [ ] If that did not solve the co-registration problem, set `--bold2t1w-init header` instead and re-run *fMRIPrep*.
+    - [ ] [Exclude this session](#alignment-of-functional-and-anatomical-mri-data) if the co-registration performance remains insufficient.
 
-- [ ] Check that no large residual susceptibility distortion affects the BOLD image. Susceptibility distortion manifests as signal drop-outs or brain distortions.
+- [ ] Check that no large residual susceptibility distortion affects the BOLD image.
+  Susceptibility distortion manifests as signal drop-outs or brain distortions.
     - [ ] If large susceptibility distortion remains, double-check that [susceptibility distortion correction was applied correctly by *fMRIPrep*](#textual-summary).
     - [ ] If this issue cannot be fixed, [exclude the session](#alignment-of-functional-and-anatomical-mri-data-1).
 
@@ -104,13 +107,11 @@ If any of the latter patterns is observed, flag the session and double check tha
 
 ### Surface reconstruction
 
-!!! note "If you used the `--fs-no-reconall` flag to skip surface-based preprocessing, the section of the report will not exist"
-
 - [ ] Check that the WM-GM boundary outlines (blue line) matches the boundary observed in the underlying image.
 - [ ] Verify that the WM and pial surface do not cross or overlap each other.
 - [ ] Verify that the pial surface (red line) does not extend past the actual pial boundary.
 
-!!! Tip "Evaluating the quality of brain surfaces"
+!!! tip "Evaluating the quality of brain surfaces"
 
     As we will proceed with voxel-wise analysis, re-running *fMRIPrep* is necessary only when the reconstructed surfaces are extremely inaccurate.
     That typically only happens in the presence of extreme artifacts that we should have captured previously in the step of [QA/QC for unprocessed data using *MRIQC*](../data-management/qaqc-criteria.md).
@@ -128,9 +129,8 @@ If any of the latter patterns is observed, flag the session and double check tha
 
 ### Textual summary
 
-- [ ] If the RSfMRI has been acquired with a TR different from 1.6s, exclude that scan. It is likely the other fMRI scans have been mistakenly acquired with the  
-  wrong TR, so double-check the task fMRI.
-
+- [ ] If the RSfMRI has been acquired with a TR different from 1.6s, exclude that scan.
+  It is likely the other fMRI scans have been mistakenly acquired with the wrong TR, so double-check the task fMRI.
 - [ ] If the four echoes are not detected in the field `Multi-echo EPI sequence` even after checking their presence in the unprocessed data and that they are no 
   typos in their filename, exclude the session.
 
@@ -142,4 +142,5 @@ If any of the latter patterns is observed, flag the session and double check tha
 
 ### BOLD summary
 
-- [ ] Check for extensive signal drops that may reveal a coil failure. If such pattern is observed, exclude the RSfMRI scan.
+- [ ] Check for outstanding signal drops that may reveal a coil failure.
+  If such a pattern is observed, exclude the RSfMRI scan.

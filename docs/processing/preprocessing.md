@@ -1,8 +1,7 @@
 ## Executing *fMRIPrep*
 Because *fMRIPrep* creates a single anatomical reference for all sessions, we generate such reference first by setting the `--anat-only` flag.
 If that *fMRIPrep* execution finishes successfully, the anatomical processing outcomes will be stored in the output folder.
-We will then run one *fMRIPrep* process for each dataset's session, which is the recommended way for datasets with a large number of sessions (e.g., more than 
-six sessions).
+We will then run one *fMRIPrep* process for each dataset's session, which is the recommended way for datasets with a large number of sessions (e.g., more than  six sessions).
 We avert that session-wise *fMRIPrep*'s processes run into race conditions by pre-computing the anatomical reference.
 
 - [ ] Submit the anatomical workflow:
@@ -19,8 +18,7 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
 {% endfilter %}
         ```
 
-- [ ] Once the anatomical workflow ran successfully, submit a *job array* with one scanning session each with the `--bids-filter-file` argument selecting the
-    corresponding session, and point the `--fs-subjects-dir` argument to the folder where *FreeSurfer* results were stored.
+- [ ] Once the anatomical workflow ran successfully, submit a *job array* with one scanning session each with the `--bids-filter-file` argument selecting the corresponding session, and point the `--fs-subjects-dir` argument to the folder where *FreeSurfer* results were stored.
     ``` bash title="Launch each session through fMRIPrep in parallel"
     cd code/fmriprep
     bash ss-fmriprep.sh
@@ -39,8 +37,7 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
     
     - [ ] Check the "Errors" section of the visual report.
     - [ ] Check the `log/` folder corresponding to the *fMRIPrep* run, carefully ensuring no errors were missed out on the reports.
-    - [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains 
-        unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
+    - [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
         The solution might be documented in the issue.
         Don't forget to check closed issues!
     - [ ] Search for the issue on [NeuroStars](https://neurostars.org/), if the solution remains unclear.
@@ -61,9 +58,9 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
 - [ ] Assess the "Anatomical conformation" section and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#anatomical-conformation).
 - [ ] Assess the mosaic showing the calculated brain mask and brain tissue segmentation, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#brain-mask-and-brain-tissue-segmentation-of-the-t1w).
 - [ ] Visualize the spatial normalization flickering mosaic, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#spatial-normalization-of-the-anatomical-t1w-reference).
-    Flickering between the subject and the template space is active while hovering your mouse on the mosaic area.
+    Flickering between the subject and the template space is active while your mouse pointer hovers the mosaic area.
 - [ ] Assess the surface reconstruction mosaic, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#surface-reconstruction).
-- [ ] Visualize the first section entitled `Summary` and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#summary).
+- [ ] Visualize the first section entitled *Summary* and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#summary).
 
     !!! warning "Running through the visual report does not have to be executed in a fixed order"
 
@@ -111,7 +108,6 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
 - [ ] Visualize the carpet plot and nuisance signals panel, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#bold-summary).
 - [ ] Visualize the confound correlation heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-between-nuisance-regressors) 
     you will include in the nuisance regression model.
-
 - [ ] Finally, verify that no errors are reported within the "Errors" section. If there are, proceed as indicated in ["Not all *fMRIPrep* derivatives were generated"](#executing-fmriprep).
 
 !!! warning "Immediately report errors or quality issues encountered"
