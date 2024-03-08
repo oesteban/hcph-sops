@@ -58,9 +58,9 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 ## Task behavior
 
 For accurate estimation of task activation, it is essential to check the quality of both the fMRI images and the task behavior<sup>[1]</sup>. 
-As such, it is important to verify that the subjects were attempting to perform the instructed task (i.e not sleeping and not responding randomly). 
-One particularity of this project is that our single participant is the principal investigator of the project. As such, we trust that the participant, when actively awake, has enough incentive to follow the tasks accurately, even more so that the tasks are simple paradigms. 
-We will however verify that the participant did not inadvertently fell asleep during one of the fMRI scans. 
+As such, verifying that the subjects were attempting to perform the instructed task (i.e., not sleeping and not responding randomly) is important. 
+Because the one participant in Cohort I is the principal investigator, we assume that he is following all the instructions and reporting any issues as they occur.
+Nonetheless, we will verify that the participant did not inadvertently fall asleep during fMRI runs.
 
 - [ ] Leveraging the eye-tracking data, verify that the subject did not close his eyes for an extended period.
 
@@ -70,9 +70,7 @@ We will however verify that the participant did not inadvertently fell asleep du
 
 !!! important "Our QC protocol is very lenient for task fMRI as those scans have been primarily acquired for QC purposes or to aid in methodological development, rather than holding scientific significance."
 
-- [ ] Exclude the QCT fMRI scan only in case of extreme distortion of the image. 
-Potential causes can be e.g. failure in the image reconstruction, mistake in the header leading to the image being in the wrong orientation, extreme noise...
-- [ ] Exclude the BHT fMRI scan only in case of extreme distortion of the image. 
+- [ ] Exclude the BHT and QCT fMRI runs displaying extreme distortions of the image, reconstruction failures, electromagnetic spikes, ghost artifacts overlapping cortical gray matter, or extreme noise levels.
 Potential causes can be e.g. failure in the image reconstruction, mistake in the header leading to the image being in the wrong orientation, extreme noise...
 
 ### RSfMRI exclusion criteria
@@ -144,9 +142,8 @@ Potential causes can be e.g. failure in the image reconstruction, mistake in the
 
 ??? warning "Do not exclude subjects presenting susceptibility distortion artifacts yet!"
 
-    For each session, we acquired fieldmaps that can be leveraged by fMRIPrep to perform susceptibility distortion correction. 
-    As such, those artifacts might be corrected by the preprocessing.
-    Note however that given each session is acquired with similar acquisition parameters, the signal dropout should be relatively consistent across session. If the dropouts for a single sessions are particularly large or different than tho other sessions, double check the visual report for other issues.
+    We acquired field maps in every session to address susceptibility distortions within the preprocessing.
+    If signal dropouts in particular sessions are especially acute or widespread as compared to other sessions, double-check the visual report for other issues.
 
 #### Group report
 - [ ] Check again the individual visual report of runs with outlying-high FD, ensuring they do not fall into one of the [exclusion criteria](#function-mri).
@@ -157,7 +154,8 @@ Potential causes can be e.g. failure in the image reconstruction, mistake in the
 
 - [ ] Re-examine the individual visual report of sessions for which `fd_perc` > 50% and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
 
-- [ ] Verify that smoothness estimate `FWHM` is roughly consistent across all sessions since they were all acquired with the same protocol. If it is not the case, re-examine the individual visual report of sessions with outlying (both low or high) `FWHM`.
+- [ ] Verify that smoothness estimates (FWHM) are roughly consistent across all sessions since they were all acquired with the same protocol.
+    If this is not the case, re-examine the individual visual report of sessions with outlying (both low or high) FWHM.
 
 ## Diffusion MRI
 

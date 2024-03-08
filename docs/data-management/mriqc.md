@@ -76,9 +76,7 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 
 - [ ] Visualize the first mosaic (background mosaic) and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#view-of-the-background-of-the-anatomical-image).
 
-!!! warning "Running through the visual report does not have to be executed in a fixed order"
-
-    While we describe the run through the report as linear, often inspecting other reportlets can help make a decision about the exclusion criteria related to the reportlet at hand. As such, we encourage you to jump back and forth between visualizations as much as needed.
+    !!! tip "Do not hesitate to jump back and forth through sections while screening the visual report"
 
 - [ ] Scroll down to the zoom in the zoomed-in brain mosaic and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#zoomed-in-mosaic-view-of-the-brain).
 - [ ] Verify that no error is reported in the section "About > Errors". If there is, follow the procedure described in "*MRIQC* failed to produce all the expected visual reports".
@@ -97,16 +95,16 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 #### QCT
 
 !!! note "We are checking QCT fMRI first and in principle not excluding QCT scans"
-    Except if the image is [extremely distorted](qaqc-criteria-unprocessed.md#task-fmri-exclusion-criteria), we are not excluding QCT scans because we will leverage those images to evaluate the quality of fMRI scans and derived constructs throughout the whole analysis pipeline. We are however going through the *MRIQC* reports to train our eye, anticipate issues that might be affecting RSfMRI and flag the corresponding sessions.
+    Except if the image is [extremely distorted](qaqc-criteria-unprocessed.md#task-fmri-exclusion-criteria), we are not excluding QCT scans because we will leverage those images to evaluate the quality of fMRI scans and derived constructs throughout the whole analysis pipeline.
+    It is important to screen and rate the QCT runs as they may serve as a proxy for the quality of the other fMRI tasks in a session and display issues that might be affecting the RSfMRI and BHT.
 
 - [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
 - [ ] Repeat the following two steps for each echo:
     - [ ] Visualize the first mosaic (standard-deviation) and search for [artifacts](qaqc-criteria-unprocessed.md#standard-deviation-of-signal-through-time)
-    - [ ] Scroll down to the carpetplot and search for [artifacts](qaqc-criteria-unprocessed.md#carpetplot-and-nuisance-signals).
+    - [ ] Search for [artifacts](qaqc-criteria-unprocessed.md#carpetplot-and-nuisance-signals) in the carpetplot visualization.
 - [ ] Once you went through all the echo-wise visualization of the base report, scroll down to the "Extended echo-wise reports" section, inspect the background view and search for [artifacts](qaqc-criteria-unprocessed.md#view-of-the-background-of-the-voxel-wise-average-of-the-bold-timeseries).
-- [ ] Scroll down to the average BOLD mosaic and search for [artifacts](qaqc-criteria-unprocessed.md#average-signal-through-time)
+- [ ] Search for [artifacts](qaqc-criteria-unprocessed.md#average-signal-through-time) in the average BOLD mosaic visualization.
 - [ ] Inspect the zoomed-in view of the average BOLD mosaic as well and search for the same [artifacts](qaqc-criteria-unprocessed.md#average-signal-through-time).
-
 
 #### BHT
 
@@ -139,11 +137,11 @@ In addition, *MRIQC* is executed prior any further processing step considering o
 
 ### Assessing anatomical images
 - [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the IQMs distributions and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#group-report).
+- [ ] Visualize the IQM distributions and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#group-report).
 
 ### Assessing functional images
 - [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the IQMs distributions and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#group-report-1).
+- [ ] Visualize the IQM distributions and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#group-report-1).
 
 
 [1]: https://doi.org/10.3389/fnimg.2022.1073734 "Provins, C., … Esteban, O. (2023). Quality Control in functional MRI studies with MRIQC and fMRIPrep. Frontiers in Neuroimaging 1:1073734. doi:10.3389/fnimg.2022.1073734 (OA)."
