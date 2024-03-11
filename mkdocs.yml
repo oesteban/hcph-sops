@@ -39,9 +39,9 @@ nav:
       - Converting physio into BIDS (notebook): data-management/physio-to-bids.ipynb
       - Converting eye-tracking into BIDS: data-management/edf-to-bids.md
     - QA/QC Appendices:
-      - QA/QC criteria (unprocessed data): data-management/qaqc-criteria-unprocessed.md
-      - QA/QC criteria (preprocessed data): processing/qaqc-criteria-preprocessed.md
-      - QA/QC criteria (functional connectivity): processing/qaqc-criteria-FC.md
+      - QA/QC criteria for unprocessed data: data-management/qaqc-criteria-unprocessed.md
+      - QA/QC criteria for preprocessed data: processing/qaqc-criteria-preprocessed.md
+      - QA/QC criteria for functional connectivity: processing/qaqc-criteria-FC.md
       - Eyetracking data screening (notebook): data-management/eyetrack-qc.ipynb
     - Deprecated procedures:
       - Legacy procedure for the ET mirror: data-collection/legacy-et.md

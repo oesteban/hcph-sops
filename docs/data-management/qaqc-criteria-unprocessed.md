@@ -13,6 +13,7 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     We annotate subjects with visible artifacts in the T1w images in order to ensure rigorous scrutinizing of spatial normalization and surface reconstruction outputs from fMRIPrep (if both modalities passed the first QC checkpoint with MRIQC).
 
 ### View of the background of the anatomical image
+
 - [ ] Check for signal *ripples* around the head typically caused by head motion.
     Exclude this T1w only if identifying these ripples leads to revising the decision on the brain mosaic.
 - [ ] Check for signal interference leaked from the eyeballs across the PE direction.
@@ -23,7 +24,8 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
     - [ ] Ghosts caused by external elements such as headsets or mirror frames.
     Exclude this T1w only if identifying these ghosts leads to revising the decision on the brain mosaic.
 
-### Zoomed-in mosaic view of the brain:
+### Zoomed-in mosaic view of the brain
+
 - [ ] Check that the brain is not presented upside down. 
     This indicates a mistake in the header. 
     Either the header needs to be corrected manually or exclude the session.
@@ -37,9 +39,7 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
       - [ ] Overlapping wrap-around.
       - [ ] Nyquist aliases (typically through PE direction).
       - [ ] Ghosts caused by external elements such as headsets or mirror frames.
-      
     Exclude this particular T1w if any of these ghosts overlap cortical gray matter.
-
 - [ ] Check for other artifacts such as [fat shifts](https://mriquestions.com/chemical-shift-artifact.html) or RF spoiling within the brain.
    Exclude this particular T1w if any of these artifacts overlap cortical gray matter.
 - [ ] Check for [zipper artifacts](https://mriquestions.com/zipper-artifact.html) and other EM interferences.
@@ -53,6 +53,7 @@ The following lists the pre-defined exclusion criteria for analyses of whole-bra
 - [ ] Check for low SNR characterized by a grainy picture. Generally, do not exclude this T1w image unless the noise pattern destroys cortical gray matter areas.
 
 ### Group report
+
 - [ ] Check again the individual visual report of runs with outlying-low SNR, ensuring they do not fall into one of the [exclusion criteria](#anatomical-mri).
 
 ## Task behavior
@@ -72,6 +73,7 @@ Nonetheless, we will verify that the participant did not inadvertently fall asle
 
 - [ ] Exclude the BHT and QCT fMRI runs displaying extreme distortions of the image, reconstruction failures, electromagnetic spikes, ghost artifacts overlapping cortical gray matter, or extreme noise levels.
 Potential causes can be e.g. failure in the image reconstruction, mistake in the header leading to the image being in the wrong orientation, extreme noise...
+    - [ ] If you uncover a mistake in the header, check [the conversion to Nifti](post-session.md#convert-imaging-data-to-bids-with-heudiconv), and if necessary rectify and re-execute it.
 
 ### RSfMRI exclusion criteria
 
@@ -79,7 +81,7 @@ Potential causes can be e.g. failure in the image reconstruction, mistake in the
 
     The RSfMRI images will be used to construct and analyze whole-brain functional connectomes.
     As such the quality of all regions in the brain is important, i.e. there is not a region where we can be more lenient.
-    Additionally, a stringent QC is required for RSfMRI as noise sources that are highly correlated in different regions presents a high risk of spuriously inflation correlation estimation. 
+    Additionally, a stringent QC is required for RSfMRI as noise sources that are highly correlated in different regions presents a high risk of spuriously inflating correlation estimation. 
 
 #### Standard deviation of signal through time
 
@@ -87,9 +89,7 @@ Potential causes can be e.g. failure in the image reconstruction, mistake in the
       - [ ] Overlapping wrap-around.
       - [ ] Nyquist aliases or aliasing ghost (typically through PE direction).
       - [ ] Ghosts caused by external elements such as headsets or mirror frames.
-
       Exclude the session if any of these ghosts overlap cortical gray matter.
-
 - [ ] Check for high-standard-deviation vertical strikes in the sagittal plane of the standard deviation map.
 
 #### Carpetplot and nuisance signals
@@ -113,31 +113,24 @@ Potential causes can be e.g. failure in the image reconstruction, mistake in the
 - [ ] Check for ghosts within the brain:
       - [ ] Overlapping wrap-around.
       - [ ] Ghosts caused by external elements such as headsets or mirror frames.
-
       Exclude the session if any of these ghosts overlap cortical gray matter.
-
       - [ ] Nyquist aliases or aliasing ghost (typically through PE direction).
         Exclude the session if the intensity of the ghost is similar to the intensity of the inside of the brain.
 
 #### Average signal through time
+
 - [ ] Check that the brain is not presented upside down. 
     This indicates an issue of the header. 
     Either the header needs to be corrected manually or exclude the session.
-
 - [ ] Check that the brain structure is clearly visible. Exclude the session if it is not.
-
 - [ ] Check for signal *ripples* around the frontal/prefrontal cortex typically caused by head motion.
     Exclude the session if ripples are clear and globally localized.
-
 - [ ] Check for ghosts within the brain:
       - [ ] Overlapping wrap-around.
       - [ ] Nyquist aliases or aliasing ghost (typically through PE direction).
       - [ ] Ghosts caused by external elements such as headsets or mirror frames.
-
       Exclude the session if any of these ghosts overlap cortical gray matter.
-
 - [ ] Check for high standard deviation vertical strikes in the sagittal plane of the standard deviation map.
-
 - [ ] Check for low SNR characterized by a grainy picture. This dataset is specifically subject to this artifact, because we used multiband acceleration.
 
 ??? warning "Do not exclude subjects presenting susceptibility distortion artifacts yet!"
@@ -146,14 +139,9 @@ Potential causes can be e.g. failure in the image reconstruction, mistake in the
     If signal dropouts in particular sessions are especially acute or widespread as compared to other sessions, double-check the visual report for other issues.
 
 #### Group report
-- [ ] Check again the individual visual report of runs with outlying-high FD, ensuring they do not fall into one of the [exclusion criteria](#function-mri).
 
-- [ ] Check again the individual visual report of runs with outlying-high tSNR, ensuring they do not fall into one of the [exclusion criteria](#function-mri).
-
-- [ ] Check again the individual visual report of runs with outlying-low SNR, ensuring they do not fall into one of the [exclusion criteria](#function-mri).
-
+- [ ] Check again the individual visual report of runs with outlying-high FD, outlying-high tSNR or outlying-low SNR, ensuring they do not fall into one of the [exclusion criteria](#function-mri).
 - [ ] Re-examine the individual visual report of sessions for which `fd_perc` > 50% and double-check that the data does not fall into one of the [exclusion criteria](#functional-mri).
-
 - [ ] Verify that smoothness estimates (FWHM) are roughly consistent across all sessions since they were all acquired with the same protocol.
     If this is not the case, re-examine the individual visual report of sessions with outlying (both low or high) FWHM.
 
