@@ -6,11 +6,12 @@
 - [ ] Verify that the standard output space corresponds to the one you want.
   If that is not the case, assign the correct output space to the `--output-spaces` flag of *fMRIPrep* and re-run *fMRIPrep*.
 
-## Anatomical
+## QA criteria for *fMRIPrep* anatomical preprocessing
 
 ### Anatomical conformation
 
 ### Brain mask and brain tissue segmentation of the T1w
+
 - [ ] Assess the quality of the segmentation:
     - [ ] Check that the blue line correctly outlines the boundary between GM and WM.
     - [ ] Check that the magenta line outlines ventricles.
@@ -30,7 +31,7 @@
 
   !!! note "We can afford to work in subject space because our study is based on a single subject"
 
-## Functional
+## QA criteria for *fMRIPrep* functional preprocessing
 
 ### Textual summary
 
@@ -39,8 +40,6 @@
     - [ ] Investigate whether the TR metadata in the sidecar JSON file is wrong.
       Fix it and re-run *fMRIPrep*.
     - [ ] [Exclude the whole session](#textual-summary-1) if it was acquired with the wrong TR.
-- [ ] Verify that slice timing correction was applied. 
-  If not, fix the problem and re-run *fMRIPrep*.
 - [ ] Verify that susceptibility distortion correction was applied. 
   If not, check that fieldmaps were present in the unprocessed data, that there are no typos in their filename, and that the fields `B0FieldSource` and `B0FieldIdentifier` have been correctly set in the JSON sidecars.
 - [ ] Verify that registration was applied. 
@@ -72,10 +71,15 @@
 - [ ] Verify that the brain mask does not clip GM areas out.
     Note that a hole in the middle of the brain mask is not a problem, as this will not disrupt co-registration.
     Note also that it is not a problem that the brain mask is loose around the brain.
-    If the brain mask does not appear as it should, make sure you should not 
-- [ ] Verify that the temporal CompCor mask appears as a collection of points scattered around the brain (with typically higher density in the outer rim of the 
-    frontal lobe and close to the brainstem) and does not form suspiciously aggregated shapes (an indicator of an underlying artifact).
+    If the brain mask does clip GM areas out, do not use nuisance regressors as they likely contain signal of interest.
+- [ ] Verify that the temporal CompCor mask appears as a collection of points scattered around the brain (with typically higher density in the outer rim of the frontal lobe and close to the brainstem) and does not form suspiciously aggregated shapes (an indicator of an underlying artifact).
     If the mask does not appear as it should, make sure to not use temporal CompCor confounds in the nuisance regression.
+
+### Correlations between nuisance regressors
+
+- [ ] Note down the regressors that are highly correlated and take care of not including more than one per correlated group in the nuisance regression model.
+
+## QA criteria specifically for RSfMRI
 
 ### BOLD summary
 
@@ -83,22 +87,17 @@ The carpet plot MUST appear homogeneous:
 
 - [ ] Check that the carpet plot is unaffected by strong dark deflections (signal drops) associated with motion peaks (particularly in the brain edge).
 - [ ] Check that no periodic modulation is visible throughout the plot.
-- [ ] Check that the brain edge has no large black bands.
 
 If any of the latter patterns is observed, flag the session and double check that the carpetplot appears homogeneous after denoising. 
 
-### Correlations between nuisance regressors
+# Exclusion criteria for preprocessed data
 
-- [ ] Note down the regressors that are highly correlated and take care of not including more than one per correlated group in the nuisance regression model.
-
-# Exclusion criteria for fMRIPrep anatomical processing
-
-## Anatomical
+## Exclusion criteria *fMRIPrep* anatomical processing
 
 ### Brain mask and brain tissue segmentation of the T1w
 
 - [ ] Check for residual intensity non-uniformity (INU).
-  If the INU is clearly visible, tweak the INU correction and re-run *fMRIPrep*.
+  If the INU is strongly visible, exclude the data.
 - [ ] Check that the brain mask does not cut off part of the brain and/or contain holes surrounding signal drop-out regions.
   If it is not the case, exclude the data.
 - [ ] Check that the brain mask does not include parts that are clearly NOT brain.
@@ -116,31 +115,20 @@ If any of the latter patterns is observed, flag the session and double check tha
     As we will proceed with voxel-wise analysis, re-running *fMRIPrep* is necessary only when the reconstructed surfaces are extremely inaccurate.
     That typically only happens in the presence of extreme artifacts that we should have captured previously in the step of [QA/QC for unprocessed data using *MRIQC*](../data-management/qaqc-criteria.md).
 
-# Exclusion criteria for preprocessed task fMRI
-
-!!! important "We do not put together exclusion criteria for preprocessed task fMRI"
-
-    Our QC protocol is very lenient for task fMRI as those scans have been primarily acquired for QC purposes or to aid in methodological development, rather than holding scientific significance. 
-    Task fMRI are excluded only in case of extreme distortion of the image, however such cases would have been already captured by [the first QC checkpoint](../data-management/mriqc.md#visualizing-mriqcs-individual-reports).
-
-# Exclusion criteria for preprocessed RSfMRI
-
-## Functional
+## Exclusion criteria for preprocessed fMRI
 
 ### Textual summary
 
-- [ ] If the RSfMRI has been acquired with a TR different from 1.6s, exclude that scan.
-  It is likely the other fMRI scans have been mistakenly acquired with the wrong TR, so double-check the task fMRI.
-- [ ] If the four echoes are not detected in the field `Multi-echo EPI sequence` even after checking their presence in the unprocessed data and that they are no 
-  typos in their filename, exclude the session.
+- [ ] If the fMRI run has been acquired with a TR different from 1.6s, exclude that scan.
+  It is likely the other fMRI scans have been mistakenly acquired with the wrong TR, so double-check the other fMRI run of the same session.
+- [ ] If the four echoes are not detected in the field `Multi-echo EPI sequence` even after checking their presence in the unprocessed data and that they are no  typos in their filename, exclude the session.
 
 ### Alignment of functional and anatomical MRI data
 
-- [ ] If the BOLD to T1w image alignment cannot be fixed by [tweaking the co-registration](#alignment-of-functional-and-anatomical-mri-data), the RSfMRI scan has 
-  to be excluded.
-- [ ] If large susceptibility distortion remains [despite previous measures](#alignment-of-functional-and-anatomical-mri-data), exclude the RSfMRI scan.
+- [ ] If the BOLD to T1w image alignment cannot be fixed by [tweaking the co-registration](#alignment-of-functional-and-anatomical-mri-data), the fMRI scan has to be excluded.
+- [ ] If large susceptibility distortion remains [despite previous measures](#alignment-of-functional-and-anatomical-mri-data), exclude the fMRI scan.
 
 ### BOLD summary
 
 - [ ] Check for outstanding signal drops that may reveal a coil failure.
-  If such a pattern is observed, exclude the RSfMRI scan.
+  If such a pattern is observed, exclude the fMRI scan.
