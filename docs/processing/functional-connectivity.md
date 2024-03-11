@@ -1,4 +1,5 @@
 ## Computing functional connectivity
+
 First, make sure that the preprocessed fMRI data are available as `derivatives` in your dataset.
 An example of data structure should be as follows:
 ```
@@ -44,7 +45,7 @@ Finally, the pipeline will save the denoised timeseries and connectivity matrice
     ![Timeseries_carpet](../assets/images/sub-pilot_ses-15_task-rest_desc-carpetplot_bold.png "Denoised timeseries carpet plot")
     - [ ] Denoised timeseries as a *signal plot*:
     ![Timeseries_signal](../assets/images/sub-pilot_ses-15_task-rest_desc-timeseries_bold.png "Denoised timeseries signal plot")
-    - [ ] Functional connetivity matrix as a *heatmap*:
+    - [ ] Functional connectivity matrix as a *heatmap*:
     ![FC_matrix_heatmap](../assets/images/sub-pilot_ses-15_task-rest_meas-sparseinversecovariance_desc-heatmap_bold.png "Functional connectivity heatmap")
 
 The outputs will be stored in a `functional-connectivity` folder in the same parent directory as the preprocessed derivatives dataset.
@@ -65,3 +66,19 @@ In the end, the data structure will look like this:
 │               └── ses-15
 │                   └── func
 ```
+
+## QA/QC of denoised data
+
+- [ ] Navigate to the `figures/` folder where the visual reports were saved.
+    Following the above data structure, it would be the folder:
+    ```
+    path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figures`.
+    ```
+- [ ] Open the figure `fc_dist.png`.
+- [ ] Visualize the FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#fc-distributions).
+- [ ] Open the figure `QC-FC.png`.
+- [ ] Visualize the QC-FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-distributions).
+- [ ] Open the figure `QC-FC_euclidean.png`.
+- [ ] Visualize the three plots showing QC-FC versus euclidean distance and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-versus-eucliden-distance)
+
+!!! warning "Immediately report sessions deemed *exclude*, as an issue in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues)"
