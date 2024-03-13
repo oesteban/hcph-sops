@@ -7,10 +7,10 @@
     cd /data/datasets/hcph-derivatives
     datalad create -c bids mriqc_{{ settings.versions.mriqc }}
     ```
-??? warning "We are not yet registering the *MRIQC* derivatives dataset as a sub-dataset."
+??? warning "Note that *MRIQC* derivatives will be handled as a standalone dataset (hence, the `-d` flag is omitted above)."
 
-    To avoid complication at run time, the *MRIQC* derivatives dataset will be added as a sub-dataset to the unprocessed dataset only after *MRIQC* run is completed. 
-    As such, note that we are **NOT** using the `-d` flag
+    We will consider *MRIQC*'s derivatives as an standalone dataset (as opposed to *sub-datasets*) to permit a more flexible management with *DataLad*.
+    Before data release, the *MRIQC*-Derivatives dataset will be added as a sub-dataset to the unprocessed dataset.
 
 - [ ] Run *MRIQC*.
     ```shell
@@ -20,7 +20,7 @@
         --container-name mriqc \
         --input sourcedata \
         --output ./derivatives/mriqc-23.1.0 \
-        "{inputs} {outputs} participant --session-id ${lastsession} -w ${HOME}/tmp/hcph-derivatives/mriqc-23.1.0 --mem 40G --bids-database-dir {{ settings.paths.hcph_bids }}/.bids-index"
+        "{inputs} {outputs} participant --session-id ${lastsession} -w ${HOME}/tmp/hcph-derivatives/mriqc-23.1.0 --mem 40G --bids-database-dir {{ settings.paths.hcph_bids }}/.bids-index --dsname hcph"
     ```
 
 - [ ] Check that *MRIQC* generated all expected individual reports.
@@ -79,7 +79,7 @@ In addition, *MRIQC* is executed prior any further processing step considering o
     !!! tip "Do not hesitate to jump back and forth through sections while screening the visual report."
 
 - [ ] Scroll down to the zoomed-in brain mosaic and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#zoomed-in-mosaic-view-of-the-brain).
-- [ ] Verify that no errors are reported in the subsection "Errors" of section "About". 
+- [ ] Verify that no errors are reported in the subsection "Errors" of section "About".
 If there are, follow the procedure described in ["*MRIQC* failed to produce all the expected visual reports".](#mriqc-failed)
 - [ ] Assign a quality rating and indicate artifacts with the *Rating widget*.
     To assign a quality rating:
@@ -93,23 +93,25 @@ If there are, follow the procedure described in ["*MRIQC* failed to produce all 
 
 ### Assessing functional images
 
-!!! note "Start assessing QCT fMRI first followed by BHT and finally RSfMRI."
-    We are screening and rating the QCT runs first as we use those *MRIQC* reports to train our eye, anticipate issues that might be affecting BHT and RSfMRI and flag the corresponding sessions.
-
-!!! note "We are lenient on the quality QCT and BHT scans, but more stringent on RSfMRI."
-    Except if the image is [extremely distorted](qaqc-criteria-unprocessed.md#task-fmri-exclusion-criteria), we are not excluding QCT and BHT scans because we will leverage those images to evaluate the quality of fMRI scans and derived constructs throughout the whole analysis pipeline. 
-    However, RSfMRI is used for building whole-brain functional connectomes, a construct sensitive to correlated noise sources, so we need to apply more stringent [exclusion criteria](qaqc-criteria-unprocessed.md#rsfmri-exclusion-criteria).
-
 !!! danger "Insufficient quality of an RSfMRI run requires recalling the session"
 
-    - [ ] Immediately report RSfMRI images deemed *exclude*, as an issue in the dataset's repository.
-    - [ ] Proceed to [scheduling an extra session](../recruitment-scheduling-screening/scheduling.md) after the initially-planned scanning period.   
+    - [ ] Immediately report RSfMRI images deemed *exclude* as an issue in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues).
+    - [ ] Proceed to [scheduling an extra session](../recruitment-scheduling-screening/scheduling.md) after the initially-planned scanning period.
 
-- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred). 
-    - [ ] Starts with QCT followed by BHT and then RSfMRI.
+- [ ] Open each *MRIQC* report on a current web browser (*Google Chrome* is preferred) in the following order:
+
+    1. QCT,
+    1. BHT, and
+    1. RSfMRI.
+
+    ??? note "QCT and BHT are assessed first as proxies for the RSfMRI run's quality."
+
+        We are screening and rating the QCT runs first as we use those *MRIQC* reports to train our eye, anticipate issues that might be affecting BHT and RSfMRI and flag the corresponding sessions.
+        The [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri) are designed accordingly.
+
 - [ ] Visualize all echo-wise visualizations of the base report following those two steps:
     - [ ] Visualize the first mosaic (standard-deviation) and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri)    
-    - [ ] Scroll down to the carpetplot and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri).
+    - [ ] Scroll down to the carpet plot and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri).
 - [ ] Inspect the background view and search for [artifacts](qaqc-criteria-unprocessed.md#functional-mri) in the "Extended echo-wise reports" section.
 - [ ] Scroll down to the average BOLD mosaic and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri).
 - [ ] Inspect the zoomed-in view of the average BOLD mosaic as well and apply the same [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri).
