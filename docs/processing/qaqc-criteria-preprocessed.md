@@ -8,8 +8,6 @@
 
 ## QA criteria for *fMRIPrep* anatomical preprocessing
 
-### Anatomical conformation
-
 ### Brain mask and brain tissue segmentation of the T1w
 
 - [ ] Assess the quality of the segmentation:
@@ -27,7 +25,6 @@
     Tweak the spatial normalization and re-run *fMRIPrep* in case of a misalignment of the ventricles, subcortical regions, or the corpus callosum.
     You can, however, be more lenient with GM alignment.
 - [ ] Check for severe stretching or distortion of the T1w.
-  If observed, use the preprocessed BOLD images in subject space for the analysis rather than MNI.
 
   !!! note "We can afford to work in subject space because our study is based on a single subject"
 
@@ -59,10 +56,11 @@
     - [ ] If that did not solve the co-registration problem, set `--bold2t1w-init header` instead and re-run *fMRIPrep*.
     - [ ] [Exclude this session](#alignment-of-functional-and-anatomical-mri-data) if the co-registration performance remains insufficient.
 
+<!--
 - [ ] Check that no large residual susceptibility distortion affects the BOLD image.
   Susceptibility distortion manifests as signal drop-outs or brain distortions.
-    - [ ] If large susceptibility distortion remains, double-check that [susceptibility distortion correction was applied correctly by *fMRIPrep*](#textual-summary).
-    - [ ] If this issue cannot be fixed, [exclude the session](#alignment-of-functional-and-anatomical-mri-data-1).
+    - [ ] Check the [susceptibility distortion estimation](#textual-summary) if large susceptibility distortion remains.
+    - [ ] If this issue cannot be fixed, [exclude the session](#alignment-of-functional-and-anatomical-mri-data-1).-->
 
 ### Brain mask and (anatomical/temporal) CompCor ROIs
 
@@ -107,11 +105,6 @@ If any of the latter patterns is observed, flag the session and double check tha
 - [ ] Check that the WM-GM boundary outlines (blue line) matches the boundary observed in the underlying image.
 - [ ] Verify that the WM and pial surface do not cross or overlap each other.
 - [ ] Verify that the pial surface (red line) does not extend past the actual pial boundary.
-
-!!! tip "Evaluating the quality of brain surfaces"
-
-    As we will proceed with voxel-wise analysis, re-running *fMRIPrep* is necessary only when the reconstructed surfaces are extremely inaccurate.
-    That typically only happens in the presence of extreme artifacts that we should have captured previously in the step of [QA/QC for unprocessed data using *MRIQC*](../data-management/qaqc-criteria.md).
 
 ## Exclusion criteria for preprocessed fMRI
 
