@@ -32,34 +32,29 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
 {% include 'code/fmriprep/ss-fmriprep.sh' %}
 {% endfilter %}
         ```
-<a id="fmriprep-failed"></a>
-??? warning "Not all *fMRIPrep* derivatives were generated"
 
-    If some derivatives are missing, it is a sign that *fMRIPrep* encountered an error.
-    
-    - [ ] Check the "Errors" section of the visual report.
-    - [ ] Check the `log/` folder corresponding to the *fMRIPrep* run, carefully ensuring no errors were missed out on the reports.
-    - [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
-        The solution might be documented in the issue.
-        Don't forget to check closed issues!
-    - [ ] Search for the issue on [NeuroStars](https://neurostars.org/), if the solution remains unclear.
-    - [ ] If the solution remains elusive, open an issue in *fMRIPrep*'s GitHub repository to report the problem.
-        Your description of the problem needs to be as complete and detailed as possible to help the maintainers identify the problem efficiently.
-    - [ ] Re-run *fMRIPrep* on that particular subject and session after implementing a solution.
-    
-    !!! danger "If the error remains despite all efforts, the session MAY be excluded"
+### How to proceed if some *fMRIPrep* derivatives are missing
+
+If some derivatives are missing, it is a sign that *fMRIPrep* encountered an error.
+
+- [ ] Check the "Errors" section of the visual report.
+- [ ] Check the `log/` folder corresponding to the *fMRIPrep* run, carefully ensuring no errors were missed out on the reports.
+- [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
+    The solution might be documented in the issue.
+    Don't forget to check closed issues!
+- [ ] Search for the issue on [NeuroStars](https://neurostars.org/), if the solution remains unclear.
+- [ ] If the solution remains elusive, open an issue in *fMRIPrep*'s GitHub repository to report the problem.
+    Your description of the problem needs to be as complete and detailed as possible to help the maintainers identify the problem efficiently.
+- [ ] Re-run *fMRIPrep* on that particular subject and session after implementing a solution.
+
+!!! danger "If the error remains despite all efforts, the session MAY be excluded"
 
 ## Visualizing *fMRIPrep*'s individual reports
-
-Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be assessed [before](../data-management/mriqc.md#visualizing-mriqcs-individual-reports) and after preprocessing to verify it did not go awry.
 
 ### Anatomical preprocessing assessment
 
 - [ ] Open the *fMRIPrep* anatomical report on a current Web Browser (*Google Chrome* is preferred).
 - [ ] Assess the "Summary" section and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#summary).
-
-!!! tip "Do not hesitate to jump back and forth through sections while screening the visual report."
-
 - [ ] Assess the "Anatomical conformation" section and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#anatomical-conformation).
 - [ ] Assess the mosaic showing the calculated brain mask and brain tissue segmentation, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#brain-mask-and-brain-tissue-segmentation-of-the-t1w).
 - [ ] Visualize the spatial normalization flickering mosaic, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#spatial-normalization-of-the-anatomical-t1w-reference).
@@ -72,13 +67,14 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
 - [ ] Open each *fMRIPrep* functional report on a current Web Browser (*Google Chrome* is preferred).
 - [ ] Go through the section of each fMRI run and proceed as follows:
 
-    !!! note "Start with QCT to train your eye and anticipate quality issues that may affect BHT and RSfMRI as well, followed by BHT and then RSfMRI"
+    ??? important "IMPORTANT — QCT and BHT are assessed first as proxies for the RSfMRI run's quality."
 
-    - [ ] Scrutinize the textual summary
-        - [ ] Apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#textual-summary).
-        - [ ] Apply the [exclusion criteria](qaqc-criteria-preprocessed.md#textual-summary-1).
-    - [ ] Visualize the T2* map mosaic, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#t2-map).
-    - [ ] Check the T2* gray-matter intensity histogram, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#t2-gray-matter-values).
+        We employ the QCT (mainly) and the BHT as proxies for the quality of the RSfMRI run.
+        Screening the reports in the prescribed order (QCT — BHT — RSfMRI) helps identify issues in the QCT and BHT that may anticipate problems in the RSfMRI.
+
+    - [ ] Assess the textual summary and apply the corresponding [QA/QC criteria](qaqc-criteria-preprocessed.md#textual-summary).
+    - [ ] Visualize the T<sub>2</sub><sup>☆</sup> map mosaic, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#t2-map).
+    - [ ] Check the T<sub>2</sub><sup>☆</sup> gray-matter intensity histogram, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#t2-gray-matter-values).
     - [ ] Visualize the co-registration flickering mosaic, apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#alignment-of-functional-and-anatomical-mri-data).
         Flickering between T1w and BOLD images is active while hovering your mouse on the mosaic area.
     - [ ] Visualize the next mosaic displaying regions of interest (ROIs) used to estimate the nuisance regressors, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#brain-mask-and-anatomicaltemporal-compcor-rois).
@@ -87,12 +83,5 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
         - [ ] If you are visualizing the carpet plot corresponding to a RSfMRI run, apply [additional QA criteria](qaqc-criteria-preprocessed.md#qa-criteria-specifically-for-rsfmri).
     - [ ] Visualize the confound correlation heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-between-nuisance-regressors)
         you will include in the nuisance regression model.
-    - [ ] Proceed as indicated within the admonition above —[Not all *fMRIPrep* derivatives were generated](#fmriprep-failed)— if errors are reported within the "Errors" section.
+    - [ ] Proceed as [indicated above](preprocessing.md#how-to-proceed-if-some-fmriprep-derivatives-are-missing) if errors are reported within the "Errors" section.
     - [ ] Continue with the next fMRI run section
-
-!!! danger "Immediately report errors or quality issues encountered"
-
-    If errors or quality issues are encountered, find the issue corresponding to that session in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues) and report a comprehensive description of the problems.
-    In case of *fMRIPrep* failure, follow the procedure described above in ["Not all *fMRIPrep* derivatives were generated"](#fmriprep-failed).
-
-[1]: https://doi.org/10.3389/fnimg.2022.1073734 "Provins, C., … Esteban, O. (2023). Quality Control in functional MRI studies with MRIQC and fMRIPrep. Frontiers in Neuroimaging 1:1073734. doi:10.3389/fnimg.2022.1073734 (OA)."

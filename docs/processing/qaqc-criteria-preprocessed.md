@@ -55,7 +55,6 @@
     - [ ] Increase the degrees of freedom of the co-registration transform setting `--bold2t1w-dof 9` to the *fMRIPrep* call, and re-run *fMRIPrep* if issues are observed at any point above.
     - [ ] If that did not solve the co-registration problem, set `--bold2t1w-init header` instead and re-run *fMRIPrep*.
     - [ ] [Exclude this session](#alignment-of-functional-and-anatomical-mri-data) if the co-registration performance remains insufficient.
-
 <!--
 - [ ] Check that no large residual susceptibility distortion affects the BOLD image.
   Susceptibility distortion manifests as signal drop-outs or brain distortions.
