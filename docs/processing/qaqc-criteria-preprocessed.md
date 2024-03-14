@@ -21,7 +21,7 @@
 
 ### Spatial normalization of the anatomical T1w reference
 
-- [ ] In order of importance, the following structures should be correctly aligned: 1. ventricles, 2. subcortical regions, 3. corpus callosum, 4. cerebellum, 5. cortical GM.
+- [ ] In order of importance, the following structures should be correctly aligned: (i) ventricles, (ii) subcortical regions, (iii) corpus callosum, (iv) cerebellum, (v) cortical GM.
     Tweak the spatial normalization and re-run *fMRIPrep* in case of a misalignment of the ventricles, subcortical regions, or the corpus callosum.
     You can, however, be more lenient with GM alignment.
 - [ ] Check for severe stretching or distortion of the T1w.

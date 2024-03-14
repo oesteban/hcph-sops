@@ -87,7 +87,7 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
         - [ ] If you are visualizing the carpet plot corresponding to a RSfMRI run, apply [additional QA criteria](qaqc-criteria-preprocessed.md#qa-criteria-specifically-for-rsfmri).
     - [ ] Visualize the confound correlation heatmap and use it to [choose the regressors](qaqc-criteria-preprocessed.md#correlations-between-nuisance-regressors)
         you will include in the nuisance regression model.
-    - [ ] Finally, verify that no errors are reported within the "Errors" section. If there are, proceed as indicated in ["Not all *fMRIPrep* derivatives were generated"](#fmriprep-failed).
+    - [ ] Proceed as indicated within the admonition above —[Not all *fMRIPrep* derivatives were generated](#fmriprep-failed)— if errors are reported within the "Errors" section.
     - [ ] Continue with the next fMRI run section
 
 !!! danger "Immediately report errors or quality issues encountered"
