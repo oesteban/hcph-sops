@@ -76,7 +76,7 @@ As such, verifying that the subjects were attempting to perform the instructed t
 
 ### Task fMRI exclusion criteria
 
-??? warning "Our QC protocol is very lenient for task fMRI by design."
+??? important "IMPORTANT — QCT and BHT runs with low quality MUST be flagged, but they SHOULD NOT be excluded."
 
     The BHT and QCT were primarily acquired for QA/QC purposes and to aid in methodological development (e.g., denoising of the RSfMRI).
     This QA/QC protocol should be revised if the task fMRI data are employed for different purposes.

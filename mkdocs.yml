@@ -24,6 +24,7 @@ nav:
       - Overall post-scanner steps: data-management/intro.md
       - Before data acquisition (storage preparation): data-management/preliminary.md
       - Post-session retrieval and BIDS: data-management/post-session.md
+      - QA/QC protocol overview: data-management/qaqc-general.md
       - QC of unprocessed data: data-management/mriqc.md
     - Processing: 
       - Preprocessing: processing/preprocessing.md

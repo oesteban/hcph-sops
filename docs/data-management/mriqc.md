@@ -104,10 +104,10 @@ If there are, follow the procedure described in ["*MRIQC* failed to produce all 
     1. BHT, and
     1. RSfMRI.
 
-    ??? note "QCT and BHT are assessed first as proxies for the RSfMRI run's quality."
+    ??? important "IMPORTANT — QCT and BHT are assessed first as proxies for the RSfMRI run's quality."
 
-        We are screening and rating the QCT runs first as we use those *MRIQC* reports to train our eye, anticipate issues that might be affecting BHT and RSfMRI and flag the corresponding sessions.
-        The [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri) are designed accordingly.
+        We employ the QCT (mainly) and the BHT as proxies for the quality of the RSfMRI run.
+        Screening the reports in the prescribed order (QCT — BHT — RSfMRI) helps identify issues in the QCT and BHT that may anticipate problems in the RSfMRI.
 
 - [ ] Visualize all echo-wise visualizations of the base report following those two steps:
     - [ ] Visualize the first mosaic (standard-deviation) and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri)    
