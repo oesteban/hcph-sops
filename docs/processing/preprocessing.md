@@ -2,7 +2,7 @@
 
 Because *fMRIPrep* creates a single anatomical reference for all sessions, we generate such reference first by setting the `--anat-only` flag.
 If that *fMRIPrep* execution finishes successfully, the anatomical processing outcomes will be stored in the output folder.
-We will then run one *fMRIPrep* process for each dataset's session, which is the recommended way for datasets with a large number of sessions (e.g., more than  six sessions).
+We will then run one *fMRIPrep* process for each dataset's session, which is the recommended way for datasets with a large number of sessions (e.g., more than six sessions).
 We avert that session-wise *fMRIPrep*'s processes run into race conditions by pre-computing the anatomical reference.
 
 - [ ] Submit the anatomical workflow:
@@ -39,8 +39,7 @@ We avert that session-wise *fMRIPrep*'s processes run into race conditions by pr
     
     - [ ] Check the "Errors" section of the visual report.
     - [ ] Check the `log/` folder corresponding to the *fMRIPrep* run, carefully ensuring no errors were missed out on the reports.
-    - [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains
-        unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
+    - [ ] Search for associated keywords in the [issues on *fMRIPrep*'s GitHub repository](https://github.com/nipreps/fmriprep/issues) if the solution remains unclear after the first assessment; it is likely someone else experienced the same problem before you and reported it.
         The solution might be documented in the issue.
         Don't forget to check closed issues!
     - [ ] Search for the issue on [NeuroStars](https://neurostars.org/), if the solution remains unclear.
