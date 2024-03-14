@@ -26,8 +26,6 @@
     You can, however, be more lenient with GM alignment.
 - [ ] Check for severe stretching or distortion of the T1w.
 
-  !!! note "We can afford to work in subject space because our study is based on a single subject"
-
 ## QA criteria for *fMRIPrep* functional preprocessing
 
 ### Textual summary
@@ -55,7 +53,7 @@
     - [ ] Increase the degrees of freedom of the co-registration transform setting `--bold2t1w-dof 9` to the *fMRIPrep* call, and re-run *fMRIPrep* if issues are observed at any point above.
     - [ ] If that did not solve the co-registration problem, set `--bold2t1w-init header` instead and re-run *fMRIPrep*.
     - [ ] [Exclude this session](#alignment-of-functional-and-anatomical-mri-data) if the co-registration performance remains insufficient.
-<!--
+<!-- https://github.com/TheAxonLab/hcph-sops/issues/453
 - [ ] Check that no large residual susceptibility distortion affects the BOLD image.
   Susceptibility distortion manifests as signal drop-outs or brain distortions.
     - [ ] Check the [susceptibility distortion estimation](#textual-summary) if large susceptibility distortion remains.
