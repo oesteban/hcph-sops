@@ -23,6 +23,7 @@
 *[FD]: framewise displacement
 *[fMRI]: functional MRI
 *[FoV]: field-of-view
+*[FWHM]: full width at half maximum
 *[GA]: gas analyzer
 *[GM]: gray matter
 *[GRE]: gradient-recalled echo
@@ -67,6 +68,8 @@
 *[SOP]: standard operating procedure
 *[SOPs]: standard operating procedures
 *[SSH]: Secure Shell or Secure Socket Shell
+*[T1w]: T<sub>1</sub>-weighted MRI
+*[T2w]: T<sub>2</sub>-weighted MRI
 *[TE]: echo time
 *[TR]: repetition time
 *[tSNR]: temporal signal-to-noise ratio
