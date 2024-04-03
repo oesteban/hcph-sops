@@ -1,4 +1,4 @@
-# QA criteria for denoised data
+# QA criteria for FC
 
 !!! warning "Contradictory QA counter-measures"
     In the following two subsections, the suggested counter-measures when QA criteria are not met propose changing the cut-off frequency of the low-pass filter in opposed directions, and therefore, *solutions compete*.
@@ -47,7 +47,7 @@ Now we will assess that QC-FC distribution<sup>[2]</sup> and the null distributi
     - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
     - [ ] If tweaking the preprocessing does not suffice, revise [the exclusion criteria by excluding additional sessions](qaqc-criteria-FC.md#qc-fc-versus-euclidean-distance-1).
 
-# Exclusion criteria for denoised data
+# Exclusion criteria for FC
 
 ## FC distributions
 
