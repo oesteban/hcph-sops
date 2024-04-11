@@ -31,6 +31,7 @@ import matplotlib.pyplot as plt
 import nibabel as nib
 import numpy as np
 import pandas as pd
+import plotly.offline as pyo
 import seaborn as sns
 from matplotlib.axes import Axes
 from matplotlib.cm import get_cmap
@@ -57,6 +58,7 @@ NETWORK_CMAP: str = "turbo"
 N_PERMUTATION: int = 10000
 ALPHA = 0.05
 PERCENT_MATCH_CUT_OFF = 95
+DURATION_CUT_OFF = 300
 
 
 def plot_timeseries_carpet(
@@ -379,6 +381,82 @@ def visual_report_fc(
     plt.savefig(op.join(output, fc_saveloc))
     plt.close()
 
+def group_report_censoring(good_timepoints_df, output)-> None:
+    """
+    Generate a group report about censoring.
+
+    This function generates an HTML report that includes an interactive scatterplot
+    showing the fMRI duration after censoring. The scatterplot includes
+    error bars for the confidence interval and a red line indicating a duration cutoff.
+
+    Parameters:
+    -----------
+    good_timepoints_df: pd.Dataframe
+        A DataFrame containing information the fMRI duration after censoring.
+    output : str
+        Path to the output directory
+    """
+    filenames = good_timepoints_df['filename']
+    durations = good_timepoints_df['duration']
+
+    # Constructing the data for the plot
+    # Add jitter to x values
+    jitter = 0.2  # adjust this value to change the amount of jitter
+    x_values = [1 + np.random.uniform(-jitter, jitter) for _ in range(len(durations))]
+    data = [{
+        'x': x_values,
+        'y': durations,
+        'text': filenames,
+        'mode': 'markers',
+        'type': 'scatter',
+        'hoverinfo': 'text',
+        'marker': {'opacity': 0.5},
+    }]
+
+    # Adding a red line at 5 minutes
+    red_line = {
+        'type': 'line',
+        'x0': 0,
+        'y0': DURATION_CUT_OFF,
+        'x1': 1.5,
+        'y1': DURATION_CUT_OFF,
+        'line': {
+            'color': 'red',
+            'width': 3,
+            'dash': 'dashdot'
+        }
+    }
+
+    # Layout settings
+    layout = {
+        'hovermode': 'closest',
+        'title': 'Duration of fMRI signal after censoring',
+        'yaxis': {'title': 'Duration [s]'},
+        'xaxis': {'showticklabels': False, 'range': [0.5, 1.5]},
+        'shapes': [red_line],
+        'width': 600,
+        'height': 600,
+        'font': {'size': 16},
+        'annotations': [
+            {
+                'x': 0.8,
+                'y': DURATION_CUT_OFF - DURATION_CUT_OFF / 55,
+                'xref': 'x',
+                'yref': 'y',
+                'text': f'QC cutoff of {DURATION_CUT_OFF/60} min',
+                'showarrow': False,
+                'font': {
+                    'color': 'red'
+                }
+            }
+        ]
+    }
+
+    fig = {'data': data, 'layout': layout}
+
+    # Save the plot as an HTML file
+    pyo.plot(fig, filename=op.join(output, 'group_desc-censoring_bold.html'), auto_open=False)
+        
 
 def group_report_fc_dist(
     fc_matrices: list[np.ndarray],
