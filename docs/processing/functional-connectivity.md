@@ -74,6 +74,7 @@ In the end, the data structure will look like this:
     ```
     path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figures`.
     ```
+- [ ] Visualize the report about censoring and apply the [QC criteria](qaqc-criteria-FC.md#censoring).
 - [ ] Open the figure `fc_dist.png`.
 - [ ] Visualize the FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#fc-distributions).
 - [ ] Open the figure `QC-FC.png`.

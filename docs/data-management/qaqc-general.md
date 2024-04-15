@@ -37,5 +37,11 @@ The following admonition will remind this aspect when it applies:
     The BHT and QCT were primarily acquired for QA/QC purposes and to aid in methodological development (e.g., denoising of the RSfMRI).
     This QA/QC protocol should be revised if the task fMRI data are employed for different purposes.
 
+## Quality assessment versus exclusion criteria
+The QA/QC criteria for some QA/QC checkpoint are split in two different categories:
+
+- On the one hand, QA criteria instruct how to change the processing of the data in case the criteria are not met.
+- On the other hand, exclusion criteria instruct when scans or sessions need to be excluded when their quality is not sufficient. 
+
 [1]: https://doi.org/10.3389/fnimg.2022.1073734 "Provins, C., … Esteban, O. (2023). Quality Control in functional MRI studies with MRIQC and fMRIPrep. Frontiers in Neuroimaging 1:1073734. doi:10.3389/fnimg.2022.1073734"
 [2]: https://doi.org/10.1016/j.neuroimage.2022.119623 "Niso, G., … Rieger, J. W. (2022). Open and reproducible neuroimaging: from study inception to publication. NeuroImage 119623. doi:10.1016/j.neuroimage.2022.119623"
