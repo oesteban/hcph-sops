@@ -35,9 +35,9 @@ python funconn.py path_to_dataset/derivatives/fmriprep-23.1.4
 
     Most parameters of the pipeline can be specified in the options (see `python funconn.py -h` for more details).
 
-Finally, the pipeline will save the denoised timeseries and connectivity matrices as well as various visual reports (i.e., figures).
+Finally, the pipeline will save the denoised timeseries and connectivity matrices as well as various figures.
 
-??? info "Example of visual report"
+??? info "Example of figures"
     
     - [ ] Denoising confounds as a *design matrix*:
     ![Timeseries_denoise](../assets/images/sub-pilot_ses-15_task-rest_desc-designmatrix_bold.png "Denoising design matrix")
@@ -67,18 +67,21 @@ In the end, the data structure will look like this:
 │                   └── func
 ```
 
-## QA/QC of denoised data
+## QA/QC of functional connectivity
 
-- [ ] Navigate to the `figures/` folder where the visual reports were saved.
-    Following the above data structure, it would be the folder:
+- [ ] Run the `funconn_group.py` script to generate the visual report.
+    Following the same data structure as above, it would be called as follows:
+    ``` bash
+    python funconn_group.py path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP
     ```
-    path_to_dataset/derivatives/functional_connectivity/DiFuMo64-LP/sub-pilot/figures`.
-    ```
-- [ ] Open the figure `fc_dist.png`.
+    The visual report will be saved in the same directory that you passed as argument to the function.
+
+- [ ] Open the visual report `group_report.html`. The group visual report provides an overview of
+    functional connectivity (FC) properties across the entire dataset. It includes several reportlets that 
+    summarize various aspects of FC, offering insights into the collective characteristics of the data.
+
 - [ ] Visualize the FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#fc-distributions).
-- [ ] Open the figure `QC-FC.png`.
 - [ ] Visualize the QC-FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-distributions).
-- [ ] Open the figure `QC-FC_euclidean.png`.
 - [ ] Visualize the three plots showing QC-FC versus euclidean distance and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-versus-eucliden-distance)
 
 !!! warning "Immediately report sessions deemed *exclude*, as an issue in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues)"
