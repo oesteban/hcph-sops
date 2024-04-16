@@ -67,7 +67,7 @@ In the end, the data structure will look like this:
 │                   └── func
 ```
 
-## QA/QC of denoised data
+## QA/QC of FC
 
 - [ ] Navigate to the `figures/` folder where the visual reports were saved.
     Following the above data structure, it would be the folder:
