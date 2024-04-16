@@ -65,7 +65,7 @@ Following our protocols<sup>[1]</sup>, the quality of unprocessed images MUST be
 In addition, *MRIQC* is executed prior any further processing step considering our preliminary findings regarding *defacing*<sup>[2]</sup>.
 
 ### Assessing anatomical images (T<sub>1</sub>-weighted and T<sub>2</sub>-weighted)
-- [ ] Open each *MRIQC* report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Open each *MRIQC* report on a Web Browser.
 - [ ] Check that the visual report is complete when you open it.
 
     ??? bug "A visual report is incomplete"
@@ -98,7 +98,7 @@ If there are, follow the procedure described in ["*MRIQC* failed to produce all 
     - [ ] Immediately report RSfMRI images deemed *exclude* as an issue in [the dataset's repository](https://github.com/{{ secrets.data.gh_repo | default('<organization>/<repo_name>') }}/issues).
     - [ ] Proceed to [scheduling an extra session](../recruitment-scheduling-screening/scheduling.md) after the initially-planned scanning period.
 
-- [ ] Open each *MRIQC* report on a current web browser (*Google Chrome* is preferred) in the following order:
+- [ ] Open each *MRIQC* report on a Web Browser in the following order:
 
     1. QCT,
     1. BHT, and
@@ -109,22 +109,21 @@ If there are, follow the procedure described in ["*MRIQC* failed to produce all 
         We employ the QCT (mainly) and the BHT as proxies for the quality of the RSfMRI run.
         Screening the reports in the prescribed order (QCT — BHT — RSfMRI) helps identify issues in the QCT and BHT that may anticipate problems in the RSfMRI.
 
-- [ ] Visualize all echo-wise visualizations of the base report following those two steps:
-    - [ ] Visualize the first mosaic (standard-deviation) and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri)    
-    - [ ] Scroll down to the carpet plot and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri).
-- [ ] Inspect the background view and search for [artifacts](qaqc-criteria-unprocessed.md#functional-mri) in the "Extended echo-wise reports" section.
-- [ ] Scroll down to the average BOLD mosaic and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri).
-- [ ] Inspect the zoomed-in view of the average BOLD mosaic as well and apply the same [exclusion criteria](qaqc-criteria-unprocessed.md#functional-mri).
+- [ ] Visualize all echo-wise visualizations of the base report following those four steps:
+    - [ ] Visualize the first mosaic (standard-deviation) and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#standard-deviation-of-signal-through-time)
+    - [ ] Proceed to the background view and search for [artifacts](qaqc-criteria-unprocessed.md#view-of-the-background-of-the-voxel-wise-average-of-the-bold-timeseries).
+    - [ ] Inspect the zoomed-in view of the average BOLD mosaic and apply the same [exclusion criteria](qaqc-criteria-unprocessed.md#average-signal-through-time).    
+    - [ ] Scroll down to the carpet plot and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#carpetplot-and-nuisance-signals).
+
+- [ ] Inspect the average BOLD mosaic for each echo in the "Extended echo-wise reports" section and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#average-signal-through-time).
+
+- [ ] Proceed as [earlier](#mriqc-failed) if errors are reported within the "Errors" section.
 
 ## Visualizing *MRIQC*'s group reports
 
-### Assessing anatomical images
-- [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the IQM distributions and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#group-report).
-
-### Assessing functional images
-- [ ] Open the *MRIQC* group report on a current Web Browser (*Google Chrome* is preferred).
-- [ ] Visualize the IQM distributions and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#group-report-1).
+Visualize the group report for each modality in the following order: anatomical, functional and diffusion.
+- [ ] Open the *MRIQC* group report on a Web Browser.
+- [ ] Visualize the IQM distributions and apply the [exclusion criteria](qaqc-criteria-unprocessed.md#group-report) corresponding to the modality.
 
 
 [1]: https://doi.org/10.3389/fnimg.2022.1073734 "Provins, C., … Esteban, O. (2023). Quality Control in functional MRI studies with MRIQC and fMRIPrep. Frontiers in Neuroimaging 1:1073734. doi:10.3389/fnimg.2022.1073734 (OA)."

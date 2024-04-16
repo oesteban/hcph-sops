@@ -14,6 +14,7 @@ As we previously emphasize in our protocol<sup>[1]</sup>, QC exclusion criteria 
 Following the *NiPreps* guidelines and best practices, quality checkpoints are implemented with visual reports that are released alongside the data and analyses.
 These visual reports contain several *atomic views* (meaning, a single quality facet of the data or a particular processing step), which we call *reportlets*, that together allow the curator assess the quality.
 These visual reports are formatted as HTML documents, and therefore they are presented *linearly*.
+*Google Chrome* is the preferred Web Browser to open the HTML reports.
 The following admonition will be found at several places of this protocol to suggest that *visual reports* can be navigated freely to ensure all aspects of quality have been properly assessed:
 
 !!! tip "It is RECOMMENDED to jump back and forth through sections while screening the visual report."
