@@ -491,7 +491,7 @@ As new sessions are collected, the corresponding BIDS structures MUST be saved w
 
     ``` shell
 
-    docker run -ti --rm -v {{ secrets.data.path_data_sherlock | default('/path/to/data/') }}:/data:ro bids/validator /data
+    docker run -ti --rm -v {{ secrets.celine_paths.data_sherlock | default('/path/to/data/') }}/hcph/:/data:ro bids/validator /data
     ```
 
 ??? bug "BIDS non-compliance: WARNINGS and ERRORS"
