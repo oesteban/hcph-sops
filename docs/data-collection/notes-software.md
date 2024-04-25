@@ -220,14 +220,14 @@ This block describes how to prepare an environment with a running *Psychopy 3* i
     ``` shell
     sudo nano /etc/systemd/system/forward-trigger.service
     ```
-- [ ] Add the following content to the file (Adapt the path to forward-trigger.py to the location on your computer):
+- [ ] Add the following content to the file (Adapt the path to forward-trigger-service.py to the location on your computer):
     ```
     [Unit]
     Description=Forward Trigger Service
     After=network.target
 
     [Service]
-    ExecStart=/usr/bin/python3 /path/to/forward-trigger.py
+    ExecStart=/usr/bin/python3 /path/to/forward-trigger-service.py
     WorkingDirectory=/path/to/forward-trigger/directory
     StandardOutput=null
 
