@@ -93,6 +93,13 @@ grid_search = GridSearchCV(
     n_jobs=-1
 )
 
+# Grid search to find best hyperparameters
+print("Running grid search to find best hyperparameters")
+grid_search.fit(train_x, y=train_y)
+print (f'CV results: {grid_search.cv_results_}')
+print (f'Best parameters: {grid_search.best_params_}')
+
+"""
 print("Running nested-cross-validation of xgboost regressor.")
 nested_score = cross_val_score(
     grid_search,
@@ -103,6 +110,7 @@ nested_score = cross_val_score(
     n_jobs=16,
 )
 print(f'Mean MAE of nested cross-validation: {nested_score.mean()}')
+"""
 
 
 
