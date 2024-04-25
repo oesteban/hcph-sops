@@ -33,16 +33,9 @@ train_y = np.array(train_y['rating']).reshape(-1, 1)
 ## Cross-validation of default regressor
 
 # Define a splitting strategy
-outer_cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=2978)
+outer_cv = RepeatedKFold(n_splits=10, n_repeats=3)
 
-cv_scores = cross_val_score(
-    init_pipeline_xgboost(),
-    X=train_x,
-    y=train_y,
-    cv=outer_cv,
-    scoring="neg_mean_absolute_error",
-    n_jobs=-1,
-)
+print("Running cross-validation with XGBoost")
 cv_scores = cross_val_score(
     init_pipeline_xgboost(),
     X=train_x,
@@ -53,6 +46,7 @@ cv_scores = cross_val_score(
 )
 
 ## Naive regressor
+print("Running cross-validation with naive regressor returning mean of target values")
 cv_scores = cross_val_score(
     init_pipeline_naive(strategy='mean'),
     X=train_x,
@@ -64,6 +58,7 @@ cv_scores = cross_val_score(
 cv_scores = np.absolute(cv_scores)
 print('Mean baseline mean MAE: %.3f (%.3f)' % (cv_scores.mean(), cv_scores.std()) )
 
+print("Running cross-validation with naive regressor returning median of target values")
 cv_scores = cross_val_score(
     init_pipeline_naive(strategy='median'),
     X=train_x,
@@ -80,10 +75,10 @@ print('Mean baseline median MAE: %.3f (%.3f)' % (cv_scores.mean(), cv_scores.std
 # Define the parameter grid for hyperparameter tuning
 param_grid = {
     'model__learning_rate': [0.1, 0.01, 0.001],
-    'model__max_depth': [3, 5, 7, 9],
-    'model__n_estimators': [100, 200, 300],
-    'model__eta': [0.3, 0.1, 0.01],
-    'model__subsample': [0.5, 0.7, 1.0],
+    'model__max_depth': [3, 7],
+    'model__n_estimators': [50, 70, 90],
+    'model__eta': [0.1, 0.01],
+    'model__subsample': [0.7, 1.0],
 }
 
 # Initialize the XGBoost pipeline
@@ -98,6 +93,7 @@ grid_search = GridSearchCV(
     n_jobs=-1
 )
 
+print("Running nested-cross-validation of xgboost regressor.")
 nested_score = cross_val_score(
     grid_search,
     X=train_x,
