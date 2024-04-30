@@ -132,7 +132,9 @@ def main():
         fc_matrices.append(np.loadtxt(file_path, delimiter="\t"))
 
     # Load fMRI duration after censoring
-    good_timepoints_df = pd.read_csv(op.join(output,"fMRI_duration_after_censoring.csv"))
+    good_timepoints_df = pd.read_csv(
+        op.join(output, "fMRI_duration_after_censoring.csv")
+    )
 
     # Load IQMs
     iqms_df = load_iqms(output, existing_fc, mriqc_path=mriqc_path)

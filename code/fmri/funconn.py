@@ -648,7 +648,7 @@ def main():
     all_confounds = []
     all_sample_masks = []
     for filenames_to_ts, t_r in zip(separated_missing_ts, t_r_list):
-        ts, conf, mask  = extract_and_denoise_timeseries(
+        ts, conf, mask = extract_and_denoise_timeseries(
             filenames_to_ts,
             atlas_filename,
             verbose=nilearn_verbose,
@@ -699,12 +699,14 @@ def main():
     # Compute duration of fMRI scans after censoring
     fMRI_duration_after_censoring = {}
     for filename, mask in zip(all_filenames, all_sample_masks):
-        fMRI_duration_after_censoring[op.basename(filename)] = mask.shape[0]*t_r
+        fMRI_duration_after_censoring[op.basename(filename)] = mask.shape[0] * t_r
         # mask.shape[0] indicates the number of volumes that are not censored
-    with open(op.join(output,"fMRI_duration_after_censoring.csv"), 'a', newline='') as f:
+    with open(
+        op.join(output, "fMRI_duration_after_censoring.csv"), "a", newline=""
+    ) as f:
         writer = csv.writer(f)
         if f.tell() == 0:
-            writer.writerow(['filename', 'duration'])  # Write header if file is empty
+            writer.writerow(["filename", "duration"])  # Write header if file is empty
         for key, value in fMRI_duration_after_censoring.items():
             writer.writerow([key, value])
 
