@@ -11,3 +11,4 @@ weasyprint<53
 matplotlib==3.3
 pybids
 nilearn>=0.10.1
+git+https://github.com/celprov/mriqc-learn.git@enh/xgboost_model

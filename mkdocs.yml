@@ -31,6 +31,7 @@ nav:
       - Extracting functional connectivity: processing/functional-connectivity.md
     - Analysis:
       - Quality control task activation analysis: analysis/qct-activation.ipynb
+      - Calibrating regressor to flag HCPh T1w images for exclusion: analysis/qc-regressor-hcph.ipynb
     - Release of data: release.md
     - Appendices:
       - Notes on the scanner's console: data-collection/notes-scanning.md
