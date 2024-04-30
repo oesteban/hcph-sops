@@ -54,10 +54,10 @@ for session in sessions:
     # Iterate over each pattern
     for pattern in patterns:
         # Construct the regex pattern
-        regex_pattern = f"sub-001_ses-{session}_{pattern}.html"
+        glob_pattern = f"sub-001_ses-{session}_{pattern}.html"
 
         # Use glob to check if any report files matching the pattern exist
-        report_files = glob.glob(os.path.join(derivatives_dir, regex_pattern))
+        report_files = glob.glob(os.path.join(derivatives_dir, glob_pattern))
 
         if not report_files:
             missing_reports[session].append(pattern)
