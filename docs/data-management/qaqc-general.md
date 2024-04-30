@@ -1,7 +1,9 @@
 # General QA/QC protocol
 
 Following our protocols<sup>[1]</sup> and best practices<sup>[2]</sup>, we establish quality checkpoints after the outstanding stages of our neuroimaging pipeline.
-That is, we establish checkpoints [after the conversion to BIDS](post-session.md#formal-qc), on the [unprocessed (before preprocessing) data](mriqc.md#visualizing-mriqcs-individual-reports), on the [preprocessed data](../processing/preprocessing.md#visualizing-fmripreps-individual-reports), and further downstream, for instance, following [FC extraction](../processing/qaqc-criteria-FC.md).
+That is, we establish checkpoints [after the conversion to BIDS](post-session.md#formal-qc), on the [unprocessed (before preprocessing) data](mriqc.md#visualizing-mriqcs-individual-reports), on the [preprocessed data](../processing/preprocessing.md#visualizing-fmripreps-individual-reports), and further downstream, for instance, following [FC extraction](../processing/qaqc-criteria-FC.md). Our QA/QC can be summarized as follows (click [here](../assets/images/qaqc_protocol.png) to see it full size):
+
+![qaqc_protocol](../assets/images/qaqc_protocol.png)
 
 !!! danger "Immediately report errors or quality issues encountered"
 
