@@ -109,7 +109,7 @@ If there are, follow the procedure described in ["*MRIQC* failed to produce all 
         We employ the QCT (mainly) and the BHT as proxies for the quality of the RSfMRI run.
         Screening the reports in the prescribed order (QCT — BHT — RSfMRI) helps identify issues in the QCT and BHT that may anticipate problems in the RSfMRI.
 
-- [ ] Visualize all echo-wise visualizations of the base report following those four steps:
+- [ ] Screen all echo-wise visualizations of the base report following these four steps:
     - [ ] Visualize the first mosaic (standard-deviation) and apply the corresponding [exclusion criteria](qaqc-criteria-unprocessed.md#standard-deviation-of-signal-through-time)
     - [ ] Proceed to the background view and search for [artifacts](qaqc-criteria-unprocessed.md#view-of-the-background-of-the-voxel-wise-average-of-the-bold-timeseries).
     - [ ] Inspect the zoomed-in view of the average BOLD mosaic and apply the same [exclusion criteria](qaqc-criteria-unprocessed.md#average-signal-through-time).    
