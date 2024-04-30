@@ -79,7 +79,7 @@ In the end, the data structure will look like this:
 - [ ] Open the visual report `group_report.html`. The group visual report provides an overview of
     functional connectivity (FC) properties across the entire dataset. It includes several reportlets that 
     summarize various aspects of FC, offering insights into the collective characteristics of the data. 
-    An example report can be found [here](../_static/SampleReport/sample_report.html).
+    An example report can be found [here](../assets/files/SampleReport/sample_report.html).
 
 - [ ] Visualize the FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#fc-distributions).
 - [ ] Visualize the QC-FC distributions and apply the [QA/QC criteria](qaqc-criteria-FC.md#qc-fc-distributions).
