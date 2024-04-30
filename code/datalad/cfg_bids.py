@@ -71,7 +71,3 @@ ds.save(
     to_git=True,
 )
 
-# run metadata type config last, will do another another commit
-# ds.run_procedure(
-#     spec=['cfg_metadatatypes', 'bids', 'nifti1'],
-# )
