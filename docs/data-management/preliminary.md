@@ -1,4 +1,4 @@
-!!! danger "*DataLad* must be version 0.19 or later"
+!!! danger "*DataLad* must be version 1.0 or later"
 
 This project maintains data under version control thanks to *DataLad*<sup>[1]</sup>.
 For instructions on how to setup *DataLad* on your PC, please refer to the [official documentation](https://handbook.datalad.org/en/latest/intro/installation.html).
@@ -199,7 +199,7 @@ When HPC is planned for processing, *DataLad* will be required on that system(s)
         - [ ] Install *DataLad*:
 
             ``` shell
-            conda install -c conda-forge -y "datalad>=0.19" datalad-container
+            conda install -c conda-forge -y "datalad>=1.0" datalad-container
             ```
 
     === "Install *DataLad* in HPC with *lmod* enabled"
@@ -225,14 +225,14 @@ When HPC is planned for processing, *DataLad* will be required on that system(s)
         - [ ] Install *DataLad*:
 
             ``` bash
-            python -m pip install --user "datalad>=0.19" datalad-container
+            python -m pip install --user "datalad>=1.0" datalad-container
             ```
 
 - [ ] Check datalad is properly installed, for instance:
 
     ``` shell
     $ datalad --version
-    datalad 0.19.2
+    datalad 1.0.0
     ```
 
     ??? bug "*DataLad* crashes (*Conda* installations)"

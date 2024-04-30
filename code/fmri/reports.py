@@ -31,13 +31,15 @@ import matplotlib.pyplot as plt
 import nibabel as nib
 import numpy as np
 import pandas as pd
-import plotly.offline as pyo
 import seaborn as sns
 from matplotlib.axes import Axes
 from matplotlib.cm import get_cmap
 from matplotlib.lines import Line2D
+from nireports.assembler.report import Report
 from nilearn.plotting import plot_design_matrix, plot_matrix
 from scipy.stats import pearsonr, ks_2samp
+from time import strftime
+from uuid import uuid4
 
 from load_save import get_bids_savename
 
@@ -52,13 +54,12 @@ FIGURE_PATTERN: list = [
 FIGURE_FILLS: dict = {"extension": "png"}
 
 TS_FIGURE_SIZE: tuple = (50, 25)
-FC_FIGURE_SIZE: tuple = (50, 45)
-LABELSIZE: int = 36
+FC_FIGURE_SIZE: tuple = (70, 45)
+LABELSIZE: int = 42
 NETWORK_CMAP: str = "turbo"
 N_PERMUTATION: int = 10000
 ALPHA = 0.05
 PERCENT_MATCH_CUT_OFF = 95
-DURATION_CUT_OFF = 300
 
 
 def plot_timeseries_carpet(
@@ -488,7 +489,7 @@ def group_report_fc_dist(
     # Ensure the labels are within the figure
     plt.tight_layout()
 
-    savename = "group_fc_dist.png"
+    savename = op.join("reportlets", "group_desc-fcdist_bold.svg")
 
     logging.debug("Saving functional connectivity distribution visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
@@ -497,7 +498,7 @@ def group_report_fc_dist(
     plt.close()
 
 
-def group_report_qc_fc(
+def group_reportlet_qc_fc(
     fc_matrices: list[np.ndarray],
     iqms_df: pd.DataFrame,
     output: str,
@@ -604,7 +605,7 @@ def group_report_qc_fc(
     fig.supylabel("Density", fontsize=LABELSIZE + 2)
     fig.suptitle("QC-FC correlation distributions", fontsize=LABELSIZE + 4)
 
-    savename = "group_QC-FC.png"
+    savename = op.join("reportlets", "group_desc-qcfc_bold.svg")
 
     logging.debug("Saving QC-FC visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
@@ -645,7 +646,7 @@ def compute_distance(atlas_path: str) -> np.array:
     return distance_matrix
 
 
-def group_report_qc_fc_euclidean(
+def group_reportlet_qc_fc_euclidean(
     qc_fc_dict: dict, atlas_path: str, output: str
 ) -> None:
     """Plot and save the correlations between QC-FC and euclidean distance.
@@ -703,10 +704,37 @@ def group_report_qc_fc_euclidean(
     # Ensure the labels are within the figure
     # plt.tight_layout()
 
-    savename = "group_QC-FC_euclidean.png"
+    savename = op.join("reportlets", "group_desc-qcfcvseuclidean_bold.svg")
 
     logging.debug("Saving QC-FC vs euclidean distance visual report at:")
     logging.debug(f"\t{op.join(output, savename)}")
 
     plt.savefig(op.join(output, savename))
     plt.close()
+
+
+def group_report(
+    good_timepoints_df: pd.DataFrame,
+    fc_matrices: list[np.ndarray],
+    iqms_df: pd.DataFrame,
+    atlas_filename: str,
+    output: str,
+) -> None:
+    """Generate a group report."""
+
+    # Generate each reportlets
+    group_reportlet_fc_dist(fc_matrices, output)
+    qc_fc_dict = group_reportlet_qc_fc(fc_matrices, iqms_df, output)
+    group_reportlet_qc_fc_euclidean(qc_fc_dict, atlas_filename, output)
+
+    # Assemble reportlets into a single HTML report
+    logging.debug("Assemble the group report into a single HTML report.")
+
+    run_uuid = "{}_{}".format(strftime("%Y%m%d-%H%M%S"), uuid4())
+    robj = Report(
+        output,
+        run_uuid,
+        out_filename="group_report.html",
+        bootstrap_file=op.join("data", "reports-spec.yml"),
+    )
+    robj.generate_report()

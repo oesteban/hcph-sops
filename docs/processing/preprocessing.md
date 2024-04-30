@@ -53,7 +53,7 @@ If some derivatives are missing, it is a sign that *fMRIPrep* encountered an err
 
 ### Anatomical preprocessing assessment
 
-- [ ] Open the *fMRIPrep* anatomical report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Open the *fMRIPrep* anatomical report on a Web Browser.
 - [ ] Assess the "Summary" section and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#summary).
 - [ ] Assess the "Anatomical conformation" section and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#anatomical-conformation).
 - [ ] Assess the mosaic showing the calculated brain mask and brain tissue segmentation, and apply the [QA/QC criteria](qaqc-criteria-preprocessed.md#brain-mask-and-brain-tissue-segmentation-of-the-t1w).
@@ -64,7 +64,7 @@ If some derivatives are missing, it is a sign that *fMRIPrep* encountered an err
 
 ### Assessment of fMRI Preprocessing
 
-- [ ] Open each *fMRIPrep* functional report on a current Web Browser (*Google Chrome* is preferred).
+- [ ] Open each *fMRIPrep* functional report on a Web Browser.
 - [ ] Go through the section of each fMRI run and proceed as follows:
 
     ??? important "IMPORTANT — QCT and BHT are assessed first as proxies for the RSfMRI run's quality."

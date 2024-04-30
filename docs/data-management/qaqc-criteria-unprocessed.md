@@ -100,6 +100,7 @@ As such, verifying that the subjects were attempting to perform the instructed t
       - [ ] Ghosts caused by external elements such as headsets or mirror frames.
       Exclude the session if any of these ghosts overlap cortical gray matter.
 - [ ] Check for high-standard-deviation vertical strikes in the sagittal plane of the standard deviation map.
+    Exclude the session if the vertical strike continuously traverse more than half of the brain's length.
 
 #### Carpetplot and nuisance signals
 
@@ -120,7 +121,7 @@ As such, verifying that the subjects were attempting to perform the instructed t
 
 #### View of the background of the voxel-wise average of the BOLD timeseries
 
-- [ ] Check for ghosts within the brain:
+- [ ] Check for ghosts:
       - [ ] Overlapping wrap-around.
       - [ ] Ghosts caused by external elements such as headsets or mirror frames.
       Exclude the session if any of these ghosts overlap cortical gray matter.
