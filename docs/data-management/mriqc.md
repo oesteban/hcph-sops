@@ -39,6 +39,12 @@
         │   ├── sub-001_ses-001_task-qct_dir-AP_bold.html
         │   ├── sub-001_ses-001_task-rest_dir-AP_bold.html
     ```
+    - [ ] Adapt the following code to your setup to check this automatically. Adapt it to your setup.
+        ```shell
+{% filter indent(width=8) %}
+{% include 'code/qc/check_all_reports_generated.py' %}
+{% endfilter %}
+        ```
     
     <a id="mriqc-failed"></a>
     ??? bug "*MRIQC* failed to produce all the expected visual reports" 
