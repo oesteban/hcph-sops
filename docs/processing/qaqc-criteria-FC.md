@@ -1,4 +1,4 @@
-# QA criteria for FC
+# QA criteria for functional connectivity
 
 !!! warning "Contradictory QA counter-measures"
     In the following two subsections, the suggested counter-measures when QA criteria are not met propose changing the cut-off frequency of the low-pass filter in opposed directions, and therefore, *solutions compete*.
@@ -47,7 +47,11 @@ Now we will assess that QC-FC distribution<sup>[2]</sup> and the null distributi
     - [ ] Include more motion regressors by switching motion regression strategy using the `--motion "full"` flag when running `funconn.py`.
     - [ ] If tweaking the preprocessing does not suffice, revise [the exclusion criteria by excluding additional sessions](qaqc-criteria-FC.md#qc-fc-versus-euclidean-distance-1).
 
-# Exclusion criteria for FC
+# Exclusion criteria based on functional connectivity
+
+## Censoring
+
+- [ ] Exclude the sessions for which the RSfMRI scan does not meet the QC cutoff of 5 minutes of fMRI remaining after censoring. Indeed, less than 5 minutes of RSfMRI is not enough to reliably estimate functional connectivity <sup>[5],[6]</sup>.
 
 ## FC distributions
 
@@ -67,5 +71,8 @@ Now we will assess that QC-FC distribution<sup>[2]</sup> and the null distributi
 [1]: https://doi.org/10.3389/fnins.2023.1092125 "Morfini, F., Whitfield-Gabrieli, S., and Nieto-Castañón, A. “Functional Connectivity MRI Quality Control Procedures in CONN.” Front Neurosci 17 (2023). doi:10.3389/fnins.2023.1092125"
 [2]: https://doi.org/10.1016/j.neuroimage.2017.03.020 "Ciric, R. et al. “Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity. (2017)” NeuroImage, doi:10.1016/j.neuroimage.2017.03.020"
 [3]: https://doi.org/10.1016/j.neuroimage.2017.03.056 "Bright, M. & Murphy, K., Cleaning up the fMRI time series: Mitigating noise with advanced acquisition and correction strategies. (2017) NeuroImage. doi:10.1016/j.neuroimage.2017.03.056"
-[4]: https://doi.org/10.1016/j.neuroimage.2011.10.018 "Power, Jonathan D., Kelly A. Barnes, Abraham Z. Snyder, Bradley L. Schlaggar, and Steven E. Petersen. “Spurious but Systematic Correlations in Functional Connectivity MRI Networks Arise from Subject Motion.” NeuroImage 59, no. 3 (February 2012): 2142–54, doi:10.1016/j.neuroimage.2011.10.01" 
+[4]: https://doi.org/10.1016/j.neuroimage.2011.10.018 "Power, Jonathan D., Kelly A. Barnes, Abraham Z. Snyder, Bradley L. Schlaggar, and Steven E. Petersen. “Spurious but Systematic Correlations in Functional Connectivity MRI Networks Arise from Subject Motion.” NeuroImage 59, no. 3 (February 2012): 2142–54, doi:10.1016/j.neuroimage.2011.10.01"
+[5]: https://doi.org/10.1152/jn.00783.2009 "Van Dijk, K. R., Hedden, T., Venkataraman, A., Evans, K. C., Lazar, S. W., Buckner, R. L., et al. (2010). Intrinsic functional connectivity as a tool for human connectomics: theory, properties, and optimization. J. Neurophysiol. 103, 297–321. doi: 10.1152/jn.00783.2009"
+[6]: https://doi.org/10.3389/fnimg.2023.1072927 "Birn, Rasmus M. “Quality Control Procedures and Metrics for Resting-State Functional MRI.” Frontiers in Neuroimaging 2 (2023), doi:10.3389/fnimg.2023.1072927"
+ 
 
