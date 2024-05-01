@@ -24,8 +24,10 @@
 import argparse
 import logging
 
-import os.path as op
 import numpy as np
+import os.path as op
+import pandas as pd
+
 
 from itertools import chain
 from funconn import FC_FILLS, FC_PATTERN
@@ -160,6 +162,7 @@ def main():
 
     # Generate group figures
     group_report(
+        good_timepoints_df,
         fc_matrices,
         iqms_df,
         atlas_filename,

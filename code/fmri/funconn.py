@@ -33,6 +33,7 @@ In the context of HCPh (pilot), it would be:
 """
 
 import argparse
+import csv
 import logging
 import os
 import os.path as op
@@ -359,7 +360,7 @@ def extract_and_denoise_timeseries(
     t_r: Optional[float] = None,
     output: Optional[str] = None,
     **kwargs,
-) -> tuple[list[np.ndarray], list]:
+) -> tuple[list[np.ndarray], list, list[np.ndarray]]:
     """Extract and denoise regional timeseries for a given atlas.
 
     Parameters
@@ -391,7 +392,7 @@ def extract_and_denoise_timeseries(
         corresponding confounds.
     """
     if not len(func_filename):
-        return [], []
+        return [], [], []
 
     logging.info(f"Extracting and denoising timeseries for {len(func_filename)} files.")
     logging.debug(f"Denoising strategy includes : {' '.join(denoising_strategy)}")
@@ -460,7 +461,7 @@ def extract_and_denoise_timeseries(
         n_jobs=8,
     )
 
-    return time_series, confounds
+    return time_series, confounds, sample_mask
 
 
 def get_fc_strategy(
@@ -645,6 +646,7 @@ def main():
 
     time_series = []
     all_confounds = []
+    all_sample_masks = []
     for filenames_to_ts, t_r in zip(separated_missing_ts, t_r_list):
         ts, conf, mask = extract_and_denoise_timeseries(
             filenames_to_ts,
@@ -662,6 +664,7 @@ def main():
         )
         time_series += ts
         all_confounds += conf
+        all_sample_masks += mask
 
     # Saving aggregated/denoised timeseries and visual reports
     if len(time_series):
