@@ -1,4 +1,5 @@
 # QA criteria for functional connectivity
+
 !!! warning "Contradictory QA counter-measures"
     In the following two subsections, the suggested counter-measures when QA criteria are not met propose changing the cut-off frequency of the low-pass filter in opposed directions, and therefore, *solutions compete*.
     Although challenging, finding a trade-off cut-off that meets all QA criteria across all three group visualizations is necessary.
@@ -47,9 +48,10 @@ Now we will assess that QC-FC distribution<sup>[2]</sup> and the null distributi
     - [ ] If tweaking the preprocessing does not suffice, revise [the exclusion criteria by excluding additional sessions](qaqc-criteria-FC.md#qc-fc-versus-euclidean-distance-1).
 
 # Exclusion criteria based on functional connectivity
+
 ## Censoring
 
-- [ ] Exclude the sessions for which the RSfMRI scan do not meet the QC cutoff of 5 minutes of fMRI remaining after censoring. Indeed, less than 5 minutes of RSfMRI is not enough to reliably estimate functional connectivity <sup>[5,6]</sup>.
+- [ ] Exclude the sessions for which the RSfMRI scan does not meet the QC cutoff of 5 minutes of fMRI remaining after censoring. Indeed, less than 5 minutes of RSfMRI is not enough to reliably estimate functional connectivity <sup>[5],[6]</sup>.
 
 ## FC distributions
 
