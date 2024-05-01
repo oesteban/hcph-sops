@@ -20,7 +20,7 @@
 #
 #     https://www.nipreps.org/community/licensing/
 #
-""" Python module for functional connectivity visual reports """
+"""Python module for functional connectivity visual reports"""
 
 import logging
 import os
@@ -456,7 +456,9 @@ def group_report_censoring(good_timepoints_df, output) -> None:
 
     # Save the plot as an HTML file
     pyo.plot(
-        fig, filename=op.join(output, "reportlets", "group_desc-censoring_bold.html"), auto_open=False
+        fig,
+        filename=op.join(output, "reportlets", "group_desc-censoring_bold.html"),
+        auto_open=False,
     )
 
 
@@ -498,6 +500,7 @@ def group_report_fc_dist(
 
     plt.savefig(op.join(output, savename))
     plt.close()
+
 
 def group_reportlet_fc_dist(
     fc_matrices: list[np.ndarray],

@@ -20,7 +20,7 @@
 #
 #     https://www.nipreps.org/community/licensing/
 #
-""" Python script to denoise and aggregate timeseries and, using the latter, compute
+"""Python script to denoise and aggregate timeseries and, using the latter, compute
 functional connectivity matrices from BIDS derivatives (e.g. fmriprep).
 
 Run as (see 'python funconn.py -h' for options):
