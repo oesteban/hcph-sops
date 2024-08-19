@@ -1,0 +1,150 @@
+name: Scan session
+description: log session
+title: "[SCAN] sub-001_ses-XXXXyy"
+labels: [scan]
+assignees:
+  - celprov
+body:
+- type: markdown
+  attributes:
+    value: "In the session number first indicate the scanner (Vida, VidaFit or Prisma) followed by the session number (e.g. ses-Vida01, ses-VidaFit02, ses-Prisma03)"
+- type: markdown
+  attributes:
+    value: "# General information"
+
+- type: textarea
+  attributes:
+    label: General notes
+
+- type: markdown
+  attributes:
+    value: "## Anatomical scans"
+- type: checkboxes
+  attributes:
+    label: Anatomical scans completion.
+    options:
+      - label: Localizer was completed.
+      - label: Localizer looked okay.
+      - label: T1w was completed.
+      - label: T1w looked okay.
+- type: dropdown
+  attributes:
+    label: anat issues
+    multiple: true
+    options:
+      - noisy localizer
+      - badly placed FoV
+      - bad t1w quality (give more detail in the notes)
+      - interrupted scan
+- type: textarea
+  attributes:
+    label: Anatomical scans notes
+
+- type: markdown
+  attributes:
+    value: "## BOLD fieldmaps"
+- type: checkboxes
+  attributes:
+    label: The following BOLD fieldmaps directions ran without needing to incline the FOV or modify sequence parameters.
+    options:
+      - label: fmap-epi_acq-bold_dir-AP
+      - label: fmap-epi_acq-bold_dir-PA
+      - label: fmap-epi_acq-bold_dir-LR
+      - label: fmap-epi_acq-bold_dir-RL
+- type: textarea
+  attributes:
+    label: BOLD Fieldmap scans notes
+    description: If you had to modify a sequence parameter or incline the FOV, please describe it in detail here.
+
+- type: checkboxes
+  attributes:
+    label: Resting-state completion.
+    options:
+      - label: Resting-state was completed.
+- type: dropdown
+  attributes:
+    label: task-rest issues
+    multiple: true
+    options:
+      - participant fell asleep
+      - excessive motion
+      - interrupted scan
+- type: textarea
+  attributes:
+    label: Resting-state notes
+    description: If you detected an issue, please describe it in detail here.
+
+- type: markdown
+  attributes:
+    value: "## GRE fieldmap"
+- type: checkboxes
+  attributes:
+    label: GRE fieldmap completion.
+    options:
+      - label: GRE was completed
+- type: textarea
+  attributes:
+    label: GRE fieldmap scans notes
+    description: If you had to modify a sequence parameter or incline the FOV, please describe it in detail here.
+
+- type: markdown
+  attributes:
+    value: "## Diffusion scan"
+- type: checkboxes
+  attributes:
+    label: Diffusion scan completion.
+    options:
+      - label: Diffusion was completed.
+- type: dropdown
+  attributes:
+    label: diffusions issues
+    multiple: true
+    options:
+      - participant fell asleep
+      - excessive motion
+      - interrupted scan
+- type: textarea
+  attributes:
+    label: Diffusion scan notes
+    description: If you detected an issue, please describe it in detail here.
+
+- type: markdown
+  attributes:
+    value: "## DWI fieldmaps"
+- type: checkboxes
+  attributes:
+    label: The following DWI fieldmaps directions ran without needing to incline the FOV or modify sequence parameters.
+    options:
+      - label: Yes, all four encoding directions were acquired without modification.
+- type: textarea
+  attributes:
+    label: Fieldmap scans notes
+    description: If you had to modify a sequence parameter or incline the FOV, please describe it in detail here.
+  
+
+- type: markdown
+  attributes:
+    value: "## T2w scan (optional)"
+
+- type: checkboxes
+  attributes:
+    label: T2w scan completion.
+    options:
+      - label: T2w scan was completed.
+- type: dropdown
+  attributes:
+    label: T2w issues
+    multiple: true
+    options:
+      - scan was not acquired
+      - interrupted scan
+- type: textarea
+  attributes:
+    label: T2w notes
+    description: If you detected an issue, please describe it in detail here.
+
+- type: checkboxes
+  attributes:
+    label: Were all scans acquired successfully ?
+    options:
+      - label: Yes, all went well.
