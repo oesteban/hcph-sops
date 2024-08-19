@@ -285,7 +285,9 @@ A laptop should be available to fill the issue.
         ![](../assets/images/session_issue_template.png)
         - [ ] Click on <span class="consolebutton green">Get started</span> on the issue template `Scan session`.
 - [ ] Modify the title of the issue by replacing `yyy` with the session index.
-    If you don't remember the session index of today, check the [session index table](participant-prep.md#session-schedule).
+    If you don't remember the session index of today, check the session index table corresponding to the acquisition protocol:
+    [reliability imaging protocol](participant-prep.md#session-schedule-reliability),
+    or [standard imaging protocol](participant-prep.md#session-schedule-standard).
 - [ ] Verify that your phone is on ringing mode so the participants can reach you.
 - [ ] Check the time regularly to be on time to meet with the participant at the predefined location
 
