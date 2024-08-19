@@ -1,13 +1,13 @@
-name: Scan session
+name: Scan session - standard protocol
 description: log session
-title: "[SCAN] sub-001_ses-XXXXyy"
+title: "[SCAN] sub-001_ses-dddnnsss"
 labels: [scan]
 assignees:
   - celprov
 body:
 - type: markdown
   attributes:
-    value: "In the session number first indicate the scanner (Vida, VidaFit or Prisma) followed by the session number (e.g. ses-Vida01, ses-VidaFit02, ses-Prisma03)"
+    value: "Construct the session number indicating the day (ddd),followed by the session number (nn) and the scanner encoded by its room number (sss; Prisma=060, Vida=034, VidaFit=030). For example, ses-00101060, ses-00102034, ses-00103030, ses-00201060."
 - type: markdown
   attributes:
     value: "# General information"
@@ -45,7 +45,8 @@ body:
     value: "## BOLD fieldmaps"
 - type: checkboxes
   attributes:
-    label: The following BOLD fieldmaps directions ran without needing to incline the FOV or modify sequence parameters.
+    label: BOLD fieldmaps completion.
+    description: The following BOLD fieldmaps ran without needing to incline the FOV or modify sequence parameters.
     options:
       - label: fmap-epi_acq-bold_dir-AP
       - label: fmap-epi_acq-bold_dir-PA
@@ -53,7 +54,7 @@ body:
       - label: fmap-epi_acq-bold_dir-RL
 - type: textarea
   attributes:
-    label: BOLD Fieldmap scans notes
+    label: BOLD fieldmap scans notes
     description: If you had to modify a sequence parameter or incline the FOV, please describe it in detail here.
 
 - type: checkboxes
@@ -113,12 +114,16 @@ body:
     value: "## DWI fieldmaps"
 - type: checkboxes
   attributes:
-    label: The following DWI fieldmaps directions ran without needing to incline the FOV or modify sequence parameters.
+    label: DWI fieldmaps completion.
+    description: The following DWI fieldmaps directions ran without needing to incline the FOV or modify sequence parameters.
     options:
-      - label: Yes, all four encoding directions were acquired without modification.
+      - label: fmap-epi_acq-b0_dir-AP
+      - label: fmap-epi_acq-b0_dir-PA
+      - label: fmap-epi_acq-b0_dir-LR
+      - label: fmap-epi_acq-b0_dir-RL
 - type: textarea
   attributes:
-    label: Fieldmap scans notes
+    label: DWI fieldmap scans notes
     description: If you had to modify a sequence parameter or incline the FOV, please describe it in detail here.
   
 
