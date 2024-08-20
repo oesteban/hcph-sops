@@ -1,13 +1,13 @@
 name: Scan session - standard protocol
 description: log session
-title: "[SCAN] sub-001_ses-dddnnsss"
+title: "[SCAN] sub-001_ses-2ddnnsss"
 labels: [scan]
 assignees:
   - celprov
 body:
 - type: markdown
   attributes:
-    value: "Construct the session number indicating the day (ddd),followed by the session number (nn) and the scanner encoded by its room number (sss; Prisma=060, Vida=034, VidaFit=030). For example, ses-00101060, ses-00102034, ses-00103030, ses-00201060."
+    value: "Construct the session number indicating 2 (for second acquisition wave), the day (dd),followed by the session number (nn) and the scanner encoded by its room number (sss; Prisma=060, Vida=034, VidaFit=030). For example, ses-20101060, ses-20102034, ses-20103030, ses-20201060."
 - type: markdown
   attributes:
     value: "# General information"
