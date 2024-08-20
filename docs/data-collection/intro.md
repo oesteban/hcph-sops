@@ -140,13 +140,32 @@ Get familiar with the setup and read through the [ET Instruction Manual](../asse
 The study will collect data with two different scanning protocols.
 Most of what is described in the present SOPs addresses the *Reliability Imaging Protocol* that will be acquired on the {{ secrets.rooms.mri1 | default("███") }} scanner.
 
-!!! important "Reliability imaging protocol printouts"
+!!! important "Imaging protocol printouts"
 
     The final printouts are here:
+
+    * Reliability protocol:
     [HCPh_AP](../assets/files/HCPh_AP.pdf),
     [HCPh_PA](../assets/files/HCPh_PA.pdf),
     [HCPh_LR](../assets/files/HCPh_LR.pdf), and
     [HCPh_RL](../assets/files/HCPh_RL.pdf).
+    * Standard protocol:
+        * {{ settings.mri.models.mri1}}: 
+        [HCPh_AP_Prisma](../assets/files/HCPh_AP_Prisma.pdf),
+        [HCPh_PA_Prisma](../assets/files/HCPh_PA_Prisma.pdf),
+        [HCPh_LR_Prisma](../assets/files/HCPh_LR_Prisma.pdf), and
+        [HCPh_RL_Prisma](../assets/files/HCPh_RL_Prisma.pdf).
+        * {{ settings.mri.models.mri2}}: 
+        [HCPh_AP_VidaFit](../assets/files/HCPh_AP_VidaFit.pdf),
+        [HCPh_PA_VidaFit](../assets/files/HCPh_PA_VidaFit.pdf),
+        [HCPh_LR_VidaFit](../assets/files/HCPh_LR_VidaFit.pdf), and
+        [HCPh_RL_VidaFit](../assets/files/HCPh_RL_VidaFit.pdf).
+        * {{ settings.mri.models.mri3}}: 
+        [HCPh_AP_Vida](../assets/files/HCPh_AP_Vida.pdf),
+        [HCPh_PA_Vida](../assets/files/HCPh_PA_Vida.pdf),
+        [HCPh_LR_Vida](../assets/files/HCPh_LR_Vida.pdf), and
+        [HCPh_RL_Vida](../assets/files/HCPh_RL_Vida.pdf).
+    
 
 | **Reliability Imaging Protocol (36 sessions $\times$ one scanner)** | mm:ss | **Standard Imaging Protocol (12 sessions $\times$ three scanners)** | mm:ss |
 |---|---|---|---|
