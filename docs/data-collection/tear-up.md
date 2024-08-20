@@ -278,8 +278,8 @@ The following section describes how to prepare the session on the day of scan, B
 Collect comments and annotations about the session using GitHub issues.
 A laptop should be available to fill the issue.
 
-- [ ] [Click this link](https://github.com/TheAxonLab/hcph-sops/issues/new?assignees=acionca&labels=scan&projects=&template=scan-session.yml&title=%5BSCAN%5D+sub-001_ses-yyy), or alternatively
-- [ ] manually open a GitHub Issue at the [SOPs repository](https://github.com/TheAxonLab/hcph-sops):
+- [ ] [Click this link](https://github.com/TheAxonLab/hcph-dataset/issues/new?assignees=acionca&labels=scan&projects=&template=scan-session.yml&title=%5BSCAN%5D+sub-001_ses-yyy), or alternatively
+- [ ] manually open a GitHub Issue at the [SOPs repository](https://github.com/TheAxonLab/hcph-dataset):
     - [ ] Under the section `Issues`, click on <span class="consolebutton green">New issue</span>
     - [ ] This should lead you to a page that looks like this
         ![](../assets/images/session_issue_template.png)
