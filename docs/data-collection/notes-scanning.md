@@ -164,20 +164,22 @@ Adjust settings by pressing the respective button and then turning the central k
 
 ### Communication with the participant
 
-- [ ] ![speaker](../assets/images/speaker.jpg){ align="right" width="250px" }
-    Make sure the speaker is audible (and not annoying) and confirm the participant's feedback.
+- [ ] Make sure the speaker is audible (and not annoying) and confirm the participant's feedback.
     First, keep the speak mode button (1) pressed while you talk to the participant:
 
     !!! quote "Hey [NAME], can you hear me well? Is the audio too loud or too low?"
 
+    ![speaker](../assets/images/speakers.png)
+
 - [ ] Enable the feedback channel from the Scanning Room by pressing the listen mode button (2) once.
     Release the speak mode button (1) before you are ready to listen to participant responses.
-- [ ] Set the volume control of your microphone and the participant's speaker by pressing the corresponding :fontawesome-solid-plus-minus: buttons.
+- [ ] Set the volume control of your microphone and the participant's speaker by pressing the corresponding :fontawesome-solid-plus-minus: buttons on the {{settings.mri.models.mri1}} or slide your finger on the volume line on {{settings.mri.models.mri2}} and {{settings.mri.models.mri3}}.
 - [ ] If this volume increase is not enough for the participant to hear you well, proceed as follow:
     - [ ] In the Siemens program, click on Configuration represented by a gear wheel (:fontawesome-solid-gear:) at the top right of the screen.
     - [ ] Click on *Configuration panel*
     - [ ] Under the section *Scan application*, locate the icon of the speaker and tune the volume to the maximum.
     - [ ] Click *Apply*
+
 
 !!!warning "Emergency buttons"
     The <span style="background-color: red; color: white; font-size: 0.85em; border-radius: 50%; text-align: center; height: 30px; width: 30px; display:inline-block; background-position: center; padding-top: 7px; font-weight: bold;">STOP</span> button (3) immediately stops the currently running sequence and will require you to go inside the scanner room and simultaneously press the `bed up` and `bed down` buttons to keep going.
