@@ -162,6 +162,8 @@ Adjust settings by pressing the respective button and then turning the central k
 
 !!! warning "The central knob (button 1) will turn off the alarm if pushed when the alarm is on"
 
+!!! warning "On {{settings.mri.models.mri2}} and {{settings.mri.models.mri3}}, the alarm can be turned off by touching the tactil screen on the bore of the scanner"
+
 ### Communication with the participant
 
 - [ ] ![speaker](../assets/images/speaker.jpg){ align="right" width="250px" }
