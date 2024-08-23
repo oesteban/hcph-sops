@@ -167,20 +167,20 @@ Most of what is described in the present SOPs addresses the *Reliability Imaging
         [HCPh_RL_Vida](../assets/files/HCPh_RL_Vida.pdf).
     
 
-| **Reliability Imaging Protocol (36 sessions $\times$ one scanner)** | mm:ss | **Standard Imaging Protocol (12 sessions $\times$ three scanners)** | mm:ss |
-|---|---|---|---|
-| Head scout | 00:14 | Head scout | 00:14 |
-| FoV Manual positioning | 01:00 | FoV Manual positioning | 01:00 |
-| T1w (anatomical reference) | 5:41 | T1w (anatomical reference) | 5:41  |
-| DWI ($B_\text{0}$ field mapping) | 00:54 | EPI BOLD ($B_\text{0}$ field mapping) | 00:30 |
-| DWI (dMRI, structural connectivity) | 33:52 | BOLD (single-echo RSfMRI, eyes open) | 20:09 |
-| GRE ($B_\text{0}$ field mapping) | 02:38 | GRE ($B_\text{0}$ field mapping) | 03:08 |
-| BOLD (positive-control task fMRI) | 03:07 | BOLD (multi-echo RSfMRI, eyes open, **only {{ secrets.rooms.mri1 | default("███") }}**) | 10:09 |
-| EPI BOLD ($B_\text{0}$ field mapping) | 00:27 | DWI (dMRI, structural connectivity) | 27:31 |
-| BOLD (multi-echo RSfMRI, naturalistic movie) | 20:09 | DWI ($B_\text{0}$ field mapping) | 01:10 |
-| BOLD (breath-holding task fMRI) | 06:00  | T2w (anatomical reference) | 08:24 |
-| T2w (anatomical reference) | 05:10  | | |
-| **Total Acquisition Time** | 79:12 | **Total Acquisition Time** | 77:56 |
+| **Reliability Imaging Protocol (36 sessions $\times$ one scanner)** | mm:ss | **Standard Imaging Protocol (12 sessions $\times$ three scanners)** | mm:ss ({{settings.mri.models.mri1}}) | mm:ss ({{settings.mri.models.mri2}}) | mm:ss ({{settings.mri.models.mri3}}) |
+|---|---|---|---|---|---|
+| Head scout | 00:14 | Head scout | 00:14 | " | " |
+| FoV Manual positioning | 01:00 | FoV Manual positioning | 01:00 | " | " |
+| T1w (anatomical reference) | 05:41 | T1w (anatomical reference) | 05:03 | 04:23 | 04:23 |
+| DWI ($B_\text{0}$ field mapping) | 00:54 | EPI BOLD ($B_\text{0}$ field mapping) | 00:29 | " | " |
+| DWI (dMRI, structural connectivity) | 33:52 | BOLD (multi-echo RSfMRI, eyes open) | 20:29 | " | " |
+| GRE ($B_\text{0}$ field mapping) | 02:38 | GRE ($B_\text{0}$ field mapping) | 02:31 | " | " |
+| BOLD (positive-control task fMRI) | 03:07 | DWI (dMRI, structural connectivity) | 33:17 | 33:23 | 33:25 |
+| EPI BOLD ($B_\text{0}$ field mapping) | 00:27 | DWI ($B_\text{0}$ field mapping) | 00:55 | " | " |
+| BOLD (multi-echo RSfMRI, naturalistic movie) | 20:09 | T2w (anatomical reference) | 05:44 | 05:41 | 05:44|
+| BOLD (breath-holding task fMRI) | 06:00  | | | | |
+| T2w (anatomical reference) | 05:10  | | | | |
+| **Total Acquisition Time** | 79:12 | **Total Acquisition Time** | 72:54 | 72:12 | 72:22 |
 
 !!! important "Stimulation program timings (reliability imaging protocol only)"
 
