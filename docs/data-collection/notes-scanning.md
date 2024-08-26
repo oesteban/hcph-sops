@@ -102,6 +102,12 @@
 
         !!! danger "After three wrong password entries, access will be denied, and only a Siemens engineer will be able to unlock the MR scanner."
 
+    !!! warning "Some protocol folders on {{settings.mri.models.mri3}} are password-protected."
+        To be able to save the protocol into a password-protected folder:
+
+        - [ ] Click on the closed-lock icon (:fontawesome-solid-lock:) placed next to the protected folder's name (`RESEARCH/Oscar` on {{settings.mri.models.mri3}})
+        - [ ] Type the password into the modal dialog: {{secrets.login.unlockpass_dotcockpit| default("******") }}
+
     - [ ] Open the Dot-Cockpit window
         ![](../assets/images/save_protocol1.jpg)
     - [ ] In `Browse`, find the right folder to save the protocol in (*RESEARCH* ⤷ *Oscar*).
