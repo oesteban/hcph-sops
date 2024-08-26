@@ -160,9 +160,9 @@ Adjust settings by pressing the respective button and then turning the central k
 - [ ] Use the light :fontawesome-solid-lightbulb: button (4) to adjust the intensity of the illumination inside the scanning room.
 - [ ] Use the fan :fontawesome-solid-fan: button (5) to adjust the ventilation in the scanning room.
 
-!!! warning "The central knob (button 1) will turn off the alarm if pushed when the alarm is on"
+!!! warning "Turning off the alarm"
 
-!!! warning "On {{settings.mri.models.mri2}} and {{settings.mri.models.mri3}}, the alarm can be turned off by touching the tactil screen on the bore of the scanner"
+    On {{settings.mri.models.mri1}}, the central knob (button 1) will turn off the alarm if pushed when the alarm is on. That set of buttons is absent on the {{settings.mri.models.mri2}} and {{settings.mri.models.mri3}}, as such the alarm has to be turned off by touching the tactil screen on the bore of the scanner.
 
 ### Communication with the participant
 
