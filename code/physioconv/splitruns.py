@@ -57,7 +57,9 @@ def _get_length(filepath: Path) -> float:
     sidecar = filepath.parent / sidecar_fname
     meta = loads(sidecar.read_text())
     if "RepetitionTime" not in meta:
-        global_name = sidecar.name.replace("_run-1", "").replace("_run-2", "").split("_", 2)[-1]
+        global_name = (
+            sidecar.name.replace("_run-1", "").replace("_run-2", "").split("_", 2)[-1]
+        )
         meta |= loads((sidecar.parents[3] / global_name).read_text())
 
     size = nb.load(filepath).shape[-1]
@@ -126,7 +128,12 @@ def main(
     # Extract AcqKnowledge metadata
     num_runs = len(run_names)
     run_id = 0
-    for physio_path in scans_row.physio_files.values[0].split(","):
+    recording_files = scans_row.physio_files.values
+    if (recording_files.size == 0) or pd.isnull(recording_files).all():
+        print(f"Skipping {session} (missing).")
+        return []
+
+    for physio_path in recording_files[0].split(","):
         acq_session = read_file(str(data_path / physio_path))
         acq_start = np.datetime64(
             str(
@@ -146,7 +153,7 @@ def main(
         run_tlims = run_tlims / np.timedelta64(1, "s")
         run_tlims = run_tlims[:, run_tlims[1, :] < acq_stop].T
         run_tlims[run_tlims[:, 0] < 0, 0] = 0.0
-        
+
         clip_onsets = [0] + (run_tlims[1:, 0] - 5.0).tolist()
         clip_offsets = (run_tlims[1:, 0] - 1.0).tolist() + [-1]
 
@@ -173,7 +180,9 @@ def main(
                         0 if clip_on == 0 else np.abs(ch.time_index - clip_on).argmin()
                     )
                     offset_index = (
-                        -1 if clip_off == -1 else np.abs(ch.time_index - clip_off).argmin()
+                        -1
+                        if clip_off == -1
+                        else np.abs(ch.time_index - clip_off).argmin()
                     )
 
                     ch_group = h5f.create_group(f"channel_{channel_i}")

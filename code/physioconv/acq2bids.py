@@ -49,10 +49,14 @@ def _channel_id(channel_name):
     if name_lower.startswith("card") or name_lower == "ecg" or "eeg100c" in name_lower:
         return "cardiac"
 
-    if name_lower.startswith("resp") or name_lower == "rb" or "tsd160a" in name_lower:
+    if (
+        name_lower.startswith("resp")
+        or name_lower.startswith("rb")
+        or "tsd160a" in name_lower
+    ):
         return "respiratory0"
 
-    if name_lower.startswith("co2"):
+    if name_lower.startswith("co2") or name_lower.startswith("ga"):
         return "respiratory1"
 
     if name_lower.startswith("o2"):
@@ -120,14 +124,16 @@ def extract_signal(recording, src_file, out_path, channels, first_trigger_t, ses
         recording_data[colname] = channels[name]["data"]
 
     # Before session 23, calibration was a bit off
-    if recording == "respiratory" and (session.startswith("pilot") or int(session) < RECALIBRATED_SESSION):
-        recording_data["CO2"] = (
-            recording_data["CO2"] * (8.0 - 0.045) / 0.8 + 0.045
-        )
+    if recording == "respiratory" and (
+        session.startswith("pilot")
+        or int(session.replace("excl", "")) < RECALIBRATED_SESSION
+    ):
+        if "CO2" in recording_data:
+            recording_data["CO2"] = recording_data["CO2"] * (8.0 - 0.045) / 0.8 + 0.045
         if "O2" in recording_data:
-            recording_data["O2"] = (
-                recording_data["CO2"] - 0.1
-            ) * 10.946 / (20.946 + 0.1) + 10
+            recording_data["O2"] = (recording_data["CO2"] - 0.1) * 10.946 / (
+                20.946 + 0.1
+            ) + 10
 
     sidecar["Columns"] = list(recording_data.keys())
 
@@ -183,7 +189,10 @@ def convert(
             channels[channel_id]["num"] = int(key.split("_")[-1])
             channels[channel_id]["data"] = h5f[key]["data"][()]
 
-    if session.startswith("pilot") or int(session) < FIRST_O2_SESSION:
+    if (
+        session.startswith("pilot")
+        or int(session.replace("excl", "")) < FIRST_O2_SESSION
+    ):
         channels.pop("respiratory2", None)
 
     # Extract & store first trigger
@@ -235,7 +244,9 @@ def convert(
     out_files = []
     for recording in ("cardiac", "respiratory"):
         out_files.append(
-            extract_signal(recording, src_file, out_path, channels, first_trigger_t, session)
+            extract_signal(
+                recording, src_file, out_path, channels, first_trigger_t, session
+            )
         )
 
 
