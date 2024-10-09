@@ -120,13 +120,13 @@ def extract_signal(recording, src_file, out_path, channels, first_trigger_t, ses
         recording_data[colname] = channels[name]["data"]
 
     # Before session 23, calibration was a bit off
-    if session.startswith("pilot") or int(session) < RECALIBRATED_SESSION:
-        recording_data["CO2"]["data"] = (
-            recording_data["CO2"]["data"] * (8.0 - 0.045) / 0.8 + 0.045
+    if recording == "respiratory" and (session.startswith("pilot") or int(session) < RECALIBRATED_SESSION):
+        recording_data["CO2"] = (
+            recording_data["CO2"] * (8.0 - 0.045) / 0.8 + 0.045
         )
         if "O2" in recording_data:
-            recording_data["O2"]["data"] = (
-                recording_data["CO2"]["data"] - 0.1
+            recording_data["O2"] = (
+                recording_data["CO2"] - 0.1
             ) * 10.946 / (20.946 + 0.1) + 10
 
     sidecar["Columns"] = list(recording_data.keys())
@@ -235,7 +235,7 @@ def convert(
     out_files = []
     for recording in ("cardiac", "respiratory"):
         out_files.append(
-            extract_signal(recording, src_file, out_path, channels, first_trigger_t)
+            extract_signal(recording, src_file, out_path, channels, first_trigger_t, session)
         )
 
 
@@ -289,7 +289,8 @@ if __name__ == "__main__":
     src_files = sorted(
         args.data_path.glob(f"sub-{args.participant}_ses-{args.session}_*_physio.hdf5")
     )
-    if src_files and args.overwrite:
+
+    if not src_files or args.overwrite:
         src_files = extract(
             args.participant, args.session, args.data_path, args.bids_path
         )

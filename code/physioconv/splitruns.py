@@ -57,7 +57,7 @@ def _get_length(filepath: Path) -> float:
     sidecar = filepath.parent / sidecar_fname
     meta = loads(sidecar.read_text())
     if "RepetitionTime" not in meta:
-        global_name = sidecar.name.split("_", 2)[-1]
+        global_name = sidecar.name.replace("_run-1", "").replace("_run-2", "").split("_", 2)[-1]
         meta |= loads((sidecar.parents[3] / global_name).read_text())
 
     size = nb.load(filepath).shape[-1]
@@ -124,63 +124,76 @@ def main(
     )
 
     # Extract AcqKnowledge metadata
-    physio_path = scans_row.physio_files.values[0].split(",")[0]
-    session_data = read_file(str(data_path / physio_path))
-    recording_start = np.datetime64(
-        str(
-            session_data.event_markers[0]
-            .date_created_utc.replace(tzinfo=timezone.utc)
-            .astimezone(tz=None)
-        ).split("+")[0]
-    )
-
-    # Calculate onsets and offsets
-    run_onsets = (bids_start - recording_start) / np.timedelta64(1, "s")
-    run_offsets = (bids_start - recording_start + bids_lengths) / np.timedelta64(1, "s")
-
-    channels = session_data.channels
-
-    clip_onsets = [0] + (run_onsets[1:] - 5.0).tolist()
-    clip_offsets = (run_onsets[1:] - 1.0).tolist() + [-1]
-
-    out_files = []
-    for run_id, (clip_on, clip_off) in enumerate(zip(clip_onsets, clip_offsets)):
-        run_name = (
-            Path(run_names[run_id])
-            .name.replace("_echo-1_part-mag", "")
-            .rsplit("_", 1)[0]
+    num_runs = len(run_names)
+    run_id = 0
+    for physio_path in scans_row.physio_files.values[0].split(","):
+        acq_session = read_file(str(data_path / physio_path))
+        acq_start = np.datetime64(
+            str(
+                acq_session.event_markers[0]
+                .date_created_utc.replace(tzinfo=timezone.utc)
+                .astimezone(tz=None)
+            ).split("+")[0]
         )
-        h5_filename = data_path / f"{run_name}_physio.hdf5"
-        with h5py.File(h5_filename, "w") as h5f:
-            h5f.attrs["start_recording"] = np.datetime_as_string(
-                recording_start,
-                timezone="local",
-            ).astype("S30")
-            h5f.attrs["start_run"] = run_onsets[run_id]
-            h5f.attrs["stop_run"] = run_offsets[run_id]
+        acq_stop = (
+            len(acq_session.channels[4].time_index)
+            / acq_session.channels[4].samples_per_second
+        )
 
-            for i, ch in enumerate(channels):
-                onset_index = (
-                    0 if clip_on == 0 else np.abs(ch.time_index - clip_on).argmin()
-                )
-                offset_index = (
-                    -1 if clip_off == -1 else np.abs(ch.time_index - clip_off).argmin()
-                )
+        # Calculate onsets and offsets (time limits)
+        run_tlims = np.tile(bids_start[run_id:], (2, 1)) - acq_start
+        run_tlims[1, :] += bids_lengths[run_id:]
+        run_tlims = run_tlims / np.timedelta64(1, "s")
+        run_tlims = run_tlims[:, run_tlims[1, :] < acq_stop].T
+        run_tlims[run_tlims[:, 0] < 0, 0] = 0.0
+        
+        clip_onsets = [0] + (run_tlims[1:, 0] - 5.0).tolist()
+        clip_offsets = (run_tlims[1:, 0] - 1.0).tolist() + [-1]
 
-                ch_group = h5f.create_group(f"channel_{i}")
-                ch_group.attrs["name"] = ch.name
-                ch_group.attrs["units"] = ch.units
-                ch_group.attrs["frequency"] = ch.samples_per_second
-                ch_group.attrs["start_time"] = round(ch.time_index[onset_index], 6)
-                ch_group.create_dataset(
-                    "data",
-                    data=ch.data[onset_index:offset_index],
-                    compression="gzip",
-                    compression_opts=9,
-                )
+        channels = acq_session.channels
 
-        print(f"Generated: {h5_filename}")
-        out_files.append(h5_filename)
+        out_files = []
+        for chunk_i, (clip_on, clip_off) in enumerate(zip(clip_onsets, clip_offsets)):
+            run_name = (
+                Path(run_names[run_id])
+                .name.replace("_echo-1_part-mag", "")
+                .rsplit("_", 1)[0]
+            )
+            h5_filename = data_path / f"{run_name}_physio.hdf5"
+            with h5py.File(h5_filename, "w") as h5f:
+                h5f.attrs["start_recording"] = np.datetime_as_string(
+                    acq_start,
+                    timezone="local",
+                ).astype("S30")
+                h5f.attrs["start_run"] = run_tlims[chunk_i, 0]
+                h5f.attrs["stop_run"] = run_tlims[chunk_i, 1]
+
+                for channel_i, ch in enumerate(channels):
+                    onset_index = (
+                        0 if clip_on == 0 else np.abs(ch.time_index - clip_on).argmin()
+                    )
+                    offset_index = (
+                        -1 if clip_off == -1 else np.abs(ch.time_index - clip_off).argmin()
+                    )
+
+                    ch_group = h5f.create_group(f"channel_{channel_i}")
+                    ch_group.attrs["name"] = ch.name
+                    ch_group.attrs["units"] = ch.units
+                    ch_group.attrs["frequency"] = ch.samples_per_second
+                    ch_group.attrs["start_time"] = round(ch.time_index[onset_index], 6)
+                    ch_group.create_dataset(
+                        "data",
+                        data=ch.data[onset_index:offset_index],
+                        compression="gzip",
+                        compression_opts=9,
+                    )
+
+            print(f"Generated: {h5_filename}")
+            out_files.append(h5_filename)
+            run_id += 1
+
+        if run_id == num_runs:
+            break
 
     return out_files
 
