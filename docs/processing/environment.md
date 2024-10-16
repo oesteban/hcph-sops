@@ -172,6 +172,35 @@ To fetch the dataset from the RIA store, you will need your SSH key be added to 
     git annex initremote --private --sameas=ria-storage curnagl-storage type=external externaltype=ora encryption=none url="ria+file://{{ secrets.data.curnagl_ria_store | default('<path>') }}"
     ```
 
+In addition to reconfiguring the RIA store, we should execute `datalad get` within a compute node:
+
+- [ ] Create a *sbatch* job prescription script called `datalad-get.sbatch`:
+    ```Bash
+    #!/bin/bash -l
+
+    #SBATCH --account {{ secrets.data.curnagl_account | default('<PI>_<project_id>') }}
+
+    #SBATCH --chdir {{ secrets.data.curnagl_workdir | default('<workdir>') }}/data/hcph-dataset
+    #SBATCH --job-name datalad_get
+    #SBATCH --partition cpu
+    #SBATCH --cpus-per-task 12
+    #SBATCH --mem 10G
+    #SBATCH --time 05:00:00
+    #SBATCH --export NONE
+
+    #SBATCH --mail-type ALL
+    #SBATCH --mail-user <your-email-address>
+    #SBATCH --output /users/%u/logs/%x-%A-%a.out
+    #SBATCH --error /users/%u/logs/%x-%A-%a.err
+
+
+    micromamba run -n fmriprep datalad get -J${SLURM_CPUS_PER_TASK} .
+    ```
+- [ ] Submit the job:
+    ```Bash
+    sbatch datalad-get.sbatch
+    ```
+
 ## Registering containers
 
 We use *DataLad containers-run* to execute software while keeping track of provenance.
