@@ -24,7 +24,7 @@
     Gari filmed several versions of the *Mundaka clip*, that allowed us to edit the final clip that is presented during the resting state fMRI:
 
     <video width="100%" autoplay loop muted>
-        <source src="../assets/images/mundaka-clip.webm" type="video/webm">
+        <source src="assets/images/mundaka-clip.webm" type="video/webm">
         Your browser does not support the video tag.
     </video>
 
