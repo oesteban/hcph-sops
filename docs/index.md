@@ -21,7 +21,12 @@
 
 ??? thanks "Thanks to Garikoitz Lerma-Usabiaga"
 
-    Gari filmed several versions of the *Mundaka clip*, that allowed us to edit the final clip that is presented during the resting state fMRI.
+    Gari filmed several versions of the *Mundaka clip*, that allowed us to edit the final clip that is presented during the resting state fMRI:
+
+    <video width="100%" autoplay loop muted>
+        <source src="../assets/images/mundaka-clip.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
 
 ??? thanks "Thanks to Inès de Riedmatten and Arthur Spencer"
 
