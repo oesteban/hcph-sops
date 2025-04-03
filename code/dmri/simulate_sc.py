@@ -319,9 +319,7 @@ def simulate_sc_fns(
     consistency_threshold = np.percentile(
         consistency_matrix[consistency_matrix > 0], consistency_perc
     )
-    low_consistency_indices = np.argwhere(
-        (consistency_matrix < consistency_threshold) & (consistency_matrix > 0)
-    )  # Do not touch non-existing connections (consistency = 0)
+    low_consistency_indices = np.argwhere((consistency_matrix < consistency_threshold) & (consistency_matrix > 0)) # Do not touch non-existing connections (consistency = 0)
     num_to_select = int(len(low_consistency_indices) * (fns_perc / 100))
 
     print(
@@ -340,8 +338,9 @@ def simulate_sc_fns(
 
         # Verify that the expected number of false negatives has been introduced
         assert (
-            len(np.argwhere(np.isnan(SC_matrices[i])))
-            == len(np.argwhere(np.isnan(SC_matrix))) + num_to_select
+             len(np.argwhere(np.isnan(SC_matrices[i])))
+             == len(np.argwhere(np.isnan(SC_matrix))) + num_to_select
         ), f"Session {i}: Number of NaN values is not as expected"
 
     return SC_matrices
+
