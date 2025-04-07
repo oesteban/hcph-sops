@@ -1,35 +1,86 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
+
+def compute_loa(df):
+    import statsmodels.formula.api as smf
+
+    # Convert dataframe to long format
+    df = df.melt(
+        id_vars=["random_group", "replication"],
+        var_name="connection_index",
+        value_name="sc",
+    )
+
+
+def extract_mean_diff(df):
+    # Compute all pairwise differences and means
+    connections = df.columns.difference(["random_group", "replication"])
+    df_comp = pd.DataFrame()
+    for conn in connections:
+        pairwise_diffs = []
+        pairwise_means = []
+        for i in range(len(df) - 1):
+            for j in range(i + 1, len(df)):
+                diff = df.iloc[i][conn] - df.iloc[j][conn]
+                mean = (df.iloc[i][conn] + df.iloc[j][conn]) / 2
+                pairwise_diffs.append(diff)
+                pairwise_means.append(mean)
+        temp_df = pd.DataFrame({
+            "diff": pairwise_diffs,
+            "mean": pairwise_means,
+            "connection": [conn] * len(pairwise_diffs)
+        })
+        df_comp = pd.concat([df_comp, temp_df], ignore_index=True)
+
+    return df_comp["mean"], df_comp["diff"]
+
 
 
 def ba_plot(
-    diff, mean, hue=None, title=None, point_size=50, bright_color="#0041C2", pale_color="#6495ED"
+    df=None,
+    diff=None,
+    mean=None,
+    hue=None,
+    title=None,
+    point_size=50,
+    bright_color="#0041C2",
+    pale_color="#6495ED",
 ):
     """
     Generate a Bland-Altman plot
 
     Parameters:
-        diff (array-like): Differences between pairs of measurements.
-        mean (array-like): Mean values of the pairs of measurements.
-        title (str): Title of the plot.
-        point_size (int): Size of the points in the scatter plot.
-        bright_color (str): Bright color for points outside the limits of agreement.
-        pale_color (str): Pale color for points within the limits of agreement.
+        data (DataFrame, optional): A pandas DataFrame containing the data.
+        diff (array-like, optional): Differences between pairs of measurements. Required if `data` is not provided.
+        mean (array-like, optional): Mean values of the pairs of measurements. Required if `data` is not provided.
+        hue (array-like or str, optional): Column name in `data` or array-like for grouping points by color.
+        title (str, optional): Title of the plot.
+        point_size (int, optional): Size of the points in the scatter plot.
+        bright_color (str, optional): Bright color for points outside the limits of agreement.
+        pale_color (str, optional): Pale color for points within the limits of agreement.
     """
+
+    # Extract mean, diff vectors if dataframe was passed
+    if df is not None and diff is None and mean is None:
+        mean, diff = extract_mean_diff(df)
+
 
     # Calculate statistics
     mean_mean = np.mean(mean)
     mean_diff = np.mean(diff)
-    sd_diff = np.std(diff, ddof=1)
-    la_diff = 1.96 * sd_diff ## THIS IS WRONG !! MEASURES ARE NOT INDEPENDENT
+    
+    if df is not None:
+        loa_diff = compute_loa(df)
+    else:
+        sd_diff = np.std(diff, ddof=1)
+        loa_diff = 1.96 * sd_diff  # THIS IS WRONG !! MEASURES ARE NOT INDEPENDENT
 
-    la_inf = mean_diff - la_diff
-    la_sup = mean_diff + la_diff
+    loa_inf = mean_diff - loa_diff
+    loa_sup = mean_diff + loa_diff
 
-    # Assign colors based on limits of agreement
-    # Assign binary categories based on limits of agreement
-    #outlier_flag = np.where((diff < la_inf) | (diff > la_sup), 1, 0)
+    # Ensure shapes match
     assert mean.shape == diff.shape, f"Shapes of mean {mean.shape}, diff {diff.shape} must match"
     if hue is not None:
         assert hue.shape == diff.shape, f"Shapes of hue {hue.shape}, diff {diff.shape} must match"
@@ -44,7 +95,6 @@ def ba_plot(
         legend=False,
     )
 
-    
     # Add horizontal lines for zero-difference line, mean difference and limits of agreement
     plt.axhline(
         0, color="grey", linestyle="-", linewidth=1, label="Zero Difference"
@@ -53,7 +103,7 @@ def ba_plot(
         mean_diff, color="black", linestyle="--", linewidth=1, label="Mean Difference"
     )
     plt.axhline(
-        la_sup,
+        loa_sup,
         color=pale_color,
         linestyle="--",
         linewidth=1,
@@ -61,44 +111,13 @@ def ba_plot(
         label="Upper LoA",
     )
     plt.axhline(
-        la_inf,
+        loa_inf,
         color=pale_color,
         linestyle="--",
         linewidth=1,
         alpha=0.6,
         label="Lower LoA",
     )
-
-    """
-    # Add annotations for mean difference and limits of agreement
-    plt.text(
-        mean_mean - mean_mean * 0.2,  # Adjusted to depend on mean_diff
-        la_sup,
-        f"{la_sup:.2f}",
-        color=bright_color,
-        ha="right",
-        va="center",
-        fontsize=10,
-    )
-    plt.text(
-        mean_mean + mean_mean * 0.2,
-        la_inf,
-        f"{la_inf:.2f}",
-        color=bright_color,
-        ha="left",
-        va="center",
-        fontsize=10,
-    )
-    plt.text(
-        mean_mean,
-        mean_diff,
-        f"{mean_diff:.2f}",
-        color="black",
-        ha="center",
-        va="center",
-        fontsize=10,
-    )
-    """
 
     # Customize plot appearance
     plt.xlabel("Mean connection value ")
