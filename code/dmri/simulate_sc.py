@@ -35,10 +35,12 @@ def get_ref_sc(
         A 2D numpy array representing the reference SC matrix.
     """
     if connectome_atlas:
+        print("Using the connectome atlas as reference SC matrix.")
         with h5py.File(atlas_path, "r") as f:
             SC_matrix = np.array(f["matrices"]["numbStlines"])
             # Because at scale 3, all regions are of similar size, the density and average number of streamlines are approximately proportional
     else:
+        print("Simulating a reference SC matrix using a log-normal distribution.")
         ## Fix the random seed the same way as in the defacing registered report (RR)
         day = 231108  # day and time the journal published our HCPh stage 1 RR
         time = 105017
