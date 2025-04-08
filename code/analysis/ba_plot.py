@@ -66,9 +66,7 @@ def ba_plot(
     if df is not None and diff is None and mean is None:
         mean, diff = extract_mean_diff(df)
 
-
     # Calculate statistics
-    mean_mean = np.mean(mean)
     mean_diff = np.mean(diff)
     
     if df is not None:

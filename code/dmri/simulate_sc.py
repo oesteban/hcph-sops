@@ -4,7 +4,7 @@ import h5py
 
 def get_ref_sc(
     connectome_atlas=True,
-    atlas_path="/data/wm.connatlas.scale3.h5",
+    atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
     atlas_dim=64,
     scale=0.01,
     shape=0.5,
@@ -69,6 +69,7 @@ def get_ref_sc(
 def simulate_sc_density_bias(
     num_sessions=36,
     connectome_atlas_as_ref=True,
+    atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
     bias_density=20,
     small_noise_scale=0.0005,
     high_noise_scale=0.002,
@@ -104,7 +105,7 @@ def simulate_sc_density_bias(
          The simulated SC matrices stored in a 3D numpy array of shape (num_sessions, atlas_dim, atlas_dim), where `atlas_dim` is the dimensionality of the
          brain atlas (number of regions).
     """
-    SC_matrix = get_ref_sc(connectome_atlas=connectome_atlas_as_ref)
+    SC_matrix = get_ref_sc(connectome_atlas=connectome_atlas_as_ref, atlas_path=atlas_path)
     atlas_dim = SC_matrix.shape[1]
 
     ## Copy this matrix multiple time to simulate multiple sessions of the same subject
@@ -143,7 +144,7 @@ def simulate_sc_density_bias(
 def simulate_sc_length_bias(
     num_sessions=36,
     connectome_atlas_as_ref=True,
-    atlas_path="/data/wm.connatlas.scale3.h5",
+    atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
     bias_length=20,
     small_noise_scale=0.0005,
     high_noise_scale=0.002,
@@ -179,7 +180,7 @@ def simulate_sc_length_bias(
         https://doi.org/10.5281/zenodo.4919132.
     """
     SC_matrix = get_ref_sc(
-        connectome_atlas=connectome_atlas_as_ref, atlas_dim=243
+        connectome_atlas=connectome_atlas_as_ref, atlas_path=atlas_path, atlas_dim=243
     )  # If we simulate the SC matrix, we need to set the atlas_dim to 243 to match the shape of the length matrix.
 
     with h5py.File(atlas_path, "r") as f:
@@ -214,7 +215,12 @@ def simulate_sc_length_bias(
     return SC_matrices
 
 
-def simulate_sc_fps(num_sessions=36, fps_perc=20, impute_perc=20):
+def simulate_sc_fps(
+    num_sessions=36,
+    atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
+    fps_perc=20,
+    impute_perc=20,
+):
     """
     Simulates repeated structural connectivity (SC) matrices with false positives.
 
@@ -237,7 +243,7 @@ def simulate_sc_fps(num_sessions=36, fps_perc=20, impute_perc=20):
       Please download the atlas from https://doi.org/10.5281/zenodo.4919132.
     """
     SC_matrix = get_ref_sc(
-        connectome_atlas=True
+        atlas_path=atlas_path, connectome_atlas=True
     )  # This function works only with the connectome atlas as reference, because we assume that no connection is encoded as NaN.
     atlas_dim = SC_matrix.shape[1]
 
@@ -280,7 +286,7 @@ def simulate_sc_fps(num_sessions=36, fps_perc=20, impute_perc=20):
 
 def simulate_sc_fns(
     num_sessions=36,
-    atlas_path="/data/wm.connatlas.scale3.h5",
+    atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
     consistency_perc=20,
     fns_perc=20,
 ):
@@ -306,7 +312,7 @@ def simulate_sc_fns(
       Please download the atlas from https://doi.org/10.5281/zenodo.4919132.
     """
     SC_matrix = get_ref_sc(
-        atlas_dim=243
+        atlas_path=atlas_path, atlas_dim=243
     )  # If we simulate the SC matrix, we need to set the atlas_dim to 243 to match the shape of the consistency matrix.
     atlas_dim = SC_matrix.shape[1]
 
@@ -321,7 +327,9 @@ def simulate_sc_fns(
     consistency_threshold = np.percentile(
         consistency_matrix[consistency_matrix > 0], consistency_perc
     )
-    low_consistency_indices = np.argwhere((consistency_matrix < consistency_threshold) & (consistency_matrix > 0)) # Do not touch non-existing connections (consistency = 0)
+    low_consistency_indices = np.argwhere(
+        (consistency_matrix < consistency_threshold) & (consistency_matrix > 0)
+    )  # Do not touch non-existing connections (consistency = 0)
     num_to_select = int(len(low_consistency_indices) * (fns_perc / 100))
 
     print(
@@ -340,9 +348,8 @@ def simulate_sc_fns(
 
         # Verify that the expected number of false negatives has been introduced
         assert (
-             len(np.argwhere(np.isnan(SC_matrices[i])))
-             == len(np.argwhere(np.isnan(SC_matrix))) + num_to_select
+            len(np.argwhere(np.isnan(SC_matrices[i])))
+            == len(np.argwhere(np.isnan(SC_matrix))) + num_to_select
         ), f"Session {i}: Number of NaN values is not as expected"
 
     return SC_matrices
-
