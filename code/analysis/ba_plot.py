@@ -47,6 +47,8 @@ def ba_plot(
     point_size=50,
     bright_color="#0041C2",
     pale_color="#6495ED",
+    xlabel="Mean connection value ",
+    ylabel="Difference in connection value between pairs of sessions",
 ):
     """
     Generate a Bland-Altman plot
@@ -94,9 +96,9 @@ def ba_plot(
     )
 
     # Add horizontal lines for zero-difference line, mean difference and limits of agreement
-    plt.axhline(
-        0, color="grey", linestyle="-", linewidth=1, label="Zero Difference"
-    )
+    # plt.axhline(
+    #     0, color="grey", linestyle="-", linewidth=1, label="Zero Difference"
+    # )
     plt.axhline(
         mean_diff, color="black", linestyle="--", linewidth=1, label="Mean Difference"
     )
@@ -118,8 +120,8 @@ def ba_plot(
     )
 
     # Customize plot appearance
-    plt.xlabel("Mean connection value ")
-    plt.ylabel("Difference in connection value between pairs of sessions")
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
     plt.title(title if title else "", fontsize=16)
 
     # Remove outline of the plot

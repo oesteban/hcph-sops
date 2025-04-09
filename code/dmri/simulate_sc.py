@@ -146,8 +146,8 @@ def simulate_sc_length_bias(
     connectome_atlas_as_ref=True,
     atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
     bias_length=20,
-    small_noise_scale=0.0005,
-    high_noise_scale=0.002,
+    small_noise_scale=0.08,
+    high_noise_scale=0.5,
 ):
     """
     Simulates structural connectivity (SC) matrices with a length bias, introducing
@@ -209,7 +209,7 @@ def simulate_sc_length_bias(
         SC_matrices[i, :, :] = np.maximum(SC_matrices[i, :, :], 0)
 
     print(
-        f"Simulated a series of {SC_matrices.shape[0]} SC matrices of shape ({SC_matrices.shape[1]}x{SC_matrices.shape[2]}) with higher variability in long connections."
+        f"Simulated a series of {SC_matrices.shape[0]} SC matrices of shape ({SC_matrices.shape[1]}x{SC_matrices.shape[2]}) with higher variability (std={high_noise_scale}) in long connections."
     )
 
     return SC_matrices
