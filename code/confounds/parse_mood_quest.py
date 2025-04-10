@@ -42,6 +42,20 @@ def parse_issue(text):
             # Remove indications in parentheses from the value (except for kind of precipitations)
             if key != "Kind of precipitation":
                 value = re.sub(r"\s*\(.*?\)", "", value).strip()
+            
+            # Hours spent in bed the previous night have been encoded in diverse format, let's standardize it
+            if key == "Time spent in bed the previous night":
+                # Normalize hours spent in bed to float
+                if re.match(r"^\d+(\.\d+)?$", value):  # Check if already in float format
+                    pass  # Keep the value as is
+                else:
+                    match = re.search(r"(\d+)(?:h|:)?(?:\s*(\d+)\s*(?:min)?)?", value)
+                    if match:
+                        hours = int(match.group(1))
+                        minutes = int(match.group(2)) if match.group(2) else 0
+                        value = str(hours + minutes / 60)
+                    else:
+                        value = "n/a"
 
             # Handle generic checkboxes
             if "- [X]".lower() in value.lower():
@@ -49,9 +63,111 @@ def parse_issue(text):
             elif "- [ ]" in value:
                 value = "No"
 
-            data[key] = value
+            # MR room temperature, humidity ... appear 3x under the same name in the generalizability sessions questionnaire
+            # We need to store the three values to correctly match them with session order later
+            if key in data:
+                if isinstance(data[key], list):
+                    data[key].append(value)
+                else:
+                    data[key] = [data[key], value]
+            else:
+                data[key] = value
 
     return data
+
+
+def match_info_sessions(info_dict, issues_info, title):
+    # Extract session and subject number from the title
+    # The issue title for the before questionnaire of generalizability session
+    # encodes several session numbers
+    matches = re.findall(r"sub-(\d+)_ses-2(\d{2})(\d{2})(\d{3})", title)
+
+    session_order_map = {
+        "01": "First scanner",
+        "02": "Second scanner",
+        "03": "Third scanner",
+    }
+
+    scanner_index_map = {"060": "Prisma", "034": "Vida", "030": "VidaFit"}
+
+    session_order_map_pe = {
+        "01": "PE direction on the first scanner",
+        "02": "PE direction on the second scanner",
+        "03": "PE direction on the third scanner",
+    }
+
+    for subject_number, scanner_repl, scanner_order, scanner_index in matches:
+        # Extract the scanner name and phase encoding direction corresponding to the session order
+        scanner_key = session_order_map.get(scanner_order)
+        scanner_value = info_dict.get(scanner_key)
+
+        # Sanity check that scanner name reported in mood questionnaire correspond to the one in the title
+        scanner_name = scanner_index_map.get(scanner_index)
+        # if value was not entered in the questionnaire, impute the expected name extracted from issue title
+        if scanner_value == "None" or scanner_value is None:
+            scanner_value = scanner_name
+        else:
+            assert (
+                scanner_value == scanner_name
+            ), f"Scanner index in the title ({scanner_index} = {scanner_name}) does not match the one in the questionnaire '{scanner_value}'."
+
+        pe_key = session_order_map_pe.get(scanner_order)
+        pe_value = info_dict.get(pe_key)
+        # BIDS specification require missing values to be indicated with 'n/a'
+        if pe_value == "None":
+            pe_value = "n/a"
+
+        base_dict = {
+            "subject_number": subject_number,
+            "session_number": f"2{scanner_repl}{scanner_order}{scanner_index}",
+            "scanner": scanner_value,
+            "PE direction": pe_value,
+        }
+
+        # Copy all non-room-environment keys but don't copy the column indicating session-specific info
+        for k, v in info_dict.items():
+            if k not in [
+                "MR room temperature (°C)",
+                "MR room humidity (%)",
+                "MR room atmospheric pressure (hPa)",
+                "MR helium level (%)",
+                "First scanner",
+                "Second scanner",
+                "Third scanner",
+                "PE direction on the first scanner",
+                "PE direction on the second scanner",
+                "PE direction on the third scanner",
+            ]:
+                base_dict[k] = v
+
+        scanner_order_idx = int(scanner_order) - 1
+        for env_key in [
+            "MR room temperature (°C)",
+            "MR room humidity (%)",
+            "MR room atmospheric pressure (hPa)",
+            "MR helium level (%)",
+        ]:
+            env_list = info_dict.get(env_key, [])
+            if isinstance(env_list, list):
+                base_dict[env_key] = env_list[scanner_order_idx]
+            elif isinstance(env_list, str) and "VF" in env_list:
+                # in the first session of the generalizability protocol, we indicated the temperature with VF: 21.1, V:19.8
+                if scanner_name == "VidaFit":
+                    base_dict[env_key] = re.search(
+                        r"VF: (\d+(\.\d+)?)", env_list
+                    ).group(1)
+                elif scanner_name == "Vida":
+                    base_dict[env_key] = re.search(r"V:(\d+(\.\d+)?)", env_list).group(
+                        1
+                    )
+                else:
+                    # We forgot to record the value for the prisma scanner
+                    base_dict[env_key] = "n/a"
+
+        # Replicate the info_dict for each session
+        issues_info.append(base_dict)
+
+    return issues_info
 
 
 def extract_issues_info(
@@ -97,30 +213,36 @@ def extract_issues_info(
                 # Parse the text
                 info_dict = parse_issue(issue_body)
 
-                # Extract session and subject number from the title
-                match = re.search(r"sub-(\d+)_ses-([a-zA-Z0-9]+)", title)
-                if match:
-                    subject_number = match.group(1)
-                    session_number = match.group(2)
-                    # Add subject and session number at the beginning of the data_dict
-                    info_dict = {
-                        "subject_number": subject_number,
-                        "session_number": session_number,
-                        **info_dict,
-                    }
+                # We need to carefully handle the infos from the generalizability sessions
+                # because the before questionnaire includes most info apply to all sessions
+                # indicated in the issue title, but some info correspond to only one session
+                if "ses-2" in title and "[BEFORE]" in title:
+                    issues_info = match_info_sessions(info_dict, issues_info, title)
+                else:
+                    # Extract session and subject number from the title
+                    match = re.search(r"sub-(\d+)_ses-([a-zA-Z0-9]+)", title)
+                    if match:
+                        subject_number = match.group(1)
+                        session_number = match.group(2)
+                        # Add subject and session number at the beginning of the data_dict
+                        info_dict = {
+                            "subject_number": subject_number,
+                            "session_number": session_number,
+                            **info_dict,
+                        }
 
-                # Append the data_dict to the list
-                issues_info.append(info_dict)
+                    # Append the data_dict to the list
+                    issues_info.append(info_dict)
 
         page += 1
 
     return issues_info
 
 
-## Parse the confounds of the reliability sessions first
 ## Parse the confounds registered before and after the sessions separately and then merge the dataframes
-issues_before_info = extract_issues_info(r"\[MOOD\](?:\[BEFORE\])? sub-001_ses-0\d{2}")
-issues_after_info = extract_issues_info(r"\[MOOD\]\[AFTER\] sub-001_ses-0\d{2}")
+## Parse the confounds of the reliability sessions first
+issues_before_info = extract_issues_info(r"\[MOOD\](?:\[BEFORE\])? sub-001_ses-\d+")
+issues_after_info = extract_issues_info(r"\[MOOD\]\[AFTER\] sub-001_ses-\d+")
 
 # Convert the list of dictionaries to a DataFrame
 df_before = pd.DataFrame(issues_before_info)
@@ -178,7 +300,7 @@ df.drop(
 ## Manual corrections
 # Indicate units or scale range in the column name
 df.rename(columns={"Scan date": "Scan date (MM-DD-AAAA)"}, inplace=True)
-df.rename(columns={"Scan time": "Scan time (HH-MM)"}, inplace=True)
+df.rename(columns={"Scan time": "Session start time (HH-MM)"}, inplace=True)
 df.rename(
     columns={"Outside temperature range": "Outside temperature range (°C)"},
     inplace=True,
@@ -195,6 +317,7 @@ df.rename(
 df["NSAIDs intake in the last 24h (mg)"] = (
     df["NSAIDs intake in the last 24h (mg)"]
     .str.replace("mg", "", regex=False)
+    .str.replace("ibuprofen", "", regex=False)
     .str.strip()
 )
 df.rename(
@@ -214,6 +337,24 @@ df.rename(
 df.rename(columns={"Sleep quality": "Sleep quality (1=worst, 6=best)"}, inplace=True)
 df.rename(
     columns={
+        "If you slept during the T1w": "If you slept during the T1w (None | I fell asleep for a few moments but quickly realized | I fell asleep for approximately half of the session | I was asleep the (almost) whole session)"
+    },
+    inplace=True,
+)
+df.rename(
+    columns={
+        "If you slept during the rest task": "If you slept during the rest task (None | I fell asleep for a few moments but quickly realized | I fell asleep for approximately half of the session | I was asleep the (almost) whole session)"
+    },
+    inplace=True,
+)
+df.rename(
+    columns={
+        "If you slept during the diffusion": "If you slept during the diffusion (None | I fell asleep for a few moments but quickly realized | I fell asleep for approximately half of the session | I was asleep the (almost) whole session)"
+    },
+    inplace=True,
+)
+df.rename(
+    columns={
         "Time spent in bed the previous night": "Hours spent in bed the previous night"
     },
     inplace=True,
@@ -225,15 +366,11 @@ df.rename(
     inplace=True,
 )
 df.rename(
-    columns={
-        "Rumination": "Rumination (1 = high rumination, 6 = low rumination)"
-    },
+    columns={"Rumination": "Rumination (1 = high rumination, 6 = low rumination)"},
     inplace=True,
 )
 df.rename(
-    columns={
-        "Anxiety": "Anxiety (1 = high anxiety, 6 = low anxiety)"
-    },
+    columns={"Anxiety": "Anxiety (1 = high anxiety, 6 = low anxiety)"},
     inplace=True,
 )
 df.rename(
@@ -250,6 +387,7 @@ df.rename(
 df["Distance walked in the last 24h (km)"] = (
     df["Distance walked in the last 24h (km)"]
     .str.replace("k", "", regex=False)
+    .str.replace("m", "", regex=False)
     .str.strip()
 )
 df.rename(
@@ -396,7 +534,7 @@ df["Number of steps made in the last 24h"] = df[
 ].str.replace(",", "", regex=False)
 
 # BIDS specification indicates to encode missing values as "n/a"
-df.fillna("n/a", inplace=True) 
+df.fillna("n/a", inplace=True)
 df.replace("_No response_", "n/a", inplace=True)
 df.replace("NONE", "n/a", inplace=True)
 
@@ -411,6 +549,9 @@ for index, row in df.iterrows():
 
 # Session 14 was not finished if the tickbox were not ticked it's not because the subject did not sleep, but because the form was not filled
 df.loc[df["session_number"] == "014", slept_columns] = "n/a"
+
+# Complete that the scanner used for the reliability sessions was the Prisma
+df.loc[df["session_number"].str.startswith("0"), "scanner"] = "Prisma"
 
 # Save to CSV
 df.to_csv("parsed_data.tsv", sep="\t", index=False)
