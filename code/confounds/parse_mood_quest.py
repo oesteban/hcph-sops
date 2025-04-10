@@ -1,7 +1,9 @@
 import requests
 import re
-
 import pandas as pd
+from pathlib import Path
+
+save_data_path = Path("/data/datasets/hcph-mood-quest.tsv")
 
 
 def parse_issue(text):
@@ -42,11 +44,13 @@ def parse_issue(text):
             # Remove indications in parentheses from the value (except for kind of precipitations)
             if key != "Kind of precipitation":
                 value = re.sub(r"\s*\(.*?\)", "", value).strip()
-            
+
             # Hours spent in bed the previous night have been encoded in diverse format, let's standardize it
             if key == "Time spent in bed the previous night":
                 # Normalize hours spent in bed to float
-                if re.match(r"^\d+(\.\d+)?$", value):  # Check if already in float format
+                if re.match(
+                    r"^\d+(\.\d+)?$", value
+                ):  # Check if already in float format
                     pass  # Keep the value as is
                 else:
                     match = re.search(r"(\d+)(?:h|:)?(?:\s*(\d+)\s*(?:min)?)?", value)
@@ -554,4 +558,4 @@ df.loc[df["session_number"] == "014", slept_columns] = "n/a"
 df.loc[df["session_number"].str.startswith("0"), "scanner"] = "Prisma"
 
 # Save to CSV
-df.to_csv("parsed_data.tsv", sep="\t", index=False)
+df.to_csv(save_data_path, sep="\t", index=False)
