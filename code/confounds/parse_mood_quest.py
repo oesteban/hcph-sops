@@ -304,7 +304,12 @@ df.drop(
 ## Manual corrections
 # Indicate units or scale range in the column name
 df.rename(columns={"Scan date": "Scan date (MM-DD-AAAA)"}, inplace=True)
-df.rename(columns={"Scan time": "Session start time (HH-MM)"}, inplace=True)
+df.rename(columns={"Scan time": "Session start time (HH:MM)"}, inplace=True)
+# Harmonize time format with other columns
+df["Session start time (HH:MM)"] = (
+    df["Session start time (HH:MM)"]
+    .str.replace("-", ":", regex=False)
+)
 df.rename(
     columns={"Outside temperature range": "Outside temperature range (°C)"},
     inplace=True,
