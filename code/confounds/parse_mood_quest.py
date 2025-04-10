@@ -100,7 +100,7 @@ def match_info_sessions(info_dict, issues_info, title):
         "03": "PE direction on the third scanner",
     }
 
-    for subject_number, scanner_repl, scanner_order, scanner_index in matches:
+    for participant_id, scanner_repl, scanner_order, scanner_index in matches:
         # Extract the scanner name and phase encoding direction corresponding to the session order
         scanner_key = session_order_map.get(scanner_order)
         scanner_value = info_dict.get(scanner_key)
@@ -122,7 +122,7 @@ def match_info_sessions(info_dict, issues_info, title):
             pe_value = "n/a"
 
         base_dict = {
-            "subject_number": subject_number,
+            "participant_id": participant_id,
             "session_number": f"2{scanner_repl}{scanner_order}{scanner_index}",
             "scanner": scanner_value,
             "PE direction": pe_value,
@@ -226,11 +226,11 @@ def extract_issues_info(
                     # Extract session and subject number from the title
                     match = re.search(r"sub-(\d+)_ses-([a-zA-Z0-9]+)", title)
                     if match:
-                        subject_number = match.group(1)
+                        participant_id = match.group(1)
                         session_number = match.group(2)
                         # Add subject and session number at the beginning of the data_dict
                         info_dict = {
-                            "subject_number": subject_number,
+                            "participant_id": participant_id,
                             "session_number": session_number,
                             **info_dict,
                         }
@@ -257,7 +257,7 @@ df = pd.merge(
     df_before,
     df_after,
     how="left",
-    on=["subject_number", "session_number"],
+    on=["participant_id", "session_number"],
     suffixes=(None, "_after"),
 )
 
@@ -341,31 +341,7 @@ df.rename(
 df.rename(columns={"Sleep quality": "Sleep quality (1=worst, 6=best)"}, inplace=True)
 df.rename(
     columns={
-        "If you slept during the T1w": "If you slept during the T1w (None | I fell asleep for a few moments but quickly realized | I fell asleep for approximately half of the session | I was asleep the (almost) whole session)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "If you slept during the rest task": "If you slept during the rest task (None | I fell asleep for a few moments but quickly realized | I fell asleep for approximately half of the session | I was asleep the (almost) whole session)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "If you slept during the diffusion": "If you slept during the diffusion (None | I fell asleep for a few moments but quickly realized | I fell asleep for approximately half of the session | I was asleep the (almost) whole session)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
         "Time spent in bed the previous night": "Hours spent in bed the previous night"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Alcohol intake in the last 24h": "Alcohol intake in the last 24h (alcohol unit; 25-33cl beer = 1, 1 glass of wine = 1)"
     },
     inplace=True,
 )
@@ -402,129 +378,6 @@ df["Kilocalories burned in the last 24h"] = (
     df["Kilocalories burned in the last 24h"]
     .str.replace("k", "", regex=False)
     .str.strip()
-)
-
-
-# PANAS questionnaire
-df.rename(
-    columns={
-        "Interested": "Interested (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Distressed": "Distressed (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Excited": "Excited (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Upset": "Upset (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Strong": "Strong (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Guilty": "Guilty (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Scared": "Scared (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Hostile": "Hostile (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Enthusiastic": "Enthusiastic (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Proud": "Proud (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Irritable": "Irritable (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Alert": "Alert (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Ashamed": "Ashamed (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Inspired": "Inspired (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Nervous": "Nervous (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Determined": "Determined (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Attentive": "Attentive (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Jittery": "Jittery (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Active": "Active (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
-)
-df.rename(
-    columns={
-        "Afraid": "Afraid (1 = Very slightly or not at all, 2 = A little, 3 = Moderately, 4 = Quite a bit, 5 = Extremely)"
-    },
-    inplace=True,
 )
 
 # Now that we indicated scale range in the column name, we can remove it from values
