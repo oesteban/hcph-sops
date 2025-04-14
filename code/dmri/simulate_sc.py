@@ -70,9 +70,10 @@ def simulate_sc_density_bias(
     num_sessions=36,
     connectome_atlas_as_ref=True,
     atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
+    atlas_dim=64,
     bias_density=20,
-    small_noise_scale=0.0005,
-    high_noise_scale=0.002,
+    small_noise_scale=50,
+    high_noise_scale=100,
 ):
     """
     Simulate structural connectivity (SC) matrices with density-based noise bias.
@@ -105,7 +106,7 @@ def simulate_sc_density_bias(
          The simulated SC matrices stored in a 3D numpy array of shape (num_sessions, atlas_dim, atlas_dim), where `atlas_dim` is the dimensionality of the
          brain atlas (number of regions).
     """
-    SC_matrix = get_ref_sc(connectome_atlas=connectome_atlas_as_ref, atlas_path=atlas_path)
+    SC_matrix = get_ref_sc(connectome_atlas=connectome_atlas_as_ref, atlas_path=atlas_path, atlas_dim=atlas_dim)
     atlas_dim = SC_matrix.shape[1]
 
     ## Copy this matrix multiple time to simulate multiple sessions of the same subject
@@ -116,6 +117,7 @@ def simulate_sc_density_bias(
     percentile_threshold = np.percentile(SC_matrix[SC_matrix > 0], bias_density)
 
     # Add noise to each duplicate
+    noise_list = []
     for i in range(num_sessions):
         noise = np.random.normal(loc=0, scale=small_noise_scale, size=SC_matrix.shape)
         higher_noise = np.random.normal(
@@ -126,19 +128,19 @@ def simulate_sc_density_bias(
         noise[SC_matrix <= percentile_threshold] += higher_noise[
             SC_matrix <= percentile_threshold
         ]
-
+        noise_list.append(noise)
         SC_matrices[i, :, :] = SC_matrix + noise
 
         # SC cannot have negative values so if the value gets negative cast it to 0
         SC_matrices[i, :, :] = np.maximum(SC_matrices[i, :, :], 0)
 
     print(
-        f"Simulated a series of {SC_matrices.shape[0]} SC matrices of shape ({SC_matrices.shape[1]}x{SC_matrices.shape[2]}) with higher variability in lower density connections."
+        f"Simulated a series of {SC_matrices.shape[0]} SC matrices of shape ({SC_matrices.shape[1]}x{SC_matrices.shape[2]}) with higher variability (std={high_noise_scale}) in lower density connections."
     )
     # Test whether the shape is as expected
     assert SC_matrices.shape == (num_sessions, atlas_dim, atlas_dim)
 
-    return SC_matrices
+    return SC_matrices, np.array(noise_list)
 
 
 def simulate_sc_length_bias(
@@ -146,7 +148,7 @@ def simulate_sc_length_bias(
     connectome_atlas_as_ref=True,
     atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
     bias_length=20,
-    small_noise_scale=0.08,
+    small_noise_scale=0.0001,
     high_noise_scale=0.5,
 ):
     """
@@ -194,6 +196,7 @@ def simulate_sc_length_bias(
     long_connections = length_matrix > percentile_threshold
 
     # Add noise to each duplicate
+    noise_list = []
     for i in range(num_sessions):
         noise = np.random.normal(loc=0, scale=small_noise_scale, size=SC_matrix.shape)
         higher_noise = np.random.normal(
@@ -203,6 +206,8 @@ def simulate_sc_length_bias(
         # Apply higher noise to long connections
         noise[long_connections] += higher_noise[long_connections]
 
+        noise_list.append(noise)
+
         SC_matrices[i, :, :] = SC_matrix + noise
 
         # SC cannot have negative values so if the value gets negative cast it to 0
@@ -210,6 +215,94 @@ def simulate_sc_length_bias(
 
     print(
         f"Simulated a series of {SC_matrices.shape[0]} SC matrices of shape ({SC_matrices.shape[1]}x{SC_matrices.shape[2]}) with higher variability (std={high_noise_scale}) in long connections."
+    )
+
+    return SC_matrices, np.array(noise_list)
+
+def simulate_sc_noisy_copies(
+    num_sessions=36,
+    connectome_atlas_as_ref=True,
+    atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
+    noise_scale=0.0001,
+):
+    """
+    Simulates structural connectivity (SC) matrices with a length bias, introducing
+    higher variability in longer connections.
+
+    Parameters:
+    -----------
+    num_sessions : int, optional
+        Number of SC matrices to simulate. Default is 36.
+    connectome_atlas_as_ref : bool, optional
+        If True, uses the connectome atlas as the reference SC matrix, otherwise randomly generate a reference SC matrix based on a lognormal distribution. Default is True.
+    atlas_path : str, optional
+        Path to the connectome atlas file in HDF5 format. Default is "/data/wm.connatlas.scale3.h5".
+    noise_scale : float, optional
+        Standard deviation of the gaussian noise added to all connections. Default is 0.0001.
+    Returns:
+    --------
+    np.ndarray
+        The simulated SC matrices stored in a 3D numpy array of shape (num_sessions, atlas_dim, atlas_dim), where `atlas_dim` is the dimensionality of the
+        brain atlas (number of regions).
+    """
+    SC_matrix = get_ref_sc(
+        connectome_atlas=connectome_atlas_as_ref, atlas_path=atlas_path, atlas_dim=243
+    )  # If we simulate the SC matrix, we need to set the atlas_dim to 243 to match the shape of the length matrix.
+
+    atlas_dim = SC_matrix.shape[1]
+    SC_matrices = np.zeros((num_sessions, atlas_dim, atlas_dim))
+    # Add noise to each duplicate
+    noise_list = []
+    for i in range(num_sessions):
+        noise = np.random.normal(loc=0.0, scale=noise_scale, size=SC_matrix.shape)
+        noise_list.append(noise)
+
+        SC_matrices[i, :, :] = SC_matrix + noise
+
+        # SC cannot have negative values so if the value gets negative cast it to 0
+        SC_matrices[i, :, :] = np.maximum(SC_matrices[i, :, :], 0)
+
+    print(
+        f"Simulated a series of {SC_matrices.shape[0]} SC matrices of shape ({SC_matrices.shape[1]}x{SC_matrices.shape[2]}) with noisy copies (std={noise_scale})."
+    )
+
+    return SC_matrices, np.array(noise_list)
+
+def simulate_sc_no_bias(
+    num_sessions=36,
+    connectome_atlas_as_ref=True,
+    atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
+):
+    """
+    Simulates structural connectivity (SC) matrices with a length bias, introducing
+    higher variability in longer connections.
+
+    Parameters:
+    -----------
+    num_sessions : int, optional
+        Number of SC matrices to simulate. Default is 36.
+    connectome_atlas_as_ref : bool, optional
+        If True, uses the connectome atlas as the reference SC matrix, otherwise randomly generate a reference SC matrix based on a lognormal distribution. Default is True.
+    atlas_path : str, optional
+        Path to the connectome atlas file in HDF5 format. Default is "/data/wm.connatlas.scale3.h5".
+    Returns:
+    --------
+    np.ndarray
+        The simulated SC matrices stored in a 3D numpy array of shape (num_sessions, atlas_dim, atlas_dim), where `atlas_dim` is the dimensionality of the
+        brain atlas (number of regions).
+    """
+    SC_matrix = get_ref_sc(
+        connectome_atlas=connectome_atlas_as_ref, atlas_path=atlas_path, atlas_dim=243
+    )  # If we simulate the SC matrix, we need to set the atlas_dim to 243 to match the shape of the length matrix.
+    atlas_dim = SC_matrix.shape[1]
+    SC_matrices = np.zeros((num_sessions, atlas_dim, atlas_dim))
+    for i in range(num_sessions):
+        SC_matrices[i, :, :] = SC_matrix
+        # SC cannot have negative values so if the value gets negative cast it to 0
+        SC_matrices[i, :, :] = np.maximum(SC_matrices[i, :, :], 0)
+
+    print(
+        f"Simulated a series of {SC_matrices.shape[0]} identical SC matrices of shape ({SC_matrices.shape[1]}x{SC_matrices.shape[2]})."
     )
 
     return SC_matrices
