@@ -49,6 +49,7 @@ def ba_plot(
     pale_color="#6495ED",
     xlabel="Mean connection value ",
     ylabel="Difference in connection value between pairs of sessions",
+    rep_loa_estimates_df=None,
 ):
     """
     Generate a Bland-Altman plot
@@ -99,8 +100,9 @@ def ba_plot(
     # plt.axhline(
     #     0, color="grey", linestyle="-", linewidth=1, label="Zero Difference"
     # )
+    
     plt.axhline(
-        mean_diff, color="black", linestyle="--", linewidth=1, label="Mean Difference"
+        mean_diff, color="black", linestyle="-", linewidth=1, label="Mean Difference"
     )
     plt.axhline(
         loa_sup,
@@ -118,6 +120,22 @@ def ba_plot(
         alpha=0.6,
         label="Lower LoA",
     )
+
+    # If we computed the LoA using the LME to account for repeated measures, plot it as well
+    if rep_loa_estimates_df is not None:
+        rep_loa_diff = rep_loa_estimates_df["loa_diff"].values[0]
+        rep_bias = rep_loa_estimates_df["bias"].values[0]
+        plt.axhline(
+            rep_bias, color="red", linestyle="-", linewidth=1, label="Mean Difference (repeated measures)"
+        )
+        if rep_loa_diff is not None:
+            plt.axhline(
+                rep_bias + rep_loa_diff, color="red", linestyle="--", linewidth=1, label="Upper LoA (repeated measures)"
+            )
+            plt.axhline(
+                rep_bias - rep_loa_diff, color="red", linestyle="--", linewidth=1, label="Lower LoA (repeated measures)"
+            )
+    
 
     # Customize plot appearance
     plt.xlabel(xlabel)
