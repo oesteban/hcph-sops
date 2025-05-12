@@ -60,7 +60,7 @@ def generate_synthetic_data(
     # Create parameter dictionary for reference
     params = {
         "pi0": true_pi0,
-        "lambda": true_lambda,
+        "lambda_exp": true_lambda,
         "mu": true_mu,
         "sigma": true_sigma,
         "n_samples": n_samples,
@@ -113,13 +113,13 @@ def define_mixture_model(
 ):
     with pm.Model() as model:
         # Prior for proportion of unconnected regions
-        pi0 = pm.Beta("pi0", alpha=1, beta=1)
+        pi0 = pm.Beta("pi0", alpha=2, beta=5)
 
         # Prior for exponential rate parameter
-        lambda_exp = pm.Gamma("lambda_exp", alpha=2, beta=3)
+        lambda_exp = pm.Gamma("lambda_exp", alpha=6, beta=2)
 
         # Prior for standard deviation of connected regions
-        sigma = pm.HalfNormal("sigma", sigma=0.1)
+        sigma = pm.HalfNormal("sigma", sigma=0.2)
 
         # Mean for connected regions - either fixed or learned
         if mu_type == "fixed":
@@ -263,7 +263,7 @@ def create_analysis_plots(trace, params, model, model_info):
     param_comparison = {}
     for param_name, pymc_name in [
         ("pi0", "pi0"),
-        ("lambda", "lambda_exp"),
+        ("lambda_exp", "lambda_exp"),
         ("sigma", "sigma"),
         ("mu", "mu"),
     ]:
@@ -287,8 +287,11 @@ def create_analysis_plots(trace, params, model, model_info):
     fig_trace = plt.figure(figsize=(12, 8))
     trace_plot = az.plot_trace(trace, var_names=var_names)
     if params:
+        parameter_list = [params["pi0"], params["sigma"], params["lambda_exp"]]
+        if model_info["mu_type"] == "learned":
+            parameter_list.append(params["mu"])
         for ax, true_value in zip(
-            trace_plot[:, 0].ravel(), [params["pi0"], params["sigma"], params["lambda"]]
+            trace_plot[:, 0].ravel(), parameter_list
         ):
             ax.axvline(
                 true_value,
@@ -297,7 +300,7 @@ def create_analysis_plots(trace, params, model, model_info):
                 label=f"True value: {true_value}",
             )
         for ax, true_value in zip(
-            trace_plot[:, 1].ravel(), [params["pi0"], params["sigma"], params["lambda"]]
+            trace_plot[:, 1].ravel(), parameter_list
         ):
             ax.axhline(
                 true_value,
@@ -430,8 +433,6 @@ def run_simulation(
     print("Creating data histogram...")
     data_fig = create_data_histogram(density_values, params)
     results["data_histogram"] = data_fig
-    if display_plots:
-        display(data_fig)
 
     # Prior predictive sampling
     print("Drawing prior predictive samples...")
@@ -445,8 +446,6 @@ def run_simulation(
         draws=1000,
     )
     results["prior_sampling_histogram"] = prior_fig
-    if display_plots:
-        display(prior_fig)
 
     # Fit model
     print("Fitting PyMC model (this may take a few minutes)...")
@@ -469,29 +468,7 @@ def run_simulation(
     results.update(analysis_results)
 
     if display_plots:
-        print("\nSummary statistics:")
-        display(analysis_results["summary"])
-
-        print("\nParameter comparison:")
-        for param, values in analysis_results["param_comparison"].items():
-            if "note" in values:
-                print(
-                    f"{param}: True = {values['true']:.3f}, Value = {values['estimated']:.3f} ({values['note']})"
-                )
-            else:
-                print(
-                    f"{param}: True = {values['true']:.3f}, Estimated = {values['estimated']:.3f}"
-                )
-
-        print("\nDiagnostic plots:")
-        display(analysis_results["trace_plot"])
-        display(analysis_results["energy_plot"])
-        display(analysis_results["forest_plot"])
-        display(analysis_results["autocorr_plot"])
-
-        if "posterior_predictive_plot" in analysis_results:
-            print("\nPosterior predictive check:")
-            display(analysis_results["posterior_predictive_plot"])
+        display_simulation_results(results)
 
     return results
 
@@ -512,9 +489,31 @@ def display_simulation_results(results):
     params = results["data"]["params"]
     for param, value in params.items():
         print(f"- {param}: {value}")
+    
+    print("\nParameter comparison:")
+    for param, values in results["param_comparison"].items():
+        if "note" in values:
+            print(
+                f"{param}: True = {values['true']:.3f}, Value = {values['estimated']:.3f} ({values['note']})"
+            )
+        else:
+            print(
+                f"{param}: True = {values['true']:.3f}, Estimated = {values['estimated']:.3f}"
+            )
+
 
     print("\nSummary statistics:")
-    display(results["summary"])
+    summary = results["summary"]
+    print(f"Model parameters {params}")
+    # Add parameter estimation error to the summary
+    summary["true_value"] = summary.index.map(
+        lambda param: params.get(param, np.nan)
+    )
+    summary["estimation_error"] = summary.index.map(
+        lambda param: abs(summary.loc[param, "mean"] - params.get(param, np.nan))
+    )
+    summary["relative_error%"] = summary["estimation_error"] / summary["true_value"] * 100
+    display(summary)
 
     print("\nParameter comparison:")
     for param, values in results["param_comparison"].items():
@@ -529,6 +528,9 @@ def display_simulation_results(results):
 
     print("\nData histogram:")
     display(results["data_histogram"])
+
+    print("\nPrior predictive histogram:")
+    display(results["prior_sampling_histogram"])
 
     print("\nTrace plot:")
     display(results["trace_plot"])
