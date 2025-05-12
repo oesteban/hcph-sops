@@ -230,7 +230,7 @@ def fit_mixture_model(
     return trace, model, model_info
 
 
-def create_analysis_plots(trace, params, model_info):
+def create_analysis_plots(trace, params, model, model_info):
     """
     Create analysis plots without displaying them.
 
@@ -327,35 +327,7 @@ def create_analysis_plots(trace, params, model_info):
     results["autocorr_plot"] = fig_autocorr
 
     # Posterior predictive
-    with pm.Model() as pp_model:
-        # Prior for proportion of unconnected regions
-        pi0 = pm.Beta("pi0", alpha=1, beta=1)
-
-        # Prior for exponential rate parameter
-        lambda_exp = pm.Gamma("lambda_exp", alpha=2, beta=3)
-
-        # Prior for standard deviation of connected regions
-        sigma = pm.HalfNormal("sigma", sigma=0.1)
-
-        # Mean for connected regions - either fixed or learned
-        if model_info["mu_type"] == "fixed":
-            mu = model_info["mu_value"]
-        else:
-            mu = pm.Normal("mu", mu=0.8, sigma=0.2)
-
-        # Component 1: Exponential distribution for unconnected regions
-        density_unconnected = pm.Exponential.dist(lam=lambda_exp)
-
-        # Component 2: Truncated Normal for connected regions
-        density_connected = pm.TruncatedNormal.dist(mu=mu, sigma=sigma, lower=0)
-
-        # Mixture model
-        density = pm.Mixture(
-            "density",
-            w=[pi0, 1 - pi0],
-            comp_dists=[density_unconnected, density_connected],
-        )
-
+    with model:
         # Sample from the posterior predictive
         posterior_predictive = pm.sample_posterior_predictive(trace)
 
@@ -474,7 +446,7 @@ def run_simulation(
     )
     results["prior_sampling_histogram"] = prior_fig
     if display_plots:
-        display(priors_fig)
+        display(prior_fig)
 
     # Fit model
     print("Fitting PyMC model (this may take a few minutes)...")
@@ -493,7 +465,7 @@ def run_simulation(
 
     # Create analysis plots
     print("Creating analysis plots...")
-    analysis_results = create_analysis_plots(trace, params, model_info)
+    analysis_results = create_analysis_plots(trace, params, model, model_info)
     results.update(analysis_results)
 
     if display_plots:
