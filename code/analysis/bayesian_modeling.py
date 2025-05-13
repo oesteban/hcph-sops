@@ -178,9 +178,12 @@ def fit_mixture_model(
     mu_value=0.8,
     mu_prior_mean=0.8,
     mu_prior_sigma=0.2,
-    n_samples=2000,
+    draws=2000,
     n_tune=1000,
     random_seed=None,
+    progressbar=True,
+    chains=4,
+    cores=4,
 ):
     """
     Fit PyMC mixture model to the data.
@@ -197,12 +200,14 @@ def fit_mixture_model(
         Prior mean for mu if mu_type is "learned"
     mu_prior_sigma : float, optional
         Prior standard deviation for mu if mu_type is "learned"
-    n_samples : int, optional
+    draws : int, optional
         Number of posterior samples
     n_tune : int, optional
         Number of tuning steps
     random_seed : int, optional
         Random seed for reproducibility
+    progressbar : bool, optional
+        Whether to show a progress bar during sampling
 
     Returns:
     --------
@@ -220,11 +225,14 @@ def fit_mixture_model(
     with model:
         # Sample from the posterior
         trace = pm.sample(
-            n_samples,
+            draws,
             tune=n_tune,
             target_accept=0.9,
             return_inferencedata=True,
             random_seed=random_seed,
+            progressbar=progressbar,
+            chains=chains,
+            cores=cores
         )
 
     return trace, model, model_info
@@ -366,7 +374,8 @@ def run_simulation(
     true_lambda=2.0,
     true_mu=0.8,
     true_sigma=0.15,
-    n_samples=2000,
+    n_samples=36,
+    draws=2000,
     mu_type="fixed",
     mu_prior_mean=0.8,
     mu_prior_sigma=0.2,
@@ -387,7 +396,9 @@ def run_simulation(
     true_sigma : float
         Standard deviation for connected regions
     n_samples : int
-        Number of samples to generate
+        Number of repeated measures
+    draws : int
+        Number of trace samples to generate
     mu_type : str
         How to handle the mu parameter: "fixed" or "learned"
     mu_prior_mean : float
@@ -455,7 +466,7 @@ def run_simulation(
         mu_value=mu_value,
         mu_prior_mean=mu_prior_mean,
         mu_prior_sigma=mu_prior_sigma,
-        n_samples=2000,
+        draws=draws,
         n_tune=1000,
         random_seed=random_seed,
     )
