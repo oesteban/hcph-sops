@@ -116,10 +116,10 @@ def define_mixture_model(
         pi0 = pm.Beta("pi0", alpha=2, beta=5)
 
         # Prior for exponential rate parameter
-        lambda_exp = pm.Gamma("lambda_exp", alpha=6, beta=2)
+        lambda_exp = pm.Gamma("lambda_exp", alpha=1, beta=10)
 
         # Prior for standard deviation of connected regions
-        sigma = pm.HalfNormal("sigma", sigma=0.2)
+        sigma = pm.HalfNormal("sigma", sigma=0.6)
 
         # Mean for connected regions - either fixed or learned
         if mu_type == "fixed":

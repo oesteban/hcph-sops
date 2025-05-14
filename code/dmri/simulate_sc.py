@@ -71,9 +71,9 @@ def simulate_sc_density_bias(
     connectome_atlas_as_ref=True,
     atlas_path="/data/probconnatlas/wm.connatlas.scale3.h5",
     atlas_dim=64,
-    bias_density=20,
-    small_noise_scale=50,
-    high_noise_scale=100,
+    bias_density=40,
+    small_noise_scale=0.2,
+    high_noise_scale=0.5,
 ):
     """
     Simulate structural connectivity (SC) matrices with density-based noise bias.
@@ -113,7 +113,7 @@ def simulate_sc_density_bias(
     ## Add noise in the copies to simulate between-session variability
     SC_matrices = np.zeros((num_sessions, atlas_dim, atlas_dim))
 
-    # Identify the 20th percentile threshold for the connection values in the reference SC matrix
+    # Identify the 20th percentile threshold for the connection values in the reference SC matrix (without considering unexisting connections)
     percentile_threshold = np.percentile(SC_matrix[SC_matrix > 0], bias_density)
 
     # Add noise to each duplicate
@@ -129,6 +129,9 @@ def simulate_sc_density_bias(
             SC_matrix <= percentile_threshold
         ]
         noise_list.append(noise)
+
+        # Replace NaN with 0, so non-existing connections are also affected by the noise
+        SC_matrix = np.nan_to_num(SC_matrix, nan=0)
         SC_matrices[i, :, :] = SC_matrix + noise
 
         # SC cannot have negative values so if the value gets negative cast it to 0
