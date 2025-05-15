@@ -1,10 +1,10 @@
+import pandas as pd
 import pymc as pm
 import numpy as np
 import arviz as az
 import matplotlib.pyplot as plt
 import seaborn as sns
 from IPython.display import display
-
 
 def generate_synthetic_data(
     true_pi0, true_lambda, true_mu, true_sigma, n_samples, random_seed=None
@@ -113,7 +113,7 @@ def define_mixture_model(
 ):
     with pm.Model() as model:
         # Prior for proportion of unconnected regions
-        pi0 = pm.Beta("pi0", alpha=2, beta=5)
+        pi0 = pm.Beta("pi0", alpha=1.5, beta=2)
 
         # Prior for exponential rate parameter
         lambda_exp = pm.Gamma("lambda_exp", alpha=1, beta=10)
@@ -184,6 +184,7 @@ def fit_mixture_model(
     progressbar=True,
     chains=4,
     cores=4,
+    repeat_fit=1,
 ):
     """
     Fit PyMC mixture model to the data.
@@ -223,19 +224,25 @@ def fit_mixture_model(
         mu_prior_sigma=mu_prior_sigma,
     )
     with model:
-        # Sample from the posterior
-        trace = pm.sample(
-            draws,
-            tune=n_tune,
-            target_accept=0.9,
-            return_inferencedata=True,
-            random_seed=random_seed,
-            progressbar=progressbar,
-            chains=chains,
-            cores=cores
-        )
+        traces = []
+        for i in range(repeat_fit):
+            print(f"Fit {i} over {repeat_fit} in total...")
+            # Sample from the posterior
+            trace = pm.sample(
+                draws,
+                tune=n_tune,
+                target_accept=0.9,
+                return_inferencedata=True,
+                random_seed=random_seed,
+                progressbar=progressbar,
+                chains=chains,
+                cores=cores
+            )
+            traces.append(trace)
+        if len(traces) == 1:
+            traces = traces[0]
 
-    return trace, model, model_info
+    return traces, model, model_info
 
 
 def create_analysis_plots(trace, params, model, model_info):
@@ -368,6 +375,63 @@ def create_analysis_plots(trace, params, model, model_info):
 
     return results
 
+def summary_across_fits(traces, params):
+    """
+    Create summary statistics across multiple fits.
+
+    Parameters:
+    -----------
+    traces : list
+        List of arviz.InferenceData objects
+    params : dict
+        True parameter values
+
+    Returns:
+    --------
+    dict
+        Dictionary with summary statistics
+    """
+    print("\nSummary statistics across multiple fits:")
+    summaries = []
+    for trace in traces:
+        summary = az.summary(trace)
+
+        summary["true_value"] = summary.index.map(
+            lambda param: params.get(param, np.nan)
+        )
+        summary["estimation_error"] = abs(summary["mean"] - summary["true_value"])
+        summary["relative_error%"] = summary["estimation_error"] / summary["true_value"] * 100
+        summary["in_94%_hdi"] = summary.apply(
+            lambda row: row["hdi_3%"] <= row["true_value"] <= row["hdi_97%"], axis=1
+        )
+        summaries.append(summary)
+
+    # Combine all runs into a single DataFrame
+    all_summaries = []
+    for i, summary in enumerate(summaries):
+        summary = summary.copy()
+        summary["run"] = i
+        summary["param"] = summary.index
+        all_summaries.append(summary)
+
+    all_summaries = pd.concat(all_summaries, ignore_index=True)
+
+    rmse_per_param = (
+        all_summaries.groupby("param")
+        .apply(lambda g: np.sqrt(np.mean(g["estimation_error"] ** 2)))
+        .rename("rmse")
+    )
+    coverage_per_param = (
+        all_summaries.groupby("param")["in_94%_hdi"]
+        .mean()
+        .rename("coverage%")
+    )
+    
+    summary_stats = pd.concat([rmse_per_param, coverage_per_param], axis=1)
+    display(summary_stats)
+    
+    return summary_stats, all_summaries
+
 
 def run_simulation(
     true_pi0=0.3,
@@ -379,8 +443,10 @@ def run_simulation(
     mu_type="fixed",
     mu_prior_mean=0.8,
     mu_prior_sigma=0.2,
-    random_seed=42,
+    random_seed=None,
     display_plots=False,
+    progressbar=True,
+    repeat_fit=1,
 ):
     """
     Run a complete simulation and return results.
@@ -422,8 +488,10 @@ def run_simulation(
     print(f"- lambda (exponential rate): {true_lambda}")
     print(f"- mu (connected mean): {true_mu}")
     print(f"- sigma (connected std): {true_sigma}")
+    print(f"- draws: {draws}")
     print(f"- n_samples: {n_samples}")
     print(f"- mu_type: {mu_type}")
+    print(f"- repeat_fit: {repeat_fit}")
     if mu_type == "learned":
         print(f"- mu_prior_mean: {mu_prior_mean}")
         print(f"- mu_prior_sigma: {mu_prior_sigma}")
@@ -438,6 +506,7 @@ def run_simulation(
         "density_values": density_values,
         "connection_status": connection_status,
         "params": params,
+        "repeat_fit": repeat_fit,
     }
 
     # Create data histogram
@@ -469,12 +538,23 @@ def run_simulation(
         draws=draws,
         n_tune=1000,
         random_seed=random_seed,
+        progressbar=progressbar,
+        repeat_fit=repeat_fit
     )
-    results["trace"] = trace
     results["model_info"] = model_info
-
+    results["trace"] = trace
+    
     # Create analysis plots
     print("Creating analysis plots...")
+    summary_stats = None
+    all_summaries = None
+    if isinstance(trace, list) and len(trace) > 1:
+        summary_stats, all_summaries = summary_across_fits(trace, params)
+        results["summary_stats"] = summary_stats
+        results["all_summaries"] = all_summaries
+        print("Warning: the analysis plots are computed only on the first trace...")
+        trace = trace[0]
+
     analysis_results = create_analysis_plots(trace, params, model, model_info)
     results.update(analysis_results)
 
