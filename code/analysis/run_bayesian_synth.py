@@ -21,5 +21,14 @@ for mu in mu_values:
     print(f"Running simulation with mu = {mu}")
     results_multi_mu[mu] = run_simulation(true_pi0=0.1, true_lambda=2.0, true_mu=mu, true_sigma=0.5, display_plots=False, progressbar=False, random_seed=None, repeat_fit=30)
 
-with open(os.path.join(output_dir, "results_multi_mu.pkl"), "wb") as f:
+with open(os.path.join(output_dir, "results_multi_mu_.pkl"), "wb") as f:
+    pickle.dump(results_multi_mu, f)
+
+mu_values = [0.1, 0.2, 0.5, 0.7]
+results_multi_mu = {}
+for mu in mu_values:
+    print(f"Running simulation with mu = {mu}")
+    results_multi_mu[mu] = run_simulation(true_pi0=0.1, true_lambda=2.0, true_mu=mu, true_sigma=0.5, display_plots=False, progressbar=False, random_seed=None, repeat_fit=20)
+
+with open(os.path.join(output_dir, "results_multi_mu_2.pkl"), "wb") as f:
     pickle.dump(results_multi_mu, f)
