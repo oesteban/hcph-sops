@@ -1,11 +1,8 @@
-import h5py
 import os
 import pickle
 import time
 import arviz as az
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 from joblib import Parallel, delayed
 
@@ -19,6 +16,7 @@ from simulate_sc import (
 )
 from bayesian_modeling import fit_mixture_model
 
+
 def fit_edge(SC_matrices_flat, c, output_dir, time_file, mu_type="fixed"):
     start_time = time.time()
     print(f"Fitting edge {c} of {SC_matrices_flat.shape[1]}")
@@ -29,12 +27,12 @@ def fit_edge(SC_matrices_flat, c, output_dir, time_file, mu_type="fixed"):
         print(f"Loading existing results for edge {c}")
         with open(pkl_file, "rb") as f:
             return pickle.load(f)
-        
+
     # Fit the Bayesian model to this edge repeated measures
-    data_mean = np.mean(SC_matrices_flat[:,c])
+    data_mean = np.mean(SC_matrices_flat[:, c])
     print("Sampling the trace for edge", c)
     trace, model, model_info = fit_mixture_model(
-        SC_matrices_flat[:,c],
+        SC_matrices_flat[:, c],
         mu_type=mu_type,
         mu_value=data_mean,
         draws=2000,
@@ -63,11 +61,12 @@ def fit_edge(SC_matrices_flat, c, output_dir, time_file, mu_type="fixed"):
 
     # Save the time taken for fitting
     time_taken = time.time() - start_time
-    
+
     with open(time_file, "a") as f:
         f.write(f"{c},{time_taken:.2f}\n")
 
     return param_values
+
 
 ## main
 exp_start = time.time()
@@ -79,7 +78,9 @@ with open(time_file, "w") as f:
     f.write("edge,time_taken\n")
 
 # Load simulated SC
-SC_matrices, noise = simulate_sc_density_bias(atlas_path=atlas_path, connectome_atlas_as_ref=True, num_sessions=36)
+SC_matrices, noise = simulate_sc_density_bias(
+    atlas_path=atlas_path, connectome_atlas_as_ref=True, num_sessions=36
+)
 num_sessions = SC_matrices.shape[0]
 atlas_dim = SC_matrices.shape[1]
 SC_matrices_flat = SC_matrices.reshape(num_sessions, -1)
@@ -88,7 +89,10 @@ SC_matrices_flat = np.nan_to_num(SC_matrices_flat, nan=0)
 # Run in parallel
 os.makedirs(output_dir, exist_ok=True)
 n_jobs = 20  # or specify a number like 8
-results = Parallel(n_jobs=n_jobs, backend="loky")(delayed(fit_edge)(SC_matrices_flat, c, output_dir, time_file, mu_type=mu_type) for c in range(SC_matrices_flat.shape[1]))
+results = Parallel(n_jobs=n_jobs, backend="loky")(
+    delayed(fit_edge)(SC_matrices_flat, c, output_dir, time_file, mu_type=mu_type)
+    for c in range(SC_matrices_flat.shape[1])
+)
 
 # Write the total time taken to a CSV file
 total_time = time.time() - exp_start

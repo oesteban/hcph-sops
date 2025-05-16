@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from IPython.display import display
 
+
 def generate_synthetic_data(
     true_pi0, true_lambda, true_mu, true_sigma, n_samples, random_seed=None
 ):
@@ -152,7 +153,12 @@ def define_mixture_model(
 
 
 def prior_preditive_sampling(
-    params, mu_type="fixed", mu_value=0.8, mu_prior_mean=0.8, mu_prior_sigma=0.2, draws=100
+    params,
+    mu_type="fixed",
+    mu_value=0.8,
+    mu_prior_mean=0.8,
+    mu_prior_sigma=0.2,
+    draws=100,
 ):
     model, model_info = define_mixture_model(
         mu_type=mu_type,
@@ -236,7 +242,7 @@ def fit_mixture_model(
                 random_seed=random_seed,
                 progressbar=progressbar,
                 chains=chains,
-                cores=cores
+                cores=cores,
             )
             traces.append(trace)
         if len(traces) == 1:
@@ -305,18 +311,14 @@ def create_analysis_plots(trace, params, model, model_info):
         parameter_list = [params["pi0"], params["sigma"], params["lambda_exp"]]
         if model_info["mu_type"] == "learned":
             parameter_list.append(params["mu"])
-        for ax, true_value in zip(
-            trace_plot[:, 0].ravel(), parameter_list
-        ):
+        for ax, true_value in zip(trace_plot[:, 0].ravel(), parameter_list):
             ax.axvline(
                 true_value,
                 color="red",
                 linestyle="--",
                 label=f"True value: {true_value}",
             )
-        for ax, true_value in zip(
-            trace_plot[:, 1].ravel(), parameter_list
-        ):
+        for ax, true_value in zip(trace_plot[:, 1].ravel(), parameter_list):
             ax.axhline(
                 true_value,
                 color="red",
@@ -375,6 +377,7 @@ def create_analysis_plots(trace, params, model, model_info):
 
     return results
 
+
 def summary_across_fits(traces, params):
     """
     Create summary statistics across multiple fits.
@@ -400,7 +403,9 @@ def summary_across_fits(traces, params):
             lambda param: params.get(param, np.nan)
         )
         summary["estimation_error"] = abs(summary["mean"] - summary["true_value"])
-        summary["relative_error%"] = summary["estimation_error"] / summary["true_value"] * 100
+        summary["relative_error%"] = (
+            summary["estimation_error"] / summary["true_value"] * 100
+        )
         summary["in_94%_hdi"] = summary.apply(
             lambda row: row["hdi_3%"] <= row["true_value"] <= row["hdi_97%"], axis=1
         )
@@ -422,14 +427,12 @@ def summary_across_fits(traces, params):
         .rename("rmse")
     )
     coverage_per_param = (
-        all_summaries.groupby("param")["in_94%_hdi"]
-        .mean()
-        .rename("coverage%")
+        all_summaries.groupby("param")["in_94%_hdi"].mean().rename("coverage%")
     )
-    
+
     summary_stats = pd.concat([rmse_per_param, coverage_per_param], axis=1)
     display(summary_stats)
-    
+
     return summary_stats, all_summaries
 
 
@@ -539,11 +542,11 @@ def run_simulation(
         n_tune=1000,
         random_seed=random_seed,
         progressbar=progressbar,
-        repeat_fit=repeat_fit
+        repeat_fit=repeat_fit,
     )
     results["model_info"] = model_info
     results["trace"] = trace
-    
+
     # Create analysis plots
     print("Creating analysis plots...")
     summary_stats = None
@@ -580,7 +583,7 @@ def display_simulation_results(results):
     params = results["data"]["params"]
     for param, value in params.items():
         print(f"- {param}: {value}")
-    
+
     print("\nParameter comparison:")
     for param, values in results["param_comparison"].items():
         if "note" in values:
@@ -592,18 +595,17 @@ def display_simulation_results(results):
                 f"{param}: True = {values['true']:.3f}, Estimated = {values['estimated']:.3f}"
             )
 
-
     print("\nSummary statistics:")
     summary = results["summary"]
     print(f"Model parameters {params}")
     # Add parameter estimation error to the summary
-    summary["true_value"] = summary.index.map(
-        lambda param: params.get(param, np.nan)
-    )
+    summary["true_value"] = summary.index.map(lambda param: params.get(param, np.nan))
     summary["estimation_error"] = summary.index.map(
         lambda param: abs(summary.loc[param, "mean"] - params.get(param, np.nan))
     )
-    summary["relative_error%"] = summary["estimation_error"] / summary["true_value"] * 100
+    summary["relative_error%"] = (
+        summary["estimation_error"] / summary["true_value"] * 100
+    )
     display(summary)
 
     print("\nParameter comparison:")

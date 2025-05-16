@@ -106,7 +106,11 @@ def simulate_sc_density_bias(
          The simulated SC matrices stored in a 3D numpy array of shape (num_sessions, atlas_dim, atlas_dim), where `atlas_dim` is the dimensionality of the
          brain atlas (number of regions).
     """
-    SC_matrix = get_ref_sc(connectome_atlas=connectome_atlas_as_ref, atlas_path=atlas_path, atlas_dim=atlas_dim)
+    SC_matrix = get_ref_sc(
+        connectome_atlas=connectome_atlas_as_ref,
+        atlas_path=atlas_path,
+        atlas_dim=atlas_dim,
+    )
     atlas_dim = SC_matrix.shape[1]
 
     ## Copy this matrix multiple time to simulate multiple sessions of the same subject
@@ -222,6 +226,7 @@ def simulate_sc_length_bias(
 
     return SC_matrices, np.array(noise_list)
 
+
 def simulate_sc_noisy_copies(
     num_sessions=36,
     connectome_atlas_as_ref=True,
@@ -270,6 +275,7 @@ def simulate_sc_noisy_copies(
     )
 
     return SC_matrices, np.array(noise_list)
+
 
 def simulate_sc_no_bias(
     num_sessions=36,
