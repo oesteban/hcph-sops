@@ -303,84 +303,99 @@ df.drop(
 
 ## Manual corrections
 # Indicate units or scale range in the column name
-df.rename(columns={"Scan date": "Scan date (MM-DD-AAAA)"}, inplace=True)
-df.rename(columns={"Scan time": "Session start time (HH:MM)"}, inplace=True)
+df.rename(columns={"Scan date": "date"}, inplace=True)
+df.rename(columns={"Scan time": "time"}, inplace=True)
 # Harmonize time format with other columns
-df["Session start time (HH:MM)"] = (
-    df["Session start time (HH:MM)"]
+df["time"] = (
+    df["time"]
     .str.replace("-", ":", regex=False)
 )
+
 df.rename(
-    columns={"Outside temperature range": "Outside temperature range (°C)"},
+    columns={"NSAIDs intake in the last 24h": "nsaids"},
     inplace=True,
 )
-df.rename(columns={"Wind": "Wind (km/h)"}, inplace=True)
-df.rename(columns={"Precipitation": "Precipitation (mm)"}, inplace=True)
-df.rename(columns={"Atmospheric pressure": "Atmospheric pressure (hPa)"}, inplace=True)
-df.rename(columns={"Relative humidity": "Relative humidity (%)"}, inplace=True)
 df.rename(
-    columns={"NSAIDs intake in the last 24h": "NSAIDs intake in the last 24h (mg)"},
+    columns={"Alcohol intake in the last 24h": "alcohol"},
+    inplace=True,
+)
+df.rename(
+    columns={"Triptans intake in the last 24h": "triptans"},
     inplace=True,
 )
 # Remove "mg" from values in the "NSAIDs intake in the last 24h (mg)" column
-df["NSAIDs intake in the last 24h (mg)"] = (
-    df["NSAIDs intake in the last 24h (mg)"]
+df["nsaids"] = (
+    df["nsaids"]
     .str.replace("mg", "", regex=False)
     .str.replace("ibuprofen", "", regex=False)
     .str.strip()
 )
 df.rename(
-    columns={"General health rating": "General health rating (1=worst, 6=best)"},
+    columns={"General health rating": "general_health"},
     inplace=True,
 )
 df.rename(
-    columns={"General stress rating": "General stress rating (1=worst, 6=best)"},
+    columns={"General stress rating": "general_stress"},
     inplace=True,
 )
 df.rename(
     columns={
-        "Ease of concentration": "Ease of concentration (1=low concentration, 6=high concentration)"
+        "Ease of concentration": "ease_concentration"
     },
     inplace=True,
 )
-df.rename(columns={"Sleep quality": "Sleep quality (1=worst, 6=best)"}, inplace=True)
+df.rename(columns={"Sleep quality": "sleep_quality"}, inplace=True)
 df.rename(
     columns={
-        "Time spent in bed the previous night": "Hours spent in bed the previous night"
+        "Can remember dreams from previous night": "remember_dreams"
     },
     inplace=True,
 )
 df.rename(
-    columns={"Rumination": "Rumination (1 = high rumination, 6 = low rumination)"},
-    inplace=True,
-)
-df.rename(
-    columns={"Anxiety": "Anxiety (1 = high anxiety, 6 = low anxiety)"},
+    columns={
+        "Frequency of day dreams (mindwandering) in the last 24h": "day_dreams"
+    },
     inplace=True,
 )
 df.rename(
     columns={
-        "Physical pain during scan": "Physical pain during scan (1 = high pain, 6 = no pain)"
+        "Time went to bed the previous night": "time_to_bed"
+    },
+    inplace=True,
+)
+df.rename(
+    columns={
+        "Time spent in bed the previous night": "time_in_bed"
+    },
+    inplace=True,
+)
+df.rename(
+    columns={
+        "Physical pain during scan": "physical_pain"
     },
     inplace=True,
 )
 # Remove "k" and indicate thousands in the column name
 df.rename(
-    columns={"Distance walked in the last 24h": "Distance walked in the last 24h (km)"},
+    columns={"Distance walked in the last 24h": "distance_walked"},
     inplace=True,
 )
-df["Distance walked in the last 24h (km)"] = (
-    df["Distance walked in the last 24h (km)"]
+df["distance_walked"] = (
+    df["distance_walked"]
     .str.replace("k", "", regex=False)
     .str.replace("m", "", regex=False)
     .str.strip()
 )
 df.rename(
-    columns={"Calories burned in the last 24h": "Kilocalories burned in the last 24h"},
+    columns={"Number of stories climbed in the last 24h": "stories_climbed"},
     inplace=True,
 )
-df["Kilocalories burned in the last 24h"] = (
-    df["Kilocalories burned in the last 24h"]
+df.rename(
+    columns={"Calories burned in the last 24h": "calories"},
+    inplace=True,
+)
+df["calories"] = (
+    df["calories"]
     .str.replace("k", "", regex=False)
     .str.strip()
 )
@@ -391,29 +406,152 @@ df.replace("6 (high concentration)", "2", inplace=True)
 df.replace("6 (best)", "2", inplace=True)
 
 # Remove commas that indicate thousands
-df["Number of steps made in the last 24h"] = df[
-    "Number of steps made in the last 24h"
+df.rename(
+    columns={"Number of steps made in the last 24h": "steps"},
+    inplace=True,
+)
+df["steps"] = df[
+    "steps"
 ].str.replace(",", "", regex=False)
 
+# Underscore column names
+df.rename(
+    columns={"PE direction": "pe_dir"},
+    inplace=True,
+)
+df.rename(
+    columns={"Outside temperature range": "weather_temperature"},
+    inplace=True,
+)
+df.rename(columns={"Wind": "weather_wind"}, inplace=True)
+df.rename(columns={"Precipitation": "weather_precipitation"}, inplace=True)
+df.rename(columns={"Kind of precipitation": "weather_precipitation_type"}, inplace=True)
+df.rename(columns={"Atmospheric pressure": "weather_pressure"}, inplace=True)
+df.rename(columns={"Relative humidity": "weather_humidity"}, inplace=True)
+df.rename(columns={"Hours of daylight": "weather_daylight"}, inplace=True)
+df.rename(columns={"Blood pressure (mmHg, systolic and diastolic)": "blood_pressure"}, inplace=True)
+df.rename(columns={"Caffeine intake in the last 24h (# cups)": "caffeine_24h"}, inplace=True)
+df.rename(columns={"Caffeine intake in the last 2h (# cups)": "caffeine_2h"}, inplace=True)
+
+df.rename(
+    columns={"Weight (kg)": "weight"},
+    inplace=True,
+)
+df.rename(
+    columns={"Hours of work in the last 24h": "beh_work"},
+    inplace=True,
+)
+df.rename(
+    columns={"Hours of free time in the last 24h": "beh_freetime"},
+    inplace=True,
+)
+df.rename(
+    columns={"Hours spent in sport in the last 24h": "beh_sport"},
+    inplace=True,
+)
+df.rename(
+    columns={"Hours spent outdoors in the last 24h": "beh_outdoors"},
+    inplace=True,
+)
+df.rename(
+    columns={"Hours spent directly interacting with electronic devices in the last 24h": "beh_electronic_devices"},
+    inplace=True,
+)
+df.rename(
+    columns={"Hours spent in active social interaction in the last 24h": "beh_active_social"},
+    inplace=True,
+)
+df.rename(
+    columns={"Hours spent in passive social interaction in the last 24h": "beh_passive_social"},
+    inplace=True,
+)
+df.rename(
+    columns={"Did you remove your ring or other jewelries ?": "remove_jewelry"},
+    inplace=True,
+)
+df.rename(
+    columns={"Are you sure you filled all entries ?": "filled_all_entries"},
+    inplace=True,
+)
+df.rename(
+    columns={"MR room temperature (°C)": "mr_room_temperature"},
+    inplace=True,
+)
+df.rename(
+    columns={"MR room humidity (%)": "mr_room_humidity"},
+    inplace=True,
+)
+df.rename(
+    columns={"MR room atmospheric pressure (hPa)": "mr_room_pressure"},
+    inplace=True,
+)
+df.rename(
+    columns={"MR helium level (%)": "mr_room_helium"},
+    inplace=True,
+)
+df.rename(
+    columns={"Slept during session": "slept_session"},
+    inplace=True,
+)
+df.rename(
+    columns={"Slept during T1w": "slept_t1w"},
+    inplace=True,
+)
+df.rename(
+    columns={"Slept during diffusion": "slept_diffusion"},
+    inplace=True,
+)
+df.rename(
+    columns={"Slept during QCT task": "slept_qct"},
+    inplace=True,
+)
+df.rename(
+    columns={"Slept during rest task": "slept_rest"},
+    inplace=True,
+)
+df.rename(
+    columns={"Slept during BHT task": "slept_bht"},
+    inplace=True,
+)
+df.rename(
+    columns={"If you slept during the T1w": "time_slept_t1w"},
+    inplace=True,
+)
+df.rename(
+    columns={"If you slept during the rest task": "time_slept_rest"},
+    inplace=True,
+)
+df.rename(
+    columns={"If you slept during the diffusion": "time_slept_diffusion"},
+    inplace=True,
+)
+df.rename(
+    columns={"More detail about rumination, anxiety or pain (optional)": "details_rumination_anxiety_pain"},
+    inplace=True,
+)
 # BIDS specification indicates to encode missing values as "n/a"
 df.fillna("n/a", inplace=True)
 df.replace("_No response_", "n/a", inplace=True)
 df.replace("NONE", "n/a", inplace=True)
 
 # Impute "Slept during session" if it is "n/a", with the union of the columns encoding sleep
-slept_columns = [col for col in df.columns if col.startswith("Slept during")]
+slept_columns = [col for col in df.columns if col.startswith("slept_")]
 for index, row in df.iterrows():
-    if row["Slept during session"] == "n/a":
+    if row["slept_session"] == "n/a":
         if any(row[col] == "Yes" for col in slept_columns):
-            df.at[index, "Slept during session"] = "Yes"
+            df.at[index, "slept_session"] = "Yes"
         else:
-            df.at[index, "Slept during session"] = "No"
+            df.at[index, "slept_session"] = "No"
+
 
 # Session 14 was not finished if the tickbox were not ticked it's not because the subject did not sleep, but because the form was not filled
 df.loc[df["session_number"] == "014", slept_columns] = "n/a"
 
 # Complete that the scanner used for the reliability sessions was the Prisma
 df.loc[df["session_number"].str.startswith("0"), "scanner"] = "Prisma"
+
+# put colunm name in small caps
+df.columns = df.columns.str.lower()
 
 # Save to CSV
 df.to_csv(save_data_path, sep="\t", index=False)
