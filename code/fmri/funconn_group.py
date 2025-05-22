@@ -150,8 +150,8 @@ def main():
         extension=".tsv",
         suffix="connectivity",
         task=task_filter,
-        meas=fc_label,
-        fdthresh=fdthresh,
+        measure=fc_label,
+        fd_threshold=fdthresh,
         scale=scale,
     )
     if not existing_fc:
