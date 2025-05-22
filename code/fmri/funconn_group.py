@@ -30,7 +30,6 @@ import pandas as pd
 
 
 from itertools import chain
-from funconn import FC_FILLS, FC_PATTERN
 
 from load_save import (
     get_atlas_data,
@@ -40,6 +39,8 @@ from load_save import (
     get_bids_savename,
     get_func_filenames_bids,
     load_iqms,
+    FC_FILLS,
+    FC_PATTERN
 )
 
 from reports import (
