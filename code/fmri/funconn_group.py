@@ -28,17 +28,12 @@ import numpy as np
 import os.path as op
 import pandas as pd
 
-from itertools import chain
+from bids.layout import BIDSLayout, BIDSLayoutIndexer, add_config_paths
+
 from load_save import (
     get_atlas_data,
     find_atlas_dimension,
-    find_derivative,
-    check_existing_output,
-    get_bids_savename,
-    get_func_filenames_bids,
     load_iqms,
-    FC_FILLS,
-    FC_PATTERN
 )
 from reports import (
     group_report,
@@ -136,30 +131,33 @@ def main():
     atlas_filename = getattr(atlas_data, "maps")
 
     # Find all existing functional connectivity
-    input_path = find_derivative(output)
-    func_filenames, _ = get_func_filenames_bids(input_path, task_filter=task_filter)
-    all_filenames = list(chain.from_iterable(func_filenames))
-
-    existing_fc = check_existing_output(
-        output,
-        all_filenames,
-        return_existing=True,
-        return_output=True,
-        patterns=FC_PATTERN,
-        scale=scale,
-        fdthresh=fdthresh,
+    # Initialize the BIDS layout, we use a custom indexer because we are using entities that are not yet officially recognized by BIDS 
+    config_path = "../bids/indexer.json"
+    try:
+        add_config_paths(hcph=config_path)
+    except ValueError as e:
+        if "Configuration 'hcph' already exists" in str(e):
+            print("Configuration 'hcph' already exists, skipping add_config_paths.")
+        else:
+            raise e
+    _indexer = BIDSLayoutIndexer(
+        config_filename=config_path,
+        index_metadata=False,
+        validate=False,
+    )       
+    layout = BIDSLayout(output, config="hcph", indexer=_indexer, validate=False)
+    existing_fc = layout.get(
+        extension=".tsv",
+        suffix="connectivity",
+        task=task_filter,
         meas=fc_label,
-        **FC_FILLS,
+        fdthresh=fdthresh,
+        scale=scale,
     )
     if not existing_fc:
-        filename = op.join(
-            output,
-            get_bids_savename(
-                all_filenames[0], patterns=FC_PATTERN, scale=scale, fdthresh= fdthresh, meas=fc_label, **FC_FILLS
-            ),
-        )
         raise ValueError(
-            f"No functional connectivity of type {filename} were found. Please revise the arguments."
+            f"No functional connectivity matrices found in {output} with task {task_filter}, meas {fc_label},"
+            f"fdthresh {fdthresh}, and scale {scale}."
         )
 
     # Load functional connectivity matrices
