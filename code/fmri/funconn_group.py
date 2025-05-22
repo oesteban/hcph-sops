@@ -132,7 +132,7 @@ def main():
 
     # Find all existing functional connectivity
     # Initialize the BIDS layout, we use a custom indexer because we are using entities that are not yet officially recognized by BIDS 
-    config_path = "../bids/indexer.json"
+    config_path = op.abspath(op.join(op.dirname(__file__), "../bids/indexer.json"))
     try:
         add_config_paths(hcph=config_path)
     except ValueError as e:
