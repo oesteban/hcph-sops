@@ -110,7 +110,7 @@ def main():
     mriqc_path = args.mriqc_path
     fc_label = args.fc_estimator.replace(" ", "")
     scale = args.atlas_dimension
-    fdthresh = args.FD_thresh
+    fdthresh = str(args.FD_thresh).replace(".", "")
 
     verbosity_level = args.verbosity
 
