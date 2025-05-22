@@ -34,6 +34,8 @@ from load_save import (
     get_atlas_data,
     find_atlas_dimension,
     load_iqms,
+    FC_FILLS,
+    FC_PATTERN
 )
 from reports import (
     group_report,
