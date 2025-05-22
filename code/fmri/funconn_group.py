@@ -28,9 +28,7 @@ import numpy as np
 import os.path as op
 import pandas as pd
 
-
 from itertools import chain
-
 from load_save import (
     get_atlas_data,
     find_atlas_dimension,
@@ -42,7 +40,6 @@ from load_save import (
     FC_FILLS,
     FC_PATTERN
 )
-
 from reports import (
     group_report,
 )
@@ -80,6 +77,19 @@ def get_arguments() -> argparse.Namespace:
         'sparse')""",
     )
     parser.add_argument(
+        "--atlas-dimension",
+        default=64,
+        type=int,
+        help="dimension of the atlas (usually 64, 128 or 512)",
+    )
+    parser.add_argument(
+        "--FD-thresh",
+        default=0.5,
+        action="store",
+        type=float,
+        help="framewise displacement threshold (in mm)",
+    )
+    parser.add_argument(
         "-v",
         "--verbosity",
         action="count",
@@ -99,6 +109,8 @@ def main():
     task_filter = args.task
     mriqc_path = args.mriqc_path
     fc_label = args.fc_estimator.replace(" ", "")
+    scale = args.atlas_dimension
+    fdthresh = args.FD_thresh
 
     verbosity_level = args.verbosity
 
@@ -134,6 +146,8 @@ def main():
         return_existing=True,
         return_output=True,
         patterns=FC_PATTERN,
+        scale=scale,
+        fdthresh=fdthresh,
         meas=fc_label,
         **FC_FILLS,
     )
@@ -141,7 +155,7 @@ def main():
         filename = op.join(
             output,
             get_bids_savename(
-                all_filenames[0], patterns=FC_PATTERN, meas=fc_label, **FC_FILLS
+                all_filenames[0], patterns=FC_PATTERN, scale=scale, fdthresh= fdthresh, meas=fc_label, **FC_FILLS
             ),
         )
         raise ValueError(
