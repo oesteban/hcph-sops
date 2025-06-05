@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 
 
-def get_confounds_scanstsv(dataset_path="/data/datasets/hcph-dataset"):
+def get_confounds_scanstsv(dataset_path):
     """
     Extract and process confound information from a `scans.tsv` file.
 
@@ -12,7 +12,7 @@ def get_confounds_scanstsv(dataset_path="/data/datasets/hcph-dataset"):
 
     Parameters:
     -----------
-    dataset_path : str, optional
+    dataset_path : str
         The path to the dataset directory containing the `scans.tsv` file.
         Default is "/data/datasets/hcph-dataset".
 
@@ -62,7 +62,7 @@ def get_confounds_scanstsv(dataset_path="/data/datasets/hcph-dataset"):
 
 
 def get_iqms(
-    iqms_path="/data/derivatives/hcph-mriqc/group_dwi.tsv", iqm_of_interest=["fd_mean"]
+    iqms_path, iqm_of_interest=["fd_mean"]
 ):
     """
     Extract imaging quality metrics (IQMs) from a specified TSV file.
