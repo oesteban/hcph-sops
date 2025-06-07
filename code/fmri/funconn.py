@@ -592,7 +592,7 @@ def main():
         "\t" + "\n\t".join([op.basename(filename) for filename in all_filenames])
     )
 
-    atlas_data = get_atlas_data(dimension=atlas_dimension)
+    atlas_data = get_atlas_data(remove_csf_comp=True, dimension=atlas_dimension)
     atlas_filename = getattr(atlas_data, "maps")
     atlas_labels = getattr(atlas_data, "labels").loc[:, "difumo_names"]
     atlas_network = getattr(atlas_data, "labels").loc[:, NETWORK_MAPPING]
