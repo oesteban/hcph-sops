@@ -594,8 +594,8 @@ def main():
 
     atlas_data = get_atlas_data(remove_csf_comp=True, dimension=atlas_dimension)
     atlas_filename = getattr(atlas_data, "maps")
-    atlas_labels = getattr(atlas_data, "labels").loc[:, "difumo_names"]
-    atlas_network = getattr(atlas_data, "labels").loc[:, NETWORK_MAPPING]
+    atlas_labels = getattr(atlas_data, "labels").loc[:, "difumo_names"].reset_index(drop=True)
+    atlas_network = getattr(atlas_data, "labels").loc[:, NETWORK_MAPPING].reset_index(drop=True)
 
     if output is None:
         output = op.join(find_derivative(input_path), "functional_connectivity")
