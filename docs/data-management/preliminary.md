@@ -114,7 +114,7 @@ When a new session is added, your *DataLad* dataset will remain at the same poin
 
         ``` shell
         find sub-001/ses-pilot019 -name "*.json" -or -name "*.tsv" -or -name "*.bvec" -or -name "*.bval" | \
-            xargs datalad save -m '"add(pilot019): new session metadata (JSON, TSV, bvec/bval)"'
+            xargs datalad save -m --to-git '"add(pilot019): new session metadata (JSON, TSV, bvec/bval)"'
         ```
 
 [1]: https://doi.org/10.5281/zenodo.808846 "Hanke, Michael, et al. “Datalad.” Open Source Software, 2021. doi:10.5281/zenodo.808846"
