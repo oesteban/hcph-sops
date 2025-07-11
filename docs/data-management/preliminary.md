@@ -203,5 +203,43 @@ In this case, the steps are demonstrated for the outputs of *sMRIPrep*.
 
 - [ ] Check that `master` is the default branch in the repository settings (in this case: [https://github.com/{{ secrets.data.gh_derivs_example_repo | default('<organization>/<repo_name>') }}/settings](https://github.com/{{ secrets.data.gh_derivs_example_repo | default('<organization>/<repo_name>') }}/settings))
 
+## Nesting derivatives datasets
+
+With the structure of derivatives we have defined above, we will then nest datalad datasets to obtain consistent global derivatives.
+For example, let's nest the *FreeSurfer* derivatives into the `sourcedata/freesurfer` folder of the *fMRIPrep* derivatives of the piloting sessions with the reliability protocol.
+
+- [ ] Change directory into the *superdataset* folder, ensure it's updated, and create a new branch (for caution)
+    ``` shell
+    export TOP_REPO=fmriprep-reliability-pilot
+    export DERIVS_REPO=freesurfer-reliability-pilot
+
+    cd hcph-${TOP_REPO}
+    datalad update --how ff-only
+    git checkout -b add/freesurfer-subdataset master
+    ```
+
+- [ ] Install the subdataset (in this case into `sourcedata/freesurfer`)
+    ``` shell
+    datalad install -d . \
+                    -s https://github.com/{{ secrets.data.gh_derivs_repo | default('<organization>/<repo_name>') }}.git \
+                    sourcedata/freesurfer
+    ```
+
+- [ ] Push the changes to the super-dataset:
+    ``` shell
+    datalad push --to=github
+    ```
+
+- [ ] Visit the *superdataset*'s *GitHub* repository:
+    - [ ] Create a pull-request (PR)
+    - [ ] Review the PR
+    - [ ] Merge the PR
+
+- [ ] Back to the host for data management, update the dataset:
+    ``` shell
+    cd hcph-${TOP_REPO}  # if necessary
+    git checkout master
+    datalad update --how ff-only
+    ```
 
 [1]: https://doi.org/10.5281/zenodo.808846 "Hanke, Michael, et al. “Datalad.” Open Source Software, 2021. doi:10.5281/zenodo.808846"
