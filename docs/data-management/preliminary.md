@@ -168,7 +168,7 @@ In this case, the steps are demonstrated for the outputs of *sMRIPrep*.
         If successfull, the output in this case should be something like:
 
         ``` Text
-        create_sibling_github(ok): [sibling repository 'github' created at https://github.com/TheAxonLab/hcph-fmriprep-reliability-pilot]
+        create_sibling_github(ok): [sibling repository 'github' created at https://github.com/<organization>/<repo_name>]
         configure-sibling(ok): . (sibling)
         action summary:
           configure-sibling (ok: 1)
