@@ -557,10 +557,10 @@ df.replace("NONE", "n/a", inplace=True)
 slept_columns = [col for col in df.columns if col.startswith("slept_")]
 for index, row in df.iterrows():
     if row["slept_session"] == "n/a":
-        if any(row[col] == "Yes" for col in slept_columns):
-            df.at[index, "slept_session"] = "Yes"
-        else:
-            df.at[index, "slept_session"] = "No"
+        df.at[index, "slept_session"] = (
+            "Yes" if any(row[col] == "Yes" for col in slept_columns)
+            else "No"
+        )
 
 
 # Session 14 was not finished if the tickbox were not ticked it's not because the subject did not sleep, but because the form was not filled
